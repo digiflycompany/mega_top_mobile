@@ -1,7 +1,6 @@
 class AppStrings {
 //_???
   AppStrings._internal();
-  /// ********************* OnboardingScreens ******************
-  ///
+  /// ********************* OnboardingScreens ****************** ///
   static const String skip='تخطي';
 }

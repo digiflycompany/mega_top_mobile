@@ -5,6 +5,9 @@ class AppAssets {
   static const String svgPath = "assets/svg";
   static const String gifPath = "assets/gif";
   static const String lottiePath = 'assets/lottie';
-  static const String splashScreen = "$imagesPath/splashScreen.png";
-  static const String loginImg = "$imagesPath/loginFinalLogo.png";
+  static const String searchPurpleIcon = "$imagesPath/searchPurpleIcon.png";
+  static const String cpuIcon = "$imagesPath/cpuIcon.png";
+  static const String hardDiskIcon = "$imagesPath/hardIcon.png";
+  static const String cameraIcon = "$imagesPath/cameraIcon.png";
+
 }
