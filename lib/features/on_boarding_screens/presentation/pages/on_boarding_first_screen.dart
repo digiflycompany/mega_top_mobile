@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/app-assets.dart';
+
+import '../../../../core/utils/app-color.dart';
 
 class OnboardingFirstScreen extends StatelessWidget {
   const OnboardingFirstScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('aaaaaaaaaaaaaaaaaaaaaaaaaaa'),
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.onboardingBackgroundColor,
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
         ],
       ),
     );
