@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
-import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_second_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/curved_container.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/skip_text.dart';
-import 'package:page_transition/page_transition.dart';
 import '../../../../core/utils/app_assets.dart';
 
 class FirstHeader extends StatelessWidget {
-  const FirstHeader({super.key});
+  final PageController pageController;
+  const FirstHeader({super.key, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +46,10 @@ class FirstHeader extends StatelessWidget {
         /// Skip Text ///
          SkipText(
           onTap: (){
-            Navigator.push(
-              context,
-              PageTransition(
-                type: PageTransitionType.fade,
-                duration: const Duration(
-                    milliseconds: 100),
-                  child: const OnboardingSecondScreen(),
-              ),
+            pageController.animateToPage(
+              1,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeInOut,
             );
           },
         ),

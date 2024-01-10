@@ -11,6 +11,7 @@ class OnBoardingScreens extends StatefulWidget {
 
 class _OnBoardingScreensState extends State<OnBoardingScreens> {
   late PageController _pageController;
+  int pageIndex =0;
   @override
   void initState() {
     super.initState();
@@ -22,10 +23,13 @@ class _OnBoardingScreensState extends State<OnBoardingScreens> {
      body: PageView(
        controller: _pageController,
        onPageChanged: (index) {
+         setState(() {
+           pageIndex =index;
+         });
        },
        children:  [
-         OnboardingFirstScreen(pageController: _pageController,),
-         const OnboardingSecondScreen(),
+         OnboardingFirstScreen(pageController: _pageController,index: pageIndex,),
+         OnboardingSecondScreen(pageController: _pageController,index: pageIndex,),
          Container(color: Colors.blue,),
        ],
      ),

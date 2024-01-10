@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
 class OnboardingDescription extends StatelessWidget {
-  const OnboardingDescription({super.key});
+  final String? title;
+  final String? description;
+  const OnboardingDescription({super.key, required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +14,20 @@ class OnboardingDescription extends StatelessWidget {
       padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
       child: Column(
         children: [
-          const Text(
-            AppStrings.exploreOurDigitalProducts,
-            style: TextStyle(
+           Text(
+            title!,
+            style: const TextStyle(
                 color: Colors.black,
                 fontSize: 18,
                 fontWeight: FontWeight.w700
             ),
           ),
           VerticalSpace(context.height*0.017),
-          const Text(
-            AppStrings.onBoardingDescription,
+          Text(
+            description!,
             textAlign: TextAlign.center,
             textDirection: TextDirection.rtl,
-            style: TextStyle(
+            style: const TextStyle(
                 color: AppColors.greyTextColor,
                 fontSize: 14,
                 fontWeight: FontWeight.w500
