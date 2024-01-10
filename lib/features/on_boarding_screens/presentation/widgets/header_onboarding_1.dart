@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
+import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/curved_container.dart';
+import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/skip_text.dart';
 import '../../../../core/utils/app_assets.dart';
-import 'custom_curved_container.dart';
 
 class FirstHeader extends StatelessWidget {
   const FirstHeader({super.key});
@@ -11,10 +13,7 @@ class FirstHeader extends StatelessWidget {
     return Stack(
       children: [
         /// BackGroundImage ///
-        CustomPaint(
-          size: Size(double.infinity, context.height*0.44),
-          painter: ArcPainter(),
-        ),
+        const CurvedContainer(),
         /// Purple Search Icon ///
         Padding(
           padding:  EdgeInsets.only(top: context.height*0.125),
@@ -44,7 +43,7 @@ class FirstHeader extends StatelessWidget {
               child: Image.asset(AppAssets.cpuIcon)),
         ),
         /// Skip Text ///
-
+        const SkipText()
       ],
     );
   }
