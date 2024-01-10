@@ -10,7 +10,7 @@ class FontFamilies{
   static const String  interFamily="Inter";
   static const String almarai='Almarai';
   static const String jFlat='jFlat';
-  static const String Outfit='Outfit';
+  static const String outfit='Outfit';
 
 
 }class FontWeights {
