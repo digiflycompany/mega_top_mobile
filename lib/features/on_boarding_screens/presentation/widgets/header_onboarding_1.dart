@@ -10,13 +10,18 @@ class FirstHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        /// BackGroundImage ///
         CustomPaint(
-          size: Size(double.infinity, context.height*0.43),
+          size: Size(double.infinity, context.height*0.44),
           painter: ArcPainter(),
         ),
-        Transform.scale(
-            scale: 0.85,
-            child: Image.asset(AppAssets.searchPurpleIcon,)),
+        /// Purple Search Icon ///
+        Padding(
+          padding:  EdgeInsets.only(top: context.height*0.13),
+          child: Transform.scale(
+              scale: 0.95,
+              child: Image.asset(AppAssets.searchPurpleIcon,)),
+        ),
       ],
     );
   }
