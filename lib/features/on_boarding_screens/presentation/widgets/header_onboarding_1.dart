@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
+import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_second_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/curved_container.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/skip_text.dart';
+import 'package:page_transition/page_transition.dart';
 import '../../../../core/utils/app_assets.dart';
 
 class FirstHeader extends StatelessWidget {
@@ -43,7 +45,19 @@ class FirstHeader extends StatelessWidget {
               child: Image.asset(AppAssets.cpuIcon)),
         ),
         /// Skip Text ///
-        const SkipText()
+         SkipText(
+          onTap: (){
+            Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.fade,
+                duration: const Duration(
+                    milliseconds: 100),
+                  child: const OnboardingSecondScreen(),
+              ),
+            );
+          },
+        ),
       ],
     );
   }

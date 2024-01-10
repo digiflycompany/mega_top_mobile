@@ -9,7 +9,7 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Padding(
         padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),

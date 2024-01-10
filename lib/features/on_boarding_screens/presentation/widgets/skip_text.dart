@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -9,18 +9,22 @@ class SkipText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap:onTap,
+    return InkWell(
+      splashColor: Colors.transparent,
+      onTap: onTap,
       child: Padding(
-        padding:  EdgeInsets.only(top: context.height*0.08,left: context.width*0.045),
+        padding:  EdgeInsets.only(top: context.height*0.058,left: context.width*0.01),
         child: const Row(
           children: [
-            Text(
-              AppStrings.skip,
-              style: TextStyle(
-                color: AppColors.primaryColor,
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
+             Padding(
+              padding:  EdgeInsets.all(12),
+              child: Text(
+                AppStrings.skip,
+                style: TextStyle(
+                  color: AppColors.primaryColor,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],

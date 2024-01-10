@@ -9,7 +9,8 @@ import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widget
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
 
 class OnboardingFirstScreen extends StatelessWidget {
-  const OnboardingFirstScreen({super.key});
+  final  PageController pageController;
+  const OnboardingFirstScreen({super.key,required this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,14 @@ class OnboardingFirstScreen extends StatelessWidget {
             ),
           ),
           VerticalSpace(context.height*0.05),
-          const PrimaryButton(text: AppStrings.next,),
+           PrimaryButton(text: AppStrings.next,
+          onTap: (){
+            pageController.animateToPage(
+               1,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeInOut,
+            );
+          }),
         ],
       ),
     );

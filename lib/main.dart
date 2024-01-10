@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_fonts.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_first_screen.dart';
+import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         fontFamily: FontFamilies.cairo,
       ),
       debugShowCheckedModeBanner: false,
-      home: const OnboardingFirstScreen(),
+      home: const OnBoardingScreens(),
     );
   }
 }
