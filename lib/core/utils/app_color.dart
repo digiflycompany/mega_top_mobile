@@ -6,4 +6,5 @@ class AppColors {
   static const Color onboardingBackgroundColor =Color.fromRGBO(232, 237, 242, 1);
   static const Color primaryColor =Color.fromRGBO(18, 71, 123, 1);
   static const Color greyTextColor =Color.fromRGBO(128, 128, 128, 1);
+  static const Color dotsColor =Color.fromRGBO(208, 218, 229, 1);
 }
