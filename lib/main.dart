@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mega_top_mobile/core/utils/app_fonts.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_first_screen.dart';
 
 void main() {
@@ -10,9 +11,12 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
+      theme: ThemeData(
+        fontFamily: FontFamilies.interFamily
+      ),
       debugShowCheckedModeBanner: false,
-      home: OnboardingFirstScreen(),
+      home: const OnboardingFirstScreen(),
     );
   }
 }
