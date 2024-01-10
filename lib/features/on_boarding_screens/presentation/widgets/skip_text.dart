@@ -10,7 +10,7 @@ class SkipText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap:onTap,
       child: Padding(
         padding:  EdgeInsets.only(top: context.height*0.08,left: context.width*0.045),
         child: const Row(
