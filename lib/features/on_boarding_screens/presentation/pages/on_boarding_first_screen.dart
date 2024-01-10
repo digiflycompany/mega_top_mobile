@@ -1,8 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_1.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
 
@@ -19,7 +21,7 @@ class OnboardingFirstScreen extends StatelessWidget {
           const FirstHeader(),
           VerticalSpace(context.height*0.014),
           const OnboardingDescription(),
-          VerticalSpace(context.height*0.03),
+          VerticalSpace(context.height*0.028),
           DotsIndicator(
             dotsCount: 3,
             position: 0,
@@ -31,6 +33,8 @@ class OnboardingFirstScreen extends StatelessWidget {
               activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
             ),
           ),
+          VerticalSpace(context.height*0.05),
+          const PrimaryButton(text: AppStrings.next,),
         ],
       ),
     );

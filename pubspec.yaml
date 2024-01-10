@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc:
   flutter_svg:
   dots_indicator:
+  page_transition:
 dev_dependencies:
   flutter_test:
     sdk: flutter
