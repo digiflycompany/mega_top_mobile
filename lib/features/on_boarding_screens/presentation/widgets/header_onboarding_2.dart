@@ -15,11 +15,17 @@ class SecondHeader extends StatelessWidget {
       children: [
         /// BackGroundImage ///
         const CurvedContainer(),
+        Padding(
+          padding:  EdgeInsets.only(top:context.height*0.1),
+          child: Transform.scale(
+              scale: 0.7,
+              child: Image.asset(AppAssets.boardingCart)),
+        ),
         /// Skip Text ///
         SkipText(
           onTap: (){
             pageController.animateToPage(
-              1,
+              2,
               duration: const Duration(milliseconds: 400),
               curve: Curves.easeInOut,
             );

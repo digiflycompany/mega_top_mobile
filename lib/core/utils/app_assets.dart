@@ -9,5 +9,6 @@ class AppAssets {
   static const String cpuIcon = "$imagesPath/cpuIcon.png";
   static const String hardDiskIcon = "$imagesPath/hardIcon.png";
   static const String cameraIcon = "$imagesPath/cameraIcon.png";
+  static const String boardingCart = "$imagesPath/boardingCart.png";
 
 }
