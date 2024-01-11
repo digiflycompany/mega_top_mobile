@@ -22,16 +22,25 @@ class ThirdHeader extends StatelessWidget {
               scale: 0.7,
               child: Image.asset(AppAssets.onBoardingBox)),
         ),
+        /// Skip Text ///
+        SkipText(
+          onTap: (){},
+        ),
+        /// Back Arrow ///
         Align(
           alignment: AlignmentDirectional.centerEnd,
           child: Padding(
             padding:  EdgeInsets.only(top: context.width*0.12,right: context.width*0.045),
-            child: const BackArrow(),
+            child:  BackArrow(
+              onTap: (){
+                pageController.animateToPage(
+                  1,
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeInOut,
+                );
+              },
+            ),
           ),
-        ),
-        /// Skip Text ///
-        SkipText(
-          onTap: (){},
         ),
       ],
     );

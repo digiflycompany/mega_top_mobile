@@ -28,6 +28,7 @@ class OnboardingFirstScreen extends StatelessWidget {
           ),
           VerticalSpace(context.height*0.028),
           DotsIndicator(
+            reversed: true,
             dotsCount: 3,
             position: index,
             decorator: DotsDecorator(

@@ -23,6 +23,7 @@ class _OnBoardingScreensState extends State<OnBoardingScreens> {
   Widget build(BuildContext context) {
     return Scaffold(
      body: PageView(
+       reverse: true,
        controller: _pageController,
        onPageChanged: (index) {
          setState(() {
