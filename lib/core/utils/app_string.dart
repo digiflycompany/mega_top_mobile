@@ -18,5 +18,6 @@ class AppStrings {
   static const String signInWithGoogle='سجل عن طريق جوجل';
   static const String doNotHaveAccount='ليس لديك حساب ؟';
   static const String createAccount='إنشاء حساب';
+  static const String or='أو';
 
 }

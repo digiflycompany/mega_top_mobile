@@ -11,6 +11,7 @@ class AppAssets {
   static const String cameraIcon = "$imagesPath/cameraIcon.png";
   static const String boardingCart = "$imagesPath/boardingCart.png";
   static const String onBoardingBox = "$imagesPath/onBoardingBox.png";
+  static const String megaTopLogo = "$imagesPath/mega_top_logo.png";
   static const String backArrow = "$svgPath/back_arrow.svg";
   static const String emailIcon = "$svgPath/email_icon.svg";
   static const String gmailIcon = "$svgPath/google_icon.svg";

@@ -39,6 +39,9 @@ dependencies:
   flutter_svg:
   dots_indicator:
   page_transition:
+  flutter_localizations:
+    sdk: flutter
+  intl:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -56,11 +59,12 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
 
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  generate: true
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
@@ -101,3 +105,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
