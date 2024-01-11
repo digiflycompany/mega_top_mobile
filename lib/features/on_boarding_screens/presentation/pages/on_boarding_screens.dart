@@ -33,9 +33,7 @@ class _OnBoardingScreensState extends State<OnBoardingScreens> {
        reverse: true,
        controller: _pageController,
        onPageChanged: (index) {
-         setState(() {
-           pageIndex =index;
-         });
+         onboardingCubit.setPageIndex(pageIndex=index);
        },
        children:  [
          OnboardingFirstScreen(pageController: _pageController,index: pageIndex,),

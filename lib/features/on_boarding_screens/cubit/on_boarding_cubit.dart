@@ -6,4 +6,8 @@ class OnboardingCubit extends Cubit<OnBoardingState> {
 
   OnboardingCubit getCubit(context) => BlocProvider.of(context);
 
+  void setPageIndex(int index) {
+    emit(OnBoardingPageChanged(index: index));
+  }
+
 }
