@@ -12,5 +12,9 @@ class AppAssets {
   static const String boardingCart = "$imagesPath/boardingCart.png";
   static const String onBoardingBox = "$imagesPath/onBoardingBox.png";
   static const String backArrow = "$svgPath/back_arrow.svg";
-
+  static const String emailIcon = "$svgPath/email_icon.svg";
+  static const String gmailIcon = "$svgPath/google_icon.svg";
+  static const String hidePasswordIcon = "$svgPath/hide_password.svg";
+  static const String showPasswordIcon = "$svgPath/show_password.svg";
+  static const String passwordIcon = "$svgPath/password_icon.svg";
 }

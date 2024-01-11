@@ -11,5 +11,12 @@ class AppStrings {
   static const String createNewAccount='إنشاء حساب جديد';
   static const String login='تسجيل الدخول';
   static const String onBoardingDescription='يتم استخدام نص لوريم الملء من قبل مصممي الجرافيك والمبرمجين والطابعات بهدف شغل مساحات موقع ويب أو منتج إعلاني أو إنتاج تحريري لم يكن نصه النهائي جاهزًا بعد.';
+  static const String loginTitle='سجل الدخول للمتابعة';
+  static const String email='البريد الإلكترونى';
+  static const String password='كلمة المرور';
+  static const String forgotPassword='هل نسيت كلمة المرور ؟';
+  static const String signInWithGoogle='سجل عن طريق جوجل';
+  static const String doNotHaveAccount='ليس لديك حساب ؟';
+  static const String createAccount='إنشاء حساب';
 
 }
