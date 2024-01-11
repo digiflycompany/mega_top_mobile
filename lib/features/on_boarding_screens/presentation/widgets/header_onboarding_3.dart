@@ -17,10 +17,10 @@ class ThirdHeader extends StatelessWidget {
         /// BackGroundImage ///
         const CurvedContainer(),
         Padding(
-          padding:  EdgeInsets.only(top:context.height*0.1),
+          padding:  EdgeInsets.only(top:context.height*0.12),
           child: Transform.scale(
               scale: 0.7,
-              child: Image.asset(AppAssets.boardingCart)),
+              child: Image.asset(AppAssets.onBoardingBox)),
         ),
         Align(
           alignment: AlignmentDirectional.centerEnd,

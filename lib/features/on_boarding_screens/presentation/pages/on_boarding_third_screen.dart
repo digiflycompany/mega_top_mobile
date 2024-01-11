@@ -6,7 +6,7 @@ import 'package:mega_top_mobile/core/utils/media_query.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
-import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_2.dart';
+import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_3.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
 
 class OnboardingThirdScreen extends StatelessWidget {
@@ -23,10 +23,10 @@ class OnboardingThirdScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SecondHeader(pageController: pageController,),
-            VerticalSpace(context.height*0.0346),
+            ThirdHeader(pageController: pageController,),
+            VerticalSpace(context.height*0.050),
             const OnboardingDescription(
-              title:AppStrings.addYourProductsToCart,
+              title:AppStrings.getYourOrderSuccessfully,
               description: AppStrings.onBoardingDescription,
             ),
             VerticalSpace(context.height*0.028),
@@ -43,24 +43,12 @@ class OnboardingThirdScreen extends StatelessWidget {
             ),
             VerticalSpace(context.height*0.05),
             PrimaryButton(
-                text: AppStrings.next,
-                onTap: (){
-                  pageController.animateToPage(
-                    2,
-                    duration: const Duration(milliseconds: 400),
-                    curve: Curves.easeInOut,
-                  );
-                }),
+                text: AppStrings.createNewAccount,
+                onTap: (){}),
             VerticalSpace(context.height*0.0329),
             PrimaryEmptyButton(
-                text: AppStrings.previous,
-                onTap: (){
-                  pageController.animateToPage(
-                    0,
-                    duration: const Duration(milliseconds: 400),
-                    curve: Curves.easeInOut,
-                  );
-                }),
+                text: AppStrings.login,
+                onTap: (){}),
             VerticalSpace(context.height*0.04),
           ],
         ),
