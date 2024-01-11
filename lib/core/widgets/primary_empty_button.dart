@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
 import '../utils/app_color.dart';
 
-class PrimaryButton extends StatelessWidget {
+class PrimaryEmptyButton extends StatelessWidget {
   final Function()? onTap;
   final String? text;
-  const PrimaryButton({super.key, this.onTap, this.text});
+  const PrimaryEmptyButton({super.key, this.onTap, this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +17,15 @@ class PrimaryButton extends StatelessWidget {
           width: double.infinity,
           height: context.height*0.069,
           decoration: BoxDecoration(
-            color: AppColors.primaryColor,
+            color: Colors.white,
+            border: Border.all(width: 1),
             borderRadius: BorderRadius.circular(4),
           ),
           child:  Center(
             child: Text(
               text!,
               style: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.primaryColor,
                   fontWeight: FontWeight.w700,
                   fontSize: 17
               ),

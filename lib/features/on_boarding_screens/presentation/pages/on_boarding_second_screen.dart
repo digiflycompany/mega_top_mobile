@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
+import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_2.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
 
@@ -17,38 +18,52 @@ class OnboardingSecondScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SecondHeader(pageController: pageController,),
-          VerticalSpace(context.height*0.014),
-          const OnboardingDescription(
-            title: '',
-            description: '',
-          ),
-          VerticalSpace(context.height*0.028),
-          DotsIndicator(
-            dotsCount: 3,
-            position: index,
-            decorator: DotsDecorator(
-              size: const Size.square(9.0),
-              activeColor: AppColors.primaryColor,
-              color: AppColors.dotsColor,
-              activeSize:  Size(context.width*0.11, context.height*0.011),
-              activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SecondHeader(pageController: pageController,),
+            VerticalSpace(context.height*0.0346),
+            const OnboardingDescription(
+              title:AppStrings.addYourProductsToCart,
+              description: AppStrings.onBoardingDescription,
             ),
-          ),
-          VerticalSpace(context.height*0.05),
-          PrimaryButton(
-              text: AppStrings.next,
-              onTap: (){
-                pageController.animateToPage(
-                  1,
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut,
-                );
-              }),
-        ],
+            VerticalSpace(context.height*0.028),
+            DotsIndicator(
+              dotsCount: 3,
+              position: index,
+              decorator: DotsDecorator(
+                size: const Size.square(9.0),
+                activeColor: AppColors.primaryColor,
+                color: AppColors.dotsColor,
+                activeSize:  Size(context.width*0.11, context.height*0.011),
+                activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              ),
+            ),
+            VerticalSpace(context.height*0.05),
+            PrimaryButton(
+                text: AppStrings.next,
+                onTap: (){
+                  pageController.animateToPage(
+                    2,
+                    duration: const Duration(milliseconds: 400),
+                    curve: Curves.easeInOut,
+                  );
+                }),
+            VerticalSpace(context.height*0.0329),
+            PrimaryEmptyButton(
+                text: AppStrings.previous,
+                onTap: (){
+                  pageController.animateToPage(
+                    0,
+                    duration: const Duration(milliseconds: 400),
+                    curve: Curves.easeInOut,
+                  );
+                }),
+            VerticalSpace(context.height*0.04),
+          ],
+        ),
       ),
     );
   }

@@ -45,13 +45,7 @@ class FirstHeader extends StatelessWidget {
         ),
         /// Skip Text ///
          SkipText(
-          onTap: (){
-            pageController.animateToPage(
-              1,
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeInOut,
-            );
-          },
+          onTap: (){},
         ),
       ],
     );

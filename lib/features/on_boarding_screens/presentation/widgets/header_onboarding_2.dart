@@ -31,13 +31,7 @@ class SecondHeader extends StatelessWidget {
         ),
         /// Skip Text ///
         SkipText(
-          onTap: (){
-            pageController.animateToPage(
-              2,
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeInOut,
-            );
-          },
+          onTap: (){},
         ),
       ],
     );
