@@ -23,14 +23,17 @@ class OnboardingDescription extends StatelessWidget {
             ),
           ),
           VerticalSpace(context.height*0.017),
-          Text(
-            description!,
-            textAlign: TextAlign.center,
-            textDirection: TextDirection.rtl,
-            style: const TextStyle(
-                color: AppColors.greyTextColor,
-                fontSize: 14,
-                fontWeight: FontWeight.w500
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal:context.width*0.01),
+            child: Text(
+              description!,
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.ltr,
+              style: const TextStyle(
+                  color: AppColors.greyTextColor,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500
+              ),
             ),
           ),
         ],

@@ -23,12 +23,11 @@ class OnboardingFirstScreen extends StatelessWidget {
           FirstHeader(pageController: pageController,),
           VerticalSpace(context.height*0.014),
           const OnboardingDescription(
-            title: AppStrings.exploreOurDigitalProducts,
-            description: AppStrings.onBoardingDescription,
+            title: AppStrings.exploreOurDigitalProductsEn,
+            description: AppStrings.onBoardingDescriptionEn,
           ),
           VerticalSpace(context.height*0.028),
           DotsIndicator(
-            reversed: true,
             dotsCount: 3,
             position: index,
             decorator: DotsDecorator(
@@ -40,7 +39,7 @@ class OnboardingFirstScreen extends StatelessWidget {
             ),
           ),
           VerticalSpace(context.height*0.05),
-           PrimaryButton(text: AppStrings.next,
+           PrimaryButton(text: AppStrings.nextEn,
           onTap: (){
             pageController.animateToPage(
                1,
