@@ -4,8 +4,7 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-import 'package:mega_top_mobile/core/widgets/primary_button.dart';
-import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
+import 'package:mega_top_mobile/core/widgets/primary_arrow_button.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_3.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
 
@@ -26,12 +25,11 @@ class OnboardingThirdScreen extends StatelessWidget {
             ThirdHeader(pageController: pageController,),
             VerticalSpace(context.height*0.050),
             const OnboardingDescription(
-              title:AppStrings.getYourOrderSuccessfully,
-              description: AppStrings.onBoardingDescription,
+              title:AppStrings.getYourOrderSuccessfullyEn,
+              description: AppStrings.onBoardingDescriptionEn,
             ),
             VerticalSpace(context.height*0.028),
             DotsIndicator(
-              reversed: true,
               dotsCount: 3,
               position: index,
               decorator: DotsDecorator(
@@ -43,14 +41,12 @@ class OnboardingThirdScreen extends StatelessWidget {
               ),
             ),
             VerticalSpace(context.height*0.05),
-            PrimaryButton(
-                text: AppStrings.createNewAccount,
+            PrimaryArrowButton(
+                text: AppStrings.getStarted,
                 onTap: (){}),
             VerticalSpace(context.height*0.0329),
-            PrimaryEmptyButton(
-                text: AppStrings.login,
-                onTap: (){}),
-            VerticalSpace(context.height*0.04),
+
+            //VerticalSpace(context.height*0.04),
           ],
         ),
       ),

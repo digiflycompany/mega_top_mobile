@@ -14,6 +14,7 @@ class AppAssets {
   static const String megaTopLogo = "$imagesPath/mega_top_logo.png";
   static const String backArrow = "$svgPath/back_arrow.svg";
   static const String backArrowEn = "$svgPath/back_arrow_en.svg";
+  static const String arrowButton = "$svgPath/arrow_button.svg";
   static const String emailIcon = "$svgPath/email_icon.svg";
   static const String gmailIcon = "$svgPath/google_icon.svg";
   static const String hidePasswordIcon = "$svgPath/hide_password.svg";

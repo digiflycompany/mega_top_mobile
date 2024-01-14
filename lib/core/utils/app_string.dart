@@ -1,7 +1,6 @@
 class AppStrings {
 //_???
   AppStrings._internal();
-  /// ********************* OnboardingScreens ****************** ///
   static const String skip='تخطي';
   static const String skipEn='Skip';
   static const String next='التالى';
@@ -13,8 +12,12 @@ class AppStrings {
   static const String addYourProductsToCart='أضف منتجاتك إلى سلة التسوق';
   static const String addYourProductsToCartEn='Add your products to the shopping cart';
   static const String getYourOrderSuccessfully='احصل على طلبك بنجاح';
+  static const String getYourOrderSuccessfullyEn='Receive your order successfully';
+  static const String getStarted='Get started';
+  static const String alreadyHaveAnAccountEn='Already have an account ?';
   static const String createNewAccount='إنشاء حساب جديد';
   static const String login='تسجيل الدخول';
+  static const String loginEn='Login';
   static const String onBoardingDescription='يتم استخدام نص لوريم الملء من قبل مصممي الجرافيك والمبرمجين والطابعات بهدف شغل مساحات موقع ويب أو منتج إعلاني أو إنتاج تحريري لم يكن نصه النهائي جاهزًا بعد.';
   static const String onBoardingDescriptionEn='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer';
   static const String loginTitle='سجل الدخول للمتابعة';
