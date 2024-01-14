@@ -25,6 +25,7 @@ class AppStrings {
   static const String email='البريد الإلكترونى';
   static const String emailEn='Email';
   static const String password='كلمة المرور';
+  static const String passwordEn='Password';
   static const String forgotPassword='هل نسيت كلمة المرور ؟';
   static const String signInWithGoogle='سجل عن طريق جوجل';
   static const String doNotHaveAccount='ليس لديك حساب ؟';

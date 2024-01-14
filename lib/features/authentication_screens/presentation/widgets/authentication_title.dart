@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/app_string.dart';
 
 class AuthenticationTitle extends StatelessWidget {
   final String? text;
