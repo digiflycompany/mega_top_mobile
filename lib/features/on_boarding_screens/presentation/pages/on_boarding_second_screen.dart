@@ -42,15 +42,18 @@ class OnboardingSecondScreen extends StatelessWidget {
               ),
             ),
             VerticalSpace(context.height*0.05),
-            PrimaryButton(
-                text: AppStrings.nextEn,
-                onTap: (){
-                  pageController.animateToPage(
-                    2,
-                    duration: const Duration(milliseconds: 400),
-                    curve: Curves.easeInOut,
-                  );
-                }),
+            Padding(
+                padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
+              child: PrimaryButton(
+                  text: AppStrings.nextEn,
+                  onTap: (){
+                    pageController.animateToPage(
+                      2,
+                      duration: const Duration(milliseconds: 400),
+                      curve: Curves.easeInOut,
+                    );
+                  }),
+            ),
             VerticalSpace(context.height*0.0329),
             PrimaryEmptyButton(
                 text: AppStrings.previousEn,

@@ -20,8 +20,8 @@ class PrimaryTextField extends StatelessWidget {
           fontWeight: FontWeight.w500,
           fontSize: 14,
         ),
-        border: const UnderlineInputBorder(
-          borderSide: BorderSide(width: 1, color: AppColors.borderColor),
+        enabledBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: AppColors.googleButtonBorder),
         ),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(width: 1, color: AppColors.primaryColor),

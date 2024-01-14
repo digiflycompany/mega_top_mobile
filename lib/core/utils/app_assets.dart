@@ -17,8 +17,8 @@ class AppAssets {
   static const String arrowButton = "$svgPath/arrow_button.svg";
   static const String emailIcon = "$svgPath/email_icon.svg";
   static const String emailSecondIcon = "$svgPath/mail_third_icon.svg";
-  static const String gmailIcon = "$svgPath/google_icon.svg";
-  static const String hidePasswordIcon = "$svgPath/hide_password.svg";
-  static const String showPasswordIcon = "$svgPath/show_password.svg";
+  static const String googleIcon = "$svgPath/google_icon.svg";
+  static const String hidePasswordIcon = "$svgPath/show_password.svg";
+  static const String showPasswordIcon = "$svgPath/hide_password.svg";
   static const String passwordIcon = "$svgPath/password_icon.svg";
 }

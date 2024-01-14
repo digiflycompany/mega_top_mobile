@@ -39,14 +39,17 @@ class OnboardingFirstScreen extends StatelessWidget {
             ),
           ),
           VerticalSpace(context.height*0.05),
-           PrimaryButton(text: AppStrings.nextEn,
-          onTap: (){
-            pageController.animateToPage(
-               1,
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeInOut,
-            );
-          }),
+           Padding(
+             padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
+             child: PrimaryButton(text: AppStrings.nextEn,
+                       onTap: (){
+              pageController.animateToPage(
+                 1,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
+              );
+                       }),
+           ),
         ],
       ),
     );

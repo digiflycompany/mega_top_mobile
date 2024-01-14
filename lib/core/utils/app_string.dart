@@ -27,9 +27,15 @@ class AppStrings {
   static const String password='كلمة المرور';
   static const String passwordEn='Password';
   static const String forgotPassword='هل نسيت كلمة المرور ؟';
+  static const String forgotPasswordEn='Forgot Password ?';
   static const String signInWithGoogle='سجل عن طريق جوجل';
   static const String doNotHaveAccount='ليس لديك حساب ؟';
+  static const String doNotHaveAccountEn='Don’t have an account ?';
   static const String createAccount='إنشاء حساب';
+  static const String createAccountEn='Sign up';
+  static const String continueWithGoogleEn='Continue with Google';
+  static const String continueWithGoogle='إنشاء حساب';
   static const String or='أو';
+  static const String orEn='Or';
 
 }
