@@ -13,21 +13,20 @@ class SkipText extends StatelessWidget {
       splashColor: Colors.transparent,
       onTap: onTap,
       child: Padding(
-        padding:  EdgeInsets.only(top: context.height*0.058,left: context.width*0.01),
-        child: const Row(
-          children: [
-             Padding(
-              padding:  EdgeInsets.all(12),
-              child: Text(
-                AppStrings.skip,
-                style: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
+        padding:  EdgeInsets.only(top: context.height*0.058,right: context.width*0.01),
+        child: const Align(
+          alignment: AlignmentDirectional.centerEnd,
+          child: Padding(
+           padding:  EdgeInsets.all(12),
+           child: Text(
+             AppStrings.skipEn,
+             style: TextStyle(
+               color: AppColors.primaryColor,
+               fontSize: 14,
+               fontWeight: FontWeight.w600,
+             ),
+           ),
+                      ),
         ),
       ),
     );
