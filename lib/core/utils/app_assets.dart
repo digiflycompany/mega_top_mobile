@@ -16,6 +16,7 @@ class AppAssets {
   static const String backArrowEn = "$svgPath/back_arrow_en.svg";
   static const String arrowButton = "$svgPath/arrow_button.svg";
   static const String emailIcon = "$svgPath/email_icon.svg";
+  static const String emailSecondIcon = "$svgPath/mail_third_icon.svg";
   static const String gmailIcon = "$svgPath/google_icon.svg";
   static const String hidePasswordIcon = "$svgPath/hide_password.svg";
   static const String showPasswordIcon = "$svgPath/show_password.svg";

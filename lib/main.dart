@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mega_top_mobile/core/utils/app_fonts.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_cubit.dart';
-import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
-
 import 'l10n/l10n.dart';
 
 void main() {
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: const OnBoardingScreens(),
+        home: const LoginScreen(),
       ),
     );
   }
