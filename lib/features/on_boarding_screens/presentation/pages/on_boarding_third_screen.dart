@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/media_query.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_arrow_button.dart';
+import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_3.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
 
@@ -44,9 +45,12 @@ class OnboardingThirdScreen extends StatelessWidget {
             PrimaryArrowButton(
                 text: AppStrings.getStarted,
                 onTap: (){}),
-            VerticalSpace(context.height*0.0329),
-
-            //VerticalSpace(context.height*0.04),
+            VerticalSpace(context.width*0.044),
+            const RowTextButton(
+              firstText: AppStrings.alreadyHaveAnAccountEn,
+              buttonText: AppStrings.loginEn,
+            ),
+            VerticalSpace(context.height*0.04),
           ],
         ),
       ),
