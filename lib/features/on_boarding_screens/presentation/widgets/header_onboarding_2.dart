@@ -28,9 +28,9 @@ class SecondHeader extends StatelessWidget {
         ),
         /// Back Arrow ///
         Align(
-          alignment: AlignmentDirectional.centerEnd,
+          alignment: AlignmentDirectional.centerStart,
           child: Padding(
-            padding:  EdgeInsets.only(top: context.width*0.12,right: context.width*0.045),
+            padding:  EdgeInsets.only(top: context.width*0.12,left: context.width*0.045),
             child:  BackArrow(
               onTap: (){
                 pageController.animateToPage(

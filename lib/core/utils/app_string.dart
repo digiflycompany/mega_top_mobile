@@ -11,6 +11,7 @@ class AppStrings {
   static const String exploreOurDigitalProducts='تصفح منتجاتنا الإكترونية';
   static const String exploreOurDigitalProductsEn='Explore our electronic products';
   static const String addYourProductsToCart='أضف منتجاتك إلى سلة التسوق';
+  static const String addYourProductsToCartEn='Add your products to the shopping cart';
   static const String getYourOrderSuccessfully='احصل على طلبك بنجاح';
   static const String createNewAccount='إنشاء حساب جديد';
   static const String login='تسجيل الدخول';

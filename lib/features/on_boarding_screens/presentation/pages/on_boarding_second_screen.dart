@@ -26,12 +26,11 @@ class OnboardingSecondScreen extends StatelessWidget {
             SecondHeader(pageController: pageController,),
             VerticalSpace(context.height*0.0346),
             const OnboardingDescription(
-              title:AppStrings.addYourProductsToCart,
-              description: AppStrings.onBoardingDescription,
+              title:AppStrings.addYourProductsToCartEn,
+              description: AppStrings.onBoardingDescriptionEn,
             ),
             VerticalSpace(context.height*0.028),
             DotsIndicator(
-              reversed: true,
               dotsCount: 3,
               position: index,
               decorator: DotsDecorator(
@@ -44,7 +43,7 @@ class OnboardingSecondScreen extends StatelessWidget {
             ),
             VerticalSpace(context.height*0.05),
             PrimaryButton(
-                text: AppStrings.next,
+                text: AppStrings.nextEn,
                 onTap: (){
                   pageController.animateToPage(
                     2,
@@ -54,7 +53,7 @@ class OnboardingSecondScreen extends StatelessWidget {
                 }),
             VerticalSpace(context.height*0.0329),
             PrimaryEmptyButton(
-                text: AppStrings.previous,
+                text: AppStrings.previousEn,
                 onTap: (){
                   pageController.animateToPage(
                     0,

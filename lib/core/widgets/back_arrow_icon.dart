@@ -30,7 +30,7 @@ class BackArrow extends StatelessWidget {
         ),
         child:Transform.scale(
             scale: 0.53,
-            child: SvgPicture.asset(AppAssets.backArrow)),
+            child: SvgPicture.asset(AppAssets.backArrowEn)),
       ),
     );
   }

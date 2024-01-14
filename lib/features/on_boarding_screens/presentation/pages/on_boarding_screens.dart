@@ -30,7 +30,6 @@ class _OnBoardingScreensState extends State<OnBoardingScreens> {
   listener: (context, state) {},
   builder: (context, state) {
     return PageView(
-       reverse: true,
        controller: _pageController,
        onPageChanged: (index) {
          onboardingCubit.setPageIndex(pageIndex=index);
