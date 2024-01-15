@@ -2,13 +2,12 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/media_query.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_arrow_button.dart';
 import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_3.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
-
 import '../../../../core/utils/app_routes.dart';
 
 class OnboardingThirdScreen extends StatelessWidget {
@@ -48,11 +47,11 @@ class OnboardingThirdScreen extends StatelessWidget {
                 text: AppStrings.getStarted,
                 onTap: (){}),
             VerticalSpace(context.width*0.044),
-             RowTextButton(
+            RowTextButton (
               firstText: AppStrings.alreadyHaveAnAccountEn,
               buttonText: AppStrings.loginEn,
               onTap: (){
-                Routes.loginRoute.move;
+                Routes.loginRoute.moveToAndRemoveCurrent;
               },
             ),
             VerticalSpace(context.height*0.04),

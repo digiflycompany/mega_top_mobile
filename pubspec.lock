@@ -208,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+  singleton:
+    dependency: "direct main"
+    description:
+      name: singleton
+      sha256: d628119b1f9430f56a22648b12de761da28ad39ad6dc97f6942cb9c8624242f6
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3-nullsafety"
   sky_engine:
     dependency: transitive
     description: flutter

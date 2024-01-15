@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/media_query.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/password_text_field.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
@@ -98,8 +98,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             VerticalSpace(context.height*0.065),
                             const RowTextButton(
-                              firstText: AppStrings.doNotHaveAccountEn,
-                              buttonText: AppStrings.createAccountEn,
+                              firstText: AppStrings.alreadyHaveAnAccountEn,
+                              buttonText: AppStrings.loginEn,
                             ),
                             VerticalSpace(context.height*0.01),
                           ],
