@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mega_top_mobile/core/utils/app_fonts.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_cubit.dart';
 import 'l10n/l10n.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => AuthenticationCubit(),
         ),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         theme: ThemeData(
           fontFamily: FontFamilies.cairo,
         ),
@@ -37,7 +38,8 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: const LoginScreen(),
+        //onGenerateRoute:RouteGenerator.getRoute,
+        home: const SignUpScreen(),
       ),
     );
   }

@@ -16,6 +16,7 @@ class AppStrings {
   static const String getStarted='Get started';
   static const String alreadyHaveAnAccountEn='Already have an account ?';
   static const String createNewAccount='إنشاء حساب جديد';
+  static const String createNewAccountEn='Create a new account';
   static const String login='تسجيل الدخول';
   static const String loginEn='Login';
   static const String onBoardingDescription='يتم استخدام نص لوريم الملء من قبل مصممي الجرافيك والمبرمجين والطابعات بهدف شغل مساحات موقع ويب أو منتج إعلاني أو إنتاج تحريري لم يكن نصه النهائي جاهزًا بعد.';
@@ -35,6 +36,9 @@ class AppStrings {
   static const String createAccountEn='Sign up';
   static const String continueWithGoogleEn='Continue with Google';
   static const String continueWithGoogle='إنشاء حساب';
+  static const String usernameEn='Username';
+  static const String confirmPasswordEn='Confirm password';
+  static const String signUpEn='Sign up';
   static const String or='أو';
   static const String orEn='Or';
 

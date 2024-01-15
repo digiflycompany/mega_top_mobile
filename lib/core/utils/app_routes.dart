@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
+import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
 import 'app_color.dart';
 
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
 
 class Routes {
   Routes._internal();
-  static const String splashRoute = "/";
-  static const String onBoardingRoute = "/onBoardingCustom";
-  static const String onboarding1 = "/onboarding_1";
+  static const String onBoardingRoute = "/";
+  static const String loginRoute = "/login_screen";
+  static const String signUpRoute = "/sign_up_screen";
 }
 
 
@@ -22,6 +25,12 @@ class RouteGenerator {
   static Route<dynamic>? getRoute(RouteSettings routeSettings) {
     debugPrint(routeSettings.name);
     switch (routeSettings.name) {
+      case Routes.onBoardingRoute:
+        return buildPageRoute(child: const OnBoardingScreens(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+      case Routes.loginRoute:
+        return buildPageRoute(child: const LoginScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+      case Routes.signUpRoute:
+        return buildPageRoute(child: const SignUpScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
     }
     return buildPageRoute(
         child: const Center(
