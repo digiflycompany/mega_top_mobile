@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/media_query.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/password_text_field.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
@@ -14,6 +14,7 @@ import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_title.dart';
 import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_routes.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -97,9 +98,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               text: AppStrings.signUpEn,
                             ),
                             VerticalSpace(context.height*0.065),
-                            const RowTextButton(
-                              firstText: AppStrings.doNotHaveAccountEn,
-                              buttonText: AppStrings.createAccountEn,
+                            RowTextButton(
+                              firstText: AppStrings.alreadyHaveAnAccountEn,
+                              buttonText: AppStrings.loginEn,
+                              onTap: (){
+                                Routes.loginRoute.moveTo;
+                              },
                             ),
                             VerticalSpace(context.height*0.01),
                           ],

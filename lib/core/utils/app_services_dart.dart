@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:singleton/singleton.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 class AppService {
   //
 
@@ -7,7 +9,7 @@ class AppService {
   factory AppService() => Singleton.lazy(() => AppService._());
 
   /// Private constructor
-  AppService._() {}
+  AppService._();
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   get getContext => navigatorKey.currentState?.overlay?.context;
@@ -45,11 +47,13 @@ class AppService {
     }
   }
 
+
   /// Dispose current screens or close current dialog
 
   void pop([Object? object]) {
-    if (Navigator.canPop(AppService().getContext))
+    if (Navigator.canPop(AppService().getContext)) {
       Navigator.pop(AppService().getContext, object);
+    }
   }
 
   static Map<String, dynamic>? getArguments(BuildContext context) =>
@@ -96,8 +100,8 @@ class AppService {
   }*/
 
   /* check whether Alert Dialog is open */
-  bool _isThereCurrentDialogShowing(BuildContext context) =>
-      ModalRoute.of(context)?.isCurrent != true;
+  // bool _isThereCurrentDialogShowing(BuildContext context) =>
+  //     ModalRoute.of(context)?.isCurrent != true;
   /*hide keypad if it is shown*/
   get hideKeyboard => FocusManager.instance.primaryFocus?.unfocus();
   requestFocus(FocusNode focusNode) =>

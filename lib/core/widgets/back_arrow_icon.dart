@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mega_top_mobile/core/utils/media_query.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_color.dart';
 

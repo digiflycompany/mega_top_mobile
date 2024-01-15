@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/media_query.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../utils/app_color.dart';
 class RowTextButton extends StatelessWidget {
   final String? firstText;
@@ -23,6 +23,8 @@ class RowTextButton extends StatelessWidget {
         TextButton(
             onPressed: onTap,
             style: TextButton.styleFrom(
+                shadowColor: Colors.transparent,
+                splashFactory: NoSplash.splashFactory,
                 padding: EdgeInsets.only(left: context.width*0.022),
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 alignment: Alignment.centerLeft

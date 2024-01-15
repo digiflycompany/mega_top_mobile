@@ -39,6 +39,7 @@ dependencies:
   flutter_svg:
   dots_indicator:
   get:
+  singleton:
   flutter_localizations:
     sdk: flutter
   intl:

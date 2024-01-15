@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'app_services_dart.dart';
 
 Future<T?> pushRoute<T>(
     String route, {
@@ -14,7 +15,7 @@ Future<T?> pushRoute<T>(
         ? false
         : true)*/
     return await Navigator.pushNamedAndRemoveUntil(
-        AppService().getContext, route, exceptRoute!.isNotNull ? ModalRoute.withName(exceptRoute!) : (route) => false,
+        AppService().getContext, route, exceptRoute!.isNotNull ? ModalRoute.withName(exceptRoute) : (route) => false,
         arguments: arguments);
   } else if (isToReplace) {
     return await Navigator.pushReplacementNamed(AppService().getContext, route, arguments: arguments);
