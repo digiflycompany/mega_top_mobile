@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             const PrimaryButton(
                               text: AppStrings.signUpEn,
                             ),
-                            VerticalSpace(context.height*0.065),
+                            VerticalSpace(context.height*0.07),
                             RowTextButton(
                               firstText: AppStrings.alreadyHaveAnAccountEn,
                               buttonText: AppStrings.loginEn,
@@ -105,7 +105,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 Routes.loginRoute.moveTo;
                               },
                             ),
-                            VerticalSpace(context.height*0.01),
+                            //VerticalSpace(context.height*0.01),
                           ],
                         ),
                       ),

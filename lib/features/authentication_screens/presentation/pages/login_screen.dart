@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       VerticalSpace(context.height*0.033),
                       const GoogleButton(text: AppStrings.continueWithGoogleEn,),
-                      VerticalSpace(context.height*0.032),
+                      VerticalSpace(context.height*0.025),
                       RowTextButton(
                         firstText: AppStrings.doNotHaveAccountEn,
                         buttonText: AppStrings.createAccountEn,
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Routes.signUpRoute.moveTo;
                         },
                       ),
-                      VerticalSpace(context.height*0.01),
+                      VerticalSpace(context.height*0.08),
                     ],
                   ),
                 ),
