@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/back_arrow_icon.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/curved_container.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/skip_text.dart';

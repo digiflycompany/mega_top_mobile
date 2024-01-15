@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         firstText: AppStrings.doNotHaveAccountEn,
                         buttonText: AppStrings.createAccountEn,
                         onTap: (){
-                          Routes.signUpRoute.moveToAndRemoveCurrent;
+                          Routes.signUpRoute.moveTo;
                         },
                       ),
                       VerticalSpace(context.height*0.01),
