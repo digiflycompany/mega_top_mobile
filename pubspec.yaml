@@ -38,7 +38,7 @@ dependencies:
   flutter_bloc:
   flutter_svg:
   dots_indicator:
-  page_transition:
+  get:
   flutter_localizations:
     sdk: flutter
   intl:
