@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/utils/global_cubit_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 
-class AuthenticationCubit extends Cubit<CubitBaseState> {
-  AuthenticationCubit() : super( CubitBaseState.initial);
+class AuthenticationCubit extends Cubit<AuthenticationState> {
+  AuthenticationCubit() : super(AuthenticationInitial());
 
   AuthenticationCubit getCubit(context) => BlocProvider.of(context);
 
@@ -10,8 +10,7 @@ class AuthenticationCubit extends Cubit<CubitBaseState> {
 
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
-    emit(CubitBaseState.initial);
+    emit(AuthenticationInitial());
   }
-
 }
 

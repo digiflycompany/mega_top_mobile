@@ -7,13 +7,15 @@ class PasswordTextField extends StatelessWidget {
   final String? hintText;
   final String? prefixSvg;
   final Widget? suffixIcon;
-  const PasswordTextField({super.key, this.hintText, this.prefixSvg, this.suffixIcon});
+  final bool obscure;
+  const PasswordTextField({super.key, this.hintText, this.prefixSvg, this.suffixIcon, required this.obscure});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       cursorColor: AppColors.blackGreyColor,
       cursorHeight: context.width*0.046,
+      obscureText: obscure,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(
