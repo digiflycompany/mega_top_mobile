@@ -9,6 +9,8 @@ import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_3.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
 
+import '../../../../core/utils/app_routes.dart';
+
 class OnboardingThirdScreen extends StatelessWidget {
   final int index;
   final  PageController pageController;
@@ -46,9 +48,12 @@ class OnboardingThirdScreen extends StatelessWidget {
                 text: AppStrings.getStarted,
                 onTap: (){}),
             VerticalSpace(context.width*0.044),
-            const RowTextButton(
+             RowTextButton(
               firstText: AppStrings.alreadyHaveAnAccountEn,
               buttonText: AppStrings.loginEn,
+              onTap: (){
+                Routes.loginRoute.move;
+              },
             ),
             VerticalSpace(context.height*0.04),
           ],

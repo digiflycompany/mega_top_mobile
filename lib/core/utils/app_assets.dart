@@ -21,4 +21,5 @@ class AppAssets {
   static const String hidePasswordIcon = "$svgPath/show_password.svg";
   static const String showPasswordIcon = "$svgPath/hide_password.svg";
   static const String passwordIcon = "$svgPath/password_icon.svg";
+  static const String usernameIcon = "$svgPath/username_icon.svg";
 }
