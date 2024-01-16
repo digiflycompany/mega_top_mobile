@@ -9,8 +9,7 @@ class SkipText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      splashColor: Colors.transparent,
+    return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding:  EdgeInsets.only(top: context.height*0.058,right: context.width*0.01),
