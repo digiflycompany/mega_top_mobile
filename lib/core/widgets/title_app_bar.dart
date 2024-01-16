@@ -10,7 +10,7 @@ class TitleText extends StatelessWidget {
       text!,
       style: const TextStyle(
           color: Colors.black,
-          fontSize: 12,
+          fontSize: 16,
           fontWeight: FontWeight.w700
       ),
     );
