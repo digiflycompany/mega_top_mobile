@@ -33,7 +33,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 ),
                   child: Transform.scale(
                       scale: 0.55,
-                      child: SvgPicture.asset(AppAssets.forgetPasswordWhiteIcon,width: 32,height: 32,)),
+                      child: SvgPicture.asset(AppAssets.forgetPasswordWhiteIcon,)),
                 ),
                 Expanded(
                   child: Container(

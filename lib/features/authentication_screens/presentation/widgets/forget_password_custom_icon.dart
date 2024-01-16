@@ -1,10 +1,24 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class ForgotPasswordIcon extends StatelessWidget {
-  const ForgotPasswordIcon({super.key});
+  final String? icon;
+  final Color? color;
+  const ForgotPasswordIcon({super.key, this.icon, this.color});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return  Container(
+      width: context.width*0.176,
+      height: context.height*0.087,
+      decoration:  BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+      ),
+      child: Transform.scale(
+          scale: 0.55,
+          child: SvgPicture.asset(icon!,)),
+    );
   }
 }

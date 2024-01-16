@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         navigatorKey: AppService().navigatorKey,
-        onGenerateRoute:RouteGenerator.getRoute,
+        //onGenerateRoute:RouteGenerator.getRoute,
         home: const ResetPasswordScreen(),
       ),
     );
