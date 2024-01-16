@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/utils/app_string.dart';
 
 class ForgotPasswordDescription extends StatelessWidget {
   final String? text;
