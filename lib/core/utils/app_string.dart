@@ -41,5 +41,7 @@ class AppStrings {
   static const String signUpEn='Sign up';
   static const String or='أو';
   static const String orEn='Or';
-
+  static const String resetPasswordEn='Reset Password';
+  static const String enterYourEmailAddressEn='Enter your email address and we’ll send you a verification code to reset your password.';
+  static const String sendEn='Send';
 }
