@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Routes.signUpRoute.moveTo;
                         },
                       ),
-                      VerticalSpace(context.height*0.08),
+                      VerticalSpace(context.height*0.0045),
                     ],
                   ),
                 ),
