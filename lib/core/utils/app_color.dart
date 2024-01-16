@@ -12,6 +12,8 @@ class AppColors {
   static const Color borderColor =Color.fromRGBO(230, 230, 230, 1);
   static const Color gradientColor =Color.fromRGBO(196, 209, 222, 1);
   static const Color shadowAppBarColor =Color.fromRGBO(0, 0, 0, 0.04);
+  static const Color iconsBackgroundColor =Color.fromRGBO(243, 246, 248, 1);
   static const Color googleButtonBorder =  Color(0xFFE6E6E6);
+
 
 }

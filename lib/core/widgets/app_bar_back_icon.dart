@@ -11,7 +11,7 @@ class AppBarBackArrow extends StatelessWidget {
     return GestureDetector(
       onTap:onTap,
       child: Padding(
-        padding:  EdgeInsets.only(left: context.width*0.045,top: context.height*0.01,bottom: context.height*0.01),
+        padding:  EdgeInsets.only(left: context.width*0.01,top: context.height*0.01,bottom: context.height*0.01),
         child: Container(
           width: context.width*0.12,
           height: context.height*0.056,
