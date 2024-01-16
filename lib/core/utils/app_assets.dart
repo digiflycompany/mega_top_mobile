@@ -22,4 +22,11 @@ class AppAssets {
   static const String showPasswordIcon = "$svgPath/hide_password.svg";
   static const String passwordIcon = "$svgPath/password_icon.svg";
   static const String usernameIcon = "$svgPath/username_icon.svg";
+  static const String checkIcon = "$svgPath/check_icon.svg";
+  static const String checkMailBlueIcon = "$svgPath/check_mail_icon_blue.svg";
+  static const String checkMailWhiteIcon = "$svgPath/check_mail_icon_white.svg";
+  static const String forgetPasswordWhiteIcon = "$svgPath/forgot_password_icon_white.svg";
+  static const String newPasswordBlueIcon = "$svgPath/new_password_icon_blue.svg";
+  static const String newPasswordWhiteIcon = "$svgPath/new_password_icon_white.svg";
+
 }

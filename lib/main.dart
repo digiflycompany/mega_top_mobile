@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mega_top_mobile/core/utils/app_fonts.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_cubit.dart';
 import 'core/utils/app_routes.dart';
 import 'core/utils/app_services_dart.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         ],
         navigatorKey: AppService().navigatorKey,
         onGenerateRoute:RouteGenerator.getRoute,
-        //home: const (),
+        home: const ResetPasswordScreen(),
       ),
     );
   }

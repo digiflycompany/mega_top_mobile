@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
 import 'app_color.dart';
@@ -12,6 +13,7 @@ class Routes {
   static const String onBoardingRoute = "/";
   static const String loginRoute = "/login_screen";
   static const String signUpRoute = "/sign_up_screen";
+  static const String resetPasswordRoute = "/reset_password_screen";
 }
 
 
@@ -30,6 +32,8 @@ class RouteGenerator {
         return buildPageRoute(child: const LoginScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.signUpRoute:
         return buildPageRoute(child: const SignUpScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+      case Routes.resetPasswordRoute:
+        return buildPageRoute(child: const ResetPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
     }
     return buildPageRoute(
         child: const Center(
