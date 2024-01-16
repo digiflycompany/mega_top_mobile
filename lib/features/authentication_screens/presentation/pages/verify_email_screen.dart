@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
+import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forget_password_custom_icon.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_divider.dart';
@@ -54,6 +55,11 @@ class VerifyEmailScreen extends StatelessWidget {
             const PrimaryButton(
               text: AppStrings.verifyEn,
             ),
+            VerticalSpace(context.height*0.033),
+            const RowTextButton(
+              firstText: AppStrings.ifYouDidNotRecCodeEn,
+              buttonText: AppStrings.resendCodeEn,
+            )
           ],
         ),
       ),
