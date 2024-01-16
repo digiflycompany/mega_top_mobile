@@ -78,7 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       VerticalSpace(context.height*0.033),
-                      const ForgotPassword(),
+                      ForgotPassword(
+                        onTap: (){
+                          Routes.resetPasswordRoute.moveTo;
+                        },
+                      ),
                       VerticalSpace(context.height*0.055),
                       const PrimaryButton(
                         text: AppStrings.loginEn,

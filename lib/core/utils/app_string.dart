@@ -44,4 +44,15 @@ class AppStrings {
   static const String resetPasswordEn='Reset Password';
   static const String enterYourEmailAddressEn='Enter your email address and we’ll send you\na verification code to reset your password.';
   static const String sendEn='Send';
+  static const String verifyYourEmailEn='Verify your email';
+  static const String pleaseEnter4DigitsEn='Please enter the 4 digit code that sent to\nmohamed.nashaat211@gmail.com';
+  static const String verifyEn='Verify';
+  static const String ifYouDidNotRecCodeEn='If you don’t receive code?';
+  static const String resendCodeEn='Resend code';
+  static const String four='4';
+  static const String five='5';
+  static const String six ='6';
+  static const String seven='7';
+
+
 }
