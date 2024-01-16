@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import '../../../../core/utils/app_color.dart';
 
 class ForgotPasswordDivider extends StatelessWidget {
   final Color? color;
