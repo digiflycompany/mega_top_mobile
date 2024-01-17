@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/password_pop_up_content.dart';
 
 class NewPasswordPopUp extends StatelessWidget {
   const NewPasswordPopUp({super.key});
@@ -8,17 +10,10 @@ class NewPasswordPopUp extends StatelessWidget {
     return AlertDialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(4))),
-        insetPadding: const EdgeInsets.all(26),
+        insetPadding:  EdgeInsets.all(context.width*0.05),
         scrollable: true,
         titlePadding: const EdgeInsets.all(0),
         contentPadding: EdgeInsets.zero,
-        content: Container(
-            height: 295,
-            width: 335,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: const Text('aaaa')
-        ));
+        content: const PasswordPopUpContent());
   }
 }

@@ -23,6 +23,7 @@ class AppAssets {
   static const String passwordIcon = "$svgPath/password_icon.svg";
   static const String usernameIcon = "$svgPath/username_icon.svg";
   static const String checkIcon = "$svgPath/check_icon.svg";
+  static const String checkBigIcon = "$svgPath/check_big_icon.svg";
   static const String checkMailBlueIcon = "$svgPath/check_mail_icon_blue.svg";
   static const String checkMailWhiteIcon = "$svgPath/check_mail_icon_white.svg";
   static const String forgetPasswordWhiteIcon = "$svgPath/forgot_password_icon_white.svg";
