@@ -29,5 +29,16 @@ class AppAssets {
   static const String forgetPasswordWhiteIcon = "$svgPath/forgot_password_icon_white.svg";
   static const String newPasswordBlueIcon = "$svgPath/new_password_icon_blue.svg";
   static const String newPasswordWhiteIcon = "$svgPath/new_password_icon_white.svg";
+  static const String homeUnselectedIcon = "$svgPath/home_unselected_icon.svg";
+  static const String homeSelectedIcon = "$svgPath/home_selected_icon.svg";
+  static const String categoriesUnselectedIcon = "$svgPath/categories_unselected_icon.svg";
+  static const String categoriesSelectedIcon = "$svgPath/categories_selected_icon.svg";
+  static const String offersSelectedIcon = "$svgPath/offers_selected_icon.svg";
+  static const String offersUnselectedIcon = "$svgPath/offers_unselected_icon.svg";
+  static const String cartUnselectedIcon = "$svgPath/cart_unselected_icon.svg";
+  static const String cartSelectedIcon = "$svgPath/cart_selected_icon.svg";
+  static const String accountUnselectedIcon = "$svgPath/account_unselected_icon.svg";
+  static const String accountSelectedIcon = "$svgPath/account_selected_icon.svg";
+
 
 }
