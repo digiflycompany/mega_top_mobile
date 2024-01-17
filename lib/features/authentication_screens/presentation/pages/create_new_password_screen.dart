@@ -11,7 +11,6 @@ import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forget_password_custom_icon.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_divider.dart';
-import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/password_text_field.dart';
 import '../../cubit/auth_state.dart';
@@ -94,7 +93,26 @@ class CreateNewPasswordScreen extends StatelessWidget {
               PrimaryButton(
                 text: AppStrings.confirmPasswordEn,
                 onTap: (){
-                  Routes.verifyEmailRoute.moveTo;
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(4))),
+                            insetPadding: const EdgeInsets.all(26),
+                            scrollable: true,
+                            titlePadding: const EdgeInsets.all(0),
+                            contentPadding: EdgeInsets.zero,
+                            content: Container(
+                              height: 295,
+                              width: 335,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Text('aaaa')
+                            ));
+                      },
+                  );
                 },
               ),
             ],
