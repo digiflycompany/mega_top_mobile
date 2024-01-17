@@ -14,6 +14,8 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/password_text_field.dart';
 import '../../cubit/auth_state.dart';
+import '../widgets/success_pop_up.dart';
+import 'login_screen.dart';
 
 class CreateNewPasswordScreen extends StatelessWidget {
   const CreateNewPasswordScreen({super.key});
@@ -110,5 +112,23 @@ class CreateNewPasswordScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+  void passwordChangedSuccessfully(BuildContext context){
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const NewPasswordPopUp();
+      },
+    );
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pop(context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ),
+      );
+      //Routes.loginRoute.moveToAndRemoveCurrent;
+    });
   }
 }
