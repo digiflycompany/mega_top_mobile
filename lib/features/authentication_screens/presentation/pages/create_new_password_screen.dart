@@ -90,31 +90,16 @@ class CreateNewPasswordScreen extends StatelessWidget {
                 },
               ),
               VerticalSpace(context.height*0.055),
-              PrimaryButton(
+              BlocBuilder<AuthenticationCubit, AuthenticationState>(
+               builder: (context, state) {
+               return PrimaryButton(
                 text: AppStrings.confirmPasswordEn,
                 onTap: (){
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(4))),
-                            insetPadding: const EdgeInsets.all(26),
-                            scrollable: true,
-                            titlePadding: const EdgeInsets.all(0),
-                            contentPadding: EdgeInsets.zero,
-                            content: Container(
-                              height: 295,
-                              width: 335,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: const Text('aaaa')
-                            ));
-                      },
-                  );
+                  authenticationCubit.passwordChangedSuccessfully(context);
                 },
-              ),
+              );
+              },
+               ),
             ],
           ),
         ),
