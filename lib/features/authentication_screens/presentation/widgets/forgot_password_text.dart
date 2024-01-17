@@ -11,21 +11,17 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return   Align(
       alignment: AlignmentDirectional.centerEnd,
-      child: TextButton(
-        onPressed: onTap,
-        style: TextButton.styleFrom(
-            shadowColor: Colors.transparent,
-            splashFactory: NoSplash.splashFactory,
-            padding: EdgeInsets.only(left: context.width*0.022),
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            alignment: Alignment.centerLeft
-        ),
-        child: const Text(
-          AppStrings.forgotPasswordEn,
-          style: TextStyle(
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.w500,
-              fontSize: 14
+      child: GestureDetector(
+        onTap: onTap,
+        child: Padding(
+          padding:  EdgeInsets.only(left: context.width*0.025,top:context.height*0.009,bottom: context.height*0.009 ),
+          child: const Text(
+            AppStrings.forgotPasswordEn,
+            style: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.w500,
+                fontSize: 14
+            ),
           ),
         ),
       ),
