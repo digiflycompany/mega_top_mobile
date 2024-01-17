@@ -33,22 +33,26 @@ class CreateNewPasswordScreen extends StatelessWidget {
           child: Column(
             children: [
               VerticalSpace(context.height*0.055),
-              const Row(
+              Row(
                 children: [
-                  ForgotPasswordIcon(
+                  const ForgotPasswordIcon(
                     color: AppColors.primaryColor,
                     icon: AppAssets.checkIcon,
                   ),
-                  ForgotPasswordDivider(color: AppColors.primaryColor,),
-                  ForgotPasswordIcon(
+                  const ForgotPasswordDivider(color: AppColors.primaryColor,),
+                  const ForgotPasswordIcon(
                     color: AppColors.primaryColor,
                     icon: AppAssets.checkIcon,
                   ),
-                  ForgotPasswordDivider(color: AppColors.primaryColor,),
-                  ForgotPasswordIcon(
+                  const ForgotPasswordDivider(color: AppColors.primaryColor,),
+                  BlocBuilder<AuthenticationCubit, AuthenticationState>(
+                     builder: (context, state) {
+                     return ForgotPasswordIcon(
                     color: AppColors.primaryColor,
-                    icon: AppAssets.newPasswordWhiteIcon,
-                  ),
+                    icon: authenticationCubit.newPasswordSuccess?AppAssets.checkIcon:AppAssets.newPasswordWhiteIcon,
+                  );
+                      },
+                    ),
                 ],
               ),
               VerticalSpace(context.height*0.06),
@@ -95,6 +99,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                return PrimaryButton(
                 text: AppStrings.confirmPasswordEn,
                 onTap: (){
+                  authenticationCubit.passwordSuccess();
                   authenticationCubit.passwordChangedSuccessfully(context);
                 },
               );
