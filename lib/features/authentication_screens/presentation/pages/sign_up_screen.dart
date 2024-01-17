@@ -32,9 +32,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
-      listener: (context, state) {},
-      builder: (context, state) {
         return Scaffold(
             backgroundColor: Colors.white,
             body:  SingleChildScrollView(
@@ -68,7 +65,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               prefixSvg: AppAssets.emailSecondIcon,
                             ),
                             VerticalSpace(context.height*0.033),
-                            PasswordTextField(
+                            BlocBuilder<AuthenticationCubit, AuthenticationState>(
+                              builder: (context, state) {
+                              return PasswordTextField(
                               hintText: AppStrings.passwordEn,
                               prefixSvg: AppAssets.passwordIcon,
                               obscure: authenticationCubit.isPasswordVisible,
@@ -79,19 +78,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: authenticationCubit.isPasswordVisible?SvgPicture.asset(AppAssets.showPasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,):
                                 SvgPicture.asset(AppAssets.hidePasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,),
                               ),
-                            ),
+                            );
+                          },
+                          ),
                             VerticalSpace(context.height*0.033),
-                            PasswordTextField(
-                              hintText: AppStrings.confirmPasswordEn,
-                              prefixSvg: AppAssets.passwordIcon,
-                              obscure: authenticationCubit.isPasswordVisible,
-                              suffixIcon: GestureDetector(
-                                onTap: (){
-                                  authenticationCubit.togglePasswordVisibility();
-                                },
-                                child: authenticationCubit.isPasswordVisible?SvgPicture.asset(AppAssets.showPasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,):
-                                SvgPicture.asset(AppAssets.hidePasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,),
-                              ),
+                            BlocBuilder<AuthenticationCubit, AuthenticationState>(
+                              builder: (context, state) {
+                                return PasswordTextField(
+                                  hintText: AppStrings.confirmPasswordEn,
+                                  prefixSvg: AppAssets.passwordIcon,
+                                  obscure: authenticationCubit.isPasswordVisible,
+                                  suffixIcon: GestureDetector(
+                                    onTap: (){
+                                      authenticationCubit.togglePasswordVisibility();
+                                    },
+                                    child: authenticationCubit.isPasswordVisible?SvgPicture.asset(AppAssets.showPasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,):
+                                    SvgPicture.asset(AppAssets.hidePasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,),
+                                  ),
+                                );
+                              },
                             ),
                             VerticalSpace(context.height*0.055),
                             const PrimaryButton(
@@ -115,7 +120,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             )
         );
-      },
-    );
   }
 }
