@@ -49,6 +49,10 @@ class AppStrings {
   static const String verifyEn='Verify';
   static const String ifYouDidNotRecCodeEn='If you don’t receive code?';
   static const String resendCodeEn='Resend code';
+  static const String createNewPasswordEn='Create new password';
+  static const String createNewPasswordDescriptionEn='Your new password must be different\nfrom previously used password.';
+  static const String enterYourNewPasswordEn='Enter your new password';
+  static const String confirmYourNewPasswordEn='Confirm your new password';
   static const String four='4';
   static const String five='5';
   static const String six ='6';

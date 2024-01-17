@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
@@ -16,6 +17,7 @@ class Routes {
   static const String signUpRoute = "/sign_up_screen";
   static const String resetPasswordRoute = "/reset_password_screen";
   static const String verifyEmailRoute = "/verify_email_screen";
+  static const String createNewPasswordRoute = "/create_new_password_screen";
 }
 
 
@@ -38,6 +40,9 @@ class RouteGenerator {
         return buildPageRoute(child: const ResetPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.verifyEmailRoute:
         return buildPageRoute(child: const VerifyEmailScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide);
+      case Routes.createNewPasswordRoute:
+        return buildPageRoute(child: const CreateNewPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide);
+
     }
     return buildPageRoute(
         child: const Center(
