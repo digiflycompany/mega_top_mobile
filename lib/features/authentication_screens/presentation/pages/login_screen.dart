@@ -18,22 +18,13 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_routes.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  late AuthenticationCubit authenticationCubit;
-  @override
-  void initState() {
-    super.initState();
-    authenticationCubit = context.read<AuthenticationCubit>();
-  }
-  @override
   Widget build(BuildContext context) {
+    late AuthenticationCubit authenticationCubit;
+    authenticationCubit = context.read<AuthenticationCubit>();
     return Scaffold(
       backgroundColor: Colors.white,
       body:  SingleChildScrollView(
