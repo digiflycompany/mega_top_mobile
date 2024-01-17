@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 
@@ -43,7 +45,27 @@ class PasswordPopUpContent extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
+            VerticalSpace(context.height*0.03),
+            const Text(
+                AppStrings.congratulationsEn,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700
+                ),
+            ),
+            VerticalSpace(context.height*0.023),
+            Text(
+              AppStrings.yourPasswordHasBeenResetSuccessfullyEn,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  height:context.width*0.005
+              ),
+            ),
           ],
         )
     );

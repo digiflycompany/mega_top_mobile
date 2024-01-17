@@ -53,7 +53,7 @@ class AppStrings {
   static const String createNewPasswordDescriptionEn='Your new password must be different\nfrom previously used password.';
   static const String enterYourNewPasswordEn='Enter your new password';
   static const String confirmYourNewPasswordEn='Confirm your new password';
-  static const String congratulationsEn='CCongratulations';
+  static const String congratulationsEn='Congratulations';
   static const String yourPasswordHasBeenResetSuccessfullyEn='Your password has been\nreset successfully!';
   static const String four='4';
   static const String five='5';
