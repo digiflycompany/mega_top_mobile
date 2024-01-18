@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,39 +46,35 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onItemTapped,
+        showUnselectedLabels: true,
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              'assets/icon1.svg',
-              color: _currentIndex == 0 ? Colors.blue : Colors.grey,
+              AppAssets.homeUnselectedIcon,
             ),
             label: 'Item 1',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              'assets/icon2.svg',
-              color: _currentIndex == 1 ? Colors.blue : Colors.grey,
+               AppAssets.categoriesUnselectedIcon,
             ),
             label: 'Item 2',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              'assets/icon3.svg',
-              color: _currentIndex == 2 ? Colors.blue : Colors.grey,
+              AppAssets.offersUnselectedIcon,
             ),
             label: 'Item 3',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              'assets/icon4.svg',
-              color: _currentIndex == 3 ? Colors.blue : Colors.grey,
+              AppAssets.cartUnselectedIcon,
             ),
             label: 'Item 4',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              'assets/icon5.svg',
-              color: _currentIndex == 4 ? Colors.blue : Colors.grey,
+              AppAssets.accountUnselectedIcon,
             ),
             label: 'Item 5',
           ),
