@@ -14,11 +14,6 @@ class AdvertisementList extends StatefulWidget {
 class _AdvertisementListState extends State<AdvertisementList> {
   final int itemCount = 5;
   int _currentIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return Column(
