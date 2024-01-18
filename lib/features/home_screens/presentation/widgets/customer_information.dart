@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_icon.dart';
@@ -15,7 +13,7 @@ class CustomerInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding:EdgeInsets.only(top:context.height*0.0165),
+      padding:EdgeInsets.symmetric(vertical:context.height*0.0165),
       child:  Row(
         children: [
           const CustomerPhoto(photo: AppAssets.customerProfilePhoto,),
