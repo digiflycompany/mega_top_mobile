@@ -24,27 +24,33 @@ class CustomerIcon extends StatelessWidget {
             child: SvgPicture.asset(icon!),
           ),
         ),
-        Container(
-          width:context.width*0.04,
-          height:context.height*0.023,
-          decoration:  const BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.iconsBackgroundColor,
-          ),
+        Positioned(
+          top: 8,
+          left: 25,
           child: Container(
-            width:context.width*0.033,
-            height:context.height*0.015,
+            width:context.width*0.04,
+            height:context.height*0.023,
             decoration:  const BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.redIconColor,
+              color: AppColors.iconsBackgroundColor,
             ),
-            child:  Center(
-              child: Text(
-                number!,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 8.5
+            child: Center(
+              child: Container(
+                width:context.width*0.033,
+                height:context.height*0.015,
+                decoration:  const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.redIconColor,
+                ),
+                child:  Center(
+                  child: Text(
+                    number!,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 7.5
+                    ),
+                  ),
                 ),
               ),
             ),
