@@ -9,8 +9,8 @@ class CustomerPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      width:context.width*0.11 ,
-      height: context.height*0.055,
+      width:context.width*0.134,
+      height:context.height*0.065,
       decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: AppColors.circleAvatarBackground
