@@ -1,22 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
 class CustomerName extends StatelessWidget {
-  const CustomerName({super.key});
+  final String? name;
+  const CustomerName({super.key,  this.name});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          AppStrings.customerNameEn,
-          style: TextStyle(
+        Text(
+          name!,
+          style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
               fontSize: 12

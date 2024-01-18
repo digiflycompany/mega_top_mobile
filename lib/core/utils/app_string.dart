@@ -62,6 +62,8 @@ class AppStrings {
   static const String five='5';
   static const String six ='6';
   static const String seven='7';
+  static const String twelve='12';
+  static const String fourteen='14';
 
 
 }

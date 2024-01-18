@@ -40,6 +40,11 @@ class AppAssets {
   static const String accountUnselectedIcon = "$svgPath/account_unselected_icon.svg";
   static const String accountSelectedIcon = "$svgPath/account_selected_icon.svg";
   static const String customerProfilePhoto = "$imagesPath/customer_profile_photo.png";
+  static const String notificationIcon = "$svgPath/notification_icon.svg";
+  static const String favouritesIcon = "$svgPath/favourites_icon.svg";
+  static const String searchIcon = "$svgPath/search_icon.svg";
+  static const String filterWhiteIcon = "$svgPath/filter_white_icon.svg";
+
 
 
 }
