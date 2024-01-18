@@ -39,6 +39,7 @@ class AppAssets {
   static const String cartSelectedIcon = "$svgPath/cart_selected_icon.svg";
   static const String accountUnselectedIcon = "$svgPath/account_unselected_icon.svg";
   static const String accountSelectedIcon = "$svgPath/account_selected_icon.svg";
+  static const String customerProfilePhoto = "$imagesPath/customer_profile_photo.png";
 
 
 }

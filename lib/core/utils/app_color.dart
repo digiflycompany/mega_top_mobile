@@ -15,7 +15,6 @@ class AppColors {
   static const Color iconsBackgroundColor =Color.fromRGBO(243, 246, 248, 1);
   static const Color otpBoxBorderColor =Color.fromRGBO(208, 218, 229, 1);
   static const Color otpBoxColor =Color.fromRGBO(243, 246, 248, 1);
+  static const Color circleAvatarBackground =Color.fromRGBO(242, 242, 242, 1);
   static const Color googleButtonBorder =  Color(0xFFE6E6E6);
-
-
 }
