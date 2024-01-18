@@ -10,11 +10,14 @@ class MainPage extends StatelessWidget {
     return  Scaffold(
       appBar: PreferredSize(
         preferredSize:Size(double.infinity, context.height*0.174 ), //width and height
-        child:  const SafeArea(
-          child: Column(
-            children: [
-              CustomerInformation(),
-            ],
+        child:   SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
+            child: const Column(
+              children: [
+                CustomerInformation(),
+              ],
+            ),
           )
         ),
       ),

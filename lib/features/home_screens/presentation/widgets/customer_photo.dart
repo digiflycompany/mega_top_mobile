@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 
 class CustomerPhoto extends StatelessWidget {
-  const CustomerPhoto({super.key});
+  final String? photo;
+  const CustomerPhoto({super.key, this.photo});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CustomerPhoto extends StatelessWidget {
           shape: BoxShape.circle,
           color: AppColors.circleAvatarBackground
       ),
-      child: ClipOval(child: Image.asset(AppAssets.customerProfilePhoto,fit: BoxFit.cover,)),
+      child: ClipOval(child: Image.asset(photo!,fit: BoxFit.cover,)),
     );
   }
 }
