@@ -25,8 +25,8 @@ class CustomerIcon extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 8,
-          left: 25,
+          top: context.height*0.015,
+          left: context.width*0.068,
           child: Container(
             width:context.width*0.04,
             height:context.height*0.023,
