@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -9,7 +8,6 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_app_bar.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/our_products_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/our_products_row.dart';
-
 import '../../../../core/utils/app_color.dart';
 
 class MainPage extends StatelessWidget {
