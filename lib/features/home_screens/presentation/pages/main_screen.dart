@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_list.dart';
@@ -29,8 +31,8 @@ class MainPage extends StatelessWidget {
                  width: context.width*0.48575,
                  height: context.height*0.098,
                  decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(context.height*0.006),
+                 color: Colors.white,
+                 borderRadius: BorderRadius.circular(context.height*0.006),
                 boxShadow: const [
                  BoxShadow(
                   color: AppColors.containerShadow,
@@ -42,7 +44,7 @@ class MainPage extends StatelessWidget {
                  ),
                  child: Row(
                    children: [
-
+                       SvgPicture.asset(AppAssets.upsSmall),
                    ],
                  ),
                 ),
