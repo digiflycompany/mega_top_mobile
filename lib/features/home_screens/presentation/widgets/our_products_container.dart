@@ -21,7 +21,7 @@ class OurProductsContainer extends StatelessWidget {
           BoxShadow(
             color: AppColors.containerShadow,
             offset: Offset(0, 2),
-            blurRadius: 8,
+            blurRadius: 12,
             spreadRadius: 0,
           ),
         ],

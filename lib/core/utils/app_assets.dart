@@ -48,6 +48,7 @@ class AppAssets {
   static const String primaryArrow = "$svgPath/primary_arrow.svg";
   static const String cameraControlSmall = "$imagesPath/camera_control_small.png";
   static const String upsSmall = "$imagesPath/ups_small.png";
+  static const String hardDiskImage = "$imagesPath/hard_disk_image.png";
 
 
 
