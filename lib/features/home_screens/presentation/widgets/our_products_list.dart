@@ -14,7 +14,7 @@ class OurProductsList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: context.width*0.012),
+        padding:  EdgeInsets.symmetric(horizontal: context.width*0.03),
         child: SizedBox(
           height: context.height*0.15,
           child: Row(

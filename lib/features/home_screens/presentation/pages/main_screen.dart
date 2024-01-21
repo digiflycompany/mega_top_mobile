@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_app_bar.dart';
@@ -24,10 +25,12 @@ class MainPage extends StatelessWidget {
                VerticalSpace(context.height*0.022),
                const AdvertisementList(),
                VerticalSpace(context.height*0.04),
-               const OurProductsRow(),
+               const ViewAllRow(
+                 bigText: AppStrings.ourProductsEn,
+               ),
                VerticalSpace(context.height*0.008),
                const OurProductsList(),
-
+               VerticalSpace(context.height*0.035),
              ],
         ),
       ),

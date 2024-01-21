@@ -6,16 +6,17 @@ import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
-class OurProductsRow extends StatelessWidget {
-  const OurProductsRow({super.key});
+class ViewAllRow extends StatelessWidget {
+  final String? bigText;
+  const ViewAllRow({super.key, this.bigText});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text(
-          AppStrings.ourProductsEn,
-          style: TextStyle(
+         Text(
+          bigText!,
+          style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
               fontSize: 18
