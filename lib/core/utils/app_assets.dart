@@ -45,6 +45,7 @@ class AppAssets {
   static const String favouritesIcon = "$svgPath/favourites_icon.svg";
   static const String searchIcon = "$svgPath/search_icon.svg";
   static const String filterWhiteIcon = "$svgPath/filter_white_icon.svg";
+  static const String primaryArrow = "$svgPath/primary_arrow.svg";
 
 
 
