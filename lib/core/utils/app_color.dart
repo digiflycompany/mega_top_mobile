@@ -19,5 +19,6 @@ class AppColors {
   static const Color redIconColor =Color.fromRGBO(197, 0, 48, 1);
   static const Color googleButtonBorder =  Color(0xFFE6E6E6);
   static const Color containerShadow =Color.fromRGBO(0, 0, 0, 0.12);
+  static const Color smallContainerGreyColor =Color.fromRGBO(229, 229, 229, 1);
 
 }
