@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_app_bar.dart';
@@ -24,7 +25,27 @@ class MainPage extends StatelessWidget {
                VerticalSpace(context.height*0.04),
                const OurProductsRow(),
                VerticalSpace(context.height*0.027),
+               Container(
+                 width: context.width*0.48575,
+                 height: context.height*0.098,
+                 decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(context.height*0.006),
+                boxShadow: const [
+                 BoxShadow(
+                  color: AppColors.containerShadow,
+                  offset: Offset(0, 2),
+                  blurRadius: 8,
+                  spreadRadius: 0,
+                  ),
+                   ],
+                 ),
+                 child: Row(
+                   children: [
 
+                   ],
+                 ),
+                ),
              ],
         ),
       ),
