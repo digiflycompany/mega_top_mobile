@@ -69,6 +69,9 @@ class AppStrings {
   static const String storageUnitsEn='Storage units, hard disk';
   static const String availableEn='Available';
   static const String latestOffersEn='Latest offers';
+  static const String discount15PercentEn='Discount 15%';
+  static const String rackEn='Rack';
+  static const String storageUnitsSmallEn='Storage units';
   static const String le1500='1500 L.E';
   static const String four='4';
   static const String five='5';
