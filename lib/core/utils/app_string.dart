@@ -56,6 +56,8 @@ class AppStrings {
   static const String congratulationsEn='Congratulations';
   static const String customerNameEn='Mohamed Nashaat';
   static const String ourProductsEn='Our products';
+  static const String bestSellerEn='Best seller';
+  static const String discountPercentEn='-17%';
   static const String viewAllEn='View all';
   static const String surveillanceCamerasEn='Surveillance...';
   static const String twentyFiveProducts='25 Product';
