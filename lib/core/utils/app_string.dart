@@ -57,7 +57,7 @@ class AppStrings {
   static const String customerNameEn='Mohamed Nashaat';
   static const String ourProductsEn='Our products';
   static const String viewAllEn='View all';
-  static const String surveillanceCamerasEn='Surveillance Cameras';
+  static const String surveillanceCamerasEn='Surveillance...';
   static const String twentyFiveProducts='25 Product';
   static const String upsEn='UPS';
   static const String welcomeEn='Welcome !';
