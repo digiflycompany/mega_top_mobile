@@ -52,6 +52,9 @@ class AppAssets {
   static const String upsSmall = "$imagesPath/ups_small.png";
   static const String hardDiskImage = "$imagesPath/hard_disk_image.png";
   static const String upsOffers = "$imagesPath/ups_offers.png";
+  static const String smallHardDiskImage = "$imagesPath/small_hard_disk_image.png";
+  static const String smallRackImage = "$imagesPath/rack_image.png";
+
 
 
 

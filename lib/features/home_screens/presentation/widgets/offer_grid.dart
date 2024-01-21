@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 
-class MyGridView extends StatelessWidget {
+class OfferGrid extends StatelessWidget {
   final List<GridItem> items;
 
-  const MyGridView({Key? key, required this.items}) : super(key: key);
+  const OfferGrid({Key? key, required this.items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +18,14 @@ class MyGridView extends StatelessWidget {
       childAspectRatio: 1,
       children: items.map((item) {
         return Container(
+          width: context.width*0.222,
+          height: context.height*0.124,
           color: AppColors.onboardingBackgroundColor,
-          padding: const EdgeInsets.all(8),
+          padding:  EdgeInsets.all(context.height*0.012),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(item.imagePath, width: 80),
+              Image.asset(item.imagePath, width: 40),
               Text(item.text1),
               Text(item.text2),
             ],
@@ -40,10 +45,10 @@ class GridItem {
 }
 
 final List<GridItem> items = [
-  const GridItem('assets/image1.png', 'Text 1.1', 'Text 1.2'),
-  const GridItem('assets/image2.png', 'Text 2.1', 'Text 2.2'),
-  const GridItem('assets/image1.png', 'Text 1.1', 'Text 1.2'),
-  const GridItem('assets/image1.png', 'Text 1.1', 'Text 1.2'),
+  const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
+  const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
+  const GridItem(AppAssets.smallRackImage, AppStrings.rackEn, AppStrings.discount15PercentEn),
+  const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
 
 ];
 
