@@ -65,6 +65,10 @@ class AppStrings {
   static const String welcomeEn='Welcome !';
   static const String searchHereEn='Search here ...';
   static const String yourPasswordHasBeenResetSuccessfullyEn='Your password has been\nreset successfully!';
+  static const String hardDiskEn='Hard disk 1 TB, purple';
+  static const String storageUnitsEn='Storage units, hard disk';
+  static const String availableEn='Available';
+  static const String le1500='1500 L.E';
   static const String four='4';
   static const String five='5';
   static const String six ='6';

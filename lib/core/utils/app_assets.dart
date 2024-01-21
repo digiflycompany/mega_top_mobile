@@ -46,6 +46,8 @@ class AppAssets {
   static const String searchIcon = "$svgPath/search_icon.svg";
   static const String filterWhiteIcon = "$svgPath/filter_white_icon.svg";
   static const String primaryArrow = "$svgPath/primary_arrow.svg";
+  static const String favourOutlinedIcon = "$svgPath/favour_outlined.svg";
+  static const String smallCheckIcon = "$svgPath/small_check_icon.svg";
   static const String cameraControlSmall = "$imagesPath/camera_control_small.png";
   static const String upsSmall = "$imagesPath/ups_small.png";
   static const String hardDiskImage = "$imagesPath/hard_disk_image.png";
