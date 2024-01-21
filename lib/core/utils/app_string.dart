@@ -54,7 +54,9 @@ class AppStrings {
   static const String enterYourNewPasswordEn='Enter your new password';
   static const String confirmYourNewPasswordEn='Confirm your new password';
   static const String congratulationsEn='Congratulations';
-  static const String customerNameEn='Mohamed Ahmed';
+  static const String customerNameEn='Mohamed Nashaat';
+  static const String ourProductsEn='Our products';
+  static const String viewAllEn='View all';
   static const String welcomeEn='Welcome !';
   static const String searchHereEn='Search here ...';
   static const String yourPasswordHasBeenResetSuccessfullyEn='Your password has been\nreset successfully!';
