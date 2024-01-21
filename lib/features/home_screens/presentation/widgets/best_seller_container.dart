@@ -7,7 +7,13 @@ import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
 class BestSellerContainer extends StatelessWidget {
-  const BestSellerContainer({super.key});
+  final String? productPhoto;
+  final String? productName;
+  final String? productType;
+  final String? productPrice;
+  final String? discountPercent;
+  final bool? discount;
+  const BestSellerContainer({super.key, this.productPhoto, this.productName, this.productType, this.productPrice, this.discount=false, this.discountPercent});
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +47,9 @@ class BestSellerContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(context.height*0.0065),
                       color: AppColors.iconsBackgroundColor,
                     ),
-                    child:Center(child: Image.asset(AppAssets.hardDiskImage,width: context.width*0.27,)),
+                    child:Center(child: Image.asset(productPhoto!,width: context.width*0.27,)),
                   ),
-                  Padding(
+                  discount==true?Padding(
                     padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
                     child: Container(
                       width: context.width*0.11,
@@ -52,10 +58,10 @@ class BestSellerContainer extends StatelessWidget {
                           borderRadius: BorderRadius.circular(context.height*0.003),
                           color: AppColors.redIconColor
                       ),
-                      child: const Center(
+                      child:  Center(
                         child: Text(
-                          AppStrings.discountPercentEn,
-                          style: TextStyle(
+                          discountPercent!,
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
                               fontSize: 12
@@ -63,7 +69,7 @@ class BestSellerContainer extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
+                  ):Container(),
                   Align(
                       alignment: AlignmentDirectional.topEnd,
                       child: Padding(
@@ -77,11 +83,11 @@ class BestSellerContainer extends StatelessWidget {
               padding:  EdgeInsets.only(left:context.width*0.045,right:context.width*0.045,bottom:context.height*0.022),
               child:  Column(
                 children: [
-                  const Align(
+                   Align(
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
-                      AppStrings.hardDiskEn,
-                      style: TextStyle(
+                      productName!,
+                      style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
                           fontSize: 14
@@ -89,11 +95,11 @@ class BestSellerContainer extends StatelessWidget {
                     ),
                   ),
                   VerticalSpace(context.height*0.009),
-                  const Align(
+                  Align(
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
-                      AppStrings.storageUnitsEn,
-                      style: TextStyle(
+                      productType!,
+                      style: const TextStyle(
                           color: AppColors.greyTextColor,
                           fontWeight: FontWeight.w600,
                           fontSize: 12
@@ -127,9 +133,9 @@ class BestSellerContainer extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      const Text(
-                        AppStrings.le1500,
-                        style: TextStyle(
+                      Text(
+                        productPrice!,
+                        style: const TextStyle(
                             color: AppColors.primaryColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w700
