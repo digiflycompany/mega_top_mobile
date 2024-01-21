@@ -16,7 +16,7 @@ class OurProductsList extends StatelessWidget {
       child: Padding(
         padding:  EdgeInsets.symmetric(horizontal: context.width*0.03),
         child: SizedBox(
-          height: context.height*0.15,
+          height: context.height*0.14,
           child: Row(
             children: [
               const OurProductsContainer(
