@@ -46,7 +46,7 @@ class MainPage extends StatelessWidget {
                  ),
                  VerticalSpace(context.height*0.022),
                  SizedBox(
-                   height: 240,
+                   height: context.height*0.326,
                    child: SingleChildScrollView(
                      physics: const BouncingScrollPhysics(),
                      scrollDirection: Axis.horizontal,
@@ -55,29 +55,54 @@ class MainPage extends StatelessWidget {
                        children: [
                          Image.asset(AppAssets.upsOffers,width: context.width*0.7,),
                          Padding(
-                           padding:  const EdgeInsets.only(top: 18,bottom:22 ),
+                           padding: EdgeInsets.only(top: context.height*0.025,bottom:context.height*0.03 ),
                            child: Column(
                              children: [
                                Container(
-                                 width: 90,
-                                 height: 90,
+                                 width: context.width*0.246,
+                                 height: context.height*0.124,
                                  decoration: BoxDecoration(
                                    color: AppColors.onboardingBackgroundColor,
-                                   borderRadius: BorderRadius.circular(4),
+                                   borderRadius: BorderRadius.circular(context.height*0.006),
                                  ),
                                ),
                                const Spacer(),
                                Container(
-                                 width: 90,
-                                 height: 90,
+                                 width: context.width*0.246,
+                                 height: context.height*0.124,
                                  decoration: BoxDecoration(
                                    color: AppColors.onboardingBackgroundColor,
-                                   borderRadius: BorderRadius.circular(4),
+                                   borderRadius: BorderRadius.circular(context.height*0.006),
                                  ),
                                ),
                              ],
                            ),
-                         )
+                         ),
+                         HorizontalSpace(context.height*0.022),
+                         Padding(
+                           padding: EdgeInsets.only(top: context.height*0.025,bottom:context.height*0.03 ),
+                           child: Column(
+                             children: [
+                               Container(
+                                 width: context.width*0.246,
+                                 height: context.height*0.124,
+                                 decoration: BoxDecoration(
+                                   color: AppColors.onboardingBackgroundColor,
+                                   borderRadius: BorderRadius.circular(context.height*0.006),
+                                 ),
+                               ),
+                               const Spacer(),
+                               Container(
+                                 width: context.width*0.246,
+                                 height: context.height*0.124,
+                                 decoration: BoxDecoration(
+                                   color: AppColors.onboardingBackgroundColor,
+                                   borderRadius: BorderRadius.circular(context.height*0.006),
+                                 ),
+                               ),
+                             ],
+                           ),
+                         ),
                        ],
                      ),
                    ),

@@ -6,42 +6,62 @@ import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_second_screen.dart';
 import 'on_boarding_third_screen.dart';
 
-class OnBoardingScreens extends StatefulWidget {
+class OnBoardingScreens extends StatelessWidget {
   const OnBoardingScreens({super.key});
 
   @override
-  State<OnBoardingScreens> createState() => _OnBoardingScreensState();
+  Widget build(BuildContext context) {
+    return BlocProvider<OnboardingCubit>(
+      create: (_) => OnboardingCubit(),
+      child: const OnBoardingView(),
+    );
+  }
 }
 
-class _OnBoardingScreensState extends State<OnBoardingScreens> {
+class OnBoardingView extends StatefulWidget {
+  const OnBoardingView({super.key});
+
+  @override
+  OnBoardingViewState createState() => OnBoardingViewState();
+}
+
+class OnBoardingViewState extends State<OnBoardingView> {
   late PageController _pageController;
-  late OnboardingCubit onboardingCubit;
-  int pageIndex =0;
+  int pageIndex = 0;
+
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: 0);
-    onboardingCubit = context.read<OnboardingCubit>();
+    _pageController = PageController(initialPage: pageIndex);
   }
+
   @override
   Widget build(BuildContext context) {
+    OnboardingCubit onboardingCubit = context.read<OnboardingCubit>();
+
     return Scaffold(
-     body: BlocConsumer<OnboardingCubit, OnBoardingState>(
-  listener: (context, state) {},
-  builder: (context, state) {
-    return PageView(
-       controller: _pageController,
-       onPageChanged: (index) {
-         onboardingCubit.setPageIndex(pageIndex=index);
-       },
-       children:  [
-         OnboardingFirstScreen(pageController: _pageController,index: pageIndex,),
-         OnboardingSecondScreen(pageController: _pageController,index: pageIndex,),
-         OnboardingThirdScreen(pageController: _pageController,index: pageIndex,),
-       ],
-     );
-  },
-),
+      body: BlocConsumer<OnboardingCubit, OnBoardingState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return PageView(
+            controller: _pageController,
+            onPageChanged: (index) {
+              onboardingCubit.setPageIndex(pageIndex = index);
+            },
+            children: [
+              OnboardingFirstScreen(pageController: _pageController, index: pageIndex),
+              OnboardingSecondScreen(pageController: _pageController, index: pageIndex),
+              OnboardingThirdScreen(pageController: _pageController, index: pageIndex),
+            ],
+          );
+        },
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }
