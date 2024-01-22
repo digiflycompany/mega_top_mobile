@@ -27,7 +27,7 @@ class MainPage extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
                children: [
-                 VerticalSpace(context.height*0.022),
+                 VerticalSpace(context.height*0.01),
                  const AdvertisementList(),
                  VerticalSpace(context.height*0.04),
                  const ViewAllRow(
@@ -51,7 +51,7 @@ class MainPage extends StatelessWidget {
                    bigText: AppStrings.latestProducts,
                  ),
                  const LatestProductsList(),
-                 VerticalSpace(context.height*0.07),
+                 VerticalSpace(context.height*0.06),
                ],
           ),
         ),
