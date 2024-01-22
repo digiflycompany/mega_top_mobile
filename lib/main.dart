@@ -5,8 +5,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mega_top_mobile/core/utils/app_fonts.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/pages/main_screen.dart';
-import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_cubit.dart';
+import 'core/utils/app_routes.dart';
 import 'core/utils/app_services_dart.dart';
 import 'l10n/l10n.dart';
 
@@ -21,9 +20,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiBlocProvider(
       providers: [
-        BlocProvider<OnboardingCubit>(
-          create: (BuildContext context) => OnboardingCubit(),
-        ),
         BlocProvider<AuthenticationCubit>(
           create: (BuildContext context) => AuthenticationCubit(),
         ),
@@ -44,8 +40,8 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         navigatorKey: AppService().navigatorKey,
-        //onGenerateRoute:RouteGenerator.getRoute,
-        home: const MainPage(),
+        onGenerateRoute:RouteGenerator.getRoute,
+        //home: const MainPage(),
       ),
     );
   }
