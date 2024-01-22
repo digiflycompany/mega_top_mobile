@@ -12,6 +12,7 @@ class BestSellerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
       child: Padding(
         padding:  EdgeInsets.symmetric(horizontal: context.width*0.03),
         child:  SizedBox(
