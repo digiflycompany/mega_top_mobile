@@ -13,8 +13,8 @@ class CustomerIcon extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: context.width*0.134,
-          height: context.height*0.065,
+          width: context.width*0.131,
+          height: context.height*0.062,
           decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.iconsBackgroundColor
@@ -25,19 +25,19 @@ class CustomerIcon extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: context.height*0.015,
-          left: context.width*0.068,
+          top: context.height*0.013,
+          left: context.width*0.067,
           child: Container(
-            width:context.width*0.04,
-            height:context.height*0.023,
+            width:context.width*0.042,
+            height:context.height*0.025,
             decoration:  const BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.iconsBackgroundColor,
             ),
             child: Center(
               child: Container(
-                width:context.width*0.033,
-                height:context.height*0.015,
+                width:context.width*0.035,
+                height:context.height*0.017,
                 decoration:  const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.redIconColor,
