@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_list.dart';
@@ -44,15 +45,44 @@ class MainPage extends StatelessWidget {
                    bigText: AppStrings.latestOffersEn,
                  ),
                  VerticalSpace(context.height*0.022),
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.start,
-                   children: [
-                     Image.asset(AppAssets.upsOffers,width: context.width*0.54,),
-                     HorizontalSpace(context.width*0.045),
-                   ],
+                 SizedBox(
+                   height: 240,
+                   child: SingleChildScrollView(
+                     physics: const BouncingScrollPhysics(),
+                     scrollDirection: Axis.horizontal,
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       children: [
+                         Image.asset(AppAssets.upsOffers,width: context.width*0.7,),
+                         Padding(
+                           padding:  const EdgeInsets.only(top: 18,bottom:22 ),
+                           child: Column(
+                             children: [
+                               Container(
+                                 width: 90,
+                                 height: 90,
+                                 decoration: BoxDecoration(
+                                   color: AppColors.onboardingBackgroundColor,
+                                   borderRadius: BorderRadius.circular(4),
+                                 ),
+                               ),
+                               const Spacer(),
+                               Container(
+                                 width: 90,
+                                 height: 90,
+                                 decoration: BoxDecoration(
+                                   color: AppColors.onboardingBackgroundColor,
+                                   borderRadius: BorderRadius.circular(4),
+                                 ),
+                               ),
+                             ],
+                           ),
+                         )
+                       ],
+                     ),
+                   ),
                  ),
                  VerticalSpace(context.height*0.1)
-
                ],
           ),
         ),
