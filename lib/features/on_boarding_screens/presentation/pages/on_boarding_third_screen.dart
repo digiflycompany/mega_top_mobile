@@ -45,7 +45,9 @@ class OnboardingThirdScreen extends StatelessWidget {
             VerticalSpace(context.height*0.05),
             PrimaryArrowButton(
                 text: AppStrings.getStarted,
-                onTap: (){}),
+                onTap: (){
+                  Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+                }),
             VerticalSpace(context.width*0.044),
             RowTextButton (
               firstText: AppStrings.alreadyHaveAnAccountEn,
