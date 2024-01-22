@@ -71,6 +71,11 @@ class AppStrings {
   static const String latestOffersEn='Latest offers';
   static const String discount15PercentEn='Discount 15%';
   static const String rackEn='Rack';
+  static const String homeEn='Home';
+  static const String categoriesEn='Categories';
+  static const String offersEn='Offers';
+  static const String cartEn='Cart';
+  static const String accountEn='Account';
   static const String latestProducts='Latest products';
   static const String storageUnitsSmallEn='Storage units';
   static const String le1500='1500 L.E';

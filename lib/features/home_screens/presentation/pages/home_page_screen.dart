@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,39 +46,52 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
+        selectedItemColor: AppColors.primaryColor,
+        unselectedItemColor: AppColors.blackGreyColor,
         onTap: _onItemTapped,
         showUnselectedLabels: true,
+        unselectedLabelStyle: const TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          color: AppColors.blackGreyColor
+        ),
+        selectedLabelStyle: const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+            color: AppColors.primaryColor
+        ),
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              AppAssets.homeUnselectedIcon,
+              _currentIndex==0?AppAssets.homeSelectedIcon:AppAssets.homeUnselectedIcon,
             ),
-            label: 'Item 1',
+            label: AppStrings.homeEn,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-               AppAssets.categoriesUnselectedIcon,
+               _currentIndex==1?AppAssets.categoriesSelectedIcon:AppAssets.categoriesUnselectedIcon,
             ),
-            label: 'Item 2',
+            label: AppStrings.categoriesEn,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              AppAssets.offersUnselectedIcon,
+              _currentIndex==2?AppAssets.offersSelectedIcon:AppAssets.offersUnselectedIcon,
             ),
-            label: 'Item 3',
+            label: AppStrings.offersEn,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              AppAssets.cartUnselectedIcon,
+              _currentIndex==3?AppAssets.cartSelectedIcon:AppAssets.cartUnselectedIcon,
             ),
-            label: 'Item 4',
+            label: AppStrings.cartEn,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              AppAssets.accountUnselectedIcon,
+              _currentIndex==4?AppAssets.accountSelectedIcon:AppAssets.accountUnselectedIcon,
             ),
-            label: 'Item 5',
+            label: AppStrings.accountEn,
           ),
         ],
       ),
