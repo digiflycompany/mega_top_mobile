@@ -10,4 +10,8 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ImageChanged(index: index));
   }
 
+  void setPageIndex(int index) {
+    emit(HomePageChanged(index: index));
+  }
+
 }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/pages/main_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,11 +20,11 @@ class _HomePageState extends State<HomePage> {
   final PageController _pageController = PageController();
 
   final List<Widget> _pages = [
-    const Center(child: Text('Item 1 Content')),
-    const Center(child: Text('Item 2 Content')),
-    const Center(child: Text('Item 3 Content')),
-    const Center(child: Text('Item 4 Content')),
-    const Center(child: Text('Item 5 Content')),
+    const MainPage(),
+    const Center(child: Text('Categories Page')),
+    const Center(child: Text('Offers Page')),
+    const Center(child: Text('Offers Page')),
+    const Center(child: Text('Account Page')),
   ];
 
   void _onItemTapped(int index) {
@@ -35,16 +39,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    HomeCubit homeCubit = context.read<HomeCubit>();
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        children: _pages,
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
+      body: BlocConsumer<HomeCubit, HomeState>(
+       listener: (context, state) {},
+       builder: (context, state) {
+         return PageView(
+         controller: _pageController,
+         children: _pages,
+         onPageChanged: (index) {
+           setState(() {
+            homeCubit.setPageIndex(_currentIndex=index);
           });
         },
-      ),
+      );
+  },
+),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,

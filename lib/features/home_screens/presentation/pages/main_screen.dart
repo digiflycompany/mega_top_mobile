@@ -51,7 +51,7 @@ class MainPage extends StatelessWidget {
                    bigText: AppStrings.latestProducts,
                  ),
                  const LatestProductsList(),
-                 VerticalSpace(context.height*0.2),
+                 VerticalSpace(context.height*0.07),
                ],
           ),
         ),
