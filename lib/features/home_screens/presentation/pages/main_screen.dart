@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_list.dart';
@@ -45,9 +43,13 @@ class MainPage extends StatelessWidget {
                  const ViewAllRow(
                    bigText: AppStrings.latestOffersEn,
                  ),
-                 VerticalSpace(context.height*0.022),
+                 VerticalSpace(context.height*0.02),
                  const LatestOffersList(),
-                 VerticalSpace(context.height*0.1)
+                 VerticalSpace(context.height*0.025),
+                 const ViewAllRow(
+                   bigText: AppStrings.latestProducts,
+                 ),
+                 VerticalSpace(context.height*0.1),
                ],
           ),
         ),

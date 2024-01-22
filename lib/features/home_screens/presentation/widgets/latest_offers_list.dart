@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_offer_container.dart';
 import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/spacer.dart';
 
 class LatestOffersList extends StatelessWidget {
@@ -21,7 +20,7 @@ class LatestOffersList extends StatelessWidget {
           children: [
             Image.asset(AppAssets.upsOffers,width: context.width*0.7,),
             Padding(
-              padding: EdgeInsets.only(top: context.height*0.025,bottom:context.height*0.03 ),
+              padding: EdgeInsets.only(top: context.height*0.022,bottom:context.height*0.033 ),
               child: const Column(
                 children: [
                   LatestOffersContainer(
