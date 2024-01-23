@@ -79,6 +79,8 @@ class AppStrings {
   static const String latestProducts='Latest products';
   static const String searchForProductsEn='Search for the product';
   static const String storageUnitsSmallEn='Storage units';
+  static const String yourLastSearchEn='Your latest search';
+  static const String clearEn='Clear';
   static const String le1500='1500 L.E';
   static const String four='4';
   static const String five='5';
