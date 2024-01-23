@@ -4,6 +4,7 @@ import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_box.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_text_field.dart';
 import '../../../../core/utils/app_routes.dart';
 
@@ -55,20 +56,10 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
               SearchTextField(
                 focusNode: _focusNode,
               ),
-              Container(
-                width: context.width*0.145,
-                height: double.infinity,
-                decoration:  BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.only(
-                    topRight:Radius.circular(context.height*0.006),
-                    bottomRight:Radius.circular(context.height*0.006),
-                  ),
-                ),
-                child: Padding(
-                  padding:  EdgeInsets.symmetric(horizontal:context.width*0.045),
-                  child: SvgPicture.asset(AppAssets.filterWhiteIcon),
-                ),
+              FilterContainer(
+                onTap: (){
+
+                },
               )
             ],
           ),
