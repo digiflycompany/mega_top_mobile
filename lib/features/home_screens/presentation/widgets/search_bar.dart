@@ -5,10 +5,10 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-import '../utils/app_routes.dart';
+import '../../../../core/utils/app_routes.dart';
 
-class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
+class PrimarySearchBar extends StatelessWidget {
+  const PrimarySearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CustomSearchBar extends StatelessWidget {
       padding:  EdgeInsets.symmetric(vertical:context.height*0.012),
       child: GestureDetector(
         onTap: (){
-            Routes.searchPageRoute.moveTo;
+          Routes.searchPageRoute.moveTo;
         },
         child: Container(
           width: double.infinity,
@@ -30,23 +30,27 @@ class CustomSearchBar extends StatelessWidget {
               HorizontalSpace(context.width*0.045),
               SvgPicture.asset(AppAssets.searchIcon),
               HorizontalSpace(context.width*0.022),
-              const Text(
-                AppStrings.searchHereEn,
-                style: TextStyle(
-                  color: AppColors.blackGreyColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500
+              Expanded(
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: AppStrings.searchHereEn,
+                    hintStyle: TextStyle(
+                      color: AppColors.blackGreyColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
               ),
-              const Spacer(),
               Container(
-                width: context.width*0.145,
+                width: context.width*0.138,
                 height: double.infinity,
                 decoration:  BoxDecoration(
                   color: AppColors.primaryColor,
                   borderRadius: BorderRadius.only(
-                      topRight:Radius.circular(context.height*0.006),
-                      bottomRight:Radius.circular(context.height*0.006),
+                    topRight:Radius.circular(context.height*0.006),
+                    bottomRight:Radius.circular(context.height*0.006),
                   ),
                 ),
                 child: Padding(
