@@ -10,28 +10,31 @@ class LatestSearchContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: context.height*0.068,
-      decoration: BoxDecoration(
-        color:AppColors.circleAvatarBackground,
-        borderRadius: BorderRadius.circular(context.height*0.006),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
-        child:  Row(
-          children: [
-            Text(
-              searchText!,
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
+    return Padding(
+      padding:  EdgeInsets.only(bottom: context.height*0.01),
+      child: Container(
+        width: double.infinity,
+        height: context.height*0.068,
+        decoration: BoxDecoration(
+          color:AppColors.circleAvatarBackground,
+          borderRadius: BorderRadius.circular(context.height*0.006),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
+          child:  Row(
+            children: [
+              Text(
+                searchText!,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                ),
               ),
-            ),
-            const Spacer(),
-            SvgPicture.asset(AppAssets.linkIcon)
-          ],
+              const Spacer(),
+              SvgPicture.asset(AppAssets.linkIcon)
+            ],
+          ),
         ),
       ),
     );
