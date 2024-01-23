@@ -81,6 +81,7 @@ class AppStrings {
   static const String storageUnitsSmallEn='Storage units';
   static const String yourLastSearchEn='Your latest search';
   static const String clearEn='Clear';
+  static const String hardDisk1TbEn='Hard disk 1 TB, purple';
   static const String le1500='1500 L.E';
   static const String four='4';
   static const String five='5';

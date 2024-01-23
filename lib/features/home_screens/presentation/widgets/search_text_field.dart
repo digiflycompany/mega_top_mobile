@@ -11,6 +11,7 @@ class SearchTextField extends StatelessWidget {
     return Expanded(
       child: TextFormField(
         focusNode: focusNode,
+        cursorColor: AppColors.greyTextColor,
         decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: AppStrings.searchHereEn,
