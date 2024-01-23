@@ -12,6 +12,7 @@ class PrimaryAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
+        height: context.height*0.087,
         decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [
