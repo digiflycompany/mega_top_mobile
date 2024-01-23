@@ -7,11 +7,17 @@ class LatestSearchList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> searchTerms = [
+      AppStrings.hardDisk1TbEn,
+      AppStrings.ssd256En,
+      AppStrings.ram16En,
+      AppStrings.graphicsCardEn,
+    ];
     return  Expanded(
       child: ListView.builder(
-          itemCount: 4,
+          itemCount: searchTerms.length,
           itemBuilder:(BuildContext context, int index) {
-            return const LatestSearchContainer(searchText: AppStrings.hardDisk1TbEn,);
+            return  LatestSearchContainer(searchText: searchTerms[index],);
           }
       ),
     );
