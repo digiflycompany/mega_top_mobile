@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import '../../../../core/utils/app_string.dart';
 import '../widgets/primary_app_bar.dart';
@@ -21,6 +22,28 @@ class SearchPage extends StatelessWidget {
           children: [
              VerticalSpace(context.height*0.012),
              const PrimarySearchBar(),
+             VerticalSpace(context.height*0.02),
+             Row(
+               children: [
+                 Text(
+                   AppStrings.yourLastSearchEn,
+                   style: TextStyle(
+                     color: Colors.black,
+                     fontWeight: FontWeight.w600,
+                     fontSize: 14,
+                   ),
+                 ),
+                 Spacer(),
+                 Text(
+                   AppStrings.clearEn,
+                   style: TextStyle(
+                     color: AppColors.primaryColor,
+                     fontWeight: FontWeight.w600,
+                     fontSize: 14,
+                   ),
+                 ),
+               ],
+             )
           ],
         ),
       )
