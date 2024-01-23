@@ -77,6 +77,7 @@ class AppStrings {
   static const String cartEn='Cart';
   static const String accountEn='Account';
   static const String latestProducts='Latest products';
+  static const String searchForProductsEn='Search for the product';
   static const String storageUnitsSmallEn='Storage units';
   static const String le1500='1500 L.E';
   static const String four='4';
