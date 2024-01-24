@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
 
-class SearchResult extends StatelessWidget {
+class SearchResultCount extends StatelessWidget {
   final String? searchCount;
-  const SearchResult({super.key, this.searchCount});
+  const SearchResultCount({super.key, this.searchCount});
 
   @override
   Widget build(BuildContext context) {
