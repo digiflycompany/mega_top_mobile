@@ -15,6 +15,7 @@ class LatestSearchList extends StatelessWidget {
     ];
     return  Expanded(
       child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
           itemCount: searchTerms.length,
           itemBuilder:(BuildContext context, int index) {
             return  LatestSearchContainer(searchText: searchTerms[index],);
