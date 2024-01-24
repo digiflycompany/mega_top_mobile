@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_result_text.dart';
@@ -21,13 +23,45 @@ class SearchResultPage extends StatelessWidget {
             VerticalSpace(context.height*0.028),
             const SearchResult(searchCount: AppStrings.resultsCount,),
             VerticalSpace(context.height*0.028),
-            Container(
-              width: double.infinity,
-              color: Colors.white,
-              child: const Column(
-                children: [
-                  Text('aaaa'),
-                ],
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    VerticalSpace(context.height*0.028),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal:context.width*0.045 ),
+                      child: Row(
+                        children: [
+                          Container(
+                            height:context.height*0.055,
+                            width: context.width*0.22,
+                            decoration:  BoxDecoration(
+                              color: AppColors.circleAvatarBackground,
+                              borderRadius: BorderRadius.circular(context.height*0.006 )
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(AppAssets.listIcon),
+                                HorizontalSpace(context.width*0.022 ),
+                                const Text(
+                                    AppStrings.listEn,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 15.5
+                                    ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ],

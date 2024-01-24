@@ -53,7 +53,7 @@ class RouteGenerator {
       case Routes.searchPageRoute:
         return buildPageRoute(child: const SearchPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade,duration: 85.milliseconds);
       case Routes.searchResultPageRoute:
-        return buildPageRoute(child: const SearchResultPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide,duration: 185.milliseconds);
+        return buildPageRoute(child: const SearchResultPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide,duration: 175.milliseconds);
     }
     return buildPageRoute(
         child: const Center(
