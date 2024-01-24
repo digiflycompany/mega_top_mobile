@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
-class ListAndGridContainer extends StatelessWidget {
+class ListGridContainer extends StatelessWidget {
   final String? image;
   final String? text;
-  const ListAndGridContainer({super.key, this.image, this.text});
+  const ListGridContainer({super.key, this.image, this.text});
 
   @override
   Widget build(BuildContext context) {
