@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
@@ -23,7 +22,7 @@ class SearchResultPage extends StatelessWidget {
         body:Column(
           children: [
             VerticalSpace(context.height*0.028),
-            const SearchResult(searchCount: AppStrings.resultsCount,),
+            const SearchResultCount(searchCount: AppStrings.resultsCount,),
             VerticalSpace(context.height*0.028),
             Expanded(
               child: Container(
@@ -40,8 +39,10 @@ class SearchResultPage extends StatelessWidget {
                           image: AppAssets.listIcon,
                           text: AppStrings.listEn
                           ,),
+                          const Spacer(),
+                          const FilterSortContainer(icon: AppAssets.sortIcon,),
                           HorizontalSpace(context.width*0.022 ),
-                          const FilterSortContainer(icon: AppAssets.sortIcon,)
+                          const FilterSortContainer(icon: AppAssets.filterIcon,)
                         ],
                       ),
                     )
