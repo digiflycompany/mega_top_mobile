@@ -51,7 +51,11 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
           child: Row(
             children: [
               HorizontalSpace(context.width*0.045),
-              SvgPicture.asset(AppAssets.searchIcon),
+              GestureDetector(
+                  onTap: (){
+                    Routes.searchResultPageRoute.moveTo;
+                  },
+                  child: SvgPicture.asset(AppAssets.searchIcon)),
               HorizontalSpace(context.width*0.022),
               SearchTextField(
                 focusNode: _focusNode,
