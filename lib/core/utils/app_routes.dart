@@ -7,6 +7,7 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/pag
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/verify_email_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
 import 'app_color.dart';
@@ -22,6 +23,7 @@ class Routes {
   static const String createNewPasswordRoute = "/create_new_password_screen";
   static const String homePageRoute = "/home_page_screen";
   static const String searchPageRoute = "/search_screen";
+  static const String searchResultPageRoute = "/search_result_screen";
 }
 
 
@@ -50,6 +52,8 @@ class RouteGenerator {
         return buildPageRoute(child: const HomePage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.searchPageRoute:
         return buildPageRoute(child: const SearchPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade,duration: 85.milliseconds);
+      case Routes.searchResultPageRoute:
+        return buildPageRoute(child: const SearchResultPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide,duration: 170.milliseconds);
     }
     return buildPageRoute(
         child: const Center(

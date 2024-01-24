@@ -84,7 +84,10 @@ class AppStrings {
   static const String hardDisk1TbEn='Hard disk 1 TB, purple';
   static const String ssd256En='SSD 256GB';
   static const String ram16En='RAM 16GB';
+  static const String ssdEn='SSD';
   static const String graphicsCardEn='Graphics Card 8GB';
+  static const String resultsFound='results found';
+  static const String resultsCount='98 ';
   static const String le1500='1500 L.E';
   static const String four='4';
   static const String five='5';
