@@ -18,8 +18,8 @@ class ProductsListContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width:context.width*0.43,
-      height: context.height*0.311,
+      width:double.infinity,
+      height: context.height*0.165,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(context.height*0.0065),
@@ -32,26 +32,26 @@ class ProductsListContainer extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Row(
         children: [
           Padding(
-            padding:  EdgeInsets.only(left: context.width*0.022,right: context.width*0.022,top: context.height*0.012,bottom:context.height*0.015 ),
+            padding:  EdgeInsets.only(left: context.width*0.022,right: context.width*0.045,top: context.height*0.012,bottom:context.height*0.012 ),
             child: Stack(
               children: [
                 Container(
-                  width: double.infinity,
-                  height: context.height*0.174,
+                  width: context.width*0.332,
+                  height: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(context.height*0.0065),
                     color: AppColors.iconsBackgroundColor,
                   ),
                   child:Center(child: Padding(
-                    padding:  EdgeInsets.only(top: context.height*0.012),
-                    child: Image.asset(productPhoto!,width: context.width*0.2,),
+                    padding:  EdgeInsets.only(top: context.height*0.016),
+                    child: Image.asset(productPhoto!,width: context.width*0.16,),
                   )),
                 ),
                 discount==true?Padding(
-                  padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
+                  padding:  EdgeInsets.symmetric(vertical:context.height*0.009,horizontal:context.width*0.016),
                   child: Container(
                     width: context.width*0.1,
                     height:context.height*0.028,
@@ -71,22 +71,23 @@ class ProductsListContainer extends StatelessWidget {
                     ),
                   ),
                 ):Container(),
-                Align(
-                    alignment: AlignmentDirectional.topEnd,
-                    child: Padding(
-                      padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
-                      child: SvgPicture.asset(AppAssets.favourOutlinedIcon,width: context.width*0.054,),
-                    )),
+                // Align(
+                //     alignment: AlignmentDirectional.topEnd,
+                //     child: Padding(
+                //       padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
+                //       child: SvgPicture.asset(AppAssets.favourOutlinedIcon,width: context.width*0.054,),
+                //     )),
               ],
             ),
           ),
-          Padding(
-            padding:  EdgeInsets.only(left:context.width*0.022,right:context.width*0.022),
-            child:  Column(
-              children: [
-                Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Text(
+          Expanded(
+            child: Padding(
+              padding:  EdgeInsets.only(right: context.width*0.045,top: context.height*0.033,bottom: context.height*0.033),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
                     productName!,
                     style: const TextStyle(
                         color: Colors.black,
@@ -94,59 +95,150 @@ class ProductsListContainer extends StatelessWidget {
                         fontSize: 12
                     ),
                   ),
-                ),
-                VerticalSpace(context.height*0.009),
-                Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Text(
-                    productType!,
-                    style: const TextStyle(
-                        color: AppColors.greyTextColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 10
-                    ),
+                  Text(
+                        productType!,
+                        style: const TextStyle(
+                            color: AppColors.greyTextColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10
+                        ),
                   ),
-                ),
-                VerticalSpace(context.height*0.013),
-                Row(
-                  children: [
-                    Container(
-                      width: context.width*0.2,
-                      height: context.height*0.033,
-                      decoration: BoxDecoration(
-                          color:AppColors.smallContainerGreyColor,
-                          borderRadius: BorderRadius.circular(context.height*0.003)
+                  Row(
+                    children: [
+                      Container(
+                        width: context.width*0.2,
+                        height: context.height*0.033,
+                        decoration: BoxDecoration(
+                            color:AppColors.smallContainerGreyColor,
+                            borderRadius: BorderRadius.circular(context.height*0.003)
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(AppAssets.smallCheckIcon),
+                            HorizontalSpace(context.width*0.011),
+                            const Text(
+                              AppStrings.availableEn,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 10
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(AppAssets.smallCheckIcon),
-                          HorizontalSpace(context.width*0.011),
-                          const Text(
-                            AppStrings.availableEn,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 10
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      productPrice!,
-                      style: const TextStyle(
-                          color: AppColors.primaryColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700
-                      ),
-                    )
-                  ],
-                )
-              ],
+                      const Spacer(),
+                      Text(
+                        productPrice!,
+                        style: const TextStyle(
+                            color: AppColors.primaryColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700
+                        ),
+                      )
+                    ],
+                  ),
+                  //VerticalSpace(context.height*0.013),
+
+                  // Row(
+                  //       children: [
+                  //         Container(
+                  //           width: context.width*0.2,
+                  //           height: context.height*0.033,
+                  //           decoration: BoxDecoration(
+                  //               color:AppColors.smallContainerGreyColor,
+                  //               borderRadius: BorderRadius.circular(context.height*0.003)
+                  //           ),
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.center,
+                  //             children: [
+                  //               SvgPicture.asset(AppAssets.smallCheckIcon),
+                  //               HorizontalSpace(context.width*0.011),
+                  //               const Text(
+                  //                 AppStrings.availableEn,
+                  //                 style: TextStyle(
+                  //                     color: Colors.black,
+                  //                     fontWeight: FontWeight.w700,
+                  //                     fontSize: 10
+                  //                 ),
+                  //               )
+                  //             ],
+                  //           ),
+                  //         ),
+                  //         const Spacer(),
+                  //         Text(
+                  //           productPrice!,
+                  //           style: const TextStyle(
+                  //               color: AppColors.primaryColor,
+                  //               fontSize: 12,
+                  //               fontWeight: FontWeight.w700
+                  //           ),
+                  //         )
+                  //       ],
+                  //     )
+                ],
+              ),
             ),
           ),
+          // Column(
+          //   children: [
+          //     Text(
+          //       productName!,
+          //       style: const TextStyle(
+          //           color: Colors.black,
+          //           fontWeight: FontWeight.w700,
+          //           fontSize: 12
+          //       ),
+          //     ),
+          //     VerticalSpace(context.height*0.009),
+          //     Text(
+          //       productType!,
+          //       style: const TextStyle(
+          //           color: AppColors.greyTextColor,
+          //           fontWeight: FontWeight.w600,
+          //           fontSize: 10
+          //       ),
+          //     ),
+          //     VerticalSpace(context.height*0.013),
+          //     Row(
+          //       children: [
+          //         Container(
+          //           width: context.width*0.2,
+          //           height: context.height*0.033,
+          //           decoration: BoxDecoration(
+          //               color:AppColors.smallContainerGreyColor,
+          //               borderRadius: BorderRadius.circular(context.height*0.003)
+          //           ),
+          //           child: Row(
+          //             mainAxisAlignment: MainAxisAlignment.center,
+          //             children: [
+          //               SvgPicture.asset(AppAssets.smallCheckIcon),
+          //               HorizontalSpace(context.width*0.011),
+          //               const Text(
+          //                 AppStrings.availableEn,
+          //                 style: TextStyle(
+          //                     color: Colors.black,
+          //                     fontWeight: FontWeight.w700,
+          //                     fontSize: 10
+          //                 ),
+          //               )
+          //             ],
+          //           ),
+          //         ),
+          //         const Spacer(),
+          //         Text(
+          //           productPrice!,
+          //           style: const TextStyle(
+          //               color: AppColors.primaryColor,
+          //               fontSize: 12,
+          //               fontWeight: FontWeight.w700
+          //           ),
+          //         )
+          //       ],
+          //     )
+          //   ],
+          // ),
         ],
       ),
     );

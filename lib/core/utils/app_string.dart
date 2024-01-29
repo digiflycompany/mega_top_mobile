@@ -87,6 +87,7 @@ class AppStrings {
   static const String ssdEn='SSD';
   static const String graphicsCardEn='Graphics Card 8GB';
   static const String resultsFound='results found';
+  static const String upsVersion1En='UPS - Version 1';
   static const String listEn='List';
   static const String gridEn='Grid';
   static const String resultsCount='98 ';
