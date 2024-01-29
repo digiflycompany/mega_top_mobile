@@ -5,7 +5,10 @@ import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_options.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_result_grid.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
+import 'items_list.dart';
 
 class SearchResultList extends StatelessWidget {
   const SearchResultList({super.key});
@@ -27,7 +30,14 @@ class SearchResultList extends StatelessWidget {
               BlocConsumer<HomeCubit, HomeState>(
                 listener: (context, state) {},
                 builder: (context, state) {
-                  return homeCubit.isGrid?const SearchResultGrid():Container();
+                  return homeCubit.isGrid?const SearchResultGrid():const ProductsListContainer(
+                    productName: AppStrings.upsVersion1En,
+                    productPhoto: AppAssets.upsSearchResult,
+                    productType: AppStrings.storageUnitsEn,
+                    productPrice: AppStrings.le1500,
+                    discountPercent: AppStrings.discountPercentEn,
+                    discount: true,
+                  );
                 },
               ),
             ],
