@@ -15,29 +15,26 @@ class SearchOptionsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeCubit homeCubit = context.read<HomeCubit>();
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-      child: Row(
-        children: [
-          /// List Grid Container ///
-          BlocConsumer<HomeCubit, HomeState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              return ListGridContainer(
-                onTap: (){
-                  homeCubit.toggleList();
-                },
-                image:homeCubit.isGrid? AppAssets.listIcon:AppAssets.gridIcon,
-                text: homeCubit.isGrid? AppStrings.listEn:AppStrings.gridEn
-                ,);
-            },
-          ),
-          const Spacer(),
-          const FilterSortContainer(icon: AppAssets.sortIcon,),
-          HorizontalSpace(context.width * 0.022),
-          const FilterSortContainer(icon: AppAssets.filterIcon,)
-        ],
-      ),
+    return Row(
+      children: [
+        /// List Grid Container ///
+        BlocConsumer<HomeCubit, HomeState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return ListGridContainer(
+              onTap: (){
+                homeCubit.toggleList();
+              },
+              image:homeCubit.isGrid? AppAssets.listIcon:AppAssets.gridIcon,
+              text: homeCubit.isGrid? AppStrings.listEn:AppStrings.gridEn
+              ,);
+          },
+        ),
+        const Spacer(),
+        const FilterSortContainer(icon: AppAssets.sortIcon,),
+        HorizontalSpace(context.width * 0.022),
+        const FilterSortContainer(icon: AppAssets.filterIcon,)
+      ],
     );
   }
 }

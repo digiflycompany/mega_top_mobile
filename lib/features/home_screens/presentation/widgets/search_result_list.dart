@@ -15,36 +15,36 @@ class SearchResultList extends StatelessWidget {
       child: Container(
         width: double.infinity,
         color: Colors.white,
-        child: Column(
-          children: [
-            VerticalSpace(context.height*0.028),
-            const SearchOptionsRow(),
-            VerticalSpace(context.height*0.033),
-            Padding(
-              padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
-              child:  Row(
-                children: [
-                  const ProductsGridContainer(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
+          child: Column(
+            children: [
+              VerticalSpace(context.height*0.028),
+              const SearchOptionsRow(),
+              VerticalSpace(context.height*0.033),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 2,
+                gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: context.width*0.05,
+                  mainAxisSpacing: context.height*0.022,
+                  childAspectRatio: 0.68,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return const ProductsGridContainer(
                     productName: AppStrings.hardDiskEn,
                     productPhoto: AppAssets.upsSearchResult,
                     productType: AppStrings.storageUnitsEn,
                     productPrice: AppStrings.le1500,
                     discountPercent: AppStrings.discountPercentEn,
                     discount: true,
-                  ),
-                  HorizontalSpace(context.width*0.045),
-                  const ProductsGridContainer(
-                    productName: AppStrings.hardDiskEn,
-                    productPhoto: AppAssets.upsSearchResult,
-                    productType: AppStrings.storageUnitsEn,
-                    productPrice: AppStrings.le1500,
-                    discountPercent: AppStrings.discountPercentEn,
-                    discount: true,
-                  ),
-                ],
-              ),
-            )
-          ],
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

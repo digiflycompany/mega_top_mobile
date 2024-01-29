@@ -32,125 +32,122 @@ class ProductsGridContainer extends StatelessWidget {
           ),
         ],
       ),
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            Padding(
-              padding:  EdgeInsets.only(left: context.width*0.022,right: context.width*0.022,top: context.height*0.012,bottom:context.height*0.015 ),
-              child: Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: context.height*0.174,
+      child: Column(
+        children: [
+          Padding(
+            padding:  EdgeInsets.only(left: context.width*0.022,right: context.width*0.022,top: context.height*0.012,bottom:context.height*0.015 ),
+            child: Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: context.height*0.174,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(context.height*0.0065),
+                    color: AppColors.iconsBackgroundColor,
+                  ),
+                  child:Center(child: Padding(
+                    padding:  EdgeInsets.only(top: context.height*0.012),
+                    child: Image.asset(productPhoto!,width: context.width*0.2,),
+                  )),
+                ),
+                discount==true?Padding(
+                  padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
+                  child: Container(
+                    width: context.width*0.1,
+                    height:context.height*0.028,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(context.height*0.0065),
-                      color: AppColors.iconsBackgroundColor,
+                        borderRadius: BorderRadius.circular(context.height*0.003),
+                        color: AppColors.redIconColor
                     ),
-                    child:Center(child: Padding(
-                      padding:  EdgeInsets.only(top: context.height*0.012),
-                      child: Image.asset(productPhoto!,width: context.width*0.2,),
-                    )),
-                  ),
-                  discount==true?Padding(
-                    padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
-                    child: Container(
-                      width: context.width*0.1,
-                      height:context.height*0.028,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(context.height*0.003),
-                          color: AppColors.redIconColor
-                      ),
-                      child:  Center(
-                        child: Text(
-                          discountPercent!,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 12
-                          ),
-                        ),
-                      ),
-                    ),
-                  ):Container(),
-                  Align(
-                      alignment: AlignmentDirectional.topEnd,
-                      child: Padding(
-                        padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
-                        child: SvgPicture.asset(AppAssets.favourOutlinedIcon,width: context.width*0.054,),
-                      )),
-                ],
-              ),
-            ),
-            Padding(
-              padding:  EdgeInsets.only(left:context.width*0.022,right:context.width*0.022,bottom:context.height*0.022),
-              child:  Column(
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional.topStart,
-                    child: Text(
-                      productName!,
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12
-                      ),
-                    ),
-                  ),
-                  VerticalSpace(context.height*0.009),
-                  Align(
-                    alignment: AlignmentDirectional.topStart,
-                    child: Text(
-                      productType!,
-                      style: const TextStyle(
-                          color: AppColors.greyTextColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 10
-                      ),
-                    ),
-                  ),
-                  VerticalSpace(context.height*0.013),
-                  Row(
-                    children: [
-                      Container(
-                        width: context.width*0.2,
-                        height: context.height*0.033,
-                        decoration: BoxDecoration(
-                            color:AppColors.smallContainerGreyColor,
-                            borderRadius: BorderRadius.circular(context.height*0.003)
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(AppAssets.smallCheckIcon),
-                            HorizontalSpace(context.width*0.011),
-                            const Text(
-                              AppStrings.availableEn,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 10
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      const Spacer(),
-                      Text(
-                        productPrice!,
+                    child:  Center(
+                      child: Text(
+                        discountPercent!,
                         style: const TextStyle(
-                            color: AppColors.primaryColor,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12
                         ),
-                      )
-                    ],
-                  )
-                ],
-              ),
+                      ),
+                    ),
+                  ),
+                ):Container(),
+                Align(
+                    alignment: AlignmentDirectional.topEnd,
+                    child: Padding(
+                      padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
+                      child: SvgPicture.asset(AppAssets.favourOutlinedIcon,width: context.width*0.054,),
+                    )),
+              ],
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding:  EdgeInsets.only(left:context.width*0.022,right:context.width*0.022),
+            child:  Column(
+              children: [
+                Align(
+                  alignment: AlignmentDirectional.topStart,
+                  child: Text(
+                    productName!,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 12
+                    ),
+                  ),
+                ),
+                VerticalSpace(context.height*0.009),
+                Align(
+                  alignment: AlignmentDirectional.topStart,
+                  child: Text(
+                    productType!,
+                    style: const TextStyle(
+                        color: AppColors.greyTextColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 10
+                    ),
+                  ),
+                ),
+                VerticalSpace(context.height*0.013),
+                Row(
+                  children: [
+                    Container(
+                      width: context.width*0.2,
+                      height: context.height*0.033,
+                      decoration: BoxDecoration(
+                          color:AppColors.smallContainerGreyColor,
+                          borderRadius: BorderRadius.circular(context.height*0.003)
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(AppAssets.smallCheckIcon),
+                          HorizontalSpace(context.width*0.011),
+                          const Text(
+                            AppStrings.availableEn,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 10
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      productPrice!,
+                      style: const TextStyle(
+                          color: AppColors.primaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
