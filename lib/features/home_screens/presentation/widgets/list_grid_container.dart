@@ -7,12 +7,13 @@ import '../../../../core/utils/spacer.dart';
 class ListGridContainer extends StatelessWidget {
   final String? image;
   final String? text;
-  const ListGridContainer({super.key, this.image, this.text});
+  final Function()? onTap;
+  const ListGridContainer({super.key, this.image, this.text, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
         height:context.height*0.055,
         width: context.width*0.22,

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_string.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_options.dart';
 import '../../../../core/utils/spacer.dart';
-import 'filter_sort_container.dart';
-import 'list_grid_container.dart';
 
 class SearchResultList extends StatelessWidget {
   const SearchResultList({super.key});
@@ -18,21 +15,8 @@ class SearchResultList extends StatelessWidget {
         child: Column(
           children: [
             VerticalSpace(context.height*0.028),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal:context.width*0.045 ),
-              child: Row(
-                children: [
-                  const ListGridContainer(
-                    image: AppAssets.listIcon,
-                    text: AppStrings.listEn
-                    ,),
-                  const Spacer(),
-                  const FilterSortContainer(icon: AppAssets.sortIcon,),
-                  HorizontalSpace(context.width*0.022 ),
-                  const FilterSortContainer(icon: AppAssets.filterIcon,)
-                ],
-              ),
-            )
+            const SearchOptionsRow(),
+            VerticalSpace(context.height*0.033),
           ],
         ),
       ),

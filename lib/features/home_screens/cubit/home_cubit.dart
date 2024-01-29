@@ -6,12 +6,19 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomeCubit getCubit(context) => BlocProvider.of(context);
 
+  bool isGrid = true;
+
   void setImageIndex(int index) {
     emit(ImageChanged(index: index));
   }
 
   void setPageIndex(int index) {
     emit(HomePageChanged(index: index));
+  }
+
+  void toggleList() {
+    isGrid = !isGrid;
+    emit(HomeInitial());
   }
 
 }
