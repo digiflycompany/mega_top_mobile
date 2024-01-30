@@ -82,18 +82,23 @@ class ProductsListContainer extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding:  EdgeInsets.only(right: context.width*0.045,top: context.height*0.033,bottom: context.height*0.033),
+              padding:  EdgeInsets.only(right: context.width*0.045,top: context.height*0.03,bottom: context.height*0.03),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    productName!,
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 12
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        productName!,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13
+                        ),
+                      ),
+                      const Spacer(),
+                      SvgPicture.asset(AppAssets.favourOutlinedIcon,width: context.width*0.06,)
+                    ],
                   ),
                   Text(
                         productType!,
@@ -103,6 +108,7 @@ class ProductsListContainer extends StatelessWidget {
                             fontSize: 10
                         ),
                   ),
+                  const Spacer(),
                   Row(
                     children: [
                       Container(
