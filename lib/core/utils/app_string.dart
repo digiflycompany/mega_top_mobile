@@ -90,6 +90,8 @@ class AppStrings {
   static const String upsVersion1En='UPS - Version 1';
   static const String listEn='List';
   static const String gridEn='Grid';
+  static const String noResultsEn='No results !';
+  static const String noResultLongEn='Sorry, there are no results for this search.\nPlease try another phrase.';
   static const String resultsCount='98 ';
   static const String le1500='1500 L.E';
   static const String four='4';

@@ -8,6 +8,8 @@ class HomeCubit extends Cubit<HomeState> {
 
   bool isGrid = true;
 
+  bool noResult = false;
+
   void setImageIndex(int index) {
     emit(ImageChanged(index: index));
   }
@@ -18,6 +20,11 @@ class HomeCubit extends Cubit<HomeState> {
 
   void toggleList() {
     isGrid = !isGrid;
+    emit(HomeInitial());
+  }
+
+  void toggleNoResult() {
+    noResult = !noResult;
     emit(HomeInitial());
   }
 
