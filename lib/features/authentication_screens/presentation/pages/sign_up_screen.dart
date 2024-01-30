@@ -90,7 +90,10 @@ class SignUpScreen extends StatelessWidget {
                               },
                             ),
                             VerticalSpace(context.height*0.055),
-                            const PrimaryButton(
+                             PrimaryButton(
+                              onTap: (){
+                                Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+                              },
                               text: AppStrings.signUpEn,
                             ),
                             VerticalSpace(context.height*0.07),

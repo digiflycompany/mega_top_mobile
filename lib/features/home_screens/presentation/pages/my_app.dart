@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       ],
       child: GetMaterialApp(
         theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
           fontFamily: FontFamilies.cairo,
           splashColor: Colors.transparent,
         ),
