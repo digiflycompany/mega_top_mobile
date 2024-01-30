@@ -13,7 +13,7 @@ import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/
 import 'app_color.dart';
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
 
-class Routes {
+class  Routes {
   Routes._internal();
   static const String onBoardingRoute = "/";
   static const String loginRoute = "/login_screen";
@@ -30,7 +30,7 @@ class Routes {
 class RouteGenerator {
   RouteGenerator._internal();
   PageRouteAnimation? pageRouteAnimationGlobal;
-  static Duration pageRouteTransitionDurationGlobal = 300.milliseconds;
+  static Duration pageRouteTransitionDurationGlobal = 200.milliseconds;
 
 
   static Route<dynamic>? getRoute(RouteSettings routeSettings) {

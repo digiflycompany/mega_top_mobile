@@ -67,13 +67,13 @@ class SearchResultGridView extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: context.width * 0.027,
-          mainAxisSpacing: context.height * 0.012,
+          mainAxisSpacing: context.height * 0.019,
           childAspectRatio: 0.68,
         ),
         itemBuilder: (BuildContext context, int index) {
           final product = products[index];
           return  Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.width*0.011,vertical: context.height*0.006),
+            padding: EdgeInsets.only(right: context.width*0.011,left: context.width*0.011,top: context.height*0.004),
             child: ProductsGridContainer(
               productName: product.productName,
               productPhoto: product.productPhoto,

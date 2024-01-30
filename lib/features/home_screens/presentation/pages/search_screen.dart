@@ -17,22 +17,23 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit homeCubit = context.read<HomeCubit>();
     return Scaffold(
-        backgroundColor: Colors.white,
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
             child: const PrimaryAppBar(AppStrings.searchForProductsEn)),
         body: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {},
           builder: (context, state) {
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-              child: Column(
-                children: [
-                  VerticalSpace(context.height * 0.012),
-                  const PrimarySearchBar(),
-                  homeCubit.noResult?VerticalSpace(context.height * 0.165):VerticalSpace(context.height*0.03),
-                  homeCubit.noResult?const NoResultColumn():const LatestSearchColumn(),
-                ],
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+                child: Column(
+                  children: [
+                    VerticalSpace(context.height * 0.012),
+                    const PrimarySearchBar(),
+                    homeCubit.noResult?VerticalSpace(context.height * 0.165):VerticalSpace(context.height*0.03),
+                    homeCubit.noResult?const NoResultColumn():const LatestSearchColumn(),
+                  ],
+                ),
               ),
             );
           },

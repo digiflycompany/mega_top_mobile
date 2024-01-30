@@ -77,7 +77,10 @@ class LoginScreen extends StatelessWidget {
                         },
                       ),
                       VerticalSpace(context.height*0.055),
-                      const PrimaryButton(
+                      PrimaryButton(
+                        onTap: (){
+                          Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+                        },
                         text: AppStrings.loginEn,
                       ),
                       VerticalSpace(context.height*0.033),
