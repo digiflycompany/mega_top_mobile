@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_search_list.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_search_column.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/no_result_column.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/your_latest_search_row.dart';
-import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
 import '../widgets/primary_app_bar.dart';
 import '../widgets/primary_search_bar.dart';
@@ -34,10 +31,7 @@ class SearchPage extends StatelessWidget {
                   VerticalSpace(context.height * 0.012),
                   const PrimarySearchBar(),
                   homeCubit.noResult?VerticalSpace(context.height * 0.165):VerticalSpace(context.height*0.03),
-                  const NoResultColumn()
-                  // const YourLatestSearch(),
-                  // VerticalSpace(context.height*0.025),
-                  // const LatestSearchList(),
+                  homeCubit.noResult?const NoResultColumn():const LatestSearchColumn(),
                 ],
               ),
             );
