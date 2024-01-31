@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
+import '../../data/categories_model.dart';
 import 'categories_small_card.dart';
 
 class CategoriesGrid extends StatelessWidget {
@@ -9,6 +10,9 @@ class CategoriesGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Category> category = [
+     // Category(categoryName: categoryName, categoryPhoto: categoryPhoto)
+    ];
     return Expanded(
       child: GridView.builder(
         itemCount: 8,
