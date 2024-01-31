@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/pages/categories_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/main_screen.dart';
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     const MainPage(),
-    const Center(child: Text('Categories Page')),
+    const CategoriesPage(),
     const Center(child: Text('Offers Page')),
     const Center(child: Text('Offers Page')),
     const Center(child: Text('Account Page')),

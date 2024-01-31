@@ -39,7 +39,7 @@ class OnboardingFirstScreen extends StatelessWidget {
             ),
           ),
           VerticalSpace(context.height*0.05),
-           Padding(
+          Padding(
              padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
              child: PrimaryButton(text: AppStrings.nextEn,
                        onTap: (){

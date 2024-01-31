@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/title_app_bar.dart';
+import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/app_bar_back_icon.dart';
+import 'customer_icon.dart';
 class PrimaryAppBar extends StatelessWidget {
   const PrimaryAppBar(  this.text, {super.key});
   final String text;
@@ -34,6 +37,11 @@ class PrimaryAppBar extends StatelessWidget {
             Padding(
               padding:  EdgeInsets.only(top: context.height*0.008),
               child: TitleText(text: text),
+            ),
+            const Spacer(),
+            Padding(
+              padding: EdgeInsets.only(right: context.width*0.045),
+              child: const CustomerIcon(icon: AppAssets.favouritesIcon,number: AppStrings.twelve,),
             ),
           ],
         ),
