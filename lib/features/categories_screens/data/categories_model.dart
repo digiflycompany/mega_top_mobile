@@ -1,9 +1,11 @@
 class Category {
-  final String categoryName;
   final String categoryPhoto;
+  final String categoryName;
+
 
   Category({
-    required this.categoryName,
     required this.categoryPhoto,
+    required this.categoryName,
+
   });
 }
