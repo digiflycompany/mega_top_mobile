@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/categories_small_card.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/categories_grid.dart';
 import '../../../../core/widgets/app_bar_fav_icon.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -15,16 +14,14 @@ class CategoriesPage extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.categoriesEn)),
-      body: Column(
-        children: [
-         VerticalSpace(context.height*0.033),
-         const Center(
-           child: CategoriesSmallCard(
-             categoryPhoto: AppAssets.upsSmall,
-             categoryName: AppStrings.upsEn,
-           ),
-         )
-        ],
+      body: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
+        child: Column(
+          children: [
+           VerticalSpace(context.height*0.033),
+           const CategoriesGrid()
+          ],
+        ),
       ) ,
     );
   }

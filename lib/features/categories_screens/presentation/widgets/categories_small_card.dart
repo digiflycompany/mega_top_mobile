@@ -10,8 +10,8 @@ class CategoriesSmallCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: context.width*0.285,
-      height: context.height*0.141,
+      width: context.width*0.24,
+      height: context.height*0.131,
       decoration: BoxDecoration(
         color: AppColors.iconsBackgroundColor,
         border: Border.all(width: context.width*0.002,color: AppColors.onboardingBackgroundColor),
@@ -22,15 +22,15 @@ class CategoriesSmallCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(categoryPhoto!,width: context.width*0.18,),
+            Image.asset(categoryPhoto!,width: context.width*0.15,),
             Text(
               categoryName!,
               style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
-                  fontSize: 14
+                  fontSize: 13
               ),
-            )
+            ),
           ],
         ),
       ),
