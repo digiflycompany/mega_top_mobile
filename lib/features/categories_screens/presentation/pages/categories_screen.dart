@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/categories_grid.dart';
 import '../../../../core/widgets/app_bar_fav_icon.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -15,38 +14,14 @@ class CategoriesPage extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.categoriesEn)),
-      body: Column(
-        children: [
-         VerticalSpace(context.height*0.033),
-         Center(
-           child: Container(
-             width: 104,
-             height: 104,
-             decoration: BoxDecoration(
-               color: AppColors.iconsBackgroundColor,
-               border: Border.all(width: context.width*0.002,color: AppColors.onboardingBackgroundColor),
-               borderRadius: BorderRadius.circular(context.height*0.006),
-             ),
-             child: Padding(
-               padding:  EdgeInsets.symmetric(vertical: context.height*0.011),
-               child: Column(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Image.asset(AppAssets.upsSmall,width: context.width*0.174,),
-                   const Text(
-                     AppStrings.upsEn,
-                     style: TextStyle(
-                       color: Colors.black,
-                       fontWeight: FontWeight.w700,
-                       fontSize: 14
-                     ),
-                   )
-                 ],
-               ),
-             ),
-           ),
-         )
-        ],
+      body: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
+        child: Column(
+          children: [
+           VerticalSpace(context.height*0.033),
+           const CategoriesGrid()
+          ],
+        ),
       ) ,
     );
   }
