@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/app_routes.dart';
 
 class CategoriesSmallCard extends StatelessWidget {
   final String? categoryPhoto;
@@ -11,7 +12,7 @@ class CategoriesSmallCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
+         Routes.categoryItemsPageRoute.moveTo;
       },
       child: Container(
         width: context.width*0.24,

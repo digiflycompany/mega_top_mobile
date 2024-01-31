@@ -43,7 +43,6 @@ class PrimaryAppBar extends StatelessWidget {
               padding: EdgeInsets.only(right: context.width*0.045),
               child: const CustomerIcon(icon: AppAssets.favouritesIcon,number: AppStrings.twelve,),
             ),
-
           ],
         ),
       ),
