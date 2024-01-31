@@ -62,6 +62,11 @@ class AppStrings {
   static const String surveillanceCamerasEn='Surveillance...';
   static const String twentyFiveProducts='25 Product';
   static const String upsEn='UPS';
+  static const String networkEn='Network';
+  static const String hiLookEn='HiLook';
+  static const String hikVisionEn='HikVision';
+  static const String ezVizEn='Ezviz';
+  static const String timeAttendanceEn='Time Attendance';
   static const String welcomeEn='Welcome !';
   static const String searchHereEn='Search here ...';
   static const String yourPasswordHasBeenResetSuccessfullyEn='Your password has been\nreset successfully!';
@@ -75,6 +80,7 @@ class AppStrings {
   static const String categoriesEn='Categories';
   static const String offersEn='Offers';
   static const String cartEn='Cart';
+  static const String storageEn='Storage';
   static const String accountEn='Account';
   static const String latestProducts='Latest products';
   static const String searchForProductsEn='Search for the product';
