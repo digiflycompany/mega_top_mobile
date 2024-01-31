@@ -9,30 +9,35 @@ class CategoriesSmallCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: context.width*0.24,
-      height: context.height*0.131,
-      decoration: BoxDecoration(
-        color: AppColors.iconsBackgroundColor,
-        border: Border.all(width: context.width*0.002,color: AppColors.onboardingBackgroundColor),
-        borderRadius: BorderRadius.circular(context.height*0.006),
-      ),
-      child: Padding(
-        padding:  EdgeInsets.symmetric(vertical: context.height*0.011,horizontal: context.width*0.021),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.asset(categoryPhoto!,width: context.width*0.15,),
-            Text(
-              categoryName!,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 13,
+    return GestureDetector(
+      onTap: (){
+
+      },
+      child: Container(
+        width: context.width*0.24,
+        height: context.height*0.131,
+        decoration: BoxDecoration(
+          color: AppColors.iconsBackgroundColor,
+          border: Border.all(width: context.width*0.002,color: AppColors.onboardingBackgroundColor),
+          borderRadius: BorderRadius.circular(context.height*0.006),
+        ),
+        child: Padding(
+          padding:  EdgeInsets.symmetric(vertical: context.height*0.011,horizontal: context.width*0.021),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset(categoryPhoto!,width: context.width*0.15,),
+              Text(
+                categoryName!,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 13,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
