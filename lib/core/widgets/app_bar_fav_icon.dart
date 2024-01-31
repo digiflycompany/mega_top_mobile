@@ -5,7 +5,6 @@ import '../../features/home_screens/presentation/widgets/customer_icon.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_color.dart';
 import '../utils/app_string.dart';
-import 'app_bar_back_icon.dart';
 class CustomFavouriteAppBar extends StatelessWidget {
   const CustomFavouriteAppBar(  this.text, {super.key});
   final String text;
@@ -25,7 +24,7 @@ class CustomFavouriteAppBar extends StatelessWidget {
       child: AppBar(
         backgroundColor: Colors.white,
         title: Padding(
-          padding: const EdgeInsets.only(top: 6),
+          padding:  EdgeInsets.only(top: context.height*0.008),
           child: TitleText(text: text),
         ),
         centerTitle: true,

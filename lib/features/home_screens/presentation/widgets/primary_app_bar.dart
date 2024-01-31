@@ -31,7 +31,10 @@ class PrimaryAppBar extends StatelessWidget {
               },
             ),
             HorizontalSpace(context.width*0.022),
-            TitleText(text: text),
+            Padding(
+              padding:  EdgeInsets.only(top: context.height*0.008),
+              child: TitleText(text: text),
+            ),
           ],
         ),
       ),
