@@ -13,14 +13,14 @@ class CustomerIcon extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: context.width*0.131,
-          height: context.height*0.062,
+          width: context.width*0.125,
+          height: context.height*0.056,
           decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.iconsBackgroundColor
           ),
           child: Padding(
-            padding:   EdgeInsets.symmetric(horizontal: context.width*0.022,vertical:context.height*0.015),
+            padding:   EdgeInsets.symmetric(horizontal: context.width*0.021,vertical:context.height*0.014),
             child: SvgPicture.asset(icon!),
           ),
         ),
