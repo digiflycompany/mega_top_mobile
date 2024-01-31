@@ -18,17 +18,18 @@ class CategoriesSmallCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(context.height*0.006),
       ),
       child: Padding(
-        padding:  EdgeInsets.symmetric(vertical: context.height*0.011),
+        padding:  EdgeInsets.symmetric(vertical: context.height*0.011,horizontal: context.width*0.021),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(categoryPhoto!,width: context.width*0.15,),
             Text(
               categoryName!,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
-                  fontSize: 13
+                  fontSize: 13,
               ),
             ),
           ],
