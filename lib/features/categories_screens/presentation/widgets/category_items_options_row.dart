@@ -35,7 +35,7 @@ class CategoryItemsOptionsRow extends StatelessWidget {
             },
           ),
           const Spacer(),
-          const FilterSortContainer(icon: AppAssets.sortIcon,),
+          FilterSortContainer(icon: AppAssets.sortIcon,onTap: () =>categoryCubit.showBottomSheet(context),),
           HorizontalSpace(context.width * 0.022),
           const FilterSortContainer(icon: AppAssets.filterIcon,)
         ],
