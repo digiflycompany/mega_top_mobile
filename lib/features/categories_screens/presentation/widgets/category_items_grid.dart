@@ -21,11 +21,11 @@ class CategoryItemsGridView extends StatelessWidget {
       ),
       Product(
         productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.upsSearchResult,
+        productPhoto: AppAssets.storageUnitsSearchResult,
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
       ),
       Product(
         productName: AppStrings.hardDiskEn,
@@ -33,7 +33,7 @@ class CategoryItemsGridView extends StatelessWidget {
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
       ),
       Product(
         productName: AppStrings.hardDiskEn,
@@ -41,23 +41,23 @@ class CategoryItemsGridView extends StatelessWidget {
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
       ),
       Product(
         productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.upsSearchResult,
+        productPhoto: AppAssets.storageUnitsSearchResult,
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
       ),
       Product(
         productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.upsSearchResult,
+        productPhoto: AppAssets.storageUnitsSearchResult,
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
       ),
     ];
     return Expanded(

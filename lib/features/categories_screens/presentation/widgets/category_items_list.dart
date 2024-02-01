@@ -25,23 +25,7 @@ class CategoryItemsListView extends StatelessWidget {
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
-      ),
-      Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.storageUnitsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: true,
-      ),
-      Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.storageUnitsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
       ),
       Product(
         productName: AppStrings.hardDiskEn,
@@ -49,7 +33,7 @@ class CategoryItemsListView extends StatelessWidget {
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
       ),
       Product(
         productName: AppStrings.hardDiskEn,
@@ -57,7 +41,23 @@ class CategoryItemsListView extends StatelessWidget {
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
+      ),
+      Product(
+        productName: AppStrings.hardDiskEn,
+        productPhoto: AppAssets.upsSearchResult,
+        productType: AppStrings.storageUnitsEn,
+        productPrice: AppStrings.le1500,
+        discountPercent: AppStrings.discountPercentEn,
+        discount: false,
+      ),
+      Product(
+        productName: AppStrings.hardDiskEn,
+        productPhoto: AppAssets.upsSearchResult,
+        productType: AppStrings.storageUnitsEn,
+        productPrice: AppStrings.le1500,
+        discountPercent: AppStrings.discountPercentEn,
+        discount: false,
       ),
     ];
     return Expanded(

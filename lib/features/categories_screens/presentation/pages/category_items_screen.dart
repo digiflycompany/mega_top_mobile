@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_options.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
+import '../widgets/category_items_grid.dart';
+import '../widgets/category_items_list.dart';
+import '../widgets/category_items_options_row.dart';
 
 class CategoryItemsPage extends StatelessWidget {
   const CategoryItemsPage({super.key});
@@ -20,8 +23,13 @@ class CategoryItemsPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
         child:  Column(
           children: [
-            ItemsOptionsRow(topPadding:context.height * 0.028,bottomPadding: context.height * 0.033,),
-            
+            CategoryItemsOptionsRow(topPadding:context.height * 0.028,bottomPadding: context.height * 0.033,),
+            BlocConsumer<CategoryCubit, CategoryState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return categoryCubit.isGrid?const CategoryItemsGridView():const CategoryItemsListView();
+              },
+            ),
           ],
         ),
       ),
