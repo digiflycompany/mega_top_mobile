@@ -6,7 +6,6 @@ import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_options.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_result_grid.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_result_list_view.dart';
-import '../../../../core/utils/spacer.dart';
 
 class SearchResultList extends StatelessWidget {
   const SearchResultList({super.key});
