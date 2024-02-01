@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import '../../../../core/utils/app_fonts.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_services_dart.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<HomeCubit>(
           create: (BuildContext context) => HomeCubit(),
+        ),
+        BlocProvider<CategoryCubit>(
+          create: (BuildContext context) => CategoryCubit(),
         ),
       ],
       child: GetMaterialApp(
