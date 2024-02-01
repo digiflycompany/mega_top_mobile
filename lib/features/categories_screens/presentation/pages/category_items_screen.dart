@@ -17,7 +17,7 @@ class CategoryItemsPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
         child:  Column(
           children: [
-            ItemsOptionsRow(topPadding:context.height * 0.028,bottomPadding: context.height * 0.033,)
+            ItemsOptionsRow(topPadding:context.height * 0.028,bottomPadding: context.height * 0.033,),
           ],
         ),
       ),
