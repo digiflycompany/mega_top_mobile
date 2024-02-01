@@ -22,9 +22,7 @@ class SearchResultList extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
           child: Column(
             children: [
-              VerticalSpace(context.height * 0.028),
-              const ItemsOptionsRow(bottomPadding: 0,topPadding: 0,),
-              VerticalSpace(context.height * 0.033),
+              ItemsOptionsRow(bottomPadding: context.height * 0.033,topPadding: context.height * 0.028,),
               BlocConsumer<HomeCubit, HomeState>(
                 listener: (context, state) {},
                 builder: (context, state) {
