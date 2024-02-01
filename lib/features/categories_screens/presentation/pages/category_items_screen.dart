@@ -21,6 +21,7 @@ class CategoryItemsPage extends StatelessWidget {
         child:  Column(
           children: [
             ItemsOptionsRow(topPadding:context.height * 0.028,bottomPadding: context.height * 0.033,),
+            
           ],
         ),
       ),
