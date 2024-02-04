@@ -98,6 +98,10 @@ class AppStrings {
   static const String upsVersion1En='UPS - Version 1';
   static const String listEn='List';
   static const String gridEn='Grid';
+  static const String defaultEn='Default';
+  static const String priceEn='Price :';
+  static const String fromHighToLowEn='From high to low';
+  static const String fromLowToHighEn='From low to high';
   static const String noResultsEn='No results !';
   static const String noResultLongEn='Sorry, there are no results for this search.\nPlease try another phrase.';
   static const String resultsCount='98 ';

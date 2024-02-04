@@ -17,7 +17,7 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   bool noResult = false;
 
-  String _selectedValue = 'option1';
+  String _selectedValue = AppStrings.defaultEn;
 
 
   String get selectedValue => _selectedValue;
@@ -52,15 +52,24 @@ class CategoryCubit extends Cubit<CategoryState> {
               VerticalSpace(context.height*0.033),
               Padding(
                 padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
-                child: const Column(
+                child:  Column(
                   children: [
-                    CustomAdaptiveRadioButton(
-                      value: 'option1',
-                      label: 'Option 1',
+                    const CustomAdaptiveRadioButton(
+                      value: AppStrings.defaultEn,
+                      label: AppStrings.defaultEn,
+                      description: '',
                     ),
-                    CustomAdaptiveRadioButton(
-                      value: 'option2',
-                      label: 'Option 2',
+                    VerticalSpace(context.height*0.01),
+                    const CustomAdaptiveRadioButton(
+                      value: AppStrings.priceEn,
+                      label: AppStrings.priceEn,
+                      description: AppStrings.fromHighToLowEn,
+                    ),
+                    VerticalSpace(context.height*0.01),
+                    const CustomAdaptiveRadioButton(
+                      value: AppStrings.priceEn,
+                      label: AppStrings.priceEn,
+                      description: AppStrings.fromLowToHighEn,
                     ),
                   ],
                 ),
