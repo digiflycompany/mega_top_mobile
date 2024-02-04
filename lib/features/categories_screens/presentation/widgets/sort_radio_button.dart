@@ -27,7 +27,7 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
           child: Container(
             height: context.height*0.065,
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding:  EdgeInsets.symmetric(horizontal: context.width*0.022),
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
