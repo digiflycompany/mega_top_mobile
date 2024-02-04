@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
@@ -24,7 +25,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryInitial());
   }
 
-  void showBottomSheet(BuildContext context) {
+  void showSortBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
@@ -36,6 +37,27 @@ class CategoryCubit extends Cubit<CategoryState> {
       ),
       builder: (_) {
         return const SortBottomSheet();
+      },
+    );
+  }
+
+  void showFilterBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(0),
+          topRight: Radius.circular(0),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return const FractionallySizedBox(
+          heightFactor: 1.0, // For full screen height
+          child: FilterBottomSheet(),
+        );
       },
     );
   }
