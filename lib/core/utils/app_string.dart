@@ -99,6 +99,11 @@ class AppStrings {
   static const String listEn='List';
   static const String gridEn='Grid';
   static const String defaultEn='Default';
+  static const String dellEn='Dell';
+  static const String brandEn='Brand';
+  static const String acerEn='Acer';
+  static const String toshibaEn='Toshiba';
+  static const String sonyEn='Sony';
   static const String priceEn='Price :';
   static const String price2En='Price :';
   static const String fromHighToLowEn='From high to low';
