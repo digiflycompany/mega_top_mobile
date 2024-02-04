@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import '../../cubit/category_cubit.dart';
 import '../../cubit/category_state.dart';
 
 class CustomAdaptiveRadioButton extends StatelessWidget {
   final String value;
   final String label;
+  final String? description;
 
   const CustomAdaptiveRadioButton({
     Key? key,
     required this.value,
-    required this.label,
+    required this.label,this.description,
   }) : super(key: key);
 
   @override
@@ -29,16 +31,19 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Radio(
-                  activeColor: AppColors.primaryColor,
-                  focusColor: AppColors.primaryColor,
-                  value: value,
-                  groupValue: categoryCubit.selectedValue,
-                  onChanged: (String? newValue) {
-                    if (newValue != null) {
-                      categoryCubit.selectOption(newValue);
-                    }
-                  },
+                Transform.scale(
+                  scale: 1.2,
+                  child: Radio(
+                    activeColor: AppColors.primaryColor,
+                    focusColor: AppColors.primaryColor,
+                    value: value,
+                    groupValue: categoryCubit.selectedValue,
+                    onChanged: (String? newValue) {
+                      if (newValue != null) {
+                        categoryCubit.selectOption(newValue);
+                      }
+                    },
+                  ),
                 ),
                 Text(
                     label,
@@ -46,6 +51,15 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
                     fontSize: 14
+                  ),
+                ),
+                HorizontalSpace(context.width*0.008),
+                Text(
+                  description!,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14
                   ),
                 ),
               ],
