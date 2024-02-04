@@ -14,6 +14,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   bool noResult = false;
   String _selectedValue = AppStrings.defaultEn;
   String get selectedValue => _selectedValue;
+  final Map<String, bool> checkboxStates = {};
 
   void selectOption(String newValue) {
     _selectedValue = newValue;
@@ -23,6 +24,20 @@ class CategoryCubit extends Cubit<CategoryState> {
   void toggleList() {
     isGrid = !isGrid;
     emit(CategoryInitial());
+  }
+
+  void initializeCheckboxes(List<String> items) {
+    for (var item in items) {
+      checkboxStates[item] = false;
+    }
+    emit(CategoryUpdated());
+  }
+
+  void toggleCheckbox(String item) {
+    if (checkboxStates.containsKey(item)) {
+      checkboxStates[item] = !checkboxStates[item]!;
+      emit(CategoryUpdated());
+    }
   }
 
   void showSortBottomSheet(BuildContext context) {
