@@ -28,14 +28,14 @@ class SortBottomSheet extends StatelessWidget {
                   ),
                   VerticalSpace(context.height*0.01),
                   const CustomAdaptiveRadioButton(
-                    value: AppStrings.priceEn,
+                    value: AppStrings.fromHighToLowEn,
                     label: AppStrings.priceEn,
                     description: AppStrings.fromHighToLowEn,
                   ),
                   VerticalSpace(context.height*0.01),
                   const CustomAdaptiveRadioButton(
-                    value: AppStrings.priceEn,
-                    label: AppStrings.priceEn,
+                    value: AppStrings.fromLowToHighEn,
+                    label: AppStrings.price2En,
                     description: AppStrings.fromLowToHighEn,
                   ),
                 ],

@@ -10,12 +10,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit getCubit(context) => BlocProvider.of(context);
 
   bool isGrid = true;
-
   bool noResult = false;
-
   String _selectedValue = AppStrings.defaultEn;
-
-
   String get selectedValue => _selectedValue;
 
   void selectOption(String newValue) {
