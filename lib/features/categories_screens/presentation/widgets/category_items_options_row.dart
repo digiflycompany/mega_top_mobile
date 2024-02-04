@@ -35,9 +35,9 @@ class CategoryItemsOptionsRow extends StatelessWidget {
             },
           ),
           const Spacer(),
-          FilterSortContainer(icon: AppAssets.sortIcon,onTap: () =>categoryCubit.showBottomSheet(context),),
+          FilterSortContainer(icon: AppAssets.sortIcon,onTap: () =>categoryCubit.showSortBottomSheet(context),),
           HorizontalSpace(context.width * 0.022),
-          const FilterSortContainer(icon: AppAssets.filterIcon,)
+          FilterSortContainer(icon: AppAssets.filterIcon,onTap: () =>categoryCubit.showFilterBottomSheet(context),),
         ],
       ),
     );
