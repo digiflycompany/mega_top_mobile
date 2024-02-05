@@ -38,6 +38,8 @@ class AppStrings {
   static const String continueWithGoogle='إنشاء حساب';
   static const String usernameEn='Username';
   static const String confirmPasswordEn='Confirm password';
+  static const String applyEn='Apply';
+  static const String resetEn='Reset';
   static const String signUpEn='Sign up';
   static const String or='أو';
   static const String orEn='Or';
