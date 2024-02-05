@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/brands_checklist.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/price_container.dart';
 import '../../../../core/utils/app_string.dart';
 
 class FilterBottomSheetBody extends StatelessWidget {
@@ -24,8 +26,11 @@ class FilterBottomSheetBody extends StatelessWidget {
               ),
             ),
           ),
-          VerticalSpace(context.height*0.033),
+          VerticalSpace(context.height*0.02),
           const BrandsCheckList(),
+          VerticalSpace(context.height*0.047),
+          const PriceContainer(),
+
         ],
       ),
     );

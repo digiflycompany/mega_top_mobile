@@ -104,7 +104,11 @@ class AppStrings {
   static const String acerEn='Acer';
   static const String toshibaEn='Toshiba';
   static const String sonyEn='Sony';
+  static const String fromEn='From';
+  static const String toEn='To';
   static const String priceEn='Price :';
+  static const String priceBottomSheetEn='Price';
+  static const String priceInEgpEn='Price in EGP';
   static const String price2En='Price :';
   static const String fromHighToLowEn='From high to low';
   static const String fromLowToHighEn='From low to high';
