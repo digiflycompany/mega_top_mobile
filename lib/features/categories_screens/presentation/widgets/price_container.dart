@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/widgets/primary_button.dart';
+import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/price_text_field.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -56,8 +58,20 @@ class PriceContainer extends StatelessWidget {
             Spacer(),
             PriceTextField(),
           ],
-        )
-
+        ),
+        VerticalSpace(context.height*0.18),
+        Column(
+            children: [
+              const PrimaryButton(
+                text: AppStrings.applyEn,
+              ),
+              VerticalSpace(context.height*0.033),
+              const PrimaryEmptyButton(
+                horizontalPadding: 0,
+                text: AppStrings.resetEn,
+              ),
+            ],
+          ),
       ],
     );
   }

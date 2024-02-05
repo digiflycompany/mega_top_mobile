@@ -56,6 +56,7 @@ class OnboardingSecondScreen extends StatelessWidget {
             ),
             VerticalSpace(context.height*0.0329),
             PrimaryEmptyButton(
+                horizontalPadding:context.width*0.045,
                 text: AppStrings.previousEn,
                 onTap: (){
                   pageController.animateToPage(
