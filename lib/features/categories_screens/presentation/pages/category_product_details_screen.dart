@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/widgets/product_detailed_image.dart';
 import 'package:mega_top_mobile/core/widgets/product_details_app_bar.dart';
 
+import '../widgets/product_detailed_body.dart';
+
 class CategoryProductDetailsPage extends StatelessWidget {
   const CategoryProductDetailsPage({super.key});
 
@@ -15,6 +17,7 @@ class CategoryProductDetailsPage extends StatelessWidget {
       body: const Column(
         children: [
           ProductDetailedImage(),
+          ProductDetailedBody(),
         ],
       ),
     );
