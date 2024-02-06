@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/widgets/available_cotainer.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -109,29 +110,7 @@ class LatestProductsContainer extends StatelessWidget {
                   VerticalSpace(context.height*0.012),
                   Row(
                     children: [
-                      Container(
-                        width: context.width*0.2,
-                        height: context.height*0.033,
-                        decoration: BoxDecoration(
-                            color:AppColors.smallContainerGreyColor,
-                            borderRadius: BorderRadius.circular(context.height*0.003)
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(AppAssets.smallCheckIcon),
-                            HorizontalSpace(context.width*0.011),
-                            const Text(
-                              AppStrings.availableEn,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 10
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                      const AvailableContainer(),
                       const Spacer(),
                       Text(
                         productPrice!,
