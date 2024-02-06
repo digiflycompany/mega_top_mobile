@@ -70,11 +70,8 @@ class AppAssets {
   static const String hiLookImg = "$imagesPath/hiLook.png";
   static const String ezVizImg = "$imagesPath/EzViz.png";
   static const String productBigPhoto = "$imagesPath/product_big_photo.png";
+  static const String productBigPhotoRight = "$imagesPath/product_big_photo_right.png";
+  static const String productBigPhotoTop = "$imagesPath/product_big_photo_top.png";
   static const String timeAttendanceImg = "$imagesPath/time_attendance.png";
-
-
-
-
-
 
 }
