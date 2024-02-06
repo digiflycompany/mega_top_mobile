@@ -1,8 +1,5 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/widgets/product_detailed_image.dart';
 import 'package:mega_top_mobile/core/widgets/product_details_app_bar.dart';
 

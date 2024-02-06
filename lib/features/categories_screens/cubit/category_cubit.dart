@@ -5,6 +5,8 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_state
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 
+import '../../../core/utils/app_assets.dart';
+
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit() : super(CategoryInitial());
 
@@ -15,6 +17,14 @@ class CategoryCubit extends Cubit<CategoryState> {
   String _selectedValue = AppStrings.defaultEn;
   String get selectedValue => _selectedValue;
   final Map<String, bool> checkboxStates = {};
+
+  final List <String> images = [
+    AppAssets.productBigPhoto,
+    AppAssets.productBigPhotoRight,
+    AppAssets.productBigPhotoTop,
+  ];
+  int _currentImageIndex = 0;
+  int get currentImageIndex => _currentImageIndex;
 
   void selectOption(String newValue) {
     _selectedValue = newValue;
@@ -31,6 +41,11 @@ class CategoryCubit extends Cubit<CategoryState> {
       checkboxStates[item] = false;
     }
     emit(CategoryUpdated());
+  }
+
+  void setImageIndex(int index) {
+    _currentImageIndex=index;
+    emit(CategoryProductUpdated());
   }
 
   void toggleCheckbox(String item) {
