@@ -4,7 +4,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../utils/app_assets.dart';
 class AppBarBackArrow extends StatelessWidget {
   final Function()? onTap;
-  const AppBarBackArrow({super.key,this.onTap});
+  final Color? color;
+  const AppBarBackArrow({super.key,this.onTap, this.color=Colors.white});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +16,8 @@ class AppBarBackArrow extends StatelessWidget {
         child: Container(
           width: context.width*0.12,
           height: context.height*0.056,
-          decoration: const BoxDecoration(
-            color: Colors.white,
+          decoration: BoxDecoration(
+            color: color,
           ),
           child:Transform.scale(
               scale: 0.6,

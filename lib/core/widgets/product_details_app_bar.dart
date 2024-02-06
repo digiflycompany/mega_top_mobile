@@ -17,6 +17,7 @@ class ProductDetailsAppBar extends StatelessWidget {
         child: Row(
           children: [
             AppBarBackArrow(
+              color: AppColors.onboardingBackgroundColor,
               onTap: (){
                 Navigator.pop(context);
               },

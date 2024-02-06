@@ -66,8 +66,10 @@ class AppAssets {
   static const String networkImg = "$imagesPath/network.png";
   static const String smallHardImg = "$imagesPath/hard_small.png";
   static const String closeIcon = "$svgPath/close_icon.svg";
+  static const String compareIcon = "$svgPath/compare_icon.svg";
   static const String hiLookImg = "$imagesPath/hiLook.png";
   static const String ezVizImg = "$imagesPath/EzViz.png";
+  static const String productBigPhoto = "$imagesPath/product_big_photo.png";
   static const String timeAttendanceImg = "$imagesPath/time_attendance.png";
 
 
