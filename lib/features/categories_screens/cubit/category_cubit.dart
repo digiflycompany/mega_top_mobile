@@ -21,7 +21,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   final List <String> images = [
     AppAssets.productBigPhoto,
     AppAssets.productBigPhotoRight,
-    AppAssets.productBigPhotoTop,
+    AppAssets.productBigPhoto,
   ];
   int _currentImageIndex = 0;
   int get currentImageIndex => _currentImageIndex;
