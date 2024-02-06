@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/category_product_images.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/favour_compare_column.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_images_dots.dart';
 import '../utils/app_color.dart';
 
@@ -15,10 +16,15 @@ class ProductDetailedImage extends StatelessWidget {
       decoration: const BoxDecoration(
           color: AppColors.onboardingBackgroundColor
       ),
-      child: const Column(
+      child:  const Stack(
         children: [
-          ProductImages(),
-          ProductImagesDots(),
+          Column(
+            children: [
+              ProductImages(),
+              ProductImagesDots(),
+            ],
+          ),
+          FavourCompareColumn(),
         ],
       ),
     );
