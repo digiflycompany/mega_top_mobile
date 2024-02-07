@@ -87,11 +87,16 @@ class AppStrings {
   static const String homeEn='Home';
   static const String addToCartEn='Add to Cart';
   static const String aboutTheProductEn='About the product';
+  static const String productSpecificationEn='product specification ';
   static const String categoriesEn='Categories';
   static const String offersEn='Offers';
   static const String cartEn='Cart';
   static const String storageEn='Storage';
   static const String accountEn='Account';
+  static const String volts230En='230 volts';
+  static const String mainInputVoltageEn='Main input voltage:';
+  static const String mainOutputVoltageEn='Main output voltage:';
+  static const String batteryRechargingTimeEn='Battery recharging time:';
   static const String latestProducts='Latest products';
   static const String searchForProductsEn='Search for the product';
   static const String storageUnitsSmallEn='Storage units';
