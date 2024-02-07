@@ -11,6 +11,7 @@ class ProductSpecificationsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        /// Specification ///
          Text(
           specification!,
           style: const TextStyle(
@@ -20,6 +21,7 @@ class ProductSpecificationsRow extends StatelessWidget {
           ),
         ),
          HorizontalSpace(context.width*0.02),
+         /// Value ///
          Text(
           value!,
           style: const TextStyle(
