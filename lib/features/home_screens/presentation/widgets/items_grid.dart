@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/best_seller_container.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/spacer.dart';
@@ -99,7 +99,7 @@ class ProductsGridContainer extends StatelessWidget {
                   const Spacer(),
                   Row(
                     children: [
-                      const BestSellerContainer(),
+                      const AvailableContainer(),
                       const Spacer(),
                       Text(
                         productPrice!,
