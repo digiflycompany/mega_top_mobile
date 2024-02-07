@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ProductNameText extends StatelessWidget {
+class ProductDetailedNameText extends StatelessWidget {
   final String? name;
-  const ProductNameText({super.key, this.name});
+  const ProductDetailedNameText({super.key, this.name});
 
   @override
   Widget build(BuildContext context) {
