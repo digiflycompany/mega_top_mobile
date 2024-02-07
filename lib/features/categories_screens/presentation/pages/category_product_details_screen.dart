@@ -19,6 +19,7 @@ class CategoryProductDetailsPage extends StatelessWidget {
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const ProductDetailsAppBar()),
       body: const SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             ProductDetailedImage(),

@@ -83,8 +83,10 @@ class AppStrings {
   static const String productPriceEn='1500 LE';
   static const String productOldPriceEn='2300 LE';
   static const String productDetailedSmallDescriptionEn='A unit that supplies electrical energy and converts it to the computer. Not only that, but it also converts the electrical charge outside the computer into a permanent and continuous current inside it, and it also performs a regulatory process for the device in order to protect it from burning.';
+  static const String aboutProductDescriptionEn='This product is part of the Easy UPS collection. It features a total of 4 power outlets, all of which provide battery backup and surge protection. It has an interactive line topology. The UPS has a high power rating of 156 joules. Its dimensions are 9.25 x 16.05 x 30.5 cm and its weight is 5.7 kg. Easy UPS provides a simple power protection solution for unstable power conditions in homes and small offices, ensuring stable and reliable connectivity in the moments that matter most. UPS is a CE certified product.';
   static const String homeEn='Home';
   static const String addToCartEn='Add to Cart';
+  static const String aboutTheProductEn='About the product';
   static const String categoriesEn='Categories';
   static const String offersEn='Offers';
   static const String cartEn='Cart';
