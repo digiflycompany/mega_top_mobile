@@ -5,7 +5,9 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_category.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_small_description.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_name.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_prices.dart';
 
 class ProductMainDescription extends StatelessWidget {
   const ProductMainDescription({super.key});
@@ -34,8 +36,13 @@ class ProductMainDescription extends StatelessWidget {
           const ProductDetailedCategory(
             category: AppStrings.storageUnitsEn,
           ),
-          VerticalSpace(context.height*0.033),
-
+          VerticalSpace(context.height*0.022),
+          const ProductPrices(
+           oldPrice: AppStrings.productOldPriceEn,
+           currentPrice: AppStrings.productPriceEn,
+         ),
+          VerticalSpace(context.height*0.029),
+          const ProductDetailedSmallDescription(description: AppStrings.productDetailedSmallDescriptionEn,)
         ],
       ),
     );

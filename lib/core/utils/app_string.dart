@@ -82,6 +82,7 @@ class AppStrings {
   static const String rackEn='Rack';
   static const String productPriceEn='1500 LE';
   static const String productOldPriceEn='2300 LE';
+  static const String productDetailedSmallDescriptionEn='A unit that supplies electrical energy and converts it to the computer. Not only that, but it also converts the electrical charge outside the computer into a permanent and continuous current inside it, and it also performs a regulatory process for the device in order to protect it from burning.';
   static const String homeEn='Home';
   static const String categoriesEn='Categories';
   static const String offersEn='Offers';
