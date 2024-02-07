@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/best_seller_container.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
@@ -51,23 +52,10 @@ class ProductsListContainer extends StatelessWidget {
                 ),
                 discount==true?Padding(
                   padding:  EdgeInsets.symmetric(vertical:context.height*0.009,horizontal:context.width*0.016),
-                  child: Container(
+                  child: DiscountContainer(
+                    discountPercent: discountPercent,
                     width: context.width*0.1,
                     height:context.height*0.028,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(context.height*0.003),
-                        color: AppColors.redIconColor
-                    ),
-                    child:  Center(
-                      child: Text(
-                        discountPercent!,
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 12
-                        ),
-                      ),
-                    ),
                   ),
                 ):Container(),
                 // Align(
