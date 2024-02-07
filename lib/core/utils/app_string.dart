@@ -80,6 +80,8 @@ class AppStrings {
   static const String latestOffersEn='Latest offers';
   static const String discount15PercentEn='Discount 15%';
   static const String rackEn='Rack';
+  static const String productPriceEn='1500 LE';
+  static const String productOldPriceEn='2300 LE';
   static const String homeEn='Home';
   static const String categoriesEn='Categories';
   static const String offersEn='Offers';
