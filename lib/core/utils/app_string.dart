@@ -98,6 +98,7 @@ class AppStrings {
   static const String mainOutputVoltageEn='Main output voltage:';
   static const String batteryRechargingTimeEn='Battery recharging time:';
   static const String latestProducts='Latest products';
+  static const String youMayAlsoLikeEn='You may also like';
   static const String searchForProductsEn='Search for the product';
   static const String storageUnitsSmallEn='Storage units';
   static const String yourLastSearchEn='Your latest search';
