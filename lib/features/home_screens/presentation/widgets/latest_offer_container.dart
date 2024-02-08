@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import '../../../../core/utils/app_color.dart';
@@ -26,19 +27,19 @@ class LatestOffersContainer extends StatelessWidget {
             VerticalSpace(context.height*0.008),
             Text(
                 productName!,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
-                  fontSize: 10
+                  fontSize: 10.sp
                 ),
             ),
             VerticalSpace(context.height*0.0026),
             Text(
               productDiscount!,
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
-                  fontSize: 8
+                  fontSize: 8.sp
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_color.dart';
 class RowTextButton extends StatelessWidget {
   final String? firstText;
@@ -13,10 +14,10 @@ class RowTextButton extends StatelessWidget {
       children: [
          Text(
           firstText!,
-          style: const TextStyle(
+          style:  TextStyle(
               color: AppColors.greyTextColor,
               fontWeight: FontWeight.w500,
-              fontSize: 14
+              fontSize: 14.sp
           ),
         ),
         GestureDetector(
@@ -25,9 +26,9 @@ class RowTextButton extends StatelessWidget {
               padding: const EdgeInsets.all(6),
               child: Text(
                 buttonText!,
-                style: const TextStyle(
+                style:  TextStyle(
                     color: AppColors.primaryColor,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w700
                 ),
               ),

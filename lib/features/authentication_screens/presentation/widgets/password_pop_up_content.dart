@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -47,11 +48,11 @@ class PasswordPopUpContent extends StatelessWidget {
               ),
             ),
             VerticalSpace(context.height*0.03),
-            const Text(
+            Text(
                 AppStrings.congratulationsEn,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w700
                 ),
             ),
@@ -61,7 +62,7 @@ class PasswordPopUpContent extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   height:context.width*0.005
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordDescription extends StatelessWidget {
@@ -13,7 +14,7 @@ class ForgotPasswordDescription extends StatelessWidget {
         text!,
         style: TextStyle(
             color: Colors.black,
-            fontSize: 14,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w600,
             height: context.width*0.005
         ),

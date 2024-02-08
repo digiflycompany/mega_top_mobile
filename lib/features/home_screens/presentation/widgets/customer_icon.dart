@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_color.dart';
@@ -45,10 +46,10 @@ class CustomerIcon extends StatelessWidget {
                 child:  Center(
                   child: Text(
                     number!,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                      fontSize: 7.5
+                      fontSize: 7.5.sp
                     ),
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthenticationTitle extends StatelessWidget {
   final String? text;
@@ -8,9 +9,9 @@ class AuthenticationTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Text(
       text!,
-      style: const TextStyle(
+      style:  TextStyle(
         color: Colors.black,
-        fontSize: 18,
+        fontSize: 18.sp,
         fontWeight: FontWeight.w600,
       ),
     );

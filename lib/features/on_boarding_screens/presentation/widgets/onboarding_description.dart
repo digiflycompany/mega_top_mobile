@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/spacer.dart';
@@ -16,9 +17,9 @@ class OnboardingDescription extends StatelessWidget {
         children: [
            Text(
             title!,
-            style: const TextStyle(
+            style: TextStyle(
                 color: Colors.black,
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w700
             ),
           ),
@@ -29,9 +30,9 @@ class OnboardingDescription extends StatelessWidget {
               description!,
               textAlign: TextAlign.center,
               textDirection: TextDirection.ltr,
-              style: const TextStyle(
+              style: TextStyle(
                   color: AppColors.greyTextColor,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500
               ),
             ),

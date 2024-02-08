@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitleText extends StatelessWidget {
   final   String? text;
@@ -8,9 +9,9 @@ class TitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text!,
-      style: const TextStyle(
+      style:  TextStyle(
           color: Colors.black,
-          fontSize: 16,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w700
       ),
     );

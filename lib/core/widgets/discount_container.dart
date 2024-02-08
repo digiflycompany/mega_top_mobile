@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../utils/app_color.dart';
 
@@ -20,10 +21,10 @@ class DiscountContainer extends StatelessWidget {
       child:  Center(
         child: Text(
           discountPercent!,
-          style: const TextStyle(
+          style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w700,
-              fontSize: 12
+              fontSize: 12.sp
           ),
         ),
       ),

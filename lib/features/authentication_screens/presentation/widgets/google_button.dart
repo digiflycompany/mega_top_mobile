@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
@@ -26,10 +27,10 @@ class GoogleButton extends StatelessWidget {
             Center(
               child: Text(
                 text!,
-                style: const TextStyle(
+                style:  TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
-                    fontSize: 15
+                    fontSize: 15.sp
                 ),
               ),
             ),

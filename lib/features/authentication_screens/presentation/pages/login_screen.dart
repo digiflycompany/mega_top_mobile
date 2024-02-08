@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -84,12 +85,12 @@ class LoginScreen extends StatelessWidget {
                         text: AppStrings.loginEn,
                       ),
                       VerticalSpace(context.height*0.033),
-                      const Text(
+                       Text(
                           AppStrings.orEn,
                           style: TextStyle(
                              color: AppColors.greyTextColor,
                             fontWeight: FontWeight.w500,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                           ),
                       ),
                       VerticalSpace(context.height*0.033),

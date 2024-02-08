@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../utils/app_assets.dart';
@@ -23,12 +24,12 @@ class AvailableContainer extends StatelessWidget {
         children: [
           SvgPicture.asset(AppAssets.smallCheckIcon),
           HorizontalSpace(context.width*0.011),
-          const Text(
+          Text(
             AppStrings.availableEn,
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,
-                fontSize: 10
+                fontSize: 11.sp
             ),
           )
         ],

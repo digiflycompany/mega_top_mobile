@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -47,19 +48,19 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
                 ),
                 Text(
                     label,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
-                    fontSize: 14
+                    fontSize: 14.sp
                   ),
                 ),
                 HorizontalSpace(context.width*0.008),
                 Text(
                   description!,
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 14
+                      fontSize: 14.sp
                   ),
                 ),
               ],

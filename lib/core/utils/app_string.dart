@@ -61,6 +61,8 @@ class AppStrings {
   static const String bestSellerEn='Best seller';
   static const String discountPercentEn='-17%';
   static const String viewAllEn='View all';
+  static const String viewCartEn='View Cart';
+  static const String continueShoppingEn='Continue Shopping';
   static const String surveillanceCamerasEn='Surveillance...';
   static const String twentyFiveProducts='25 Product';
   static const String upsEn='UPS';
@@ -99,6 +101,7 @@ class AppStrings {
   static const String batteryRechargingTimeEn='Battery recharging time:';
   static const String latestProducts='Latest products';
   static const String youMayAlsoLikeEn='You may also like';
+  static const String theProductAddedToCartEn='The product added to cart';
   static const String searchForProductsEn='Search for the product';
   static const String storageUnitsSmallEn='Storage units';
   static const String yourLastSearchEn='Your latest search';

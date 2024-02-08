@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/brands_checklist.dart';
@@ -16,14 +17,14 @@ class FilterBottomSheetBody extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
         child: Column(
           children: [
-            const Align(
+             Align(
               alignment: AlignmentDirectional.topStart,
               child: Text(
                 AppStrings.brandEn,
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
-                  fontSize: 15,
+                  fontSize: 15.sp,
                 ),
               ),
             ),

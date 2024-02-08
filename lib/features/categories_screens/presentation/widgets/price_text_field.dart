@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -15,10 +16,10 @@ class PriceTextField extends StatelessWidget {
         cursorColor: AppColors.blackGreyColor,
         decoration: InputDecoration(
           labelText: AppStrings.priceInEgpEn,
-          labelStyle: const TextStyle(
+          labelStyle:  TextStyle(
               color: AppColors.blackGreyColor,
               fontWeight: FontWeight.w500,
-              fontSize: 14
+              fontSize: 14.sp
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.height*0.006),

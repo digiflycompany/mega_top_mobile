@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_assets.dart';
@@ -16,19 +17,19 @@ class ViewAllRow extends StatelessWidget {
       children: [
          Text(
           bigText!,
-          style: const TextStyle(
+          style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
-              fontSize: 18
+              fontSize: 18.sp
           ),
         ),
         const Spacer(),
-        const Text(
+        Text(
           AppStrings.viewAllEn,
           style: TextStyle(
               color: AppColors.primaryColor,
               fontWeight: FontWeight.w700,
-              fontSize: 14
+              fontSize: 14.sp
           ),
         ),
         HorizontalSpace(context.width*0.022),

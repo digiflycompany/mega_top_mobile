@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
@@ -30,11 +31,11 @@ class CustomSearchBar extends StatelessWidget {
               HorizontalSpace(context.width*0.045),
               SvgPicture.asset(AppAssets.searchIcon),
               HorizontalSpace(context.width*0.022),
-              const Text(
+               Text(
                 AppStrings.searchHereEn,
                 style: TextStyle(
                   color: AppColors.blackGreyColor,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500
                 ),
               ),

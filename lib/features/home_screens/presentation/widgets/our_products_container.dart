@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/spacer.dart';
@@ -42,18 +43,18 @@ class OurProductsContainer extends StatelessWidget {
                     productName!,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.black,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w700
                     ),
                   ),
                   const Spacer(),
                   Text(
                     productQuantity!,
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: AppColors.greyTextColor,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.w500
                     ),
                   ),

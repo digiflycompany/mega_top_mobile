@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ProductDetailedSmallDescription extends StatelessWidget {
@@ -12,7 +13,7 @@ class ProductDetailedSmallDescription extends StatelessWidget {
       style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.w500,
-          fontSize: 14,
+          fontSize: 14.sp,
           height: context.width*0.005
       ),
     );

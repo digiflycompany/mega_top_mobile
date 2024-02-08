@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/latest_products_list.dart';
 
@@ -7,7 +8,7 @@ class YouMayAlsoLikeColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Column(
+    return  Column(
       children: [
         Align(
           alignment: AlignmentDirectional.topStart,
@@ -16,11 +17,11 @@ class YouMayAlsoLikeColumn extends StatelessWidget {
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,
-                fontSize: 16
+                fontSize: 16.sp
             ),
           ),
         ),
-        LatestProductsList(),
+        const LatestProductsList(),
       ],
     );
   }

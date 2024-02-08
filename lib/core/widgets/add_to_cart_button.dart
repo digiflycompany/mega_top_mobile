@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import '../utils/app_assets.dart';
@@ -32,12 +33,12 @@ class AddToCartButton extends StatelessWidget {
               children: [
                 SvgPicture.asset(AppAssets.cartButtonIcon,width: context.width*0.066,),
                 HorizontalSpace(context.width*0.022),
-                const Text(
+                 Text(
                   AppStrings.addToCartEn,
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                      fontSize: 16
+                      fontSize: 16.sp
                   ),
                 )
               ],
