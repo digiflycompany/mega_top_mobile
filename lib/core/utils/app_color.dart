@@ -26,5 +26,6 @@ class AppColors {
   static const Color smallTextBlackColor =Color.fromRGBO(102, 102, 102, 1);
   static const Color addToCartBottomSheetBackgroundColor =Color.fromRGBO(230, 246, 240, 1);
   static const Color addToCartBottomSheetBorderColor =Color.fromRGBO(196, 234, 220, 1);
+  static const Color primaryGreenColor =Color.fromRGBO(0, 164, 104, 1);
 
 }
