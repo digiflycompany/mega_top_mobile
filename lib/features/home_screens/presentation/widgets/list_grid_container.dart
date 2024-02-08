@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_color.dart';
@@ -28,10 +29,10 @@ class ListGridContainer extends StatelessWidget {
             HorizontalSpace(context.width*0.022 ),
             Text(
               text!,
-              style: const TextStyle(
+              style:  TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
-                  fontSize: 15.5
+                  fontSize: 15.5.sp
               ),
             ),
           ],

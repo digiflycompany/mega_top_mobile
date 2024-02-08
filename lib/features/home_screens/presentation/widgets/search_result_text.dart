@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -15,17 +16,17 @@ class SearchResultCount extends StatelessWidget {
         children: [
           Text(
             searchCount!,
-            style: const TextStyle(
+            style: TextStyle(
                 color: AppColors.blackColor,
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w700
             ),
           ),
-          const Text(
+          Text(
             AppStrings.resultsFound,
             style: TextStyle(
                 color: AppColors.blackColor,
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w600
             ),
           ),

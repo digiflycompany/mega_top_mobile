@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../utils/app_color.dart';
@@ -18,10 +19,10 @@ class PasswordTextField extends StatelessWidget {
       obscureText: obscure,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(
+        hintStyle:  TextStyle(
           color: AppColors.greyTextColor,
           fontWeight: FontWeight.w500,
-          fontSize: 14,
+          fontSize: 14.sp,
         ),
         enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(width: 1, color: AppColors.googleButtonBorder),

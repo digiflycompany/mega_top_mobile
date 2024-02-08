@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
@@ -77,10 +78,10 @@ class ProductsGridContainer extends StatelessWidget {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       productName!,
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
-                          fontSize: 12
+                          fontSize: 12.sp
                       ),
                     ),
                   ),
@@ -89,10 +90,10 @@ class ProductsGridContainer extends StatelessWidget {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       productType!,
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: AppColors.greyTextColor,
                           fontWeight: FontWeight.w600,
-                          fontSize: 10
+                          fontSize: 10.sp
                       ),
                     ),
                   ),
@@ -103,9 +104,9 @@ class ProductsGridContainer extends StatelessWidget {
                       const Spacer(),
                       Text(
                         productPrice!,
-                        style: const TextStyle(
+                        style: TextStyle(
                             color: AppColors.primaryColor,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.w700
                         ),
                       )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
@@ -61,10 +62,10 @@ class LatestProductsContainer extends StatelessWidget {
                       child:  Center(
                         child: Text(
                           discountPercent!,
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
-                              fontSize: 12
+                              fontSize: 12.sp
                           ),
                         ),
                       ),
@@ -87,10 +88,10 @@ class LatestProductsContainer extends StatelessWidget {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       productName!,
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
-                          fontSize: 14
+                          fontSize: 14.sp
                       ),
                     ),
                   ),
@@ -99,10 +100,10 @@ class LatestProductsContainer extends StatelessWidget {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       productType!,
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: AppColors.greyTextColor,
                           fontWeight: FontWeight.w600,
-                          fontSize: 12
+                          fontSize: 12.sp
                       ),
                     ),
                   ),
@@ -113,9 +114,9 @@ class LatestProductsContainer extends StatelessWidget {
                       const Spacer(),
                       Text(
                         productPrice!,
-                        style: const TextStyle(
+                        style: TextStyle(
                             color: AppColors.primaryColor,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w700
                         ),
                       )

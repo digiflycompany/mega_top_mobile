@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../utils/app_color.dart';
 
@@ -22,10 +23,10 @@ class PrimaryButton extends StatelessWidget {
         child:  Center(
           child: Text(
             text!,
-            style: const TextStyle(
+            style:  TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
-                fontSize: 17
+                fontSize: 17.sp
             ),
           ),
         ),

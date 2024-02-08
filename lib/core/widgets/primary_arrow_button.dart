@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
@@ -27,10 +28,10 @@ class PrimaryArrowButton extends StatelessWidget {
               Center(
                 child: Text(
                   text!,
-                  style: const TextStyle(
+                  style:  TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                      fontSize: 17
+                      fontSize: 17.sp
                   ),
                 ),
               ),

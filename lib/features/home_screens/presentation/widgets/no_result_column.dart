@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
@@ -33,21 +34,21 @@ class NoResultColumn extends StatelessWidget {
                 width: context.width * 0.222,),
             )),
         VerticalSpace(context.height * 0.05),
-        const Text(
+        Text(
           AppStrings.noResultsEn,
           style: TextStyle(
               color: Colors.black,
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w700
           ),
         ),
         VerticalSpace(context.height * 0.01),
-        const Text(
+        Text(
           AppStrings.noResultLongEn,
           textAlign: TextAlign.center,
           style: TextStyle(
               color: AppColors.greyTextColor,
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w500
           ),
         ),

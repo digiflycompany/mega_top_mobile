@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
 
@@ -12,12 +13,12 @@ class SearchTextField extends StatelessWidget {
       child: TextFormField(
         focusNode: focusNode,
         cursorColor: AppColors.greyTextColor,
-        decoration: const InputDecoration(
+        decoration:  InputDecoration(
           border: InputBorder.none,
           hintText: AppStrings.searchHereEn,
           hintStyle: TextStyle(
             color: AppColors.blackGreyColor,
-            fontSize: 14,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w500,
           ),
         ),

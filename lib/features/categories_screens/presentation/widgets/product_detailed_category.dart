@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_color.dart';
 
 class ProductDetailedCategory extends StatelessWidget {
@@ -11,9 +12,9 @@ class ProductDetailedCategory extends StatelessWidget {
       alignment: AlignmentDirectional.topStart,
       child: Text(
         category!,
-        style: const TextStyle(
+        style:  TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 12,
+          fontSize: 12.sp,
           color: AppColors.greyTextColor,
         ),
       ),

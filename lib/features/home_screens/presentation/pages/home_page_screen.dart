@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
@@ -63,13 +64,13 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: AppColors.blackGreyColor,
         onTap: _onItemTapped,
         showUnselectedLabels: true,
-        unselectedLabelStyle: const TextStyle(
-          fontSize: 12,
+        unselectedLabelStyle:  TextStyle(
+          fontSize: 12.sp,
           fontWeight: FontWeight.w600,
           color: AppColors.blackGreyColor
         ),
-        selectedLabelStyle: const TextStyle(
-            fontSize: 12,
+        selectedLabelStyle: TextStyle(
+            fontSize: 12.sp,
             fontWeight: FontWeight.w700,
             color: AppColors.primaryColor
         ),
