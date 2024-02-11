@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
+import '../utils/app_routes.dart';
 import 'cart_bottom_sheet_product_details.dart';
 
 class AddToCartBottomSheet extends StatelessWidget {
@@ -23,14 +24,16 @@ class AddToCartBottomSheet extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const PrimaryButton(
+                    /// View Cart Button
+                    PrimaryButton(
                       text: AppStrings.viewCartEn,
+                      onTap: () =>Routes.signUpOrLoginPageRoute.moveTo,
                     ),
                     VerticalSpace(context.height*0.033),
                     /// Continue Shopping Button
                     PrimaryEmptyButton(
-                        onTap: () =>Navigator.pop(context),
                         text: AppStrings.continueShoppingEn,
+                        onTap: () =>Navigator.pop(context),
                         horizontalPadding: 0
                     ),
                   ],

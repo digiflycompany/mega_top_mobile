@@ -6,11 +6,10 @@ import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_or_continue_column.dart';
-
 import '../../../../core/utils/app_routes.dart';
 
-class SignUpOrLoginScreen extends StatelessWidget {
-  const SignUpOrLoginScreen({super.key});
+class SignUpOrLoginPage extends StatelessWidget {
+  const SignUpOrLoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {

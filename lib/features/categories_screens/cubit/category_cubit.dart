@@ -134,6 +134,11 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryInitial());
   }
 
+  void toggleCompare() {
+    addedToCompare = !addedToCompare;
+    emit(CategoryInitial());
+  }
+
   void initializeCheckboxes(List<String> items) {
     for (var item in items) {
       checkboxStates[item] = false;
