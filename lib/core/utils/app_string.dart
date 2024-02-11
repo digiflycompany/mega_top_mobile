@@ -35,6 +35,7 @@ class AppStrings {
   static const String createAccount='إنشاء حساب';
   static const String createAccountEn='Sign up';
   static const String continueWithGoogleEn='Continue with Google';
+  static const String theProductAddedToWishListEn='The product added to wish list';
   static const String continueWithGoogle='إنشاء حساب';
   static const String usernameEn='Username';
   static const String confirmPasswordEn='Confirm password';
