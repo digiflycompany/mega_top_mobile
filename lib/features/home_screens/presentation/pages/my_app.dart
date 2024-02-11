@@ -9,7 +9,7 @@ import '../../../../core/utils/app_fonts.dart';
 import '../../../../core/utils/app_services_dart.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../authentication_screens/cubit/auth_cubit.dart';
-import '../../../categories_screens/presentation/pages/category_product_details_screen.dart';
+import '../../../authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
 import '../../cubit/home_cubit.dart';
 
 class MyApp extends StatelessWidget {
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
             ],
             navigatorKey: AppService().navigatorKey,
             // onGenerateRoute: RouteGenerator.getRoute,
-            home: const CategoryProductDetailsPage(),
+            home: const SignUpOrLoginScreen(),
           ),
         );
       },

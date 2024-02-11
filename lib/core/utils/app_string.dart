@@ -39,6 +39,8 @@ class AppStrings {
   static const String theProductRemovedFromWishListEn='The product removed from wish list';
   static const String theProductAddedToCompareEn='The product added to the Compare Products';
   static const String theProductRemovedFromCompareEn='The product removed from the Compare Products';
+  static const String welcomeToMegaTopEn='Welcome to Mega Top';
+  static const String loginOrCreateEnEn='Log in or create a new account';
   static const String continueWithGoogle='إنشاء حساب';
   static const String usernameEn='Username';
   static const String confirmPasswordEn='Confirm password';

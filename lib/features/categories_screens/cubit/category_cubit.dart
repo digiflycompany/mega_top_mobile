@@ -5,7 +5,6 @@ import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
-
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/widgets/custom_animated_icon_toast.dart';
@@ -18,6 +17,8 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   bool isGrid = true;
   bool noResult = false;
+  bool addedToFavourites = false;
+  bool addedToCompare = false;
   String _selectedValue = AppStrings.defaultEn;
   String get selectedValue => _selectedValue;
   final Map<String, bool> checkboxStates = {};
@@ -125,6 +126,11 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   void toggleList() {
     isGrid = !isGrid;
+    emit(CategoryInitial());
+  }
+
+  void toggleFavourite() {
+    addedToFavourites = !addedToFavourites;
     emit(CategoryInitial());
   }
 

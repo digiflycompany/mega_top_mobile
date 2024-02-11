@@ -14,6 +14,7 @@ class ProductImages extends StatelessWidget {
       child: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
           return PageView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: categoryCubit.images.length,
             onPageChanged:(index)=> categoryCubit.setImageIndex(index),
             itemBuilder: (context, index) {
