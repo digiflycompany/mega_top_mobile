@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/app_bar_fav_icon.dart';
-import '../../../categories_screens/cubit/category_cubit.dart';
-import '../../../categories_screens/cubit/category_state.dart';
-import '../../../categories_screens/presentation/widgets/category_items_options_row.dart';
 import '../widgets/offers_items_grid.dart';
 import '../widgets/offers_items_list.dart';
+import '../widgets/offers_items_options_row.dart';
 
 class OffersPage extends StatelessWidget {
   const OffersPage({super.key});
@@ -24,8 +23,8 @@ class OffersPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
         child:  Column(
           children: [
-            CategoryItemsOptionsRow(topPadding:context.height * 0.028,bottomPadding: context.height * 0.033,),
-            BlocConsumer<CategoryCubit, CategoryState>(
+            OffersItemsOptionsRow(topPadding:context.height * 0.028,bottomPadding: context.height * 0.033,),
+            BlocConsumer<OffersCubit, OffersState>(
               listener: (context, state) {},
               builder: (context, state) {
                 return offersCubit.isGrid?const OffersItemsGridView():const OffersItemsListView();

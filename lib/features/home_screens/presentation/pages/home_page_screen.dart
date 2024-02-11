@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/features/categories_screens/presentation/pages/c
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/main_screen.dart';
+import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offers_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const MainPage(),
     const CategoriesPage(),
-    const Center(child: Text('Offers Page')),
+    const OffersPage(),
     const Center(child: Text('Offers Page')),
     const Center(child: Text('Account Page')),
   ];

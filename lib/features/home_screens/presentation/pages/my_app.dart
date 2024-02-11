@@ -5,8 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
-import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offers_screen.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_services_dart.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../authentication_screens/cubit/auth_cubit.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
             BlocProvider<CategoryCubit>(
               create: (BuildContext context) => CategoryCubit(),
             ),
+            BlocProvider<OffersCubit>(
+              create: (BuildContext context) => OffersCubit(),
+            ),
           ],
           child: GetMaterialApp(
             theme: ThemeData(
@@ -47,8 +51,8 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             navigatorKey: AppService().navigatorKey,
-            //onGenerateRoute: RouteGenerator.getRoute,
-            home: const OffersPage(),
+            onGenerateRoute: RouteGenerator.getRoute,
+            //home: const OffersPage(),
           ),
         );
       },
