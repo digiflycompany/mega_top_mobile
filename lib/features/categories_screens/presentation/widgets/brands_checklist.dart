@@ -18,6 +18,7 @@ class BrandsCheckList extends StatelessWidget {
     builder: (context, state) {
       final checkboxStates = categoryCubit.checkboxStates;
       return ListView.separated(
+        physics:const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemCount: checkboxStates.length,
         separatorBuilder: (context, index) => const VerticalSpace(1),
