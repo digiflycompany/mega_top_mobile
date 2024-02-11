@@ -27,11 +27,12 @@ class AddToCartBottomSheet extends StatelessWidget {
                       text: AppStrings.viewCartEn,
                     ),
                     VerticalSpace(context.height*0.033),
-                    const PrimaryEmptyButton(
+                    /// Continue Shopping Button
+                    PrimaryEmptyButton(
+                        onTap: () =>Navigator.pop(context),
                         text: AppStrings.continueShoppingEn,
                         horizontalPadding: 0
                     ),
-
                   ],
                 ),
               ),
