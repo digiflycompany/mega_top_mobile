@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_fonts.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 
-class AnimatedOverlayToast extends StatefulWidget {
+class AnimatedOverlayIconToast extends StatefulWidget {
+  final String toastIcon;
   final Color color;
   final String message;
   final VoidCallback onDismissed;
 
-  const AnimatedOverlayToast({
+  const AnimatedOverlayIconToast({
     Key? key,
     required this.message,
-    required this.onDismissed, required this.color,
+    required this.onDismissed, required this.color, required this.toastIcon,
   }) : super(key: key);
 
   @override
-  State<AnimatedOverlayToast> createState() => _AnimatedOverlayToastState();
+  State<AnimatedOverlayIconToast> createState() => _AnimatedOverlayToastState();
 }
 
-class _AnimatedOverlayToastState extends State<AnimatedOverlayToast>
+class _AnimatedOverlayToastState extends State<AnimatedOverlayIconToast>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacity;
@@ -58,15 +61,22 @@ class _AnimatedOverlayToastState extends State<AnimatedOverlayToast>
         alignment: Alignment.center,
         height: context.height*0.087,
         color: widget.color,
-        child: Text(
-          widget.message,
-          style:  TextStyle(
-              color: Colors.white,
-              fontSize: 15.sp,
-              fontFamily: FontFamilies.cairo,
-              fontWeight: FontWeight.w700,
-              decoration: TextDecoration.none
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(widget.toastIcon),
+            HorizontalSpace(context.width*0.022),
+            Text(
+              widget.message,
+              style:  TextStyle(
+                color: Colors.white,
+                fontSize: 14.sp,
+                fontFamily: FontFamilies.cairo,
+                fontWeight: FontWeight.w700,
+                decoration: TextDecoration.none
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -36,6 +36,9 @@ class AppStrings {
   static const String createAccountEn='Sign up';
   static const String continueWithGoogleEn='Continue with Google';
   static const String theProductAddedToWishListEn='The product added to wish list';
+  static const String theProductRemovedFromWishListEn='The product removed from wish list';
+  static const String theProductAddedToCompareEn='The product added to the Compare Products';
+  static const String theProductRemovedFromCompareEn='The product removed from the Compare Products';
   static const String continueWithGoogle='إنشاء حساب';
   static const String usernameEn='Username';
   static const String confirmPasswordEn='Confirm password';
