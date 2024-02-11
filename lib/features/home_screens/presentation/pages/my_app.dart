@@ -6,10 +6,10 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_services_dart.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../authentication_screens/cubit/auth_cubit.dart';
-import '../../../authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
 import '../../cubit/home_cubit.dart';
 
 class MyApp extends StatelessWidget {
@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             navigatorKey: AppService().navigatorKey,
-            // onGenerateRoute: RouteGenerator.getRoute,
-            home: const SignUpOrLoginScreen(),
+            onGenerateRoute: RouteGenerator.getRoute,
+            //home: const SignUpOrLoginPage(),
           ),
         );
       },

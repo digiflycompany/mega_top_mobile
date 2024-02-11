@@ -34,7 +34,10 @@ class FavourCompareColumn extends StatelessWidget {
                 VerticalSpace(context.height * 0.012),
                 WhiteBoxIcon(
                   icon: AppAssets.compareIcon,
-                  onTap: () => categoryCubit.showAddToCompareToast(context),
+                  onTap: () {
+                    categoryCubit.addedToCompare?categoryCubit.showRemoveFromCompareToast(context):categoryCubit.showAddToCompareToast(context);
+                    categoryCubit.toggleCompare();
+                  },
                 ),
               ],
             ),
