@@ -10,16 +10,19 @@ class EmptyCartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const EmptyCartIcon(),
-        VerticalSpace(context.height*0.055),
-        const EmptyCartText(),
-        VerticalSpace(context.height*0.033),
-        const ContinueShoppingButton(),
-      ],
+    return  Padding(
+      padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const EmptyCartIcon(),
+          VerticalSpace(context.height*0.055),
+          const EmptyCartText(),
+          VerticalSpace(context.height*0.033),
+          const ContinueShoppingButton(),
+        ],
+      ),
     );
   }
 }

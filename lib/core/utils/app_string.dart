@@ -69,6 +69,7 @@ class AppStrings {
   static const String viewAllEn='View all';
   static const String viewCartEn='View Cart';
   static const String continueShoppingEn='Continue Shopping';
+  static const String addressInCartEn='Delivery to Egypt - section 2, Nasr City';
   static const String surveillanceCamerasEn='Surveillance...';
   static const String twentyFiveProducts='25 Product';
   static const String upsEn='UPS';
