@@ -126,6 +126,9 @@ class AppStrings {
   static const String brandEn='Brand';
   static const String acerEn='Acer';
   static const String toshibaEn='Toshiba';
+  static const String shoppingCartEn='Shopping Cart';
+  static const String yourShoppingCartIsEmptyEn='Your shopping cart is empty';
+  static const String browseProductsLongTextEn='Browse our products and add the products you want to buy to the shopping cart by clicking the add button.';
   static const String sonyEn='Sony';
   static const String fromEn='From';
   static const String toEn='To';
@@ -140,6 +143,7 @@ class AppStrings {
   static const String resultsCount='98 ';
   static const String le1500='1500 L.E';
   static const String four='4';
+  static const String one='1';
   static const String five='5';
   static const String six ='6';
   static const String seven='7';

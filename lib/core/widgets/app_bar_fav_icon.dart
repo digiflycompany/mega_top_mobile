@@ -31,7 +31,7 @@ class CustomFavouriteAppBar extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: context.width*0.045),
-            child: const CustomerIcon(icon: AppAssets.favouritesIcon,number: AppStrings.twelve,),
+            child: const CustomerIcon(icon: AppAssets.favouritesIcon,number: AppStrings.one,),
           ),
         ],
       ),
