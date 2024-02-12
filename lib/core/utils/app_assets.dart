@@ -73,6 +73,7 @@ class AppAssets {
   static const String cartButtonIcon = "$svgPath/cart_button_icon.svg";
   static const String checkMediumIcon = "$svgPath/check_medium_icon.svg";
   static const String hiLookImg = "$imagesPath/hiLook.png";
+  static const String emptyCartImg = "$imagesPath/empty_cart.png";
   static const String ezVizImg = "$imagesPath/EzViz.png";
   static const String productBigPhoto = "$imagesPath/product_big_photo.png";
   static const String productBigPhotoRight = "$imagesPath/product_big_photo_right.png";

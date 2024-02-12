@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -11,18 +12,18 @@ class LoginOrContinueColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
+         Text(
           AppStrings.welcomeToMegaTopEn,
           style: TextStyle(
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w700
           ),
         ),
         VerticalSpace(context.height*0.022 ),
-        const Text(
+        Text(
           AppStrings.loginOrCreateEnEn,
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 14.sp,
               color: AppColors.greyTextColor,
               fontWeight: FontWeight.w500
           ),
