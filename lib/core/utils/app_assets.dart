@@ -68,6 +68,7 @@ class AppAssets {
   static const String closeIcon = "$svgPath/close_icon.svg";
   static const String compareIcon = "$svgPath/compare_icon.svg";
   static const String locationBlackIcon = "$svgPath/location_black_icon.svg";
+  static const String bottomArrowIcon = "$svgPath/bottom_arrow.svg";
   static const String addToWishListIcon = "$svgPath/add_to_wish_list_icon.svg";
   static const String removeFromWishListIcon = "$svgPath/removed_from_wish_list_icon.svg";
   static const String favourFilledIcon = "$svgPath/favour_filled_icon.svg";
