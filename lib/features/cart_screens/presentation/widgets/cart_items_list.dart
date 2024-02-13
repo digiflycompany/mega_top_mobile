@@ -12,7 +12,7 @@ class CartItemsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Product> products = [
       Product(
-        productName: AppStrings.hardDiskEn,
+        productName: AppStrings.upsVersion1En,
         productPhoto: AppAssets.upsSearchResult,
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
@@ -20,12 +20,12 @@ class CartItemsListView extends StatelessWidget {
         discount: true,
       ),
       Product(
-        productName: AppStrings.hardDiskEn,
+        productName: AppStrings.upsVersion1En,
         productPhoto: AppAssets.upsSearchResult,
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
         discountPercent: AppStrings.discountPercentEn,
-        discount: true,
+        discount: false,
       ),
     ];
     return Expanded(

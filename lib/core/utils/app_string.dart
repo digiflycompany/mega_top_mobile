@@ -57,6 +57,7 @@ class AppStrings {
   static const String verifyEn='Verify';
   static const String ifYouDidNotRecCodeEn='If you don’t receive code?';
   static const String resendCodeEn='Resend code';
+  static const String checkoutEn='Checkout';
   static const String createNewPasswordEn='Create new password';
   static const String createNewPasswordDescriptionEn='Your new password must be different\nfrom previously used password.';
   static const String enterYourNewPasswordEn='Enter your new password';
@@ -71,6 +72,7 @@ class AppStrings {
   static const String continueShoppingEn='Continue Shopping';
   static const String yourShipmentEn='Your shipment';
   static const String productsEn='Products';
+  static const String products2En='products :';
   static const String productsQuantityEn='2';
   static const String addressInCartEn='Delivery to Egypt - section 2, Nasr City';
   static const String surveillanceCamerasEn='Surveillance...';
@@ -153,6 +155,7 @@ class AppStrings {
   static const String seven='7';
   static const String twelve='12';
   static const String fourteen='14';
+  static const String threeThousand='3000';
 
 
 }
