@@ -3,7 +3,7 @@ import 'cart_states.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
-  int itemCount = 0;
+  int itemCount = 1;
 
   static CartCubit getCubit(context) => BlocProvider.of<CartCubit>(context);
 
@@ -13,7 +13,7 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void decrement() {
-    if (itemCount > 0) {
+    if (itemCount > 1) {
       itemCount--;
       emit(CartItemCountChanged(itemCount));
     }

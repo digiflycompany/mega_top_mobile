@@ -39,7 +39,6 @@ class PrimaryArrowButton extends StatelessWidget {
                   alignment: AlignmentDirectional.centerEnd,
                   child: Padding(
                     padding:  EdgeInsets.only(right: context.width*0.066),
-                    //padding:  EdgeInsets.only(right: 24),
                     child: SvgPicture.asset(AppAssets.arrowButton),
                   )),
             ],

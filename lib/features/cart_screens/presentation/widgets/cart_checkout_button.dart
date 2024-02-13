@@ -18,7 +18,7 @@ class CartCheckoutButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        height: context.height*0.069,
+        height: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
           borderRadius: BorderRadius.circular(4.r),

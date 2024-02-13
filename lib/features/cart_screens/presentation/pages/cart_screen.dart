@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_checkout_button.dart';
 import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../../../core/widgets/app_bar_fav_icon.dart';
@@ -45,6 +46,7 @@ class CartPage extends StatelessWidget {
       ),
       bottomNavigationBar: ButtonBottomNavBar(
         button: CartCheckoutButton(
+          onTap: ()=>Routes.shippingDetailsPageRoute.moveTo,
         ),
       ),
     );

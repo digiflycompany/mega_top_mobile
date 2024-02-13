@@ -8,8 +8,9 @@ import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/app_bar_back_icon.dart';
 import 'customer_icon.dart';
 class PrimaryAppBar extends StatelessWidget {
-  const PrimaryAppBar(  this.text, {super.key});
+  const PrimaryAppBar(  this.text, {super.key, this.favour=true});
   final String text;
+  final bool favour;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,8 @@ class PrimaryAppBar extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: AppColors.shadowAppBarColor,
-              offset: Offset(0.0, 4.0), // Offset to control the shadow position
-              blurRadius: 4.0, // Spread of the shadow
+              offset: Offset(0.0, 4.0),
+              blurRadius: 4.0,
             ),
           ],
         ),
@@ -39,10 +40,10 @@ class PrimaryAppBar extends StatelessWidget {
               child: TitleText(text: text),
             ),
             const Spacer(),
-            Padding(
+            favour?Padding(
               padding: EdgeInsets.only(right: context.width*0.045),
               child: const CustomerIcon(icon: AppAssets.favouritesIcon,number: AppStrings.twelve,),
-            ),
+            ):Container(),
           ],
         ),
       ),

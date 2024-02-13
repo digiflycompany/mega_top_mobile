@@ -71,6 +71,7 @@ class AppStrings {
   static const String viewCartEn='View Cart';
   static const String continueShoppingEn='Continue Shopping';
   static const String yourShipmentEn='Your shipment';
+  static const String shippingDetailsEn='Shipping Details';
   static const String productsEn='Products';
   static const String products2En='products :';
   static const String productsQuantityEn='2';
