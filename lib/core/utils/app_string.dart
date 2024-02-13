@@ -63,6 +63,8 @@ class AppStrings {
   static const String enterYourNewPasswordEn='Enter your new password';
   static const String confirmYourNewPasswordEn='Confirm your new password';
   static const String congratulationsEn='Congratulations';
+  static const String addressNasrCityEn='Nasr City District, Abbas Al Akkad Street, 222';
+  static const String telephoneAddressEn='T: 01020889544';
   static const String customerNameEn='Mohamed Nashaat';
   static const String ourProductsEn='Our products';
   static const String bestSellerEn='Best seller';
@@ -71,6 +73,9 @@ class AppStrings {
   static const String viewCartEn='View Cart';
   static const String continueShoppingEn='Continue Shopping';
   static const String yourShipmentEn='Your shipment';
+  static const String shippingDetailsEn='Shipping Details';
+  static const String selectTheDeliveryAddressEn='Select the delivery address';
+  static const String confirmShippingAddressEn='Confirm Shipping Address';
   static const String productsEn='Products';
   static const String products2En='products :';
   static const String productsQuantityEn='2';
@@ -78,6 +83,8 @@ class AppStrings {
   static const String surveillanceCamerasEn='Surveillance...';
   static const String twentyFiveProducts='25 Product';
   static const String upsEn='UPS';
+  static const String editEn='Edit';
+  static const String removeEn='Remove';
   static const String networkEn='Network';
   static const String hiLookEn='HiLook';
   static const String hikVisionEn='HikVision';

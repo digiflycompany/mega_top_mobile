@@ -19,9 +19,10 @@ class AppBarBackArrow extends StatelessWidget {
           decoration: BoxDecoration(
             color: color,
           ),
-          child:Transform.scale(
-              scale: 0.6,
-              child: SvgPicture.asset(AppAssets.backArrowEn)),
+          child:Padding(
+            padding:  EdgeInsets.symmetric(horizontal: context.width*0.022,vertical: context.height*0.012),
+            child: SvgPicture.asset(AppAssets.backArrowEn),
+          ),
         ),
       ),
     );
