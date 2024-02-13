@@ -33,7 +33,7 @@ class CartPage extends StatelessWidget {
                       VerticalSpace(context.height * 0.028),
                       const ShipmentQuantityRow(),
                       VerticalSpace(context.height * 0.033),
-                      const CartItemsListView()
+                      const CartItemsListView(),
                     ],
                   ),
                 ),

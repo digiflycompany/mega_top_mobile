@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/arithmetic_container.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
 
@@ -89,16 +90,18 @@ class CartItemsContainer extends StatelessWidget {
                     const Spacer(),
                     Row(
                       children: [
-                        const AvailableContainer(),
-                        const Spacer(),
                         /// Product Price
                         Text(
                           productPrice!,
                           style: TextStyle(
                               color: AppColors.primaryColor,
-                              fontSize: 12.sp,
+                              fontSize: 14.sp,
                               fontWeight: FontWeight.w700
                           ),
+                        ),
+                        /// Plus Icon
+                        const ArithmeticContainer(
+                          icon: AppAssets.plusIcon,
                         )
                       ],
                     ),

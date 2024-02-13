@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -18,11 +17,11 @@ class SkipText extends StatelessWidget {
           alignment: AlignmentDirectional.centerEnd,
           child: Padding(
            padding:   EdgeInsets.all(context.height*0.0165),
-           child: Text(
+           child: const Text(
              AppStrings.skipEn,
              style: TextStyle(
                color: AppColors.primaryColor,
-               fontSize: 14.sp,
+               fontSize: 14,
                fontWeight: FontWeight.w600,
              ),
            ),
