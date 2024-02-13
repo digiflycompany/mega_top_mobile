@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
+import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/product_detailed_image.dart';
 import 'package:mega_top_mobile/core/widgets/product_details_app_bar.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
@@ -29,9 +30,11 @@ class CategoryProductDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: AddToCartButton(
-        onTap:() =>categoryCubit.showAddedToCartBottomSheet(context),
-      ),
+      bottomNavigationBar: ButtonBottomNavBar(
+        button:AddToCartButton(
+          onTap:() =>categoryCubit.showAddedToCartBottomSheet(context),
+        ),
+      )
     );
   }
 }
