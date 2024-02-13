@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/arithmetic_container.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_name.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_price.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_type.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
+import '../../../../core/widgets/product_photo_list_view.dart';
 
 class CartItemsContainer extends StatelessWidget {
   final String? productPhoto;
@@ -41,18 +44,7 @@ class CartItemsContainer extends StatelessWidget {
               padding:  EdgeInsets.only(left: context.width*0.022,right: context.width*0.045,top: context.height*0.012,bottom:context.height*0.012 ),
               child: Stack(
                 children: [
-                  Container(
-                    width: context.width*0.332,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(context.height*0.0065),
-                      color: AppColors.iconsBackgroundColor,
-                    ),
-                    child:Center(child: Padding(
-                      padding:  EdgeInsets.only(top: context.height*0.016),
-                      child: Image.asset(productPhoto!,width: context.width*0.16,),
-                    )),
-                  ),
+                  ProductPhotoListView(photo:productPhoto,),
                   discount==true?Padding(
                     padding:  EdgeInsets.symmetric(vertical:context.height*0.009,horizontal:context.width*0.016),
                     child: DiscountContainer(
@@ -70,39 +62,16 @@ class CartItemsContainer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      productName!,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 13.sp
-                      ),
-                    ),
-                    /// Product Type
-                    Text(
-                      productType!,
-                      style: TextStyle(
-                          color: AppColors.greyTextColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 10.sp
-                      ),
-                    ),
-                    const Spacer(),
-                    Row(
+                  CartListProductName(text: productName),
+                  CartListProductType(text: productType,),
+                  const Spacer(),
+                  Row(
                       children: [
-                        /// Product Price
-                        Text(
-                          productPrice!,
-                          style: TextStyle(
-                              color: AppColors.primaryColor,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700
-                          ),
-                        ),
-                        /// Plus Icon
-                        const ArithmeticContainer(
+                       CartListProductPrice(text: productPrice,),
+                       const ArithmeticContainer(
                           icon: AppAssets.plusIcon,
-                        )
+                        ),
+
                       ],
                     ),
                   ],
