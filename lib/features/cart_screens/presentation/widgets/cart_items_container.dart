@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
+import 'package:mega_top_mobile/features/cart_screens/cubit/cart_cubit.dart';
+import 'package:mega_top_mobile/features/cart_screens/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/arithmetic_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_name.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_price.dart';
@@ -41,7 +43,7 @@ class CartItemsContainer extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding:  EdgeInsets.only(left: context.width*0.022,right: context.width*0.045,top: context.height*0.012,bottom:context.height*0.012 ),
+            padding:  EdgeInsets.only(left: context.width*0.022,right: context.width*0.04,top: context.height*0.012,bottom:context.height*0.012 ),
             child: Stack(
               children: [
                 ProductPhotoListView(photo:productPhoto,),
@@ -65,23 +67,33 @@ class CartItemsContainer extends StatelessWidget {
                 CartListProductName(text: productName),
                 CartListProductType(text: productType,),
                 const Spacer(),
-                Row(
+                BlocProvider(
+                  create: (context) => CartCubit(),
+                  child: BlocBuilder<CartCubit, CartState>(
+                  builder: (context, state) {
+                    CartCubit cartCubit = context.read<CartCubit>();
+                    return Row(
                     children: [
                      CartListProductPrice(text: productPrice,),
                      const Spacer(),
-                     const ArithmeticContainer(
+                     ArithmeticContainer(
                         icon: AppAssets.plusIcon,
+                        onTap: cartCubit.increment,
                       ),
                      HorizontalSpace(context.width*0.04),
-                     const CartListProductQuantity(
-                       number: AppStrings.four,
+                     CartListProductQuantity(
+                       number: '${cartCubit.itemCount}',
                      ),
                      HorizontalSpace(context.width*0.04),
-                     const ArithmeticContainer(
+                     ArithmeticContainer(
                         icon: AppAssets.minusIcon,
+                        onTap: cartCubit.decrement,
                       ),
                     ],
-                  ),
+                  );
+                 },
+                ),
+                 ),
                 ],
               ),
             ),
