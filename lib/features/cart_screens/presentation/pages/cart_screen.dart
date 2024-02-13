@@ -4,7 +4,7 @@ import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../../../core/widgets/app_bar_fav_icon.dart';
-import '../../../offers_screens/presentation/widgets/cart_items_list.dart';
+import '../widgets/cart_items_list.dart';
 import '../widgets/cart_screen_address.dart';
 import '../widgets/shipment_quantity_row.dart';
 

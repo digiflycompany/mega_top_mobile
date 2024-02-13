@@ -7,6 +7,7 @@ import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
+import '../../../../core/widgets/product_photo_list_view.dart';
 
 class ProductsListContainer extends StatelessWidget {
   final String? productPhoto;
@@ -42,18 +43,7 @@ class ProductsListContainer extends StatelessWidget {
               padding:  EdgeInsets.only(left: context.width*0.022,right: context.width*0.045,top: context.height*0.012,bottom:context.height*0.012 ),
               child: Stack(
                 children: [
-                  Container(
-                    width: context.width*0.332,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(context.height*0.0065),
-                      color: AppColors.iconsBackgroundColor,
-                    ),
-                    child:Center(child: Padding(
-                      padding:  EdgeInsets.only(top: context.height*0.016),
-                      child: Image.asset(productPhoto!,width: context.width*0.16,),
-                    )),
-                  ),
+                  ProductPhotoListView(photo:productPhoto,),
                   discount==true?Padding(
                     padding:  EdgeInsets.symmetric(vertical:context.height*0.009,horizontal:context.width*0.016),
                     child: DiscountContainer(
