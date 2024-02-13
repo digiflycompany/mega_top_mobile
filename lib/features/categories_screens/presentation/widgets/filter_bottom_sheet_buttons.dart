@@ -18,8 +18,7 @@ class FilterBottomSheetButtons extends StatelessWidget {
             text: AppStrings.applyEn,
           ),
           VerticalSpace(context.height*0.033),
-          const PrimaryEmptyButton(
-            horizontalPadding: 0,
+          const PrimaryOutlinedButton(
             text: AppStrings.resetEn,
           ),
         ],
