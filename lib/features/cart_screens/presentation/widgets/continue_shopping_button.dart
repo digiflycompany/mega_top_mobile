@@ -7,8 +7,7 @@ class ContinueShoppingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PrimaryEmptyButton(
-      horizontalPadding: 0,
+    return const PrimaryOutlinedButton(
       text: AppStrings.continueShoppingEn,
     );
   }

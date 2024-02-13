@@ -30,8 +30,7 @@ class SignUpOrLoginPage extends StatelessWidget {
             ),
             VerticalSpace(context.height*0.033),
             /// Login Button
-            PrimaryEmptyButton(
-                horizontalPadding: 0,
+            PrimaryOutlinedButton(
                 text: AppStrings.loginEn,
                 onTap: ()=>Routes.loginRoute.moveTo,
             )
