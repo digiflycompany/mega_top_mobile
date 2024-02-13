@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
+import 'package:mega_top_mobile/core/widgets/list_product_name.dart';
+import 'package:mega_top_mobile/core/widgets/list_product_price.dart';
+import 'package:mega_top_mobile/core/widgets/list_product_type.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
@@ -52,12 +54,6 @@ class ProductsListContainer extends StatelessWidget {
                       height:context.height*0.028,
                     ),
                   ):Container(),
-                  // Align(
-                  //     alignment: AlignmentDirectional.topEnd,
-                  //     child: Padding(
-                  //       padding:  EdgeInsets.symmetric(vertical:context.height*0.012,horizontal:context.width*0.022),
-                  //       child: SvgPicture.asset(AppAssets.favourOutlinedIcon,width: context.width*0.054,),
-                  //     )),
                 ],
               ),
             ),
@@ -69,39 +65,18 @@ class ProductsListContainer extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          productName!,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13.sp
-                          ),
-                        ),
+                        ListProductName(text: productName,),
                         const Spacer(),
                         SvgPicture.asset(AppAssets.favourOutlinedIcon,width: context.width*0.06,)
                       ],
                     ),
-                    Text(
-                          productType!,
-                          style: TextStyle(
-                              color: AppColors.greyTextColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 10.sp
-                          ),
-                    ),
-                    const Spacer(),
-                    Row(
+                   ListProductType(text: productType,),
+                   const Spacer(),
+                   Row(
                       children: [
                         const AvailableContainer(),
                         const Spacer(),
-                        Text(
-                          productPrice!,
-                          style: TextStyle(
-                              color: AppColors.primaryColor,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w700
-                          ),
-                        )
+                        ListProductPrice(text: productPrice,)
                       ],
                     ),
                   ],
