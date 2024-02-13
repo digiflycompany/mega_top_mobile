@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_color.dart';
 
-class CartListProductPrice extends StatelessWidget {
-  final String? text;
-  const CartListProductPrice({super.key, this.text});
+class CartListProductQuantity extends StatelessWidget {
+  final String? number;
+  const CartListProductQuantity({super.key, this.number});
 
   @override
   Widget build(BuildContext context) {
-    return  Text(
-      text!,
+    return Text(
+      number!,
       style: TextStyle(
           color: AppColors.primaryColor,
-          fontSize: 12.sp,
+          fontSize: 14.sp,
           fontWeight: FontWeight.w700
       ),
     );
