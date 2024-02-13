@@ -17,6 +17,7 @@ class CartScreenAddress extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          /// Location Icon
           SvgPicture.asset(AppAssets.locationBlackIcon),
           HorizontalSpace(context.width*0.022),
           /// Address ///
@@ -27,7 +28,10 @@ class CartScreenAddress extends StatelessWidget {
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
             ),
-          )
+          ),
+          HorizontalSpace(context.width*0.011),
+          /// Bottom Arrow Icon
+          SvgPicture.asset(AppAssets.bottomArrowIcon),
         ],
       ),
     );
