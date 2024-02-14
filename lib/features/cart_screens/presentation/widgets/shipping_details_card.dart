@@ -11,7 +11,8 @@ class ShippingDetailsCard extends StatelessWidget {
   final String? customerName;
   final String? customerAddress;
   final String? customerPhone;
-  const ShippingDetailsCard({super.key, this.deliveryPlace, this.customerName, this.customerAddress, this.customerPhone});
+  final bool isSelected;
+  const ShippingDetailsCard({super.key, this.deliveryPlace, this.customerName, this.customerAddress, this.customerPhone, required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +22,17 @@ class ShippingDetailsCard extends StatelessWidget {
         width: double.infinity,
         height: context.height*0.252,
         decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(width:1.w,color: AppColors.smallContainerGreyColor),
+          color: isSelected?AppColors.iconsBackgroundColor:Colors.white,
+          border: Border.all(width:1.w,color: isSelected?AppColors.primaryColor:AppColors.smallContainerGreyColor),
           borderRadius: BorderRadius.circular(4.r),
+          boxShadow: [
+            BoxShadow(
+              color: isSelected?AppColors.iconsBackgroundColor:AppColors.transparent,
+              offset: isSelected?const Offset(0, 2):const Offset(0, 2),
+              blurRadius: isSelected?12:0,
+              spreadRadius: 0,
+            ),
+          ],
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.width*0.045,vertical:context.height*0.022),

@@ -7,6 +7,7 @@ class AppStrings {
   static const String nextEn='Next';
   static const String previous='السابق';
   static const String previousEn='Previous';
+  static const String companyEn='Company';
   static const String exploreOurDigitalProducts='تصفح منتجاتنا الإكترونية';
   static const String exploreOurDigitalProductsEn='Explore our electronic products';
   static const String addYourProductsToCart='أضف منتجاتك إلى سلة التسوق';

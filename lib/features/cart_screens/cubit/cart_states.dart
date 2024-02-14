@@ -10,3 +10,9 @@ class CartItemCountChanged extends CartState {
   CartItemCountChanged(this.itemCount);
 }
 
+class CartCardSelected extends CartState {
+  final int? selectedCardIndex;
+
+  CartCardSelected(this.selectedCardIndex);
+}
+
