@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
+import 'package:mega_top_mobile/features/cart_screens/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card_list.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
@@ -19,16 +21,19 @@ class ShippingDetailsPage extends StatelessWidget {
             AppStrings.shippingDetailsEn,
             favour: false,
           )),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-        child: const SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SelectTheDeliveryAddressText(),
-              ShippingDetailsCardList(),
-            ],
+      body: BlocProvider(
+        create: (context) => CartCubit(),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+          child: const SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SelectTheDeliveryAddressText(),
+                ShippingDetailsCardList(),
+              ],
+            ),
           ),
         ),
       ),
