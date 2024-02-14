@@ -3,17 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-import '../../../../core/utils/app_string.dart';
 
-class EmptyCartText extends StatelessWidget {
-  const EmptyCartText({super.key});
+class EmptyResponseText extends StatelessWidget {
+  final String? bigFontText;
+  final String? smallFontText;
+  const EmptyResponseText({super.key,this.bigFontText, this.smallFontText});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          AppStrings.yourShoppingCartIsEmptyEn,
+          bigFontText!,
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
@@ -22,7 +23,7 @@ class EmptyCartText extends StatelessWidget {
         ),
         VerticalSpace(context.height*0.033),
         Text(
-          AppStrings.browseProductsLongTextEn,
+          smallFontText!,
           textAlign: TextAlign.center,
           style: TextStyle(
               color: AppColors.greyTextColor,

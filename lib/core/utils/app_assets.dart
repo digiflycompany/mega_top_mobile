@@ -1,3 +1,4 @@
+
 class AppAssets {
   //__
   AppAssets.__internal();
@@ -52,6 +53,7 @@ class AppAssets {
   static const String filterIcon = "$svgPath/filter_icon.svg";
   static const String favourOutlinedIcon = "$svgPath/favour_outlined.svg";
   static const String smallCheckIcon = "$svgPath/small_check_icon.svg";
+  static const String emptyAddressIcon = "$svgPath/empty_address_icon.svg";
   static const String linkIcon = "$svgPath/link_icon.svg";
   static const String editSmallIcon = "$svgPath/edit_small_icon.svg";
   static const String locationOutlinedIcon = "$svgPath/location_icon_outlined.svg";
@@ -80,7 +82,7 @@ class AppAssets {
   static const String cartButtonIcon = "$svgPath/cart_button_icon.svg";
   static const String checkMediumIcon = "$svgPath/check_medium_icon.svg";
   static const String hiLookImg = "$imagesPath/hiLook.png";
-  static const String emptyCartImg = "$imagesPath/empty_cart.png";
+  static const String emptyCartIcon = "$svgPath/empty_cart_icon.svg";
   static const String ezVizImg = "$imagesPath/EzViz.png";
   static const String productBigPhoto = "$imagesPath/product_big_photo.png";
   static const String productBigPhotoRight = "$imagesPath/product_big_photo_right.png";
