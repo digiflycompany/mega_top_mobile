@@ -17,6 +17,7 @@ class AppStrings {
   static const String alreadyHaveAnAccountEn='Already have an account ?';
   static const String createNewAccount='إنشاء حساب جديد';
   static const String createNewAccountEn='Create a new account';
+  static const String addNewAddressEn='Add a new address';
   static const String login='تسجيل الدخول';
   static const String loginEn='Login';
   static const String onBoardingDescription='يتم استخدام نص لوريم الملء من قبل مصممي الجرافيك والمبرمجين والطابعات بهدف شغل مساحات موقع ويب أو منتج إعلاني أو إنتاج تحريري لم يكن نصه النهائي جاهزًا بعد.';
