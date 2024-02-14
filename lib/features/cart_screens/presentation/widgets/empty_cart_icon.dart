@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 
-class EmptyCartIcon extends StatelessWidget {
-  const EmptyCartIcon({super.key});
+class WhiteCircleIcon extends StatelessWidget {
+  final String? icon;
+  const WhiteCircleIcon({super.key, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,7 @@ class EmptyCartIcon extends StatelessWidget {
             ),
           ],
         ),
-        child: Padding(
-          padding: EdgeInsets.only(left: context.width*0.088,right: context.width*0.12,top: context.height*0.049,bottom: context.height*0.049),
-          child: Center(child: Image.asset(AppAssets.emptyCartImg,)),
-        ),
+        child: Center(child: SvgPicture.asset(icon!)),
       ),
     );
   }

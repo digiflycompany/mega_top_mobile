@@ -8,6 +8,8 @@ class AppStrings {
   static const String previous='السابق';
   static const String previousEn='Previous';
   static const String companyEn='Company';
+  static const String noShippingAddressEn='No shipping addresses';
+  static const String noShippingAddressSmallTextEn='Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
   static const String exploreOurDigitalProducts='تصفح منتجاتنا الإكترونية';
   static const String exploreOurDigitalProductsEn='Explore our electronic products';
   static const String addYourProductsToCart='أضف منتجاتك إلى سلة التسوق';
