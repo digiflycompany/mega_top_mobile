@@ -13,35 +13,38 @@ class PaymentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: context.height*0.099,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color:AppColors.smallContainerGreyColor,width: 1.w),
-        borderRadius: BorderRadius.circular(4.r),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
-        child: Row(
-          children: [
-            PaymentCardIcon(icon: paymentIcon),
-            HorizontalSpace(context.width*0.022),
-            PaymentCardText(text: paymentType),
-            const Spacer(),
-            Transform.scale(
-              scale: 1.2.r,
-              child: Radio(
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                visualDensity: VisualDensity(vertical: -4.h, horizontal: -4.w),
-                activeColor: AppColors.primaryColor,
-                focusColor: AppColors.primaryColor,
-                value: null,
-                groupValue: null,
-                onChanged: (value) {},
+    return Padding(
+      padding: EdgeInsets.only(bottom: context.height*0.033),
+      child: Container(
+        width: double.infinity,
+        height: context.height*0.099,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color:AppColors.smallContainerGreyColor,width: 1.w),
+          borderRadius: BorderRadius.circular(4.r),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
+          child: Row(
+            children: [
+              PaymentCardIcon(icon: paymentIcon),
+              HorizontalSpace(context.width*0.022),
+              PaymentCardText(text: paymentType),
+              const Spacer(),
+              Transform.scale(
+                scale: 1.2.r,
+                child: Radio(
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  visualDensity: VisualDensity(vertical: -4.h, horizontal: -4.w),
+                  activeColor: AppColors.primaryColor,
+                  focusColor: Colors.black,
+                  value: null,
+                  groupValue: null,
+                  onChanged: (value) {},
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

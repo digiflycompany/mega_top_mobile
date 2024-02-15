@@ -95,6 +95,7 @@ class AppStrings {
   static const String ezVizEn='Ezviz';
   static const String timeAttendanceEn='Time Attendance';
   static const String sortByEn='Sort by :';
+  static const String confirmPaymentProcessEn='Confirm Payment Process';
   static const String filterByEn='Filter by';
   static const String welcomeEn='Welcome !';
   static const String searchHereEn='Search here ...';
