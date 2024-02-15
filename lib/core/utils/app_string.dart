@@ -140,6 +140,14 @@ class AppStrings {
   static const String listEn='List';
   static const String gridEn='Grid';
   static const String defaultEn='Default';
+  static const String addNewCardEn='Add a new card';
+  static const String addBankCardEn='Add a bank card';
+  static const String cardNumberEn='Card number';
+  static const String expirationDateEn='Expiration date';
+  static const String enterTheCardNumberEn='Enter the card number';
+  static const String mMyYEn='MM/YY';
+  static const String securityCodeEn='Security code';
+  static const String cVVEn='CVV';
   static const String dellEn='Dell';
   static const String brandEn='Brand';
   static const String acerEn='Acer';

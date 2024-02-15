@@ -7,7 +7,8 @@ import '../utils/app_color.dart';
 class PrimaryTextField extends StatelessWidget {
   final String? hintText;
   final String? prefixSvg;
-  const PrimaryTextField({super.key, this.hintText, this.prefixSvg});
+  final Widget? suffix;
+  const PrimaryTextField({super.key, this.hintText, this.prefixSvg, this.suffix});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class PrimaryTextField extends StatelessWidget {
             SvgPicture.asset(prefixSvg!, width: context.width*0.063 , height: context.height*0.026 , fit: BoxFit.scaleDown,),
           ],
         ),
+        suffixIcon: suffix,
       ),
     );
   }
