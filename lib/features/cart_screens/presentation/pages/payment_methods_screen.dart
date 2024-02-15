@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_screen_title_text.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
-import '../widgets/payment_card.dart';
+import '../widgets/payment_ways_list.dart';
 
 class PaymentMethodsPage extends StatelessWidget {
   const PaymentMethodsPage({super.key});
@@ -26,14 +25,7 @@ class PaymentMethodsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CartScreensTitleText(text: AppStrings.selectPaymentMethodsEn),
-            PaymentCard(
-              paymentIcon: AppAssets.walletIcon,
-              paymentType: AppStrings.cashOnDeliveryEn,
-            ),
-            PaymentCard(
-              paymentIcon: AppAssets.creditCardIcon,
-              paymentType: AppStrings.debitCardEn,
-            ),
+            PaymentWaysList()
           ],
         ),
       ),
