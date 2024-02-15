@@ -16,3 +16,8 @@ class CartCardSelected extends CartState {
   CartCardSelected(this.selectedCardIndex);
 }
 
+class PaymentCardSelected extends CartState {
+  final int? selectedPaymentCardIndex;
+
+  PaymentCardSelected(this.selectedPaymentCardIndex);
+}
