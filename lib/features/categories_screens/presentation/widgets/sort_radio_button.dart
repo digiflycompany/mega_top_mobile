@@ -33,7 +33,7 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
             child: Row(
               children: [
                 Transform.scale(
-                  scale: 1.2,
+                  scale: 1.2.r,
                   child: Radio(
                     activeColor: AppColors.primaryColor,
                     focusColor: AppColors.primaryColor,
