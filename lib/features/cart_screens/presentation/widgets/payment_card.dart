@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_icon.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_text.dart';
+import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/spacer.dart';
+
+class PaymentCard extends StatelessWidget {
+  final String? paymentIcon;
+  final String? paymentType;
+  const PaymentCard({super.key, this.paymentIcon, this.paymentType});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: context.height*0.099,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color:AppColors.smallContainerGreyColor,width: 1.w),
+        borderRadius: BorderRadius.circular(4.r),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
+        child: Row(
+          children: [
+            PaymentCardIcon(icon: paymentIcon),
+            HorizontalSpace(context.width*0.022),
+            PaymentCardText(text: paymentType),
+            const Spacer(),
+            Transform.scale(
+              scale: 1.2.r,
+              child: Radio(
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                visualDensity: VisualDensity(vertical: -4.h, horizontal: -4.w),
+                activeColor: AppColors.primaryColor,
+                focusColor: AppColors.primaryColor,
+                value: null,
+                groupValue: null,
+                onChanged: (value) {},
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

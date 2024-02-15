@@ -151,6 +151,10 @@ class AppStrings {
   static const String toEn='To';
   static const String priceEn='Price :';
   static const String priceBottomSheetEn='Price';
+  static const String paymentMethodsEn='Payment Methods';
+  static const String selectPaymentMethodsEn='Select payment method';
+  static const String cashOnDeliveryEn='Cash On Delivery';
+  static const String debitCardEn='Debit / Credit Card';
   static const String priceInEgpEn='Price in EGP';
   static const String price2En='Price :';
   static const String fromHighToLowEn='From high to low';
