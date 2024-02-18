@@ -5,12 +5,13 @@ import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/cart_screens/cubit/cart_states.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cvv_card_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_icon.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_text.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../cubit/cart_cubit.dart';
-import 'cvv_outlined_text_field.dart';
+import 'add_new_card_button.dart';
 
 class DebitCardsContainer extends StatelessWidget {
   final String? paymentIcon;
@@ -72,22 +73,16 @@ class DebitCardsContainer extends StatelessWidget {
                 ),
                 Divider(color: AppColors.dotsColor,thickness: 1.w,),
                 VerticalSpace(context.height*0.033),
-                Row(
-                  children: [
-                    Image.asset(AppAssets.masterCardImg,width:context.width*0.066,),
-                    HorizontalSpace(context.width*0.022),
-                    Text(
-                        AppStrings.cardEndsWithEn,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.sp
-                        ),
-                    ),
-                    const Spacer(),
-                    const CvvOutlinedTextField()
-                  ],
-                )
+                const CvvCardContainer(
+                  cardIcon: AppAssets.masterCardImg,
+                  cardNumber: AppStrings.cardEndsWithEn,
+                ),
+                const CvvCardContainer(
+                  cardIcon: AppAssets.masterCardImg,
+                  cardNumber: AppStrings.cardEndsWithEn,
+                ),
+                const Spacer(),
+                const AddNewCardButton(),
               ],
             ),
           ),

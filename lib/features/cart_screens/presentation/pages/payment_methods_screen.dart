@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
-import 'package:mega_top_mobile/features/cart_screens/cubit/cart_cubit.dart';
-import 'package:mega_top_mobile/features/cart_screens/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_screen_title_text.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
@@ -24,27 +21,21 @@ class PaymentMethodsPage extends StatelessWidget {
           )),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CartScreensTitleText(text: AppStrings.selectPaymentMethodsEn),
-            PaymentWaysList()
-          ],
-        ),
-      ),
-      bottomNavigationBar: ButtonBottomNavBar(
-        button: BlocProvider(
-          create: (context) => CartCubit(),
-          child: BlocBuilder<CartCubit, CartState>(
-            builder: (context, state) {
-              CartCubit cartCubit = CartCubit.getCubit(context);
-              return PrimaryButton(
-                text: AppStrings.confirmPaymentProcessEn,
-                onTap: () => cartCubit.showAddNewCardBottomSheet(context),
-              );
-            },
+        child: const SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CartScreensTitleText(text: AppStrings.selectPaymentMethodsEn),
+              PaymentWaysList(),
+            ],
           ),
         ),
+      ),
+      bottomNavigationBar: const ButtonBottomNavBar(
+            button: PrimaryButton(
+              text: AppStrings.confirmPaymentProcessEn,
+            ),
       ),
     );
   }
