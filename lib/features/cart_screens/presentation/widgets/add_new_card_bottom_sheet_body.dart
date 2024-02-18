@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cvv_text_field.dart';
 import 'bank_card_text_field.dart';
 import 'expiration_date_text_field.dart';
 
@@ -15,11 +16,13 @@ class AddNewCardBottomSheetBody extends StatelessWidget {
         children: [
           const BankCardTextField(),
           VerticalSpace(context.height*0.044),
-          const Row(
+          Row(
             children: [
-              ExpirationTextField(),
+              const ExpirationTextField(),
+              HorizontalSpace(context.width*0.045),
+              const CvvTextField()
             ],
-          )
+          ),
         ],
       ),
     );
