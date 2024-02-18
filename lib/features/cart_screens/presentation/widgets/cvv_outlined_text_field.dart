@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -14,6 +15,7 @@ class CvvOutlinedTextField extends StatelessWidget {
       height: context.height*0.044,
       child: TextFormField(
         cursorColor: AppColors.blackGreyColor,
+        cursorHeight: 18.h,
         decoration: InputDecoration(
           hintText: AppStrings.cVVEn,
           hintStyle: TextStyle(
@@ -24,7 +26,7 @@ class CvvOutlinedTextField extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.height*0.006),
           ),
-          contentPadding:  EdgeInsets.symmetric(horizontal: context.width*0.05,),
+          contentPadding: EdgeInsets.symmetric(horizontal: context.width*0.045),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: AppColors.blackGreyColor),
             borderRadius: BorderRadius.circular(context.height*0.006),
@@ -35,6 +37,9 @@ class CvvOutlinedTextField extends StatelessWidget {
           ),
         ),
         keyboardType: TextInputType.number,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(3),
+        ],
       ),
     );
   }

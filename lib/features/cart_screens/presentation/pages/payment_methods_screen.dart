@@ -33,7 +33,7 @@ class PaymentMethodsPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: const ButtonBottomNavBar(
-            button: PrimaryButton(
+        button: PrimaryButton(
               text: AppStrings.confirmPaymentProcessEn,
             ),
       ),
