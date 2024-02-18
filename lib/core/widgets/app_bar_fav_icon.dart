@@ -16,8 +16,8 @@ class CustomFavouriteAppBar extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: AppColors.shadowAppBarColor,
-            offset: Offset(0.0, 4.0), // Offset to control the shadow position
-            blurRadius: 4.0, // Spread of the shadow
+            offset: Offset(0.0, 4.0),
+            blurRadius: 4.0,
           ),
         ],
       ),
@@ -31,7 +31,7 @@ class CustomFavouriteAppBar extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: context.width*0.045),
-            child: const CustomerIcon(icon: AppAssets.favouritesIcon,number: AppStrings.one,),
+            child: const CustomerIcon(icon: AppAssets.favouritesIcon,number: AppStrings.oneText,),
           ),
         ],
       ),
