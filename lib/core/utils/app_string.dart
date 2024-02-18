@@ -8,6 +8,7 @@ class AppStrings {
   static const String previous='السابق';
   static const String previousEn='Previous';
   static const String companyEn='Company';
+  static const int one = 1;
   static const String noShippingAddressEn='No shipping addresses';
   static const String noShippingAddressSmallTextEn='Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
   static const String exploreOurDigitalProducts='تصفح منتجاتنا الإكترونية';
@@ -174,7 +175,7 @@ class AppStrings {
   static const String resultsCount='98 ';
   static const String le1500='1500 L.E';
   static const String four='4';
-  static const String one='1';
+  static const String oneText='1';
   static const String five='5';
   static const String six ='6';
   static const String seven='7';
