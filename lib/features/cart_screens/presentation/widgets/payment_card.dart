@@ -46,8 +46,8 @@ class PaymentCard extends StatelessWidget {
                     scale: 1.2.r,
                     child: Radio(
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      visualDensity: VisualDensity(
-                          vertical: -4.h, horizontal: -4.w),
+                      visualDensity: const VisualDensity(
+                          vertical: -4, horizontal: -4),
                       activeColor: AppColors.primaryColor,
                       focusColor: Colors.black,
                       value: value,

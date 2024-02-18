@@ -16,6 +16,7 @@ class PaymentMethodsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const PrimaryAppBar(
