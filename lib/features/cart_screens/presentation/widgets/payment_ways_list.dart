@@ -44,6 +44,7 @@ class PaymentWaysList extends StatelessWidget {
                     paymentType: card.paymentType,
                     value: card.paymentType,
                     isSelected: isSelected,
+                    paymentCardIndex:index,
                   )
               );
             },

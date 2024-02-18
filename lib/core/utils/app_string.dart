@@ -153,6 +153,7 @@ class AppStrings {
   static const String acerEn='Acer';
   static const String toshibaEn='Toshiba';
   static const String shoppingCartEn='Shopping Cart';
+  static const String cardEndsWithEn='Card ends with 4821';
   static const String yourShoppingCartIsEmptyEn='Your shopping cart is empty';
   static const String browseProductsLongTextEn='Browse our products and add the products you want to buy to the shopping cart by clicking the add button.';
   static const String sonyEn='Sony';
