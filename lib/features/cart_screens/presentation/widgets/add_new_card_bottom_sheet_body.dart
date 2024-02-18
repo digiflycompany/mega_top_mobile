@@ -11,7 +11,7 @@ class AddNewCardBottomSheetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: context.width*0.045,right: context.width*0.045,top: context.height*0.055),
+      padding: EdgeInsets.only(left: context.width*0.045,right: context.width*0.045,top: context.height*0.055,bottom:context.height*0.022),
       child: Column(
         children: [
           const BankCardTextField(),
