@@ -54,7 +54,7 @@ class OnboardingSecondScreen extends StatelessWidget {
                     );
                   }),
             ),
-            VerticalSpace(context.height*0.0329),
+            VerticalSpace(context.height*0.02),
             Padding(
               padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
               child: PrimaryOutlinedButton(

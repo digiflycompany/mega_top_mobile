@@ -12,8 +12,9 @@ class AddBankCardButton extends StatelessWidget {
       child: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
-          child: const PrimaryButton(
+          child: PrimaryButton(
             text: AppStrings.addBankCardEn,
+            onTap: () => Navigator.pop(context),
           ),
         ),
       ),

@@ -20,7 +20,7 @@ class ResetPasswordScreen extends StatelessWidget {
     return  Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height*0.087),
+          preferredSize: Size(double.infinity, context.height*0.089),
           child: const CustomAppBar(AppStrings.resetPasswordEn)),
       body: Padding(
         padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),

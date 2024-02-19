@@ -17,6 +17,7 @@ class AppAssets {
   static const String arrowButton = "$svgPath/arrow_button.svg";
   static const String emailIcon = "$svgPath/email_icon.svg";
   static const String walletIcon = "$svgPath/wallet_icon.svg";
+  static const String locationOutlinedBlueIcon = "$svgPath/location_outlined_blue_icon.svg";
   static const String creditCardIcon = "$svgPath/credit_card_icon.svg";
   static const String emailSecondIcon = "$svgPath/mail_third_icon.svg";
   static const String googleIcon = "$svgPath/google_icon.svg";
