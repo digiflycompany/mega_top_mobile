@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import '../../../../core/utils/app_color.dart';
+import 'custom_divider.dart';
 import 'order_details_description.dart';
 import 'card_title_text.dart';
 
@@ -23,12 +24,12 @@ class OrderDetailsCard extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: context.height*0.022),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CardTitleText(title: AppStrings.orderDetailsEn,),
-              Divider(color:AppColors.smallContainerGreyColor,thickness: 1.w,),
-              const OrderDetailsDescription(),
+              CardTitleText(title: AppStrings.orderDetailsEn,),
+              CustomDivider(),
+              OrderDetailsDescription(),
             ],
           ),
         ),
