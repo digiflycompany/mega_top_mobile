@@ -16,7 +16,7 @@ class AppStrings {
   static const String threeThousandEn='3000.00';
   static const String twentyEn='20.00';
   static const String threeThousandTwentyEn='3020.00';
-  static const String leEn='LE';
+  static const String leEn=' LE';
   static const int one = 1;
   static const String noShippingAddressEn='No shipping addresses';
   static const String noShippingAddressSmallTextEn='Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
@@ -59,6 +59,7 @@ class AppStrings {
   static const String continueWithGoogle='إنشاء حساب';
   static const String usernameEn='Username';
   static const String confirmPasswordEn='Confirm password';
+  static const String confirmOrderEn='Confirm Order';
   static const String applyEn='Apply';
   static const String resetEn='Reset';
   static const String signUpEn='Sign up';

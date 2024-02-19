@@ -10,7 +10,7 @@ class OrderDetailsText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: context.height*0.015,left: context.width*0.045),
+      padding: EdgeInsets.only(bottom: context.height*0.012,left: context.width*0.045),
       child: Text(
         AppStrings.orderDetailsEn,
         style: TextStyle(
