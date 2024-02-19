@@ -194,6 +194,21 @@ class AppStrings {
   static const String twelve='12';
   static const String fourteen='14';
   static const String threeThousand='3000';
+  static const String notifications = 'Notifications';
+  static const String settings = 'Settings';
+  static const String languages = 'Languages';
+  static const String contactUs = 'Contact us';
+  static const String callUs = 'Call us';
+  static const String aboutUs = 'About us';
+  static const String termsAndConditions = 'Terms & Conditions';
+  static const String privacyPolicy = 'Privacy Policy';
 
+  static const String userName = 'Mohamed Nashaat';
+  static const String userEmail = 'mohamednashaat7733@gmail.com';
+  static const String selectedLanguage = 'العربية';
 
+  static const String orders = 'Orders';
+  // static const String selectedLanguage = 'العربية';
+  // static const String selectedLanguage = 'العربية';
+  // static const String selectedLanguage = 'العربية';
 }

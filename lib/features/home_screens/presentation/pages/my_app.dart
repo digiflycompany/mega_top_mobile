@@ -3,9 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
-import '../../../../core/utils/app_fonts.dart';
+
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_services_dart.dart';
 import '../../../../l10n/l10n.dart';
@@ -38,11 +39,7 @@ class MyApp extends StatelessWidget {
             ),
           ],
           child: GetMaterialApp(
-            theme: ThemeData(
-              scaffoldBackgroundColor: Colors.white,
-              fontFamily: FontFamilies.cairo,
-              splashColor: Colors.transparent,
-            ),
+            theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
             supportedLocales: L10n.all,
             locale: const Locale('en'),
