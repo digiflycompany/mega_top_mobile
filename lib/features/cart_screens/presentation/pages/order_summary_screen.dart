@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_card.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_small_card.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
 
@@ -22,7 +23,8 @@ class OrderSummaryScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
         child: const Column(
           children: [
-            OrderDetailsCard()
+            OrderDetailsCard(),
+            ShippingDetailsSmallCard()
           ],
         ),
       ),

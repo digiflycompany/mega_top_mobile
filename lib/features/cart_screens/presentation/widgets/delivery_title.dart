@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DeliveryTitle extends StatelessWidget {
   final String? text;
-  const DeliveryTitle({super.key, this.text});
+  final double fontSize;
+  const DeliveryTitle({super.key, this.text, this.fontSize=16});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class DeliveryTitle extends StatelessWidget {
       style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.w700,
-          fontSize: 16.sp
+          fontSize: fontSize.sp
       ),
     );
   }
