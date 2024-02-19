@@ -8,6 +8,15 @@ class AppStrings {
   static const String previous='السابق';
   static const String previousEn='Previous';
   static const String companyEn='Company';
+  static const String orderDetailsEn='Order details';
+  static const String numberOfProductsEn='Number of products';
+  static const String twoProductsEn=' (2)';
+  static const String shippingFeesEn='Shipping fees';
+  static const String totalAmountEn='Total amount';
+  static const String threeThousandEn='3000.00';
+  static const String twentyEn='20.00';
+  static const String threeThousandTwentyEn='3020.00';
+  static const String leEn='LE';
   static const int one = 1;
   static const String noShippingAddressEn='No shipping addresses';
   static const String noShippingAddressSmallTextEn='Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
@@ -28,6 +37,7 @@ class AppStrings {
   static const String onBoardingDescriptionEn='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer';
   static const String loginTitle='سجل الدخول للمتابعة';
   static const String loginTitleEn='Sign in to continue';
+  static const String orderSummaryEn='Order Summary';
   static const String email='البريد الإلكترونى';
   static const String emailEn='Email';
   static const String password='كلمة المرور';
