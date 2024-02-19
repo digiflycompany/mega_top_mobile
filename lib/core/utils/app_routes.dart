@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
@@ -16,10 +17,12 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_pa
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
+
 import 'app_color.dart';
+
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
 
-class  Routes {
+class Routes {
   Routes._internal();
   static const String onBoardingRoute = "/";
   static const String loginRoute = "/login_screen";
@@ -36,14 +39,13 @@ class  Routes {
   static const String shippingDetailsPageRoute = "/shipping_details_screen.dart";
   static const String paymentMethodsPageRoute = "/payment_methods_screen.dart";
   static const String orderSummaryPageRoute = "/order_summary_screen.dart";
+  static const String userAccountPageRoute = "/user_account_screen";
 }
-
 
 class RouteGenerator {
   RouteGenerator._internal();
   PageRouteAnimation? pageRouteAnimationGlobal;
   static Duration pageRouteTransitionDurationGlobal = 200.milliseconds;
-
 
   static Route<dynamic>? getRoute(RouteSettings routeSettings) {
     debugPrint(routeSettings.name);
@@ -78,6 +80,10 @@ class RouteGenerator {
         return buildPageRoute(child: const PaymentMethodsPage(),);
       case Routes.orderSummaryPageRoute:
         return buildPageRoute(child: const OrderSummaryScreen(),);
+      case Routes.userAccountPageRoute:
+        return buildPageRoute(
+          child: const UserAccountScreen(),
+        );
     }
     return buildPageRoute(
         child: const Center(
@@ -108,7 +114,8 @@ class RouteGenerator {
           settings: routeSettings,
           pageBuilder: (c, a1, a2) => child,
           transitionsBuilder: (c, anim, a2, child) {
-            return RotationTransition(turns: ReverseAnimation(anim), child: child);
+            return RotationTransition(
+                turns: ReverseAnimation(anim), child: child);
           },
           transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
         );
@@ -152,7 +159,7 @@ class RouteGenerator {
           transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
         );
       }
-    }else{
+    } else {
       return PageRouteBuilder(
         settings: routeSettings,
         transitionDuration: duration ?? pageRouteTransitionDurationGlobal,

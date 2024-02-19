@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/pages/guest_account_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/categories_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     const CategoriesPage(),
     const OffersPage(),
     const CartPage(),
-    const Center(child: Text('Account Page')),
+    const GuestAccountScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -46,19 +47,19 @@ class _HomePageState extends State<HomePage> {
     HomeCubit homeCubit = context.read<HomeCubit>();
     return Scaffold(
       body: BlocConsumer<HomeCubit, HomeState>(
-       listener: (context, state) {},
-       builder: (context, state) {
-         return PageView(
-         controller: _pageController,
-         children: _pages,
-         onPageChanged: (index) {
-           setState(() {
-            homeCubit.setPageIndex(_currentIndex=index);
-          });
+        listener: (context, state) {},
+        builder: (context, state) {
+          return PageView(
+            controller: _pageController,
+            children: _pages,
+            onPageChanged: (index) {
+              setState(() {
+                homeCubit.setPageIndex(_currentIndex = index);
+              });
+            },
+          );
         },
-      );
-  },
-),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
@@ -66,44 +67,52 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: AppColors.blackGreyColor,
         onTap: _onItemTapped,
         showUnselectedLabels: true,
-        unselectedLabelStyle:  TextStyle(
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w600,
-          color: AppColors.blackGreyColor
-        ),
+        unselectedLabelStyle: TextStyle(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.blackGreyColor),
         selectedLabelStyle: TextStyle(
             fontSize: 12.sp,
             fontWeight: FontWeight.w700,
-            color: AppColors.primaryColor
-        ),
+            color: AppColors.primaryColor),
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex==0?AppAssets.homeSelectedIcon:AppAssets.homeUnselectedIcon,
+              _currentIndex == 0
+                  ? AppAssets.homeSelectedIcon
+                  : AppAssets.homeUnselectedIcon,
             ),
             label: AppStrings.homeEn,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-               _currentIndex==1?AppAssets.categoriesSelectedIcon:AppAssets.categoriesUnselectedIcon,
+              _currentIndex == 1
+                  ? AppAssets.categoriesSelectedIcon
+                  : AppAssets.categoriesUnselectedIcon,
             ),
             label: AppStrings.categoriesEn,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex==2?AppAssets.offersSelectedIcon:AppAssets.offersUnselectedIcon,
+              _currentIndex == 2
+                  ? AppAssets.offersSelectedIcon
+                  : AppAssets.offersUnselectedIcon,
             ),
             label: AppStrings.offersEn,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex==3?AppAssets.cartSelectedIcon:AppAssets.cartUnselectedIcon,
+              _currentIndex == 3
+                  ? AppAssets.cartSelectedIcon
+                  : AppAssets.cartUnselectedIcon,
             ),
             label: AppStrings.cartEn,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex==4?AppAssets.accountSelectedIcon:AppAssets.accountUnselectedIcon,
+              _currentIndex == 4
+                  ? AppAssets.accountSelectedIcon
+                  : AppAssets.accountUnselectedIcon,
             ),
             label: AppStrings.accountEn,
           ),
