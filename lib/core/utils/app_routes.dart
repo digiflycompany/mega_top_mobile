@@ -49,35 +49,35 @@ class RouteGenerator {
     debugPrint(routeSettings.name);
     switch (routeSettings.name) {
       case Routes.onBoardingRoute:
-        return buildPageRoute(child: const OnBoardingScreens(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade );
+        return buildPageRoute(child: const OnBoardingScreens(),);
       case Routes.loginRoute:
-        return buildPageRoute(child: const LoginScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const LoginScreen(),);
       case Routes.signUpRoute:
-        return buildPageRoute(child: const SignUpScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const SignUpScreen(),);
       case Routes.resetPasswordRoute:
-        return buildPageRoute(child: const ResetPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const ResetPasswordScreen(),);
       case Routes.verifyEmailRoute:
-        return buildPageRoute(child: const VerifyEmailScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide);
+        return buildPageRoute(child: const VerifyEmailScreen(),pageRouteAnimation:PageRouteAnimation.slide);
       case Routes.createNewPasswordRoute:
-        return buildPageRoute(child: const CreateNewPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide);
+        return buildPageRoute(child: const CreateNewPasswordScreen(),pageRouteAnimation:PageRouteAnimation.slide);
       case Routes.homePageRoute:
-        return buildPageRoute(child: const HomePage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const HomePage(),);
       case Routes.searchPageRoute:
-        return buildPageRoute(child: const SearchPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade,duration: 85.milliseconds);
+        return buildPageRoute(child: const SearchPage(),duration: 85.milliseconds);
       case Routes.searchResultPageRoute:
-        return buildPageRoute(child: const SearchResultPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide,duration: 150.milliseconds);
+        return buildPageRoute(child: const SearchResultPage(),pageRouteAnimation:PageRouteAnimation.slide,duration: 150.milliseconds);
       case Routes.categoryItemsPageRoute:
-        return buildPageRoute(child: const CategoryItemsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const CategoryItemsPage(),);
       case Routes.categoryProductDetailsPageRoute:
-        return buildPageRoute(child: const CategoryProductDetailsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const CategoryProductDetailsPage(),);
       case Routes.signUpOrLoginPageRoute:
-        return buildPageRoute(child: const SignUpOrLoginPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const SignUpOrLoginPage(),);
       case Routes.shippingDetailsPageRoute:
-        return buildPageRoute(child: const ShippingDetailsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const ShippingDetailsPage(),);
       case Routes.paymentMethodsPageRoute:
-        return buildPageRoute(child: const PaymentMethodsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const PaymentMethodsPage(),);
       case Routes.orderSummaryPageRoute:
-        return buildPageRoute(child: const OrderSummaryScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(child: const OrderSummaryScreen(),);
     }
     return buildPageRoute(
         child: const Center(
@@ -152,6 +152,16 @@ class RouteGenerator {
           transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
         );
       }
+    }else{
+      return PageRouteBuilder(
+        settings: routeSettings,
+        transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
+        reverseTransitionDuration: const Duration(milliseconds: 300),
+        pageBuilder: (c, a1, a2) => child,
+        transitionsBuilder: (c, anim, a2, child) {
+          return FadeTransition(opacity: anim, child: child);
+        },
+      );
     }
     return MaterialPageRoute<T>(
       builder: (_) => AnnotatedRegion<SystemUiOverlayStyle>(
