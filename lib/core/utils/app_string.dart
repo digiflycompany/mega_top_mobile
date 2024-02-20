@@ -54,6 +54,7 @@ class AppStrings {
   static const String theProductAddedToWishListEn='The product added to wish list';
   static const String theProductRemovedFromWishListEn='The product removed from wish list';
   static const String noWishListItemsEn='No wish list items';
+  static const String yourWishListEn='Your wish list';
   static const String browseOurProductsDescriptionEn='Browse our products and add the products you like to your favorite products list by clicking on the heart sign.';
   static const String theProductAddedToCompareEn='The product added to the Compare Products';
   static const String theProductRemovedFromCompareEn='The product removed from the Compare Products';
@@ -97,6 +98,7 @@ class AppStrings {
   static const String confirmShippingAddressEn='Confirm Shipping Address';
   static const String productsEn='Products';
   static const String products2En='products :';
+  static const String products3En='products';
   static const String productsQuantityEn='2';
   static const String addressInCartEn='Delivery to Egypt - section 2, Nasr City';
   static const String surveillanceCamerasEn='Surveillance...';
