@@ -7,6 +7,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipp
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
 import '../widgets/payment_method_small_card.dart';
+import '../widgets/your_order_card.dart';
 
 class OrderSummaryScreen extends StatelessWidget {
   const OrderSummaryScreen({super.key});
@@ -29,6 +30,9 @@ class OrderSummaryScreen extends StatelessWidget {
               OrderDetailsCard(),
               ShippingDetailsSmallCard(),
               PaymentMethodSmallCard(
+                paymentMethod: AppStrings.cashOnDeliveryEn,
+              ),
+              YourOrderCard(
                 paymentMethod: AppStrings.cashOnDeliveryEn,
               ),
             ],

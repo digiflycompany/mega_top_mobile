@@ -175,6 +175,7 @@ class AppStrings {
   static const String priceBottomSheetEn='Price';
   static const String paymentMethodsEn='Payment Methods';
   static const String paymentMethodEn='Payment Method';
+  static const String yourOrderTwoProductsEn='Your order (2 products)';
   static const String selectPaymentMethodsEn='Select payment method';
   static const String cashOnDeliveryEn='Cash On Delivery';
   static const String debitCardEn='Debit / Credit Card';
