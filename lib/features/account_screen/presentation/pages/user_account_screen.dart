@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/option_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/about_us_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/call_us_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/compare_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/language_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/notification_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/order_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/privacy_policy_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/profile_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/saved_card_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/shipping_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/terms_and_conditions_item.dart';
 import 'package:mega_top_mobile/features/account_screen/presentation/widgets/user_information.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/wish_list_item.dart';
 
 class UserAccountScreen extends StatelessWidget {
   const UserAccountScreen({super.key});
@@ -38,73 +49,48 @@ class UserAccountScreen extends StatelessWidget {
                         color: AppColors.smallTextBlackColor),
                   )),
               VerticalSpace(25.h),
-              OptionItem(
-                mainIcon: AppAssets.orderIcon,
-                title: AppStrings.orders,
-                optionalData: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.iconsBackgroundColor,
-                  ),
-                  width: 24.h,
-                  height: 24.h,
-                  child: const Center(
-                    child: Text(
-                      "3",
+              const OrderItem(),
+              VerticalSpace(16.h),
+              const WishListItem(),
+              VerticalSpace(16.h),
+              const NotificationItem(),
+              VerticalSpace(16.h),
+              const ShippingItem(),
+              VerticalSpace(16.h),
+              const SavedCardItem(),
+              VerticalSpace(16.h),
+              const CompareItem(),
+              VerticalSpace(40.h),
+              Align(
+                  alignment: AlignmentDirectional.topStart,
+                  child: Text(AppStrings.settings,
                       style: TextStyle(
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ),
-              ),
-              // VerticalSpace(40.h),
-              // Align(
-              //     alignment: AlignmentDirectional.topStart,
-              //     child: Text(AppStrings.settings,
-              //         style: TextStyle(
-              //             fontSize: 14.sp,
-              //             fontWeight: FontWeight.w700,
-              //             color: AppColors.smallTextBlackColor))),
-              // VerticalSpace(25.h),
-              // OptionItem(
-              //   mainIcon: AppAssets.languageIcon,
-              //   title: AppStrings.languages,
-              //   optionalData: Text(AppStrings.selectedLanguage,
-              //       style: TextStyle(
-              //           color: AppColors.primaryColor,
-              //           fontWeight: FontWeight.w700,
-              //           fontSize: 13.sp)),
-              // ),
-              // VerticalSpace(40.h),
-              // Align(
-              //     alignment: AlignmentDirectional.topStart,
-              //     child: Text(AppStrings.contactUs,
-              //         style: TextStyle(
-              //             fontSize: 14.sp,
-              //             fontWeight: FontWeight.w700,
-              //             color: AppColors.smallTextBlackColor))),
-              // VerticalSpace(25.h),
-              // const OptionItem(
-              //   mainIcon: AppAssets.callIcon,
-              //   title: AppStrings.callUs,
-              // ),
-              // VerticalSpace(16.h),
-              // const OptionItem(
-              //   mainIcon: AppAssets.information,
-              //   title: AppStrings.aboutUs,
-              // ),
-              // VerticalSpace(16.h),
-              // const OptionItem(
-              //   mainIcon: AppAssets.information,
-              //   title: AppStrings.termsAndConditions,
-              // ),
-              // VerticalSpace(16.h),
-              // const OptionItem(
-              //   mainIcon: AppAssets.information,
-              //   title: AppStrings.privacyPolicy,
-              // ),
-              // VerticalSpace(33.h),
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.smallTextBlackColor))),
+              VerticalSpace(25.h),
+              ProfileItem(onTap: () {
+                Routes.profilePageRoute.moveTo;
+              }),
+              VerticalSpace(25.h),
+              const LanguageItem(),
+              VerticalSpace(40.h),
+              Align(
+                  alignment: AlignmentDirectional.topStart,
+                  child: Text(AppStrings.contactUs,
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.smallTextBlackColor))),
+              VerticalSpace(25.h),
+              const CallUsItem(),
+              VerticalSpace(16.h),
+              const AboutUsItem(),
+              VerticalSpace(16.h),
+              const TermsAndConditionsItem(),
+              VerticalSpace(16.h),
+              const PrivacyPolicyItem(),
+              VerticalSpace(33.h),
             ],
           ),
         ),
