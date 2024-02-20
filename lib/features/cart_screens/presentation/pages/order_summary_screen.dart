@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_card.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_small_card.dart';
-import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
-import '../widgets/payment_method_small_card.dart';
-import '../widgets/your_order_card.dart';
 
 class OrderSummaryScreen extends StatelessWidget {
   const OrderSummaryScreen({super.key});
@@ -40,10 +36,9 @@ class OrderSummaryScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: ButtonBottomNavBar(
+      bottomNavigationBar: const ButtonBottomNavBar(
         button: PrimaryButton(
           text: AppStrings.confirmOrderEn,
-          onTap: () => Routes.orderConfirmationPageRoute.moveTo,
         ),
       ),
     );

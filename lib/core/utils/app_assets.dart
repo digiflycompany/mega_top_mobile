@@ -1,3 +1,4 @@
+
 class AppAssets {
   //__
   AppAssets.__internal();
@@ -19,7 +20,6 @@ class AppAssets {
   static const String emailIcon = "$svgPath/email_icon.svg";
   static const String walletIcon = "$svgPath/wallet_icon.svg";
   static const String wishListIcon = "$svgPath/wish_list_icon.svg";
-  static const String locationOutlinedBlueIcon = "$svgPath/location_outlined_blue_icon.svg";
   static const String locationOutlinedBlueIcon = "$svgPath/location_outlined_blue_icon.svg";
   static const String creditCardIcon = "$svgPath/credit_card_icon.svg";
   static const String emailSecondIcon = "$svgPath/mail_third_icon.svg";
@@ -94,13 +94,5 @@ class AppAssets {
   static const String productBigPhoto = "$imagesPath/product_big_photo.png";
   static const String productBigPhotoRight = "$imagesPath/product_big_photo_right.png";
   static const String timeAttendanceImg = "$imagesPath/time_attendance.png";
-  static const String languageIcon = "$svgPath/web.svg";
-  static const String callIcon = "$svgPath/call.svg";
-  static const String information = "$svgPath/information.svg";
-  static const String userImage = "$imagesPath/user_img.png";
-  static const String shippingIcon = "$imagesPath/shipping_icon.svg";
-  static const String orderIcon = "$imagesPath/orders.svg";
-  static const String visaCard = "$imagesPath/visa_card.svg";
-  static const String compare = "$imagesPath/compare.svg";
-  static const String profileIcon = "$imagesPath/profile.svg";
+
 }

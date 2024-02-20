@@ -246,13 +246,9 @@ class AppStrings {
   static const String doNotHaveAccountEn='Don’t have an account ?';
   static const String createAccount='إنشاء حساب';
   static const String createAccountEn='Sign up';
-  static const String wishListEn='Wish List';
   static const String continueWithGoogleEn='Continue with Google';
   static const String theProductAddedToWishListEn='The product added to wish list';
   static const String theProductRemovedFromWishListEn='The product removed from wish list';
-  static const String noWishListItemsEn='No wish list items';
-  static const String yourWishListEn='Your wish list';
-  static const String browseOurProductsDescriptionEn='Browse our products and add the products you like to your favorite products list by clicking on the heart sign.';
   static const String theProductAddedToCompareEn='The product added to the Compare Products';
   static const String theProductRemovedFromCompareEn='The product removed from the Compare Products';
   static const String welcomeToMegaTopEn='Welcome to Mega Top';
@@ -410,12 +406,5 @@ class AppStrings {
   static const String termsAndConditions = 'Terms & Conditions';
   static const String privacyPolicy = 'Privacy Policy';
 
-  static const String userName = 'Mohamed Nashaat';
-  static const String userEmail = 'mohamednashaat7733@gmail.com';
-  static const String selectedLanguage = 'العربية';
 
-  static const String orders = 'Orders';
-  // static const String selectedLanguage = 'العربية';
-  // static const String selectedLanguage = 'العربية';
-  // static const String selectedLanguage = 'العربية';
 }
