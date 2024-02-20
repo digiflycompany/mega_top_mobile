@@ -23,7 +23,8 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
         CategoryCubit categoryCubit = context.read<CategoryCubit>();
-        return InkWell(
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: () => categoryCubit.selectOption(value),
           child: Container(
             height: context.height*0.065,

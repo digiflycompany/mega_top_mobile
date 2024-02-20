@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
@@ -16,10 +17,14 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_pa
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
+
+import '../../features/cart_screens/presentation/pages/order_confirmation_screen.dart';
+import '../../features/profile_screen/presentation/pages/profile_screen.dart';
 import 'app_color.dart';
+
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
 
-class  Routes {
+class Routes {
   Routes._internal();
   static const String onBoardingRoute = "/";
   static const String loginRoute = "/login_screen";
@@ -30,54 +35,98 @@ class  Routes {
   static const String homePageRoute = "/home_page_screen";
   static const String searchPageRoute = "/search_screen";
   static const String searchResultPageRoute = "/search_result_screen";
-  static const String categoryItemsPageRoute = "/category_items_screen.dart";
-  static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen.dart";
-  static const String categoryProductDetailsPageRoute = "/category_product_details_screen.dart";
-  static const String shippingDetailsPageRoute = "/shipping_details_screen.dart";
-  static const String paymentMethodsPageRoute = "/payment_methods_screen.dart";
-  static const String orderSummaryPageRoute = "/order_summary_screen.dart";
+  static const String categoryItemsPageRoute = "/category_items_screen";
+  static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen";
+  static const String categoryProductDetailsPageRoute =
+      "/category_product_details_screen";
+  static const String shippingDetailsPageRoute = "/shipping_details_screen";
+  static const String paymentMethodsPageRoute = "/payment_methods_screen";
+  static const String orderSummaryPageRoute = "/order_summary_screen";
+  static const String userAccountPageRoute = "/user_account_screen";
+  static const String orderConfirmationPageRoute = "/order_confirmation_screen";
+  static const String profilePageRoute = "/profile_screen";
 }
-
 
 class RouteGenerator {
   RouteGenerator._internal();
   PageRouteAnimation? pageRouteAnimationGlobal;
   static Duration pageRouteTransitionDurationGlobal = 200.milliseconds;
 
-
   static Route<dynamic>? getRoute(RouteSettings routeSettings) {
     debugPrint(routeSettings.name);
     switch (routeSettings.name) {
       case Routes.onBoardingRoute:
-        return buildPageRoute(child: const OnBoardingScreens(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade );
+        return buildPageRoute(
+          child: const OnBoardingScreens(),
+        );
       case Routes.loginRoute:
-        return buildPageRoute(child: const LoginScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const LoginScreen(),
+        );
       case Routes.signUpRoute:
-        return buildPageRoute(child: const SignUpScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const SignUpScreen(),
+        );
       case Routes.resetPasswordRoute:
-        return buildPageRoute(child: const ResetPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const ResetPasswordScreen(),
+        );
       case Routes.verifyEmailRoute:
-        return buildPageRoute(child: const VerifyEmailScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide);
+        return buildPageRoute(
+            child: const VerifyEmailScreen(),
+            pageRouteAnimation: PageRouteAnimation.slide);
       case Routes.createNewPasswordRoute:
-        return buildPageRoute(child: const CreateNewPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide);
+        return buildPageRoute(
+            child: const CreateNewPasswordScreen(),
+            pageRouteAnimation: PageRouteAnimation.slide);
       case Routes.homePageRoute:
-        return buildPageRoute(child: const HomePage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const HomePage(),
+        );
       case Routes.searchPageRoute:
-        return buildPageRoute(child: const SearchPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade,duration: 85.milliseconds);
+        return buildPageRoute(
+            child: const SearchPage(), duration: 85.milliseconds);
       case Routes.searchResultPageRoute:
-        return buildPageRoute(child: const SearchResultPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide,duration: 150.milliseconds);
+        return buildPageRoute(
+            child: const SearchResultPage(),
+            pageRouteAnimation: PageRouteAnimation.slide,
+            duration: 150.milliseconds);
       case Routes.categoryItemsPageRoute:
-        return buildPageRoute(child: const CategoryItemsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const CategoryItemsPage(),
+        );
       case Routes.categoryProductDetailsPageRoute:
-        return buildPageRoute(child: const CategoryProductDetailsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const CategoryProductDetailsPage(),
+        );
       case Routes.signUpOrLoginPageRoute:
-        return buildPageRoute(child: const SignUpOrLoginPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const SignUpOrLoginPage(),
+        );
       case Routes.shippingDetailsPageRoute:
-        return buildPageRoute(child: const ShippingDetailsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const ShippingDetailsPage(),
+        );
       case Routes.paymentMethodsPageRoute:
-        return buildPageRoute(child: const PaymentMethodsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const PaymentMethodsPage(),
+        );
       case Routes.orderSummaryPageRoute:
-        return buildPageRoute(child: const OrderSummaryScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
+        return buildPageRoute(
+          child: const OrderSummaryScreen(),
+        );
+      case Routes.userAccountPageRoute:
+        return buildPageRoute(
+          child: const UserAccountScreen(),
+        );
+      case Routes.profilePageRoute:
+        return buildPageRoute(
+          child: const ProfileScreen(),
+        );
+      case Routes.orderConfirmationPageRoute:
+        return buildPageRoute(
+          child: const OrderConfirmationScreen(),
+        );
     }
     return buildPageRoute(
         child: const Center(
@@ -108,7 +157,8 @@ class RouteGenerator {
           settings: routeSettings,
           pageBuilder: (c, a1, a2) => child,
           transitionsBuilder: (c, anim, a2, child) {
-            return RotationTransition(turns: ReverseAnimation(anim), child: child);
+            return RotationTransition(
+                turns: ReverseAnimation(anim), child: child);
           },
           transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
         );
@@ -152,6 +202,16 @@ class RouteGenerator {
           transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
         );
       }
+    } else {
+      return PageRouteBuilder(
+        settings: routeSettings,
+        transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
+        reverseTransitionDuration: const Duration(milliseconds: 300),
+        pageBuilder: (c, a1, a2) => child,
+        transitionsBuilder: (c, anim, a2, child) {
+          return FadeTransition(opacity: anim, child: child);
+        },
+      );
     }
     return MaterialPageRoute<T>(
       builder: (_) => AnnotatedRegion<SystemUiOverlayStyle>(
