@@ -21,7 +21,7 @@ class WishListPage extends StatelessWidget {
             favour: false,
           )),
       body:isEmpty?
-        const EmptyDataPage(
+         EmptyDataPage(
         bigFontText: AppStrings.noWishListItemsEn,
         smallFontText: AppStrings.browseOurProductsDescriptionEn,
         buttonText: AppStrings.continueShoppingEn,

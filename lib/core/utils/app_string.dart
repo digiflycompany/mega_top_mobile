@@ -16,6 +16,7 @@ class AppStrings {
   static const String threeThousandEn = '3000.00';
   static const String twentyEn = '20.00';
   static const String threeThousandTwentyEn = '3020.00';
+  static const String noWishListItemsEn = 'No wish list items';
   static const String leEn = ' LE';
   static const int one = 1;
   static const String noShippingAddressEn = 'No shipping addresses';
