@@ -9,7 +9,12 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/option_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/about_us_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/call_us_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/language_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/notification_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/privacy_policy_item.dart';
+import 'package:mega_top_mobile/features/account_screen/presentation/widgets/terms_and_conditions_item.dart';
 
 class GuestAccountScreen extends StatelessWidget {
   const GuestAccountScreen({super.key});
@@ -60,26 +65,7 @@ class GuestAccountScreen extends StatelessWidget {
                         color: AppColors.smallTextBlackColor),
                   )),
               VerticalSpace(25.h),
-              OptionItem(
-                mainIcon: AppAssets.notificationIcon,
-                title: AppStrings.notifications,
-                optionalData: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.iconsBackgroundColor,
-                  ),
-                  width: 24.h,
-                  height: 24.h,
-                  child: const Center(
-                    child: Text(
-                      "3",
-                      style: TextStyle(
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ),
-              ),
+              const NotificationItem(),
               VerticalSpace(40.h),
               Align(
                   alignment: AlignmentDirectional.topStart,
@@ -89,15 +75,7 @@ class GuestAccountScreen extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           color: AppColors.smallTextBlackColor))),
               VerticalSpace(25.h),
-              OptionItem(
-                mainIcon: AppAssets.languageIcon,
-                title: AppStrings.languages,
-                optionalData: Text(AppStrings.selectedLanguage,
-                    style: TextStyle(
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 13.sp)),
-              ),
+              const LanguageItem(),
               VerticalSpace(40.h),
               Align(
                   alignment: AlignmentDirectional.topStart,
@@ -107,25 +85,13 @@ class GuestAccountScreen extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           color: AppColors.smallTextBlackColor))),
               VerticalSpace(25.h),
-              const OptionItem(
-                mainIcon: AppAssets.callIcon,
-                title: AppStrings.callUs,
-              ),
+              const CallUsItem(),
               VerticalSpace(16.h),
-              const OptionItem(
-                mainIcon: AppAssets.information,
-                title: AppStrings.aboutUs,
-              ),
+              const AboutUsItem(),
               VerticalSpace(16.h),
-              const OptionItem(
-                mainIcon: AppAssets.information,
-                title: AppStrings.termsAndConditions,
-              ),
+              const TermsAndConditionsItem(),
               VerticalSpace(16.h),
-              const OptionItem(
-                mainIcon: AppAssets.information,
-                title: AppStrings.privacyPolicy,
-              ),
+              const PrivacyPolicyItem(),
               VerticalSpace(33.h),
             ],
           ),

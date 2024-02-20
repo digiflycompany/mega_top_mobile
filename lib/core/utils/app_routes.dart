@@ -17,6 +17,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_pa
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
+import 'package:mega_top_mobile/features/profile_screen/presentation/pages/profile_screen.dart';
 
 import 'app_color.dart';
 
@@ -33,13 +34,15 @@ class Routes {
   static const String homePageRoute = "/home_page_screen";
   static const String searchPageRoute = "/search_screen";
   static const String searchResultPageRoute = "/search_result_screen";
-  static const String categoryItemsPageRoute = "/category_items_screen.dart";
-  static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen.dart";
-  static const String categoryProductDetailsPageRoute = "/category_product_details_screen.dart";
-  static const String shippingDetailsPageRoute = "/shipping_details_screen.dart";
-  static const String paymentMethodsPageRoute = "/payment_methods_screen.dart";
-  static const String orderSummaryPageRoute = "/order_summary_screen.dart";
+  static const String categoryItemsPageRoute = "/category_items_screen";
+  static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen";
+  static const String categoryProductDetailsPageRoute =
+      "/category_product_details_screen";
+  static const String shippingDetailsPageRoute = "/shipping_details_screen";
+  static const String paymentMethodsPageRoute = "/payment_methods_screen";
+  static const String orderSummaryPageRoute = "/order_summary_screen";
   static const String userAccountPageRoute = "/user_account_screen";
+  static const String profilePageRoute = "/profile_screen";
 }
 
 class RouteGenerator {
@@ -51,38 +54,72 @@ class RouteGenerator {
     debugPrint(routeSettings.name);
     switch (routeSettings.name) {
       case Routes.onBoardingRoute:
-        return buildPageRoute(child: const OnBoardingScreens(),);
+        return buildPageRoute(
+          child: const OnBoardingScreens(),
+        );
       case Routes.loginRoute:
-        return buildPageRoute(child: const LoginScreen(),);
+        return buildPageRoute(
+          child: const LoginScreen(),
+        );
       case Routes.signUpRoute:
-        return buildPageRoute(child: const SignUpScreen(),);
+        return buildPageRoute(
+          child: const SignUpScreen(),
+        );
       case Routes.resetPasswordRoute:
-        return buildPageRoute(child: const ResetPasswordScreen(),);
+        return buildPageRoute(
+          child: const ResetPasswordScreen(),
+        );
       case Routes.verifyEmailRoute:
-        return buildPageRoute(child: const VerifyEmailScreen(),pageRouteAnimation:PageRouteAnimation.slide);
+        return buildPageRoute(
+            child: const VerifyEmailScreen(),
+            pageRouteAnimation: PageRouteAnimation.slide);
       case Routes.createNewPasswordRoute:
-        return buildPageRoute(child: const CreateNewPasswordScreen(),pageRouteAnimation:PageRouteAnimation.slide);
+        return buildPageRoute(
+            child: const CreateNewPasswordScreen(),
+            pageRouteAnimation: PageRouteAnimation.slide);
       case Routes.homePageRoute:
-        return buildPageRoute(child: const HomePage(),);
+        return buildPageRoute(
+          child: const HomePage(),
+        );
       case Routes.searchPageRoute:
-        return buildPageRoute(child: const SearchPage(),duration: 85.milliseconds);
+        return buildPageRoute(
+            child: const SearchPage(), duration: 85.milliseconds);
       case Routes.searchResultPageRoute:
-        return buildPageRoute(child: const SearchResultPage(),pageRouteAnimation:PageRouteAnimation.slide,duration: 150.milliseconds);
+        return buildPageRoute(
+            child: const SearchResultPage(),
+            pageRouteAnimation: PageRouteAnimation.slide,
+            duration: 150.milliseconds);
       case Routes.categoryItemsPageRoute:
-        return buildPageRoute(child: const CategoryItemsPage(),);
+        return buildPageRoute(
+          child: const CategoryItemsPage(),
+        );
       case Routes.categoryProductDetailsPageRoute:
-        return buildPageRoute(child: const CategoryProductDetailsPage(),);
+        return buildPageRoute(
+          child: const CategoryProductDetailsPage(),
+        );
       case Routes.signUpOrLoginPageRoute:
-        return buildPageRoute(child: const SignUpOrLoginPage(),);
+        return buildPageRoute(
+          child: const SignUpOrLoginPage(),
+        );
       case Routes.shippingDetailsPageRoute:
-        return buildPageRoute(child: const ShippingDetailsPage(),);
+        return buildPageRoute(
+          child: const ShippingDetailsPage(),
+        );
       case Routes.paymentMethodsPageRoute:
-        return buildPageRoute(child: const PaymentMethodsPage(),);
+        return buildPageRoute(
+          child: const PaymentMethodsPage(),
+        );
       case Routes.orderSummaryPageRoute:
-        return buildPageRoute(child: const OrderSummaryScreen(),);
+        return buildPageRoute(
+          child: const OrderSummaryScreen(),
+        );
       case Routes.userAccountPageRoute:
         return buildPageRoute(
           child: const UserAccountScreen(),
+        );
+      case Routes.profilePageRoute:
+        return buildPageRoute(
+          child: const ProfileScreen(),
         );
     }
     return buildPageRoute(

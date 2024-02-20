@@ -12,7 +12,17 @@ class UserInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.asset(AppAssets.userImage),
+        Container(
+          decoration: const BoxDecoration(shape: BoxShape.circle),
+          height: 60.h,
+          width: 60.h,
+          child: ClipOval(
+            child: Image.asset(
+              AppAssets.customerProfilePhoto,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
         HorizontalSpace(10.w),
         const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
