@@ -12,13 +12,15 @@ class AppAssets {
   static const String boardingCart = "$imagesPath/boardingCart.png";
   static const String onBoardingBox = "$imagesPath/onBoardingBox.png";
   static const String megaTopLogo = "$imagesPath/mega_top_logo.png";
+  static const String orderSuccessImg = "$imagesPath/order_success_img.png";
   static const String backArrow = "$svgPath/back_arrow.svg";
   static const String backArrowEn = "$svgPath/back_arrow_en.svg";
   static const String arrowButton = "$svgPath/arrow_button.svg";
   static const String emailIcon = "$svgPath/email_icon.svg";
   static const String walletIcon = "$svgPath/wallet_icon.svg";
-  static const String locationOutlinedBlueIcon =
-      "$svgPath/location_outlined_blue_icon.svg";
+  static const String wishListIcon = "$svgPath/wish_list_icon.svg";
+  static const String locationOutlinedBlueIcon = "$svgPath/location_outlined_blue_icon.svg";
+  static const String locationOutlinedBlueIcon = "$svgPath/location_outlined_blue_icon.svg";
   static const String creditCardIcon = "$svgPath/credit_card_icon.svg";
   static const String emailSecondIcon = "$svgPath/mail_third_icon.svg";
   static const String googleIcon = "$svgPath/google_icon.svg";
@@ -114,13 +116,9 @@ class AppAssets {
 
   static const String userImage = "$imagesPath/user_img.png";
 
-  static const String shippingIcon = "$svgPath/shipping_icon.svg";
-  static const String orderIcon = "$svgPath/orders.svg";
-  static const String visaCard = "$svgPath/visa_card.svg";
-  static const String compare = "$svgPath/compare.svg";
-  static const String profileIcon = "$svgPath/profile.svg";
-
-  static const String editProfileIcon = "$svgPath/edit_profile.svg";
-  static const String editPasswordIcon = "$svgPath/edit_password.svg";
-  static const String deleteIcon = "$svgPath/delete.svg";
+  static const String shippingIcon = "$imagesPath/shipping_icon.svg";
+  static const String orderIcon = "$imagesPath/orders.svg";
+  static const String visaCard = "$imagesPath/visa_card.svg";
+  static const String compare = "$imagesPath/compare.svg";
+  static const String profileIcon = "$imagesPath/profile.svg";
 }

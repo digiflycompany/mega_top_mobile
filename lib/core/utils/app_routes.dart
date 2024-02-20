@@ -17,8 +17,9 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_pa
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
-import 'package:mega_top_mobile/features/profile_screen/presentation/pages/profile_screen.dart';
 
+import '../../features/cart_screens/presentation/pages/order_confirmation_screen.dart';
+import '../../features/profile_screen/presentation/pages/profile_screen.dart';
 import 'app_color.dart';
 
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
@@ -42,6 +43,7 @@ class Routes {
   static const String paymentMethodsPageRoute = "/payment_methods_screen";
   static const String orderSummaryPageRoute = "/order_summary_screen";
   static const String userAccountPageRoute = "/user_account_screen";
+  static const String orderConfirmationPageRoute = "/order_confirmation_screen";
   static const String profilePageRoute = "/profile_screen";
 }
 
@@ -120,6 +122,10 @@ class RouteGenerator {
       case Routes.profilePageRoute:
         return buildPageRoute(
           child: const ProfileScreen(),
+        );
+      case Routes.orderConfirmationPageRoute:
+        return buildPageRoute(
+          child: const OrderConfirmationScreen(),
         );
     }
     return buildPageRoute(

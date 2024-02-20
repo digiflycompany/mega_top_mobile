@@ -18,7 +18,9 @@ class ProductsListContainer extends StatelessWidget {
   final String? productPrice;
   final String? discountPercent;
   final bool? discount;
-  const ProductsListContainer({super.key, this.productPhoto, this.productName, this.productType, this.productPrice, this.discount=false, this.discountPercent});
+  final String? icon;
+  final Function()? onTap;
+  const ProductsListContainer({super.key, this.productPhoto, this.productName, this.productType, this.productPrice, this.discount=false, this.discountPercent, this.icon=AppAssets.favourOutlinedIcon, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,9 @@ class ProductsListContainer extends StatelessWidget {
                       children: [
                         ListProductName(text: productName,),
                         const Spacer(),
-                        SvgPicture.asset(AppAssets.favourOutlinedIcon,width: context.width*0.06,)
+                        GestureDetector(
+                            onTap: onTap,
+                            child: SvgPicture.asset(icon!,width: context.width*0.06,))
                       ],
                     ),
                    ListProductType(text: productType,),
