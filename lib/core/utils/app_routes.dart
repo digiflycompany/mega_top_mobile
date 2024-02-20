@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/pag
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/verify_email_screen.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_confirmation_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_summary_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/payment_methods_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/shipping_details_screen.dart';
@@ -33,13 +34,14 @@ class Routes {
   static const String homePageRoute = "/home_page_screen";
   static const String searchPageRoute = "/search_screen";
   static const String searchResultPageRoute = "/search_result_screen";
-  static const String categoryItemsPageRoute = "/category_items_screen.dart";
-  static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen.dart";
-  static const String categoryProductDetailsPageRoute = "/category_product_details_screen.dart";
-  static const String shippingDetailsPageRoute = "/shipping_details_screen.dart";
-  static const String paymentMethodsPageRoute = "/payment_methods_screen.dart";
-  static const String orderSummaryPageRoute = "/order_summary_screen.dart";
+  static const String categoryItemsPageRoute = "/category_items_screen";
+  static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen";
+  static const String categoryProductDetailsPageRoute = "/category_product_details_screen";
+  static const String shippingDetailsPageRoute = "/shipping_details_screen";
+  static const String paymentMethodsPageRoute = "/payment_methods_screen";
+  static const String orderSummaryPageRoute = "/order_summary_screen";
   static const String userAccountPageRoute = "/user_account_screen";
+  static const String orderConfirmationPageRoute = "/order_confirmation_screen";
 }
 
 class RouteGenerator {
@@ -81,9 +83,9 @@ class RouteGenerator {
       case Routes.orderSummaryPageRoute:
         return buildPageRoute(child: const OrderSummaryScreen(),);
       case Routes.userAccountPageRoute:
-        return buildPageRoute(
-          child: const UserAccountScreen(),
-        );
+        return buildPageRoute(child: const UserAccountScreen(),);
+      case Routes.orderConfirmationPageRoute:
+        return buildPageRoute(child: const OrderConfirmationScreen(),);
     }
     return buildPageRoute(
         child: const Center(
