@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/widgets/wish_list_list_view.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import '../widgets/wish_list_count.dart';
-import '../widgets/wish_list_list_view.dart';
 
 class WishListPage extends StatelessWidget {
   final bool isEmpty = false;
@@ -21,7 +21,7 @@ class WishListPage extends StatelessWidget {
             favour: false,
           )),
       body:isEmpty?
-        const EmptyDataPage(
+         const EmptyDataPage(
         bigFontText: AppStrings.noWishListItemsEn,
         smallFontText: AppStrings.browseOurProductsDescriptionEn,
         buttonText: AppStrings.continueShoppingEn,

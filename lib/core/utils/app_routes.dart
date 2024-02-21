@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/pages/user_account_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/verify_email_screen.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_confirmation_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_summary_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/payment_methods_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/shipping_details_screen.dart';
@@ -17,14 +18,12 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_pa
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
-
-import '../../features/cart_screens/presentation/pages/order_confirmation_screen.dart';
-import '../../features/profile_screen/presentation/pages/profile_screen.dart';
+import 'package:mega_top_mobile/features/profile_screen/presentation/pages/profile_screen.dart';
 import 'app_color.dart';
 
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
 
-class Routes {
+class  Routes {
   Routes._internal();
   static const String onBoardingRoute = "/";
   static const String loginRoute = "/login_screen";
@@ -47,70 +46,44 @@ class Routes {
   static const String profilePageRoute = "/profile_screen";
 }
 
+
 class RouteGenerator {
   RouteGenerator._internal();
   PageRouteAnimation? pageRouteAnimationGlobal;
   static Duration pageRouteTransitionDurationGlobal = 200.milliseconds;
 
+
   static Route<dynamic>? getRoute(RouteSettings routeSettings) {
     debugPrint(routeSettings.name);
     switch (routeSettings.name) {
       case Routes.onBoardingRoute:
-        return buildPageRoute(
-          child: const OnBoardingScreens(),
-        );
+        return buildPageRoute(child: const OnBoardingScreens(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade );
       case Routes.loginRoute:
-        return buildPageRoute(
-          child: const LoginScreen(),
-        );
+        return buildPageRoute(child: const LoginScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.signUpRoute:
-        return buildPageRoute(
-          child: const SignUpScreen(),
-        );
+        return buildPageRoute(child: const SignUpScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.resetPasswordRoute:
-        return buildPageRoute(
-          child: const ResetPasswordScreen(),
-        );
+        return buildPageRoute(child: const ResetPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.verifyEmailRoute:
-        return buildPageRoute(
-            child: const VerifyEmailScreen(),
-            pageRouteAnimation: PageRouteAnimation.slide);
+        return buildPageRoute(child: const VerifyEmailScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide);
       case Routes.createNewPasswordRoute:
-        return buildPageRoute(
-            child: const CreateNewPasswordScreen(),
-            pageRouteAnimation: PageRouteAnimation.slide);
+        return buildPageRoute(child: const CreateNewPasswordScreen(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide);
       case Routes.homePageRoute:
-        return buildPageRoute(
-          child: const HomePage(),
-        );
+        return buildPageRoute(child: const HomePage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.searchPageRoute:
-        return buildPageRoute(
-            child: const SearchPage(), duration: 85.milliseconds);
+        return buildPageRoute(child: const SearchPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade,duration: 85.milliseconds);
       case Routes.searchResultPageRoute:
-        return buildPageRoute(
-            child: const SearchResultPage(),
-            pageRouteAnimation: PageRouteAnimation.slide,
-            duration: 150.milliseconds);
+        return buildPageRoute(child: const SearchResultPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.slide,duration: 150.milliseconds);
       case Routes.categoryItemsPageRoute:
-        return buildPageRoute(
-          child: const CategoryItemsPage(),
-        );
+        return buildPageRoute(child: const CategoryItemsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.categoryProductDetailsPageRoute:
-        return buildPageRoute(
-          child: const CategoryProductDetailsPage(),
-        );
+        return buildPageRoute(child: const CategoryProductDetailsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.signUpOrLoginPageRoute:
-        return buildPageRoute(
-          child: const SignUpOrLoginPage(),
-        );
+        return buildPageRoute(child: const SignUpOrLoginPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.shippingDetailsPageRoute:
-        return buildPageRoute(
-          child: const ShippingDetailsPage(),
-        );
+        return buildPageRoute(child: const ShippingDetailsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.paymentMethodsPageRoute:
-        return buildPageRoute(
-          child: const PaymentMethodsPage(),
-        );
+        return buildPageRoute(child: const PaymentMethodsPage(), routeSettings: routeSettings,pageRouteAnimation:PageRouteAnimation.fade);
       case Routes.orderSummaryPageRoute:
         return buildPageRoute(
           child: const OrderSummaryScreen(),
@@ -157,8 +130,7 @@ class RouteGenerator {
           settings: routeSettings,
           pageBuilder: (c, a1, a2) => child,
           transitionsBuilder: (c, anim, a2, child) {
-            return RotationTransition(
-                turns: ReverseAnimation(anim), child: child);
+            return RotationTransition(turns: ReverseAnimation(anim), child: child);
           },
           transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
         );
@@ -202,7 +174,7 @@ class RouteGenerator {
           transitionDuration: duration ?? pageRouteTransitionDurationGlobal,
         );
       }
-    } else {
+    }else{
       return PageRouteBuilder(
         settings: routeSettings,
         transitionDuration: duration ?? pageRouteTransitionDurationGlobal,

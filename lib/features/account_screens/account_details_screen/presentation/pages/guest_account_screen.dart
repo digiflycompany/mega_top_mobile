@@ -9,12 +9,12 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/about_us_item.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/call_us_item.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/language_item.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/notification_item.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/privacy_policy_item.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/terms_and_conditions_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/about_us_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/call_us_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/language_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/notification_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/privacy_policy_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/terms_and_conditions_item.dart';
 
 class GuestAccountScreen extends StatelessWidget {
   const GuestAccountScreen({super.key});

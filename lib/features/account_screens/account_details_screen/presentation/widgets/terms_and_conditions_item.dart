@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/features/account_screen/presentation/widgets/account_option_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_option_item.dart';
 
-class PrivacyPolicyItem extends StatelessWidget {
-  const PrivacyPolicyItem(
+class TermsAndConditionsItem extends StatelessWidget {
+  const TermsAndConditionsItem(
       {super.key, this.mainIcon, this.title, this.optionalData});
 
   final String? mainIcon;
@@ -13,9 +13,9 @@ class PrivacyPolicyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AccountOptionItem(
-      mainIcon: mainIcon ?? AppAssets.information,
-      title: title ?? AppStrings.privacyPolicy,
+    return const AccountOptionItem(
+      mainIcon: AppAssets.information,
+      title: AppStrings.termsAndConditions,
     );
   }
 }

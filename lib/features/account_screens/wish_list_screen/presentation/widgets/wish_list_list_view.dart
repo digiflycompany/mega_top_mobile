@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/data/product_model.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../categories_screens/cubit/category_cubit.dart';
-import '../../../home_screens/data/product_model.dart';
 
 class WishListView extends StatelessWidget {
   const WishListView({super.key});
