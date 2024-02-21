@@ -20,6 +20,7 @@ class AppStrings {
   static const String leEn = ' LE';
   static const int one = 1;
   static const String noShippingAddressEn = 'No shipping addresses';
+  static const String emptyOrderScreenDescriptionEn = 'All orders you have placed will be saved here\nTo access it at any time';
   static const String noShippingAddressSmallTextEn = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
   static const String exploreOurDigitalProducts = 'تصفح منتجاتنا الإكترونية';
   static const String exploreOurDigitalProductsEn = 'Explore our electronic products';
@@ -218,6 +219,9 @@ class AppStrings {
   static const String emptyComparePageDescription2En = 'Lorem Ipsum is simply dummy text of the printing and\n typesetting industry.';
   static const String settings = 'Settings';
   static const String notificationDate = '8 jan 2024';
+  static const String currentOrdersEn = 'Current orders (2)';
+  static const String previousOrdersEn = 'Previous Orders (1)';
+  static const String noCurrentOrdersEn = 'No current orders';
   static const String languages = 'Languages';
   static const String contactUs = 'Contact us';
   static const String callUs = 'Call us';
