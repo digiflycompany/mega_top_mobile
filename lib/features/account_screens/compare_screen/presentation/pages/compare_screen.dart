@@ -6,7 +6,7 @@ import '../../../../../core/utils/app_string.dart';
 import '../../../../home_screens/presentation/widgets/primary_app_bar.dart';
 
 class CompareScreen extends StatelessWidget {
-  final bool isEmpty = false;
+  final bool isEmpty = true;
   const CompareScreen({super.key});
 
   @override
