@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/verify_email_screen.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_confirmation_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_summary_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/payment_methods_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/shipping_details_screen.dart';
@@ -16,9 +18,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_pa
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
-import '../../features/account_screen/presentation/pages/user_account_screen.dart';
-import '../../features/cart_screens/presentation/pages/order_confirmation_screen.dart';
-import '../../features/profile_screen/presentation/pages/profile_screen.dart';
+import 'package:mega_top_mobile/features/profile_screen/presentation/pages/profile_screen.dart';
 import 'app_color.dart';
 
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
