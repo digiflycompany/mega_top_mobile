@@ -12,7 +12,7 @@ class ProfileDetailsScreen extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.shoppingCartEn)),
-      body: Column(
+      body: const Column(
         children: [],
       ),
     );

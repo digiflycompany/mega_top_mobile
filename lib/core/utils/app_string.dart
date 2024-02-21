@@ -209,6 +209,8 @@ class AppStrings {
   static const String yourOrderNumberIsEn = 'Your order number is :';
   static const String orderNumberEn = '#433463';
   static const String notifications = 'Notifications';
+  static const String noProductAddedToCompareEn = 'No products added to compare';
+  static const String emptyComparePageDescriptionEn = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
   static const String settings = 'Settings';
   static const String languages = 'Languages';
   static const String contactUs = 'Contact us';

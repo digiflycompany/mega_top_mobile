@@ -10,7 +10,7 @@ class EditProfileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfileOptionItem(
+    return const ProfileOptionItem(
       mainIcon: AppAssets.editProfileIcon,
       title: "Edit profile details",
     );

@@ -7,9 +7,9 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import '../widgets/wish_list_count.dart';
 
-class WishListPage extends StatelessWidget {
+class WishListScreen extends StatelessWidget {
   final bool isEmpty = false;
-  const WishListPage({super.key});
+  const WishListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

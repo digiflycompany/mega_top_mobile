@@ -121,4 +121,5 @@ class AppAssets {
   static const String editProfileIcon = "$svgPath/edit_profile.svg";
   static const String editPasswordIcon = "$svgPath/edit_password.svg";
   static const String deleteIcon = "$svgPath/delete.svg";
+  static const String emptyCompareIcon = "$svgPath/empty_compare_icon.svg";
 }

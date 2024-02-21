@@ -10,7 +10,7 @@ class DeleteAccountItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfileOptionItem(
+    return const ProfileOptionItem(
       mainIcon: AppAssets.deleteIcon,
       title: "Delete account",
     );
