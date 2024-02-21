@@ -21,8 +21,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late AuthenticationCubit authenticationCubit;
-    authenticationCubit = context.read<AuthenticationCubit>();
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(

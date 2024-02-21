@@ -41,6 +41,7 @@ dependencies:
   get:
   singleton:
   flutter_screenutil: ^5.9.0
+  google_maps_flutter: ^2.5.3
   flutter_localizations:
     sdk: flutter
   intl:

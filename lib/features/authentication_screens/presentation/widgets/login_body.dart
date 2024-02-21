@@ -37,9 +37,7 @@ class LoginBody extends StatelessWidget {
           BlocConsumer<AuthenticationCubit, AuthenticationState>(
             listener: (context, state) {},
             builder: (context, state) {
-              AuthenticationCubit authenticationCubit =
-                  context.read<AuthenticationCubit>();
-              return PasswordTextField(
+              return const PasswordTextField(
                 hintText: AppStrings.passwordEn,
                 prefixSvg: AppAssets.passwordIcon,
               );

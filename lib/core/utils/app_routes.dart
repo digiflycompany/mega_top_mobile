@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
+import 'package:mega_top_mobile/features/address_screen/presentation/pages/add_new_address.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
@@ -51,6 +52,7 @@ class Routes {
   static const String profileDetailsPageRoute = "/profile_details_screen";
   static const String passwordDetailsPageRoute = "/password_details_screen";
   static const String deleteAccountPageRoute = "/delete_account_screen";
+  static const String addNewAddressPageRoute = "/add_new_address_screen";
 }
 
 class RouteGenerator {
@@ -160,6 +162,10 @@ class RouteGenerator {
       case Routes.deleteAccountPageRoute:
         return buildPageRoute(
           child: const DeleteAccountScreen(),
+        );
+      case Routes.addNewAddressPageRoute:
+        return buildPageRoute(
+          child: const AddNewAddressScreen(),
         );
     }
     return buildPageRoute(
