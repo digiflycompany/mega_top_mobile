@@ -47,6 +47,10 @@ class AppStrings {
   static const String forgotPasswordEn = 'Forgot Password ?';
   static const String signInWithGoogle = 'سجل عن طريق جوجل';
   static const String doNotHaveAccount = 'ليس لديك حساب ؟';
+  static const String noNotifications = 'No notifications';
+  static const String catchThe = 'Catch the ';
+  static const String fiftyPercent = '50%';
+  static const String offerAnSurveillance = ' offer on surveillance cameras';
   static const String doNotHaveAccountEn = 'Don’t have an account ?';
   static const String createAccount = 'إنشاء حساب';
   static const String createAccountEn = 'Sign up';
@@ -209,7 +213,11 @@ class AppStrings {
   static const String yourOrderNumberIsEn = 'Your order number is :';
   static const String orderNumberEn = '#433463';
   static const String notifications = 'Notifications';
+  static const String noProductAddedToCompareEn = 'No products added to compare';
+  static const String emptyComparePageDescriptionEn = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+  static const String emptyComparePageDescription2En = 'Lorem Ipsum is simply dummy text of the printing and\n typesetting industry.';
   static const String settings = 'Settings';
+  static const String notificationDate = '8 jan 2024';
   static const String languages = 'Languages';
   static const String contactUs = 'Contact us';
   static const String callUs = 'Call us';

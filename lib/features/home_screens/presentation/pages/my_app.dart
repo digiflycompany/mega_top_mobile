@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/pages/notification_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 
@@ -49,8 +49,8 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             navigatorKey: AppService().navigatorKey,
-            onGenerateRoute: RouteGenerator.getRoute,
-            //home: const WishListPage(),
+            //onGenerateRoute: RouteGenerator.getRoute,
+            home: const NotificationScreen(),
           ),
         );
       },

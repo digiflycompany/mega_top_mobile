@@ -10,7 +10,7 @@ class EditPasswordItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ProfileOptionItem(
+    return  const ProfileOptionItem(
       mainIcon: AppAssets.editPasswordIcon,
       title: "Edit password",
     );
