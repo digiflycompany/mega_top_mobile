@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../cubit/home_cubit.dart';
@@ -50,7 +51,10 @@ class _AdvertisementListState extends State<AdvertisementList> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.only(right: context.width * 0.045),
-                    child: Image.asset(AppAssets.addPhoto, width: 275,),
+                    child: Image.asset(
+                      AppAssets.addPhoto,
+                      width: 275,
+                    ),
                   );
                 },
               ),
@@ -64,8 +68,8 @@ class _AdvertisementListState extends State<AdvertisementList> {
                 color: AppColors.dotsColor,
                 activeSize: Size(context.width * 0.11, context.height * 0.011),
                 activeShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        context.height * 0.007)),
+                    borderRadius:
+                        BorderRadius.circular(context.height * 0.007)),
               ),
             ),
           ],

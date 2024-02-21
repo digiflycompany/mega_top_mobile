@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_checkout_button.dart';
+
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
@@ -19,34 +20,33 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.circleAvatarBackground,
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height*0.089),
+          preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.shoppingCartEn)),
       body: Column(
         children: [
-          VerticalSpace(context.height*0.028),
+          VerticalSpace(context.height * 0.028),
           const CartScreenAddress(),
-          VerticalSpace(context.height*0.028),
+          VerticalSpace(context.height * 0.028),
           Expanded(
               child: Container(
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
-                  child: Column(
-                    children: [
-                      VerticalSpace(context.height * 0.028),
-                      const ShipmentQuantityRow(),
-                      VerticalSpace(context.height * 0.033),
-                      const CartItemsListView(),
-                    ],
-                  ),
-                ),
-              )),
-
+            color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+              child: Column(
+                children: [
+                  VerticalSpace(context.height * 0.028),
+                  const ShipmentQuantityRow(),
+                  VerticalSpace(context.height * 0.033),
+                  const CartItemsListView(),
+                ],
+              ),
+            ),
+          )),
         ],
       ),
       bottomNavigationBar: ButtonBottomNavBar(
         button: CartCheckoutButton(
-          onTap: ()=>Routes.shippingDetailsPageRoute.moveTo,
+          onTap: () => Routes.shippingDetailsPageRoute.moveTo,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/widgets/app_bar_back_icon.dart';
 
@@ -10,7 +11,7 @@ class ProductDetailsAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        height: context.height*0.087,
+        height: context.height * 0.087,
         decoration: const BoxDecoration(
           color: AppColors.onboardingBackgroundColor,
         ),
@@ -18,7 +19,7 @@ class ProductDetailsAppBar extends StatelessWidget {
           children: [
             AppBarBackArrow(
               color: AppColors.onboardingBackgroundColor,
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
               },
             ),

@@ -3,6 +3,8 @@
         android:label="mega_top_mobile"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBZSVgC9vHaQbLG_Ie7wkPMdwCDA_ceaOo"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

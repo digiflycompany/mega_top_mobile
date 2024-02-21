@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/utils/app_color.dart';
 
 class CartListProductQuantity extends StatelessWidget {
@@ -13,8 +14,7 @@ class CartListProductQuantity extends StatelessWidget {
       style: TextStyle(
           color: AppColors.primaryColor,
           fontSize: 14.sp,
-          fontWeight: FontWeight.w700
-      ),
+          fontWeight: FontWeight.w700),
     );
   }
 }

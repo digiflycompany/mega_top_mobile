@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_box.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_text_field.dart';
+
 import '../../../../core/utils/app_routes.dart';
 import '../../cubit/home_cubit.dart';
 
@@ -69,7 +70,7 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
                 builder: (context, state) {
                   return FilterContainer(
                     onTap: () {
-                       homeCubit.toggleNoResult();
+                      homeCubit.toggleNoResult();
                     },
                   );
                 },

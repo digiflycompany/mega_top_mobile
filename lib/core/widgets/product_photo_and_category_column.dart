@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import '../utils/app_color.dart';
 import '../utils/app_string.dart';
 import '../utils/spacer.dart';
@@ -8,7 +9,8 @@ import '../utils/spacer.dart';
 class ProductPhotoAndCategoryColumn extends StatelessWidget {
   final String? productImage;
   final String? productCategory;
-  const ProductPhotoAndCategoryColumn({super.key, this.productImage, this.productCategory});
+  const ProductPhotoAndCategoryColumn(
+      {super.key, this.productImage, this.productCategory});
 
   @override
   Widget build(BuildContext context) {
@@ -21,24 +23,26 @@ class ProductPhotoAndCategoryColumn extends StatelessWidget {
           style: TextStyle(
               color: AppColors.primaryGreenColor,
               fontWeight: FontWeight.w700,
-              fontSize: 16.sp
-          ),
+              fontSize: 16.sp),
         ),
         const Spacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             /// Product Photo ///
-            Image.asset(productImage!,height:context.width*0.066,),
-            HorizontalSpace(context.width*0.04),
+            Image.asset(
+              productImage!,
+              height: context.width * 0.066,
+            ),
+            HorizontalSpace(context.width * 0.04),
+
             /// Product Category ///
             Text(
               productCategory!,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
-                  fontSize: 14.sp
-              ),
+                  fontSize: 14.sp),
             )
           ],
         )

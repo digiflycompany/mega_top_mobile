@@ -4,6 +4,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
+
 import '../utils/app_routes.dart';
 import 'cart_bottom_sheet_product_details.dart';
 
@@ -13,34 +14,35 @@ class AddToCartBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: context.height*0.407,
+        height: context.height * 0.407,
         color: Colors.white,
         child: Column(
           children: [
             const CartBottomSheetProductDetails(),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
+                padding:
+                    EdgeInsets.symmetric(horizontal: context.width * 0.045),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     /// View Cart Button
                     PrimaryButton(
                       text: AppStrings.viewCartEn,
-                      onTap: () =>Routes.signUpOrLoginPageRoute.moveTo,
+                      onTap: () => Routes.signUpOrLoginPageRoute.moveTo,
                     ),
-                    VerticalSpace(context.height*0.033),
+                    VerticalSpace(context.height * 0.033),
+
                     /// Continue Shopping Button
                     PrimaryOutlinedButton(
-                        text: AppStrings.continueShoppingEn,
-                        onTap: () =>Navigator.pop(context),
+                      text: AppStrings.continueShoppingEn,
+                      onTap: () => Navigator.pop(context),
                     ),
                   ],
                 ),
               ),
             )
           ],
-        )
-    );
+        ));
   }
 }

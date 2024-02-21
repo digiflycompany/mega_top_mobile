@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
@@ -11,6 +10,7 @@ import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forget_password_custom_icon.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_divider.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/password_text_field.dart';
 import '../../cubit/auth_state.dart';
@@ -24,96 +24,87 @@ class CreateNewPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     late AuthenticationCubit authenticationCubit;
     authenticationCubit = context.read<AuthenticationCubit>();
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height*0.089),
+          preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomAppBar(AppStrings.createNewPasswordEn)),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
+        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              VerticalSpace(context.height*0.055),
+              VerticalSpace(context.height * 0.055),
               Row(
                 children: [
                   const ForgotPasswordIcon(
                     color: AppColors.primaryColor,
                     icon: AppAssets.checkIcon,
                   ),
-                  const ForgotPasswordDivider(color: AppColors.primaryColor,),
+                  const ForgotPasswordDivider(
+                    color: AppColors.primaryColor,
+                  ),
                   const ForgotPasswordIcon(
                     color: AppColors.primaryColor,
                     icon: AppAssets.checkIcon,
                   ),
-                  const ForgotPasswordDivider(color: AppColors.primaryColor,),
-                  BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                     builder: (context, state) {
-                     return ForgotPasswordIcon(
+                  const ForgotPasswordDivider(
                     color: AppColors.primaryColor,
-                    icon: authenticationCubit.newPasswordSuccess?AppAssets.checkIcon:AppAssets.newPasswordWhiteIcon,
-                  );
-                      },
-                    ),
+                  ),
+                  BlocBuilder<AuthenticationCubit, AuthenticationState>(
+                    builder: (context, state) {
+                      return ForgotPasswordIcon(
+                        color: AppColors.primaryColor,
+                        icon: authenticationCubit.newPasswordSuccess
+                            ? AppAssets.checkIcon
+                            : AppAssets.newPasswordWhiteIcon,
+                      );
+                    },
+                  ),
                 ],
               ),
-              VerticalSpace(context.height*0.06),
+              VerticalSpace(context.height * 0.06),
               const ForgotPasswordDescription(
                 text: AppStrings.createNewPasswordDescriptionEn,
               ),
-              VerticalSpace(context.height*0.033),
+              VerticalSpace(context.height * 0.033),
               BlocBuilder<AuthenticationCubit, AuthenticationState>(
                 builder: (context, state) {
-                  return PasswordTextField(
+                  return const PasswordTextField(
                     hintText: AppStrings.enterYourNewPasswordEn,
                     prefixSvg: AppAssets.passwordIcon,
-                    obscure: authenticationCubit.isPasswordVisible,
-                    suffixIcon: GestureDetector(
-                      onTap: (){
-                        authenticationCubit.togglePasswordVisibility();
-                      },
-                      child: authenticationCubit.isPasswordVisible?SvgPicture.asset(AppAssets.showPasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,):
-                      SvgPicture.asset(AppAssets.hidePasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,),
-                    ),
                   );
                 },
               ),
-              VerticalSpace(context.height*0.033),
+              VerticalSpace(context.height * 0.033),
               BlocBuilder<AuthenticationCubit, AuthenticationState>(
                 builder: (context, state) {
-                  return PasswordTextField(
+                  return const PasswordTextField(
                     hintText: AppStrings.confirmYourNewPasswordEn,
                     prefixSvg: AppAssets.passwordIcon,
-                    obscure: authenticationCubit.isPasswordVisible,
-                    suffixIcon: GestureDetector(
-                      onTap: (){
-                        authenticationCubit.togglePasswordVisibility();
-                      },
-                      child: authenticationCubit.isPasswordVisible?SvgPicture.asset(AppAssets.showPasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,):
-                      SvgPicture.asset(AppAssets.hidePasswordIcon,width: context.width*0.063 , fit: BoxFit.scaleDown,),
-                    ),
                   );
                 },
               ),
-              VerticalSpace(context.height*0.055),
+              VerticalSpace(context.height * 0.055),
               BlocBuilder<AuthenticationCubit, AuthenticationState>(
-               builder: (context, state) {
-               return PrimaryButton(
-                text: AppStrings.confirmPasswordEn,
-                onTap: (){
-                  authenticationCubit.passwordSuccess();
-                  authenticationCubit.passwordChangedSuccessfully(context);
+                builder: (context, state) {
+                  return PrimaryButton(
+                    text: AppStrings.confirmPasswordEn,
+                    onTap: () {
+                      authenticationCubit.passwordSuccess();
+                      authenticationCubit.passwordChangedSuccessfully(context);
+                    },
+                  );
                 },
-              );
-              },
-               ),
+              ),
             ],
           ),
         ),
       ),
     );
   }
-  void passwordChangedSuccessfully(BuildContext context){
+
+  void passwordChangedSuccessfully(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {

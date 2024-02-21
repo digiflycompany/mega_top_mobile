@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
@@ -11,14 +12,13 @@ class OrderSuccessText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        VerticalSpace(context.height*0.033),
+        VerticalSpace(context.height * 0.033),
         Text(
           AppStrings.yourOrderReceivedSuccessfullyEn,
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
-              fontSize: 20.sp
-          ),
+              fontSize: 20.sp),
         ),
       ],
     );

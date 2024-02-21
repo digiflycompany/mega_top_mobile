@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
@@ -14,9 +15,9 @@ class OurProductsList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: context.width*0.03),
+        padding: EdgeInsets.symmetric(horizontal: context.width * 0.03),
         child: SizedBox(
-          height: context.height*0.14,
+          height: context.height * 0.14,
           child: Row(
             children: [
               const OurProductsContainer(
@@ -24,19 +25,19 @@ class OurProductsList extends StatelessWidget {
                 productName: AppStrings.surveillanceCamerasEn,
                 productQuantity: AppStrings.twentyFiveProducts,
               ),
-              HorizontalSpace(context.width*0.045),
+              HorizontalSpace(context.width * 0.045),
               const OurProductsContainer(
                 productPhoto: AppAssets.upsSmall,
                 productName: AppStrings.upsEn,
                 productQuantity: AppStrings.twentyFiveProducts,
               ),
-              HorizontalSpace(context.width*0.045),
+              HorizontalSpace(context.width * 0.045),
               const OurProductsContainer(
                 productPhoto: AppAssets.cameraControlSmall,
                 productName: AppStrings.surveillanceCamerasEn,
                 productQuantity: AppStrings.twentyFiveProducts,
               ),
-              HorizontalSpace(context.width*0.045),
+              HorizontalSpace(context.width * 0.045),
             ],
           ),
         ),

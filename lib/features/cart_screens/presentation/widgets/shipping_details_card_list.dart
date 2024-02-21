@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/features/cart_screens/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/shipping_details_card_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../../../core/widgets/primary_empty_button.dart';
@@ -14,7 +15,7 @@ class ShippingDetailsCardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List <ShippingDetailsCardModel> shippingCard = [
+    final List<ShippingDetailsCardModel> shippingCard = [
       ShippingDetailsCardModel(
         deliveryPlace: AppStrings.homeEn,
         customerName: AppStrings.customerNameEn,

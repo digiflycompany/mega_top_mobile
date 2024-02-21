@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
+
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/widgets/custom_animated_icon_toast.dart';
@@ -109,9 +110,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
-
-
-  final List <String> images = [
+  final List<String> images = [
     AppAssets.productBigPhoto,
     AppAssets.productBigPhotoRight,
     AppAssets.productBigPhoto,
@@ -147,7 +146,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   void setImageIndex(int index) {
-    _currentImageIndex=index;
+    _currentImageIndex = index;
     emit(CategoryProductUpdated());
   }
 
@@ -210,5 +209,4 @@ class CategoryCubit extends Cubit<CategoryState> {
       },
     );
   }
-
 }

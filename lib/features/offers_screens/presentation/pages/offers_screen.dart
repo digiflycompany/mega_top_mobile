@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/app_bar_fav_icon.dart';
 import '../widgets/offers_items_grid.dart';
@@ -19,15 +20,20 @@ class OffersPage extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.offersEn)),
-      body:  Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
-        child:  Column(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+        child: Column(
           children: [
-            OffersItemsOptionsRow(topPadding:context.height * 0.028,bottomPadding: context.height * 0.033,),
+            OffersItemsOptionsRow(
+              topPadding: context.height * 0.028,
+              bottomPadding: context.height * 0.033,
+            ),
             BlocConsumer<OffersCubit, OffersState>(
               listener: (context, state) {},
               builder: (context, state) {
-                return offersCubit.isGrid?const OffersItemsGridView():const OffersItemsListView();
+                return offersCubit.isGrid
+                    ? const OffersItemsGridView()
+                    : const OffersItemsListView();
               },
             ),
           ],

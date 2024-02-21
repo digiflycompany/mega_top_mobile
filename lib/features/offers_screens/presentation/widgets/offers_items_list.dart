@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/data/product_model.dart';
@@ -67,7 +68,11 @@ class OffersItemsListView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final product = products[index];
           return Padding(
-            padding: EdgeInsets.only(right: context.width*0.011,left: context.width*0.011, bottom: context.height*0.027,top: context.height*0.006),
+            padding: EdgeInsets.only(
+                right: context.width * 0.011,
+                left: context.width * 0.011,
+                bottom: context.height * 0.027,
+                top: context.height * 0.006),
             child: ProductsListContainer(
               productName: product.productName,
               productPhoto: product.productPhoto,

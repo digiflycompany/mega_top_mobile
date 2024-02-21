@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/utils/app_color.dart';
 
 class CartListProductPrice extends StatelessWidget {
@@ -8,13 +9,12 @@ class CartListProductPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Text(
+    return Text(
       text!,
       style: TextStyle(
           color: AppColors.primaryColor,
           fontSize: 12.sp,
-          fontWeight: FontWeight.w700
-      ),
+          fontWeight: FontWeight.w700),
     );
   }
 }

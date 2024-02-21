@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_color.dart';
 
 class WhiteBoxIcon extends StatelessWidget {
@@ -13,11 +14,11 @@ class WhiteBoxIcon extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: context.width*0.11,
-        height: context.height*0.055,
+        width: context.width * 0.11,
+        height: context.height * 0.055,
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(context.height*0.006 ),
+            borderRadius: BorderRadius.circular(context.height * 0.006),
             boxShadow: const [
               BoxShadow(
                 color: AppColors.shadowColor,
@@ -25,10 +26,12 @@ class WhiteBoxIcon extends StatelessWidget {
                 blurRadius: 12,
                 spreadRadius: 0,
               ),
-            ]
-        ),
+            ]),
         child: Center(
-          child: SvgPicture.asset(icon!,width: context.width*0.055,),
+          child: SvgPicture.asset(
+            icon!,
+            width: context.width * 0.055,
+          ),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_color.dart';
 
 class WhiteCircleIcon extends StatelessWidget {
@@ -11,8 +12,8 @@ class WhiteCircleIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: context.width*0.5,
-        height: context.height*0.207,
+        width: context.width * 0.5,
+        height: context.height * 0.207,
         decoration: const BoxDecoration(
           color: Colors.white,
           shape: BoxShape.circle,
