@@ -20,17 +20,14 @@ class AppStrings {
   static const String leEn = ' LE';
   static const int one = 1;
   static const String noShippingAddressEn = 'No shipping addresses';
-  static const String noShippingAddressSmallTextEn =
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+  static const String emptyOrderScreenDescriptionEn = 'All orders you have placed will be saved here\nTo access it at any time';
+  static const String noShippingAddressSmallTextEn = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
   static const String exploreOurDigitalProducts = 'تصفح منتجاتنا الإكترونية';
-  static const String exploreOurDigitalProductsEn =
-      'Explore our electronic products';
+  static const String exploreOurDigitalProductsEn = 'Explore our electronic products';
   static const String addYourProductsToCart = 'أضف منتجاتك إلى سلة التسوق';
-  static const String addYourProductsToCartEn =
-      'Add your products to the shopping cart';
+  static const String addYourProductsToCartEn = 'Add your products to the shopping cart';
   static const String getYourOrderSuccessfully = 'احصل على طلبك بنجاح';
-  static const String getYourOrderSuccessfullyEn =
-      'Receive your order successfully';
+  static const String getYourOrderSuccessfullyEn = 'Receive your order successfully';
   static const String getStarted = 'Get started';
   static const String alreadyHaveAnAccountEn = 'Already have an account ?';
   static const String createNewAccount = 'إنشاء حساب جديد';
@@ -38,10 +35,8 @@ class AppStrings {
   static const String addNewAddressEn = 'Add a new address';
   static const String login = 'تسجيل الدخول';
   static const String loginEn = 'Login';
-  static const String onBoardingDescription =
-      'يتم استخدام نص لوريم الملء من قبل مصممي الجرافيك والمبرمجين والطابعات بهدف شغل مساحات موقع ويب أو منتج إعلاني أو إنتاج تحريري لم يكن نصه النهائي جاهزًا بعد.';
-  static const String onBoardingDescriptionEn =
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer';
+  static const String onBoardingDescription = 'يتم استخدام نص لوريم الملء من قبل مصممي الجرافيك والمبرمجين والطابعات بهدف شغل مساحات موقع ويب أو منتج إعلاني أو إنتاج تحريري لم يكن نصه النهائي جاهزًا بعد.';
+  static const String onBoardingDescriptionEn = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer';
   static const String loginTitle = 'سجل الدخول للمتابعة';
   static const String loginTitleEn = 'Sign in to continue';
   static const String orderSummaryEn = 'Order Summary';
@@ -53,6 +48,10 @@ class AppStrings {
   static const String forgotPasswordEn = 'Forgot Password ?';
   static const String signInWithGoogle = 'سجل عن طريق جوجل';
   static const String doNotHaveAccount = 'ليس لديك حساب ؟';
+  static const String noNotifications = 'No notifications';
+  static const String catchThe = 'Catch the ';
+  static const String fiftyPercent = '50%';
+  static const String offerAnSurveillance = ' offer on surveillance cameras';
   static const String doNotHaveAccountEn = 'Don’t have an account ?';
   static const String createAccount = 'إنشاء حساب';
   static const String createAccountEn = 'Sign up';
@@ -77,24 +76,20 @@ class AppStrings {
   static const String or = 'أو';
   static const String orEn = 'Or';
   static const String resetPasswordEn = 'Reset Password';
-  static const String enterYourEmailAddressEn =
-      'Enter your email address and we’ll send you\na verification code to reset your password.';
+  static const String enterYourEmailAddressEn = 'Enter your email address and we’ll send you\na verification code to reset your password.';
   static const String sendEn = 'Send';
   static const String verifyYourEmailEn = 'Verify your email';
-  static const String pleaseEnter4DigitsEn =
-      'Please enter the 4 digit code that sent to\nmohamed.nashaat211@gmail.com';
+  static const String pleaseEnter4DigitsEn = 'Please enter the 4 digit code that sent to\nmohamed.nashaat211@gmail.com';
   static const String verifyEn = 'Verify';
   static const String ifYouDidNotRecCodeEn = 'If you don’t receive code?';
   static const String resendCodeEn = 'Resend code';
   static const String checkoutEn = 'Checkout';
   static const String createNewPasswordEn = 'Create new password';
-  static const String createNewPasswordDescriptionEn =
-      'Your new password must be different\nfrom previously used password.';
+  static const String createNewPasswordDescriptionEn = 'Your new password must be different\nfrom previously used password.';
   static const String enterYourNewPasswordEn = 'Enter your new password';
   static const String confirmYourNewPasswordEn = 'Confirm your new password';
   static const String congratulationsEn = 'Congratulations';
-  static const String addressNasrCityEn =
-      'Nasr City District, Abbas Al Akkad Street, 222';
+  static const String addressNasrCityEn = 'Nasr City District, Abbas Al Akkad Street, 222';
   static const String telephoneAddressEn = 'T: 01020889544';
   static const String customerNameEn = 'Mohamed Nashaat';
   static const String ourProductsEn = 'Our products';
@@ -105,14 +100,12 @@ class AppStrings {
   static const String continueShoppingEn = 'Continue Shopping';
   static const String yourShipmentEn = 'Your shipment';
   static const String shippingDetailsEn = 'Shipping Details';
-  static const String selectTheDeliveryAddressEn =
-      'Select the delivery address';
+  static const String selectTheDeliveryAddressEn = 'Select the delivery address';
   static const String confirmShippingAddressEn = 'Confirm Shipping Address';
   static const String productsEn = 'Products';
   static const String products2En = 'products :';
   static const String productsQuantityEn = '2';
-  static const String addressInCartEn =
-      'Delivery to Egypt - section 2, Nasr City';
+  static const String addressInCartEn = 'Delivery to Egypt - section 2, Nasr City';
   static const String surveillanceCamerasEn = 'Surveillance...';
   static const String twentyFiveProducts = '25 Product';
   static const String upsEn = 'UPS';
@@ -128,8 +121,7 @@ class AppStrings {
   static const String filterByEn = 'Filter by';
   static const String welcomeEn = 'Welcome !';
   static const String searchHereEn = 'Search here ...';
-  static const String yourPasswordHasBeenResetSuccessfullyEn =
-      'Your password has been\nreset successfully!';
+  static const String yourPasswordHasBeenResetSuccessfullyEn = 'Your password has been\nreset successfully!';
   static const String hardDiskEn = 'Hard disk 1 TB, purple';
   static const String storageUnitsEn = 'Storage units, hard disk';
   static const String availableEn = 'Available';
@@ -138,10 +130,8 @@ class AppStrings {
   static const String rackEn = 'Rack';
   static const String productPriceEn = '1500 LE';
   static const String productOldPriceEn = '2300 LE';
-  static const String productDetailedSmallDescriptionEn =
-      'A unit that supplies electrical energy and converts it to the computer. Not only that, but it also converts the electrical charge outside the computer into a permanent and continuous current inside it, and it also performs a regulatory process for the device in order to protect it from burning.';
-  static const String aboutProductDescriptionEn =
-      'This product is part of the Easy UPS collection. It features a total of 4 power outlets, all of which provide battery backup and surge protection. It has an interactive line topology. The UPS has a high power rating of 156 joules. Its dimensions are 9.25 x 16.05 x 30.5 cm and its weight is 5.7 kg. Easy UPS provides a simple power protection solution for unstable power conditions in homes and small offices, ensuring stable and reliable connectivity in the moments that matter most. UPS is a CE certified product.';
+  static const String productDetailedSmallDescriptionEn = 'A unit that supplies electrical energy and converts it to the computer. Not only that, but it also converts the electrical charge outside the computer into a permanent and continuous current inside it, and it also performs a regulatory process for the device in order to protect it from burning.';
+  static const String aboutProductDescriptionEn = 'This product is part of the Easy UPS collection. It features a total of 4 power outlets, all of which provide battery backup and surge protection. It has an interactive line topology. The UPS has a high power rating of 156 joules. Its dimensions are 9.25 x 16.05 x 30.5 cm and its weight is 5.7 kg. Easy UPS provides a simple power protection solution for unstable power conditions in homes and small offices, ensuring stable and reliable connectivity in the moments that matter most. UPS is a CE certified product.';
   static const String homeEn = 'Home';
   static const String addToCartEn = 'Add to Cart';
   static const String aboutTheProductEn = 'About the product';
@@ -187,8 +177,7 @@ class AppStrings {
   static const String shoppingCartEn = 'Shopping Cart';
   static const String cardEndsWithEn = 'Card ends with 4821';
   static const String yourShoppingCartIsEmptyEn = 'Your shopping cart is empty';
-  static const String browseProductsLongTextEn =
-      'Browse our products and add the products you want to buy to the shopping cart by clicking the add button.';
+  static const String browseProductsLongTextEn = 'Browse our products and add the products you want to buy to the shopping cart by clicking the add button.';
   static const String sonyEn = 'Sony';
   static const String fromEn = 'From';
   static const String toEn = 'To';
@@ -204,8 +193,7 @@ class AppStrings {
   static const String fromHighToLowEn = 'From high to low';
   static const String fromLowToHighEn = 'From low to high';
   static const String noResultsEn = 'No results !';
-  static const String noResultLongEn =
-      'Sorry, there are no results for this search.\nPlease try another phrase.';
+  static const String noResultLongEn = 'Sorry, there are no results for this search.\nPlease try another phrase.';
   static const String resultsCount = '98 ';
   static const String le1500 = '1500 L.E';
   static const String four = '4';
@@ -218,17 +206,22 @@ class AppStrings {
   static const String threeThousand = '3000';
   static const String wishListEn = 'Wish List';
   static const String yourWishListEn = 'Your wish list';
-  static const String browseOurProductsDescriptionEn =
-      'Browse our products and add the products you like to your favorite products list by clicking on the heart sign.';
+  static const String browseOurProductsDescriptionEn = 'Browse our products and add the products you like to your favorite products list by clicking on the heart sign.';
   static const String products3En = 'products';
   static const String viewOrderEn = 'View Order';
   static const String yourOrderTwoProductsEn = 'Your order (2 products)';
-  static const String yourOrderReceivedSuccessfullyEn =
-      'Your order received successfully';
+  static const String yourOrderReceivedSuccessfullyEn = 'Your order received successfully';
   static const String yourOrderNumberIsEn = 'Your order number is :';
   static const String orderNumberEn = '#433463';
   static const String notifications = 'Notifications';
+  static const String noProductAddedToCompareEn = 'No products added to compare';
+  static const String emptyComparePageDescriptionEn = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+  static const String emptyComparePageDescription2En = 'Lorem Ipsum is simply dummy text of the printing and\n typesetting industry.';
   static const String settings = 'Settings';
+  static const String notificationDate = '8 jan 2024';
+  static const String currentOrdersEn = 'Current orders (2)';
+  static const String previousOrdersEn = 'Previous Orders (1)';
+  static const String noCurrentOrdersEn = 'No current orders';
   static const String languages = 'Languages';
   static const String contactUs = 'Contact us';
   static const String callUs = 'Call us';

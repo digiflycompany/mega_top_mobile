@@ -60,6 +60,7 @@ class AppAssets {
   static const String visaCardImg = "$imagesPath/visa_card.png";
   static const String notificationIcon = "$svgPath/notification_icon.svg";
   static const String favouritesIcon = "$svgPath/favourites_icon.svg";
+  static const String emptyOrderIcon = "$svgPath/empty_order_image.svg";
   static const String searchIcon = "$svgPath/search_icon.svg";
   static const String filterWhiteIcon = "$svgPath/filter_white_icon.svg";
   static const String primaryArrow = "$svgPath/primary_arrow.svg";
@@ -123,4 +124,6 @@ class AppAssets {
   static const String deleteIcon = "$svgPath/delete.svg";
   static const String updatePhotoIcon = "$svgPath/update_photo_icon.svg";
   static const String editIcon = "$svgPath/edit_icon.svg";
+  static const String emptyCompareIcon = "$svgPath/empty_compare_icon.svg";
+  static const String emptyNotificationsIcon = "$svgPath/empty_notifications_icon.svg";
 }

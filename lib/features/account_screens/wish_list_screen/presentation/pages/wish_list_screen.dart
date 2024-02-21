@@ -8,9 +8,9 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/prima
 
 import '../widgets/wish_list_count.dart';
 
-class WishListPage extends StatelessWidget {
+class WishListScreen extends StatelessWidget {
   final bool isEmpty = false;
-  const WishListPage({super.key});
+  const WishListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
