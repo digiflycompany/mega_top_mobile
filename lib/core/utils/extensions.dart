@@ -1,7 +1,8 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'app_routes_helper.dart';
 
+import 'package:flutter/material.dart';
+
+import 'app_routes_helper.dart';
 
 extension StringExtension on String {
   String get removeSpaces => replaceAll(' ', '');
@@ -14,7 +15,9 @@ extension StringExtension on String {
     } else if (formattedStringColor.startsWith('0X')) {
       formattedStringColor = formattedStringColor.replaceAll('0X', '');
     }
-    formattedStringColor = formattedStringColor.isLengthEqual(6) ? formattedStringColor.addAtStart('FF') : formattedStringColor;
+    formattedStringColor = formattedStringColor.isLengthEqual(6)
+        ? formattedStringColor.addAtStart('FF')
+        : formattedStringColor;
     return int.parse(formattedStringColor, radix: 16);
   }
 
@@ -27,9 +30,12 @@ extension StringExtension on String {
     } else if (formattedStringColor.startsWith('0X')) {
       formattedStringColor = formattedStringColor.replaceAll('0X', '');
     }
-    formattedStringColor = formattedStringColor.isLengthEqual(6) ? formattedStringColor.addAtStart('FF') : formattedStringColor;
+    formattedStringColor = formattedStringColor.isLengthEqual(6)
+        ? formattedStringColor.addAtStart('FF')
+        : formattedStringColor;
     return Color(int.parse(formattedStringColor, radix: 16));
   }
+
   dynamic get fromStringToJson => jsonDecode(this);
   String get capitalize => toUpperCase();
   String addAtStart(String start) => "$start$this";
@@ -47,6 +53,7 @@ extension StringExtension on String {
       return this;
     }
   }
+
   bool isJson() {
     try {
       json.decode(validate());
@@ -55,8 +62,9 @@ extension StringExtension on String {
     }
     return true;
   }
-  isEqualTo(value)=>this==value;
-  isNotEqualTo(value)=>this!=value;
+
+  isEqualTo(value) => this == value;
+  isNotEqualTo(value) => this != value;
   get getBack => pop();
 
   get moveToAndRemoveCurrent => pushRoute(this, isToReplace: true);
@@ -67,15 +75,19 @@ extension StringExtension on String {
 
   //get pushAndRemoveAllUntil => pushRoute(this, isNewTask: true);
 
-  pushReplacementWithData(Map<String, dynamic>? arguments) => pushRoute(this, isToReplace: true, arguments: arguments);
+  pushReplacementWithData(Map<String, dynamic>? arguments) =>
+      pushRoute(this, isToReplace: true, arguments: arguments);
 
-  pushWithData(Map<String, dynamic>? arguments) => pushRoute(this, arguments: arguments);
+  pushWithData(Map<String, dynamic>? arguments) =>
+      pushRoute(this, arguments: arguments);
 
-  pushAndRemoveAllWithDataUntil(Map<String, dynamic>? arguments) => pushRoute(this, isNewTask: true, arguments: arguments);
+  pushAndRemoveAllWithDataUntil(Map<String, dynamic>? arguments) =>
+      pushRoute(this, isNewTask: true, arguments: arguments);
   popScreen([Object? object]) => pop(object);
   popScreenWithArgument([Object? object]) => pop(object);
 
-  moveToCurrentRouteAndRemoveAllExceptThisRoute() => pushRoute(this, isNewTask: true, exceptRoute: this);
+  moveToCurrentRouteAndRemoveAllExceptThisRoute() =>
+      pushRoute(this, isNewTask: true, exceptRoute: this);
   //get pushReplacement => pushRoute(this, isToReplace: true);
   //get push => pushRoute(this);
 }
@@ -93,9 +105,10 @@ extension CutomMethodsOnNullObject on Object? {
   bool get isTrue => this == true;
   bool get isFalse => this == false;
 }
+
 extension CutomMethodsOnObject on Object {
-  isEqualTo(value)=>this==value;
-  isNotEqualTo(value)=>this!=value;
+  isEqualTo(value) => this == value;
+  isNotEqualTo(value) => this != value;
 }
 
 extension StringNullExtension on String? {
@@ -109,17 +122,17 @@ extension StringNullExtension on String? {
 extension IntExtension on int {
   Duration get milliseconds => Duration(milliseconds: this);
   bool isSuccessful() => this >= 200 && this <= 206;
-
 }
 
 extension BullBoolExtension on bool? {
   /* null false , false false */
   bool get validate => this == null ? false : this!;
 }
+
 extension BoolExtension on bool {
   /* null false , false false */
-  bool get isFalse=>this==false;
-  bool get isTrue=>this==true;
+  bool get isFalse => this == false;
+  bool get isTrue => this == true;
 }
 
 extension ListExtension on List<dynamic>? {
@@ -134,13 +147,10 @@ extension DateTimeExtension on DateTime? {
   /* string to date time */
 }
 
-
-
-
 extension DynamicExtension on dynamic {
   Map<String, dynamic> get json => jsonDecode(this);
-  isEqualTo(value)=>this==value;
-  isNotEqualTo(value)=>this!=value;
+  isEqualTo(value) => this == value;
+  isNotEqualTo(value) => this != value;
 }
 
 extension MediaQueryValues on BuildContext {
@@ -151,8 +161,5 @@ extension MediaQueryValues on BuildContext {
 }
 
 extension DoubleExtension on double {
-
-
-
 // double get w=>getSize(this);
 }

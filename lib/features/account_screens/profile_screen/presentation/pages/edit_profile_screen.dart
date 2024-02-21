@@ -11,8 +11,8 @@ import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_text_form_field.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
-class ProfileDetailsScreen extends StatelessWidget {
-  const ProfileDetailsScreen({super.key});
+class EditProfileScreen extends StatelessWidget {
+  const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

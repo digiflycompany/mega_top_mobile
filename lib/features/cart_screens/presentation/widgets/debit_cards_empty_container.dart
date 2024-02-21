@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/cart_screens/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_icon.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_text.dart';
+
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../cubit/cart_cubit.dart';
@@ -17,7 +18,12 @@ class DebitCardsEmptyContainer extends StatelessWidget {
   final int? paymentCardIndex;
 
   const DebitCardsEmptyContainer(
-      {super.key, this.paymentIcon, this.paymentType, required this.isSelected, required this.value, this.paymentCardIndex});
+      {super.key,
+      this.paymentIcon,
+      this.paymentType,
+      required this.isSelected,
+      required this.value,
+      this.paymentCardIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +36,10 @@ class DebitCardsEmptyContainer extends StatelessWidget {
           decoration: BoxDecoration(
             color: isSelected ? AppColors.iconsBackgroundColor : Colors.white,
             border: Border.all(
-                color: isSelected ? AppColors.primaryColor : AppColors
-                    .smallContainerGreyColor, width: 1.w),
+                color: isSelected
+                    ? AppColors.primaryColor
+                    : AppColors.smallContainerGreyColor,
+                width: 1.w),
             borderRadius: BorderRadius.circular(4.r),
           ),
           child: Padding(
@@ -46,8 +54,8 @@ class DebitCardsEmptyContainer extends StatelessWidget {
                   scale: 1.2.r,
                   child: Radio(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    visualDensity: const VisualDensity(
-                        vertical: -4, horizontal: -4),
+                    visualDensity:
+                        const VisualDensity(vertical: -4, horizontal: -4),
                     activeColor: AppColors.primaryColor,
                     focusColor: Colors.black,
                     value: value,

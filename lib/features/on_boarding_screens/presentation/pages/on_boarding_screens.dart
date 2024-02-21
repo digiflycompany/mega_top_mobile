@@ -4,6 +4,7 @@ import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_c
 import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_states.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_first_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_second_screen.dart';
+
 import 'on_boarding_third_screen.dart';
 
 class OnBoardingScreens extends StatelessWidget {
@@ -49,9 +50,12 @@ class OnBoardingViewState extends State<OnBoardingView> {
               onboardingCubit.setPageIndex(pageIndex = index);
             },
             children: [
-              OnboardingFirstScreen(pageController: _pageController, index: pageIndex),
-              OnboardingSecondScreen(pageController: _pageController, index: pageIndex),
-              OnboardingThirdScreen(pageController: _pageController, index: pageIndex),
+              OnboardingFirstScreen(
+                  pageController: _pageController, index: pageIndex),
+              OnboardingSecondScreen(
+                  pageController: _pageController, index: pageIndex),
+              OnboardingThirdScreen(
+                  pageController: _pageController, index: pageIndex),
             ],
           );
         },

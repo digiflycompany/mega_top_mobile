@@ -52,9 +52,17 @@ class ProfileScreen extends StatelessWidget {
                 Routes.profileDetailsPageRoute.moveTo;
               }),
               VerticalSpace(24.h),
-              const EditPasswordItem(),
+              EditPasswordItem(
+                onTap: () {
+                  Routes.passwordDetailsPageRoute.moveTo;
+                },
+              ),
               VerticalSpace(24.h),
-              const DeleteAccountItem(),
+              DeleteAccountItem(
+                onTap: () {
+                  Routes.deleteAccountPageRoute.moveTo;
+                },
+              ),
             ],
           ),
         ),

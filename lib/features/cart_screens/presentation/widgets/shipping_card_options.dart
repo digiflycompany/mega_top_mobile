@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/remove_shipping_details_container.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/spacer.dart';
 import 'delivery_title.dart';
@@ -17,11 +18,11 @@ class ShippingCardOptions extends StatelessWidget {
       children: [
         /// Location Icon
         SvgPicture.asset(AppAssets.locationOutlinedIcon),
-        HorizontalSpace(context.width*0.022),
-        DeliveryTitle(text:deliveryPlace),
+        HorizontalSpace(context.width * 0.022),
+        DeliveryTitle(text: deliveryPlace),
         const Spacer(),
         const EditShippingDetailsContainer(),
-        HorizontalSpace(context.width*0.045),
+        HorizontalSpace(context.width * 0.045),
         const RemoveShippingDetailsContainer()
       ],
     );

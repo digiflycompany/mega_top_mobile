@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/white_box_icon.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../cubit/category_cubit.dart';
 
 class FavourCompareColumn extends StatelessWidget {
   const FavourCompareColumn({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,13 @@ class FavourCompareColumn extends StatelessWidget {
             child: Column(
               children: [
                 WhiteBoxIcon(
-                  icon: categoryCubit.addedToFavourites?AppAssets.favourFilledIcon:AppAssets.favourOutlinedIcon,
+                  icon: categoryCubit.addedToFavourites
+                      ? AppAssets.favourFilledIcon
+                      : AppAssets.favourOutlinedIcon,
                   onTap: () {
-                    categoryCubit.addedToFavourites?categoryCubit.showRemoveFromFavouritesToast(context):categoryCubit.showAddToFavouritesToast(context);
+                    categoryCubit.addedToFavourites
+                        ? categoryCubit.showRemoveFromFavouritesToast(context)
+                        : categoryCubit.showAddToFavouritesToast(context);
                     categoryCubit.toggleFavourite();
                   },
                 ),
@@ -35,7 +39,9 @@ class FavourCompareColumn extends StatelessWidget {
                 WhiteBoxIcon(
                   icon: AppAssets.compareIcon,
                   onTap: () {
-                    categoryCubit.addedToCompare?categoryCubit.showRemoveFromCompareToast(context):categoryCubit.showAddToCompareToast(context);
+                    categoryCubit.addedToCompare
+                        ? categoryCubit.showRemoveFromCompareToast(context)
+                        : categoryCubit.showAddToCompareToast(context);
                     categoryCubit.toggleCompare();
                   },
                 ),

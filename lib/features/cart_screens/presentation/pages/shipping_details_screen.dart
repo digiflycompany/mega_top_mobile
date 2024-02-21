@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/cart_screens/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
+
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
@@ -25,33 +26,36 @@ class ShippingDetailsPage extends StatelessWidget {
             AppStrings.shippingDetailsEn,
             favour: false,
           )),
-      body: isEmpty?
-      const EmptyDataPage(
-        icon: AppAssets.emptyAddressIcon,
-        bigFontText: AppStrings.noShippingAddressEn,
-        smallFontText: AppStrings.noShippingAddressSmallTextEn,
-        buttonText: AppStrings.addNewAddressEn,
-      ):
-      BlocProvider(
-        create: (context) => CartCubit(),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-          child: const SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CartScreensTitleText(text: AppStrings.selectTheDeliveryAddressEn,),
-                ShippingDetailsCardList(),
-              ],
+      body: isEmpty
+          ? const EmptyDataPage(
+              icon: AppAssets.emptyAddressIcon,
+              bigFontText: AppStrings.noShippingAddressEn,
+              smallFontText: AppStrings.noShippingAddressSmallTextEn,
+              buttonText: AppStrings.addNewAddressEn,
+            )
+          : BlocProvider(
+              create: (context) => CartCubit(),
+              child: Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: context.width * 0.045),
+                child: const SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CartScreensTitleText(
+                        text: AppStrings.selectTheDeliveryAddressEn,
+                      ),
+                      ShippingDetailsCardList(),
+                    ],
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
       bottomNavigationBar: ButtonBottomNavBar(
         button: PrimaryButton(
           text: AppStrings.confirmShippingAddressEn,
-          onTap: ()=> Routes.paymentMethodsPageRoute.moveTo,
+          onTap: () => Routes.paymentMethodsPageRoute.moveTo,
         ),
       ),
     );

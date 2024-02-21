@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../data/product_model.dart';
@@ -62,7 +63,7 @@ class SearchResultGridView extends StatelessWidget {
     ];
     return Expanded(
       child: GridView.builder(
-         physics: const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: products.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -72,8 +73,11 @@ class SearchResultGridView extends StatelessWidget {
         ),
         itemBuilder: (BuildContext context, int index) {
           final product = products[index];
-          return  Padding(
-            padding: EdgeInsets.only(right: context.width*0.011,left: context.width*0.011,top: context.height*0.004),
+          return Padding(
+            padding: EdgeInsets.only(
+                right: context.width * 0.011,
+                left: context.width * 0.011,
+                top: context.height * 0.004),
             child: ProductsGridContainer(
               productName: product.productName,
               productPhoto: product.productPhoto,

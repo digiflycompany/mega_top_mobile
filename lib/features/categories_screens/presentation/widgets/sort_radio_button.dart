@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+
 import '../../cubit/category_cubit.dart';
 import '../../cubit/category_state.dart';
 
@@ -15,7 +16,8 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
   const CustomAdaptiveRadioButton({
     Key? key,
     required this.value,
-    required this.label,this.description,
+    required this.label,
+    this.description,
   }) : super(key: key);
 
   @override
@@ -27,9 +29,9 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           onTap: () => categoryCubit.selectOption(value),
           child: Container(
-            height: context.height*0.065,
+            height: context.height * 0.065,
             width: double.infinity,
-            padding:  EdgeInsets.symmetric(horizontal: context.width*0.022),
+            padding: EdgeInsets.symmetric(horizontal: context.width * 0.022),
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
@@ -48,21 +50,19 @@ class CustomAdaptiveRadioButton extends StatelessWidget {
                   ),
                 ),
                 Text(
-                    label,
+                  label,
                   style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14.sp
-                  ),
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14.sp),
                 ),
-                HorizontalSpace(context.width*0.008),
+                HorizontalSpace(context.width * 0.008),
                 Text(
                   description!,
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 14.sp
-                  ),
+                      fontSize: 14.sp),
                 ),
               ],
             ),

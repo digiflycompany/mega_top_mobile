@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
@@ -12,13 +13,17 @@ import 'list_grid_container.dart';
 class ItemsOptionsRow extends StatelessWidget {
   final double? topPadding;
   final double? bottomPadding;
-  const ItemsOptionsRow({super.key, this.topPadding, this.bottomPadding, });
+  const ItemsOptionsRow({
+    super.key,
+    this.topPadding,
+    this.bottomPadding,
+  });
 
   @override
   Widget build(BuildContext context) {
     HomeCubit homeCubit = context.read<HomeCubit>();
     return Padding(
-      padding:  EdgeInsets.only(top:topPadding!,bottom: bottomPadding!),
+      padding: EdgeInsets.only(top: topPadding!, bottom: bottomPadding!),
       child: Row(
         children: [
           /// List Grid Container ///
@@ -26,18 +31,23 @@ class ItemsOptionsRow extends StatelessWidget {
             listener: (context, state) {},
             builder: (context, state) {
               return ListGridContainer(
-                onTap: (){
+                onTap: () {
                   homeCubit.toggleList();
                 },
-                image:homeCubit.isGrid? AppAssets.listIcon:AppAssets.gridIcon,
-                text: homeCubit.isGrid? AppStrings.listEn:AppStrings.gridEn
-                ,);
+                image:
+                    homeCubit.isGrid ? AppAssets.listIcon : AppAssets.gridIcon,
+                text: homeCubit.isGrid ? AppStrings.listEn : AppStrings.gridEn,
+              );
             },
           ),
           const Spacer(),
-          const FilterSortContainer(icon: AppAssets.sortIcon,),
+          const FilterSortContainer(
+            icon: AppAssets.sortIcon,
+          ),
           HorizontalSpace(context.width * 0.022),
-          const FilterSortContainer(icon: AppAssets.filterIcon,)
+          const FilterSortContainer(
+            icon: AppAssets.filterIcon,
+          )
         ],
       ),
     );

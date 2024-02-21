@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
@@ -21,6 +22,7 @@ class ShipmentQuantityRow extends StatelessWidget {
           ),
         ),
         const Spacer(),
+
         /// Products Quantity
         Text(
           AppStrings.productsQuantityEn,
@@ -30,7 +32,8 @@ class ShipmentQuantityRow extends StatelessWidget {
             fontSize: 14.sp,
           ),
         ),
-        HorizontalSpace(context.width*0.011),
+        HorizontalSpace(context.width * 0.011),
+
         /// Products Text
         Text(
           AppStrings.productsEn,

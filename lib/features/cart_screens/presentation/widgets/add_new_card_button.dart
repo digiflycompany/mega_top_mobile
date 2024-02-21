@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/primary_empty_button.dart';
 import '../../cubit/cart_cubit.dart';
@@ -11,7 +12,7 @@ class AddNewCardButton extends StatelessWidget {
     CartCubit cartCubit = CartCubit.getCubit(context);
     return PrimaryOutlinedButton(
       text: AppStrings.addNewCardEn,
-      onTap: ()=>cartCubit.showAddNewCardBottomSheet(context),
+      onTap: () => cartCubit.showAddNewCardBottomSheet(context),
     );
   }
 }

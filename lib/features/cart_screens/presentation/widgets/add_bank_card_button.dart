@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/primary_button.dart';
 
@@ -11,7 +12,7 @@ class AddBankCardButton extends StatelessWidget {
     return Expanded(
       child: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
+          padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
           child: PrimaryButton(
             text: AppStrings.addBankCardEn,
             onTap: () => Navigator.pop(context),

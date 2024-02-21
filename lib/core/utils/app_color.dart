@@ -33,4 +33,6 @@ class AppColors {
   static const Color primaryGreenColor = Color.fromRGBO(0, 164, 104, 1);
   static const Color primaryRedColor = Color.fromRGBO(197, 0, 48, 0.9);
   static const Color cameraBackground = Color.fromRGBO(18, 71, 123, 0.6);
+
+  static const Color red = Color.fromRGBO(179, 0, 48, 1);
 }

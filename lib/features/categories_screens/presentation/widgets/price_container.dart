@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/price_text_field.dart';
+
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
@@ -11,9 +12,9 @@ class PriceContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
-         Align(
+        Align(
           alignment: AlignmentDirectional.topStart,
           child: Text(
             AppStrings.priceBottomSheetEn,
@@ -24,7 +25,7 @@ class PriceContainer extends StatelessWidget {
             ),
           ),
         ),
-        VerticalSpace(context.height*0.032),
+        VerticalSpace(context.height * 0.032),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -33,8 +34,7 @@ class PriceContainer extends StatelessWidget {
               style: TextStyle(
                   color: AppColors.smallTextBlackColor,
                   fontWeight: FontWeight.w600,
-                  fontSize: 13.sp
-              ),
+                  fontSize: 13.sp),
             ),
             Expanded(
               child: Center(
@@ -43,14 +43,13 @@ class PriceContainer extends StatelessWidget {
                   style: TextStyle(
                       color: AppColors.smallTextBlackColor,
                       fontWeight: FontWeight.w600,
-                      fontSize: 13.sp
-                  ),
+                      fontSize: 13.sp),
                 ),
               ),
             )
           ],
         ),
-        VerticalSpace(context.height*0.022),
+        VerticalSpace(context.height * 0.022),
         const Row(
           children: [
             PriceTextField(),

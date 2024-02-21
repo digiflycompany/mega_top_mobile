@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/your_latest_search_row.dart';
+
 import '../../../../core/utils/spacer.dart';
 import 'latest_search_list.dart';
 
@@ -9,10 +10,10 @@ class LatestSearchColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         const YourLatestSearch(),
-        VerticalSpace(context.height*0.025),
+        VerticalSpace(context.height * 0.025),
         const LatestSearchList(),
       ],
     );

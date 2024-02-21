@@ -4,6 +4,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/back_arrow_icon.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/curved_container.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/skip_text.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_routes.dart';
 
@@ -18,24 +19,26 @@ class SecondHeader extends StatelessWidget {
         /// BackGroundImage ///
         const CurvedContainer(),
         Padding(
-          padding:  EdgeInsets.only(top:context.height*0.1),
+          padding: EdgeInsets.only(top: context.height * 0.1),
           child: Transform.scale(
-              scale: 0.7,
-              child: Image.asset(AppAssets.boardingCart)),
+              scale: 0.7, child: Image.asset(AppAssets.boardingCart)),
         ),
+
         /// Skip Text ///
         SkipText(
-          onTap: (){
+          onTap: () {
             Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
           },
         ),
+
         /// Back Arrow ///
         Align(
           alignment: AlignmentDirectional.centerStart,
           child: Padding(
-            padding:  EdgeInsets.only(top: context.width*0.12,left: context.width*0.045),
-            child:  BackArrow(
-              onTap: (){
+            padding: EdgeInsets.only(
+                top: context.width * 0.12, left: context.width * 0.045),
+            child: BackArrow(
+              onTap: () {
                 pageController.animateToPage(
                   0,
                   duration: const Duration(milliseconds: 400),

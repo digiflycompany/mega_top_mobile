@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -11,7 +12,7 @@ class NoResultColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column  (
+    return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
@@ -30,8 +31,10 @@ class NoResultColumn extends StatelessWidget {
               ],
             ),
             child: Center(
-              child: Image.asset(AppAssets.noResultImg,
-                width: context.width * 0.222,),
+              child: Image.asset(
+                AppAssets.noResultImg,
+                width: context.width * 0.222,
+              ),
             )),
         VerticalSpace(context.height * 0.05),
         Text(
@@ -39,8 +42,7 @@ class NoResultColumn extends StatelessWidget {
           style: TextStyle(
               color: Colors.black,
               fontSize: 16.sp,
-              fontWeight: FontWeight.w700
-          ),
+              fontWeight: FontWeight.w700),
         ),
         VerticalSpace(context.height * 0.01),
         Text(
@@ -49,8 +51,7 @@ class NoResultColumn extends StatelessWidget {
           style: TextStyle(
               color: AppColors.greyTextColor,
               fontSize: 14.sp,
-              fontWeight: FontWeight.w500
-          ),
+              fontWeight: FontWeight.w500),
         ),
       ],
     );

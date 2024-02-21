@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_list.dart';
+
 import '../../../../core/utils/app_color.dart';
 import 'card_title_text.dart';
 
@@ -20,18 +21,22 @@ class YourOrderCard extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(width: 1.w, color: AppColors.smallContainerGreyColor),
+          border:
+              Border.all(width: 1.w, color: AppColors.smallContainerGreyColor),
           borderRadius: BorderRadius.circular(4.r),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: context.height * 0.022,),
+          padding: EdgeInsets.symmetric(
+            vertical: context.height * 0.022,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min, // Make the column take up only required space
+            mainAxisSize:
+                MainAxisSize.min, // Make the column take up only required space
             children: [
               const CardTitleText(title: AppStrings.yourOrderTwoProductsEn),
               const CustomDivider(),
-              VerticalSpace(context.height*0.033),
+              VerticalSpace(context.height * 0.033),
               const YourOrderList(),
             ],
           ),

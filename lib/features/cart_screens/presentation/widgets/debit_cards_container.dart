@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/features/cart_screens/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cvv_card_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_icon.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_text.dart';
+
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../cubit/cart_cubit.dart';
@@ -21,7 +22,12 @@ class DebitCardsContainer extends StatelessWidget {
   final int? paymentCardIndex;
 
   const DebitCardsContainer(
-      {super.key, this.paymentIcon, this.paymentType, required this.isSelected, required this.value, this.paymentCardIndex});
+      {super.key,
+      this.paymentIcon,
+      this.paymentType,
+      required this.isSelected,
+      required this.value,
+      this.paymentCardIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +40,20 @@ class DebitCardsContainer extends StatelessWidget {
           decoration: BoxDecoration(
             color: isSelected ? AppColors.iconsBackgroundColor : Colors.white,
             border: Border.all(
-                color: isSelected ? AppColors.primaryColor : AppColors
-                    .smallContainerGreyColor, width: 1.w),
+                color: isSelected
+                    ? AppColors.primaryColor
+                    : AppColors.smallContainerGreyColor,
+                width: 1.w),
             borderRadius: BorderRadius.circular(4.r),
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.width * 0.045,vertical: context.height*0.02),
+            padding: EdgeInsets.symmetric(
+                horizontal: context.width * 0.045,
+                vertical: context.height * 0.02),
             child: Column(
               children: [
                 Padding(
-                  padding:  EdgeInsets.only(bottom:context.height*0.011),
+                  padding: EdgeInsets.only(bottom: context.height * 0.011),
                   child: Row(
                     children: [
                       PaymentCardIcon(icon: paymentIcon),
@@ -53,9 +63,10 @@ class DebitCardsContainer extends StatelessWidget {
                       Transform.scale(
                         scale: 1.2.r,
                         child: Radio(
-                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          visualDensity: const VisualDensity(
-                              vertical: -4, horizontal: -4),
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          visualDensity:
+                              const VisualDensity(vertical: -4, horizontal: -4),
                           activeColor: AppColors.primaryColor,
                           focusColor: Colors.black,
                           value: value,
@@ -71,8 +82,11 @@ class DebitCardsContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                Divider(color: AppColors.dotsColor,thickness: 1.w,),
-                VerticalSpace(context.height*0.033),
+                Divider(
+                  color: AppColors.dotsColor,
+                  thickness: 1.w,
+                ),
+                VerticalSpace(context.height * 0.033),
                 const CvvCardContainer(
                   cardIcon: AppAssets.masterCardImg,
                   cardNumber: AppStrings.cardEndsWithEn,

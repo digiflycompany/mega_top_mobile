@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 
@@ -12,17 +13,17 @@ class LatestSearchContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(bottom: context.height*0.01),
+      padding: EdgeInsets.only(bottom: context.height * 0.01),
       child: Container(
         width: double.infinity,
-        height: context.height*0.068,
+        height: context.height * 0.068,
         decoration: BoxDecoration(
-          color:AppColors.circleAvatarBackground,
-          borderRadius: BorderRadius.circular(context.height*0.006),
+          color: AppColors.circleAvatarBackground,
+          borderRadius: BorderRadius.circular(context.height * 0.006),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
-          child:  Row(
+          padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+          child: Row(
             children: [
               Text(
                 searchText!,

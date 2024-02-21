@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/widgets/title_app_bar.dart';
+
 import '../utils/app_color.dart';
 import 'app_bar_back_icon.dart';
+
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar(  this.text, {super.key});
+  const CustomAppBar(this.text, {super.key});
   final String text;
 
   @override
@@ -22,12 +24,12 @@ class CustomAppBar extends StatelessWidget {
       child: AppBar(
         backgroundColor: Colors.white,
         title: Padding(
-          padding:  EdgeInsets.only(top: context.height*0.008),
+          padding: EdgeInsets.only(top: context.height * 0.008),
           child: TitleText(text: text),
         ),
         centerTitle: true,
-        leading:   AppBarBackArrow(
-          onTap: (){
+        leading: AppBarBackArrow(
+          onTap: () {
             Navigator.pop(context);
           },
         ),

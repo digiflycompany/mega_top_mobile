@@ -1,7 +1,9 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:singleton/singleton.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:singleton/singleton.dart';
+
 class AppService {
   //
 
@@ -25,12 +27,12 @@ class AppService {
 
   /// if you want to use context from globally instead of content we need to pass navigatorKey.currentContext!
   Future<T?> pushRoute<T>(
-      String route, {
-        bool isNewTask = false,
-        bool isToReplace = false,
-        String? exceptRoute,
-        Map<String, dynamic>? arguments,
-      }) async {
+    String route, {
+    bool isNewTask = false,
+    bool isToReplace = false,
+    String? exceptRoute,
+    Map<String, dynamic>? arguments,
+  }) async {
     if (isNewTask) {
       return await navigatorKey.currentState!.pushNamedAndRemoveUntil(
           route,
@@ -46,7 +48,6 @@ class AppService {
           .pushNamed(route, arguments: arguments);
     }
   }
-
 
   /// Dispose current screens or close current dialog
 

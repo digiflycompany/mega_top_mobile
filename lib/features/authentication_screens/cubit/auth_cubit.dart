@@ -9,7 +9,7 @@ import '../../../core/utils/app_routes.dart';
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit() : super(AuthenticationInitial());
 
-  AuthenticationCubit getCubit(context) => BlocProvider.of(context);
+  static AuthenticationCubit getCubit(context) => BlocProvider.of(context);
 
   bool isPasswordVisible = true;
 
@@ -25,7 +25,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(AuthenticationInitial());
   }
 
-  void passwordChangedSuccessfully(BuildContext context){
+  void passwordChangedSuccessfully(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -36,5 +36,4 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       Routes.loginRoute.moveToCurrentRouteAndRemoveAll;
     });
   }
-  }
-
+}

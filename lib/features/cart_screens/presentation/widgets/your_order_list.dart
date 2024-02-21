@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_list_container.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/data/product_model.dart';
@@ -35,7 +36,10 @@ class YourOrderList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         final product = products[index];
         return Padding(
-          padding: EdgeInsets.only(bottom: context.height*0.022,left:context.width*0.045,right: context.width*0.045),
+          padding: EdgeInsets.only(
+              bottom: context.height * 0.022,
+              left: context.width * 0.045,
+              right: context.width * 0.045),
           child: YourOrderListContainer(
             productName: product.productName,
             productPhoto: product.productPhoto,

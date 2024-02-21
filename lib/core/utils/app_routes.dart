@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_details_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/delete_account_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
@@ -47,6 +49,8 @@ class Routes {
   static const String orderConfirmationPageRoute = "/order_confirmation_screen";
   static const String profilePageRoute = "/profile_screen";
   static const String profileDetailsPageRoute = "/profile_details_screen";
+  static const String passwordDetailsPageRoute = "/password_details_screen";
+  static const String deleteAccountPageRoute = "/delete_account_screen";
 }
 
 class RouteGenerator {
@@ -147,7 +151,15 @@ class RouteGenerator {
         );
       case Routes.profileDetailsPageRoute:
         return buildPageRoute(
-          child: const ProfileDetailsScreen(),
+          child: const EditProfileScreen(),
+        );
+      case Routes.passwordDetailsPageRoute:
+        return buildPageRoute(
+          child: const EditPasswordScreen(),
+        );
+      case Routes.deleteAccountPageRoute:
+        return buildPageRoute(
+          child: const DeleteAccountScreen(),
         );
     }
     return buildPageRoute(
