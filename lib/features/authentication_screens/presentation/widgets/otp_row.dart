@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+
 import 'otp_box.dart';
 
 class OtpRow extends StatelessWidget {
