@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
-import 'package:mega_top_mobile/features/account_screens/compare_screen/presentation/pages/compare_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
+
 import '../../../../core/utils/app_services_dart.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../authentication_screens/cubit/auth_cubit.dart';
@@ -48,8 +49,7 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             navigatorKey: AppService().navigatorKey,
-            //onGenerateRoute: RouteGenerator.getRoute,
-            home: const CompareScreen(),
+            onGenerateRoute: RouteGenerator.getRoute,
           ),
         );
       },

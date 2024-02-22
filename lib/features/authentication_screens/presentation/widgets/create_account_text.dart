@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/row_two_text.dart';
@@ -12,7 +13,7 @@ class CreateAccountText extends StatelessWidget {
     return RowTextButton(
       firstText: AppStrings.doNotHaveAccountEn,
       buttonText: AppStrings.createAccountEn,
-      onTap: (){
+      onTap: () {
         Routes.signUpRoute.moveTo;
       },
     );
