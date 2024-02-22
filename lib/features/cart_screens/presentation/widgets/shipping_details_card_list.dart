@@ -28,12 +28,6 @@ class ShippingDetailsCardList extends StatelessWidget {
         customerAddress: AppStrings.addressNasrCityEn,
         customerPhone: AppStrings.telephoneAddressEn,
       ),
-      ShippingDetailsCardModel(
-        deliveryPlace: AppStrings.companyEn,
-        customerName: AppStrings.customerNameEn,
-        customerAddress: AppStrings.addressNasrCityEn,
-        customerPhone: AppStrings.telephoneAddressEn,
-      ),
     ];
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {

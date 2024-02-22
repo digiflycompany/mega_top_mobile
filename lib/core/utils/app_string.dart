@@ -261,11 +261,14 @@ class AppStrings {
   static const String wishList = 'wishList';
   static const String savedCards = 'saved cards';
   static const String shippingAddresses = 'shipping Addresses';
+  static const String shippingAddressesEn = 'Shipping Addresses';
   static const String profileDetails = 'Profile Details';
   static const String firstName = 'First name';
   static const String lastName = 'Last name';
   static const String save = 'Save';
+  static const String removeItem = 'Remove item :';
   static const String passwordSettings = 'Password Settings';
   static const String deleteAccount = 'Delete Account';
+  static const String addressHasBeenEdited = 'Address has been edited';
   static const String addNewAddress = 'Add New Address';
 }

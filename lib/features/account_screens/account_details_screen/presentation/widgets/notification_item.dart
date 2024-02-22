@@ -7,17 +7,19 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 
 class NotificationItem extends StatelessWidget {
   const NotificationItem(
-      {super.key, this.mainIcon, this.title, this.optionalData});
+      {super.key, this.mainIcon, this.title, this.optionalData, this.onTap});
 
   final String? mainIcon;
   final String? title;
   final Widget? optionalData;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return AccountOptionItem(
       mainIcon: mainIcon ?? AppAssets.notificationIcon,
       title: title ?? AppStrings.notifications,
+      onTap: onTap,
       optionalData: optionalData ??
           Container(
             decoration: const BoxDecoration(

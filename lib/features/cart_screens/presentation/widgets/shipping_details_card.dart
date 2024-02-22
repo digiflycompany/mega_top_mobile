@@ -13,13 +13,15 @@ class ShippingDetailsCard extends StatelessWidget {
   final String? customerAddress;
   final String? customerPhone;
   final bool isSelected;
+  final Function()? editOnTap;
+  final Function()? removeOnTap;
   const ShippingDetailsCard(
       {super.key,
       this.deliveryPlace,
       this.customerName,
       this.customerAddress,
       this.customerPhone,
-      required this.isSelected});
+      this.isSelected=false, this.editOnTap, this.removeOnTap});
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,8 @@ class ShippingDetailsCard extends StatelessWidget {
             children: [
               ShippingCardOptions(
                 deliveryPlace: deliveryPlace,
+                editOnTap: editOnTap,
+                removeOnTap: removeOnTap,
               ),
               VerticalSpace(context.height * 0.0165),
               Divider(
