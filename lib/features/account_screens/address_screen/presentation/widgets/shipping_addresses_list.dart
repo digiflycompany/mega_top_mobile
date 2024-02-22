@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/features/cart_screens/cubit/cart_cubit.dart';
-import 'package:mega_top_mobile/features/cart_screens/cubit/cart_states.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/shipping_details_card_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
 
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
-import '../../../../core/widgets/primary_empty_button.dart';
-
-class ShippingDetailsCardList extends StatelessWidget {
-  const ShippingDetailsCardList({super.key});
+class ShippingAddressDetailsList extends StatelessWidget {
+  const ShippingAddressDetailsList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +25,6 @@ class ShippingDetailsCardList extends StatelessWidget {
         customerPhone: AppStrings.telephoneAddressEn,
       ),
     ];
-    return BlocBuilder<CartCubit, CartState>(
-      builder: (context, state) {
-        CartCubit cartCubit = CartCubit.getCubit(context);
         return Column(
           children: [
             ListView.builder(
@@ -40,16 +33,11 @@ class ShippingDetailsCardList extends StatelessWidget {
               itemCount: shippingCard.length,
               itemBuilder: (BuildContext context, int index) {
                 final card = shippingCard[index];
-                final isSelected = cartCubit.selectedCardIndex == index;
-                return GestureDetector(
-                  onTap: () => cartCubit.selectCard(index),
-                  child: ShippingDetailsCard(
-                    deliveryPlace: card.deliveryPlace,
-                    customerName: card.customerName,
-                    customerAddress: card.customerAddress,
-                    customerPhone: card.customerPhone,
-                    isSelected: isSelected,
-                  ),
+                return ShippingDetailsCard(
+                  deliveryPlace: card.deliveryPlace,
+                  customerName: card.customerName,
+                  customerAddress: card.customerAddress,
+                  customerPhone: card.customerPhone,
                 );
               },
             ),
@@ -60,7 +48,5 @@ class ShippingDetailsCardList extends StatelessWidget {
             VerticalSpace(context.height * 0.069),
           ],
         );
-      },
-    );
   }
 }

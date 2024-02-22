@@ -19,7 +19,7 @@ class ShippingDetailsCard extends StatelessWidget {
       this.customerName,
       this.customerAddress,
       this.customerPhone,
-      required this.isSelected});
+      this.isSelected=false});
 
   @override
   Widget build(BuildContext context) {

@@ -61,7 +61,7 @@ class UserAccountScreen extends StatelessWidget {
               ),
               VerticalSpace(16.h),
               ShippingItem(onTap: () {
-                Routes.addNewAddressPageRoute.moveTo;
+                Routes.shippingAddressPageRoute.moveTo;
               }),
               VerticalSpace(16.h),
               const SavedCardItem(),
