@@ -52,9 +52,13 @@ class UserAccountScreen extends StatelessWidget {
               VerticalSpace(25.h),
               const OrderItem(),
               VerticalSpace(16.h),
-              const WishListItem(),
+              WishListItem(
+                onTap: ()=> Routes.wishListPageRoute.moveTo,
+              ),
               VerticalSpace(16.h),
-              const NotificationItem(),
+              NotificationItem(
+                onTap: ()=> Routes.notificationPageRoute.moveTo,
+              ),
               VerticalSpace(16.h),
               ShippingItem(onTap: () {
                 Routes.addNewAddressPageRoute.moveTo;
