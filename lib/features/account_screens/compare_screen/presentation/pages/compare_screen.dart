@@ -13,22 +13,21 @@ class CompareScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const PrimaryAppBar(
-            AppStrings.compareProducts,
-            favour: false,
-          )),
-      body: isEmpty?const EmptyDataPage(
-        icon: AppAssets.emptyCompareIcon,
-        bigFontText: AppStrings.noProductAddedToCompareEn,
-        smallFontText: AppStrings.emptyComparePageDescriptionEn,
-        buttonText: AppStrings.continueShoppingEn,
-      ):const Column(
-        children: [
-
-        ],
-      )
-    );
+        appBar: PreferredSize(
+            preferredSize: Size(double.infinity, context.height * 0.089),
+            child: const PrimaryAppBar(
+              AppStrings.compareProducts,
+              favour: false,
+            )),
+        body: isEmpty
+            ? const EmptyDataPage(
+                icon: AppAssets.emptyCompareIcon,
+                bigFontText: AppStrings.noProductAddedToCompareEn,
+                smallFontText: AppStrings.emptyComparePageDescriptionEn,
+                buttonText: AppStrings.continueShoppingEn,
+              )
+            : const Column(
+                children: [],
+              ));
   }
 }

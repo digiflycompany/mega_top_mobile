@@ -16,24 +16,26 @@ class SignUpOrLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width*0.045),
+        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Center(child: AuthenticationLogo()),
-            VerticalSpace(context.height*0.055),
+            VerticalSpace(context.height * 0.055),
             const LoginOrContinueColumn(),
-            VerticalSpace(context.height*0.11),
+            VerticalSpace(context.height * 0.11),
+
             /// Sign Up Button
             PrimaryButton(
               text: AppStrings.signUpEn,
-              onTap: ()=>Routes.signUpRoute.moveTo,
+              onTap: () => Routes.signUpRoute.moveTo,
             ),
-            VerticalSpace(context.height*0.033),
+            VerticalSpace(context.height * 0.033),
+
             /// Login Button
             PrimaryOutlinedButton(
-                text: AppStrings.loginEn,
-                onTap: ()=>Routes.loginRoute.moveTo,
+              text: AppStrings.loginEn,
+              onTap: () => Routes.loginRoute.moveTo,
             )
           ],
         ),

@@ -13,7 +13,7 @@ class CreateAccountText extends StatelessWidget {
     return RowTextButton(
       firstText: AppStrings.doNotHaveAccountEn,
       buttonText: AppStrings.createAccountEn,
-      onTap: (){
+      onTap: () {
         Routes.signUpRoute.moveTo;
       },
     );

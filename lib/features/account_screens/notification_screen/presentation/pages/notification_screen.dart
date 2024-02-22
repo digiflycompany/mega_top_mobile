@@ -20,14 +20,18 @@ class NotificationScreen extends StatelessWidget {
               AppStrings.notifications,
               favour: false,
             )),
-        body: isEmpty?const EmptyDataPage(
-          icon: AppAssets.emptyNotificationsIcon,
-          bigFontText: AppStrings.noNotifications,
-          smallFontText: AppStrings.emptyComparePageDescriptionEn,
-        ): Padding(
-          padding: EdgeInsets.only(right: context.width*0.022,left:context.width*0.022,top: context.height*0.016,bottom: context.height*0.016),
-          child: const NotificationList()
-        )
-    );
+        body: isEmpty
+            ? const EmptyDataPage(
+                icon: AppAssets.emptyNotificationsIcon,
+                bigFontText: AppStrings.noNotifications,
+                smallFontText: AppStrings.emptyComparePageDescriptionEn,
+              )
+            : Padding(
+                padding: EdgeInsets.only(
+                    right: context.width * 0.022,
+                    left: context.width * 0.022,
+                    top: context.height * 0.016,
+                    bottom: context.height * 0.016),
+                child: const NotificationList()));
   }
 }

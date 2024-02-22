@@ -19,49 +19,53 @@ class VerifyEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height*0.089),
+          preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomAppBar(AppStrings.verifyYourEmailEn)),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
+        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              VerticalSpace(context.height*0.055),
+              VerticalSpace(context.height * 0.055),
               const Row(
                 children: [
                   ForgotPasswordIcon(
                     color: AppColors.primaryColor,
                     icon: AppAssets.checkIcon,
                   ),
-                  ForgotPasswordDivider(color: AppColors.primaryColor,),
+                  ForgotPasswordDivider(
+                    color: AppColors.primaryColor,
+                  ),
                   ForgotPasswordIcon(
                     color: AppColors.primaryColor,
                     icon: AppAssets.checkMailWhiteIcon,
                   ),
-                  ForgotPasswordDivider(color: AppColors.iconsBackgroundColor,),
+                  ForgotPasswordDivider(
+                    color: AppColors.iconsBackgroundColor,
+                  ),
                   ForgotPasswordIcon(
                     color: AppColors.iconsBackgroundColor,
                     icon: AppAssets.newPasswordBlueIcon,
                   ),
                 ],
               ),
-              VerticalSpace(context.height*0.06),
+              VerticalSpace(context.height * 0.06),
               const ForgotPasswordDescription(
                 text: AppStrings.pleaseEnter4DigitsEn,
               ),
-              VerticalSpace(context.height*0.033),
+              VerticalSpace(context.height * 0.033),
               const OtpRow(),
-              VerticalSpace(context.height*0.055),
+              VerticalSpace(context.height * 0.055),
               PrimaryButton(
                 text: AppStrings.verifyEn,
-                onTap: (){
+                onTap: () {
                   Routes.createNewPasswordRoute.moveTo;
                 },
               ),
-              VerticalSpace(context.height*0.033),
+              VerticalSpace(context.height * 0.033),
               const RowTextButton(
                 firstText: AppStrings.ifYouDidNotRecCodeEn,
                 buttonText: AppStrings.resendCodeEn,
