@@ -9,8 +9,9 @@ import 'delivery_title.dart';
 import 'edit_shipping_details_container.dart';
 
 class ShippingCardOptions extends StatelessWidget {
+  final Function()? editOnTap;
   final String? deliveryPlace;
-  const ShippingCardOptions({super.key, this.deliveryPlace});
+  const ShippingCardOptions({super.key, this.deliveryPlace, this.editOnTap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ShippingCardOptions extends StatelessWidget {
         HorizontalSpace(context.width * 0.022),
         DeliveryTitle(text: deliveryPlace),
         const Spacer(),
-        const EditShippingDetailsContainer(),
+        EditShippingDetailsContainer(onTap: editOnTap,),
         HorizontalSpace(context.width * 0.045),
         const RemoveShippingDetailsContainer()
       ],
