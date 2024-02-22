@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
@@ -95,7 +96,7 @@ class AddNewAddressScreen extends StatelessWidget {
         button: PrimaryButton(
           text: "Confirm Location",
           onTap: () {
-            Navigator.pop(context);
+            Routes.addNewAddressDetailsPageRoute.moveTo;
           },
         ),
       ),

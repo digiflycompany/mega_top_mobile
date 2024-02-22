@@ -7,8 +7,8 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
+import 'package:mega_top_mobile/core/widgets/edit_text_form_field.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_text_form_field.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
 class EditProfileScreen extends StatelessWidget {

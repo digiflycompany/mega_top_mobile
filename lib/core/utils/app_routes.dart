@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_details_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/delete_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
@@ -53,6 +54,8 @@ class Routes {
   static const String passwordDetailsPageRoute = "/password_details_screen";
   static const String deleteAccountPageRoute = "/delete_account_screen";
   static const String addNewAddressPageRoute = "/add_new_address_screen";
+  static const String addNewAddressDetailsPageRoute =
+      "/add_new_address_details_screen";
 }
 
 class RouteGenerator {
@@ -166,6 +169,10 @@ class RouteGenerator {
       case Routes.addNewAddressPageRoute:
         return buildPageRoute(
           child: const AddNewAddressScreen(),
+        );
+      case Routes.addNewAddressDetailsPageRoute:
+        return buildPageRoute(
+          child: const AddNewAddressDetailsScreen(),
         );
     }
     return buildPageRoute(
