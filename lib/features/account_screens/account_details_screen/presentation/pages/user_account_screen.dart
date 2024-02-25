@@ -52,7 +52,9 @@ class UserAccountScreen extends StatelessWidget {
               VerticalSpace(25.h),
               const OrderItem(),
               VerticalSpace(16.h),
-              const WishListItem(),
+              WishListItem(
+                onTap: ()=>Routes.wishListPageRoute.moveTo,
+              ),
               VerticalSpace(16.h),
               const NotificationItem(),
               VerticalSpace(16.h),
