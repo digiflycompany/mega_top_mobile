@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/add_address_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/add_address_details_state.dart';
 
@@ -35,9 +34,9 @@ class AddressLabelOptionItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4.r)),
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(icon),
-                HorizontalSpace(7.w),
                 Text(text,
                     style: const TextStyle(
                         color: AppColors.primaryColor,
