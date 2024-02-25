@@ -5,10 +5,13 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/shipping_addresses_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/pages/notification_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/delete_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/pages/wish_list_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
@@ -60,6 +63,9 @@ class Routes {
       "/add_new_address_details_screen";
   static const String editAddressDetailsPageRoute =
       "/edit_address_details_screen";
+  static const String notificationPageRoute = "/notification_screen";
+  static const String wishListPageRoute = "/wish_list_screen";
+  static const String shippingAddressPageRoute = "/shipping_addresses_screen";
 }
 
 class RouteGenerator {
@@ -182,6 +188,18 @@ class RouteGenerator {
       case Routes.editAddressDetailsPageRoute:
         return buildPageRoute(
           child: const EditAddressDetailsScreen(),
+        );
+      case Routes.notificationPageRoute:
+        return buildPageRoute(
+          child: const NotificationScreen(),
+        );
+      case Routes.wishListPageRoute:
+        return buildPageRoute(
+          child: const WishListScreen(),
+        );
+      case Routes.shippingAddressPageRoute:
+        return buildPageRoute(
+          child: const ShippingAddressScreen(),
         );
     }
     return buildPageRoute(
