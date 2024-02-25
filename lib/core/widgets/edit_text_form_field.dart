@@ -5,10 +5,12 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 
 class EditTextField extends StatelessWidget {
   final Widget? suffix;
-  const EditTextField({super.key, this.suffix, required this.title, this.text});
+  const EditTextField(
+      {super.key, this.suffix, required this.title, this.text, this.hintText});
 
   final String title;
   final String? text;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,11 @@ class EditTextField extends StatelessWidget {
           cursorColor: AppColors.blackGreyColor,
           cursorHeight: context.width * 0.046,
           decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: TextStyle(
+                color: AppColors.hintColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 12.sp),
             enabledBorder: const UnderlineInputBorder(
               borderSide:
                   BorderSide(width: 1, color: AppColors.googleButtonBorder),

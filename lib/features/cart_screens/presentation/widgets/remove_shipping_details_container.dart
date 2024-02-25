@@ -9,30 +9,25 @@ import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
 class RemoveShippingDetailsContainer extends StatelessWidget {
-  final Function()? editOnTap;
-  const RemoveShippingDetailsContainer({super.key, this.editOnTap});
+  const RemoveShippingDetailsContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: editOnTap,
-      child: Row(
-        children: [
-          /// Remove Icon (Basket Icon)
-          SvgPicture.asset(AppAssets.basketIcon),
-          HorizontalSpace(context.width * 0.011),
+    return Row(
+      children: [
+        /// Remove Icon (Basket Icon)
+        SvgPicture.asset(AppAssets.basketIcon),
+        HorizontalSpace(context.width * 0.011),
 
-          /// Remove Text
-          Text(
-            AppStrings.removeEn,
-            style: TextStyle(
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.w700,
-                fontSize: 12.sp),
-          ),
-        ],
-      ),
+        /// Remove Text
+        Text(
+          AppStrings.removeEn,
+          style: TextStyle(
+              color: AppColors.primaryColor,
+              fontWeight: FontWeight.w700,
+              fontSize: 12.sp),
+        ),
+      ],
     );
   }
 }

@@ -10,10 +10,8 @@ class ListProductName extends StatelessWidget {
     return Text(
       text!,
       style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.w700,
-          fontSize: 13.sp
-      ),
+          color: Colors.black, fontWeight: FontWeight.w700, fontSize: 13.sp),
+      overflow: TextOverflow.ellipsis,
     );
   }
 }
