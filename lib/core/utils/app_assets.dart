@@ -1,6 +1,7 @@
 class AppAssets {
   //__
   AppAssets.__internal();
+
   static const String imagesPath = "assets/images";
   static const String svgPath = "assets/svg";
   static const String gifPath = "assets/gif";

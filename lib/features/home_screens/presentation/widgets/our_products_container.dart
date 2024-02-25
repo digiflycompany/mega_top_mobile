@@ -35,30 +35,32 @@ class OurProductsContainer extends StatelessWidget {
           children: [
             Image.asset(productPhoto!, width: context.width * 0.13),
             HorizontalSpace(context.width * 0.02),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: context.height * 0.02),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    productName!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  const Spacer(),
-                  Text(
-                    productQuantity!,
-                    style: TextStyle(
-                        color: AppColors.greyTextColor,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: context.height * 0.02),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      productName!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    const Spacer(),
+                    Text(
+                      productQuantity!,
+                      style: TextStyle(
+                          color: AppColors.greyTextColor,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
               ),
             )
           ],

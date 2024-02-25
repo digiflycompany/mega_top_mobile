@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/edit_text_form_field.dart';
@@ -15,8 +14,8 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/ad
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/address_label_option_item.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
-class AddNewAddressDetailsScreen extends StatelessWidget {
-  const AddNewAddressDetailsScreen({super.key});
+class EditAddressDetailsScreen extends StatelessWidget {
+  const EditAddressDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,22 +48,22 @@ class AddNewAddressDetailsScreen extends StatelessWidget {
                     VerticalSpace(40.h),
                     const EditTextField(
                       title: "Additional address details",
-                      hintText: "More details about the address",
+                      text: "First Abbas",
                     ),
                     VerticalSpace(40.h),
                     const EditTextField(
                       title: "First name",
-                      hintText: "Enter first name here",
+                      text: "Mohamed",
                     ),
                     VerticalSpace(40.h),
                     const EditTextField(
                       title: "Last name",
-                      hintText: "Enter last name here",
+                      text: "Nashaat",
                     ),
                     VerticalSpace(40.h),
                     const EditTextField(
                       title: "Mobile number",
-                      hintText: "Enter mobile number here",
+                      text: "01020889544",
                     ),
                     VerticalSpace(40.h),
                     Text(
@@ -100,9 +99,9 @@ class AddNewAddressDetailsScreen extends StatelessWidget {
       ),
       bottomNavigationBar: ButtonBottomNavBar(
           button: PrimaryButton(
-        text: AppStrings.saveAddress,
+        text: AppStrings.editAddress,
         onTap: () {
-          Routes.editAddressDetailsPageRoute.moveTo;
+          Navigator.pop(context);
         },
       )),
     );

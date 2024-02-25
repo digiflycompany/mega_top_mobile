@@ -89,11 +89,13 @@ class ProductsListContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ListProductName(
-                          text: productName,
+                        Expanded(
+                          child: ListProductName(
+                            text: productName,
+                          ),
                         ),
-                        const Spacer(),
                         GestureDetector(
                             onTap: onTap,
                             child: SvgPicture.asset(
