@@ -33,6 +33,7 @@ enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
 
 class Routes {
   Routes._internal();
+
   static const String onBoardingRoute = "/";
   static const String loginRoute = "/login_screen";
   static const String signUpRoute = "/sign_up_screen";
@@ -63,6 +64,7 @@ class Routes {
 
 class RouteGenerator {
   RouteGenerator._internal();
+
   PageRouteAnimation? pageRouteAnimationGlobal;
   static Duration pageRouteTransitionDurationGlobal = 200.milliseconds;
 

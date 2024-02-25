@@ -73,7 +73,8 @@ class AppStrings {
   static const String theProductRemovedFromCompareEn =
       'The product removed from the Compare Products';
   static const String welcomeToMegaTopEn = 'Welcome to Mega Top';
-  static const String areYouSureYouWantToRemoveEn = 'Are you sure want to remove this address ?';
+  static const String areYouSureYouWantToRemoveEn =
+      'Are you sure want to remove this address ?';
   static const String loginOrCreateEnEn = 'Log in or create a new account';
   static const String continueWithGoogle = 'إنشاء حساب';
   static const String usernameEn = 'Username';

@@ -122,3 +122,4 @@ class OffersCubit extends Cubit<OffersState> {
     );
   }
 }
+

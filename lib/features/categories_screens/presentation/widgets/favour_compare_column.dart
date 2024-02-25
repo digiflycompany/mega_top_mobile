@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/white_box_icon.dart';
 
@@ -14,6 +16,7 @@ class FavourCompareColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CategoryCubit categoryCubit = context.read<CategoryCubit>();
+    GlobalCubit globalCubit = context.read<GlobalCubit>();
     return BlocConsumer<CategoryCubit, CategoryState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -30,8 +33,8 @@ class FavourCompareColumn extends StatelessWidget {
                       : AppAssets.favourOutlinedIcon,
                   onTap: () {
                     categoryCubit.addedToFavourites
-                        ? categoryCubit.showRemoveFromFavouritesToast(context)
-                        : categoryCubit.showAddToFavouritesToast(context);
+                        ? globalCubit.showPrimaryToast(context,AppStrings.theProductRemovedFromWishListEn)
+                        : globalCubit.showPrimaryToast(context,AppStrings.theProductAddedToWishListEn);
                     categoryCubit.toggleFavourite();
                   },
                 ),
@@ -40,8 +43,8 @@ class FavourCompareColumn extends StatelessWidget {
                   icon: AppAssets.compareIcon,
                   onTap: () {
                     categoryCubit.addedToCompare
-                        ? categoryCubit.showRemoveFromCompareToast(context)
-                        : categoryCubit.showAddToCompareToast(context);
+                        ? globalCubit.showPrimaryToast(context,AppStrings.theProductRemovedFromCompareEn)
+                        : globalCubit.showPrimaryToast(context,AppStrings.theProductAddedToCompareEn);
                     categoryCubit.toggleCompare();
                   },
                 ),

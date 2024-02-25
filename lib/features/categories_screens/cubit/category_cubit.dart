@@ -5,11 +5,9 @@ import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
-
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/widgets/custom_animated_icon_toast.dart';
-import '../../../core/widgets/custom_animated_toast.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit() : super(CategoryInitial());
@@ -68,47 +66,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
-  void showAddToCompareToast(BuildContext context) {
-    OverlayEntry? overlayEntry;
-    overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: kToolbarHeight + MediaQuery.of(context).padding.top,
-        width: MediaQuery.of(context).size.width,
-        child: AnimatedOverlayToast(
-          message: AppStrings.theProductAddedToCompareEn,
-          color: AppColors.primaryColor,
-          onDismissed: () {
-            if (overlayEntry != null) {
-              overlayEntry!.remove();
-              overlayEntry = null;
-            }
-          },
-        ),
-      ),
-    );
-    Overlay.of(context).insert(overlayEntry!);
-  }
-
-  void showRemoveFromCompareToast(BuildContext context) {
-    OverlayEntry? overlayEntry;
-    overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: kToolbarHeight + MediaQuery.of(context).padding.top,
-        width: MediaQuery.of(context).size.width,
-        child: AnimatedOverlayToast(
-          message: AppStrings.theProductRemovedFromCompareEn,
-          color: AppColors.primaryColor,
-          onDismissed: () {
-            if (overlayEntry != null) {
-              overlayEntry!.remove();
-              overlayEntry = null;
-            }
-          },
-        ),
-      ),
-    );
-    Overlay.of(context).insert(overlayEntry!);
-  }
 
   final List<String> images = [
     AppAssets.productBigPhoto,
