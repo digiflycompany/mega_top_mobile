@@ -274,4 +274,6 @@ class AppStrings {
   static const String addNewAddress = 'Add New Address';
   static const String editAddress = 'Edit Address';
   static const String work = 'Work';
+  static const String removeItem = 'Remove item :';
+
 }
