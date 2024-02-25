@@ -73,6 +73,7 @@ class AppStrings {
   static const String theProductRemovedFromCompareEn =
       'The product removed from the Compare Products';
   static const String welcomeToMegaTopEn = 'Welcome to Mega Top';
+  static const String areYouSureYouWantToRemoveEn = 'Are you sure want to remove this address ?';
   static const String loginOrCreateEnEn = 'Log in or create a new account';
   static const String continueWithGoogle = 'إنشاء حساب';
   static const String usernameEn = 'Username';
@@ -83,6 +84,7 @@ class AppStrings {
   static const String signUpEn = 'Sign up';
   static const String or = 'أو';
   static const String orEn = 'Or';
+  static const String cancelEn = 'Cancel';
   static const String resetPasswordEn = 'Reset Password';
   static const String enterYourEmailAddressEn =
       'Enter your email address and we’ll send you\na verification code to reset your password.';

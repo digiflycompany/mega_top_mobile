@@ -12,10 +12,11 @@ class RemoveItemDialogTitle extends StatelessWidget {
     return Container(
       height:context.height*0.087,
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.circular(4.r),
         boxShadow:
-        [
+        const [
           BoxShadow(
             color: AppColors.circleShadow,
             offset: Offset(0, 4),

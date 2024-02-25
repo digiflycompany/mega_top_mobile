@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/remove_item_dialog_title.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/widgets/remove_item_dialog_body.dart';
+import 'package:mega_top_mobile/core/widgets/remove_item_dialog_title.dart';
 
 class RemoveItemDialog extends StatelessWidget {
   const RemoveItemDialog({super.key});
@@ -18,7 +20,7 @@ class RemoveItemDialog extends StatelessWidget {
       child: const Column(
         children: [
           RemoveItemDialogTitle(),
-
+          RemoveItemDialogBody(description: AppStrings.areYouSureYouWantToRemoveEn,)
         ],
       ),
     );
