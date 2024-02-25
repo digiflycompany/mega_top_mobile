@@ -275,5 +275,7 @@ class AppStrings {
   static const String editAddress = 'Edit Address';
   static const String work = 'Work';
   static const String removeItem = 'Remove item :';
+  static const String addressHasBeenEdited = 'Address has been edited';
+
 
 }
