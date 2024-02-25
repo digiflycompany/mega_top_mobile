@@ -65,7 +65,9 @@ class GuestAccountScreen extends StatelessWidget {
                         color: AppColors.smallTextBlackColor),
                   )),
               VerticalSpace(25.h),
-              const NotificationItem(),
+              NotificationItem(
+                onTap: ()=> Routes.notificationPageRoute.moveTo,
+              ),
               VerticalSpace(40.h),
               Align(
                   alignment: AlignmentDirectional.topStart,

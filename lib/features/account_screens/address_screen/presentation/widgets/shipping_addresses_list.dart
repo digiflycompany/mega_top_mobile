@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
@@ -58,8 +59,9 @@ class ShippingAddressDetailsList extends StatelessWidget {
           ),
         ),
         VerticalSpace(context.height * 0.012),
-        const PrimaryOutlinedButton(
+        PrimaryOutlinedButton(
           text: AppStrings.addNewAddressEn,
+          onTap: ()=> Routes.addNewAddressPageRoute.moveTo,
         ),
         VerticalSpace(context.height * 0.069),
       ],
