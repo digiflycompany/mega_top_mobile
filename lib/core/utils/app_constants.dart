@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/widgets/custom_animated_toast.dart';
 class AppConstants {
   AppConstants._();
   static const double circleRadius = 10;
@@ -18,5 +21,27 @@ class AppConstants {
   static const Locale arLocale = Locale('ar', 'EG');
   static const List<Locale> supportedLocales = [enLocale, arLocale];
   static String translationPath='assets/translations';
+
+  void showAddToCompareToast(BuildContext context) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: kToolbarHeight + MediaQuery.of(context).padding.top,
+        width: MediaQuery.of(context).size.width,
+        child: AnimatedOverlayToast(
+          message: AppStrings.theProductAddedToCompareEn,
+          color: AppColors.primaryColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
+  }
+
 
 }

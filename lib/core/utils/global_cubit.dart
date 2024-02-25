@@ -3,15 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/global_state.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_toast.dart';
-import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/address_state.dart';
 import 'package:mega_top_mobile/core/widgets/remove_item_dialog.dart';
 
-class AddressCubit extends Cubit<AddressState> {
-  AddressCubit() : super(AddressInitial());
+class GlobalCubit extends Cubit<GlobalState> {
+  GlobalCubit() : super(GlobalInitial());
 
-  /// Show Address Edited Toast
-  void showPrimaryColorToast(BuildContext context,String text) {
+  /// Show Primary Toast
+  void showPrimaryToast(BuildContext context,String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
       builder: (context) => Positioned(

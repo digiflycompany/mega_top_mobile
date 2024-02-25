@@ -20,7 +20,7 @@ class RemoveItemDialog extends StatelessWidget {
       child: const Column(
         children: [
           RemoveItemDialogTitle(),
-          RemoveItemDialogBody(description: AppStrings.areYouSureYouWantToRemoveEn,)
+          RemoveItemDialogBody(description: AppStrings.areYouSureYouWantToRemoveEn,),
         ],
       ),
     );
