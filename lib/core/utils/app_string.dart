@@ -238,7 +238,8 @@ class AppStrings {
   static const String yourOrderReceivedSuccessfullyEn =
       'Your order received successfully';
   static const String yourOrderNumberIsEn = 'Your order number is :';
-  static const String orderNumberEn = '#433463';
+  static const String orderNumberText = 'order number :';
+  static const String orderNumberEn = ' #002377';
   static const String notifications = 'Notifications';
   static const String noProductAddedToCompareEn =
       'No products added to compare';

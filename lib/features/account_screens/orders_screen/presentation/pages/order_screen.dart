@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/current_previous_orders_row.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_text.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_state_box.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
@@ -37,6 +38,7 @@ class OrdersScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(
+                  width: double.infinity,
                   height: context.height204,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -50,7 +52,20 @@ class OrdersScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const Center(child: OrderStateBox(text: AppStrings.waitingForConfirmationEn,)),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: context.width16,vertical: context.height16),
+                    child: const Column(
+                      children: [
+                         Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: [
+                             OrderNumber(orderNumber: AppStrings.orderNumberEn,),
+                             OrderStateBox(text: AppStrings.waitingForConfirmationEn),
+                           ],
+                         )
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_number_text.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_number_text.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_success_icon.dart';
 
 import '../../../../core/utils/app_assets.dart';
@@ -29,7 +29,7 @@ class OrderConfirmationScreen extends StatelessWidget {
               img: AppAssets.orderSuccessImg,
             ),
             const OrderSuccessText(),
-            const OrderNumberText(
+            const YourOrderNumberText(
               orderNumber: AppStrings.orderNumberEn,
             ),
             const Spacer(),

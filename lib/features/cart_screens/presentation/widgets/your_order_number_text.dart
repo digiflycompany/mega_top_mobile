@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 
-class OrderNumberText extends StatelessWidget {
+class YourOrderNumberText extends StatelessWidget {
   final String? orderNumber;
-  const OrderNumberText({super.key, this.orderNumber});
+  const YourOrderNumberText({super.key, this.orderNumber});
 
   @override
   Widget build(BuildContext context) {
