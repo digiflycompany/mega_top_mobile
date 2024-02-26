@@ -62,8 +62,10 @@ class OrdersScreen extends StatelessWidget {
                         const OrderNumberAndState(),
                         VerticalSpace(context.height12),
                         const OrderDateAndDay(),
-                        VerticalSpace(context.height16),
-                        const CustomDivider(),
+                        CustomDivider(
+                          topPadding: context.height16,
+                          bottomPadding: context.height16,
+                        ),
                       ],
                     ),
                   ),
