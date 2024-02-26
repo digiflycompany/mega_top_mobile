@@ -1,63 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_condition_container.dart';
 
 class CurrentPreviousOrdersRow extends StatelessWidget {
-  const CurrentPreviousOrdersRow({super.key});
+  final int? isSelected;
+  const CurrentPreviousOrdersRow({super.key,this.isSelected=0});
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children:[
-        Expanded(
-          child: Container(
-            height: context.height*0.087,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              border: Border(
-                bottom: BorderSide(
-                  color: AppColors.primaryColor,
-                  width: 2.0,
-                ),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                AppStrings.currentOrdersEn,
-                style: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14.sp,
-                ),
-              ),
-            ),
-          ),
+        OrderConditionContainer(
+          text: AppStrings.currentOrdersEn,
+          borderColor: isSelected==0?AppColors.primaryColor:Colors.white,
+          textColor: isSelected==0?AppColors.primaryColor:AppColors.greyTextColor,
+          onTap: ()=> isSelected==0,
         ),
-        Expanded(
-          child: Container(
-            height: context.height*0.087,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.white,
-                  width: 2.0,
-                ),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                AppStrings.currentOrdersEn,
-                style: TextStyle(
-                  color: AppColors.greyTextColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14.sp,
-                ),
-              ),
-            ),
-          ),
+        OrderConditionContainer(
+          text: AppStrings.previousOrdersEn,
+          borderColor: isSelected==1?AppColors.primaryColor:Colors.white,
+          textColor: isSelected==1?AppColors.primaryColor:AppColors.greyTextColor,
+          onTap: ()=> isSelected==1,
         ),
       ],
     );

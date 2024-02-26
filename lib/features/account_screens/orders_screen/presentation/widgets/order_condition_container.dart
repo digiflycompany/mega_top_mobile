@@ -2,32 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 
 class OrderConditionContainer extends StatelessWidget {
-  const OrderConditionContainer({super.key});
+  final String? text;
+  final Color borderColor;
+  final Color textColor;
+  final Function()? onTap;
+  const OrderConditionContainer({super.key, this.text, this.borderColor=Colors.white, this.textColor = AppColors.greyTextColor, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        height: context.height*0.087,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border(
-            bottom: BorderSide(
-              color: AppColors.primaryColor,
-              width: 2.w,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: Container(
+          height: context.height*0.087,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border(
+              bottom: BorderSide(
+                color: borderColor,
+                width: 2.w,
+              ),
             ),
           ),
-        ),
-        child: Center(
-          child: Text(
-            AppStrings.currentOrdersEn,
-            style: TextStyle(
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 14.sp,
+          child: Center(
+            child: Text(
+              text!,
+              style: TextStyle(
+                color: textColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 14.sp,
+              ),
             ),
           ),
         ),
