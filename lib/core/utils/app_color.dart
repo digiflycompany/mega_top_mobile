@@ -26,6 +26,7 @@ class AppColors {
   static const Color notificationDescriptionColor =
       Color.fromRGBO(77, 77, 77, 1);
   static const Color circleShadow = Color.fromRGBO(0, 0, 0, 0.04);
+  static const Color yellowColor = Color.fromRGBO(255, 152, 15, 1);
   static const Color smallContainerGreyColor = Color.fromRGBO(229, 229, 229, 1);
   static const Color blackColor = Color.fromRGBO(51, 51, 51, 1);
   static const Color smallTextBlackColor = Color.fromRGBO(102, 102, 102, 1);

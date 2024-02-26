@@ -160,6 +160,56 @@ extension MediaQueryValues on BuildContext {
   double get bottom => MediaQuery.of(this).viewInsets.bottom;
 }
 
-extension DoubleExtension on double {
-// double get w=>getSize(this);
+extension ScreenSizeExt on BuildContext {
+  double get screenWidth => MediaQuery.of(this).size.width;
+  double get screenHeight => MediaQuery.of(this).size.height;
+
+  // Width getters
+  double get width4 => screenWidth * 0.011;
+  double get width8 => screenWidth * 0.022;
+  double get width12 => screenWidth * 0.033;
+  double get width16 => screenWidth * 0.045;
+  double get width20 => screenWidth * 0.055;
+  double get width24 => screenWidth * 0.066;
+  double get width28 => screenWidth * 0.077;
+  double get width32 => screenWidth * 0.088;
+  double get width40 => screenWidth * 0.11;
+  double get width48 => screenWidth * 0.134;
+  double get width52 => screenWidth * 0.142;
+  double get width72 => screenWidth * 0.2;
+  double get width88 => screenWidth * 0.245;
+  double get width90 => screenWidth * 0.222;
+  double get width104 => screenWidth * 0.285;
+  double get width122 => screenWidth * 0.31;
+  double get width135 => screenWidth * 0.351;
+  double get width152 => screenWidth * 0.5;
+
+  // Height getters
+  double get height1 => screenHeight * 0.002;
+  double get height1_8 => screenHeight * 0.005;
+  double get height4 => screenHeight * 0.006;
+  double get height8 => screenHeight * 0.012;
+  double get height11 => screenHeight * 0.015;
+  double get height12 => screenHeight * 0.0165;
+  double get height16 => screenHeight * 0.022;
+  double get height20 => screenHeight * 0.028;
+  double get height24 => screenHeight * 0.033;
+  double get height27 => screenHeight * 0.037;
+  double get height28 => screenHeight * 0.039;
+  double get height32 => screenHeight * 0.044;
+  double get height40 => screenHeight * 0.055;
+  double get height48 => screenHeight * 0.065;
+  double get height51 => screenHeight * 0.069;
+  double get height64 => screenHeight * 0.087;
+  double get height72 => screenHeight * 0.099;
+  double get height90 => screenHeight * 0.131;
+  double get height104 => screenHeight * 0.141;
+  double get height120 => screenHeight * 0.165;
+  double get height128 => screenHeight * 0.174;
+  double get height152 => screenHeight * 0.207;
+  double get height183 => screenHeight * 0.252;
+  double get height198 => screenHeight * 0.269;
+  double get height204 => screenHeight * 0.281;
+  double get height272 => screenHeight * 0.372;
+  double get height300 => screenHeight * 0.407;
 }

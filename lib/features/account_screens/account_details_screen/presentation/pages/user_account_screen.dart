@@ -50,7 +50,9 @@ class UserAccountScreen extends StatelessWidget {
                         color: AppColors.smallTextBlackColor),
                   )),
               VerticalSpace(25.h),
-              const OrderItem(),
+              OrderItem(
+                onTap: ()=>Routes.ordersPageRoute.moveTo,
+              ),
               VerticalSpace(16.h),
               WishListItem(
                 onTap: ()=>Routes.wishListPageRoute.moveTo,
