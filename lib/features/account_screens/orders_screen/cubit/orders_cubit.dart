@@ -3,6 +3,11 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/ord
 
 class OrdersCubit extends Cubit<OrdersState> {
   OrdersCubit() : super(OrdersInitial());
+  int selected =0;
 
+  void selectOrderCondition(int index){
+    selected = index;
+    emit(OrderConditionSelected(selected));
+  }
 
 }
