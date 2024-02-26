@@ -6,7 +6,9 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/current_previous_orders_row.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_date_day.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_state.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
@@ -55,10 +57,13 @@ class OrdersScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: context.width16,vertical: context.height16),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const OrderNumberAndState(),
+                        VerticalSpace(context.height12),
+                        const OrderDateAndDay(),
                         VerticalSpace(context.height16),
-
+                        const CustomDivider(),
                       ],
                     ),
                   ),

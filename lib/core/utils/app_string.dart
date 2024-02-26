@@ -238,7 +238,7 @@ class AppStrings {
   static const String yourOrderReceivedSuccessfullyEn =
       'Your order received successfully';
   static const String yourOrderNumberIsEn = 'Your order number is :';
-  static const String orderNumberText = 'order number :';
+  static const String orderNumberText = 'Order number :';
   static const String orderNumberEn = ' #002377';
   static const String orderDayAndDateEn = 'On Sunday 17/12/2023';
   static const String notifications = 'Notifications';
