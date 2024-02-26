@@ -9,6 +9,7 @@ class AppStrings {
   static const String previous = 'السابق';
   static const String previousEn = 'Previous';
   static const String companyEn = 'Company';
+  static const String completed = 'Completed';
   static const String orderDetailsEn = 'Order details';
   static const String numberOfProductsEn = 'Number of products';
   static const String twoProductsEn = ' (2)';
@@ -134,6 +135,7 @@ class AppStrings {
   static const String ezVizEn = 'Ezviz';
   static const String timeAttendanceEn = 'Time Attendance';
   static const String sortByEn = 'Sort by :';
+  static const String waitingForConfirmationEn = 'Waiting for confirmation';
   static const String confirmPaymentProcessEn = 'Confirm Payment Process';
   static const String filterByEn = 'Filter by';
   static const String welcomeEn = 'Welcome !';
