@@ -174,6 +174,7 @@ extension ScreenSizeExt on BuildContext {
   double get width28 => screenWidth * 0.077;
   double get width32 => screenWidth * 0.088;
   double get width40 => screenWidth * 0.11;
+  double get width44 => screenWidth * 0.1225;
   double get width48 => screenWidth * 0.134;
   double get width52 => screenWidth * 0.142;
   double get width72 => screenWidth * 0.2;
@@ -203,6 +204,7 @@ extension ScreenSizeExt on BuildContext {
   double get height64 => screenHeight * 0.087;
   double get height72 => screenHeight * 0.099;
   double get height90 => screenHeight * 0.131;
+  double get height94 => screenHeight * 0.137;
   double get height104 => screenHeight * 0.141;
   double get height120 => screenHeight * 0.165;
   double get height128 => screenHeight * 0.174;

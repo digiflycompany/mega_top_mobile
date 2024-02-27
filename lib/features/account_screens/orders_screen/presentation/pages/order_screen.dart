@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/current_previous_orders_row.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_date_day.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_state.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/product_list_card.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
@@ -66,6 +67,14 @@ class OrdersScreen extends StatelessWidget {
                           topPadding: context.height16,
                           bottomPadding: context.height16,
                         ),
+                        const ProductsListCard(
+                          productName: AppStrings.upsVersion1En,
+                          productPhoto: AppAssets.upsSearchResult,
+                          productType: AppStrings.storageUnitsEn,
+                          productPrice: AppStrings.le1500,
+                          discountPercent: AppStrings.discountPercentEn,
+                          discount: true,
+                        )
                       ],
                     ),
                   ),
