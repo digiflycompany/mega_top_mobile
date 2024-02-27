@@ -20,7 +20,7 @@ class OrdersDetailsScreen extends StatelessWidget {
           )),
       body: BlocProvider<OrdersDetailsCubit>(
         create: (BuildContext context) => OrdersDetailsCubit(),
-        child: Column(
+        child: const Column(
           children: [CustomStepper()],
         ),
       ),
