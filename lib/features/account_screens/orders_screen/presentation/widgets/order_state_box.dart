@@ -11,21 +11,22 @@ class OrderStateBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width??context.width135,
-      height: context.height24,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(2.r),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal:context.width8,vertical: context.height4),
-        child: FittedBox(
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
+    return Expanded(
+      child: Container(
+        height: context.height24,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(2.r),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal:context.width8,vertical: context.height4),
+          child: FittedBox(
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
             ),
           ),
         ),

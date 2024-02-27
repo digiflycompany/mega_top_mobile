@@ -166,6 +166,7 @@ extension ScreenSizeExt on BuildContext {
 
   // Width getters
   double get width4 => screenWidth * 0.011;
+  double get width6 => screenWidth * 0.017;
   double get width8 => screenWidth * 0.022;
   double get width12 => screenWidth * 0.033;
   double get width16 => screenWidth * 0.045;
@@ -174,6 +175,7 @@ extension ScreenSizeExt on BuildContext {
   double get width28 => screenWidth * 0.077;
   double get width32 => screenWidth * 0.088;
   double get width40 => screenWidth * 0.11;
+  double get width44 => screenWidth * 0.1225;
   double get width48 => screenWidth * 0.134;
   double get width52 => screenWidth * 0.142;
   double get width72 => screenWidth * 0.2;
@@ -183,11 +185,13 @@ extension ScreenSizeExt on BuildContext {
   double get width122 => screenWidth * 0.31;
   double get width135 => screenWidth * 0.351;
   double get width152 => screenWidth * 0.5;
+  double get width238 => screenWidth * 0.6647;
 
   // Height getters
   double get height1 => screenHeight * 0.002;
   double get height1_8 => screenHeight * 0.005;
   double get height4 => screenHeight * 0.006;
+  double get height6 => screenHeight * 0.009;
   double get height8 => screenHeight * 0.012;
   double get height11 => screenHeight * 0.015;
   double get height12 => screenHeight * 0.0165;
@@ -203,6 +207,7 @@ extension ScreenSizeExt on BuildContext {
   double get height64 => screenHeight * 0.087;
   double get height72 => screenHeight * 0.099;
   double get height90 => screenHeight * 0.131;
+  double get height94 => screenHeight * 0.137;
   double get height104 => screenHeight * 0.141;
   double get height120 => screenHeight * 0.165;
   double get height128 => screenHeight * 0.174;

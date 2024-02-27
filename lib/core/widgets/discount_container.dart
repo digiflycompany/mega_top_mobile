@@ -8,8 +8,9 @@ class DiscountContainer extends StatelessWidget {
   final String? discountPercent;
   final double? width;
   final double? height;
+  final double? fontSize;
   const DiscountContainer(
-      {super.key, this.discountPercent, this.width, this.height});
+      {super.key, this.discountPercent, this.width, this.height, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,8 @@ class DiscountContainer extends StatelessWidget {
           style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w700,
-              fontSize: 12.sp),
+              fontSize: fontSize??12.sp
+          ),
         ),
       ),
     );

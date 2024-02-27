@@ -20,7 +20,7 @@ class DefaultCircle extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: Text(text, style: TextStyle(color: AppColors.primaryColor)),
+        child: Text(text, style: const TextStyle(color: AppColors.primaryColor)),
       ),
     );
   }

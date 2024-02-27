@@ -14,6 +14,7 @@ class ListProductType extends StatelessWidget {
       style: TextStyle(
           color: AppColors.greyTextColor,
           fontWeight: FontWeight.w600,
+          overflow: TextOverflow.ellipsis,
           fontSize: 10.sp),
     );
   }

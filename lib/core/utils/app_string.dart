@@ -87,6 +87,7 @@ class AppStrings {
   static const String or = 'أو';
   static const String orEn = 'Or';
   static const String cancelEn = 'Cancel';
+  static const String cancelledEn = 'Cancelled';
   static const String resetPasswordEn = 'Reset Password';
   static const String enterYourEmailAddressEn =
       'Enter your email address and we’ll send you\na verification code to reset your password.';
@@ -238,7 +239,9 @@ class AppStrings {
   static const String yourOrderReceivedSuccessfullyEn =
       'Your order received successfully';
   static const String yourOrderNumberIsEn = 'Your order number is :';
-  static const String orderNumberEn = '#433463';
+  static const String orderNumberText = 'Order number :';
+  static const String orderNumberEn = ' #002377';
+  static const String orderDayAndDateEn = 'On Sunday 17/12/2023';
   static const String notifications = 'Notifications';
   static const String noProductAddedToCompareEn =
       'No products added to compare';
@@ -279,6 +282,4 @@ class AppStrings {
   static const String removeItem = 'Remove item :';
   static const String addressHasBeenEdited = 'Address has been edited';
   static const String shippingAddressesEn = 'Shipping Addresses';
-
-
 }

@@ -7,43 +7,30 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/ord
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_condition_container.dart';
 
 class CurrentPreviousOrdersRow extends StatelessWidget {
-  const CurrentPreviousOrdersRow({
-    super.key,
-  });
+  const CurrentPreviousOrdersRow({super.key,});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => OrdersCubit(),
-      child: BlocBuilder<OrdersCubit, OrdersState>(
-        builder: (context, state) {
-          OrdersCubit ordersCubit = context.read<OrdersCubit>();
-          return Row(
-            children: [
-              OrderConditionContainer(
-                text: AppStrings.currentOrdersEn,
-                borderColor: ordersCubit.selected == 0
-                    ? AppColors.primaryColor
-                    : Colors.white,
-                textColor: ordersCubit.selected == 0
-                    ? AppColors.primaryColor
-                    : AppColors.greyTextColor,
-                onTap: () => ordersCubit.selectOrderCondition(0),
-              ),
-              OrderConditionContainer(
-                text: AppStrings.previousOrdersEn,
-                borderColor: ordersCubit.selected == 1
-                    ? AppColors.primaryColor
-                    : Colors.white,
-                textColor: ordersCubit.selected == 1
-                    ? AppColors.primaryColor
-                    : AppColors.greyTextColor,
-                onTap: () => ordersCubit.selectOrderCondition(1),
-              ),
-            ],
-          );
-        },
-      ),
+    return BlocBuilder<OrdersCubit, OrdersState>(
+    builder: (context, state) {
+      OrdersCubit ordersCubit = context.read<OrdersCubit>();
+      return Row(
+      children:[
+        OrderConditionContainer(
+          text: AppStrings.currentOrdersEn,
+          borderColor: ordersCubit.selected==0?AppColors.primaryColor:Colors.white,
+          textColor: ordersCubit.selected==0?AppColors.primaryColor:AppColors.greyTextColor,
+          onTap: ()=> ordersCubit.selectOrderCondition(0),
+        ),
+        OrderConditionContainer(
+          text: AppStrings.previousOrdersEn,
+          borderColor: ordersCubit.selected==1?AppColors.primaryColor:Colors.white,
+          textColor: ordersCubit.selected==1?AppColors.primaryColor:AppColors.greyTextColor,
+          onTap: ()=> ordersCubit.selectOrderCondition(1),
+        ),
+      ],
+    );
+      },
     );
   }
 }

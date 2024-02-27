@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/title_app_bar.dart';
-
 import '../../features/home_screens/presentation/widgets/customer_icon.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_color.dart';
@@ -33,9 +33,12 @@ class CustomFavouriteAppBar extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: context.width * 0.045),
-            child: const CustomerIcon(
-              icon: AppAssets.favouritesIcon,
-              number: AppStrings.oneText,
+            child: GestureDetector(
+              onTap: ()=>Routes.wishListPageRoute.moveTo,
+              child: const CustomerIcon(
+                icon: AppAssets.favouritesIcon,
+                number: AppStrings.oneText,
+              ),
             ),
           ),
         ],
