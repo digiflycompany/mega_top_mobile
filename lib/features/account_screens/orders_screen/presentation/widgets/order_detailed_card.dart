@@ -7,7 +7,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_date_day.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_state.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/product_list_card.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/product_card.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
 
 class OrderDetailedCard extends StatelessWidget {
@@ -42,7 +42,7 @@ class OrderDetailedCard extends StatelessWidget {
               topPadding: context.height16,
               bottomPadding: context.height16,
             ),
-            const ProductsListCard(
+            const ProductOrderCard(
               productName: AppStrings.upsVersion1En,
               productPhoto: AppAssets.upsSearchResult,
               productType: AppStrings.storageUnitsEn,
