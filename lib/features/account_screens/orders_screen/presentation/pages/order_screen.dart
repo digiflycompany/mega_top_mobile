@@ -74,7 +74,7 @@ class OrdersScreen extends StatelessWidget {
                           productPrice: AppStrings.le1500,
                           discountPercent: AppStrings.discountPercentEn,
                           discount: true,
-                        )
+                        ),
                       ],
                     ),
                   ),

@@ -64,8 +64,7 @@ class CategoryItemsListView extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        itemCount: products
-            .length, // Set the item count to the length of the products list
+        itemCount: products.length,
         itemBuilder: (BuildContext context, int index) {
           final product = products[index];
           return Padding(

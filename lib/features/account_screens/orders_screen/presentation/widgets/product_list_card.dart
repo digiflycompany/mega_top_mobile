@@ -45,10 +45,10 @@ class ProductsListCard extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                  left: context.width8,
+                  left: context.width6,
                   right: context.width16,
-                  top: context.height8,
-                  bottom: context.height8),
+                  top: context.height6,
+                  bottom: context.height6),
               child: Stack(
                 children: [
                   ProductPhotoListView(
