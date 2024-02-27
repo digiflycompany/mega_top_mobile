@@ -45,7 +45,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl:
-  flutter_launcher_icons: ^0.13.1
+#  flutter_launcher_icons: ^0.13.1
 
 
 
@@ -61,12 +61,7 @@ flutter_native_splash:
     image: "assets/images/splash_image.png"
 
 
-  flutter_launcher_icons: "^0.13.1"
 
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/apk_icon_image.png"
 
 
 
@@ -76,7 +71,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_launcher_icons: ^0.13.1
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/apk_icon_image.png"
 
 
 

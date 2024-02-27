@@ -7,6 +7,7 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/shipping_addresses_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/pages/notification_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/delete_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
@@ -29,6 +30,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_pa
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
+
 import 'app_color.dart';
 
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
@@ -67,6 +69,7 @@ class Routes {
   static const String wishListPageRoute = "/wish_list_screen";
   static const String shippingAddressPageRoute = "/shipping_addresses_screen";
   static const String ordersPageRoute = "/order_screen";
+  static const String ordersDetailsPageRoute = "/order_details_screen";
 }
 
 class RouteGenerator {
@@ -205,6 +208,10 @@ class RouteGenerator {
       case Routes.ordersPageRoute:
         return buildPageRoute(
           child: const OrdersScreen(),
+        );
+      case Routes.ordersDetailsPageRoute:
+        return buildPageRoute(
+          child: const OrdersDetailsScreen(),
         );
     }
     return buildPageRoute(

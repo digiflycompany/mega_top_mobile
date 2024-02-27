@@ -11,13 +11,16 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/prima
 
 class OrdersScreen extends StatelessWidget {
   static const bool isEmpty = false;
-  const OrdersScreen({super.key,});
+
+  const OrdersScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height*0.089),
+          preferredSize: Size(double.infinity, context.height * 0.089),
           child: const PrimaryAppBar(
             AppStrings.orders,
             favour: false,
@@ -25,36 +28,42 @@ class OrdersScreen extends StatelessWidget {
       body: Column(
         children: [
           const CurrentPreviousOrdersRow(),
-          isEmpty?const Expanded(
-            child: EmptyDataPage(
-              bigFontText: AppStrings.noCurrentOrdersEn,
-              icon: AppAssets.emptyOrderIcon,
-              smallFontText: AppStrings.emptyOrderScreenDescriptionEn,
-              buttonText: AppStrings.continueShoppingEn,
-            ),
-          ):Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.width16,vertical: context.height24),
-            child: Column(
-              children: [
-                Container(
-                  height: context.height204,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(4.r),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: AppColors.containerShadow,
-                        offset: Offset(0, 2),
-                        blurRadius: 12,
-                        spreadRadius: 0,
+          isEmpty
+              ? const Expanded(
+                  child: EmptyDataPage(
+                    bigFontText: AppStrings.noCurrentOrdersEn,
+                    icon: AppAssets.emptyOrderIcon,
+                    smallFontText: AppStrings.emptyOrderScreenDescriptionEn,
+                    buttonText: AppStrings.continueShoppingEn,
+                  ),
+                )
+              : Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: context.width16, vertical: context.height24),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: context.height204,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4.r),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: AppColors.containerShadow,
+                              offset: Offset(0, 2),
+                              blurRadius: 12,
+                              spreadRadius: 0,
+                            ),
+                          ],
+                        ),
+                        child: const Center(
+                            child: OrderStateBox(
+                          text: AppStrings.waitingForConfirmationEn,
+                        )),
                       ),
                     ],
                   ),
-                  child: const Center(child: OrderStateBox(text: AppStrings.waitingForConfirmationEn,)),
                 ),
-              ],
-            ),
-          ),
         ],
       ),
     );
