@@ -282,6 +282,4 @@ class AppStrings {
   static const String removeItem = 'Remove item :';
   static const String addressHasBeenEdited = 'Address has been edited';
   static const String shippingAddressesEn = 'Shipping Addresses';
-
-
 }
