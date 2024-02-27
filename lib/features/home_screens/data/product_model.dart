@@ -5,13 +5,15 @@ class Product {
   final String productPrice;
   final String discountPercent;
   final bool discount;
-
-  Product({
+  final String status;
+  Product(
+      {
     required this.productName,
     required this.productPhoto,
     required this.productType,
     required this.productPrice,
     required this.discountPercent,
+    this.status='',
     this.discount = true,
   });
 }

@@ -11,9 +11,7 @@ class CurrentPreviousOrdersRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-    create: (context) => OrdersCubit(),
-    child: BlocBuilder<OrdersCubit, OrdersState>(
+    return BlocBuilder<OrdersCubit, OrdersState>(
     builder: (context, state) {
       OrdersCubit ordersCubit = context.read<OrdersCubit>();
       return Row(
@@ -32,8 +30,7 @@ class CurrentPreviousOrdersRow extends StatelessWidget {
         ),
       ],
     );
-  },
-),
-);
+      },
+    );
   }
 }

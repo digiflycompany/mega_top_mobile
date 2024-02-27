@@ -87,6 +87,7 @@ class AppStrings {
   static const String or = 'أو';
   static const String orEn = 'Or';
   static const String cancelEn = 'Cancel';
+  static const String cancelledEn = 'Cancelled';
   static const String resetPasswordEn = 'Reset Password';
   static const String enterYourEmailAddressEn =
       'Enter your email address and we’ll send you\na verification code to reset your password.';
