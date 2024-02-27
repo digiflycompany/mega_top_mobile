@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/product_list_card.dart';
@@ -12,7 +11,15 @@ class OrderItemsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Product> products = [
       Product(
-        productName: AppStrings.hardDiskEn,
+        productName: AppStrings.upsVersion1En,
+        productPhoto: AppAssets.upsSearchResult,
+        productType: AppStrings.storageUnitsEn,
+        productPrice: AppStrings.le1500,
+        discountPercent: AppStrings.discountPercentEn,
+        discount: true,
+      ),
+      Product(
+        productName: AppStrings.upsVersion1En,
         productPhoto: AppAssets.upsSearchResult,
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
@@ -20,15 +27,7 @@ class OrderItemsList extends StatelessWidget {
         discount: false,
       ),
       Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.upsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.hardDiskEn,
+        productName: AppStrings.upsVersion1En,
         productPhoto: AppAssets.upsSearchResult,
         productType: AppStrings.storageUnitsEn,
         productPrice: AppStrings.le1500,
@@ -43,18 +42,13 @@ class OrderItemsList extends StatelessWidget {
         itemCount: products.length,
         itemBuilder: (BuildContext context, int index) {
           final product = products[index];
-          return Padding(
-            padding: EdgeInsetsDirectional.only(
-                end: context.width * 0.011,
-                ),
-            child: ProductsListCard(
-              productName: product.productName,
-              productPhoto: product.productPhoto,
-              productType: product.productType,
-              productPrice: product.productPrice,
-              discountPercent: product.discountPercent,
-              discount: product.discount,
-            ),
+          return ProductsListCard(
+            productName: product.productName,
+            productPhoto: product.productPhoto,
+            productType: product.productType,
+            productPrice: product.productPrice,
+            discountPercent: product.discountPercent,
+            discount: product.discount,
           );
         },
       ),
