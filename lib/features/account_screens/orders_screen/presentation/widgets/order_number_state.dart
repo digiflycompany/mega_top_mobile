@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -7,7 +8,8 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/presentat
 
 class OrderNumberAndState extends StatelessWidget {
   final String? orderStatus;
-  const OrderNumberAndState({super.key, this.orderStatus});
+  final Color statusColor;
+  const OrderNumberAndState({super.key, this.orderStatus, this.statusColor=AppColors.yellowColor});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class OrderNumberAndState extends StatelessWidget {
       children: [
         const OrderNumber(orderNumber: AppStrings.orderNumberEn,),
         HorizontalSpace(context.width12),
-        OrderStateBox(text: orderStatus??AppStrings.waitingForConfirmationEn),
+        OrderStateBox(text: orderStatus??AppStrings.waitingForConfirmationEn,color: statusColor,),
       ],
     );
   }

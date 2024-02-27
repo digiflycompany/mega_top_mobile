@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -36,7 +37,7 @@ class OrdersList extends StatelessWidget {
             ],
           ) : Column(
             children: [
-              const OrderDetailedCard(card: OrderItemsList(),orderStatus: AppStrings.completed,),
+              const OrderDetailedCard(card: OrderItemsList(),orderStatus: AppStrings.completed,statusColor: AppColors.primaryGreenColor,),
               VerticalSpace(context.height24),
               const OrderDetailedCard(card: ProductOrderCard(
                 productName: AppStrings.upsVersion1En,
@@ -47,6 +48,7 @@ class OrdersList extends StatelessWidget {
                 discount: true,
               ),
               orderStatus: AppStrings.cancelledEn,
+              statusColor: AppColors.primarySecondRedColor,
               ),
             ],
           ),

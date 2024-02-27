@@ -10,7 +10,8 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custo
 class OrderDetailedCard extends StatelessWidget {
   final Widget card;
   final String? orderStatus;
-  const OrderDetailedCard({super.key, required this.card, this.orderStatus});
+  final Color statusColor;
+  const OrderDetailedCard({super.key, required this.card, this.orderStatus, this.statusColor=AppColors.yellowColor});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class OrderDetailedCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            OrderNumberAndState(orderStatus: orderStatus,),
+            OrderNumberAndState(orderStatus: orderStatus,statusColor: statusColor,),
             VerticalSpace(context.height12),
             const OrderDateAndDay(),
             CustomDivider(

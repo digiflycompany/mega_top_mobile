@@ -36,6 +36,7 @@ class AppColors {
       Color.fromRGBO(196, 234, 220, 1);
   static const Color primaryGreenColor = Color.fromRGBO(0, 164, 104, 1);
   static const Color primaryRedColor = Color.fromRGBO(197, 0, 48, 0.9);
+  static const Color primarySecondRedColor = Color.fromRGBO(197, 0, 48, 1);
 
   static const Color red = Color.fromRGBO(179, 0, 48, 1);
   static const Color hintColor = Color.fromRGBO(204, 204, 204, 1);
