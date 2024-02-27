@@ -130,4 +130,5 @@ class AppAssets {
   static const String workOutlineIcon = "$svgPath/work_outline_icon.svg";
   static const String emptyNotificationsIcon =
       "$svgPath/empty_notifications_icon.svg";
+  static const String splashImage = "$imagesPath/splash_image.png";
 }
