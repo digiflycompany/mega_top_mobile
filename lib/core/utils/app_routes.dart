@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/shipping_addresses_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/compare_screen/presentation/pages/compare_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/pages/notification_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
@@ -70,6 +71,7 @@ class Routes {
   static const String shippingAddressPageRoute = "/shipping_addresses_screen";
   static const String ordersPageRoute = "/order_screen";
   static const String ordersDetailsPageRoute = "/order_details_screen";
+  static const String compareProductPageRoute = "/compare_product_screen";
 }
 
 class RouteGenerator {
@@ -212,6 +214,10 @@ class RouteGenerator {
       case Routes.ordersDetailsPageRoute:
         return buildPageRoute(
           child: const OrdersDetailsScreen(),
+        );
+      case Routes.compareProductPageRoute:
+        return buildPageRoute(
+          child: const CompareScreen(),
         );
     }
     return buildPageRoute(
