@@ -131,4 +131,7 @@ class AppAssets {
   static const String emptyNotificationsIcon =
       "$svgPath/empty_notifications_icon.svg";
   static const String splashImage = "$imagesPath/splash_image.png";
+  static const String closeIconBlue = "$svgPath/close_icon_blue.svg";
+  static const String checkIconGreen = "$svgPath/check_green.svg";
+  static const String closeIconRed = "$svgPath/close_red.svg";
 }

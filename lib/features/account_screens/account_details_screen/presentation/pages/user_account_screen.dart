@@ -51,15 +51,15 @@ class UserAccountScreen extends StatelessWidget {
                   )),
               VerticalSpace(25.h),
               OrderItem(
-                onTap: ()=>Routes.ordersPageRoute.moveTo,
+                onTap: () => Routes.ordersPageRoute.moveTo,
               ),
               VerticalSpace(16.h),
               WishListItem(
-                onTap: ()=>Routes.wishListPageRoute.moveTo,
+                onTap: () => Routes.wishListPageRoute.moveTo,
               ),
               VerticalSpace(16.h),
               NotificationItem(
-                onTap: ()=> Routes.notificationPageRoute.moveTo,
+                onTap: () => Routes.notificationPageRoute.moveTo,
               ),
               VerticalSpace(16.h),
               ShippingItem(onTap: () {
@@ -68,7 +68,11 @@ class UserAccountScreen extends StatelessWidget {
               VerticalSpace(16.h),
               const SavedCardItem(),
               VerticalSpace(16.h),
-              const CompareItem(),
+              CompareItem(
+                onTap: () {
+                  Routes.compareProductPageRoute.moveTo;
+                },
+              ),
               VerticalSpace(40.h),
               Align(
                   alignment: AlignmentDirectional.topStart,

@@ -29,7 +29,6 @@ class BestSellerContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.width * 0.707,
-      height: context.height * 0.424125,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(context.height * 0.0065),
@@ -43,6 +42,7 @@ class BestSellerContainer extends StatelessWidget {
         ],
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: EdgeInsets.only(
