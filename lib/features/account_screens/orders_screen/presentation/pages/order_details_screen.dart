@@ -15,7 +15,7 @@ class OrdersDetailsScreen extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const PrimaryAppBar(
-            AppStrings.profileDetails,
+            AppStrings.orderDetailsEn,
             favour: false,
           )),
       body: BlocProvider<OrdersDetailsCubit>(
