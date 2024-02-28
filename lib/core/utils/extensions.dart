@@ -218,4 +218,5 @@ extension ScreenSizeExt on BuildContext {
   double get height272 => screenHeight * 0.372;
   double get height300 => screenHeight * 0.407;
   double get height306 => screenHeight * 0.416;
+  double get height344 => screenHeight * 0.468;
 }

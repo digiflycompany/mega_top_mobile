@@ -134,8 +134,14 @@ class AppStrings {
   static const String networkEn = 'Network';
   static const String hiLookEn = 'HiLook';
   static const String hikVisionEn = 'HikVision';
+  static const String confirm = 'Confirm';
   static const String ezVizEn = 'Ezviz';
   static const String timeAttendanceEn = 'Time Attendance';
+  static const String orderHasBeenCancelled = 'Order has been cancelled';
+  static const String iChangedMyMind = 'I changed my mind';
+  static const String itemNoLongerNeeded = 'Item no longer needed';
+  static const String noReason = 'No reason';
+  static const String reasonForCancellation = 'Reason for cancellation :';
   static const String sortByEn = 'Sort by :';
   static const String waitingForConfirmationEn = 'Waiting for confirmation';
   static const String confirmPaymentProcessEn = 'Confirm Payment Process';

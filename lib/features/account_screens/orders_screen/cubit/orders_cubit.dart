@@ -7,7 +7,7 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/presentat
 class OrdersCubit extends Cubit<OrdersState> {
   OrdersCubit() : super(OrdersInitial());
   int selected = 0;
-  String _selectedValue = AppStrings.defaultEn;
+  String _selectedValue = AppStrings.iChangedMyMind;
   String get selectedValue => _selectedValue;
 
 
