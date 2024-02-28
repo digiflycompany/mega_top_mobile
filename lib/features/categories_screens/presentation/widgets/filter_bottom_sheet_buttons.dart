@@ -15,11 +15,13 @@ class FilterBottomSheetButtons extends StatelessWidget {
       padding: EdgeInsets.only(bottom: context.height * 0.022),
       child: Column(
         children: [
-          const PrimaryButton(
+          PrimaryButton(
             text: AppStrings.applyEn,
+            onTap: ()=>Navigator.pop(context),
           ),
           VerticalSpace(context.height * 0.033),
-          const PrimaryOutlinedButton(
+          PrimaryOutlinedButton(
+            onTap: ()=>Navigator.pop(context),
             text: AppStrings.resetEn,
           ),
         ],
