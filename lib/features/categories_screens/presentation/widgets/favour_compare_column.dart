@@ -33,14 +33,16 @@ class FavourCompareColumn extends StatelessWidget {
                       : AppAssets.favourOutlinedIcon,
                   onTap: () {
                     categoryCubit.addedToFavourites
-                        ? globalCubit.showPrimaryToast(context,AppStrings.theProductRemovedFromWishListEn)
-                        : globalCubit.showPrimaryToast(context,AppStrings.theProductAddedToWishListEn);
+                        ? globalCubit.showRemoveFromFavouritesToast(context)
+                        : globalCubit.showAddToFavouritesToast(context);
                     categoryCubit.toggleFavourite();
                   },
                 ),
                 VerticalSpace(context.height * 0.012),
                 WhiteBoxIcon(
-                  icon: AppAssets.compareIcon,
+                  icon: categoryCubit.addedToCompare
+                      ? AppAssets.compareIcon
+                      : AppAssets.compareOutlinedIcon,
                   onTap: () {
                     categoryCubit.addedToCompare
                         ? globalCubit.showPrimaryToast(context,AppStrings.theProductRemovedFromCompareEn)

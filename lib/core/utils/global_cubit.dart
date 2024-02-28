@@ -2,8 +2,11 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/global_state.dart';
+import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_toast.dart';
 import 'package:mega_top_mobile/core/widgets/remove_item_dialog.dart';
 
@@ -57,4 +60,48 @@ class GlobalCubit extends Cubit<GlobalState> {
     }
   }
 
+
+  void showAddToFavouritesToast(BuildContext context) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: kToolbarHeight + MediaQuery.of(context).padding.top,
+        width: MediaQuery.of(context).size.width,
+        child: AnimatedOverlayIconToast(
+          toastIcon: AppAssets.addToWishListIcon,
+          message: AppStrings.theProductAddedToWishListEn,
+          color: AppColors.primaryGreenColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
+  }
+
+  void showRemoveFromFavouritesToast(BuildContext context) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: kToolbarHeight + MediaQuery.of(context).padding.top,
+        width: MediaQuery.of(context).size.width,
+        child: AnimatedOverlayIconToast(
+          toastIcon: AppAssets.removeFromWishListIcon,
+          message: AppStrings.theProductRemovedFromWishListEn,
+          color: AppColors.primaryRedColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
+  }
 }

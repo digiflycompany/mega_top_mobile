@@ -92,7 +92,8 @@ class AppAssets {
   static const String networkImg = "$imagesPath/network.png";
   static const String smallHardImg = "$imagesPath/hard_small.png";
   static const String closeIcon = "$svgPath/close_icon.svg";
-  static const String compareIcon = "$svgPath/compare_icon.svg";
+  static const String compareIcon = "$svgPath/compare.svg";
+  static const String compareOutlinedIcon = "$svgPath/compare_outlined.svg";
   static const String basketIcon = "$svgPath/basket_icon.svg";
   static const String locationBlackIcon = "$svgPath/location_black_icon.svg";
   static const String bottomArrowIcon = "$svgPath/bottom_arrow.svg";

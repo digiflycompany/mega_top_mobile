@@ -31,6 +31,7 @@ class CompareScreen extends StatelessWidget {
                 buttonText: AppStrings.continueShoppingEn,
               )
             : SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: context.width * 0.045,
