@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/card_title_text.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_state.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/stepper_widgets/custom_stepper.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_description.dart';
 
 class OrderStatusCard extends StatelessWidget {
-  const OrderStatusCard({super.key});
+  final String? orderStatus;
+  final Color? boxColor;
+  const OrderStatusCard({super.key, this.orderStatus, this.boxColor});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: context.height * 0.033),
+      padding: EdgeInsets.only(top: context.height24),
       child: Container(
         width: double.infinity,
-        height: context.height * 0.284,
+        //height: context.height306,
         decoration: BoxDecoration(
           color: Colors.white,
           border:
@@ -25,14 +26,15 @@ class OrderStatusCard extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: context.height * 0.022),
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CardTitleText(
-                title: AppStrings.orderDetailsEn,
+              OrderNumberAndState(orderStatus: orderStatus,statusColor: boxColor,horizontalPadding: context.width16,textColor: AppColors.smallTextBlackColor,),
+              CustomDivider(
+                topPadding: context.height16,
+                bottomPadding: context.height16,
               ),
-              CustomDivider(),
-              OrderDetailsDescription(),
+              CustomStepper(),
             ],
           ),
         ),
