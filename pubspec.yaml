@@ -52,13 +52,13 @@ dependencies:
   flutter_native_splash:
 
 flutter_native_splash:
-  image: "assets/images/splash_image.png"
+  image: "assets/images/Mega top_last.png"
   color: "#FFFFFF"
   android: true
   ios: true
 
   android_12:
-    image: "assets/images/splash_image.png"
+    image: "assets/images/Mega top_last.png"
 
 
 
