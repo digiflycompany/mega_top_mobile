@@ -3,30 +3,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/spacer.dart';
-import '../../cubit/category_cubit.dart';
-import '../../cubit/category_state.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/orders_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/orders_state.dart';
 
-class SortBottomSheetAdaptiveRadioButton extends StatelessWidget {
+class CancelBottomSheetAdaptiveRadioButton extends StatelessWidget {
   final String value;
   final String label;
-  final String? description;
 
-  const SortBottomSheetAdaptiveRadioButton({
+  const CancelBottomSheetAdaptiveRadioButton({
     Key? key,
     required this.value,
     required this.label,
-    this.description,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryCubit, CategoryState>(
+    return BlocBuilder<OrdersCubit, OrdersState>(
       builder: (context, state) {
-        CategoryCubit categoryCubit = context.read<CategoryCubit>();
+        OrdersCubit ordersCubit = context.read<OrdersCubit>();
         return GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () => categoryCubit.selectOption(value),
+          onTap: () => ordersCubit.selectOption(value),
           child: Container(
             height: context.height * 0.065,
             width: double.infinity,
@@ -40,10 +37,10 @@ class SortBottomSheetAdaptiveRadioButton extends StatelessWidget {
                     activeColor: AppColors.primaryColor,
                     focusColor: AppColors.primaryColor,
                     value: value,
-                    groupValue: categoryCubit.selectedValue,
+                    groupValue: ordersCubit.selectedValue,
                     onChanged: (String? newValue) {
                       if (newValue != null) {
-                        categoryCubit.selectOption(newValue);
+                        ordersCubit.selectOption(newValue);
                       }
                     },
                   ),
@@ -53,14 +50,6 @@ class SortBottomSheetAdaptiveRadioButton extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w700,
-                      fontSize: 14.sp),
-                ),
-                HorizontalSpace(context.width * 0.008),
-                Text(
-                  description!,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
                       fontSize: 14.sp),
                 ),
               ],
