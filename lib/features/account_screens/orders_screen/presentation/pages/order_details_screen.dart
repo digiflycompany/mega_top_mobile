@@ -33,9 +33,7 @@ class OrdersDetailsScreen extends StatelessWidget {
               PaymentMethodSmallCard(
                 paymentMethod: AppStrings.cashOnDeliveryEn,
               ),
-              YourOrderCard(
-                paymentMethod: AppStrings.cashOnDeliveryEn,
-              ),
+              YourOrderCard(),
               CancelOrderCard(),
             ],
           ),
