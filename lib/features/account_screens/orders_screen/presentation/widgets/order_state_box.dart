@@ -5,8 +5,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 
 class OrderStateBox extends StatelessWidget {
   final double? width;
-  final String text;
-  final Color color;
+  final String? text;
+  final Color? color;
   const OrderStateBox({super.key, this.width, required this.text, this.color=AppColors.yellowColor});
 
   @override
@@ -22,7 +22,7 @@ class OrderStateBox extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal:context.width8,vertical: context.height4),
           child: FittedBox(
             child: Text(
-              text,
+              text!,
               style: const TextStyle(
                 fontWeight: FontWeight.w700,
                 color: Colors.white,

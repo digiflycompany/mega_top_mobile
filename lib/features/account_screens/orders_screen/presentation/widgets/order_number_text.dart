@@ -4,14 +4,15 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 
 class OrderNumber extends StatelessWidget {
   final String orderNumber;
-  const OrderNumber({super.key, required this.orderNumber});
+  final Color? textColor;
+  const OrderNumber({super.key, required this.orderNumber, this.textColor});
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
         style: TextStyle(
-            color: Colors.black,
+            color:textColor??Colors.black,
             fontWeight: FontWeight.w500,
             fontSize: 14.sp
         ),
@@ -20,8 +21,8 @@ class OrderNumber extends StatelessWidget {
           /// Order Number
           TextSpan(
             text: orderNumber,
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color:textColor??Colors.black,
               fontWeight: FontWeight.w700,
               //fontSize: 14.sp
             ),

@@ -8,18 +8,23 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/presentat
 
 class OrderNumberAndState extends StatelessWidget {
   final String? orderStatus;
-  final Color statusColor;
-  const OrderNumberAndState({super.key, this.orderStatus, this.statusColor=AppColors.yellowColor});
+  final Color? statusColor;
+  final Color? textColor;
+  final double? horizontalPadding;
+  const OrderNumberAndState({super.key, this.orderStatus, this.statusColor, this.horizontalPadding, this.textColor});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const OrderNumber(orderNumber: AppStrings.orderNumberEn,),
-        HorizontalSpace(context.width12),
-        OrderStateBox(text: orderStatus??AppStrings.waitingForConfirmationEn,color: statusColor,),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding??0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          OrderNumber(orderNumber: AppStrings.orderNumberEn,textColor: textColor,),
+          HorizontalSpace(context.width12),
+          OrderStateBox(text: orderStatus??AppStrings.waitingForConfirmationEn,color: statusColor??AppColors.yellowColor,),
+        ],
+      ),
     );
   }
 }
