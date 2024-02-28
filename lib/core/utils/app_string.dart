@@ -272,10 +272,10 @@ class AppStrings {
   static const String selectedLanguage = 'العربية';
   static const String orders = 'Orders';
   static const String compareProducts = 'Compare Products';
-  static const String profile = 'profile';
-  static const String wishList = 'wishList';
-  static const String savedCards = 'saved cards';
-  static const String shippingAddresses = 'shipping Addresses';
+  static const String profile = 'Profile';
+  static const String wishList = 'WishList';
+  static const String savedCards = 'Saved cards';
+  static const String shippingAddresses = 'Shipping Addresses';
   static const String profileDetails = 'Profile Details';
   static const String firstName = 'First name';
   static const String lastName = 'Last name';
