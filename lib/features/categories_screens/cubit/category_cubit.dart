@@ -1,8 +1,12 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 import '../../../core/utils/app_assets.dart';
@@ -19,8 +23,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   String _selectedValue = AppStrings.defaultEn;
   String get selectedValue => _selectedValue;
   final Map<String, bool> checkboxStates = {};
-
-
+  CategoriesRepo categoriesRepo = new CategoriesRepoImp();
+  CategoriesModel? categoriesModel;
 
 
   final List<String> images = [
@@ -122,4 +126,37 @@ class CategoryCubit extends Cubit<CategoryState> {
       },
     );
   }
+
+  /// Get Categories
+  Future<void> getCategories() async {
+    emit(CategoryLoading());
+    try {
+      Response? response =
+      await categoriesRepo.getCategories();
+      if (response?.statusCode == 200) {
+        categoriesModel =
+            CategoriesModel.fromJson(response?.data);
+        emit(CategorySuccess());
+        if (kDebugMode) {
+          print('Sucessssssssssssssssssssssssssssssssss');
+        }
+      } else {
+        emit(CategoryFailure('Something Went Wrong'));
+      }
+    } on DioException catch (dioException) {
+      if (dioException.response != null) {
+        if (kDebugMode) {
+          print(
+              'Server responded with status code: ${dioException.response!.statusCode}');
+        }
+        emit(CategoryFailure('Something Went Wrong'));
+      } else {
+        if (kDebugMode) {
+          print('Dio exception: ${dioException.message}');
+        }
+        emit(CategoryFailure("Dio exception: ${dioException.message}"));
+      }
+    }
+  }
+
 }

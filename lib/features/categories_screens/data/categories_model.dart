@@ -1,4 +1,4 @@
-class Categories {
+class CategoriesModel{
   int? id;
   int? count;
   String? description;
@@ -10,7 +10,7 @@ class Categories {
   List<dynamic>? meta;
   Links? lLinks;
 
-  Categories({
+  CategoriesModel({
     this.id,
     this.count,
     this.description,
@@ -23,8 +23,8 @@ class Categories {
     this.lLinks,
   });
 
-  factory Categories.fromJson(Map<String, dynamic> json) {
-    return Categories(
+  factory CategoriesModel.fromJson(Map<String, dynamic> json) {
+    return CategoriesModel(
       id: json['id'],
       count: json['count'],
       description: json['description'],
