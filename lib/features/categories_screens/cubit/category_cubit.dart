@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -128,35 +126,20 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   /// Get Categories
+  List<CategoriesModel> categories = [];
+
   Future<void> getCategories() async {
     emit(CategoryLoading());
     try {
-      Response? response =
-      await categoriesRepo.getCategories();
-      if (response?.statusCode == 200) {
-        categoriesModel =
-            CategoriesModel.fromJson(response?.data);
+      List<CategoriesModel>? fetchedCategories = await categoriesRepo.getCategories();
+      if (fetchedCategories!.isNotEmpty) {
+        categories = fetchedCategories;
         emit(CategorySuccess());
-        if (kDebugMode) {
-          print('Sucessssssssssssssssssssssssssssssssss');
-        }
       } else {
-        emit(CategoryFailure('Something Went Wrong'));
+        emit(CategoryFailure('No categories found'));
       }
-    } on DioException catch (dioException) {
-      if (dioException.response != null) {
-        if (kDebugMode) {
-          print(
-              'Server responded with status code: ${dioException.response!.statusCode}');
-        }
-        emit(CategoryFailure('Something Went Wrong'));
-      } else {
-        if (kDebugMode) {
-          print('Dio exception: ${dioException.message}');
-        }
-        emit(CategoryFailure("Dio exception: ${dioException.message}"));
-      }
+    } catch (e) {
+      emit(CategoryFailure(e.toString()));
     }
   }
-
 }

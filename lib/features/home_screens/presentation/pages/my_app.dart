@@ -29,6 +29,9 @@ class MyApp extends StatelessWidget {
             BlocProvider<AuthenticationCubit>(
               create: (BuildContext context) => AuthenticationCubit(),
             ),
+            BlocProvider<CategoryCubit>(
+              create: (BuildContext context) => CategoryCubit(),
+            ),
             BlocProvider<OrdersCubit>(
               create: (BuildContext context) => OrdersCubit(),
             ),
@@ -37,9 +40,6 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider<HomeCubit>(
               create: (BuildContext context) => HomeCubit(),
-            ),
-            BlocProvider<CategoryCubit>(
-              create: (BuildContext context) => CategoryCubit(),
             ),
             BlocProvider<OffersCubit>(
               create: (BuildContext context) => OffersCubit(),

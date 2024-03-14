@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
@@ -43,15 +45,23 @@ class DioHelper {
     }
   }
 
-  static Future<Response?> getData(
-      {required String url, Map<String, dynamic>? queryParameters}) async {
+  static Future<Response?> getData({
+    required String url,
+    Map<String, dynamic>? queryParameters,
+    String username='ck_ae3cd70fbe1ce6ff699a31d0e753c60825d6cd91',
+    String password='cs_e75fff73e9ee2caef0dd3faddfd5d2d9f5d85276',
+  }) async {
     try {
-      // String? token = PreferencesHelper.getToken();
+      Map<String, dynamic> headers = {};
 
+        String basicAuth = 'Basic ' + base64Encode(utf8.encode('$username:$password'));
+        headers['Authorization'] = basicAuth;
       Response? response = await dio?.get(
         url,
         queryParameters: queryParameters,
+        options: Options(headers: headers),
       );
+
       if (kDebugMode) {
         print('STATUS CODE IS ${response?.statusCode}');
         print('SENT DATA IS ${response?.requestOptions.data}');
