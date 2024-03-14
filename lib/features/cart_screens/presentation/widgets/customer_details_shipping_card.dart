@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/spacer.dart';
 import 'customer_address_shipping_card.dart';
 import 'customer_name_shipping_card.dart';

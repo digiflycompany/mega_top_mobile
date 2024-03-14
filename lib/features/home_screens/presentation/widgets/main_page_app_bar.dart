@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/widgets/custom_search_bar.dart';
 import 'customer_information.dart';
 

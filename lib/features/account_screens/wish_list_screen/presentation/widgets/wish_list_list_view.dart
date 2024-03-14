@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/data/product_model.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
@@ -65,7 +65,7 @@ class WishListView extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        itemCount: products.length, // Set the item count to the length of the products list
+        itemCount: products.length,
         itemBuilder: (BuildContext context, int index) {
           GlobalCubit globalCubit = context.read<GlobalCubit>();
           final product = products[index];

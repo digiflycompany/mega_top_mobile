@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/dotted_line.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_fees_row.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/total_price_amount_row.dart';
-
 import 'number_of_products_row.dart';
 
 class OrderDetailsDescription extends StatelessWidget {

@@ -38,7 +38,7 @@ dependencies:
   flutter_bloc:
   flutter_svg:
   dots_indicator:
-  get:
+  shimmer: ^3.0.0
   singleton:
   dio:
   cached_network_image: ^3.3.1
