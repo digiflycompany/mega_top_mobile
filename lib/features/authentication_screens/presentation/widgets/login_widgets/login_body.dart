@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/login_email_text_field.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_routes.dart';
 import '../../../../../core/utils/app_string.dart';
@@ -28,11 +29,7 @@ class LoginBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
             child: Column(
               children: [
-                const PrimaryTextField(
-                  hintText: AppStrings.emailEn,
-                  prefixSvg: AppAssets.emailSecondIcon,
-                ),
-                VerticalSpace(context.height * 0.033),
+                LoginEmailTextField(),
                 /// Password Text Field
                 const PasswordTextField(
                   hintText: AppStrings.passwordEn,
