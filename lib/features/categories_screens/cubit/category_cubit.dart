@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 import '../../../core/utils/app_assets.dart';
@@ -19,8 +21,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   String _selectedValue = AppStrings.defaultEn;
   String get selectedValue => _selectedValue;
   final Map<String, bool> checkboxStates = {};
-
-
+  CategoriesRepo categoriesRepo = new CategoriesRepoImp();
+  CategoriesModel? categoriesModel;
 
 
   final List<String> images = [
@@ -121,5 +123,23 @@ class CategoryCubit extends Cubit<CategoryState> {
         return const AddToCartBottomSheet();
       },
     );
+  }
+
+  /// Get Categories
+  List<CategoriesModel> categories = [];
+
+  Future<void> getCategories() async {
+    emit(CategoryLoading());
+    try {
+      List<CategoriesModel>? fetchedCategories = await categoriesRepo.getCategories();
+      if (fetchedCategories!.isNotEmpty) {
+        categories = fetchedCategories;
+        emit(CategorySuccess());
+      } else {
+        emit(CategoryFailure('No categories found'));
+      }
+    } catch (e) {
+      emit(CategoryFailure(e.toString()));
+    }
   }
 }

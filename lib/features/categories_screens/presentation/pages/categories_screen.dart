@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/categories_grid.dart';
 
@@ -19,8 +19,9 @@ class CategoriesPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
         child: Column(
           children: [
-            VerticalSpace(context.height * 0.033),
-            const CategoriesGrid()
+            VerticalSpace(context.height24),
+            const CategoriesGrid(),
+            VerticalSpace(context.height24),
           ],
         ),
       ),

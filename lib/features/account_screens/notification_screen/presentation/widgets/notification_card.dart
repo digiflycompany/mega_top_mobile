@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/widgets/notification_card_date.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/widgets/notification_card_description.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/widgets/notification_card_image.dart';

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
@@ -29,6 +28,9 @@ class MyApp extends StatelessWidget {
             BlocProvider<AuthenticationCubit>(
               create: (BuildContext context) => AuthenticationCubit(),
             ),
+            BlocProvider<CategoryCubit>(
+              create: (BuildContext context) => CategoryCubit()..getCategories(),
+            ),
             BlocProvider<OrdersCubit>(
               create: (BuildContext context) => OrdersCubit(),
             ),
@@ -38,14 +40,11 @@ class MyApp extends StatelessWidget {
             BlocProvider<HomeCubit>(
               create: (BuildContext context) => HomeCubit(),
             ),
-            BlocProvider<CategoryCubit>(
-              create: (BuildContext context) => CategoryCubit(),
-            ),
             BlocProvider<OffersCubit>(
               create: (BuildContext context) => OffersCubit(),
             ),
           ],
-          child: GetMaterialApp(
+          child: MaterialApp(
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
             supportedLocales: L10n.all,

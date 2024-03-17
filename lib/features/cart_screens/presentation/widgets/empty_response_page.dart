@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../../../core/widgets/primary_empty_button.dart';
 import 'empty_cart_icon.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 
 class ButtonBottomNavBar extends StatelessWidget {
   final Widget button;

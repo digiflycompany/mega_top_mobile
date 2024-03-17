@@ -38,8 +38,10 @@ dependencies:
   flutter_bloc:
   flutter_svg:
   dots_indicator:
-  get:
+  shimmer: ^3.0.0
   singleton:
+  dio:
+  cached_network_image: ^3.3.1
   flutter_screenutil: ^5.9.0
   google_maps_flutter: ^2.5.3
   flutter_localizations:
