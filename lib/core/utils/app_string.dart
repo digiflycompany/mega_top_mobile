@@ -11,6 +11,7 @@ class AppStrings {
   static const String companyEn = 'Company';
   static const String completed = 'Completed';
   static const String orderDetailsEn = 'Order details';
+  static const String wrongInfo = 'بيانات غير صحيحة أو مشاكل في الشبكة';
   static const String numberOfProductsEn = 'Number of products';
   static const String twoProductsEn = ' (2)';
   static const String shippingFeesEn = 'Shipping fees';
