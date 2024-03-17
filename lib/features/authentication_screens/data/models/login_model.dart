@@ -1,13 +1,13 @@
-class LoginModel {
+class UserModel {
   String? token;
   String? userEmail;
   String? userNicename;
   String? userDisplayName;
 
-  LoginModel(
+  UserModel(
       {this.token, this.userEmail, this.userNicename, this.userDisplayName});
 
-  LoginModel.fromJson(Map<String, dynamic> json) {
+  UserModel.fromJson(Map<String, dynamic> json) {
     token = json['token'];
     userEmail = json['user_email'];
     userNicename = json['user_nicename'];
