@@ -5,8 +5,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_title.dart';
-
-import '../widgets/login_body.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

@@ -10,12 +10,15 @@ class CreateAccountText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RowTextButton(
-      firstText: AppStrings.doNotHaveAccountEn,
-      buttonText: AppStrings.createAccountEn,
-      onTap: () {
-        Routes.signUpRoute.moveTo;
-      },
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: context.height16),
+      child: RowTextButton(
+        firstText: AppStrings.doNotHaveAccountEn,
+        buttonText: AppStrings.createAccountEn,
+        onTap: () {
+          Routes.signUpRoute.moveTo;
+        },
+      ),
     );
   }
 }

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-
 import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
@@ -15,8 +12,6 @@ import '../../cubit/auth_cubit.dart';
 import '../../cubit/auth_state.dart';
 import 'create_account_text.dart';
 import 'forgot_password_text.dart';
-import 'google_button.dart';
-
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});
 
@@ -58,24 +53,7 @@ class LoginBody extends StatelessWidget {
             },
             text: AppStrings.loginEn,
           ),
-          VerticalSpace(context.height * 0.033),
-
-          /// Or Text
-          Text(
-            AppStrings.orEn,
-            style: TextStyle(
-              color: AppColors.greyTextColor,
-              fontWeight: FontWeight.w500,
-              fontSize: 14.sp,
-            ),
-          ),
-          VerticalSpace(context.height * 0.033),
-          const GoogleButton(
-            text: AppStrings.continueWithGoogleEn,
-          ),
-          VerticalSpace(context.height * 0.025),
           const CreateAccountText(),
-          VerticalSpace(context.height * 0.0045),
         ],
       ),
     );
