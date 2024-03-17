@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/login_email_text_field.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/password_text_field.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_routes.dart';
 import '../../../../../core/utils/app_string.dart';
@@ -30,20 +31,9 @@ class LoginBody extends StatelessWidget {
             child: Column(
               children: [
                 LoginEmailTextField(),
-                /// Password Text Field
-                const PasswordTextField(
-                  hintText: AppStrings.passwordEn,
-                  prefixSvg: AppAssets.passwordIcon,
-                ),
-                VerticalSpace(context.height * 0.033),
-                ForgotPassword(
-                  onTap: () {
-                    Routes.resetPasswordRoute.moveTo;
-                  },
-                ),
+                LoginPasswordTextField(),
+                ForgotPassword(),
                 VerticalSpace(context.height * 0.055),
-
-                /// Login Button
                 PrimaryButton(
                   onTap: () {
                     Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
