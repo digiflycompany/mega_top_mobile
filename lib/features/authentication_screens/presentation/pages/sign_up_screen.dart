@@ -81,7 +81,7 @@ class SignUpScreen extends StatelessWidget {
                           },
                           text: AppStrings.signUpEn,
                         ),
-                        VerticalSpace(context.height * 0.07),
+                        VerticalSpace(context.height16),
                         RowTextButton(
                           firstText: AppStrings.alreadyHaveAnAccountEn,
                           buttonText: AppStrings.loginEn,
@@ -89,7 +89,6 @@ class SignUpScreen extends StatelessWidget {
                             Routes.loginRoute.moveTo;
                           },
                         ),
-                        //VerticalSpace(context.height*0.01),
                       ],
                     ),
                   ),
