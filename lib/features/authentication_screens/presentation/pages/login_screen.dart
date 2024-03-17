@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_title.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_body.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/login_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -26,13 +24,10 @@ class LoginScreen extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  VerticalSpace(context.height * 0.13),
                   const AuthenticationLogo(),
-                  VerticalSpace(context.height * 0.055),
                   const AuthenticationTitle(
                     text: AppStrings.loginTitleEn,
                   ),
-                  VerticalSpace(context.height * 0.055),
                   const LoginBody(),
                 ],
               ),
