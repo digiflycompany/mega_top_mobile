@@ -23,6 +23,7 @@ class PasswordTextField extends StatelessWidget {
       builder: (BuildContext context, AuthenticationState state) {
         final cubit = AuthenticationCubit.getCubit(context);
         return TextFormField(
+          validator: validator,
           cursorColor: AppColors.blackGreyColor,
           cursorHeight: context.width * 0.046,
           obscureText: cubit.isPasswordVisible,
