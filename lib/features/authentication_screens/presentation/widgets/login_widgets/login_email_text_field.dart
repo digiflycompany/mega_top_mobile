@@ -11,9 +11,15 @@ class LoginEmailTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: context.height24),
-      child: const PrimaryTextField(
+      child: PrimaryTextField(
         hintText: AppStrings.emailEn,
         prefixSvg: AppAssets.emailSecondIcon,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return AppStrings.pleaseEnterYourEmail;
+          }
+          return null;
+        },
       ),
     );
   }
