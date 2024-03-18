@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
@@ -18,18 +19,24 @@ class LoginBody extends StatelessWidget {
     return BlocProvider(
       create:  (BuildContext context) => AuthenticationCubit(AuthRepoImp()),
       child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if(state is LoginSuccess){
+            Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+          }
+        },
         builder: (context, state) {
+          final _formKey = GlobalKey<FormState>();
           return Form(
+            key: _formKey,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-              child: const Column(
+              child:Column(
                 children: [
-                  LoginEmailTextField(),
-                  LoginPasswordTextField(),
-                  ForgotPassword(),
-                  LoginButton(),
-                  CreateAccountText(),
+                  const LoginEmailTextField(),
+                  const LoginPasswordTextField(),
+                  const ForgotPassword(),
+                  LoginButton(formKey: _formKey,),
+                  const CreateAccountText(),
                 ],
               ),
             ),

@@ -10,6 +10,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthRepo authRepo;
   AuthenticationCubit(this.authRepo) : super(AuthenticationInitial());
   static AuthenticationCubit getCubit(context) => BlocProvider.of(context);
+  final formKey = GlobalKey<FormState>();
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   bool isPasswordVisible = true;
 
