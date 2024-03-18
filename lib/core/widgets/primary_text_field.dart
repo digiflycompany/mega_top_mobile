@@ -10,8 +10,9 @@ class PrimaryTextField extends StatelessWidget {
   final String? prefixSvg;
   final Widget? suffix;
   final validator;
+  final controller;
   const PrimaryTextField(
-      {super.key, this.hintText, this.prefixSvg, this.suffix, this.validator});
+      {super.key, this.hintText, this.prefixSvg, this.suffix, this.validator, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class PrimaryTextField extends StatelessWidget {
       cursorColor: AppColors.blackGreyColor,
       cursorHeight: context.width * 0.046,
       validator: validator,
+      controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
