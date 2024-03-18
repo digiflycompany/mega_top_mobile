@@ -1,9 +1,7 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class DioHelper {
   static BaseOptions opts = BaseOptions(
@@ -23,11 +21,11 @@ class DioHelper {
 
   static Future<Response?> postData(
       {required String url, Map<String, dynamic>? data}) async {
-    String? token = PreferencesHelper.getToken();
+    //String? token = PreferencesHelper.getToken();
     try {
       Response? response = await dio?.post(
         url,
-       options: Options(headers: {'Authorization': 'Bearer ${token}'}),
+    //   options: Options(headers: {'Authorization': 'Bearer ${token}'}),
         data: data,
       );
 

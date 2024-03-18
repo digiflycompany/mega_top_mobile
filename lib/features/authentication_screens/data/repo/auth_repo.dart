@@ -14,7 +14,7 @@ class AuthRepoImp implements AuthRepo {
       Response? response = await DioHelper.postData(
         url: EndPoints.loginAPI,
         data: {
-          'email': email,
+          'username': email,
           'password': password,
         },
       );
