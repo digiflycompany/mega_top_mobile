@@ -11,9 +11,15 @@ class LoginPasswordTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: context.height24),
-      child: const PasswordTextField(
+      child: PasswordTextField(
         hintText: AppStrings.passwordEn,
         prefixSvg: AppAssets.passwordIcon,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return AppStrings.pleaseEnterYourPassword;
+          }
+          return null;
+        },
       ),
     );
   }

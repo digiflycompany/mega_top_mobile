@@ -13,6 +13,8 @@ class AppStrings {
   static const String orderDetailsEn = 'Order details';
   static const String wrongInfo = 'بيانات غير صحيحة أو مشاكل في الشبكة';
   static const String numberOfProductsEn = 'Number of products';
+  static const String pleaseEnterYourEmail = 'Please enter your email';
+  static const String pleaseEnterYourPassword = 'Please enter your password';
   static const String twoProductsEn = ' (2)';
   static const String shippingFeesEn = 'Shipping fees';
   static const String totalAmountEn = 'Total amount';

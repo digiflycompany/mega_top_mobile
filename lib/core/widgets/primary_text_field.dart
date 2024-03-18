@@ -9,14 +9,16 @@ class PrimaryTextField extends StatelessWidget {
   final String? hintText;
   final String? prefixSvg;
   final Widget? suffix;
+  final validator;
   const PrimaryTextField(
-      {super.key, this.hintText, this.prefixSvg, this.suffix});
+      {super.key, this.hintText, this.prefixSvg, this.suffix, this.validator});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       cursorColor: AppColors.blackGreyColor,
       cursorHeight: context.width * 0.046,
+      validator: validator,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
