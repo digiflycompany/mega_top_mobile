@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/core/widgets/password_text_field.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_email_text_field.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_password_text_field.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_user_name_text_field.dart';
 
 class SignUpBody extends StatelessWidget {
@@ -22,11 +23,7 @@ class SignUpBody extends StatelessWidget {
         children: [
           const SignUpUserNameTextField(),
           const SignUpEmailTextField(),
-          const PasswordTextField(
-            hintText: AppStrings.passwordEn,
-            prefixSvg: AppAssets.passwordIcon,
-          ),
-          VerticalSpace(context.height * 0.033),
+          const SignUpPasswordTextField(),
           const PasswordTextField(
             hintText: AppStrings.confirmPasswordEn,
             prefixSvg: AppAssets.passwordIcon,
