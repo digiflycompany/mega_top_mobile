@@ -11,9 +11,16 @@ class SignUpUserNameTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Padding(
       padding: EdgeInsets.only(bottom: context.height24),
-      child: const PrimaryTextField(
+      child: PrimaryTextField(
         hintText: AppStrings.usernameEn,
         prefixSvg: AppAssets.usernameIcon,
+        max: 30,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return AppStrings.pleaseEnterYourUserName;
+          }
+          return null;
+        },
       ),
     );
   }

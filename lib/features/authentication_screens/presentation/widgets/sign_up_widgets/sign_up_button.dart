@@ -5,7 +5,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 
 class SignUpButton extends StatelessWidget {
-  const SignUpButton({super.key});
+  final GlobalKey<FormState> formKey;
+  const SignUpButton({super.key, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +14,10 @@ class SignUpButton extends StatelessWidget {
       padding: EdgeInsets.only(bottom: context.height16),
       child: PrimaryButton(
         onTap: () {
-          Routes.homePageRoute
-              .moveToCurrentRouteAndRemoveAll;
+          if(formKey.currentState!.validate()){
+            Routes.homePageRoute
+                .moveToCurrentRouteAndRemoveAll;
+          }
         },
         text: AppStrings.signUpEn,
       ),

@@ -11,7 +11,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit(this.authRepo) : super(AuthenticationInitial());
   static AuthenticationCubit getCubit(context) => BlocProvider.of(context);
   final formKey = GlobalKey<FormState>();
-
+  String passwordPattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
+  final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 

@@ -9,12 +9,15 @@ class AlreadyHaveAnAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RowTextButton(
-      firstText: AppStrings.alreadyHaveAnAccountEn,
-      buttonText: AppStrings.loginEn,
-      onTap: () {
-        Routes.loginRoute.moveTo;
-      },
+    return Padding(
+      padding: EdgeInsets.only(bottom:context.height40 ),
+      child: RowTextButton(
+        firstText: AppStrings.alreadyHaveAnAccountEn,
+        buttonText: AppStrings.loginEn,
+        onTap: () {
+          Routes.loginRoute.moveTo;
+        },
+      ),
     );
   }
 }
