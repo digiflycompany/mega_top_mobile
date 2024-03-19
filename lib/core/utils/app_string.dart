@@ -14,7 +14,11 @@ class AppStrings {
   static const String wrongInfo = 'بيانات غير صحيحة أو مشاكل في الشبكة';
   static const String numberOfProductsEn = 'Number of products';
   static const String pleaseEnterYourEmail = 'Please enter your email';
+  static const String pleaseEnterValidEmail = 'Please enter a valid email address';
+  static const String pleaseEnterYourUserName = 'Please enter your username';
   static const String pleaseEnterYourPassword = 'Please enter your password';
+  static const String pleaseConfirmYourPassword = 'Please confirm your password';
+  static const String passwordVerification = 'Password must be at least 7 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
   static const String twoProductsEn = ' (2)';
   static const String shippingFeesEn = 'Shipping fees';
   static const String totalAmountEn = 'Total amount';

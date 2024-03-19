@@ -12,18 +12,22 @@ class SignUpBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:
-      EdgeInsets.symmetric(horizontal: context.width16),
-      child: Column(
-        children: [
-          const SignUpUserNameTextField(),
-          const SignUpEmailTextField(),
-          const SignUpPasswordTextField(),
-          const SignUpConfirmPasswordTextField(),
-          const SignUpButton(),
-          const AlreadyHaveAnAccount(),
-        ],
+    final _formKey = GlobalKey<FormState>();
+    return Form(
+      key: _formKey,
+      child: Padding(
+        padding:
+        EdgeInsets.symmetric(horizontal: context.width16),
+        child: Column(
+          children: [
+            const SignUpUserNameTextField(),
+            const SignUpEmailTextField(),
+            const SignUpPasswordTextField(),
+            const SignUpConfirmPasswordTextField(),
+            SignUpButton(formKey: _formKey,),
+            const AlreadyHaveAnAccount(),
+          ],
+        ),
       ),
     );
   }
