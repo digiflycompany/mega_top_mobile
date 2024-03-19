@@ -11,6 +11,7 @@ import 'package:mega_top_mobile/core/widgets/primary_text_field.dart';
 import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_user_name_text_field.dart';
 
 class SignUpBody extends StatelessWidget {
   const SignUpBody({super.key});
@@ -22,11 +23,7 @@ class SignUpBody extends StatelessWidget {
       EdgeInsets.symmetric(horizontal: context.width16),
       child: Column(
         children: [
-          const PrimaryTextField(
-            hintText: AppStrings.usernameEn,
-            prefixSvg: AppAssets.usernameIcon,
-          ),
-          VerticalSpace(context.height * 0.033),
+          const SignUpUserNameTextField(),
           const PrimaryTextField(
             hintText: AppStrings.emailEn,
             prefixSvg: AppAssets.emailSecondIcon,
