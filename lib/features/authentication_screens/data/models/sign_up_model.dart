@@ -1,10 +1,10 @@
-class SingUpModel {
+class SignUpModel {
   String? status;
   String? message;
 
-  SingUpModel({this.status, this.message});
+  SignUpModel({this.status, this.message});
 
-  SingUpModel.fromJson(Map<String, dynamic> json) {
+  SignUpModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
   }

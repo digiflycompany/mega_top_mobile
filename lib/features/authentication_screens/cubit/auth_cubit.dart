@@ -61,16 +61,16 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   }
 
   Future<void> signUp(String email, String username, String password, String confirmPassword) async {
-    emit(LoginLoading());
+    emit(SignUpLoading());
     try {
-      final user = await authRepo.login(email, password);
+      final user = await authRepo.signUp(email, username,password,confirmPassword);
       if (user != null) {
-        emit(LoginSuccess(user));
+        emit(SignUpSuccess(user));
       } else {
-        emit(LoginFailure('Invalid credentials or network issues.'));
+        emit(SignUpFailure('Invalid credentials or network issues.'));
       }
     } catch (e) {
-      emit(LoginFailure(e.toString()));
+      emit(SignUpFailure(e.toString()));
     }
   }
 
