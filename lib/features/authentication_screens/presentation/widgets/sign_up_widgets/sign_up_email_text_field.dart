@@ -18,6 +18,7 @@ class SignUpEmailTextField extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(bottom: context.height24),
           child: PrimaryTextField(
+            controller: signUpCubit.signUpEmailController,
             hintText: AppStrings.emailEn,
             prefixSvg: AppAssets.emailSecondIcon,
             validator: (value) {
