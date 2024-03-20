@@ -82,14 +82,13 @@ class OnBoardingView extends StatelessWidget {
                         ? AppStrings.getStarted
                         : AppStrings.nextEn,
                     onTap: () {
-                      onboardingCubit.pageController.animateToPage(
-                        onboardingCubit.getPageIndex() == 2
-                            ? Routes
-                                .homePageRoute.moveToCurrentRouteAndRemoveAll
-                            : onboardingCubit.getPageIndex() + 1,
-                        duration: const Duration(milliseconds: 400),
-                        curve: Curves.easeInOut,
-                      );
+                      onboardingCubit.getPageIndex() == 2
+                          ? Routes.homePageRoute.moveToCurrentRouteAndRemoveAll
+                          : onboardingCubit.pageController.animateToPage(
+                              onboardingCubit.getPageIndex() + 1,
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.easeInOut,
+                            );
                     }),
               ),
               VerticalSpace(context.width * 0.044),
