@@ -92,13 +92,14 @@ class OnBoardingView extends StatelessWidget {
                     }),
               ),
               VerticalSpace(context.width * 0.044),
-              RowTextButton(
-                firstText: AppStrings.alreadyHaveAnAccountEn,
-                buttonText: AppStrings.loginEn,
-                onTap: () {
-                  Routes.loginRoute.moveToAndRemoveCurrent;
-                },
-              ),
+              if (onboardingCubit.getPageIndex() == 2)
+                RowTextButton(
+                  firstText: AppStrings.alreadyHaveAnAccountEn,
+                  buttonText: AppStrings.loginEn,
+                  onTap: () {
+                    Routes.loginRoute.moveToAndRemoveCurrent;
+                  },
+                ),
               VerticalSpace(context.height * 0.044),
             ],
           );
