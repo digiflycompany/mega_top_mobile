@@ -17,3 +17,13 @@ class LoginFailure extends AuthenticationState {
 
   LoginFailure(this.error);
 }
+class SignUpLoading extends AuthenticationState {}
+
+class SignUpSuccess extends AuthenticationState {
+}
+
+class SignUpFailure extends AuthenticationState {
+  final String error;
+
+  SignUpFailure(this.error);
+}
