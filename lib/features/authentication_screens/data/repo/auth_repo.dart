@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class AuthRepo {
   Future<UserModel?> login(String email, String password);
+  Future<UserModel?> signUp(String username, String email, String password, String confirmPassword);
 }
 
 class AuthRepoImp implements AuthRepo {
@@ -27,4 +28,25 @@ class AuthRepoImp implements AuthRepo {
     }
     return null;
   }
+
+  @override
+  Future<UserModel?> signUp(String username, String email, String password, String confirmPassword) async {
+    try {
+      Response? response = await DioHelper.postData(
+        url: EndPoints.signUpAPI,
+        data: {
+          'email': email,
+          'full_name': username,
+          'password': password,
+          'confirm_password': confirmPassword,
+        },
+      );
+      if (response != null && response.statusCode == 200) {
+        UserModel user = UserModel.fromJson(response.data);
+        return user;
+      }
+    } catch (e) {
+      print('Error during SignUp: $e');
+    }
+    return null;
 }
