@@ -22,10 +22,9 @@ class SignUpConfirmPasswordTextField extends StatelessWidget {
             hintText: AppStrings.confirmPasswordEn,
             prefixSvg: AppAssets.passwordIcon,
             validator: (value) {
-              RegExp regExp = new RegExp(signUpCubit.passwordPattern);
               if (value == null || value.isEmpty) {
                 return AppStrings.pleaseConfirmYourPassword;
-              } else if (!regExp.hasMatch(value)) {
+              } else if (signUpCubit.signUpConfirmPasswordController.text!=signUpCubit.signUpPasswordController) {
                 return AppStrings.passwordVerification;
               }
               return null;
