@@ -18,6 +18,7 @@ class SignUpConfirmPasswordTextField extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(bottom: context.height40),
           child: PasswordTextField(
+            controller: signUpCubit.signUpConfirmPasswordController,
             hintText: AppStrings.confirmPasswordEn,
             prefixSvg: AppAssets.passwordIcon,
             validator: (value) {

@@ -15,6 +15,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController signUpEmailController = TextEditingController();
+  final TextEditingController signUpUsernameController = TextEditingController();
+  final TextEditingController signUpPasswordController = TextEditingController();
+  final TextEditingController signUpConfirmPasswordController = TextEditingController();
 
   bool isPasswordVisible = true;
 
