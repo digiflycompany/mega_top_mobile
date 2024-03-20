@@ -30,7 +30,8 @@ class AuthRepoImp implements AuthRepo {
   }
 
   @override
-  Future<UserModel?> signUp(String username, String email, String password, String confirmPassword) async {
+  Future<UserModel?> signUp(String username, String email, String password,
+      String confirmPassword) async {
     try {
       Response? response = await DioHelper.postData(
         url: EndPoints.signUpAPI,
@@ -49,4 +50,5 @@ class AuthRepoImp implements AuthRepo {
       print('Error during SignUp: $e');
     }
     return null;
+  }
 }
