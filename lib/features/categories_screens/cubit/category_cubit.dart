@@ -7,6 +7,7 @@ import 'package:mega_top_mobile/features/categories_screens/data/categories_mode
 import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
+
 import '../../../core/utils/app_assets.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
@@ -23,7 +24,6 @@ class CategoryCubit extends Cubit<CategoryState> {
   final Map<String, bool> checkboxStates = {};
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
   CategoriesModel? categoriesModel;
-
 
   final List<String> images = [
     AppAssets.productBigPhoto,
@@ -131,9 +131,12 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> getCategories() async {
     emit(CategoryLoading());
     try {
-      List<CategoriesModel>? fetchedCategories = await categoriesRepo.getCategories();
+      List<CategoriesModel>? fetchedCategories =
+          await categoriesRepo.getCategories();
       if (fetchedCategories!.isNotEmpty) {
         categories = fetchedCategories;
+        print(categories[0].image);
+
         emit(CategorySuccess());
       } else {
         emit(CategoryFailure('No categories found'));

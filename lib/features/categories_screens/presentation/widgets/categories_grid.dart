@@ -11,12 +11,11 @@ class CategoriesGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryCubit, CategoryState>(
+    return BlocConsumer<CategoryCubit, CategoryState>(
+      listener: (BuildContext context, CategoryState state) {},
       builder: (context, state) {
         if (state is CategorySuccess) {
-          var categories = context
-              .read<CategoryCubit>()
-              .categories;
+          var categories = context.read<CategoryCubit>().categories;
           return Expanded(
             child: GridView.builder(
               physics: const BouncingScrollPhysics(),
@@ -29,8 +28,8 @@ class CategoriesGrid extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final category = categories[index];
                 return CategoriesSmallCard(
-                  categoryPhoto: category.image?.src ??
-                      'path/to/default/image.png',
+                  categoryPhoto:
+                      category.image?.src ?? 'path/to/default/image.png',
                   categoryName: category.name ?? 'Unknown',
                 );
               },
@@ -45,7 +44,8 @@ class CategoriesGrid extends StatelessWidget {
                   primary: AppColors.primaryColor,
                 ),
               ),
-              child: CircularProgressIndicator.adaptive(),),
+              child: CircularProgressIndicator.adaptive(),
+            ),
           ),
         );
       },
