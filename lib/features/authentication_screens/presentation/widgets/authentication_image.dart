@@ -8,9 +8,12 @@ class AuthenticationLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      AppAssets.megaTopLogo,
-      width: context.width * 0.35,
+    return Padding(
+      padding:EdgeInsets.only(bottom: context.height * 0.055,top: context.height * 0.13),
+      child: Image.asset(
+        AppAssets.megaTopLogo,
+        width: context.width * 0.35,
+      ),
     );
   }
 }

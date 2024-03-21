@@ -10,10 +10,12 @@ import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state
 import '../utils/app_color.dart';
 
 class PasswordTextField extends StatelessWidget {
-  const PasswordTextField({super.key, this.hintText, this.prefixSvg});
+  const PasswordTextField({super.key, this.hintText, this.prefixSvg, this.validator, this.controller});
 
   final String? hintText;
   final String? prefixSvg;
+  final validator;
+  final controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,8 @@ class PasswordTextField extends StatelessWidget {
       builder: (BuildContext context, AuthenticationState state) {
         final cubit = AuthenticationCubit.getCubit(context);
         return TextFormField(
+          validator: validator,
+          controller: controller,
           cursorColor: AppColors.blackGreyColor,
           cursorHeight: context.width * 0.046,
           obscureText: cubit.isPasswordVisible,
