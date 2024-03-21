@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
@@ -17,7 +19,11 @@ class SignUpScreen extends StatelessWidget {
     return BlocProvider(
       create:  (BuildContext context) => AuthenticationCubit(AuthRepoImp()),
       child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if(state is SignUpSuccess){
+            Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+          }
+        },
         builder: (context, state) {
           return Scaffold(
               backgroundColor: Colors.white,

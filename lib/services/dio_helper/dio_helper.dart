@@ -27,8 +27,8 @@ class DioHelper {
         url,
     //   options: Options(headers: {'Authorization': 'Bearer ${token}'}),
         data: data,
-      );
 
+      );
       if (kDebugMode) {
         print('STATUS CODE IS ${response?.statusCode}');
         print('STATUS MESSAGE IS ${response?.statusMessage}');

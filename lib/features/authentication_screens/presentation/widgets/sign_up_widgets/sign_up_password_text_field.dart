@@ -26,7 +26,7 @@ class SignUpPasswordTextField extends StatelessWidget {
               if (value == null || value.isEmpty) {
                 return AppStrings.pleaseEnterYourPassword;
               } else if (!regExp.hasMatch(value)) {
-                return AppStrings.passwordsNotMatching;
+                return AppStrings.passwordVerification;
               }
               return null;
             },
