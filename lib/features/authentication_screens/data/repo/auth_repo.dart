@@ -32,8 +32,8 @@ class AuthRepoImp implements AuthRepo {
 
   @override
   Future<SignUpModel?> signUp(
-      String username,
       String email,
+      String username,
       String password,
       String confirmPassword
       ) async {
