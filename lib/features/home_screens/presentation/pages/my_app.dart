@@ -10,7 +10,6 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import '../../../../core/utils/app_services_dart.dart';
 import '../../../../l10n/l10n.dart';
-import '../../../authentication_screens/cubit/auth_cubit.dart';
 import '../../cubit/home_cubit.dart';
 
 class MyApp extends StatelessWidget {
@@ -25,9 +24,6 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, Widget? child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider<AuthenticationCubit>(
-              create: (BuildContext context) => AuthenticationCubit(),
-            ),
             BlocProvider<CategoryCubit>(
               create: (BuildContext context) => CategoryCubit()..getCategories(),
             ),
