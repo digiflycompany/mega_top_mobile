@@ -58,7 +58,7 @@ class DioHelper {
       Response? response = await dio?.get(
         url,
         queryParameters: queryParameters,
-        options: Options(headers: headers),
+        //options: Options(headers: headers),
       );
 
       if (kDebugMode) {
