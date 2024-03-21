@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
@@ -26,10 +25,10 @@ class DioHelper {
     try {
       Response? response = await dio?.post(
         url,
-       // options: Options(headers: {'Authorization': 'Bearer ${token}'}),
+    //   options: Options(headers: {'Authorization': 'Bearer ${token}'}),
         data: data,
-      );
 
+      );
       if (kDebugMode) {
         print('STATUS CODE IS ${response?.statusCode}');
         print('STATUS MESSAGE IS ${response?.statusMessage}');

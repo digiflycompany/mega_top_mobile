@@ -3,18 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../utils/app_color.dart';
 
-class PrimaryButton extends StatelessWidget {
+class AuthButton extends StatelessWidget {
   final Function()? onTap;
-  final String? text;
+  final Widget? content;
   final int? fontSize;
-  final bool isBlurred;
 
-  const PrimaryButton({
+  const AuthButton({
     super.key,
     this.onTap,
-    this.text,
+    this.content,
     this.fontSize,
-    this.isBlurred = false,
   });
 
   @override
@@ -31,24 +29,8 @@ class PrimaryButton extends StatelessWidget {
         child: Stack(
           children: [
             Center(
-              child: Text(
-                text!,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16.sp,
-                ),
-              ),
+              child: content
             ),
-            if (isBlurred)
-              Positioned.fill(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.8),
-                    borderRadius: BorderRadius.circular(4.r),
-                  ),
-                ),
-              ),
           ],
         ),
       ),
