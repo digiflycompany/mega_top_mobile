@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/curved_container.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/skip_text.dart';
 
 import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_routes.dart';
 
 class FirstHeader extends StatelessWidget {
   final PageController pageController;

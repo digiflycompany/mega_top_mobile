@@ -73,8 +73,8 @@ class LatestProductsContainer extends StatelessWidget {
                           width: context.width * 0.11,
                           height: context.height * 0.033,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                  context.height * 0.003),
+                              borderRadius:
+                                  BorderRadius.circular(context.height * 0.003),
                               color: AppColors.redIconColor),
                           child: Center(
                             child: Text(
