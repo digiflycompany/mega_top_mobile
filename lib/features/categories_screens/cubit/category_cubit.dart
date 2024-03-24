@@ -135,7 +135,6 @@ class CategoryCubit extends Cubit<CategoryState> {
           await categoriesRepo.getCategories();
       if (fetchedCategories!.isNotEmpty) {
         categories = fetchedCategories;
-        print(categories[0].image);
 
         emit(CategorySuccess());
       } else {

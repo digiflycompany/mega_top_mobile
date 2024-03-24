@@ -8,7 +8,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 class CategoriesSmallCard extends StatelessWidget {
   final String? categoryPhoto;
   final String? categoryName;
-  const CategoriesSmallCard({super.key,
+  const CategoriesSmallCard({
+    super.key,
     this.categoryPhoto,
     this.categoryName,
   });
@@ -20,38 +21,41 @@ class CategoriesSmallCard extends StatelessWidget {
         Routes.categoryItemsPageRoute.moveTo;
       },
       child: Container(
-        width: context.width*0.24,
-        height: context.height*0.131,
+        width: context.width * 0.24,
+        height: context.height * 0.131,
         decoration: BoxDecoration(
           color: AppColors.iconsBackgroundColor,
           border: Border.all(
-              width: context.width*0.002,
+              width: context.width * 0.002,
               color: AppColors.onboardingBackgroundColor),
-              borderRadius: BorderRadius.circular(context.height*0.006),
+          borderRadius: BorderRadius.circular(context.height * 0.006),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-              vertical: context.height*0.011,
-              horizontal: context.width*0.021),
+              vertical: context.height * 0.011,
+              horizontal: context.width * 0.021),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CachedNetworkImage(
-                imageUrl: categoryPhoto!,
-                width: context.width*0.15,
-                placeholder: (context, url) => Center(
-                  child: Theme(
-                    data: Theme.of(context).copyWith(
-                      colorScheme: ColorScheme.fromSwatch().copyWith(
-                        primary: AppColors.primaryColor,
+              categoryPhoto.isNotNull
+                  ? CachedNetworkImage(
+                      imageUrl: categoryPhoto!,
+                      width: context.width * 0.15,
+                      placeholder: (context, url) => Center(
+                        child: Theme(
+                          data: Theme.of(context).copyWith(
+                            colorScheme: ColorScheme.fromSwatch().copyWith(
+                              primary: AppColors.primaryColor,
+                            ),
+                          ),
+                          child: Transform.scale(
+                              scale: 0.6,
+                              child: CircularProgressIndicator.adaptive()),
+                        ),
                       ),
-                    ),
-                    child: Transform.scale(
-                        scale: 0.6,
-                        child: CircularProgressIndicator.adaptive()),),
-                ),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    )
+                  : Image.asset("assets/images/ad.png"),
               Text(
                 categoryName!,
                 overflow: TextOverflow.ellipsis,
