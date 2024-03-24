@@ -9,12 +9,12 @@ class UserEmailText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: context.height6),
+      padding: EdgeInsets.only(top: context.height6,bottom: context.height24),
       child: Text(
         AppStrings.userEmail,
         style: TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 14.sp
+            fontSize: 14.sp,
         ),
       ),
     );
