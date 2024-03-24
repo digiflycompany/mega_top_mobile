@@ -9,8 +9,7 @@ import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forget_password_custom_icon.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_divider.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/otp_row.dart';
-
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_row.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 
@@ -57,7 +56,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 text: AppStrings.pleaseEnter4DigitsEn,
               ),
               VerticalSpace(context.height * 0.033),
-              const OtpRow(),
+              OTPRow(),
               VerticalSpace(context.height * 0.055),
               PrimaryButton(
                 text: AppStrings.verifyEn,
