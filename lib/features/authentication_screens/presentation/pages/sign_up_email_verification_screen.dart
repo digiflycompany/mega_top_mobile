@@ -17,7 +17,7 @@ class SignUpEmailVerificationScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: context.width16),
         child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+           crossAxisAlignment: CrossAxisAlignment.start,
            children: [
              PleaseEnterFourDigitsCodeText(),
              UserEmailText(),
