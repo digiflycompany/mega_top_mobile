@@ -13,7 +13,6 @@ class _OTPRowState extends State<OTPRow> {
   @override
   void initState() {
     super.initState();
-
     controllers = List.generate(4, (_) => TextEditingController());
     focusNodes = List.generate(4, (_) => FocusNode());
   }
@@ -29,6 +28,9 @@ class _OTPRowState extends State<OTPRow> {
     if (value.length == 1 && index < 3) {
       focusNodes[index + 1].requestFocus();
     }
+  }
+  String getOTP() {
+    return controllers.map((controller) => controller.text).join('');
   }
 
   @override
