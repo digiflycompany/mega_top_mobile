@@ -16,8 +16,8 @@ class _OTPRowState extends State<OTPRow> {
   @override
   void initState() {
     super.initState();
-    controllers = List.generate(4, (_) => TextEditingController());
-    focusNodes = List.generate(4, (_) => FocusNode());
+    controllers = List.generate(6, (_) => TextEditingController());
+    focusNodes = List.generate(6, (_) => FocusNode());
   }
 
   @override
@@ -28,8 +28,12 @@ class _OTPRowState extends State<OTPRow> {
   }
 
   void nextField({required String value, required int index}) {
-    if (value.length == 1 && index < 3) {
+    if (value.length == 1 && index < 5) {
       focusNodes[index + 1].requestFocus();
+    }
+
+    else if(value.isEmpty && index > 0){
+      focusNodes[index-1].requestFocus();
     }
   }
 
@@ -44,7 +48,7 @@ class _OTPRowState extends State<OTPRow> {
         AuthenticationCubit otpCubit = context.read<AuthenticationCubit>();
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: List.generate(4, (index) {
+          children: List.generate(6, (index) {
             return OTPField(
               controller: controllers[index],
               focusNode: focusNodes[index],
@@ -52,7 +56,7 @@ class _OTPRowState extends State<OTPRow> {
                 nextField(value: value, index: index);
                 otpCubit.otp=getOTP();
               },
-              textInputAction: index == 3
+              textInputAction: index == 5
                   ? TextInputAction.done
                   : TextInputAction.next,
             );

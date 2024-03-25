@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_row.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/please_enter_four_digits_code_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/resend_code_row.dart';
@@ -13,23 +17,32 @@ class SignUpEmailVerificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const CustomAppBar(AppStrings.verifyYourEmailEn)),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width16),
-        child: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: [
-             const PleaseEnterFourDigitsCodeText(),
-             const UserEmailText(),
-             OTPRow(),
-             const VerifyEmailButton(),
-             const ResendCodeRow(),
-           ],
-        ),
-      ),
+    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+      listener: (context, state) {
+        if(state is EmailVerifiedSuccess){
+          Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: PreferredSize(
+              preferredSize: Size(double.infinity, context.height * 0.089),
+              child: const CustomAppBar(AppStrings.verifyYourEmailEn)),
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: context.width16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const PleaseEnterFourDigitsCodeText(),
+                const UserEmailText(),
+                OTPRow(),
+                const VerifyEmailButton(),
+                const ResendCodeRow(),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
