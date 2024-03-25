@@ -18,6 +18,7 @@ class LoginFailure extends AuthenticationState {
 
   LoginFailure(this.error);
 }
+
 class SignUpLoading extends AuthenticationState {}
 
 class SignUpSuccess extends AuthenticationState {
@@ -30,4 +31,19 @@ class SignUpFailure extends AuthenticationState {
   final String error;
 
   SignUpFailure(this.error);
+}
+
+
+class EmailVerifiedLoading extends AuthenticationState {}
+
+class EmailVerifiedSuccess extends AuthenticationState {
+  final SignUpModel user;
+
+  EmailVerifiedSuccess(this.user);
+}
+
+class EmailVerifiedFailure extends AuthenticationState {
+  final String error;
+
+  EmailVerifiedFailure(this.error);
 }

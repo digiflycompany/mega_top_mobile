@@ -21,7 +21,7 @@ class SignUpScreen extends StatelessWidget {
       child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
         listener: (context, state) {
           if(state is SignUpSuccess){
-            Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+            Routes.signUpEmailVerificationPageRoute.moveTo;
           }
         },
         builder: (context, state) {
