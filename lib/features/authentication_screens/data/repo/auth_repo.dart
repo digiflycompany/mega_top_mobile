@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/models/email_verification_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/sign_up_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class AuthRepo {
   Future<UserModel?> login(String email, String password);
+  Future<EmailVerificationModel?> verifyEmail(String email, String activationOtp);
   Future<SignUpModel?> signUp(String username, String email, String password, String confirmPassword);
 }
 
@@ -56,4 +58,24 @@ class AuthRepoImp implements AuthRepo {
     }
     return null;
   }
+
+  Future<EmailVerificationModel?> verifyEmail(String email, String activationOtp) async {
+    try {
+      Response? response = await DioHelper.postData(
+        url: EndPoints.activateEmailAPI,
+        data: {
+          'email': email,
+          'activation_otp': activationOtp,
+        },
+      );
+      if (response != null && response.statusCode == 200) {
+        EmailVerificationModel emailVerificationModel = EmailVerificationModel.fromJson(response.data);
+        return emailVerificationModel;
+      }
+    } catch (e) {
+      print('Error during login: $e');
+    }
+    return null;
+  }
+
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
@@ -24,6 +25,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   bool newPasswordSuccess = false;
 
+  String otp='';
+
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
     emit(AuthenticationInitial());
@@ -46,6 +49,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     });
   }
 
+  /// LOGIN FUNCTION
   Future<void> login(String email, String password) async {
     emit(LoginLoading());
     try {
@@ -60,6 +64,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
+  /// SIGNUP FUNCTION
   Future<void> signUp(String email, String username, String password, String confirmPassword) async {
     emit(SignUpLoading());
     try {
@@ -73,6 +78,22 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       emit(SignUpFailure(e.toString()));
     }
   }
+
+  /// EMAIL VERIFICATION FUNCTION
+  Future<void> emailVerification(String email, String activationOtp) async {
+    emit(EmailVerifiedLoading());
+    try {
+      final user = await authRepo.verifyEmail(email, activationOtp);
+      if (user != null) {
+        emit(EmailVerifiedSuccess(user));
+      } else {
+        emit(EmailVerifiedFailure(AppStrings.incorrectCodeOrNetworkIssuesEn));
+      }
+    } catch (e) {
+      emit(EmailVerifiedFailure(e.toString()));
+    }
+  }
+
 
 }
 
