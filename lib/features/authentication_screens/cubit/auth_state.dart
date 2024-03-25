@@ -1,3 +1,4 @@
+import 'package:mega_top_mobile/features/authentication_screens/data/models/email_verification_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/sign_up_model.dart';
 
@@ -37,9 +38,9 @@ class SignUpFailure extends AuthenticationState {
 class EmailVerifiedLoading extends AuthenticationState {}
 
 class EmailVerifiedSuccess extends AuthenticationState {
-  final SignUpModel user;
+  final EmailVerificationModel emailVerificationModel;
 
-  EmailVerifiedSuccess(this.user);
+  EmailVerifiedSuccess(this.emailVerificationModel);
 }
 
 class EmailVerifiedFailure extends AuthenticationState {
