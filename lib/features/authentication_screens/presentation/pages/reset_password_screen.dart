@@ -4,8 +4,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/reset_password_widgets/reset_password_condition.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/reset_password_widgets/reset_password_description.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/primary_text_field.dart';
@@ -25,10 +25,7 @@ class ResetPasswordScreen extends StatelessWidget {
           child: Column(
             children: [
               const ResetPasswordCondition(),
-              const ForgotPasswordDescription(
-                text: AppStrings.enterYourEmailAddressEn,
-              ),
-              VerticalSpace(context.height * 0.033),
+              const ResetPasswordDescription(),
               const PrimaryTextField(
                 hintText: AppStrings.emailEn,
                 prefixSvg: AppAssets.emailSecondIcon,
