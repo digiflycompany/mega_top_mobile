@@ -22,6 +22,9 @@ class SignUpEmailVerificationScreen extends StatelessWidget {
         if(state is EmailVerifiedSuccess){
           Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
         }
+        if(state is EmailVerifiedFailure){
+
+        }
       },
       builder: (context, state) {
         return Scaffold(
