@@ -62,3 +62,17 @@ class ResetPasswordFailure extends AuthenticationState {
 
   ResetPasswordFailure(this.error);
 }
+
+class UpdatePasswordLoading extends AuthenticationState {}
+
+class UpdatePasswordSuccess extends AuthenticationState {
+  final EmailVerificationModel emailVerificationModel;
+
+  UpdatePasswordSuccess(this.emailVerificationModel);
+}
+
+class UpdatePasswordFailure extends AuthenticationState {
+  final String error;
+
+  UpdatePasswordFailure(this.error);
+}

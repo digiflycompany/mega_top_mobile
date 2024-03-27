@@ -10,4 +10,5 @@ class EndPoints {
   static const String signUpAPI = 'https://megatop.com.eg/wp-json/custom/v1/register';
   static const String activateEmailAPI = 'https://megatop.com.eg/wp-json/custom/v1/activate';
   static const String resetPasswordAPI = 'https://megatop.com.eg/wp-json/custom/v1/reset-password';
+  static const String updatePasswordAPI = 'https://megatop.com.eg/wp-json/custom/v1/update-password';
 }
