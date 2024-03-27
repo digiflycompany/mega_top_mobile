@@ -34,7 +34,6 @@ class SignUpFailure extends AuthenticationState {
   SignUpFailure(this.error);
 }
 
-
 class EmailVerifiedLoading extends AuthenticationState {}
 
 class EmailVerifiedSuccess extends AuthenticationState {

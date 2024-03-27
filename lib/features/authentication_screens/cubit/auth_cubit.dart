@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/success_pop_up.dart';
-import '../../../core/utils/app_routes.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthRepo authRepo;
@@ -20,6 +20,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final TextEditingController signUpUsernameController = TextEditingController();
   final TextEditingController signUpPasswordController = TextEditingController();
   final TextEditingController signUpConfirmPasswordController = TextEditingController();
+  final TextEditingController resetPasswordEmailController = TextEditingController();
 
   bool isPasswordVisible = true;
 
