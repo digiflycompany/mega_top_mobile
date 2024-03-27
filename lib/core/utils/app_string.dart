@@ -100,6 +100,7 @@ class AppStrings {
   static const String doYouWantToCancel = 'Do you want to cancel your order ?';
   static const String resetPasswordEn = 'Reset Password';
   static const String incorrectCodeOrNetworkIssuesEn = 'InCorrect Code or network issues.';
+  static const String incorrectEmailOrNetworkIssuesEn = 'InCorrect Email or network issues.';
   static const String enterYourEmailAddressEn =
       'Enter your email address and we’ll send you\na verification code to reset your password.';
   static const String sendEn = 'Send';
