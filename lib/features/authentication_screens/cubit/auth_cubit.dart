@@ -95,6 +95,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
+  /// RESET PASSWORD FUNCTION
   Future<void> resetPassword(String email) async {
     emit(ResetPasswordLoading());
     try {
@@ -106,6 +107,21 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
     } catch (e) {
       emit(ResetPasswordFailure(e.toString()));
+    }
+  }
+
+  /// UPDATE PASSWORD FUNCTION
+  Future<void> updatePassword(String otp, String email, String password, String confirmPassword) async {
+    emit(UpdatePasswordLoading());
+    try {
+      final user = await authRepo.updatePassword(otp, email, password, confirmPassword);
+      if (user != null) {
+        emit(UpdatePasswordSuccess(user));
+      } else {
+        emit(UpdatePasswordFailure('Invalid credentials'));
+      }
+    } catch (e) {
+      emit(UpdatePasswordFailure(e.toString()));
     }
   }
 

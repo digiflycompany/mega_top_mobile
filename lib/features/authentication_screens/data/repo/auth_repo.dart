@@ -11,6 +11,8 @@ abstract class AuthRepo {
   Future<EmailVerificationModel?> verifyEmail(String email, String activationOtp);
   Future<SignUpModel?> signUp(String username, String email, String password, String confirmPassword);
   Future<ResetPasswordModel?> resetPassword(String email);
+  Future<EmailVerificationModel?> updatePassword(String otp, String email, String password, String confirmPassword);
+
 }
 
 class AuthRepoImp implements AuthRepo {
@@ -95,6 +97,33 @@ class AuthRepoImp implements AuthRepo {
       }
     } catch (e) {
       print('Error during reset password: $e');
+    }
+    return null;
+  }
+
+  @override
+  Future<EmailVerificationModel?> updatePassword(
+      String otp,
+      String email,
+      String password,
+      String confirmPassword
+      ) async {
+    try {
+      Response? response = await DioHelper.postData(
+        url: EndPoints.updatePasswordAPI,
+        data: {
+          'otp': otp,
+          'email': email,
+          'password': password,
+          'confirm_password': confirmPassword,
+        },
+      );
+      if (response != null && response.statusCode == 200) {
+        EmailVerificationModel user = EmailVerificationModel.fromJson(response.data);
+        return user;
+      }
+    } catch (e) {
+      print('Error during Updating Password: $e');
     }
     return null;
   }
