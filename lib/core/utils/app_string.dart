@@ -106,7 +106,7 @@ class AppStrings {
   static const String sendEn = 'Send';
   static const String verifyYourEmailEn = 'Verify your email';
   static const String pleaseEnter4DigitsEn =
-      'Please enter the 4 digit code that sent to\nmohamed.nashaat211@gmail.com';
+      'Please enter the 4 digit code that sent to';
   static const String verifyEn = 'Verify';
   static const String ifYouDidNotRecCodeEn = 'If you didn’t receive code?';
   static const String resendCodeEn = 'Resend code';
