@@ -14,6 +14,7 @@ class AppStrings {
   static const String wrongInfo = 'بيانات غير صحيحة أو مشاكل في الشبكة';
   static const String numberOfProductsEn = 'Number of products';
   static const String pleaseEnterYourEmail = 'Please enter your email';
+  static const String pleaseEnterOtp = 'Please enter OTP';
   static const String pleaseEnterValidEmail = 'Please enter a valid email address';
   static const String pleaseEnterYourUserName = 'Please enter your username';
   static const String pleaseEnterYourPassword = 'Please enter your password';

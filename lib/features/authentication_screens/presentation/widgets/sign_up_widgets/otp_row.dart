@@ -5,6 +5,8 @@ import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_text_field.dart';
 
 class OTPRow extends StatefulWidget {
+  final validator;
+  const OTPRow({super.key, this.validator});
   @override
   _OTPRowState createState() => _OTPRowState();
 }
@@ -50,6 +52,7 @@ class _OTPRowState extends State<OTPRow> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(6, (index) {
             return OTPField(
+              validator: widget.validator,
               controller: controllers[index],
               focusNode: focusNodes[index],
               onChanged: (value) {
