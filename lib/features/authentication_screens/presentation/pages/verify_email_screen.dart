@@ -6,10 +6,9 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_description.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_row.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_condition.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_description.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_otp.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key});
@@ -28,9 +27,7 @@ class VerifyEmailScreen extends StatelessWidget {
             children: [
               const VerifyEmailCondition(),
               const VerifyEmailDescription(),
-              VerticalSpace(context.height * 0.033),
-              OTPRow(),
-              VerticalSpace(context.height * 0.055),
+              const VerifyEmailOtp(),
               PrimaryButton(
                 text: AppStrings.verifyEn,
                 onTap: () {
