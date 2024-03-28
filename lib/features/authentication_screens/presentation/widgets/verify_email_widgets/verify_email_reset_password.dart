@@ -13,9 +13,8 @@ class VerifyEmailResetPasswordButton extends StatelessWidget {
       padding: EdgeInsets.only(bottom:context.height24),
       child: PrimaryButton(
         text: AppStrings.verifyEn,
-        onTap: () {
-          Routes.createNewPasswordRoute.moveTo;
-        },
+        onTap: () =>
+        Routes.createNewPasswordRoute.moveTo
       ),
     );
   }

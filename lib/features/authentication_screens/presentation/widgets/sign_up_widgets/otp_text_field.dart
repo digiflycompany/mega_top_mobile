@@ -8,13 +8,14 @@ class OTPField extends StatelessWidget {
   final FocusNode focusNode;
   final Function(String) onChanged;
   final TextInputAction textInputAction;
+  final validator;
 
   const OTPField({
     Key? key,
     required this.controller,
     required this.focusNode,
     required this.onChanged,
-    this.textInputAction = TextInputAction.next,
+    this.textInputAction = TextInputAction.next, this.validator,
   }) : super(key: key);
 
   @override
@@ -27,7 +28,8 @@ class OTPField extends StatelessWidget {
           color: AppColors.otpBoxColor,
           border: Border.all(color: AppColors.otpBoxBorderColor,width: context.width*0.002)
       ),
-      child: TextField(
+      child: TextFormField(
+        validator: validator,
         controller: controller,
         focusNode: focusNode,
         cursorColor: AppColors.blackColor,

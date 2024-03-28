@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
+import 'package:mega_top_mobile/core/widgets/password_text_field.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forget_password_custom_icon.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_divider.dart';
-
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/widgets/password_text_field.dart';
-import '../../cubit/auth_state.dart';
-import '../widgets/success_pop_up.dart';
-import 'login_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/success_pop_up.dart';
 
 class CreateNewPasswordScreen extends StatelessWidget {
   const CreateNewPasswordScreen({super.key});
@@ -30,7 +29,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomAppBar(AppStrings.createNewPasswordEn)),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+        padding: EdgeInsets.symmetric(horizontal: context.width16),
         child: SingleChildScrollView(
           child: Column(
             children: [
