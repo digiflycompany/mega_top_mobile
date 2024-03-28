@@ -11,6 +11,7 @@ import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_condition.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_description.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_text_field.dart';
 
 class CreateNewPasswordScreen extends StatelessWidget {
   const CreateNewPasswordScreen({super.key});
@@ -29,16 +30,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
             children: [
               const CreateNewPasswordCondition(),
               const CreateNewPasswordDescription(),
-              VerticalSpace(context.height * 0.033),
-              BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                builder: (context, state) {
-                  return const PasswordTextField(
-                    hintText: AppStrings.enterYourNewPasswordEn,
-                    prefixSvg: AppAssets.passwordIcon,
-                  );
-                },
-              ),
-              VerticalSpace(context.height * 0.033),
+              const CreateNewPasswordTextField(),
               BlocBuilder<AuthenticationCubit, AuthenticationState>(
                 builder: (context, state) {
                   return const PasswordTextField(
