@@ -18,6 +18,7 @@ class AppStrings {
   static const String pleaseEnterYourUserName = 'Please enter your username';
   static const String pleaseEnterYourPassword = 'Please enter your password';
   static const String pleaseConfirmYourPassword = 'Please confirm your password';
+  static const String pleaseEnterTheFourDigitsCode = 'Please enter the 4 digit code that sent to';
   static const String passwordsNotMatching = 'Passwords not matching';
   static const String passwordVerification = 'Password must be at least 7 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
   static const String twoProductsEn = ' (2)';
@@ -98,14 +99,16 @@ class AppStrings {
   static const String cancelledEn = 'Cancelled';
   static const String doYouWantToCancel = 'Do you want to cancel your order ?';
   static const String resetPasswordEn = 'Reset Password';
+  static const String incorrectCodeOrNetworkIssuesEn = 'InCorrect Code or network issues.';
+  static const String incorrectEmailOrNetworkIssuesEn = 'InCorrect Email or network issues.';
   static const String enterYourEmailAddressEn =
       'Enter your email address and we’ll send you\na verification code to reset your password.';
   static const String sendEn = 'Send';
   static const String verifyYourEmailEn = 'Verify your email';
   static const String pleaseEnter4DigitsEn =
-      'Please enter the 4 digit code that sent to\nmohamed.nashaat211@gmail.com';
+      'Please enter the 4 digit code that sent to';
   static const String verifyEn = 'Verify';
-  static const String ifYouDidNotRecCodeEn = 'If you don’t receive code?';
+  static const String ifYouDidNotRecCodeEn = 'If you didn’t receive code?';
   static const String resendCodeEn = 'Resend code';
   static const String checkoutEn = 'Checkout';
   static const String createNewPasswordEn = 'Create new password';

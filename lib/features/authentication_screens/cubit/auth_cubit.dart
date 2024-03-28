@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/success_pop_up.dart';
-import '../../../core/utils/app_routes.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthRepo authRepo;
@@ -19,10 +20,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final TextEditingController signUpUsernameController = TextEditingController();
   final TextEditingController signUpPasswordController = TextEditingController();
   final TextEditingController signUpConfirmPasswordController = TextEditingController();
+  final TextEditingController resetPasswordEmailController = TextEditingController();
 
   bool isPasswordVisible = true;
 
   bool newPasswordSuccess = false;
+
+  String otp='';
 
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
@@ -46,6 +50,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     });
   }
 
+  /// LOGIN FUNCTION
   Future<void> login(String email, String password) async {
     emit(LoginLoading());
     try {
@@ -60,6 +65,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
+  /// SIGNUP FUNCTION
   Future<void> signUp(String email, String username, String password, String confirmPassword) async {
     emit(SignUpLoading());
     try {
@@ -73,6 +79,52 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       emit(SignUpFailure(e.toString()));
     }
   }
+
+  /// EMAIL VERIFICATION FUNCTION
+  Future<void> emailVerification(String email, String activationOtp) async {
+    emit(EmailVerifiedLoading());
+    try {
+      final user = await authRepo.verifyEmail(email, activationOtp);
+      if (user != null) {
+        emit(EmailVerifiedSuccess(user));
+      } else {
+        emit(EmailVerifiedFailure(AppStrings.incorrectCodeOrNetworkIssuesEn));
+      }
+    } catch (e) {
+      emit(EmailVerifiedFailure(e.toString()));
+    }
+  }
+
+  /// RESET PASSWORD FUNCTION
+  Future<void> resetPassword(String email) async {
+    emit(ResetPasswordLoading());
+    try {
+      final user = await authRepo.resetPassword(email);
+      if (user != null) {
+        emit(ResetPasswordSuccess(user));
+      } else {
+        emit(ResetPasswordFailure(AppStrings.incorrectEmailOrNetworkIssuesEn));
+      }
+    } catch (e) {
+      emit(ResetPasswordFailure(e.toString()));
+    }
+  }
+
+  /// UPDATE PASSWORD FUNCTION
+  Future<void> updatePassword(String otp, String email, String password, String confirmPassword) async {
+    emit(UpdatePasswordLoading());
+    try {
+      final user = await authRepo.updatePassword(otp, email, password, confirmPassword);
+      if (user != null) {
+        emit(UpdatePasswordSuccess(user));
+      } else {
+        emit(UpdatePasswordFailure('Invalid credentials'));
+      }
+    } catch (e) {
+      emit(UpdatePasswordFailure(e.toString()));
+    }
+  }
+
 
 }
 
