@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
-import 'package:mega_top_mobile/core/widgets/primary_button.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/confirm_new_password_text_field.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_button.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_condition.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_text_field.dart';
@@ -16,33 +13,25 @@ class CreateNewPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomAppBar(AppStrings.createNewPasswordEn)),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const CreateNewPasswordCondition(),
-              const CreateNewPasswordDescription(),
-              const CreateNewPasswordTextField(),
-              const ConfirmNewPasswordTextField(),
-              BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                builder: (context, state) {
-                  AuthenticationCubit authenticationCubit = context.read<AuthenticationCubit>();
-                  return PrimaryButton(
-                    text: AppStrings.confirmPasswordEn,
-                    onTap: () {
-                      authenticationCubit.passwordSuccess();
-                      authenticationCubit.passwordChangedSuccessfully(context);
-                    },
-                  );
-                },
-              ),
-            ],
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: context.width16),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const CreateNewPasswordCondition(),
+                const CreateNewPasswordDescription(),
+                const CreateNewPasswordTextField(),
+                const ConfirmNewPasswordTextField(),
+                CreateNewPasswordButton(formKey: _formKey,),
+              ],
+            ),
           ),
         ),
       ),

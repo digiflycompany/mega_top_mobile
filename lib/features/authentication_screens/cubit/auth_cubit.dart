@@ -21,6 +21,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final TextEditingController signUpPasswordController = TextEditingController();
   final TextEditingController signUpConfirmPasswordController = TextEditingController();
   final TextEditingController resetPasswordEmailController = TextEditingController();
+  final TextEditingController createNewPasswordController = TextEditingController();
+  final TextEditingController confirmNewPasswordController = TextEditingController();
 
   bool isPasswordVisible = true;
 

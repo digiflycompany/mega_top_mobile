@@ -14,11 +14,21 @@ class ConfirmNewPasswordTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return  BlocBuilder<AuthenticationCubit, AuthenticationState>(
       builder: (context, state) {
+        AuthenticationCubit authenticationCubit = context.read<AuthenticationCubit>();
         return Padding(
           padding: EdgeInsets.only(bottom: context.height40),
-          child: const PasswordTextField(
+          child: PasswordTextField(
+            controller: authenticationCubit.confirmNewPasswordController,
             hintText: AppStrings.confirmYourNewPasswordEn,
             prefixSvg: AppAssets.passwordIcon,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppStrings.pleaseConfirmYourPassword;
+              } else if (authenticationCubit.confirmNewPasswordController.text!=authenticationCubit.createNewPasswordController.text) {
+                return AppStrings.passwordsNotMatching;
+              }
+              return null;
+            },
           ),
         );
       },
