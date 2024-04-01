@@ -6,6 +6,7 @@ class AppStrings {
   static const String skipEn = 'Skip';
   static const String next = 'التالى';
   static const String nextEn = 'Next';
+  static const String error = 'Error';
   static const String previous = 'السابق';
   static const String previousEn = 'Previous';
   static const String companyEn = 'Company';
