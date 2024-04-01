@@ -1,125 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
-import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forget_password_custom_icon.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_description.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/forgot_password_divider.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/confirm_new_password_text_field.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_button.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_condition.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_description.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_text_field.dart';
 
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/widgets/password_text_field.dart';
-import '../../cubit/auth_state.dart';
-import '../widgets/success_pop_up.dart';
-import 'login_screen.dart';
-
-class CreateNewPasswordScreen extends StatelessWidget {
+class CreateNewPasswordScreen extends StatefulWidget {
   const CreateNewPasswordScreen({super.key});
 
   @override
+  State<CreateNewPasswordScreen> createState() => _CreateNewPasswordScreenState();
+}
+
+class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
+  late AuthenticationCubit authenticationCubit;
+  @override
   Widget build(BuildContext context) {
-    late AuthenticationCubit authenticationCubit;
-    authenticationCubit = context.read<AuthenticationCubit>();
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const CustomAppBar(AppStrings.createNewPasswordEn)),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              VerticalSpace(context.height * 0.055),
-              Row(
-                children: [
-                  const ForgotPasswordIcon(
-                    color: AppColors.primaryColor,
-                    icon: AppAssets.checkIcon,
-                  ),
-                  const ForgotPasswordDivider(
-                    color: AppColors.primaryColor,
-                  ),
-                  const ForgotPasswordIcon(
-                    color: AppColors.primaryColor,
-                    icon: AppAssets.checkIcon,
-                  ),
-                  const ForgotPasswordDivider(
-                    color: AppColors.primaryColor,
-                  ),
-                  BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                    builder: (context, state) {
-                      return ForgotPasswordIcon(
-                        color: AppColors.primaryColor,
-                        icon: authenticationCubit.newPasswordSuccess
-                            ? AppAssets.checkIcon
-                            : AppAssets.newPasswordWhiteIcon,
-                      );
-                    },
-                  ),
-                ],
+    final _formKey = GlobalKey<FormState>();
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+      listener: (context, state) {
+         authenticationCubit = context.read<AuthenticationCubit>();
+        if(state is UpdatePasswordSuccess){
+          authenticationCubit.passwordChangedSuccessfully(context);
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          key: _scaffoldKey,
+          appBar: PreferredSize(
+              preferredSize: Size(double.infinity, context.height * 0.089),
+              child: const CustomAppBar(AppStrings.createNewPasswordEn)),
+          body: Form(
+            key: _formKey,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: context.width16),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const CreateNewPasswordCondition(),
+                    const CreateNewPasswordDescription(),
+                    const CreateNewPasswordTextField(),
+                    const ConfirmNewPasswordTextField(),
+                    CreateNewPasswordButton(formKey: _formKey,),
+                  ],
+                ),
               ),
-              VerticalSpace(context.height * 0.06),
-              const ForgotPasswordDescription(
-                text: AppStrings.createNewPasswordDescriptionEn,
-              ),
-              VerticalSpace(context.height * 0.033),
-              BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                builder: (context, state) {
-                  return const PasswordTextField(
-                    hintText: AppStrings.enterYourNewPasswordEn,
-                    prefixSvg: AppAssets.passwordIcon,
-                  );
-                },
-              ),
-              VerticalSpace(context.height * 0.033),
-              BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                builder: (context, state) {
-                  return const PasswordTextField(
-                    hintText: AppStrings.confirmYourNewPasswordEn,
-                    prefixSvg: AppAssets.passwordIcon,
-                  );
-                },
-              ),
-              VerticalSpace(context.height * 0.055),
-              BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                builder: (context, state) {
-                  return PrimaryButton(
-                    text: AppStrings.confirmPasswordEn,
-                    onTap: () {
-                      authenticationCubit.passwordSuccess();
-                      authenticationCubit.passwordChangedSuccessfully(context);
-                    },
-                  );
-                },
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
-  void passwordChangedSuccessfully(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return const NewPasswordPopUp();
-      },
-    );
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pop(context);
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
-        ),
-      );
-      //Routes.loginRoute.moveToAndRemoveCurrent;
-    });
+  @override
+  void dispose() {
+    authenticationCubit.confirmNewPasswordController.clear();
+    authenticationCubit.createNewPasswordController.clear();
+    authenticationCubit.resetPasswordEmailController.clear();
+    super.dispose();
   }
 }
