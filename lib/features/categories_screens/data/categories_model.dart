@@ -13,8 +13,11 @@ class CategoriesModel {
   String? lang;
   Links? links;
   static List<CategoriesModel> fromJsonList(List<dynamic> jsonList) {
-    return jsonList.map((jsonItem) => CategoriesModel.fromJson(jsonItem)).toList();
+    return jsonList
+        .map((jsonItem) => CategoriesModel.fromJson(jsonItem))
+        .toList();
   }
+
   CategoriesModel({
     this.id,
     this.name,
@@ -31,37 +34,40 @@ class CategoriesModel {
     this.links,
   });
 
-  factory CategoriesModel.fromJson(Map<String, dynamic> json) => CategoriesModel(
-    id: json['id'],
-    name: json['name'],
-    slug: json['slug'],
-    parent: json['parent'],
-    description: json['description'],
-    display: json['display'],
-    image: json['image'] != null ? Image.fromJson(json['image']) : null,
-    menuOrder: json['menu_order'],
-    count: json['count'],
-    meta: json['meta'] != null ? Meta.fromJson(json['meta']) : null,
-    translations: json['translations'] != null ? Translations.fromJson(json['translations']) : null,
-    lang: json['lang'],
-    links: json['_links'] != null ? Links.fromJson(json['_links']) : null,
-  );
+  factory CategoriesModel.fromJson(Map<String, dynamic> json) =>
+      CategoriesModel(
+        id: json['id'],
+        name: json['name'],
+        slug: json['slug'],
+        parent: json['parent'],
+        description: json['description'],
+        display: json['display'],
+        image: json['image'] != null ? Image.fromJson(json['image']) : null,
+        menuOrder: json['menu_order'],
+        count: json['count'],
+        meta: json['meta'] != null ? Meta.fromJson(json['meta']) : null,
+        translations: json['translations'] != null
+            ? Translations.fromJson(json['translations'])
+            : null,
+        lang: json['lang'],
+        links: json['_links'] != null ? Links.fromJson(json['_links']) : null,
+      );
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'slug': slug,
-    'parent': parent,
-    'description': description,
-    'display': display,
-    'image': image?.toJson(),
-    'menu_order': menuOrder,
-    'count': count,
-    'meta': meta?.toJson(),
-    'translations': translations?.toJson(),
-    'lang': lang,
-    '_links': links?.toJson(),
-  };
+        'id': id,
+        'name': name,
+        'slug': slug,
+        'parent': parent,
+        'description': description,
+        'display': display,
+        'image': image?.toJson(),
+        'menu_order': menuOrder,
+        'count': count,
+        'meta': meta?.toJson(),
+        'translations': translations?.toJson(),
+        'lang': lang,
+        '_links': links?.toJson(),
+      };
 }
 
 class Image {
@@ -86,26 +92,26 @@ class Image {
   });
 
   factory Image.fromJson(Map<String, dynamic> json) => Image(
-    id: json['id'],
-    dateCreated: json['date_created'],
-    dateCreatedGmt: json['date_created_gmt'],
-    dateModified: json['date_modified'],
-    dateModifiedGmt: json['date_modified_gmt'],
-    src: json['src'],
-    name: json['name'],
-    alt: json['alt'],
-  );
+        id: json['id'],
+        dateCreated: json['date_created'],
+        dateCreatedGmt: json['date_created_gmt'],
+        dateModified: json['date_modified'],
+        dateModifiedGmt: json['date_modified_gmt'],
+        src: json['src'],
+        name: json['name'],
+        alt: json['alt'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'date_created': dateCreated,
-    'date_created_gmt': dateCreatedGmt,
-    'date_modified': dateModified,
-    'date_modified_gmt': dateModifiedGmt,
-    'src': src,
-    'name': name,
-    'alt': alt,
-  };
+        'id': id,
+        'date_created': dateCreated,
+        'date_created_gmt': dateCreatedGmt,
+        'date_modified': dateModified,
+        'date_modified_gmt': dateModifiedGmt,
+        'src': src,
+        'name': name,
+        'alt': alt,
+      };
 }
 
 class Meta {
@@ -122,18 +128,19 @@ class Meta {
   });
 
   factory Meta.fromJson(Map<String, dynamic> json) => Meta(
-    order: List<String>.from(json['order']),
-    displayType: List<String>.from(json['display_type']),
-    thumbnailId: List<String>.from(json['thumbnail_id']),
-    productCountProductCat: List<String>.from(json['product_count_product_cat']),
-  );
+        order: List<String>.from(json['order']),
+        displayType: List<String>.from(json['display_type']),
+        thumbnailId: List<String>.from(json['thumbnail_id']),
+        productCountProductCat:
+            List<String>.from(json['product_count_product_cat']),
+      );
 
   Map<String, dynamic> toJson() => {
-    'order': order,
-    'display_type': displayType,
-    'thumbnail_id': thumbnailId,
-    'product_count_product_cat': productCountProductCat,
-  };
+        'order': order,
+        'display_type': displayType,
+        'thumbnail_id': thumbnailId,
+        'product_count_product_cat': productCountProductCat,
+      };
 }
 
 class Translations {
@@ -143,14 +150,14 @@ class Translations {
   Translations({this.en, this.ar});
 
   factory Translations.fromJson(Map<String, dynamic> json) => Translations(
-    en: json['en'],
-    ar: json['ar'],
-  );
+        en: json['en'],
+        ar: json['ar'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'en': en,
-    'ar': ar,
-  };
+        'en': en,
+        'ar': ar,
+      };
 }
 
 class Links {
@@ -161,16 +168,19 @@ class Links {
   Links({this.self, this.collection, this.up});
 
   factory Links.fromJson(Map<String, dynamic> json) => Links(
-    self: List<Link>.from(json['self'].map((x) => Link.fromJson(x))),
-    collection: List<Link>.from(json['collection'].map((x) => Link.fromJson(x))),
-    up: json['up'] != null ? List<Link>.from(json['up'].map((x) => Link.fromJson(x))) : null,
-  );
+        self: List<Link>.from(json['self'].map((x) => Link.fromJson(x))),
+        collection:
+            List<Link>.from(json['collection'].map((x) => Link.fromJson(x))),
+        up: json['up'] != null
+            ? List<Link>.from(json['up'].map((x) => Link.fromJson(x)))
+            : null,
+      );
 
   Map<String, dynamic> toJson() => {
-    'self': self?.map((x) => x.toJson()).toList(),
-    'collection': collection?.map((x) => x.toJson()).toList(),
-    'up': up?.map((x) => x.toJson()).toList(),
-  };
+        'self': self?.map((x) => x.toJson()).toList(),
+        'collection': collection?.map((x) => x.toJson()).toList(),
+        'up': up?.map((x) => x.toJson()).toList(),
+      };
 }
 
 class Link {
@@ -179,22 +189,20 @@ class Link {
   Link({this.href});
 
   factory Link.fromJson(Map<String, dynamic> json) => Link(
-    href: json['href'],
-  );
+        href: json['href'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'href': href,
-  };
+        'href': href,
+      };
 }
 
 class Category {
   final String categoryPhoto;
   final String categoryName;
 
-
   Category({
     required this.categoryPhoto,
     required this.categoryName,
-
   });
 }

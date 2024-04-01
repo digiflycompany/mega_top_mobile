@@ -47,8 +47,8 @@ class DioHelper {
   static Future<Response?> getData({
     required String url,
     Map<String, dynamic>? queryParameters,
-    String username = 'ck_ae3cd70fbe1ce6ff699a31d0e753c60825d6cd91',
-    String password = 'cs_e75fff73e9ee2caef0dd3faddfd5d2d9f5d85276',
+    String username = 'ck_9d47524cd8ae5eb47260cf8cf34144b04c219a45',
+    String password = 'cs_b20f3ce367d0ceac7d671b9e85832dd4a5324b73',
   }) async {
     try {
       Map<String, dynamic> headers = {};

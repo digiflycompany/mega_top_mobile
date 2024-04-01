@@ -25,6 +25,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
   CategoriesModel? categoriesModel;
 
+  late int? selectedCategoryId;
+
   final List<String> images = [
     AppAssets.productBigPhoto,
     AppAssets.productBigPhotoRight,
@@ -135,7 +137,6 @@ class CategoryCubit extends Cubit<CategoryState> {
           await categoriesRepo.getCategories();
       if (fetchedCategories!.isNotEmpty) {
         categories = fetchedCategories;
-        print(categories[0].image);
 
         emit(CategorySuccess());
       } else {

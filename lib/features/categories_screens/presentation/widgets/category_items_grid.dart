@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/data/product_model.dart';
@@ -74,9 +75,10 @@ class CategoryItemsGridView extends StatelessWidget {
           final product = products[index];
           return Padding(
             padding: EdgeInsets.only(
-                right: context.width * 0.011,
-                left: context.width * 0.011,
-                top: context.height * 0.004),
+              right: context.width * 0.011,
+              left: context.width * 0.011,
+              top: context.height * 0.004,
+            ),
             child: ProductsGridContainer(
               productName: product.productName,
               productPhoto: product.productPhoto,
