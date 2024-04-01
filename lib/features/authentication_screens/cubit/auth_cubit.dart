@@ -25,9 +25,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final TextEditingController confirmNewPasswordController = TextEditingController();
 
   bool isPasswordVisible = true;
-
   bool newPasswordSuccess = false;
-
   String otp='';
 
   void togglePasswordVisibility() {
@@ -38,6 +36,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   void passwordSuccess() {
     newPasswordSuccess = true;
     emit(AuthenticationInitial());
+  }
+  @override
+  Future<void> close() {
+    confirmNewPasswordController.dispose();
+    createNewPasswordController.dispose();
+    resetPasswordEmailController.dispose();
+    return super.close();
   }
 
   void passwordChangedSuccessfully(BuildContext context) {
