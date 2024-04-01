@@ -103,7 +103,6 @@ class CreateNewPasswordScreen extends StatelessWidget {
       ),
     );
   }
-
   void passwordChangedSuccessfully(BuildContext context) {
     showDialog(
       context: context,
