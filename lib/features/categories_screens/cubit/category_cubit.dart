@@ -25,6 +25,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
   CategoriesModel? categoriesModel;
 
+  late int? selectedCategoryId;
+
   final List<String> images = [
     AppAssets.productBigPhoto,
     AppAssets.productBigPhotoRight,

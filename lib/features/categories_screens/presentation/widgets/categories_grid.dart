@@ -29,6 +29,7 @@ class CategoriesGrid extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final category = categories[index];
                 return CategoriesSmallCard(
+                  categoryId: category.id,
                   categoryPhoto: category.image?.src,
                   categoryName: category.name ?? 'Unknown',
                 );
