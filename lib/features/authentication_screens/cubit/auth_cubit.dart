@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/success_pop_up.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
@@ -37,12 +39,25 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     newPasswordSuccess = true;
     emit(AuthenticationInitial());
   }
-  @override
-  Future<void> close() {
-    confirmNewPasswordController.dispose();
-    createNewPasswordController.dispose();
-    resetPasswordEmailController.dispose();
-    return super.close();
+  void showPrimaryToast(BuildContext context,String text) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        bottom: kToolbarHeight + MediaQuery.of(context).padding.bottom,
+        width: MediaQuery.of(context).size.width,
+        child: CustomErrorToast(
+          message: text,
+          color: AppColors.redIconColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
   }
 
   void passwordChangedSuccessfully(BuildContext context) {
