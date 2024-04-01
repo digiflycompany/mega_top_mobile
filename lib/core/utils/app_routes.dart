@@ -18,6 +18,7 @@ import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presen
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_email_verification_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/verify_email_screen.dart';
@@ -72,6 +73,7 @@ class Routes {
   static const String ordersPageRoute = "/order_screen";
   static const String ordersDetailsPageRoute = "/order_details_screen";
   static const String compareProductPageRoute = "/compare_product_screen";
+  static const String signUpEmailVerificationPageRoute = "/sign_up_email_verification_screen";
 }
 
 class RouteGenerator {
@@ -218,6 +220,10 @@ class RouteGenerator {
       case Routes.compareProductPageRoute:
         return buildPageRoute(
           child: const CompareScreen(),
+        );
+      case Routes.signUpEmailVerificationPageRoute:
+        return buildPageRoute(
+          child: const SignUpEmailVerificationScreen(),
         );
     }
     return buildPageRoute(
