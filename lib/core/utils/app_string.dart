@@ -21,6 +21,7 @@ class AppStrings {
   static const String pleaseEnterYourPassword = 'Please enter your password';
   static const String pleaseConfirmYourPassword = 'Please confirm your password';
   static const String pleaseEnterTheFourDigitsCode = 'Please enter the 4 digit code that sent to';
+  static const String alreadyRegisteredUsingThisEmail = 'Already registered using this email';
   static const String passwordsNotMatching = 'Passwords not matching';
   static const String passwordVerification = 'Password must be at least 7 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
   static const String twoProductsEn = ' (2)';
