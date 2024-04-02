@@ -21,6 +21,11 @@ class CreateNewPasswordScreen extends StatefulWidget {
 class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
   late AuthenticationCubit authenticationCubit;
   @override
+  void initState() {
+    super.initState();
+    authenticationCubit = context.read<AuthenticationCubit>();
+  }
+  @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -29,6 +34,9 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
          authenticationCubit = context.read<AuthenticationCubit>();
         if(state is UpdatePasswordSuccess){
           authenticationCubit.passwordChangedSuccessfully(context);
+        }
+        if(state is UpdatePasswordFailure){
+          authenticationCubit.showErrorToast(context, AppStrings.invalidOtp);
         }
       },
       builder: (context, state) {

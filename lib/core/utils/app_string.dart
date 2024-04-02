@@ -105,6 +105,7 @@ class AppStrings {
   static const String incorrectCodeOrNetworkIssuesEn = 'InCorrect Code or network issues.';
   static const String incorrectEmailOrNetworkIssuesEn = 'InCorrect Email or network issues.';
   static const String invalidEmailOrPassword = 'Invalid Email or password';
+  static const String invalidOtp = 'Invalid OTP';
   static const String enterYourEmailAddressEn =
       'Enter your email address and we’ll send you\na verification code to reset your password.';
   static const String sendEn = 'Send';
