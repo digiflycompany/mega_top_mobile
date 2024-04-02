@@ -17,8 +17,12 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
+        AuthenticationCubit loginCubit = context.read<AuthenticationCubit>();
         if(state is LoginSuccess){
           Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+        }
+        if(state is LoginFailure){
+          loginCubit.showErrorToast(context,AppStrings.invalidEmailOrPassword);
         }
       },
       builder: (context, state) {
