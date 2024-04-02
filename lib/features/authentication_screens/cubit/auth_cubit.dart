@@ -39,12 +39,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     newPasswordSuccess = true;
     emit(AuthenticationInitial());
   }
-  void showPrimaryToast(BuildContext context,String text) {
+  void showErrorToast(BuildContext context,String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        bottom: kToolbarHeight + MediaQuery.of(context).padding.bottom,
-        width: MediaQuery.of(context).size.width,
+      builder: (context) => Align(
+        alignment: Alignment.bottomCenter,
         child: CustomErrorToast(
           message: text,
           color: AppColors.redIconColor,
