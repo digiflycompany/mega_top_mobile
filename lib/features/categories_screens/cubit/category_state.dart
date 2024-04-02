@@ -13,5 +13,15 @@ class CategoryFailure extends CategoryState {
 
   CategoryFailure(this.error);
 }
+
 class CategoryProductUpdated extends CategoryState {}
 
+class SelectedCategoryLoading extends CategoryState {}
+
+class SelectedCategorySuccess extends CategoryState {}
+
+class SelectedCategoryFailure extends CategoryState {
+  final String error;
+
+  SelectedCategoryFailure(this.error);
+}

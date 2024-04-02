@@ -80,10 +80,7 @@ class CategoryItemsGridView extends StatelessWidget {
               top: context.height * 0.004,
             ),
             child: ProductsGridContainer(
-              productName: product.productName,
-              productPhoto: product.productPhoto,
-              productType: product.productType,
-              productPrice: product.productPrice,
+              index: index,
               discountPercent: product.discountPercent,
               discount: product.discount,
             ),

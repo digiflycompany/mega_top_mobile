@@ -58,8 +58,8 @@ class DioHelper {
       headers['Authorization'] = basicAuth;
       Response? response = await dio?.get(
         url,
-        queryParameters: queryParameters,
-        //options: Options(headers: headers),
+        // queryParameters: queryParameters,
+        options: Options(headers: headers),
       );
 
       if (kDebugMode) {
