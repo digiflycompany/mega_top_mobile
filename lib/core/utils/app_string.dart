@@ -170,6 +170,7 @@ class AppStrings {
   static const String availableEn = 'Available';
   static const String latestOffersEn = 'Latest offers';
   static const String discount15PercentEn = 'Discount 15%';
+  static const String userNotFoundWithProvidedEmail = 'User not found with provided email';
   static const String rackEn = 'Rack';
   static const String productPriceEn = '1500 LE';
   static const String productOldPriceEn = '2300 LE';

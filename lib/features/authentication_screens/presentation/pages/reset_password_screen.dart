@@ -11,9 +11,22 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/reset_password_widgets/reset_password_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/reset_password_widgets/reset_password_email_field.dart';
 
-class ResetPasswordScreen extends StatelessWidget {
+class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
 
+  @override
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
+}
+
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  late AuthenticationCubit authenticationCubit;
+  @override
+  void initState() {
+    // TODO: implement initState
+    authenticationCubit = context.read<AuthenticationCubit>();
+    authenticationCubit.resetPasswordEmailController.clear();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -21,6 +34,9 @@ class ResetPasswordScreen extends StatelessWidget {
       listener: (context, state) {
         if(state is ResetPasswordSuccess){
            Routes.verifyEmailRoute.moveTo;
+        }
+        if(state is ResetPasswordFailure){
+          authenticationCubit.showErrorToast(context, AppStrings.userNotFoundWithProvidedEmail);
         }
       },
       builder: (context, state) {
