@@ -10,19 +10,31 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_title.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/login_body.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  late AuthenticationCubit authenticationCubit;
+  @override
+  void initState() {
+    super.initState();
+    authenticationCubit = context.read<AuthenticationCubit>();
+    authenticationCubit.emailController.clear();
+    authenticationCubit.passwordController.clear();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
-        AuthenticationCubit loginCubit = context.read<AuthenticationCubit>();
         if(state is LoginSuccess){
           Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
         }
         if(state is LoginFailure){
-          loginCubit.showErrorToast(context,AppStrings.invalidEmailOrPassword);
+          authenticationCubit.showErrorToast(context,AppStrings.invalidEmailOrPassword);
         }
       },
       builder: (context, state) {
@@ -52,5 +64,12 @@ class LoginScreen extends StatelessWidget {
             ));
       },
     );
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    authenticationCubit.emailController.dispose();
+    authenticationCubit.passwordController.dispose();
+    super.dispose();
   }
 }
