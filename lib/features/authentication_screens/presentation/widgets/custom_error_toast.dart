@@ -29,7 +29,7 @@ class _CustomErrorToastState extends State<CustomErrorToast>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 450),
+      duration: const Duration(milliseconds: 600),
     );
     _opacity = Tween<double>(begin: 0.0, end: 1.0).animate(_controller)
       ..addListener(() {

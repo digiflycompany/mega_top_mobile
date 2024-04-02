@@ -17,8 +17,12 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
+        AuthenticationCubit signUpCubit = context.read<AuthenticationCubit>();
         if(state is SignUpSuccess){
           Routes.signUpEmailVerificationPageRoute.moveTo;
+        }
+        if(state is SignUpFailure){
+           signUpCubit.showErrorToast(context, AppStrings.alreadyRegisteredUsingThisEmail);
         }
       },
       builder: (context, state) {
