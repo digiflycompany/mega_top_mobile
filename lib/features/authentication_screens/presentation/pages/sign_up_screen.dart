@@ -10,19 +10,33 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_title.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_body.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  late AuthenticationCubit authenticationCubit;
+  @override
+  void initState() {
+    super.initState();
+    authenticationCubit = context.read<AuthenticationCubit>();
+    authenticationCubit.signUpEmailController.clear();
+    authenticationCubit.signUpUsernameController.clear();
+    authenticationCubit.signUpPasswordController.clear();
+    authenticationCubit.signUpConfirmPasswordController.clear();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
-        AuthenticationCubit signUpCubit = context.read<AuthenticationCubit>();
         if(state is SignUpSuccess){
           Routes.signUpEmailVerificationPageRoute.moveTo;
         }
         if(state is SignUpFailure){
-           signUpCubit.showErrorToast(context, AppStrings.alreadyRegisteredUsingThisEmail);
+           authenticationCubit.showErrorToast(context, AppStrings.alreadyRegisteredUsingThisEmail);
         }
       },
       builder: (context, state) {
@@ -53,5 +67,14 @@ class SignUpScreen extends StatelessWidget {
             ));
       },
     );
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    authenticationCubit.signUpEmailController.dispose();
+    authenticationCubit.signUpUsernameController.dispose();
+    authenticationCubit.signUpPasswordController.dispose();
+    authenticationCubit.signUpConfirmPasswordController.dispose();
+    super.dispose();
   }
 }
