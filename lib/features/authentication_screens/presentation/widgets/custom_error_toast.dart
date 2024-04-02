@@ -60,7 +60,7 @@ class _CustomErrorToastState extends State<CustomErrorToast>
         height: context.height72,
         color: widget.color,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.width16),
+          padding: EdgeInsets.symmetric(horizontal: context.width16,vertical: context.height6),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
