@@ -41,6 +41,17 @@ class PreferencesHelper {
     preferences?.remove('token');
     preferences?.remove('userModel');
   }
+  static const String _hasSeenOnboarding = 'hasSeenOnboarding';
+
+  static Future<bool> hasSeenOnboarding() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_hasSeenOnboarding) ?? false;
+  }
+
+  static Future<void> setHasSeenOnboarding(bool value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(_hasSeenOnboarding, value);
+  }
 
   // static Widget get applicationFirstPage {
   //
