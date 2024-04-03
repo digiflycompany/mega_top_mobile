@@ -12,6 +12,7 @@ import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_c
 import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_states.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_first_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_second_screen.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 import 'on_boarding_third_screen.dart';
 
@@ -89,6 +90,7 @@ class OnBoardingView extends StatelessWidget {
                               duration: const Duration(milliseconds: 400),
                               curve: Curves.easeInOut,
                             );
+                             PreferencesHelper.setHasSeenOnboarding(true);
                     }),
               ),
               VerticalSpace(context.width * 0.044),
@@ -98,6 +100,7 @@ class OnBoardingView extends StatelessWidget {
                   buttonText: AppStrings.loginEn,
                   onTap: () {
                     Routes.loginRoute.moveToAndRemoveCurrent;
+                    PreferencesHelper.setHasSeenOnboarding(true);
                   },
                 ),
               VerticalSpace(context.height * 0.044),

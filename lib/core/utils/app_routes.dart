@@ -40,7 +40,8 @@ enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
 class Routes {
   Routes._internal();
 
-  static const String onBoardingRoute = "/";
+  static const String splashRoute = "/";
+  static const String onBoardingRoute = "/on_boarding_screens";
   static const String loginRoute = "/login_screen";
   static const String signUpRoute = "/sign_up_screen";
   static const String resetPasswordRoute = "/reset_password_screen";
