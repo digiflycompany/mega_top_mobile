@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/features/authentication_screens/data/models/logi
 import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/sign_up_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 abstract class AuthRepo {
   Future<UserModel?> login(String email, String password);
@@ -28,6 +29,8 @@ class AuthRepoImp implements AuthRepo {
       );
       if (response != null && response.statusCode == 200) {
         UserModel user = UserModel.fromJson(response.data);
+        await PreferencesHelper.saveToken(token: response.data['token']);
+        print(PreferencesHelper.getToken());
         return user;
       }
     } catch (e) {
