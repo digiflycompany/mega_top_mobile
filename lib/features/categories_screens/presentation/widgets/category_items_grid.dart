@@ -3,10 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
-
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/data/product_model.dart';
 import '../../../home_screens/presentation/widgets/items_grid.dart';
 
 class CategoryItemsGridView extends StatelessWidget {
@@ -14,56 +10,56 @@ class CategoryItemsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Product> products = [
-      Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.upsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: true,
-      ),
-      Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.storageUnitsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.storageUnitsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.storageUnitsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.storageUnitsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.hardDiskEn,
-        productPhoto: AppAssets.storageUnitsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-    ];
+    // final List<Product> products = [
+    //   Product(
+    //     productName: AppStrings.hardDiskEn,
+    //     productPhoto: AppAssets.upsSearchResult,
+    //     productType: AppStrings.storageUnitsEn,
+    //     productPrice: AppStrings.le1500,
+    //     discountPercent: AppStrings.discountPercentEn,
+    //     discount: true,
+    //   ),
+    //   Product(
+    //     productName: AppStrings.hardDiskEn,
+    //     productPhoto: AppAssets.storageUnitsSearchResult,
+    //     productType: AppStrings.storageUnitsEn,
+    //     productPrice: AppStrings.le1500,
+    //     discountPercent: AppStrings.discountPercentEn,
+    //     discount: false,
+    //   ),
+    //   Product(
+    //     productName: AppStrings.hardDiskEn,
+    //     productPhoto: AppAssets.storageUnitsSearchResult,
+    //     productType: AppStrings.storageUnitsEn,
+    //     productPrice: AppStrings.le1500,
+    //     discountPercent: AppStrings.discountPercentEn,
+    //     discount: false,
+    //   ),
+    //   Product(
+    //     productName: AppStrings.hardDiskEn,
+    //     productPhoto: AppAssets.storageUnitsSearchResult,
+    //     productType: AppStrings.storageUnitsEn,
+    //     productPrice: AppStrings.le1500,
+    //     discountPercent: AppStrings.discountPercentEn,
+    //     discount: false,
+    //   ),
+    //   Product(
+    //     productName: AppStrings.hardDiskEn,
+    //     productPhoto: AppAssets.storageUnitsSearchResult,
+    //     productType: AppStrings.storageUnitsEn,
+    //     productPrice: AppStrings.le1500,
+    //     discountPercent: AppStrings.discountPercentEn,
+    //     discount: false,
+    //   ),
+    //   Product(
+    //     productName: AppStrings.hardDiskEn,
+    //     productPhoto: AppAssets.storageUnitsSearchResult,
+    //     productType: AppStrings.storageUnitsEn,
+    //     productPrice: AppStrings.le1500,
+    //     discountPercent: AppStrings.discountPercentEn,
+    //     discount: false,
+    //   ),
+    // ];
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (BuildContext context, CategoryState state) {
         return Expanded(
