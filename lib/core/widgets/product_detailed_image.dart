@@ -3,6 +3,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/category_product_images.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/favour_compare_column.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_images_dots.dart';
+
 import '../utils/app_color.dart';
 
 class ProductDetailedImage extends StatelessWidget {

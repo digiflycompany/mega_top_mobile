@@ -164,4 +164,10 @@ class CategoryCubit extends Cubit<CategoryState> {
       emit(SelectedCategoryFailure(e.toString()));
     }
   }
+
+  late int selectedProductIndex;
+
+  void setCategoryProductIndex({required int selectedProductIndex}) {
+    this.selectedProductIndex = selectedProductIndex;
+  }
 }

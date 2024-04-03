@@ -58,7 +58,7 @@ class DioHelper {
       headers['Authorization'] = basicAuth;
       Response? response = await dio?.get(
         url,
-        // queryParameters: queryParameters,
+        queryParameters: queryParameters,
         options: Options(headers: headers),
       );
 

@@ -35,10 +35,11 @@ class CategoriesRepoImp implements CategoriesRepo {
         url: "https://megatop.com.eg/wp-json/wc/v3/products",
         queryParameters: {
           "category": selectedCategory,
-          "per_page": 7,
+          "per_page": 8,
           "page": 1
         }).then((value) {
       selectedCategoriesModel = SelectedCategoriesModel.fromJson(value?.data);
+      print("${selectedCategoriesModel!.productList.length}" + "products");
     }).catchError((onError) {
       print(onError.toString() + "??????");
     });

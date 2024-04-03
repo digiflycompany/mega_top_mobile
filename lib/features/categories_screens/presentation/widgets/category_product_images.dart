@@ -16,11 +16,17 @@ class ProductImages extends StatelessWidget {
         builder: (context, state) {
           return PageView.builder(
             physics: const BouncingScrollPhysics(),
-            itemCount: categoryCubit.images.length,
+            itemCount: categoryCubit.selectedCategoriesModel!
+                .productList[categoryCubit.selectedProductIndex].images.length,
             onPageChanged: (index) => categoryCubit.setImageIndex(index),
             itemBuilder: (context, index) {
               return Center(
-                child: Image.asset(categoryCubit.images[index],
+                child: Image.network(
+                    categoryCubit
+                        .selectedCategoriesModel!
+                        .productList[categoryCubit.selectedProductIndex]
+                        .images[index]
+                        .src,
                     width: context.width * 0.4),
               );
             },

@@ -33,8 +33,7 @@ class ProductsGridContainer extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
-            cubit.getSelectedCategories(
-                cubit.selectedCategoriesModel!.productList[index].id);
+            cubit.setCategoryProductIndex(selectedProductIndex: index);
             Routes.categoryProductDetailsPageRoute.moveTo;
           },
           child: Container(
@@ -54,56 +53,57 @@ class ProductsGridContainer extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
                       left: context.width * 0.022,
                       right: context.width * 0.022,
                       top: context.height * 0.012,
-                      bottom: context.height * 0.01),
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: context.height * 0.174,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(context.height * 0.0065),
-                          color: AppColors.iconsBackgroundColor,
-                        ),
-                        child: Center(
-                            child: Padding(
-                          padding: EdgeInsets.only(top: context.height * 0.012),
-                          child: Image.network(
-                            cubit.selectedCategoriesModel!.productList[index]
-                                .images[0].src,
-                            width: context.width * 0.2,
+                      bottom: context.height * 0.01,
+                    ),
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: context.height * 0.174,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(context.height * 0.0065),
+                            color: AppColors.iconsBackgroundColor,
                           ),
-                        )),
-                      ),
-                      discount == true
-                          ? Padding(
+                          child: Padding(
+                            padding:
+                                EdgeInsets.only(top: context.height * 0.012),
+                            child: Image.network(
+                              cubit.selectedCategoriesModel!.productList[index]
+                                  .images[0].src,
+                              width: context.width * 0.2,
+                            ),
+                          ),
+                        ),
+                        discount == true
+                            ? Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: context.height * 0.012,
+                                    horizontal: context.width * 0.022),
+                                child: DiscountContainer(
+                                  discountPercent: discountPercent,
+                                ),
+                              )
+                            : Container(),
+                        Align(
+                            alignment: AlignmentDirectional.topEnd,
+                            child: Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: context.height * 0.012,
                                   horizontal: context.width * 0.022),
-                              child: DiscountContainer(
-                                discountPercent: discountPercent,
-                                width: context.width * 0.1,
-                                height: context.height * 0.028,
+                              child: SvgPicture.asset(
+                                AppAssets.favourOutlinedIcon,
+                                width: context.width * 0.054,
                               ),
-                            )
-                          : Container(),
-                      Align(
-                          alignment: AlignmentDirectional.topEnd,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: context.height * 0.012,
-                                horizontal: context.width * 0.022),
-                            child: SvgPicture.asset(
-                              AppAssets.favourOutlinedIcon,
-                              width: context.width * 0.054,
-                            ),
-                          )),
-                    ],
+                            )),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
