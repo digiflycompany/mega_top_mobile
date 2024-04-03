@@ -11,12 +11,19 @@ import '../widgets/category_items_grid.dart';
 import '../widgets/category_items_list.dart';
 import '../widgets/category_items_options_row.dart';
 
-class CategoryItemsPage extends StatelessWidget {
+class CategoryItemsPage extends StatefulWidget {
   const CategoryItemsPage({super.key});
 
   @override
+  State<CategoryItemsPage> createState() => _CategoryItemsPageState();
+}
+
+class _CategoryItemsPageState extends State<CategoryItemsPage> {
+  late CategoryCubit categoryCubit;
+
+  @override
   Widget build(BuildContext context) {
-    CategoryCubit categoryCubit = context.read<CategoryCubit>();
+    categoryCubit = context.read<CategoryCubit>();
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
@@ -25,26 +32,40 @@ class CategoryItemsPage extends StatelessWidget {
         create: (BuildContext context) {
           return categoryItemDetailsCubit();
         },
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-          child: Column(
-            children: [
-              CategoryItemsOptionsRow(
-                topPadding: context.height * 0.028,
-                bottomPadding: context.height * 0.033,
-              ),
-              BlocConsumer<CategoryCubit, CategoryState>(
-                listener: (context, state) {},
-                builder: (context, state) {
-                  return categoryCubit.isGrid
-                      ? const CategoryItemsGridView()
-                      : const CategoryItemsListView();
-                },
-              ),
-            ],
-          ),
+        child: BlocBuilder<CategoryCubit, CategoryState>(
+          builder: (BuildContext context, state) {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+              child: categoryCubit.selectedCategoriesModel != null &&
+                      categoryCubit
+                          .selectedCategoriesModel!.productList.isNotEmpty
+                  ? Column(
+                      children: [
+                        CategoryItemsOptionsRow(
+                          topPadding: context.height * 0.028,
+                          bottomPadding: context.height * 0.033,
+                        ),
+                        BlocConsumer<CategoryCubit, CategoryState>(
+                          listener: (context, state) {},
+                          builder: (context, state) {
+                            return categoryCubit.isGrid
+                                ? const CategoryItemsGridView()
+                                : const CategoryItemsListView();
+                          },
+                        ),
+                      ],
+                    )
+                  : Center(child: CircularProgressIndicator()),
+            );
+          },
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    categoryCubit.selectedCategoriesModel = null;
+    super.dispose();
   }
 }

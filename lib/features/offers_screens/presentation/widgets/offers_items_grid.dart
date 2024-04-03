@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/data/product_model.dart';
@@ -78,10 +79,7 @@ class OffersItemsGridView extends StatelessWidget {
                 left: context.width * 0.011,
                 top: context.height * 0.004),
             child: ProductsGridContainer(
-              productName: product.productName,
-              productPhoto: product.productPhoto,
-              productType: product.productType,
-              productPrice: product.productPrice,
+              index: index,
               discountPercent: product.discountPercent,
               discount: product.discount,
             ),

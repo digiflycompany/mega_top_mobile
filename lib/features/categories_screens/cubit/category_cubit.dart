@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 
@@ -20,6 +21,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   bool addedToFavourites = false;
   bool addedToCompare = false;
   String _selectedValue = AppStrings.defaultEn;
+
   String get selectedValue => _selectedValue;
   final Map<String, bool> checkboxStates = {};
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
@@ -33,6 +35,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     AppAssets.productBigPhoto,
   ];
   int _currentImageIndex = 0;
+
   int get currentImageIndex => _currentImageIndex;
 
   void selectOption(String newValue) {
@@ -145,5 +148,26 @@ class CategoryCubit extends Cubit<CategoryState> {
     } catch (e) {
       emit(CategoryFailure(e.toString()));
     }
+  }
+
+  SelectedCategoriesModel? selectedCategoriesModel;
+
+  Future<void> getSelectedCategories(int selectedId) async {
+    emit(SelectedCategoryLoading());
+    try {
+      selectedCategoriesModel =
+          await categoriesRepo.getSelectedCategories(selectedId);
+      print(selectedCategoriesModel!.productList[0].images[0].src + "///////");
+      emit(SelectedCategorySuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SelectedCategoryFailure(e.toString()));
+    }
+  }
+
+  late int selectedProductIndex;
+
+  void setCategoryProductIndex({required int selectedProductIndex}) {
+    this.selectedProductIndex = selectedProductIndex;
   }
 }
