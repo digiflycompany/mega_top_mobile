@@ -1,5 +1,8 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesHelper {
@@ -53,8 +56,7 @@ class PreferencesHelper {
     prefs.setBool(_hasSeenOnboarding, value);
   }
 
-  // static Widget get applicationFirstPage {
-  //
-  //   return PreferencesHelper.getToken() != null ? DrawerPage() : LoginScreen();
-  // }
+  static Widget get applicationFirstPage {
+    return PreferencesHelper.getToken() != null ? HomePage() : LoginScreen();
+  }
 }

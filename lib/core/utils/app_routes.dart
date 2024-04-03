@@ -16,7 +16,6 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/pages/wish_list_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_email_verification_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
@@ -32,6 +31,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_pa
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 import 'app_color.dart';
 
@@ -93,7 +93,7 @@ class RouteGenerator {
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.loginRoute:
         return buildPageRoute(
-            child: const LoginScreen(),
+            child: PreferencesHelper.applicationFirstPage,
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.signUpRoute:
