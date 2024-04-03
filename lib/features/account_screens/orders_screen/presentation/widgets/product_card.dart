@@ -9,7 +9,6 @@ import 'package:mega_top_mobile/core/widgets/list_product_price.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_type.dart';
 import 'package:mega_top_mobile/core/widgets/product_photo_list_view.dart';
 
-
 class ProductOrderCard extends StatelessWidget {
   final String? productPhoto;
   final String? productName;
@@ -21,14 +20,14 @@ class ProductOrderCard extends StatelessWidget {
   final Function()? onTap;
   const ProductOrderCard(
       {super.key,
-        this.productPhoto,
-        this.productName,
-        this.productType,
-        this.productPrice,
-        this.discount = false,
-        this.discountPercent,
-        this.icon = AppAssets.favourOutlinedIcon,
-        this.onTap});
+      this.productPhoto,
+      this.productName,
+      this.productType,
+      this.productPrice,
+      this.discount = false,
+      this.discountPercent,
+      this.icon = AppAssets.favourOutlinedIcon,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +38,7 @@ class ProductOrderCard extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(4.r),
-            border: Border.all(color: AppColors.circleAvatarBackground)
-        ),
+            border: Border.all(color: AppColors.circleAvatarBackground)),
         child: Row(
           children: [
             Padding(
@@ -58,16 +56,16 @@ class ProductOrderCard extends StatelessWidget {
                   ),
                   discount == true
                       ? Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: context.height * 0.008,
-                        horizontal: context.width * 0.014),
-                    child: DiscountContainer(
-                      discountPercent: discountPercent,
-                      width: context.width32,
-                      height: context.height16,
-                      fontSize: 10.sp,
-                    ),
-                  )
+                          padding: EdgeInsets.symmetric(
+                              vertical: context.height * 0.008,
+                              horizontal: context.width * 0.014),
+                          child: DiscountContainer(
+                            discountPercent: discountPercent,
+                            width: context.width32,
+                            height: context.height16,
+                            fontSize: 10.sp,
+                          ),
+                        )
                       : Container(),
                 ],
               ),
@@ -75,8 +73,7 @@ class ProductOrderCard extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: context.height12,
-                    bottom: context.height12),
+                    top: context.height12, bottom: context.height12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

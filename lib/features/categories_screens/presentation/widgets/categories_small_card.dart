@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_state
 
 class CategoriesSmallCard extends StatelessWidget {
   final int? categoryId;
+  final int index;
   final String? categoryPhoto;
   final String? categoryName;
 
@@ -18,6 +19,7 @@ class CategoriesSmallCard extends StatelessWidget {
     this.categoryPhoto,
     this.categoryName,
     required this.categoryId,
+    required this.index,
   });
 
   @override
@@ -28,8 +30,8 @@ class CategoriesSmallCard extends StatelessWidget {
         final cubit = CategoryCubit().getCubit(context);
         return GestureDetector(
           onTap: () {
+            cubit.getSelectedCategories(cubit.categories[index].id!);
             cubit.selectedCategoryId = categoryId;
-
             Routes.categoryItemsPageRoute.moveTo;
           },
           child: Container(
