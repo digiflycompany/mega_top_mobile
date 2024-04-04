@@ -43,6 +43,7 @@ class Data {
   String? userRegistered;
   String? userStatus;
   String? displayName;
+  String? fullName;
 
   Data(
       {this.iD,
@@ -52,7 +53,8 @@ class Data {
         this.userUrl,
         this.userRegistered,
         this.userStatus,
-        this.displayName});
+        this.displayName,
+        this.fullName});
 
   Data.fromJson(Map<String, dynamic> json) {
     iD = json['ID'];
@@ -63,6 +65,7 @@ class Data {
     userRegistered = json['user_registered'];
     userStatus = json['user_status'];
     displayName = json['display_name'];
+    fullName = json['full_name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -75,6 +78,7 @@ class Data {
     data['user_registered'] = this.userRegistered;
     data['user_status'] = this.userStatus;
     data['display_name'] = this.displayName;
+    data['full_name'] = this.fullName;
     return data;
   }
 }
