@@ -1,48 +1,27 @@
-import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
-import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
-import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/models/user_details_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 abstract class HomePageRepo {
-  Future<List<CategoriesModel>?> getCategories();
 
-  Future<SelectedCategoriesModel?> getSelectedCategories(int selectedCategory);
+  Future<UserDetailsModel?> getUserDetails();
 }
 
 class HomePageRepoImp implements HomePageRepo {
   @override
-  Future<List<CategoriesModel>?> getCategories() async {
-    try {
-      Response? response =
-      await DioHelper.getData(url: EndPoints.categoriesAPI);
-      if (response?.data != null && response?.data is List) {
-        List<CategoriesModel> categories =
-        CategoriesModel.fromJsonList(response?.data);
-        return categories;
-      }
-    } catch (e) {
-      print('Error fetching categories: $e');
-    }
-    return null;
-  }
-
-  @override
-  Future<SelectedCategoriesModel?> getSelectedCategories(
-      int selectedCategory) async {
-    SelectedCategoriesModel? selectedCategoriesModel;
+  Future<UserDetailsModel?> getUserDetails()async {
+    UserDetailsModel? userDetailsModel;
     await DioHelper.getData(
-        url: "https://megatop.com.eg/wp-json/wc/v3/products",
+        url: EndPoints.userDetailsAPI,
         queryParameters: {
-          "category": selectedCategory,
-          "per_page": 8,
-          "page": 1
+          "token": PreferencesHelper.getToken()
         }).then((value) {
-      selectedCategoriesModel = SelectedCategoriesModel.fromJson(value?.data);
-      print("${selectedCategoriesModel!.productList.length}" + "products");
+      userDetailsModel = UserDetailsModel.fromJson(value?.data);
     }).catchError((onError) {
       print(onError.toString() + "??????");
     });
-    return selectedCategoriesModel;
+    return userDetailsModel;
   }
+
 }

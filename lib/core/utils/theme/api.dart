@@ -16,4 +16,6 @@ class EndPoints {
       'https://megatop.com.eg/wp-json/custom/v1/reset-password';
   static const String updatePasswordAPI =
       'https://megatop.com.eg/wp-json/custom/v1/update-password';
+  static const String userDetailsAPI =
+      'https://megatop.com.eg/wp-json/custom/v1/user_data';
 }

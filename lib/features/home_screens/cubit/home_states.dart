@@ -10,3 +10,13 @@ class HomePageChanged extends HomeState {
   final int index;
   HomePageChanged({required this.index});
 }
+
+class UserDetailsSuccess extends HomeState {}
+
+class UserDetailsLoading extends HomeState {}
+
+class UserDetailsFailure extends HomeState {
+  final String error;
+
+  UserDetailsFailure(this.error);
+}
