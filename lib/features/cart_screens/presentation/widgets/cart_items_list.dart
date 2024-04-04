@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/data/product_model.dart';
+import '../../../home_screens/data/models/product_model.dart';
 import 'cart_items_container.dart';
 
 class CartItemsListView extends StatelessWidget {

@@ -4,7 +4,7 @@ import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/data/product_model.dart';
+import 'package:mega_top_mobile/features/home_screens/data/models/product_model.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
 
 class WishListView extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_list_container.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/data/product_model.dart';
+import '../../../home_screens/data/models/product_model.dart';
 
 class YourOrderList extends StatelessWidget {
   const YourOrderList({super.key});
