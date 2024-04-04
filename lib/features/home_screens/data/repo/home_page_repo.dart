@@ -10,18 +10,24 @@ abstract class HomePageRepo {
 
 class HomePageRepoImp implements HomePageRepo {
   @override
-  Future<UserDetailsModel?> getUserDetails()async {
+  Future<UserDetailsModel?> getUserDetails() async {
     UserDetailsModel? userDetailsModel;
-    await DioHelper.getData(
+    try {
+      final response = await DioHelper.getData(
         url: EndPoints.userDetailsAPI,
         queryParameters: {
-          "token": PreferencesHelper.getToken()
-        }).then((value) {
-      userDetailsModel = UserDetailsModel.fromJson(value?.data);
-    }).catchError((onError) {
-      print(onError.toString() + "??????");
-    });
+          "token": PreferencesHelper.getToken(),
+        },
+      );
+      print("API Response: ${response!.data}"); // Debugging line
+      userDetailsModel = UserDetailsModel.fromJson(response.data);
+    } catch (onError) {
+      print("Error fetching user details: ${onError.toString()}"); // More detailed error logging
+    }
+    print(userDetailsModel!.data!.fullName);
     return userDetailsModel;
+
   }
+
 
 }
