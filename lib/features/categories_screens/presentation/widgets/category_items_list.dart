@@ -4,7 +4,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/data/product_model.dart';
+import '../../../home_screens/data/models/product_model.dart';
 
 class CategoryItemsListView extends StatelessWidget {
   const CategoryItemsListView({super.key});

@@ -3,7 +3,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
-import '../../data/product_model.dart';
+import '../../data/models/product_model.dart';
 import 'items_grid.dart';
 
 class SearchResultGridView extends StatelessWidget {
