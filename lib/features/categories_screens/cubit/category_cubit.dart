@@ -165,7 +165,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  late int selectedProductIndex;
+  int selectedProductIndex = 0;
 
   void setCategoryProductIndex({required int selectedProductIndex}) {
     this.selectedProductIndex = selectedProductIndex;
