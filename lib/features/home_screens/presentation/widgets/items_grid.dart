@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,9 +75,9 @@ class ProductsGridContainer extends StatelessWidget {
                           child: Padding(
                             padding:
                                 EdgeInsets.only(top: context.height * 0.012),
-                            child: Image.network(
-                              cubit.selectedCategoriesModel!.productList[index]
-                                  .images[0].src,
+                            child: CachedNetworkImage(
+                              imageUrl: cubit.selectedCategoriesModel!
+                                  .productList[index].images[0].src,
                               width: context.width * 0.2,
                             ),
                           ),
@@ -119,6 +120,7 @@ class ProductsGridContainer extends StatelessWidget {
                           child: Text(
                             cubit.selectedCategoriesModel!.productList[index]
                                 .name,
+                            maxLines: 2,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w700,
