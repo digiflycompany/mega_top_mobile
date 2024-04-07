@@ -31,8 +31,7 @@ class ProductDetailedImage extends StatelessWidget {
                           .selectedCategoriesModel!
                           .productList[categoryCubit.selectedProductIndex]
                           .images
-                          .length >
-                      1)
+                          .length > 1)
                     ProductImagesDots(),
                 ],
               ),

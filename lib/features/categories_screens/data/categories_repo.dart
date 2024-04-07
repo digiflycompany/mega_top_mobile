@@ -8,6 +8,8 @@ abstract class CategoriesRepo {
   Future<List<CategoriesModel>?> getCategories();
 
   Future<SelectedCategoriesModel?> getSelectedCategories(int selectedCategory);
+
+  Future<void> addToWishList(String ProductId,String token);
 }
 
 class CategoriesRepoImp implements CategoriesRepo {
@@ -44,5 +46,12 @@ class CategoriesRepoImp implements CategoriesRepo {
       print(onError.toString() + "??????");
     });
     return selectedCategoriesModel;
+  }
+
+  @override
+  Future<void> addToWishList(String productId,String token) async {
+   await DioHelper.postData(url: EndPoints.addWishList,queryParameters: {"token" : token},data: {"id":productId}).then((value) {
+      print(value!.data);
+    });
   }
 }

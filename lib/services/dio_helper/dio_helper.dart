@@ -21,11 +21,14 @@ class DioHelper {
   static Dio? dio = init();
 
   static Future<Response?> postData(
-      {required String url, Map<String, dynamic>? data}) async {
+      {required String url,
+      Map<String, dynamic>? queryParameters,
+      Map<String, dynamic>? data}) async {
     //String? token = PreferencesHelper.getToken();
     try {
       Response? response = await dio?.post(
         url,
+        queryParameters: queryParameters,
         //   options: Options(headers: {'Authorization': 'Bearer ${token}'}),
         data: data,
       );

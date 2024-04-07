@@ -12,6 +12,7 @@ class productModel {
   late int id;
   late String name;
   late String price;
+  late bool wishlist;
   List<Images> images = [];
   List<Categories> categories = [];
 
@@ -19,6 +20,7 @@ class productModel {
     id = json["id"];
     name = json["name"];
     price = json["price"];
+    wishlist = json["wishlist"];
     json["images"].forEach((element) {
       images.add(Images.fromJson(element));
     });
