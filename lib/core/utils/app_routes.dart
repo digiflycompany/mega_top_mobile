@@ -21,6 +21,7 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/pag
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/verify_email_screen.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_confirmation_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_summary_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/payment_methods_screen.dart';
@@ -75,6 +76,7 @@ class Routes {
   static const String ordersDetailsPageRoute = "/order_details_screen";
   static const String compareProductPageRoute = "/compare_product_screen";
   static const String signUpEmailVerificationPageRoute = "/sign_up_email_verification_screen";
+  static const String cartPageRoute = "/cart_screen";
 }
 
 class RouteGenerator {
@@ -225,6 +227,10 @@ class RouteGenerator {
       case Routes.signUpEmailVerificationPageRoute:
         return buildPageRoute(
           child: const SignUpEmailVerificationScreen(),
+        );
+      case Routes.cartPageRoute:
+        return buildPageRoute(
+          child: const CartPage(),
         );
     }
     return buildPageRoute(

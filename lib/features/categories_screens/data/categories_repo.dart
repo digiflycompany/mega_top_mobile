@@ -9,6 +9,8 @@ abstract class CategoriesRepo {
 
   Future<SelectedCategoriesModel?> getSelectedCategories(int selectedCategory);
 
+  Future<void> makeOrder(int customerId, int productId, int quantity);
+
   Future<void> addToWishList(String ProductId,String token);
 }
 
@@ -51,6 +53,19 @@ class CategoriesRepoImp implements CategoriesRepo {
   @override
   Future<void> addToWishList(String productId,String token) async {
    await DioHelper.postData(url: EndPoints.addWishList,queryParameters: {"token" : token},data: {"id":productId}).then((value) {
+      print(value!.data);
+    });
+  }
+
+  @override
+  Future<void> makeOrder(int customerId, int productId, int quantity) async {
+    await DioHelper.postData(
+        url: EndPoints.makeOrderAPI,
+        data: {
+          "customer_id": customerId,
+          "product_id": productId,
+          "quantity": quantity,
+        }).then((value) {
       print(value!.data);
     });
   }
