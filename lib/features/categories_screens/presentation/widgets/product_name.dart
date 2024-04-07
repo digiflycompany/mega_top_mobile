@@ -7,13 +7,15 @@ class ProductDetailedNameText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Text(
+    return Text(
       name!,
-      style:  TextStyle(
+      style: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontWeight: FontWeight.w700,
         fontSize: 18.sp,
         color: Colors.black,
       ),
+      maxLines: 2,
     );
   }
 }

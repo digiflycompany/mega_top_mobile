@@ -49,7 +49,9 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   void toggleFavourite() {
-    addedToFavourites = !addedToFavourites;
+      addedToFavourites = !addedToFavourites;
+    // categoriesRepo.addToWishList("1987",
+    //     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21lZ2F0b3AuY29tLmVnIiwiaWF0IjoxNzExMjk0NTc1LCJuYmYiOjE3MTEyOTQ1NzUsImV4cCI6MTcxMTg5OTM3NSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMTQifX19.iy3gvBgYShSO4U16q1LTQ5Xo5cii2M5rxAEy3TLyiPY");
     emit(CategoryInitial());
   }
 
@@ -137,7 +139,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryLoading());
     try {
       List<CategoriesModel>? fetchedCategories =
-          await categoriesRepo.getCategories();
+      await categoriesRepo.getCategories();
       if (fetchedCategories!.isNotEmpty) {
         categories = fetchedCategories;
 
@@ -156,7 +158,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(SelectedCategoryLoading());
     try {
       selectedCategoriesModel =
-          await categoriesRepo.getSelectedCategories(selectedId);
+      await categoriesRepo.getSelectedCategories(selectedId);
       print(selectedCategoriesModel!.productList[0].images[0].src + "///////");
       emit(SelectedCategorySuccess());
     } catch (e) {
@@ -165,7 +167,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  late int selectedProductIndex;
+  int selectedProductIndex = 0;
 
   void setCategoryProductIndex({required int selectedProductIndex}) {
     this.selectedProductIndex = selectedProductIndex;
