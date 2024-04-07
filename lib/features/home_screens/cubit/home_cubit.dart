@@ -32,12 +32,11 @@ class HomeCubit extends Cubit<HomeState> {
     noResult = !noResult;
     emit(HomeInitial());
   }
-
+  UserDetailsModel? userDetails;
   Future<void> getUserDetails() async {
     emit(UserDetailsLoading());
     try {
-      UserDetailsModel? userDetails =
-      await homePageRepo.getUserDetails();
+      userDetails  = await homePageRepo.getUserDetails();
       if (userDetails!.isNotNull) {
         emit(UserDetailsSuccess());
       } else {

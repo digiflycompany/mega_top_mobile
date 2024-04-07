@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/order_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
@@ -9,7 +10,7 @@ abstract class CategoriesRepo {
 
   Future<SelectedCategoriesModel?> getSelectedCategories(int selectedCategory);
 
-  Future<void> makeOrder(int customerId, int productId, int quantity);
+  Future<Order?> makeOrder(int customerId, int productId, int quantity);
 
   Future<void> addToWishList(String ProductId,String token);
 }
@@ -58,15 +59,24 @@ class CategoriesRepoImp implements CategoriesRepo {
   }
 
   @override
-  Future<void> makeOrder(int customerId, int productId, int quantity) async {
-    await DioHelper.postData(
+  Future<Order?> makeOrder(int customerId, int productId, int quantity) async {
+    try {
+      Response? response = await DioHelper.postData(
         url: EndPoints.makeOrderAPI,
         data: {
           "customer_id": customerId,
           "product_id": productId,
           "quantity": quantity,
-        }).then((value) {
-      print(value!.data);
-    });
+        },
+      );
+      if (response != null && response.statusCode == 200) {
+        Order order = Order.fromJson(response.data);
+        return order;
+      }
+    } catch (e) {
+      print('Error during login: $e');
+    }
+    return null;
   }
+
 }

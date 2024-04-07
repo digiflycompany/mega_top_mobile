@@ -1,3 +1,13 @@
+class OrderList {
+  final List<Order> orders;
+
+  OrderList({required this.orders});
+
+  factory OrderList.fromJson(List<dynamic> parsedJson) {
+    List<Order> orders = parsedJson.map((i) => Order.fromJson(i)).toList();
+    return OrderList(orders: orders);
+  }
+}
 
 class Order {
   final int id;
@@ -26,8 +36,8 @@ class Order {
   final String customerUserAgent;
   final String createdVia;
   final String customerNote;
-  final dynamic dateCompleted; // Could be String or null
-  final dynamic datePaid; // Could be String or null
+  final dynamic dateCompleted; // Could be null
+  final dynamic datePaid; // Could be null
   final String cartHash;
   final String number;
   final List<MetaData> metaData;
@@ -38,8 +48,8 @@ class Order {
   final bool needsProcessing;
   final String dateCreatedGmt;
   final String dateModifiedGmt;
-  final dynamic dateCompletedGmt; // Could be String or null
-  final dynamic datePaidGmt; // Could be String or null
+  final dynamic dateCompletedGmt; // Could be null
+  final dynamic datePaidGmt; // Could be null
   final String currencySymbol;
   final Links links;
 
@@ -132,54 +142,9 @@ class Order {
     currencySymbol: json['currency_symbol'],
     links: Links.fromJson(json['_links']),
   );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'parent_id': parentId,
-    'status': status,
-    'currency': currency,
-    'version': version,
-    'prices_include_tax': pricesIncludeTax,
-    'date_created': dateCreated,
-    'date_modified': dateModified,
-    'discount_total': discountTotal,
-    'discount_tax': discountTax,
-    'shipping_total': shippingTotal,
-    'shipping_tax': shippingTax,
-    'cart_tax': cartTax,
-    'total': total,
-    'total_tax': totalTax,
-    'customer_id': customerId,
-    'order_key': orderKey,
-    'billing': billing.toJson(),
-    'shipping': shipping.toJson(),
-    'payment_method': paymentMethod,
-    'payment_method_title': paymentMethodTitle,
-    'transaction_id': transactionId,
-    'customer_ip_address': customerIpAddress,
-    'customer_user_agent': customerUserAgent,
-    'created_via': createdVia,
-    'customer_note': customerNote,
-    'date_completed': dateCompleted,
-    'date_paid': datePaid,
-    'cart_hash': cartHash,
-    'number': number,
-    'meta_data': metaData.map((e) => e.toJson()).toList(),
-    'line_items': lineItems.map((e) => e.toJson()).toList(),
-    'payment_url': paymentUrl,
-    'is_editable': isEditable,
-    'needs_payment': needsPayment,
-    'needs_processing': needsProcessing,
-    'date_created_gmt': dateCreatedGmt,
-    'date_modified_gmt': dateModifiedGmt,
-    'date_completed_gmt': dateCompletedGmt,
-    'date_paid_gmt': datePaidGmt,
-    'currency_symbol': currencySymbol,
-    '_links': links.toJson(),
-  };
 }
 
-class BillingShipping {
+class Billing {
   final String firstName;
   final String lastName;
   final String company;
@@ -192,7 +157,7 @@ class BillingShipping {
   final String email;
   final String phone;
 
-  BillingShipping({
+  Billing({
     required this.firstName,
     required this.lastName,
     required this.company,
@@ -202,11 +167,11 @@ class BillingShipping {
     required this.state,
     required this.postcode,
     required this.country,
-    this.email = '',
-    this.phone = '',
+    required this.email,
+    required this.phone,
   });
 
-  factory BillingShipping.fromJson(Map<String, dynamic> json) => BillingShipping(
+  factory Billing.fromJson(Map<String, dynamic> json) => Billing(
     firstName: json['first_name'],
     lastName: json['last_name'],
     company: json['company'],
@@ -216,28 +181,50 @@ class BillingShipping {
     state: json['state'],
     postcode: json['postcode'],
     country: json['country'],
-    email: json['email'] ?? '',
-    phone: json['phone'] ?? '',
+    email: json['email'],
+    phone: json['phone'],
   );
-
-  Map<String, dynamic> toJson() => {
-    'first_name': firstName,
-    'last_name': lastName,
-    'company': company,
-    'address_1': address1,
-    'address_2': address2,
-    'city': city,
-    'state': state,
-    'postcode': postcode,
-    'country': country,
-    'email': email,
-    'phone': phone,
-  };
 }
 
-// Alias Billing and Shipping to use the same structure since they share the same fields
-typedef Billing = BillingShipping;
-typedef Shipping = BillingShipping;
+class Shipping {
+  // Same properties as Billing
+  final String firstName;
+  final String lastName;
+  final String company;
+  final String address1;
+  final String address2;
+  final String city;
+  final String state;
+  final String postcode;
+  final String country;
+  final String phone;
+
+  Shipping({
+    required this.firstName,
+    required this.lastName,
+    required this.company,
+    required this.address1,
+    required this.address2,
+    required this.city,
+    required this.state,
+    required this.postcode,
+    required this.country,
+    required this.phone,
+  });
+
+  factory Shipping.fromJson(Map<String, dynamic> json) => Shipping(
+    firstName: json['first_name'],
+    lastName: json['last_name'],
+    company: json['company'],
+    address1: json['address_1'],
+    address2: json['address_2'],
+    city: json['city'],
+    state: json['state'],
+    postcode: json['postcode'],
+    country: json['country'],
+    phone: json['phone'],
+  );
+}
 
 class MetaData {
   final int id;
@@ -255,69 +242,7 @@ class MetaData {
     key: json['key'],
     value: json['value'],
   );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'key': key,
-    'value': value,
-  };
 }
-
-class Links {
-  final List<Link> self;
-  final List<Link> collection;
-  final List<Link> customer;
-
-  Links({
-    required this.self,
-    required this.collection,
-    required this.customer,
-  });
-
-  factory Links.fromJson(Map<String, dynamic> json) {
-    return Links(
-      self: _convertLinks(json['self']),
-      collection: _convertLinks(json['collection']),
-      customer: _convertLinks(json['customer']),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'self': self.map((link) => link.toJson()).toList(),
-      'collection': collection.map((link) => link.toJson()).toList(),
-      'customer': customer.map((link) => link.toJson()).toList(),
-    };
-  }
-
-  static List<Link> _convertLinks(dynamic json) {
-    if (json != null && json is List) {
-      return json.map<Link>((item) => Link.fromJson(item)).toList();
-    } else {
-      return [];
-    }
-  }
-}
-
-
-class Link {
-  final String href;
-
-  Link({required this.href});
-
-  factory Link.fromJson(Map<String, dynamic> json) {
-    return Link(
-      href: json['href'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'href': href,
-    };
-  }
-}
-
 
 class LineItem {
   final int id;
@@ -330,12 +255,12 @@ class LineItem {
   final String subtotalTax;
   final String total;
   final String totalTax;
-  final List<dynamic> taxes; // Consider creating a class for taxes if the structure is known
-  final List<dynamic> metaData; // Consider creating a class for metaData items if the structure is known
+  final List<dynamic> taxes;
+  final List<dynamic> metaData;
   final String sku;
   final int price;
   final Image image;
-  final dynamic parentName; // Could be null, hence dynamic
+  final dynamic parentName; // Can be null
 
   LineItem({
     required this.id,
@@ -374,25 +299,6 @@ class LineItem {
     image: Image.fromJson(json['image']),
     parentName: json['parent_name'],
   );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'product_id': productId,
-    'variation_id': variationId,
-    'quantity': quantity,
-    'tax_class': taxClass,
-    'subtotal': subtotal,
-    'subtotal_tax': subtotalTax,
-    'total': total,
-    'total_tax': totalTax,
-    'taxes': taxes, // You may need to map each element to toJson if a class is made
-    'meta_data': metaData, // Same as above
-    'sku': sku,
-    'price': price,
-    'image': image.toJson(),
-    'parent_name': parentName,
-  };
 }
 
 class Image {
@@ -408,14 +314,32 @@ class Image {
     id: json['id'],
     src: json['src'],
   );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'src': src,
-  };
 }
 
+class Links {
+  final List<Link> self;
+  final List<Link> collection;
+  final List<Link> customer;
 
-// Include definitions for Image, Links, Link classes with their fromJson and toJson methods
-// Due to space constraints, these are omitted here but should follow the same pattern as above
+  Links({
+    required this.self,
+    required this.collection,
+    required this.customer,
+  });
 
+  factory Links.fromJson(Map<String, dynamic> json) => Links(
+    self: List<Link>.from(json['self'].map((x) => Link.fromJson(x))),
+    collection: List<Link>.from(json['collection'].map((x) => Link.fromJson(x))),
+    customer: List<Link>.from(json['customer'].map((x) => Link.fromJson(x))),
+  );
+}
+
+class Link {
+  final String href;
+
+  Link({required this.href});
+
+  factory Link.fromJson(Map<String, dynamic> json) => Link(
+    href: json['href'],
+  );
+}

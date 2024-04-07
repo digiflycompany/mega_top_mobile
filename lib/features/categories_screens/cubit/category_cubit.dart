@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
@@ -9,13 +10,11 @@ import 'package:mega_top_mobile/features/categories_screens/data/selected_catego
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 
-import '../../../core/utils/app_assets.dart';
-
 class CategoryCubit extends Cubit<CategoryState> {
+
   CategoryCubit() : super(CategoryInitial());
 
   CategoryCubit getCubit(context) => BlocProvider.of(context);
-
   bool isGrid = true;
   bool noResult = false;
   bool addedToFavourites = false;
@@ -172,4 +171,15 @@ class CategoryCubit extends Cubit<CategoryState> {
   void setCategoryProductIndex({required int selectedProductIndex}) {
     this.selectedProductIndex = selectedProductIndex;
   }
+
+  Future<void> addToCart(int customerId, int productId, int quantity) async {
+    emit(addToCartLoading());
+    try {
+      categoriesRepo.makeOrder(customerId, productId, quantity);
+      emit(addToCartSuccess());
+    } catch (e) {
+      emit(addToCartFailure(e.toString()));
+    }
+  }
+
 }

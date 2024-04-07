@@ -25,3 +25,13 @@ class SelectedCategoryFailure extends CategoryState {
 
   SelectedCategoryFailure(this.error);
 }
+
+class addToCartLoading extends CategoryState {}
+
+class addToCartSuccess extends CategoryState {}
+
+class addToCartFailure extends CategoryState {
+  final String error;
+
+  addToCartFailure(this.error);
+}
