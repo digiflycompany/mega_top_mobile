@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../utils/app_color.dart';
@@ -20,9 +21,9 @@ class ProductPhotoListView extends StatelessWidget {
       child: Center(
           child: Padding(
         padding: EdgeInsets.only(top: context.height * 0.016),
-        child: Image.asset(
-          photo!,
-          width: photoWidth??context.width * 0.16,
+        child: CachedNetworkImage(
+
+          width: photoWidth??context.width * 0.16, imageUrl: photo!,
         ),
       )),
     );

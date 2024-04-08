@@ -40,8 +40,9 @@ class OrderConfirmationScreen extends StatelessWidget {
             VerticalSpace(context.height * 0.033),
 
             /// Continue Shopping Button
-            const PrimaryOutlinedButton(
+            PrimaryOutlinedButton(
               text: AppStrings.continueShoppingEn,
+              onTap: ()=> Navigator.pop(context),
             ),
           ],
         ),

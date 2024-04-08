@@ -27,10 +27,10 @@ class SecondHeader extends StatelessWidget {
 
         /// Skip Text ///
         SkipText(
-          onTap: () {
-            Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
-            PreferencesHelper.setHasSeenOnboarding(true);
-          },
+          // onTap: () {
+          //   Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+          //   PreferencesHelper.setHasSeenOnboarding(true);
+          // },
         ),
 
         /// Back Arrow ///

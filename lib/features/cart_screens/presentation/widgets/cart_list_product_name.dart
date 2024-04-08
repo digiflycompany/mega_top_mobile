@@ -12,7 +12,7 @@ class CartListProductName extends StatelessWidget {
       style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.w700,
-          fontSize: 13.sp
+          fontSize: 12.sp
       ),
     );
   }

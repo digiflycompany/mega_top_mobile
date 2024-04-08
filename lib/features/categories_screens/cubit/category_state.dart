@@ -35,3 +35,24 @@ class addToCartFailure extends CategoryState {
 
   addToCartFailure(this.error);
 }
+
+class myOrdersLoading extends CategoryState {}
+
+class myOrdersSuccess extends CategoryState {}
+
+class myOrdersFailure extends CategoryState {
+  final String error;
+
+  myOrdersFailure(this.error);
+}
+
+class productDetailsLoading extends CategoryState {}
+
+class productDetailsSuccess extends CategoryState {}
+
+class productDetailsFailure extends CategoryState {
+  final String error;
+
+  productDetailsFailure(this.error);
+}
+

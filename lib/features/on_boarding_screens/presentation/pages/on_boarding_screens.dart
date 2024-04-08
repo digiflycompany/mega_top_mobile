@@ -13,7 +13,6 @@ import 'package:mega_top_mobile/features/on_boarding_screens/cubit/on_boarding_s
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_first_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_second_screen.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
-
 import 'on_boarding_third_screen.dart';
 
 class OnBoardingScreens extends StatelessWidget {
@@ -84,7 +83,7 @@ class OnBoardingView extends StatelessWidget {
                         : AppStrings.nextEn,
                     onTap: () {
                       onboardingCubit.getPageIndex() == 2
-                          ? Routes.homePageRoute.moveToCurrentRouteAndRemoveAll
+                          ? Routes.loginRoute.moveToCurrentRouteAndRemoveAll
                           : onboardingCubit.pageController.animateToPage(
                               onboardingCubit.getPageIndex() + 1,
                               duration: const Duration(milliseconds: 400),
@@ -99,7 +98,7 @@ class OnBoardingView extends StatelessWidget {
                   firstText: AppStrings.alreadyHaveAnAccountEn,
                   buttonText: AppStrings.loginEn,
                   onTap: () {
-                    Routes.loginRoute.moveToAndRemoveCurrent;
+                    Routes.loginRoute.moveToCurrentRouteAndRemoveAll;
                     PreferencesHelper.setHasSeenOnboarding(true);
                   },
                 ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_checkout_button.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
@@ -12,10 +15,22 @@ import '../widgets/cart_items_list.dart';
 import '../widgets/cart_screen_address.dart';
 import '../widgets/shipment_quantity_row.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
   @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    var cubit = context.read<CategoryCubit>();
+    HomeCubit homeCubit = context.read<HomeCubit>();
+    cubit.getMyOrders(homeCubit.userDetails!.iD);
+    super.initState();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.circleAvatarBackground,
@@ -34,8 +49,8 @@ class CartPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
               child: Column(
                 children: [
-                  VerticalSpace(context.height * 0.028),
-                  const ShipmentQuantityRow(),
+                  // VerticalSpace(context.height * 0.028),
+                  // const ShipmentQuantityRow(),
                   VerticalSpace(context.height * 0.033),
                   const CartItemsListView(),
                 ],
@@ -46,7 +61,7 @@ class CartPage extends StatelessWidget {
       ),
       bottomNavigationBar: ButtonBottomNavBar(
         button: CartCheckoutButton(
-          onTap: () => Routes.shippingDetailsPageRoute.moveTo,
+          onTap: () => Routes.orderConfirmationPageRoute.moveTo,
         ),
       ),
     );

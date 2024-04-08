@@ -1,4 +1,3 @@
-
 class Order {
   final int id;
   final int parentId;
@@ -17,8 +16,8 @@ class Order {
   final String totalTax;
   final int customerId;
   final String orderKey;
+  final Billing shipping;
   final Billing billing;
-  final Shipping shipping;
   final String paymentMethod;
   final String paymentMethodTitle;
   final String transactionId;
@@ -26,20 +25,25 @@ class Order {
   final String customerUserAgent;
   final String createdVia;
   final String customerNote;
-  final dynamic dateCompleted; // Could be String or null
-  final dynamic datePaid; // Could be String or null
+  final String? dateCompleted;
+  final String? datePaid;
   final String cartHash;
   final String number;
   final List<MetaData> metaData;
   final List<LineItem> lineItems;
+  final List<dynamic> taxLines;
+  final List<dynamic> shippingLines;
+  final List<dynamic> feeLines;
+  final List<dynamic> couponLines;
+  final List<dynamic> refunds;
   final String paymentUrl;
   final bool isEditable;
   final bool needsPayment;
   final bool needsProcessing;
   final String dateCreatedGmt;
   final String dateModifiedGmt;
-  final dynamic dateCompletedGmt; // Could be String or null
-  final dynamic datePaidGmt; // Could be String or null
+  final String? dateCompletedGmt;
+  final String? datePaidGmt;
   final String currencySymbol;
   final Links links;
 
@@ -76,6 +80,11 @@ class Order {
     required this.number,
     required this.metaData,
     required this.lineItems,
+    required this.taxLines,
+    required this.shippingLines,
+    required this.feeLines,
+    required this.couponLines,
+    required this.refunds,
     required this.paymentUrl,
     required this.isEditable,
     required this.needsPayment,
@@ -87,99 +96,60 @@ class Order {
     required this.currencySymbol,
     required this.links,
   });
-
-  factory Order.fromJson(Map<String, dynamic> json) => Order(
-    id: json['id'],
-    parentId: json['parent_id'],
-    status: json['status'],
-    currency: json['currency'],
-    version: json['version'],
-    pricesIncludeTax: json['prices_include_tax'],
-    dateCreated: json['date_created'],
-    dateModified: json['date_modified'],
-    discountTotal: json['discount_total'],
-    discountTax: json['discount_tax'],
-    shippingTotal: json['shipping_total'],
-    shippingTax: json['shipping_tax'],
-    cartTax: json['cart_tax'],
-    total: json['total'],
-    totalTax: json['total_tax'],
-    customerId: json['customer_id'],
-    orderKey: json['order_key'],
-    billing: Billing.fromJson(json['billing']),
-    shipping: Shipping.fromJson(json['shipping']),
-    paymentMethod: json['payment_method'],
-    paymentMethodTitle: json['payment_method_title'],
-    transactionId: json['transaction_id'],
-    customerIpAddress: json['customer_ip_address'],
-    customerUserAgent: json['customer_user_agent'],
-    createdVia: json['created_via'],
-    customerNote: json['customer_note'],
-    dateCompleted: json['date_completed'],
-    datePaid: json['date_paid'],
-    cartHash: json['cart_hash'],
-    number: json['number'],
-    metaData: List<MetaData>.from(json['meta_data'].map((x) => MetaData.fromJson(x))),
-    lineItems: List<LineItem>.from(json['line_items'].map((x) => LineItem.fromJson(x))),
-    paymentUrl: json['payment_url'],
-    isEditable: json['is_editable'],
-    needsPayment: json['needs_payment'],
-    needsProcessing: json['needs_processing'],
-    dateCreatedGmt: json['date_created_gmt'],
-    dateModifiedGmt: json['date_modified_gmt'],
-    dateCompletedGmt: json['date_completed_gmt'],
-    datePaidGmt: json['date_paid_gmt'],
-    currencySymbol: json['currency_symbol'],
-    links: Links.fromJson(json['_links']),
+  factory Order.fromJson(Map<String, dynamic> json) {
+  return Order(
+  id: json['id'] as int,
+  parentId: json['parent_id'] as int,
+  status: json['status'] as String,
+  currency: json['currency'] as String,
+  version: json['version'] as String,
+  pricesIncludeTax: json['prices_include_tax'] as bool,
+  dateCreated: json['date_created'] as String,
+  dateModified: json['date_modified'] as String,
+  discountTotal: json['discount_total'] as String,
+  discountTax: json['discount_tax'] as String,
+  shippingTotal: json['shipping_total'] as String,
+  shippingTax: json['shipping_tax'] as String,
+  cartTax: json['cart_tax'] as String,
+  total: json['total'] as String,
+  totalTax: json['total_tax'] as String,
+  customerId: json['customer_id'] as int,
+  orderKey: json['order_key'] as String,
+  billing: Billing.fromJson(json['billing']),
+  shipping: Billing.fromJson(json['shipping']), // Using the same Billing class for simplicity
+  paymentMethod: json['payment_method'] as String,
+  paymentMethodTitle: json['payment_method_title'] as String,
+  transactionId: json['transaction_id'] as String,
+  customerIpAddress: json['customer_ip_address'] as String,
+  customerUserAgent: json['customer_user_agent'] as String,
+  createdVia: json['created_via'] as String,
+  customerNote: json['customer_note'] as String,
+  dateCompleted: json['date_completed'],
+  datePaid: json['date_paid'],
+  cartHash: json['cart_hash'] as String,
+  number: json['number'] as String,
+  metaData: List<MetaData>.from(json['meta_data'].map((x) => MetaData.fromJson(x))),
+  lineItems: List<LineItem>.from(json['line_items'].map((x) => LineItem.fromJson(x))),
+  taxLines: json['tax_lines'] as List<dynamic>,
+  shippingLines: json['shipping_lines'] as List<dynamic>,
+  feeLines: json['fee_lines'] as List<dynamic>,
+  couponLines: json['coupon_lines'] as List<dynamic>,
+  refunds: json['refunds'] as List<dynamic>,
+  paymentUrl: json['payment_url'] as String,
+  isEditable: json['is_editable'] as bool,
+  needsPayment: json['needs_payment'] as bool,
+  needsProcessing: json['needs_processing'] as bool,
+  dateCreatedGmt: json['date_created_gmt'] as String,
+  dateModifiedGmt: json['date_modified_gmt'] as String,
+  dateCompletedGmt: json['date_completed_gmt'],
+  datePaidGmt: json['date_paid_gmt'],
+  currencySymbol: json['currency_symbol'] as String,
+  links: Links.fromJson(json['_links']),
   );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'parent_id': parentId,
-    'status': status,
-    'currency': currency,
-    'version': version,
-    'prices_include_tax': pricesIncludeTax,
-    'date_created': dateCreated,
-    'date_modified': dateModified,
-    'discount_total': discountTotal,
-    'discount_tax': discountTax,
-    'shipping_total': shippingTotal,
-    'shipping_tax': shippingTax,
-    'cart_tax': cartTax,
-    'total': total,
-    'total_tax': totalTax,
-    'customer_id': customerId,
-    'order_key': orderKey,
-    'billing': billing.toJson(),
-    'shipping': shipping.toJson(),
-    'payment_method': paymentMethod,
-    'payment_method_title': paymentMethodTitle,
-    'transaction_id': transactionId,
-    'customer_ip_address': customerIpAddress,
-    'customer_user_agent': customerUserAgent,
-    'created_via': createdVia,
-    'customer_note': customerNote,
-    'date_completed': dateCompleted,
-    'date_paid': datePaid,
-    'cart_hash': cartHash,
-    'number': number,
-    'meta_data': metaData.map((e) => e.toJson()).toList(),
-    'line_items': lineItems.map((e) => e.toJson()).toList(),
-    'payment_url': paymentUrl,
-    'is_editable': isEditable,
-    'needs_payment': needsPayment,
-    'needs_processing': needsProcessing,
-    'date_created_gmt': dateCreatedGmt,
-    'date_modified_gmt': dateModifiedGmt,
-    'date_completed_gmt': dateCompletedGmt,
-    'date_paid_gmt': datePaidGmt,
-    'currency_symbol': currencySymbol,
-    '_links': links.toJson(),
-  };
+  }
 }
 
-class BillingShipping {
+class Billing {
   final String firstName;
   final String lastName;
   final String company;
@@ -192,7 +162,7 @@ class BillingShipping {
   final String email;
   final String phone;
 
-  BillingShipping({
+  Billing({
     required this.firstName,
     required this.lastName,
     required this.company,
@@ -202,122 +172,25 @@ class BillingShipping {
     required this.state,
     required this.postcode,
     required this.country,
-    this.email = '',
-    this.phone = '',
+    required this.email,
+    required this.phone,
   });
-
-  factory BillingShipping.fromJson(Map<String, dynamic> json) => BillingShipping(
-    firstName: json['first_name'],
-    lastName: json['last_name'],
-    company: json['company'],
-    address1: json['address_1'],
-    address2: json['address_2'],
-    city: json['city'],
-    state: json['state'],
-    postcode: json['postcode'],
-    country: json['country'],
-    email: json['email'] ?? '',
-    phone: json['phone'] ?? '',
-  );
-
-  Map<String, dynamic> toJson() => {
-    'first_name': firstName,
-    'last_name': lastName,
-    'company': company,
-    'address_1': address1,
-    'address_2': address2,
-    'city': city,
-    'state': state,
-    'postcode': postcode,
-    'country': country,
-    'email': email,
-    'phone': phone,
-  };
-}
-
-// Alias Billing and Shipping to use the same structure since they share the same fields
-typedef Billing = BillingShipping;
-typedef Shipping = BillingShipping;
-
-class MetaData {
-  final int id;
-  final String key;
-  final String value;
-
-  MetaData({
-    required this.id,
-    required this.key,
-    required this.value,
-  });
-
-  factory MetaData.fromJson(Map<String, dynamic> json) => MetaData(
-    id: json['id'],
-    key: json['key'],
-    value: json['value'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'key': key,
-    'value': value,
-  };
-}
-
-class Links {
-  final List<Link> self;
-  final List<Link> collection;
-  final List<Link> customer;
-
-  Links({
-    required this.self,
-    required this.collection,
-    required this.customer,
-  });
-
-  factory Links.fromJson(Map<String, dynamic> json) {
-    return Links(
-      self: _convertLinks(json['self']),
-      collection: _convertLinks(json['collection']),
-      customer: _convertLinks(json['customer']),
+  factory Billing.fromJson(Map<String, dynamic> json) {
+    return Billing(
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
+      company: json['company'] as String,
+      address1: json['address_1'] as String,
+      address2: json['address_2'] as String,
+      city: json['city'] as String,
+      state: json['state'] as String,
+      postcode: json['postcode'] as String,
+      country: json['country'] as String,
+      email: json['email'] as String,
+      phone: json['phone'] as String,
     );
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'self': self.map((link) => link.toJson()).toList(),
-      'collection': collection.map((link) => link.toJson()).toList(),
-      'customer': customer.map((link) => link.toJson()).toList(),
-    };
-  }
-
-  static List<Link> _convertLinks(dynamic json) {
-    if (json != null && json is List) {
-      return json.map<Link>((item) => Link.fromJson(item)).toList();
-    } else {
-      return [];
-    }
-  }
 }
-
-
-class Link {
-  final String href;
-
-  Link({required this.href});
-
-  factory Link.fromJson(Map<String, dynamic> json) {
-    return Link(
-      href: json['href'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'href': href,
-    };
-  }
-}
-
 
 class LineItem {
   final int id;
@@ -330,12 +203,12 @@ class LineItem {
   final String subtotalTax;
   final String total;
   final String totalTax;
-  final List<dynamic> taxes; // Consider creating a class for taxes if the structure is known
-  final List<dynamic> metaData; // Consider creating a class for metaData items if the structure is known
+  final List<dynamic> taxes;
+  final List<MetaData> metaData;
   final String sku;
   final int price;
-  final Image image;
-  final dynamic parentName; // Could be null, hence dynamic
+  final ProductImage image;
+  final String? parentName;
 
   LineItem({
     required this.id,
@@ -355,67 +228,89 @@ class LineItem {
     required this.image,
     this.parentName,
   });
-
-  factory LineItem.fromJson(Map<String, dynamic> json) => LineItem(
-    id: json['id'],
-    name: json['name'],
-    productId: json['product_id'],
-    variationId: json['variation_id'],
-    quantity: json['quantity'],
-    taxClass: json['tax_class'],
-    subtotal: json['subtotal'],
-    subtotalTax: json['subtotal_tax'],
-    total: json['total'],
-    totalTax: json['total_tax'],
-    taxes: json['taxes'] ?? [],
-    metaData: json['meta_data'] ?? [],
-    sku: json['sku'],
-    price: json['price'],
-    image: Image.fromJson(json['image']),
-    parentName: json['parent_name'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'product_id': productId,
-    'variation_id': variationId,
-    'quantity': quantity,
-    'tax_class': taxClass,
-    'subtotal': subtotal,
-    'subtotal_tax': subtotalTax,
-    'total': total,
-    'total_tax': totalTax,
-    'taxes': taxes, // You may need to map each element to toJson if a class is made
-    'meta_data': metaData, // Same as above
-    'sku': sku,
-    'price': price,
-    'image': image.toJson(),
-    'parent_name': parentName,
-  };
+  factory LineItem.fromJson(Map<String, dynamic> json) {
+    return LineItem(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      productId: json['product_id'] as int,
+      variationId: json['variation_id'] as int,
+      quantity: json['quantity'] as int,
+      taxClass: json['tax_class'] as String,
+      subtotal: json['subtotal'] as String,
+      subtotalTax: json['subtotal_tax'] as String,
+      total: json['total'] as String,
+      totalTax: json['total_tax'] as String,
+      taxes: json['taxes'] as List<dynamic>,
+      metaData: List<MetaData>.from(json['meta_data'].map((x) => MetaData.fromJson(x))),
+      sku: json['sku'] as String,
+      price: json['price'] as int,
+      image: ProductImage.fromJson(json['image']),
+      parentName: json['parent_name'] as String?,
+    );
+  }
 }
 
-class Image {
+class MetaData {
+  final int id;
+  final String key;
+  final dynamic value;
+
+  MetaData({
+    required this.id,
+    required this.key,
+    required this.value,
+  });
+  factory MetaData.fromJson(Map<String, dynamic> json) {
+    return MetaData(
+      id: json['id'] as int,
+      key: json['key'] as String,
+      value: json['value'],
+    );
+  }
+}
+
+class ProductImage {
   final String id;
   final String src;
 
-  Image({
+  ProductImage({
     required this.id,
     required this.src,
   });
-
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
-    id: json['id'],
-    src: json['src'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'src': src,
-  };
+  factory ProductImage.fromJson(Map<String, dynamic> json) {
+    return ProductImage(
+      id: json['id'].toString(),
+      src: json['src'] as String,
+    );
+  }
 }
 
+class Links {
+  final List<Link> self;
+  final List<Link> collection;
+  final List<Link> customer;
 
-// Include definitions for Image, Links, Link classes with their fromJson and toJson methods
-// Due to space constraints, these are omitted here but should follow the same pattern as above
+  Links({
+    required this.self,
+    required this.collection,
+    required this.customer,
+  });
+  factory Links.fromJson(Map<String, dynamic> json) {
+    return Links(
+      self: (json['self'] as List<dynamic>).map((e) => Link.fromJson(e)).toList(),
+      collection: (json['collection'] as List<dynamic>).map((e) => Link.fromJson(e)).toList(),
+      customer: (json['customer'] as List<dynamic>).map((e) => Link.fromJson(e)).toList(),
+    );
+  }
+}
 
+class Link {
+  final String href;
+
+  Link({required this.href});
+  factory Link.fromJson(Map<String, dynamic> json) {
+    return Link(
+      href: json['href'] as String,
+    );
+  }
+}

@@ -1,15 +1,58 @@
+
 class OrderList {
-  final List<Order> orders;
+  final List<MyOrder> orders;
 
   OrderList({required this.orders});
 
   factory OrderList.fromJson(List<dynamic> parsedJson) {
-    List<Order> orders = parsedJson.map((i) => Order.fromJson(i)).toList();
+    List<MyOrder> orders = parsedJson.map((i) => MyOrder.fromJson(i)).toList();
     return OrderList(orders: orders);
   }
 }
 
-class Order {
+class productModel {
+  late int id;
+  late String name;
+  late String price;
+  late bool wishlist;
+  List<Images> images = [];
+  List<Categories> categories = [];
+
+  productModel.fromJson(Map<String, dynamic> json) {
+    id = json["id"];
+    name = json["name"];
+    price = json["price"];
+    wishlist = json["wishlist"];
+    json["images"].forEach((element) {
+      images.add(Images.fromJson(element));
+    });
+    json["categories"].forEach((element) {
+      categories.add(Categories.fromJson(element));
+    });
+  }
+}
+
+class Images {
+  late int id;
+  late String src;
+
+  Images.fromJson(json) {
+    id = json["id"];
+    src = json["src"];
+  }
+}
+
+class Categories {
+  late int id;
+  late String name;
+
+  Categories.fromJson(json) {
+    id = json["id"];
+    name = json["name"];
+  }
+}
+
+class MyOrder {
   final int id;
   final int parentId;
   final String status;
@@ -53,7 +96,7 @@ class Order {
   final String currencySymbol;
   final Links links;
 
-  Order({
+  MyOrder({
     required this.id,
     required this.parentId,
     required this.status,
@@ -98,7 +141,7 @@ class Order {
     required this.links,
   });
 
-  factory Order.fromJson(Map<String, dynamic> json) => Order(
+  factory MyOrder.fromJson(Map<String, dynamic> json) => MyOrder(
     id: json['id'],
     parentId: json['parent_id'],
     status: json['status'],

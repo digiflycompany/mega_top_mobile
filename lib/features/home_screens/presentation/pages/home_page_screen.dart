@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/guest_account_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/categories_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     const CategoriesPage(),
     const OffersPage(),
     const CartPage(),
-    const GuestAccountScreen(),
+    const UserAccountScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
       body: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
-          return PageView(
+          return  PageView(
             controller: _pageController,
             children: _pages,
             onPageChanged: (index) {

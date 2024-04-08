@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/product_details_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/your_orders_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 
@@ -179,6 +182,38 @@ class CategoryCubit extends Cubit<CategoryState> {
       emit(addToCartSuccess());
     } catch (e) {
       emit(addToCartFailure(e.toString()));
+    }
+  }
+  OrderList? orders;
+  Future<void> getMyOrders(int customerID) async {
+    emit(myOrdersLoading());
+    try {
+      orders=
+      await categoriesRepo.getMyOrders(customerID);
+      if (orders!.isNotNull) {
+        emit(myOrdersSuccess());
+      } else {
+        emit(myOrdersFailure('No categories found'));
+      }
+    } catch (e) {
+      emit(myOrdersFailure(e.toString()));
+    }
+  }
+  ProductDetailsModel? productDetailsModel;
+  Future<void> getProductsDetails(int productID) async {
+    emit(productDetailsLoading());
+    try {
+      productDetailsModel=
+      await categoriesRepo.getProductDetails(productID);
+      if (productDetailsModel!.isNotNull) {
+        print(productDetailsModel);
+        print('ssssssssssssssssssssssssssssssssssssssssaaassssssssssssssssss');
+        emit(productDetailsSuccess());
+      } else {
+        emit(productDetailsFailure('No categories found'));
+      }
+    } catch (e) {
+      emit(productDetailsFailure(e.toString()));
     }
   }
 

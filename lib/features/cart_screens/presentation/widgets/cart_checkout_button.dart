@@ -29,35 +29,35 @@ class CartCheckoutButton extends StatelessWidget {
           child: Row(
             children: [
               /// Product Quantity
-              Text(
-                AppStrings.productsQuantityEn,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14.sp,
-                ),
-              ),
-              HorizontalSpace(context.width * 0.011),
-
-              /// Products Text
-              Text(
-                AppStrings.products2En,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14.sp,
-                ),
-              ),
-              HorizontalSpace(context.width * 0.022),
-
-              /// Product Price
-              Text(
-                AppStrings.threeThousand,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14.sp),
-              ),
+              // Text(
+              //   AppStrings.productsQuantityEn,
+              //   style: TextStyle(
+              //     color: Colors.white,
+              //     fontWeight: FontWeight.w500,
+              //     fontSize: 14.sp,
+              //   ),
+              // ),
+              // HorizontalSpace(context.width * 0.011),
+              //
+              // /// Products Text
+              // Text(
+              //   AppStrings.products2En,
+              //   style: TextStyle(
+              //     color: Colors.white,
+              //     fontWeight: FontWeight.w500,
+              //     fontSize: 14.sp,
+              //   ),
+              // ),
+              // HorizontalSpace(context.width * 0.022),
+              //
+              // /// Product Price
+              // Text(
+              //   AppStrings.threeThousand,
+              //   style: TextStyle(
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.w700,
+              //       fontSize: 14.sp),
+              // ),
               const Spacer(),
 
               /// Product Checkout
