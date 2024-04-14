@@ -1,3 +1,5 @@
+import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
+
 abstract class HomeState {}
 
 class HomeInitial extends HomeState {}
@@ -9,6 +11,11 @@ class ImageChanged extends HomeState {
 class HomePageChanged extends HomeState {
   final int index;
   HomePageChanged({required this.index});
+}
+class HomeLoadedState extends HomeState {
+  final UserModel user;
+
+  HomeLoadedState(this.user);
 }
 
 class UserDetailsSuccess extends HomeState {}

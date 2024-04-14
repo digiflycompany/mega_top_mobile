@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/authentication_screens/data/models/user_details_model.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/data/repo/home_page_repo.dart';
 
@@ -32,18 +31,18 @@ class HomeCubit extends Cubit<HomeState> {
     noResult = !noResult;
     emit(HomeInitial());
   }
-  UserDetailsModel? userDetails;
-  Future<void> getUserDetails() async {
-    emit(UserDetailsLoading());
-    try {
-      userDetails  = await homePageRepo.getUserDetails();
-      if (userDetails!.isNotNull) {
-        emit(UserDetailsSuccess());
-      } else {
-        emit(UserDetailsFailure('No details found'));
-      }
-    } catch (e) {
-      emit(UserDetailsFailure(e.toString()));
-    }
-  }
+  UserModel? userDetails;
+  // Future<void> getUserDetails() async {
+  //   emit(UserDetailsLoading());
+  //   try {
+  //     userDetails  = await homePageRepo.getUserDetails();
+  //     if (userDetails!.isNotNull) {
+  //       emit(UserDetailsSuccess());
+  //     } else {
+  //       emit(UserDetailsFailure('No details found'));
+  //     }
+  //   } catch (e) {
+  //     emit(UserDetailsFailure(e.toString()));
+  //   }
+  // }
 }

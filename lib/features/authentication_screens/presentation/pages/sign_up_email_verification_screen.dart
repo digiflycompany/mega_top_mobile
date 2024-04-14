@@ -11,6 +11,7 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/resend_code_row.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/user_email_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/verify_email_button.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class SignUpEmailVerificationScreen extends StatelessWidget {
   const SignUpEmailVerificationScreen({super.key});
@@ -20,6 +21,7 @@ class SignUpEmailVerificationScreen extends StatelessWidget {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if(state is EmailVerifiedSuccess){
+          PreferencesHelper.saveIsVisitor(isVisitor: true);
           Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
         }
         if(state is EmailVerifiedFailure){

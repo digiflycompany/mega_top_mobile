@@ -50,7 +50,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                               Routes.signUpOrLoginPageRoute.moveTo;
                             } else {
                               categoryCubit.addToCart(
-                                  homeCubit.userDetails!.iD, categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id, 1);
+                                  homeCubit.userDetails!.userId!, categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id, 1);
                                   categoryCubit.getProductsDetails(categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id);
                             }
                           },

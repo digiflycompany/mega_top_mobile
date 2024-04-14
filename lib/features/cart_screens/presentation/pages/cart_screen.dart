@@ -26,7 +26,7 @@ class _CartPageState extends State<CartPage> {
     // TODO: implement initState
     var cubit = context.read<CategoryCubit>();
     HomeCubit homeCubit = context.read<HomeCubit>();
-    cubit.getMyOrders(homeCubit.userDetails!.iD);
+    cubit.getMyOrders(homeCubit.userDetails!.userId!);
     super.initState();
   }
   Widget build(BuildContext context) {

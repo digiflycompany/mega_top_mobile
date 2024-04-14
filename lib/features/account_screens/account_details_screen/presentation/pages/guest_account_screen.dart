@@ -47,7 +47,7 @@ class GuestAccountScreen extends StatelessWidget {
               PrimaryButton(
                 text: AppStrings.signUpEn,
                 onTap: () {
-                  Routes.userAccountPageRoute.moveTo;
+                  Routes.signUpRoute.moveTo;
                 },
               ),
               VerticalSpace(24.h),

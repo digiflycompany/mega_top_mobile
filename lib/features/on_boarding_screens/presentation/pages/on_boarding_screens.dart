@@ -83,7 +83,7 @@ class OnBoardingView extends StatelessWidget {
                         : AppStrings.nextEn,
                     onTap: () {
                       onboardingCubit.getPageIndex() == 2
-                          ? Routes.loginRoute.moveToCurrentRouteAndRemoveAll
+                          ? Routes.homePageRoute.moveToCurrentRouteAndRemoveAll
                           : onboardingCubit.pageController.animateToPage(
                               onboardingCubit.getPageIndex() + 1,
                               duration: const Duration(milliseconds: 400),
@@ -100,6 +100,7 @@ class OnBoardingView extends StatelessWidget {
                   onTap: () {
                     Routes.loginRoute.moveToCurrentRouteAndRemoveAll;
                     PreferencesHelper.setHasSeenOnboarding(true);
+                    PreferencesHelper.saveIsVisitor(isVisitor: true);
                   },
                 ),
               VerticalSpace(context.height * 0.044),

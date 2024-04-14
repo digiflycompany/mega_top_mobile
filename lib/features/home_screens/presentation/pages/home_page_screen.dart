@@ -5,13 +5,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/guest_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/pages/empty_cart_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/categories_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/main_screen.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offers_screen.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,8 +31,8 @@ class _HomePageState extends State<HomePage> {
     const MainPage(),
     const CategoriesPage(),
     const OffersPage(),
-    const CartPage(),
-    const UserAccountScreen(),
+    (PreferencesHelper.getToken()?.isNotEmpty ?? false) ? const CartPage() : const EmptyCartScreen(),
+    (PreferencesHelper.getToken()?.isNotEmpty ?? false) ? const UserAccountScreen() : const GuestAccountScreen(),
   ];
 
   void _onItemTapped(int index) {
