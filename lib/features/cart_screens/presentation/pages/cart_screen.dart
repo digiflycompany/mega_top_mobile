@@ -5,7 +5,6 @@ import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_checkout_button.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
@@ -13,7 +12,6 @@ import '../../../../core/utils/spacer.dart';
 import '../../../../core/widgets/app_bar_fav_icon.dart';
 import '../widgets/cart_items_list.dart';
 import '../widgets/cart_screen_address.dart';
-import '../widgets/shipment_quantity_row.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});

@@ -106,6 +106,7 @@ class OnBoardingView extends StatelessWidget {
             ],
           );
         },
+
       ),
     );
   }

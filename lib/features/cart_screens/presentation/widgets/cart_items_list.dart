@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_string.dart';
 import 'cart_items_container.dart';
 
 class CartItemsListView extends StatelessWidget {
@@ -47,6 +44,7 @@ class CartItemsListView extends StatelessWidget {
                         ),
                       );
                     }
+                    return null;
                   },
                 ),
               );

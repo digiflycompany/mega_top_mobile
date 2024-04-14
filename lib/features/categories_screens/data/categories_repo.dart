@@ -121,6 +121,7 @@ class CategoriesRepoImp implements CategoriesRepo {
       ).then((value) {
         print(value!.data);
         print('abanoubbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+        return null;
           });
         ProductDetailsModel productModel = ProductDetailsModel.fromJson(response?.data);
         return productModel;
