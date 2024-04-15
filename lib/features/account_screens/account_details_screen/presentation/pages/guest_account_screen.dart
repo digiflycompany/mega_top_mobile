@@ -51,8 +51,9 @@ class GuestAccountScreen extends StatelessWidget {
                 },
               ),
               VerticalSpace(24.h),
-              const PrimaryOutlinedButton(
+              PrimaryOutlinedButton(
                 text: AppStrings.loginEn,
+                onTap: ()=> Routes.loginRoute.moveTo,
               ),
               VerticalSpace(50.h),
               Align(

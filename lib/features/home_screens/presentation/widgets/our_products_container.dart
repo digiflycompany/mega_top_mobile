@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
@@ -32,7 +33,26 @@ class OurProductsContainer extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width * 0.037),
         child: Row(
           children: [
-            Image.asset(productPhoto!, width: context.width * 0.13),
+            productPhoto.isNotNull
+                ? CachedNetworkImage(
+              imageUrl: productPhoto!,
+              width: context.width * 0.13,
+              placeholder: (context, url) => Center(
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    colorScheme: ColorScheme.fromSwatch().copyWith(
+                      primary: AppColors.primaryColor,
+                    ),
+                  ),
+                  child: Transform.scale(
+                      scale: 0.6,
+                      child: CircularProgressIndicator.adaptive()),
+                ),
+              ),
+              errorWidget: (context, url, error) =>
+                  Icon(Icons.error),
+            ):Image.asset("assets/images/ad.png",width: context.width * 0.13,),
+            //Image.asset(productPhoto!, width: context.width * 0.13),
             HorizontalSpace(context.width * 0.02),
             Expanded(
               child: Padding(

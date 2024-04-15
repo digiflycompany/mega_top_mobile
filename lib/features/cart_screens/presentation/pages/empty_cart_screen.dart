@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
@@ -12,7 +11,6 @@ class EmptyCartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.circleAvatarBackground,
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.shoppingCartEn)),

@@ -34,7 +34,7 @@ class CustomerInformation extends StatelessWidget {
                   //name: AppStrings.userName,
                   //name: !PreferencesHelper.getIsVisitor?'${PreferencesHelper.getName}':'',
                   //name: (PreferencesHelper.getToken()!.isNotEmpty) ? PreferencesHelper.getName : '',
-                  name: isUserLoggedIn ? PreferencesHelper.getName : '',
+                  name: isUserLoggedIn ? PreferencesHelper.getName : 'Guest',
                 ),
                 const Spacer(),
                 GestureDetector(
