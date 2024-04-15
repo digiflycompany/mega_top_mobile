@@ -14,6 +14,7 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/language_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/notification_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/privacy_policy_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/sign_out_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/terms_and_conditions_item.dart';
 
 class GuestAccountScreen extends StatelessWidget {
@@ -26,7 +27,9 @@ class GuestAccountScreen extends StatelessWidget {
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.accountEn)),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+        padding: EdgeInsets.symmetric(
+            horizontal: context.width * 0.045,
+            vertical: context.height * 0.045),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -53,7 +56,7 @@ class GuestAccountScreen extends StatelessWidget {
               VerticalSpace(24.h),
               PrimaryOutlinedButton(
                 text: AppStrings.loginEn,
-                onTap: ()=> Routes.loginRoute.moveTo,
+                onTap: () => Routes.loginRoute.moveTo,
               ),
               VerticalSpace(50.h),
               Align(
@@ -67,7 +70,7 @@ class GuestAccountScreen extends StatelessWidget {
                   )),
               VerticalSpace(25.h),
               NotificationItem(
-                onTap: ()=> Routes.notificationPageRoute.moveTo,
+                onTap: () => Routes.notificationPageRoute.moveTo,
               ),
               VerticalSpace(40.h),
               Align(
@@ -96,6 +99,7 @@ class GuestAccountScreen extends StatelessWidget {
               VerticalSpace(16.h),
               const PrivacyPolicyItem(),
               VerticalSpace(33.h),
+              const SignOutItem(),
             ],
           ),
         ),
