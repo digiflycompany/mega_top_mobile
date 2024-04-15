@@ -11,13 +11,16 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+
 import '../../../../core/utils/app_services_dart.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../authentication_screens/cubit/auth_cubit.dart';
 import '../../cubit/home_cubit.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key,});
+  const MyApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +28,16 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-        builder: (BuildContext context, Widget? child) {
+      builder: (BuildContext context, Widget? child) {
         return MultiBlocProvider(
           providers: [
             BlocProvider<AuthenticationCubit>(
-              create:  (BuildContext context) => AuthenticationCubit(AuthRepoImp()),
+              create: (BuildContext context) =>
+                  AuthenticationCubit(AuthRepoImp()),
             ),
             BlocProvider<CategoryCubit>(
-              create: (BuildContext context) => CategoryCubit()..getCategories(),
+              create: (BuildContext context) =>
+                  CategoryCubit()..getCategories(),
             ),
             BlocProvider<OrdersCubit>(
               create: (BuildContext context) => OrdersCubit(),
@@ -41,7 +46,7 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => GlobalCubit(),
             ),
             BlocProvider<HomeCubit>(
-              create: (BuildContext context) => HomeCubit(),
+              create: (BuildContext context) => HomeCubit()..getLastOffers(),
             ),
             BlocProvider<OffersCubit>(
               create: (BuildContext context) => OffersCubit(),

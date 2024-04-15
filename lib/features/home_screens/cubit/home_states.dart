@@ -8,10 +8,12 @@ class ImageChanged extends HomeState {
   final int index;
   ImageChanged({required this.index});
 }
+
 class HomePageChanged extends HomeState {
   final int index;
   HomePageChanged({required this.index});
 }
+
 class HomeLoadedState extends HomeState {
   final UserModel user;
 
@@ -26,4 +28,14 @@ class UserDetailsFailure extends HomeState {
   final String error;
 
   UserDetailsFailure(this.error);
+}
+
+class LatestOfferSuccess extends HomeState {}
+
+class LatestOfferLoading extends HomeState {}
+
+class LatestOfferFailure extends HomeState {
+  final String error;
+
+  LatestOfferFailure(this.error);
 }

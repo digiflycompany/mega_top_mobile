@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:mega_top_mobile/features/home_screens/data/models/latest_offer_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/repo/home_page_repo.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -31,6 +32,7 @@ class HomeCubit extends Cubit<HomeState> {
     noResult = !noResult;
     emit(HomeInitial());
   }
+
   UserModel? userDetails;
   // Future<void> getUserDetails() async {
   //   emit(UserDetailsLoading());
@@ -45,4 +47,20 @@ class HomeCubit extends Cubit<HomeState> {
   //     emit(UserDetailsFailure(e.toString()));
   //   }
   // }
+
+  LatestOfferModel? latestOfferModel;
+  Future<LatestOfferModel?> getLastOffers() async {
+    emit(LatestOfferLoading());
+    try {
+      latestOfferModel = await HomePageRepoImp().getLastOffers();
+      if (latestOfferModel!.latestOfferList.isNotEmpty) {
+        emit(LatestOfferSuccess());
+      } else {
+        emit(LatestOfferFailure('no latest offer found'));
+      }
+    } catch (e) {
+      emit(LatestOfferFailure(e.toString()));
+    }
+    return null;
+  }
 }

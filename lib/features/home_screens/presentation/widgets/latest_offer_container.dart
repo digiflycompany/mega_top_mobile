@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+
 import '../../../../core/utils/app_color.dart';
 
 class LatestOffersContainer extends StatelessWidget {
@@ -24,26 +25,33 @@ class LatestOffersContainer extends StatelessWidget {
         padding: EdgeInsets.only(top: context.height * 0.012),
         child: Column(
           children: [
-            Image.asset(
-              productPhoto!,
-              width: context.width * 0.095,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(
+                  productPhoto!,
+                  //width: context.width * 0.095,
+                ),
+              ),
             ),
             VerticalSpace(context.height * 0.008),
             Text(
               productName!,
+              maxLines: 1,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
                   fontSize: 10.sp),
             ),
             VerticalSpace(context.height * 0.0026),
-            Text(
-              productDiscount!,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 8.sp),
-            ),
+            if (productDiscount.isNotNull)
+              Text(
+                productDiscount!,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 8.sp),
+              ),
           ],
         ),
       ),
