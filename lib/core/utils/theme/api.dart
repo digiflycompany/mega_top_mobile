@@ -24,4 +24,6 @@ class EndPoints {
       'https://megatop.com.eg/wp-json/wc/v3/orders';
   static const String myOrdersAPI =
       'https://megatop.com.eg/wp-json/wc/v3/orders';
+  static const String latestProductsAPI =
+      'https://megatop.com.eg/wp-json/wc/v3/orders';
 }
