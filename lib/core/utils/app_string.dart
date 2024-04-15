@@ -138,6 +138,7 @@ class AppStrings {
       'Select the delivery address';
   static const String confirmShippingAddressEn = 'Confirm Shipping Address';
   static const String productsEn = 'Products';
+  static const String products = ' Products';
   static const String products2En = 'products :';
   static const String productsQuantityEn = '2';
   static const String addressInCartEn =

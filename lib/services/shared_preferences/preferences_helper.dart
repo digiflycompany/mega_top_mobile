@@ -19,6 +19,11 @@ class PreferencesHelper {
   static String? getToken() {
     return preferences?.getString("token");
   }
+  static String get getName {
+    UserModel? userModel = UserModel.fromJson(
+        json.decode('${preferences?.getString('userModel')}'));
+    return userModel.fullName?? '';
+  }
 
   static Future<void> saveIsVisitor({required bool isVisitor}) async {
     await preferences?.setBool("isVisitor", isVisitor);

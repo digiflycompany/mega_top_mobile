@@ -1,7 +1,7 @@
-class SelectedCategoriesModel {
+class ProductDetailsModel {
   List<ProductModel> productList = [];
 
-  SelectedCategoriesModel.fromJson(List<dynamic> jsonList) {
+  ProductDetailsModel.fromJson(List<dynamic> jsonList) {
     jsonList.forEach((element) {
       productList.add(ProductModel.fromJson(element));
     });

@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/product_details_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/your_orders_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 
-import '../../../core/utils/app_assets.dart';
-
 class CategoryCubit extends Cubit<CategoryState> {
+
   CategoryCubit() : super(CategoryInitial());
 
   CategoryCubit getCubit(context) => BlocProvider.of(context);
-
   bool isGrid = true;
   bool noResult = false;
   bool addedToFavourites = false;
@@ -49,7 +51,9 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   void toggleFavourite() {
-    addedToFavourites = !addedToFavourites;
+      addedToFavourites = !addedToFavourites;
+    // categoriesRepo.addToWishList("1987",
+    //     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21lZ2F0b3AuY29tLmVnIiwiaWF0IjoxNzExMjk0NTc1LCJuYmYiOjE3MTEyOTQ1NzUsImV4cCI6MTcxMTg5OTM3NSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMTQifX19.iy3gvBgYShSO4U16q1LTQ5Xo5cii2M5rxAEy3TLyiPY");
     emit(CategoryInitial());
   }
 
@@ -137,7 +141,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryLoading());
     try {
       List<CategoriesModel>? fetchedCategories =
-          await categoriesRepo.getCategories();
+      await categoriesRepo.getCategories();
       if (fetchedCategories!.isNotEmpty) {
         categories = fetchedCategories;
 
@@ -156,7 +160,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(SelectedCategoryLoading());
     try {
       selectedCategoriesModel =
-          await categoriesRepo.getSelectedCategories(selectedId);
+      await categoriesRepo.getSelectedCategories(selectedId);
       print(selectedCategoriesModel!.productList[0].images[0].src + "///////");
       emit(SelectedCategorySuccess());
     } catch (e) {
@@ -165,9 +169,52 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  late int selectedProductIndex;
+  int selectedProductIndex = 0;
 
   void setCategoryProductIndex({required int selectedProductIndex}) {
     this.selectedProductIndex = selectedProductIndex;
   }
+
+  Future<void> addToCart(int customerId, int productId, int quantity) async {
+    emit(addToCartLoading());
+    try {
+      categoriesRepo.makeOrder(customerId, productId, quantity);
+      emit(addToCartSuccess());
+    } catch (e) {
+      emit(addToCartFailure(e.toString()));
+    }
+  }
+  OrderList? orders;
+  Future<void> getMyOrders(int customerID) async {
+    emit(myOrdersLoading());
+    try {
+      orders=
+      await categoriesRepo.getMyOrders(customerID);
+      if (orders!.isNotNull) {
+        emit(myOrdersSuccess());
+      } else {
+        emit(myOrdersFailure('No categories found'));
+      }
+    } catch (e) {
+      emit(myOrdersFailure(e.toString()));
+    }
+  }
+  ProductDetailsModel? productDetailsModel;
+  Future<void> getProductsDetails(int productID) async {
+    emit(productDetailsLoading());
+    try {
+      productDetailsModel=
+      await categoriesRepo.getProductDetails(productID);
+      if (productDetailsModel!.isNotNull) {
+        print(productDetailsModel);
+        print('ssssssssssssssssssssssssssssssssssssssssaaassssssssssssssssss');
+        emit(productDetailsSuccess());
+      } else {
+        emit(productDetailsFailure('No categories found'));
+      }
+    } catch (e) {
+      emit(productDetailsFailure(e.toString()));
+    }
+  }
+
 }

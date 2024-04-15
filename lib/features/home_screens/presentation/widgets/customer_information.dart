@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_icon.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_name.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_photo.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class CustomerInformation extends StatelessWidget {
   const CustomerInformation({super.key});
@@ -19,7 +20,9 @@ class CustomerInformation extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {},
       builder: (context, state) {
-          return Padding(
+        String token = PreferencesHelper.getToken() ?? '';
+        bool isUserLoggedIn = token.isNotEmpty;
+        return Padding(
             padding: EdgeInsets.symmetric(vertical: context.height * 0.0165),
             child: Row(
               children: [
@@ -28,7 +31,10 @@ class CustomerInformation extends StatelessWidget {
                 ),
                 HorizontalSpace(context.width * 0.022),
                 CustomerName(
-                  name: AppStrings.userName,
+                  //name: AppStrings.userName,
+                  //name: !PreferencesHelper.getIsVisitor?'${PreferencesHelper.getName}':'',
+                  //name: (PreferencesHelper.getToken()!.isNotEmpty) ? PreferencesHelper.getName : '',
+                  name: isUserLoggedIn ? PreferencesHelper.getName : 'Guest',
                 ),
                 const Spacer(),
                 GestureDetector(

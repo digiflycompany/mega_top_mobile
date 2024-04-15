@@ -21,13 +21,23 @@ class DioHelper {
   static Dio? dio = init();
 
   static Future<Response?> postData(
-      {required String url, Map<String, dynamic>? data}) async {
+      {required String url,
+      Map<String, dynamic>? queryParameters,
+        String username = 'ck_9d47524cd8ae5eb47260cf8cf34144b04c219a45',
+        String password = 'cs_b20f3ce367d0ceac7d671b9e85832dd4a5324b73',
+      Map<String, dynamic>? data}) async {
     //String? token = PreferencesHelper.getToken();
     try {
+      Map<String, dynamic> headers = {};
+      String basicAuth =
+          'Basic ' + base64Encode(utf8.encode('$username:$password'));
+      headers['Authorization'] = basicAuth;
       Response? response = await dio?.post(
         url,
+        queryParameters: queryParameters,
         //   options: Options(headers: {'Authorization': 'Bearer ${token}'}),
         data: data,
+        options: Options(headers: headers),
       );
       if (kDebugMode) {
         print('STATUS CODE IS ${response?.statusCode}');

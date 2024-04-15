@@ -1,13 +1,13 @@
 class UserDetailsModel {
   Data? data;
-  int? iD;
+  late int iD;
   Caps? caps;
   String? capKey;
   List<String>? roles;
   Null filter;
 
   UserDetailsModel(
-      {this.data, this.iD, this.caps, this.capKey, this.roles, this.filter});
+      {this.data, required this.iD, this.caps, this.capKey, this.roles, this.filter});
 
   UserDetailsModel.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;

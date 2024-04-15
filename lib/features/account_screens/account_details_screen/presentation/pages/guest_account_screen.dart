@@ -47,12 +47,13 @@ class GuestAccountScreen extends StatelessWidget {
               PrimaryButton(
                 text: AppStrings.signUpEn,
                 onTap: () {
-                  Routes.userAccountPageRoute.moveTo;
+                  Routes.signUpRoute.moveTo;
                 },
               ),
               VerticalSpace(24.h),
-              const PrimaryOutlinedButton(
+              PrimaryOutlinedButton(
                 text: AppStrings.loginEn,
+                onTap: ()=> Routes.loginRoute.moveTo,
               ),
               VerticalSpace(50.h),
               Align(

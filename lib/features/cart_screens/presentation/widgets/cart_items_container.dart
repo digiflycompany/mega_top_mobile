@@ -104,7 +104,7 @@ class CartItemsContainer extends StatelessWidget {
                             const Spacer(),
                             ArithmeticContainer(
                               icon: AppAssets.plusIcon,
-                              onTap: cartCubit.increment,
+                              //onTap: cartCubit.increment,
                             ),
                             HorizontalSpace(context.width * 0.04),
                             CartListProductQuantity(
@@ -115,7 +115,7 @@ class CartItemsContainer extends StatelessWidget {
                                 ? const BasketContainer()
                                 : ArithmeticContainer(
                                     icon: AppAssets.minusIcon,
-                                    onTap: cartCubit.decrement,
+                                    //onTap: cartCubit.decrement,
                                   ),
                           ],
                         );

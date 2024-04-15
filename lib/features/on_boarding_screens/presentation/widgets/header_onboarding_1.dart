@@ -58,6 +58,7 @@ class FirstHeader extends StatelessWidget {
           onTap: () {
             Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
             PreferencesHelper.setHasSeenOnboarding(true);
+            PreferencesHelper.saveIsVisitor(isVisitor: true);
           },
         ),
       ],

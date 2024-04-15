@@ -28,10 +28,11 @@ class AuthRepoImp implements AuthRepo {
         },
       );
       if (response != null && response.statusCode == 200) {
-        UserModel user = UserModel.fromJson(response.data);
+        UserModel userModel = UserModel.fromJson(response.data);
         await PreferencesHelper.saveToken(token: response.data['token']);
+        await PreferencesHelper.saveUserModel(userModel);
         print(PreferencesHelper.getToken());
-        return user;
+        return userModel;
       }
     } catch (e) {
       print('Error during login: $e');

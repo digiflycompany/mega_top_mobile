@@ -1,3 +1,4 @@
+
 class SignUpModel {
   String? code;
   String? message;
