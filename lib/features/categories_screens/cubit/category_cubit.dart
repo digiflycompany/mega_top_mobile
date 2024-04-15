@@ -143,7 +143,8 @@ class CategoryCubit extends Cubit<CategoryState> {
           await categoriesRepo.getCategories();
       if (fetchedCategories!.isNotEmpty) {
         categories = fetchedCategories;
-
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        print(categories);
         emit(CategorySuccess());
       } else {
         emit(CategoryFailure('No categories found'));

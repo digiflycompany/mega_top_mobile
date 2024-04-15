@@ -9,7 +9,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/prima
 import '../widgets/wish_list_count.dart';
 
 class WishListScreen extends StatelessWidget {
-  final bool isEmpty = false;
+  final bool isEmpty = true;
   const WishListScreen({super.key});
 
   @override

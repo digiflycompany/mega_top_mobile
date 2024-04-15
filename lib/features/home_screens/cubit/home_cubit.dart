@@ -34,17 +34,22 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   UserModel? userDetails;
-  // Future<void> getUserDetails() async {
-  //   emit(UserDetailsLoading());
+  List<LatestProductsModel> latestProducts = [];
+
+  // Future<void> getLatestProducts() async {
+  //   emit(LatestProductLoading());
   //   try {
-  //     userDetails  = await homePageRepo.getUserDetails();
-  //     if (userDetails!.isNotNull) {
-  //       emit(UserDetailsSuccess());
+  //     List<LatestProductsModel>? fetchedLatestProducts =
+  //     await homePageRepo.getLatestProduct();
+  //     if (fetchedLatestProducts != null && fetchedLatestProducts.isNotEmpty) {
+  //       latestProducts = fetchedLatestProducts;
+  //       print('Fetched products: $latestProducts');
+  //       emit(LatestProductSuccess());
   //     } else {
-  //       emit(UserDetailsFailure('No details found'));
+  //       emit(LatestProductFailure('No products found or empty response.'));
   //     }
   //   } catch (e) {
-  //     emit(UserDetailsFailure(e.toString()));
+  //     emit(LatestProductFailure(e.toString()));
   //   }
   // }
 
@@ -63,4 +68,27 @@ class HomeCubit extends Cubit<HomeState> {
     }
     return null;
   }
+  Future<void> getLatestProducts() async {
+    emit(LatestProductLoading());
+    try {
+      List<LatestProductsModel>? fetchedLatestProducts = await homePageRepo.getLatestProduct();
+      if (fetchedLatestProducts != null) {
+        if (fetchedLatestProducts.isNotEmpty) {
+          latestProducts = fetchedLatestProducts;
+          print('Successfully fetched products');
+          emit(LatestProductSuccess());
+        } else {
+          print('No products found');
+          emit(LatestProductFailure('No products found'));
+        }
+      } else {
+        print('Failed to fetch products or received null');
+        emit(LatestProductFailure('Error fetching products'));
+      }
+    } catch (e) {
+      print('Error in getLatestProducts: $e');
+      emit(LatestProductFailure(e.toString()));
+    }
+  }
+
 }

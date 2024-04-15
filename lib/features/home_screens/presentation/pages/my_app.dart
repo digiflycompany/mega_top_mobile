@@ -11,7 +11,6 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
-
 import '../../../../core/utils/app_services_dart.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../authentication_screens/cubit/auth_cubit.dart';
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (BuildContext context, Widget? child) {
+        builder: (BuildContext context, Widget? child) {
         return MultiBlocProvider(
           providers: [
             BlocProvider<AuthenticationCubit>(
@@ -46,6 +45,7 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => GlobalCubit(),
             ),
             BlocProvider<HomeCubit>(
+              create: (BuildContext context) => HomeCubit()..getLatestProducts(),
               create: (BuildContext context) => HomeCubit()..getLastOffers(),
             ),
             BlocProvider<OffersCubit>(
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
               future: PreferencesHelper.hasSeenOnboarding(),
               builder: (context, snapshot) {
                 if (snapshot.data == true) {
-                  return PreferencesHelper.applicationFirstPage;
+                  return HomePage();
                 } else {
                   return OnBoardingScreens();
                 }

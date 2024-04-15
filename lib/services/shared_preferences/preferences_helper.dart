@@ -24,6 +24,11 @@ class PreferencesHelper {
         json.decode('${preferences?.getString('userModel')}'));
     return userModel.fullName?? '';
   }
+  static int? get getID {
+    UserModel? userModel = UserModel.fromJson(
+        json.decode('${preferences?.getString('userModel')}'));
+    return userModel.userId;
+  }
 
   static Future<void> saveIsVisitor({required bool isVisitor}) async {
     await preferences?.setBool("isVisitor", isVisitor);
