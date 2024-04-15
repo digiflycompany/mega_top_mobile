@@ -15,6 +15,7 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/profile_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/saved_card_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/shipping_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/sign_out_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/terms_and_conditions_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/user_information.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/wish_list_item.dart';
@@ -104,6 +105,7 @@ class UserAccountScreen extends StatelessWidget {
               VerticalSpace(16.h),
               const PrivacyPolicyItem(),
               VerticalSpace(33.h),
+              const SignOutItem(),
             ],
           ),
         ),

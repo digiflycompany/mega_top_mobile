@@ -16,14 +16,19 @@ class AppStrings {
   static const String numberOfProductsEn = 'Number of products';
   static const String pleaseEnterYourEmail = 'Please enter your email';
   static const String pleaseEnterOtp = 'Please enter OTP';
-  static const String pleaseEnterValidEmail = 'Please enter a valid email address';
+  static const String pleaseEnterValidEmail =
+      'Please enter a valid email address';
   static const String pleaseEnterYourUserName = 'Please enter your username';
   static const String pleaseEnterYourPassword = 'Please enter your password';
-  static const String pleaseConfirmYourPassword = 'Please confirm your password';
-  static const String pleaseEnterTheFourDigitsCode = 'Please enter the 4 digit code that sent to';
-  static const String alreadyRegisteredUsingThisEmail = 'Already registered using this email';
+  static const String pleaseConfirmYourPassword =
+      'Please confirm your password';
+  static const String pleaseEnterTheFourDigitsCode =
+      'Please enter the 4 digit code that sent to';
+  static const String alreadyRegisteredUsingThisEmail =
+      'Already registered using this email';
   static const String passwordsNotMatching = 'Passwords not matching';
-  static const String passwordVerification = 'Password must be at least 7 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+  static const String passwordVerification =
+      'Password must be at least 7 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
   static const String twoProductsEn = ' (2)';
   static const String shippingFeesEn = 'Shipping fees';
   static const String totalAmountEn = 'Total amount';
@@ -102,8 +107,10 @@ class AppStrings {
   static const String cancelledEn = 'Cancelled';
   static const String doYouWantToCancel = 'Do you want to cancel your order ?';
   static const String resetPasswordEn = 'Reset Password';
-  static const String incorrectCodeOrNetworkIssuesEn = 'InCorrect Code or network issues.';
-  static const String incorrectEmailOrNetworkIssuesEn = 'InCorrect Email or network issues.';
+  static const String incorrectCodeOrNetworkIssuesEn =
+      'InCorrect Code or network issues.';
+  static const String incorrectEmailOrNetworkIssuesEn =
+      'InCorrect Email or network issues.';
   static const String invalidEmailOrPassword = 'Invalid Email or password';
   static const String invalidOtp = 'Invalid OTP';
   static const String enterYourEmailAddressEn =
@@ -172,7 +179,8 @@ class AppStrings {
   static const String availableEn = 'Available';
   static const String latestOffersEn = 'Latest offers';
   static const String discount15PercentEn = 'Discount 15%';
-  static const String userNotFoundWithProvidedEmail = 'User not found with provided email';
+  static const String userNotFoundWithProvidedEmail =
+      'User not found with provided email';
   static const String rackEn = 'Rack';
   static const String productPriceEn = '1500 LE';
   static const String productOldPriceEn = '2300 LE';
@@ -307,4 +315,5 @@ class AppStrings {
   static const String removeItem = 'Remove item :';
   static const String addressHasBeenEdited = 'Address has been edited';
   static const String shippingAddressesEn = 'Shipping Addresses';
+  static const String signOut = 'Sign out';
 }

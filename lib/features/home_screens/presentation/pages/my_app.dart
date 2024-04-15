@@ -18,7 +18,9 @@ import '../../../authentication_screens/cubit/auth_cubit.dart';
 import '../../cubit/home_cubit.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key,});
+  const MyApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +32,12 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider<AuthenticationCubit>(
-              create:  (BuildContext context) => AuthenticationCubit(AuthRepoImp()),
+              create: (BuildContext context) =>
+                  AuthenticationCubit(AuthRepoImp()),
             ),
             BlocProvider<CategoryCubit>(
-              create: (BuildContext context) => CategoryCubit()..getCategories(),
+              create: (BuildContext context) =>
+                  CategoryCubit()..getCategories(),
             ),
             BlocProvider<OrdersCubit>(
               create: (BuildContext context) => OrdersCubit(),
@@ -42,7 +46,8 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => GlobalCubit(),
             ),
             BlocProvider<HomeCubit>(
-              create: (BuildContext context) => HomeCubit()..getLatestProducts(),
+              create: (BuildContext context) => HomeCubit()..getLatestProducts()..getLastOffers(),
+             // create: (BuildContext context) => HomeCubit()..getLastOffers(),
             ),
             BlocProvider<OffersCubit>(
               create: (BuildContext context) => OffersCubit(),

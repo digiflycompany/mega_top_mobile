@@ -121,6 +121,7 @@ class AppAssets {
   static const String visaCard = "$svgPath/visa_card.svg";
   static const String compare = "$svgPath/compare.svg";
   static const String profileIcon = "$svgPath/profile.svg";
+  static const String signOutIcon = "$svgPath/sign out.svg";
   static const String editProfileIcon = "$svgPath/edit_profile.svg";
   static const String editPasswordIcon = "$svgPath/edit_password.svg";
   static const String deleteIcon = "$svgPath/delete.svg";
