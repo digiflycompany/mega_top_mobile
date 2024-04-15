@@ -34,6 +34,8 @@ class OurProductsList extends StatelessWidget {
                      productPhoto: category.image?.src,
                      productName: category.name,
                      productQuantity: category.count.toString()+ AppStrings.products,
+                     categoryId: category.id,
+                     index: index,
                    ),
                    HorizontalSpace(context.width * 0.045),  // Space between items
                  ],
