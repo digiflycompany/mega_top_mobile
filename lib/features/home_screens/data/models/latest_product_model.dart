@@ -5,16 +5,26 @@ class LatestProductsModel {
   String? permalink;
   String? image;
 
+  static List<LatestProductsModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList
+        .map((jsonItem) => LatestProductsModel.fromJson(jsonItem))
+        .toList();
+  }
   LatestProductsModel(
       {this.id, this.name, this.price, this.permalink, this.image});
 
   LatestProductsModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    price = json['price'];
-    permalink = json['permalink'];
-    image = json['image'];
+    try {
+      id = json['id'];
+      name = json['name'];
+      price = json['price'];
+      permalink = json['permalink'];
+      image = json['image'];
+    } catch (e) {
+      print('Failed to parse product: $e');
+    }
   }
+
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -25,4 +35,8 @@ class LatestProductsModel {
     data['image'] = this.image;
     return data;
   }
+
+  // static List<LatestProductsModel> fromJsonList(List<dynamic> jsonList) {
+  //   return jsonList.map((json) => LatestProductsModel.fromJson(json)).toList();
+  // }
 }

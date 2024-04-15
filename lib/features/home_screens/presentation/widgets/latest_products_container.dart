@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,14 +15,16 @@ class LatestProductsContainer extends StatelessWidget {
   final String? productPrice;
   final String? discountPercent;
   final bool? discount;
-  const LatestProductsContainer(
-      {super.key,
-      this.productPhoto,
-      this.productName,
-      this.productType,
-      this.productPrice,
-      this.discount = false,
-      this.discountPercent});
+
+  const LatestProductsContainer({
+    super.key,
+    this.productPhoto,
+    this.productName,
+    this.productType,
+    this.productPrice,
+    this.discount = false,
+    this.discountPercent
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,48 +57,63 @@ class LatestProductsContainer extends StatelessWidget {
                   width: double.infinity,
                   height: context.height * 0.269,
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(context.height * 0.0065),
+                    borderRadius: BorderRadius.circular(context.height * 0.0065),
                     color: AppColors.iconsBackgroundColor,
                   ),
                   child: Center(
-                      child: Image.asset(
-                    productPhoto!,
-                    width: context.width * 0.27,
-                  )),
-                ),
-                discount == true
-                    ? Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: context.height * 0.012,
-                            horizontal: context.width * 0.022),
-                        child: Container(
-                          width: context.width * 0.11,
-                          height: context.height * 0.033,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(context.height * 0.003),
-                              color: AppColors.redIconColor),
-                          child: Center(
-                            child: Text(
-                              discountPercent!,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 12.sp),
+                    child: productPhoto.isNotNull
+                        ? CachedNetworkImage(
+                      imageUrl: productPhoto!,
+                      width: context.width * 0.27,
+                      placeholder: (context, url) => Center(
+                        child: Theme(
+                          data: Theme.of(context).copyWith(
+                            colorScheme: ColorScheme.fromSwatch().copyWith(
+                              primary: AppColors.primaryColor,
                             ),
                           ),
+                          child: Transform.scale(
+                              scale: 0.6,
+                              child: CircularProgressIndicator.adaptive()),
                         ),
-                      )
-                    : Container(),
+                      ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    )
+                        : Image.asset("assets/images/ad.png", width: context.width * 0.13),
+                  ),
+                ),
+                if (discount == true && discountPercent != null) ...[
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: context.height * 0.012,
+                        horizontal: context.width * 0.022),
+                    child: Container(
+                      width: context.width * 0.11,
+                      height: context.height * 0.033,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(context.height * 0.003),
+                          color: AppColors.redIconColor),
+                      child: Center(
+                        child: Text(
+                          discountPercent!,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12.sp),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
                 Align(
-                    alignment: AlignmentDirectional.topEnd,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: context.height * 0.022,
-                          horizontal: context.width * 0.045),
-                      child: SvgPicture.asset(AppAssets.favourOutlinedIcon),
-                    )),
+                  alignment: AlignmentDirectional.topEnd,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: context.height * 0.022,
+                        horizontal: context.width * 0.045),
+                    child: SvgPicture.asset(AppAssets.favourOutlinedIcon),
+                  ),
+                ),
               ],
             ),
           ),
@@ -106,39 +124,45 @@ class LatestProductsContainer extends StatelessWidget {
                 bottom: context.height * 0.022),
             child: Column(
               children: [
-                Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Text(
-                    productName!,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14.sp),
+                if (productName != null) ...[
+                  Align(
+                    alignment: AlignmentDirectional.topStart,
+                    child: Text(
+                      productName!,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14.sp),
+                    ),
                   ),
-                ),
-                VerticalSpace(context.height * 0.009),
-                Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Text(
-                    productType!,
-                    style: TextStyle(
-                        color: AppColors.greyTextColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12.sp),
+                  VerticalSpace(context.height * 0.009),
+                ],
+                if (productType != null) ...[
+                  Align(
+                    alignment: AlignmentDirectional.topStart,
+                    child: Text(
+                      productType!,
+                      style: TextStyle(
+                          color: AppColors.greyTextColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 12.sp),
+                    ),
                   ),
-                ),
-                VerticalSpace(context.height * 0.012),
+                  VerticalSpace(context.height * 0.012),
+                ],
                 Row(
                   children: [
                     const AvailableContainer(),
                     const Spacer(),
-                    Text(
-                      productPrice!,
-                      style: TextStyle(
-                          color: AppColors.primaryColor,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700),
-                    )
+                    if (productPrice != null) ...[
+                      Text(
+                        productPrice!,
+                        style: TextStyle(
+                            color: AppColors.primaryColor,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w700),
+                      )
+                    ]
                   ],
                 )
               ],

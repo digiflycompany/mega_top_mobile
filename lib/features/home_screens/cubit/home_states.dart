@@ -27,3 +27,13 @@ class UserDetailsFailure extends HomeState {
 
   UserDetailsFailure(this.error);
 }
+
+class LatestProductSuccess extends HomeState {}
+
+class LatestProductLoading extends HomeState {}
+
+class LatestProductFailure extends HomeState {
+  final String error;
+
+  LatestProductFailure(this.error);
+}

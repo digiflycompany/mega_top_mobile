@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => GlobalCubit(),
             ),
             BlocProvider<HomeCubit>(
-              create: (BuildContext context) => HomeCubit(),
+              create: (BuildContext context) => HomeCubit()..getLatestProducts(),
             ),
             BlocProvider<OffersCubit>(
               create: (BuildContext context) => OffersCubit(),

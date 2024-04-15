@@ -3,7 +3,6 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_list.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/best_seller_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_offers_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_products_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_app_bar.dart';
@@ -39,7 +38,8 @@ class MainPage extends StatelessWidget {
                  const ViewAllRow(
                    bigText: AppStrings.bestSellerEn,
                  ),
-                 const BestSellerList(),
+                 //const BestSellerList(),
+                 const LatestProductsList(),
                  VerticalSpace(context.height*0.0245),
                  const ViewAllRow(
                    bigText: AppStrings.latestOffersEn,
