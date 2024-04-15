@@ -22,7 +22,7 @@ class SignUpEmailVerificationScreen extends StatelessWidget {
       listener: (context, state) {
         if(state is EmailVerifiedSuccess){
           PreferencesHelper.saveIsVisitor(isVisitor: true);
-          Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+          Routes.loginRoute.moveToCurrentRouteAndRemoveAll;
         }
         if(state is EmailVerifiedFailure){
 

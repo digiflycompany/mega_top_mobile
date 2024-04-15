@@ -28,4 +28,6 @@ class EndPoints {
       'https://megatop.com.eg/wp-json/custom/v2/latest_offer';
   static const String latestProductsAPI =
       'https://megatop.com.eg/wp-json/custom/v2/latest_products';
+  static const String deleteAccountAPI =
+      'https://megatop.com.eg/wp-json/custom/v1/users/delete/';
 }

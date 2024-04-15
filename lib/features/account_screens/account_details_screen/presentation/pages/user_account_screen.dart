@@ -106,6 +106,7 @@ class UserAccountScreen extends StatelessWidget {
               const PrivacyPolicyItem(),
               VerticalSpace(33.h),
               const SignOutItem(),
+              VerticalSpace(33.h),
             ],
           ),
         ),

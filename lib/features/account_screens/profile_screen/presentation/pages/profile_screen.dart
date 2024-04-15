@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_password_item.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_item.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -42,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                   Text("Welcome, ",
                       style: TextStyle(
                           fontWeight: FontWeight.w700, fontSize: 16.sp)),
-                  Text(" Mohamed",
+                  Text(PreferencesHelper.getName,
                       style: TextStyle(
                           fontWeight: FontWeight.w700, fontSize: 16.sp)),
                 ],

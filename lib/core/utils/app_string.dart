@@ -149,7 +149,7 @@ class AppStrings {
   static const String products2En = 'products :';
   static const String productsQuantityEn = '2';
   static const String addressInCartEn =
-      'Delivery to Egypt - section 2, Nasr City';
+      'Delivery to Egypt';
   static const String surveillanceCamerasEn = 'Surveillance...';
   static const String twentyFiveProducts = '25 Product';
   static const String upsEn = 'UPS';

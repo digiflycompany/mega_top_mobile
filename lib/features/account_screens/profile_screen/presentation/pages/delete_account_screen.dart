@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/core/widgets/edit_text_form_field.dart';
 import 'package:mega_top_mobile/core/widgets/password_text_field.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class DeleteAccountScreen extends StatelessWidget {
   const DeleteAccountScreen({super.key});
@@ -28,9 +29,9 @@ class DeleteAccountScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             VerticalSpace(48.h),
-            const EditTextField(
+            EditTextField(
               title: AppStrings.emailEn,
-              text: "mohamed.nashaat7733@gmail.com",
+              text: PreferencesHelper.getEmail,
             ),
             VerticalSpace(48.h),
             const Text(
