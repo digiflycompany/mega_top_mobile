@@ -24,6 +24,11 @@ class PreferencesHelper {
         json.decode('${preferences?.getString('userModel')}'));
     return userModel.fullName?? '';
   }
+  static String get getEmail {
+    UserModel? userModel = UserModel.fromJson(
+        json.decode('${preferences?.getString('userModel')}'));
+    return userModel.email?? '';
+  }
   static int? get getID {
     UserModel? userModel = UserModel.fromJson(
         json.decode('${preferences?.getString('userModel')}'));

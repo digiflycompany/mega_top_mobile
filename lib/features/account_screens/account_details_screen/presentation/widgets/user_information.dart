@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class UserInformation extends StatelessWidget {
   const UserInformation({super.key});
@@ -24,12 +24,12 @@ class UserInformation extends StatelessWidget {
           ),
         ),
         HorizontalSpace(10.w),
-        const Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(AppStrings.userName,
+            Text(PreferencesHelper.getName,
                 style: TextStyle(fontWeight: FontWeight.w700)),
-            Text(AppStrings.userEmail,
+            Text(PreferencesHelper.getEmail,
                 style: TextStyle(color: AppColors.greyTextColor)),
           ],
         ),

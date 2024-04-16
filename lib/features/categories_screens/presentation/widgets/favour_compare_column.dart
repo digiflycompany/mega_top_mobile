@@ -27,15 +27,15 @@ class FavourCompareColumn extends StatelessWidget {
             child: Column(
               children: [
                 WhiteBoxIcon(
-                  // icon: categoryCubit.addedToFavourites
-                  //     ? AppAssets.favourFilledIcon
-                  //     : AppAssets.favourOutlinedIcon,
-                  icon: categoryCubit
-                          .selectedCategoriesModel!
-                          .productList[categoryCubit.selectedProductIndex]
-                          .wishlist
+                  icon: categoryCubit.addedToFavourites
                       ? AppAssets.favourFilledIcon
                       : AppAssets.favourOutlinedIcon,
+                  // icon: categoryCubit
+                  //         .selectedCategoriesModel!
+                  //         .productList[categoryCubit.selectedProductIndex]
+                  //         .wishlist
+                  //     ? AppAssets.favourFilledIcon
+                  //     : AppAssets.favourOutlinedIcon,
                   onTap: () {
                     categoryCubit.addedToFavourites
                         ? globalCubit.showRemoveFromFavouritesToast(context)

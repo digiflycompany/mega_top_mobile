@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/models/delete_account_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/email_verification_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
@@ -9,6 +10,7 @@ import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.d
 
 abstract class AuthRepo {
   Future<UserModel?> login(String email, String password);
+  Future<DeleteAccountModel?> delete(String email, int id);
   Future<EmailVerificationModel?> verifyEmail(String email, String activationOtp);
   Future<SignUpModel?> signUp(String username, String email, String password, String confirmPassword);
   Future<ResetPasswordModel?> resetPassword(String email);
@@ -128,6 +130,26 @@ class AuthRepoImp implements AuthRepo {
       }
     } catch (e) {
       print('Error during Updating Password: $e');
+    }
+    return null;
+  }
+
+  @override
+  Future<DeleteAccountModel?> delete(String email, int id) async {
+    try {
+      Response? response = await DioHelper.postData(
+        url: EndPoints.deleteAccountAPI,
+        data: {
+          "email": email,
+          "id": id
+        },
+      );
+      if (response != null && response.statusCode == 200) {
+        DeleteAccountModel deleteAccountModel = DeleteAccountModel.fromJson(response.data);
+        return deleteAccountModel;
+      }
+    } catch (e) {
+      print('Error during Account Deletion: $e');
     }
     return null;
   }

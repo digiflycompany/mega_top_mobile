@@ -14,7 +14,6 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/language_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/notification_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/privacy_policy_item.dart';
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/sign_out_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/terms_and_conditions_item.dart';
 
 class GuestAccountScreen extends StatelessWidget {
@@ -99,7 +98,7 @@ class GuestAccountScreen extends StatelessWidget {
               VerticalSpace(16.h),
               const PrivacyPolicyItem(),
               VerticalSpace(33.h),
-              const SignOutItem(),
+              //const SignOutItem(),
             ],
           ),
         ),

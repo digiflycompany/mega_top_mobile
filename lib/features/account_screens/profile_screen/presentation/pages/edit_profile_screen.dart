@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/edit_text_form_field.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -69,14 +70,14 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
               VerticalSpace(40.h),
-              const EditTextField(
+              EditTextField(
                 title: AppStrings.emailEn,
-                text: "mohamed.nashaat7733@gmail.com",
+                text: PreferencesHelper.getEmail,
               ),
               VerticalSpace(40.h),
               EditTextField(
                 title: AppStrings.firstName,
-                text: "Abanoub",
+                text: PreferencesHelper.getName,
                 suffix: Transform.scale(
                   scale: 0.5,
                   child: SvgPicture.asset(
@@ -87,7 +88,7 @@ class EditProfileScreen extends StatelessWidget {
               VerticalSpace(40.h),
               EditTextField(
                 title: AppStrings.lastName,
-                text: "Gamil",
+                text: PreferencesHelper.getName,
                 suffix: Transform.scale(
                   scale: 0.5,
                   child: SvgPicture.asset(
