@@ -16,6 +16,12 @@ class AppStrings {
   static const String numberOfProductsEn = 'Number of products';
   static const String pleaseEnterYourEmail = 'Please enter your email';
   static const String pleaseEnterOtp = 'Please enter OTP';
+  static const String onboardingSecondScreenDescription =
+      'Seamlessly add items to your cart with just a tap. Review your selections, adjust quantities, or continue shopping until you have everything you need.';
+  static const String onboardingThirdScreenDescription =
+      'Sit back and relax while we handle the rest! Get real-time updates on your order status from dispatch to delivery. Enjoy fast, reliable, and hassle-free delivery right to your doorstep.';
+  static const String onboardingFirstScreenDescription =
+      'Discover the latest in technology with a wide range of electronic products from top brands. Browse through our intuitive categories for smartphones, laptops, cameras, and more to find exactly what you need.';
   static const String pleaseEnterValidEmail =
       'Please enter a valid email address';
   static const String pleaseEnterYourUserName = 'Please enter your username';
@@ -148,8 +154,7 @@ class AppStrings {
   static const String products = ' Products';
   static const String products2En = 'products :';
   static const String productsQuantityEn = '2';
-  static const String addressInCartEn =
-      'Delivery to Egypt';
+  static const String addressInCartEn = 'Delivery to Egypt';
   static const String surveillanceCamerasEn = 'Surveillance...';
   static const String twentyFiveProducts = '25 Product';
   static const String upsEn = 'UPS';

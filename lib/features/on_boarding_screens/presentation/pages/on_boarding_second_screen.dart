@@ -24,7 +24,7 @@ class OnboardingSecondScreen extends StatelessWidget {
           VerticalSpace(context.height * 0.0346),
           const OnboardingDescription(
             title: AppStrings.addYourProductsToCartEn,
-            description: AppStrings.onBoardingDescriptionEn,
+            description: AppStrings.onboardingSecondScreenDescription,
           ),
         ],
       ),

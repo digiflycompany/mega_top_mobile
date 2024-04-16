@@ -24,7 +24,7 @@ class OnboardingFirstScreen extends StatelessWidget {
           VerticalSpace(context.height * 0.014),
           const OnboardingDescription(
             title: AppStrings.exploreOurDigitalProductsEn,
-            description: AppStrings.onBoardingDescriptionEn,
+            description: AppStrings.onboardingFirstScreenDescription,
           ),
         ],
       ),
