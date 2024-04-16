@@ -76,3 +76,13 @@ class UpdatePasswordFailure extends AuthenticationState {
 
   UpdatePasswordFailure(this.error);
 }
+
+class DeleteAccountSuccess extends AuthenticationState {}
+
+class DeleteAccountLoading extends AuthenticationState {}
+
+class DeleteAccountFailure extends AuthenticationState {
+  final String error;
+
+  DeleteAccountFailure(this.error);
+}

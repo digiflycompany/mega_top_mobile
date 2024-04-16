@@ -147,5 +147,20 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   }
 
 
+  Future<void> deleteAccount(String email, int id) async {
+    emit(DeleteAccountLoading());
+    try {
+      final user = await authRepo.delete(email, id);
+      if (user != null) {
+        emit(DeleteAccountSuccess());
+      } else {
+        emit(DeleteAccountFailure('Invalid credentials or network issues.'));
+      }
+    } catch (e) {
+      emit(DeleteAccountFailure(e.toString()));
+    }
+  }
+
+
 }
 
