@@ -24,7 +24,7 @@ class OnboardingThirdScreen extends StatelessWidget {
           VerticalSpace(context.height * 0.050),
           const OnboardingDescription(
             title: AppStrings.getYourOrderSuccessfullyEn,
-            description: AppStrings.onBoardingDescriptionEn,
+            description: AppStrings.onboardingThirdScreenDescription,
           ),
         ],
       ),
