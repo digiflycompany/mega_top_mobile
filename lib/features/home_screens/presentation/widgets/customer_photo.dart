@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/app_color.dart';
 
@@ -13,11 +15,15 @@ class CustomerPhoto extends StatelessWidget {
       height: context.height * 0.065,
       decoration: const BoxDecoration(
           shape: BoxShape.circle, color: AppColors.circleAvatarBackground),
-      child: ClipOval(
-          child: Image.asset(
-        photo!,
-        fit: BoxFit.cover,
-      )),
+      child: Align(
+        alignment: AlignmentDirectional.bottomCenter,
+        child: ClipOval(
+            child: SvgPicture.asset(
+                    photo!,
+                    width: 36.w,
+                    fit: BoxFit.cover,
+                  )),
+      ),
     );
   }
 }

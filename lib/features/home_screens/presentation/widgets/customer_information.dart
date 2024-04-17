@@ -27,29 +27,31 @@ class CustomerInformation extends StatelessWidget {
             child: Row(
               children: [
                 const CustomerPhoto(
-                  photo: AppAssets.customerProfilePhoto,
+                  photo: AppAssets.guestIcon,
                 ),
                 HorizontalSpace(context.width * 0.022),
                 CustomerName(
                   //name: AppStrings.userName,
                   //name: !PreferencesHelper.getIsVisitor?'${PreferencesHelper.getName}':'',
                   //name: (PreferencesHelper.getToken()!.isNotEmpty) ? PreferencesHelper.getName : '',
-                  name: isUserLoggedIn ? PreferencesHelper.getName : 'Guest',
+                  name: isUserLoggedIn ? PreferencesHelper.getName : '',
                 ),
                 const Spacer(),
-                GestureDetector(
-                  onTap: () => Routes.wishListPageRoute.moveTo,
-                  child: const CustomerIcon(
-                    icon: AppAssets.favouritesIcon,
-                    number: AppStrings.twelve,
+                if(isUserLoggedIn)...[
+                  GestureDetector(
+                    onTap: () => Routes.wishListPageRoute.moveTo,
+                    child: const CustomerIcon(
+                      icon: AppAssets.favouritesIcon,
+                      number: AppStrings.twelve,
+                    ),
                   ),
-                ),
+                ],
                 HorizontalSpace(context.width * 0.022),
                 GestureDetector(
                   onTap: () => Routes.notificationPageRoute.moveTo,
                   child: const CustomerIcon(
                     icon: AppAssets.notificationIcon,
-                    number: AppStrings.fourteen,
+                    number: AppStrings.three,
                   ),
                 ),
               ],

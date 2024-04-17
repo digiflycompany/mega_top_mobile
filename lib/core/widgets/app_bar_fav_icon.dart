@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/title_app_bar.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import '../../features/home_screens/presentation/widgets/customer_icon.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_color.dart';
@@ -13,6 +14,8 @@ class CustomFavouriteAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String token = PreferencesHelper.getToken() ?? '';
+    bool isUserLoggedIn = token.isNotEmpty;
     return Container(
       decoration: const BoxDecoration(
         boxShadow: [
@@ -31,16 +34,18 @@ class CustomFavouriteAppBar extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          Padding(
-            padding: EdgeInsets.only(right: context.width * 0.045),
-            child: GestureDetector(
-              onTap: ()=>Routes.wishListPageRoute.moveTo,
-              child: const CustomerIcon(
-                icon: AppAssets.favouritesIcon,
-                number: AppStrings.oneText,
+          if(isUserLoggedIn)...[
+            Padding(
+              padding: EdgeInsets.only(right: context.width * 0.045),
+              child: GestureDetector(
+                onTap: ()=>Routes.wishListPageRoute.moveTo,
+                child: const CustomerIcon(
+                  icon: AppAssets.favouritesIcon,
+                  number: AppStrings.oneText,
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );

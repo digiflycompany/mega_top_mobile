@@ -23,6 +23,7 @@ class AppAssets {
   static const String locationOutlinedBlueIcon =
       "$svgPath/location_outlined_blue_icon.svg";
   static const String creditCardIcon = "$svgPath/credit_card_icon.svg";
+  static const String guestIcon = "$svgPath/guest_icon.svg";
   static const String emailSecondIcon = "$svgPath/mail_third_icon.svg";
   static const String googleIcon = "$svgPath/google_icon.svg";
   static const String hidePasswordIcon = "$svgPath/show_password.svg";

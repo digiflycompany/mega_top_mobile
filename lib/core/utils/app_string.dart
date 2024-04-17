@@ -267,6 +267,7 @@ class AppStrings {
   static const String twelve = '12';
   static const String fourteen = '14';
   static const String threeThousand = '3000';
+  static const String three = '3';
   static const String wishListEn = 'Wish List';
   static const String yourWishListEn = 'Your wish list';
   static const String browseOurProductsDescriptionEn =

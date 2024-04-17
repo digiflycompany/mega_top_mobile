@@ -28,6 +28,8 @@ class AddToCartBottomSheet extends StatelessWidget {
   },
   builder: (context, state) {
     CategoryCubit categoryCubit = context.read<CategoryCubit>();
+    String token = PreferencesHelper.getToken() ?? '';
+    bool isUserLoggedIn = token.isNotEmpty;
     return Container(
             height: context.height * 0.407,
             color: Colors.white,
@@ -45,17 +47,16 @@ class AddToCartBottomSheet extends StatelessWidget {
                         PrimaryButton(
                           text: AppStrings.viewCartEn,
                           onTap: () {
-                            if (PreferencesHelper.getToken()!.isEmpty) {
-                              Routes.signUpOrLoginPageRoute.moveTo;
-                            } else {
+                            if (isUserLoggedIn) {
                               categoryCubit.addToCart(
                                   PreferencesHelper.getID!, categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id, 1);
-                                  categoryCubit.getProductsDetails(categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id);
+                              categoryCubit.getProductsDetails(categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id);
+                            } else {
+                              Routes.signUpOrLoginPageRoute.moveTo;
                             }
                           },
                         ),
                         VerticalSpace(context.height * 0.033),
-    
                         /// Continue Shopping Button
                         PrimaryOutlinedButton(
                           text: AppStrings.continueShoppingEn,
