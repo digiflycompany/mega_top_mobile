@@ -261,6 +261,7 @@ class AppStrings {
   static const String le1500 = '1500 L.E';
   static const String four = '4';
   static const String oneText = '1';
+  static const String zero = '0';
   static const String five = '5';
   static const String six = '6';
   static const String seven = '7';

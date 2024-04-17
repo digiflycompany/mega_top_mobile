@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -17,8 +18,8 @@ class UserInformation extends StatelessWidget {
           height: 60.h,
           width: 60.h,
           child: ClipOval(
-            child: Image.asset(
-              AppAssets.customerProfilePhoto,
+            child: SvgPicture.asset(
+              AppAssets.guestIcon,
               fit: BoxFit.cover,
             ),
           ),

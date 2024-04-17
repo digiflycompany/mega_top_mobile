@@ -29,7 +29,7 @@ class OrderItem extends StatelessWidget {
             height: 24.h,
             child: const Center(
               child: Text(
-                "3",
+                "0",
                 style: TextStyle(
                     color: AppColors.primaryColor, fontWeight: FontWeight.w700),
               ),

@@ -42,7 +42,7 @@ class CustomerInformation extends StatelessWidget {
                     onTap: () => Routes.wishListPageRoute.moveTo,
                     child: const CustomerIcon(
                       icon: AppAssets.favouritesIcon,
-                      number: AppStrings.twelve,
+                      number: AppStrings.zero,
                     ),
                   ),
                 ],

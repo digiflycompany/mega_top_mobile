@@ -29,7 +29,7 @@ class WishListItem extends StatelessWidget {
             height: 24.h,
             child: const Center(
               child: Text(
-                "7",
+                "0",
                 style: TextStyle(
                     color: AppColors.primaryColor, fontWeight: FontWeight.w700),
               ),

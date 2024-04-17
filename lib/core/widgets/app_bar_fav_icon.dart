@@ -41,7 +41,7 @@ class CustomFavouriteAppBar extends StatelessWidget {
                 onTap: ()=>Routes.wishListPageRoute.moveTo,
                 child: const CustomerIcon(
                   icon: AppAssets.favouritesIcon,
-                  number: AppStrings.oneText,
+                  number: AppStrings.zero,
                 ),
               ),
             ),
