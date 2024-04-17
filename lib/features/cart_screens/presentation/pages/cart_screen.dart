@@ -39,7 +39,6 @@ class _CartPageState extends State<CartPage> {
     if (userId != null) {
       cubit.getMyOrders(userId);
     } else {
-      // Handle the situation when userId is null, maybe show an error or log it.
       debugPrint('User details or User ID is null');
     }
   }
