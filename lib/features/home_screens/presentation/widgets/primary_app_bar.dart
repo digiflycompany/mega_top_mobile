@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/title_app_bar.dart';
-
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -16,6 +16,8 @@ class PrimaryAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String token = PreferencesHelper.getToken() ?? '';
+    bool isUserLoggedIn = token.isNotEmpty;
     return SafeArea(
       child: Container(
         height: context.height * 0.087,
@@ -42,15 +44,18 @@ class PrimaryAppBar extends StatelessWidget {
               child: TitleText(text: text),
             ),
             const Spacer(),
-            favour
-                ? Padding(
-                    padding: EdgeInsets.only(right: context.width * 0.045),
-                    child: const CustomerIcon(
-                      icon: AppAssets.favouritesIcon,
-                      number: AppStrings.twelve,
-                    ),
-                  )
-                : Container(),
+            if(isUserLoggedIn)...[
+              Padding(
+                padding: EdgeInsets.only(right: context.width * 0.045),
+                child: const CustomerIcon(
+                  icon: AppAssets.favouritesIcon,
+                  number: AppStrings.zero,
+                ),
+              )
+            ]
+            // favour
+            //     ?
+            //     : Container(),
           ],
         ),
       ),
