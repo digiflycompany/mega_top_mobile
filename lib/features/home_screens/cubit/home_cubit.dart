@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
@@ -10,17 +11,26 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomeCubit getCubit(context) => BlocProvider.of(context);
 
+  int currentIndex = 0;
+
+  final PageController pageController = PageController();
+
   bool isGrid = true;
 
   bool noResult = false;
 
   HomePageRepo homePageRepo = new HomePageRepoImp();
 
+  void onBottomNavItemTapped(int index) {
+    pageController.jumpToPage(index);
+  }
+
   void setImageIndex(int index) {
     emit(ImageChanged(index: index));
   }
 
   void setPageIndex(int index) {
+    currentIndex = index ;
     emit(HomePageChanged(index: index));
   }
 

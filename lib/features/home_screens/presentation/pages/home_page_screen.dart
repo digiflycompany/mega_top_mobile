@@ -24,8 +24,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-  final PageController _pageController = PageController();
+
+
 
   final List<Widget> _pages = [
     const MainPage(),
@@ -35,15 +35,13 @@ class _HomePageState extends State<HomePage> {
     (PreferencesHelper.getToken()?.isNotEmpty ?? false) ? const UserAccountScreen() : const GuestAccountScreen(),
   ];
 
-  void _onItemTapped(int index) {
-    _pageController.jumpToPage(index);
-  }
 
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
+
+  // @override
+  // void dispose() {
+  //   homeCubit.pageController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +50,13 @@ class _HomePageState extends State<HomePage> {
       body: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
+          final homeCubit = context.read<HomeCubit>();
           return  PageView(
-            controller: _pageController,
+            controller: homeCubit.pageController,
             children: _pages,
             onPageChanged: (index) {
               setState(() {
-                homeCubit.setPageIndex(_currentIndex = index);
+                homeCubit.setPageIndex(index);
               });
             },
           );
@@ -65,10 +64,10 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
+        currentIndex: homeCubit.currentIndex,
         selectedItemColor: AppColors.primaryColor,
         unselectedItemColor: AppColors.blackGreyColor,
-        onTap: _onItemTapped,
+        onTap: homeCubit.onBottomNavItemTapped,
         showUnselectedLabels: true,
         unselectedLabelStyle: TextStyle(
             fontSize: 12.sp,
@@ -81,7 +80,7 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex == 0
+              homeCubit.currentIndex == 0
                   ? AppAssets.homeSelectedIcon
                   : AppAssets.homeUnselectedIcon,
             ),
@@ -89,7 +88,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex == 1
+              homeCubit.currentIndex == 1
                   ? AppAssets.categoriesSelectedIcon
                   : AppAssets.categoriesUnselectedIcon,
             ),
@@ -97,7 +96,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex == 2
+              homeCubit.currentIndex == 2
                   ? AppAssets.offersSelectedIcon
                   : AppAssets.offersUnselectedIcon,
             ),
@@ -105,7 +104,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex == 3
+              homeCubit.currentIndex == 3
                   ? AppAssets.cartSelectedIcon
                   : AppAssets.cartUnselectedIcon,
             ),
@@ -113,7 +112,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              _currentIndex == 4
+              homeCubit.currentIndex == 4
                   ? AppAssets.accountSelectedIcon
                   : AppAssets.accountUnselectedIcon,
             ),
