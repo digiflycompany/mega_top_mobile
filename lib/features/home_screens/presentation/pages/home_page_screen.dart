@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         currentIndex: homeCubit.currentIndex,
         selectedItemColor: AppColors.primaryColor,
         unselectedItemColor: AppColors.blackGreyColor,
-        onTap: homeCubit.onBottomNavItemTapped,
+        onTap: homeCubit.onBottomNavItemChanged,
         showUnselectedLabels: true,
         unselectedLabelStyle: TextStyle(
             fontSize: 12.sp,

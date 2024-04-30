@@ -21,7 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomePageRepo homePageRepo = new HomePageRepoImp();
 
-  void onBottomNavItemTapped(int index) {
+  void onBottomNavItemChanged(int index) {
     pageController.jumpToPage(index);
   }
 

@@ -34,7 +34,7 @@ class ViewAllRow extends StatelessWidget {
             GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: (){
-                homeCubit.pageController.jumpToPage(1);
+                homeCubit.onBottomNavItemChanged(1);
               },
               child: Row(
                 children: [
