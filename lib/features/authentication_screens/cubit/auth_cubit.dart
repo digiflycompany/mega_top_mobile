@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/success_pop_up.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthRepo authRepo;
@@ -76,10 +77,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(LoginLoading());
     try {
       final user = await authRepo.login(email, password);
-      if (user != null) {
+      if (user != null && user.success == true) {
+        await PreferencesHelper.saveToken(token: user.data!.token!);
+        await PreferencesHelper.saveUserModel(user);
+        print(PreferencesHelper.getToken());
         emit(LoginSuccess(user));
       } else {
-        emit(LoginFailure('Invalid credentials or network issues.'));
+        emit(LoginFailure(user?.message ?? 'Invalid credentials or network issues.'));
       }
     } catch (e) {
       emit(LoginFailure(e.toString()));

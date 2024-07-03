@@ -6,7 +6,6 @@ import 'package:mega_top_mobile/features/authentication_screens/data/models/logi
 import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/sign_up_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 abstract class AuthRepo {
   Future<UserModel?> login(String email, String password);
@@ -25,16 +24,14 @@ class AuthRepoImp implements AuthRepo {
       Response? response = await DioHelper.postData(
         url: EndPoints.loginAPI,
         data: {
-          'username': email,
+          'email': email,
           'password': password,
         },
       );
-      if (response != null && response.statusCode == 200) {
-        UserModel userModel = UserModel.fromJson(response.data);
-        await PreferencesHelper.saveToken(token: response.data['token']);
-        await PreferencesHelper.saveUserModel(userModel);
-        print(PreferencesHelper.getToken());
-        return userModel;
+      if (response?.statusCode == 200) {
+        return UserModel.fromJson(response?.data);
+      } else if (response?.statusCode == 400) {
+        return UserModel.fromJson(response?.data);
       }
     } catch (e) {
       print('Error during login: $e');

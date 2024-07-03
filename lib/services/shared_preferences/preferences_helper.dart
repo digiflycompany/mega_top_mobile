@@ -22,17 +22,17 @@ class PreferencesHelper {
   static String get getName {
     UserModel? userModel = UserModel.fromJson(
         json.decode('${preferences?.getString('userModel')}'));
-    return userModel.fullName?? '';
+    return userModel.data!.user!.fullName?? '';
   }
   static String get getEmail {
     UserModel? userModel = UserModel.fromJson(
         json.decode('${preferences?.getString('userModel')}'));
-    return userModel.email?? '';
+    return userModel.data!.user!.email?? '';
   }
   static int? get getID {
     UserModel? userModel = UserModel.fromJson(
         json.decode('${preferences?.getString('userModel')}'));
-    return userModel.userId;
+    return userModel.data!.user!.iV;
   }
 
   static Future<void> saveIsVisitor({required bool isVisitor}) async {

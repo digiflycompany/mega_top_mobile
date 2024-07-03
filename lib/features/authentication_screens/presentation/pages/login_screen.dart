@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
         }
         if(state is LoginFailure){
-          authenticationCubit.showErrorToast(context,AppStrings.invalidEmailOrPassword);
+          authenticationCubit.showErrorToast(context,state.error);
         }
       },
       builder: (context, state) {
