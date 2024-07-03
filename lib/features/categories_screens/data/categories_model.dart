@@ -1,208 +1,170 @@
 class CategoriesModel {
-  int? id;
-  String? name;
-  String? slug;
-  int? parent;
-  String? description;
-  String? display;
-  Image? image;
-  int? menuOrder;
-  int? count;
-  Meta? meta;
-  Translations? translations;
-  String? lang;
-  Links? links;
-  static List<CategoriesModel> fromJsonList(List<dynamic> jsonList) {
-    return jsonList
-        .map((jsonItem) => CategoriesModel.fromJson(jsonItem))
-        .toList();
+  bool? success;
+  Data? data;
+
+  CategoriesModel({this.success, this.data});
+
+  CategoriesModel.fromJson(Map<String, dynamic> json) {
+    success = json['success'];
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
-  CategoriesModel({
-    this.id,
-    this.name,
-    this.slug,
-    this.parent,
-    this.description,
-    this.display,
-    this.image,
-    this.menuOrder,
-    this.count,
-    this.meta,
-    this.translations,
-    this.lang,
-    this.links,
-  });
-
-  factory CategoriesModel.fromJson(Map<String, dynamic> json) =>
-      CategoriesModel(
-        id: json['id'],
-        name: json['name'],
-        slug: json['slug'],
-        parent: json['parent'],
-        description: json['description'],
-        display: json['display'],
-        image: json['image'] != null ? Image.fromJson(json['image']) : null,
-        menuOrder: json['menu_order'],
-        count: json['count'],
-        meta: json['meta'] != null ? Meta.fromJson(json['meta']) : null,
-        translations: json['translations'] != null
-            ? Translations.fromJson(json['translations'])
-            : null,
-        lang: json['lang'],
-        links: json['_links'] != null ? Links.fromJson(json['_links']) : null,
-      );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'slug': slug,
-        'parent': parent,
-        'description': description,
-        'display': display,
-        'image': image?.toJson(),
-        'menu_order': menuOrder,
-        'count': count,
-        'meta': meta?.toJson(),
-        'translations': translations?.toJson(),
-        'lang': lang,
-        '_links': links?.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['success'] = this.success;
+    if (this.data != null) {
+      data['data'] = this.data!.toJson();
+    }
+    return data;
+  }
 }
 
-class Image {
-  int? id;
-  String? dateCreated;
-  String? dateCreatedGmt;
-  String? dateModified;
-  String? dateModifiedGmt;
-  String? src;
+class Data {
+  List<Categories>? categories;
+  Options? options;
+
+  Data({this.categories, this.options});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    if (json['categories'] != null) {
+      categories = <Categories>[];
+      json['categories'].forEach((v) {
+        categories!.add(Categories.fromJson(v));
+      });
+    }
+    options =
+        json['options'] != null ? Options.fromJson(json['options']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    if (this.categories != null) {
+      data['categories'] = this.categories!.map((v) => v.toJson()).toList();
+    }
+    if (this.options != null) {
+      data['options'] = this.options!.toJson();
+    }
+    return data;
+  }
+}
+
+class Categories {
+  String? id;
   String? name;
-  String? alt;
+  String? nameAr;
+  String? description;
+  String? status;
+  AddedBy? addedBy;
+  String? image;
+  String? createdAt;
+  String? updatedAt;
+  int? iV;
 
-  Image({
-    this.id,
-    this.dateCreated,
-    this.dateCreatedGmt,
-    this.dateModified,
-    this.dateModifiedGmt,
-    this.src,
-    this.name,
-    this.alt,
-  });
+  Categories(
+      {this.id,
+      this.name,
+      this.nameAr,
+      this.description,
+      this.status,
+      this.addedBy,
+      this.image,
+      this.createdAt,
+      this.updatedAt,
+      this.iV});
 
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
-        id: json['id'],
-        dateCreated: json['date_created'],
-        dateCreatedGmt: json['date_created_gmt'],
-        dateModified: json['date_modified'],
-        dateModifiedGmt: json['date_modified_gmt'],
-        src: json['src'],
-        name: json['name'],
-        alt: json['alt'],
-      );
+  Categories.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
+    name = json['name'];
+    nameAr = json['nameAr'];
+    description = json['description'];
+    status = json['status'];
+    addedBy =
+        json['addedBy'] != null ? AddedBy.fromJson(json['addedBy']) : null;
+    image = json['image'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+    iV = json['__v'];
+  }
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'date_created': dateCreated,
-        'date_created_gmt': dateCreatedGmt,
-        'date_modified': dateModified,
-        'date_modified_gmt': dateModifiedGmt,
-        'src': src,
-        'name': name,
-        'alt': alt,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['_id'] = this.id;
+    data['name'] = this.name;
+    data['nameAr'] = this.nameAr;
+    data['description'] = this.description;
+    data['status'] = this.status;
+    if (this.addedBy != null) {
+      data['addedBy'] = this.addedBy!.toJson();
+    }
+    data['image'] = this.image;
+    data['createdAt'] = this.createdAt;
+    data['updatedAt'] = this.updatedAt;
+    data['__v'] = this.iV;
+    return data;
+  }
 }
 
-class Meta {
-  List<String>? order;
-  List<String>? displayType;
-  List<String>? thumbnailId;
-  List<String>? productCountProductCat;
+class AddedBy {
+  String? id;
+  String? fullName;
+  String? email;
 
-  Meta({
-    this.order,
-    this.displayType,
-    this.thumbnailId,
-    this.productCountProductCat,
-  });
+  AddedBy({this.id, this.fullName, this.email});
 
-  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
-        order: List<String>.from(json['order']),
-        displayType: List<String>.from(json['display_type']),
-        thumbnailId: List<String>.from(json['thumbnail_id']),
-        productCountProductCat:
-            List<String>.from(json['product_count_product_cat']),
-      );
+  AddedBy.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
+    fullName = json['fullName'];
+    email = json['email'];
+  }
 
-  Map<String, dynamic> toJson() => {
-        'order': order,
-        'display_type': displayType,
-        'thumbnail_id': thumbnailId,
-        'product_count_product_cat': productCountProductCat,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['_id'] = this.id;
+    data['fullName'] = this.fullName;
+    data['email'] = this.email;
+    return data;
+  }
 }
 
-class Translations {
-  int? en;
-  int? ar;
+class Options {
+  int? limit;
+  int? skip;
+  Sort? sort;
+  int? page;
 
-  Translations({this.en, this.ar});
+  Options({this.limit, this.skip, this.sort, this.page});
 
-  factory Translations.fromJson(Map<String, dynamic> json) => Translations(
-        en: json['en'],
-        ar: json['ar'],
-      );
+  Options.fromJson(Map<String, dynamic> json) {
+    limit = json['limit'];
+    skip = json['skip'];
+    sort = json['sort'] != null ? Sort.fromJson(json['sort']) : null;
+    page = json['page'];
+  }
 
-  Map<String, dynamic> toJson() => {
-        'en': en,
-        'ar': ar,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['limit'] = this.limit;
+    data['skip'] = this.skip;
+    if (this.sort != null) {
+      data['sort'] = this.sort!.toJson();
+    }
+    data['page'] = this.page;
+    return data;
+  }
 }
 
-class Links {
-  List<Link>? self;
-  List<Link>? collection;
-  List<Link>? up;
+class Sort {
+  String? createdAt;
 
-  Links({this.self, this.collection, this.up});
+  Sort({this.createdAt});
 
-  factory Links.fromJson(Map<String, dynamic> json) => Links(
-        self: List<Link>.from(json['self'].map((x) => Link.fromJson(x))),
-        collection:
-            List<Link>.from(json['collection'].map((x) => Link.fromJson(x))),
-        up: json['up'] != null
-            ? List<Link>.from(json['up'].map((x) => Link.fromJson(x)))
-            : null,
-      );
+  Sort.fromJson(Map<String, dynamic> json) {
+    createdAt = json['createdAt'];
+  }
 
-  Map<String, dynamic> toJson() => {
-        'self': self?.map((x) => x.toJson()).toList(),
-        'collection': collection?.map((x) => x.toJson()).toList(),
-        'up': up?.map((x) => x.toJson()).toList(),
-      };
-}
-
-class Link {
-  String? href;
-
-  Link({this.href});
-
-  factory Link.fromJson(Map<String, dynamic> json) => Link(
-        href: json['href'],
-      );
-
-  Map<String, dynamic> toJson() => {
-        'href': href,
-      };
-}
-
-class Category {
-  final String categoryPhoto;
-  final String categoryName;
-
-  Category({
-    required this.categoryPhoto,
-    required this.categoryName,
-  });
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['createdAt'] = this.createdAt;
+    return data;
+  }
 }

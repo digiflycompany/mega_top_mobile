@@ -15,23 +15,23 @@ class CategoriesGrid extends StatelessWidget {
       listener: (BuildContext context, CategoryState state) {},
       builder: (context, state) {
         var cubit = context.read<CategoryCubit>();
-        if (cubit.categories.isNotEmpty) {
+        if (cubit.categories != null) {
           var categories = cubit.categories;
           return Expanded(
             child: GridView.builder(
               physics: const BouncingScrollPhysics(),
-              itemCount: categories.length,
+              itemCount: categories!.data!.categories!.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 16.w,
                 mainAxisSpacing: 16.h,
               ),
               itemBuilder: (BuildContext context, int index) {
-                final category = categories[index];
+                final category = categories.data!.categories![index];
                 return CategoriesSmallCard(
                   index: index,
                   categoryId: category.id,
-                  categoryPhoto: category.image?.src,
+                  categoryPhoto: category.image,
                   categoryName: category.name ?? 'Unknown',
                 );
               },

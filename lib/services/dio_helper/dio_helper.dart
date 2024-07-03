@@ -23,8 +23,8 @@ class DioHelper {
   static Future<Response?> postData(
       {required String url,
       Map<String, dynamic>? queryParameters,
-        String username = 'ck_9d47524cd8ae5eb47260cf8cf34144b04c219a45',
-        String password = 'cs_b20f3ce367d0ceac7d671b9e85832dd4a5324b73',
+      String username = 'ck_9d47524cd8ae5eb47260cf8cf34144b04c219a45',
+      String password = 'cs_b20f3ce367d0ceac7d671b9e85832dd4a5324b73',
       Map<String, dynamic>? data}) async {
     //String? token = PreferencesHelper.getToken();
     try {
@@ -69,7 +69,7 @@ class DioHelper {
       Response? response = await dio?.get(
         url,
         queryParameters: queryParameters,
-        options: Options(headers: headers),
+        //  options: Options(headers: headers),
       );
 
       if (kDebugMode) {

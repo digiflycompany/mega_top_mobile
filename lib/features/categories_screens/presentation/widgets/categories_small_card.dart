@@ -9,7 +9,7 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 
 class CategoriesSmallCard extends StatelessWidget {
-  final int? categoryId;
+  final String? categoryId;
   final int index;
   final String? categoryPhoto;
   final String? categoryName;
@@ -30,7 +30,8 @@ class CategoriesSmallCard extends StatelessWidget {
         final cubit = CategoryCubit().getCubit(context);
         return GestureDetector(
           onTap: () {
-            cubit.getSelectedCategories(cubit.categories[index].id!);
+            cubit.getSelectedCategories(
+                cubit.categories!.data!.categories![index].id!);
             cubit.selectedCategoryId = categoryId;
             Routes.categoryItemsPageRoute.moveTo;
           },
@@ -52,23 +53,27 @@ class CategoriesSmallCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   categoryPhoto.isNotNull
-                      ? CachedNetworkImage(
-                          imageUrl: categoryPhoto!,
-                          width: context.width * 0.15,
-                          placeholder: (context, url) => Center(
-                            child: Theme(
-                              data: Theme.of(context).copyWith(
-                                colorScheme: ColorScheme.fromSwatch().copyWith(
-                                  primary: AppColors.primaryColor,
-                                ),
-                              ),
-                              child: Transform.scale(
-                                  scale: 0.6,
-                                  child: CircularProgressIndicator.adaptive()),
-                            ),
+                      ? Expanded(
+                          child: CachedNetworkImage(
+                            imageUrl: categoryPhoto!,
+                            width: context.width * 0.15,
+                            // placeholder: (context, url) => Center(
+                            //   child: Theme(
+                            //     data: Theme.of(context).copyWith(
+                            //       colorScheme:
+                            //           ColorScheme.fromSwatch().copyWith(
+                            //         primary: AppColors.primaryColor,
+                            //       ),
+                            //     ),
+                            //     child: Transform.scale(
+                            //         scale: 0.6,
+                            //         child:
+                            //             CircularProgressIndicator.adaptive()),
+                            //   ),
+                            // ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                           ),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
                         )
                       : Image.asset("assets/images/ad.png"),
                   Text(
