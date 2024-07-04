@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
-
-import '../../../../core/utils/app_color.dart';
 
 class ProductPrices extends StatelessWidget {
   final String? currentPrice;
@@ -20,20 +16,21 @@ class ProductPrices extends StatelessWidget {
         return Row(
           children: [
             /// Product Current Price ///
-            Text(
-              categoryCubit
-                      .selectedCategoriesModel!
-                      .productList[categoryCubit.selectedProductIndex]
-                      .price
-                      .isEmptyOrNull
-                  ? "0"
-                  : categoryCubit.selectedCategoriesModel!
-                      .productList[categoryCubit.selectedProductIndex].price,
-              style: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20.sp),
-            ),
+            ///Error
+            // Text(
+            //   categoryCubit
+            //           .selectedCategoryModel!
+            //           .productList[categoryCubit.selectedProductIndex]
+            //           .price
+            //           .isEmptyOrNull
+            //       ? "0"
+            //       : categoryCubit.selectedCategoryModel!
+            //           .productList[categoryCubit.selectedProductIndex].price,
+            //   style: TextStyle(
+            //       color: AppColors.primaryColor,
+            //       fontWeight: FontWeight.w700,
+            //       fontSize: 20.sp),
+            // ),
             // HorizontalSpace(context.width * 0.045),
             //
             // /// Product Old Price ///

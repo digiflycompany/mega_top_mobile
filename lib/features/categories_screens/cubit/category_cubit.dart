@@ -154,14 +154,13 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  SelectedCategoriesModel? selectedCategoriesModel;
+  SelectedCategoryModel? selectedCategoryModel;
 
   Future<void> getSelectedCategories(String selectedId) async {
     emit(SelectedCategoryLoading());
     try {
-      selectedCategoriesModel =
+      selectedCategoryModel =
           await categoriesRepo.getSelectedCategories(selectedId);
-      print(selectedCategoriesModel!.productList[0].images[0].src + "///////");
       emit(SelectedCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");

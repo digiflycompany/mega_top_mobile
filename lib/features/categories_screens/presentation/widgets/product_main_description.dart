@@ -8,8 +8,6 @@ import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_category.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_name.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_prices.dart';
 
 class ProductMainDescription extends StatelessWidget {
@@ -27,12 +25,13 @@ class ProductMainDescription extends StatelessWidget {
               /// Product Details Row ////
               Row(
                 children: [
-                  Expanded(
-                    child: ProductDetailedNameText(
-                      name: categoryCubit.selectedCategoriesModel!
-                          .productList[categoryCubit.selectedProductIndex].name,
-                    ),
-                  ),
+                  ///Error
+                  // Expanded(
+                  //   child: ProductDetailedNameText(
+                  //     name: categoryCubit.selectedCategoryModel!
+                  //         .productList[categoryCubit.selectedProductIndex].name,
+                  //   ),
+                  // ),
                   HorizontalSpace(5.w),
                   const AvailableContainer(),
                   HorizontalSpace(context.width * 0.022),
@@ -44,13 +43,15 @@ class ProductMainDescription extends StatelessWidget {
                 ],
               ),
               VerticalSpace(context.height * 0.011),
-              ProductDetailedCategory(
-                category: categoryCubit
-                    .selectedCategoriesModel!
-                    .productList[categoryCubit.selectedProductIndex]
-                    .categories[0]
-                    .name,
-              ),
+
+              ///Error
+              // ProductDetailedCategory(
+              //   category: categoryCubit
+              //       .selectedCategoryModel!
+              //       .productList[categoryCubit.selectedProductIndex]
+              //       .categories[0]
+              //       .name,
+              // ),
               VerticalSpace(context.height * 0.022),
               const ProductPrices(
                 oldPrice: AppStrings.productOldPriceEn,

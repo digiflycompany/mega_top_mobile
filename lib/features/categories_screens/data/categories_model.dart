@@ -58,7 +58,6 @@ class Categories {
   String? image;
   String? createdAt;
   String? updatedAt;
-  int? iV;
 
   Categories(
       {this.id,
@@ -69,8 +68,7 @@ class Categories {
       this.addedBy,
       this.image,
       this.createdAt,
-      this.updatedAt,
-      this.iV});
+      this.updatedAt});
 
   Categories.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
@@ -83,7 +81,6 @@ class Categories {
     image = json['image'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
-    iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {
@@ -99,7 +96,6 @@ class Categories {
     data['image'] = this.image;
     data['createdAt'] = this.createdAt;
     data['updatedAt'] = this.updatedAt;
-    data['__v'] = this.iV;
     return data;
   }
 }

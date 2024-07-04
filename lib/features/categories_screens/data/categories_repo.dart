@@ -14,8 +14,7 @@ abstract class CategoriesRepo {
 
   Future<ProductDetailsModel?> getProductDetails(int productID);
 
-  Future<SelectedCategoriesModel?> getSelectedCategories(
-      String selectedCategory);
+  Future<SelectedCategoryModel?> getSelectedCategories(String selectedCategory);
 
   Future<Order?> makeOrder(int customerId, int productId, int quantity);
 
@@ -41,9 +40,9 @@ class CategoriesRepoImp implements CategoriesRepo {
   }
 
   @override
-  Future<SelectedCategoriesModel?> getSelectedCategories(
+  Future<SelectedCategoryModel?> getSelectedCategories(
       String selectedCategory) async {
-    SelectedCategoriesModel? selectedCategoriesModel;
+    SelectedCategoryModel? selectedCategoryModel;
     await DioHelper.getData(
         url: "https://megatop.com.eg/wp-json/wc/v3/products",
         queryParameters: {
@@ -51,12 +50,13 @@ class CategoriesRepoImp implements CategoriesRepo {
           "per_page": 8,
           "page": 1
         }).then((value) {
-      selectedCategoriesModel = SelectedCategoriesModel.fromJson(value?.data);
-      print("${selectedCategoriesModel!.productList.length}" + "products");
+      ///Error
+      // selectedCategoryModel = selectedCategoryModel.fromJson(value?.data);
+      // print("${selectedCategoryModel!.productList.length}" + "products");
     }).catchError((onError) {
       print(onError.toString() + "??????");
     });
-    return selectedCategoriesModel;
+    return selectedCategoryModel;
   }
 
   @override

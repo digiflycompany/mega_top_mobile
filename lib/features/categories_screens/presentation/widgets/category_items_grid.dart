@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+
 import '../../../home_screens/presentation/widgets/items_grid.dart';
 
 class CategoryItemsGridView extends StatelessWidget {
@@ -65,11 +66,13 @@ class CategoryItemsGridView extends StatelessWidget {
         return Expanded(
           child: GridView.builder(
             physics: const BouncingScrollPhysics(),
-            itemCount: context
-                .read<CategoryCubit>()
-                .selectedCategoriesModel!
-                .productList
-                .length,
+
+            ///Error
+            // itemCount: context
+            //     .read<CategoryCubit>()
+            //     .selectedCategoryModel!
+            //     .productList
+            //     .length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: context.width * 0.027,

@@ -27,12 +27,15 @@ class ProductDetailedImage extends StatelessWidget {
               Column(
                 children: [
                   ProductImages(),
-                  if (categoryCubit
-                          .selectedCategoriesModel!
-                          .productList[categoryCubit.selectedProductIndex]
-                          .images
-                          .length > 1)
-                    ProductImagesDots(),
+
+                  ///Error
+                  // if (categoryCubit
+                  //         .selectedCategoryModel!
+                  //         .productList[categoryCubit.selectedProductIndex]
+                  //         .images
+                  //         .length >
+                  //     1)
+                  ProductImagesDots(),
                 ],
               ),
               FavourCompareColumn(),
