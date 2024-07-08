@@ -4,6 +4,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_item_details_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
 import '../widgets/category_items_grid.dart';
 import '../widgets/category_items_list.dart';
@@ -21,21 +22,18 @@ class CategoryItemsPage extends StatelessWidget {
       },
       child: Scaffold(
         ///Error
-        // appBar: PreferredSize(
-        //     preferredSize: Size(double.infinity, context.height * 0.089),
-        //     child: BlocBuilder<CategoryCubit, CategoryState>(
-        //       builder: (BuildContext context, CategoryState state) {
-        //         return categoryCubit.selectedCategoryModel != null &&
-        //                 categoryCubit
-        //                     .selectedCategoryModel!.productList.isNotEmpty
-        //             ? PrimaryAppBar(categoryCubit
-        //                 .selectedCategoryModel!
-        //                 .productList[categoryCubit.selectedProductIndex]
-        //                 .categories[0]
-        //                 .name)
-        //             : PrimaryAppBar("");
-        //       },
-        //     )),
+        appBar: PreferredSize(
+            preferredSize: Size(double.infinity, context.height * 0.089),
+            child: BlocBuilder<CategoryCubit, CategoryState>(
+              builder: (BuildContext context, CategoryState state) {
+                return categoryCubit.selectedCategoryModel != null
+                    ? PrimaryAppBar(categoryCubit
+                        .selectedCategoryModel!
+                        .data!.products![categoryCubit.selectedProductIndex]
+                        .title!)
+                    : PrimaryAppBar("");
+              },
+            )),
         body: BlocBuilder<CategoryCubit, CategoryState>(
           builder: (BuildContext context, state) {
             ///Error
