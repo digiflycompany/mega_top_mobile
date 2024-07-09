@@ -28,8 +28,8 @@ class AddToCartBottomSheet extends StatelessWidget {
   },
   builder: (context, state) {
     CategoryCubit categoryCubit = context.read<CategoryCubit>();
-    String token = PreferencesHelper.getToken() ?? '';
-    bool isUserLoggedIn = token.isNotEmpty;
+    Object token = PreferencesHelper.getToken();
+    bool isUserLoggedIn = token.isNotNull;
     return Container(
             height: context.height * 0.407,
             color: Colors.white,

@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/guest_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
@@ -31,8 +32,8 @@ class _HomePageState extends State<HomePage> {
     const MainPage(),
     const CategoriesPage(),
     const OffersPage(),
-    (PreferencesHelper.getToken()?.isNotEmpty ?? false) ? const CartPage() : const EmptyCartScreen(),
-    (PreferencesHelper.getToken()?.isNotEmpty ?? false) ? const UserAccountScreen() : const GuestAccountScreen(),
+    (PreferencesHelper.getToken().isNotNull) ? const CartPage() : const EmptyCartScreen(),
+    (PreferencesHelper.getToken().isNotNull) ? const UserAccountScreen() : const GuestAccountScreen(),
   ];
 
   void _onItemTapped(int index) {
