@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/widgets/app_bar_back_icon.dart';
 import 'package:mega_top_mobile/core/widgets/title_app_bar.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/widgets/app_bar_back_icon.dart';
 import 'customer_icon.dart';
 
 class PrimaryAppBar extends StatelessWidget {
@@ -16,8 +16,8 @@ class PrimaryAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String token = PreferencesHelper.getToken() ?? '';
-    bool isUserLoggedIn = token.isNotEmpty;
+    Object token = PreferencesHelper.getToken();
+    bool isUserLoggedIn = token.isNotNull;
     return SafeArea(
       child: Container(
         height: context.height * 0.087,
@@ -53,9 +53,6 @@ class PrimaryAppBar extends StatelessWidget {
                 ),
               )
             ]
-            // favour
-            //     ?
-            //     : Container(),
           ],
         ),
       ),
