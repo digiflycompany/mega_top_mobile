@@ -14,8 +14,8 @@ class CustomFavouriteAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String token = PreferencesHelper.getToken() ?? '';
-    bool isUserLoggedIn = token.isNotEmpty;
+    Object token = PreferencesHelper.getToken();
+    bool isUserLoggedIn = token.isNotNull;
     return Container(
       decoration: const BoxDecoration(
         boxShadow: [

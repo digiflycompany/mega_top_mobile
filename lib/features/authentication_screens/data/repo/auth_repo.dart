@@ -28,13 +28,13 @@ class AuthRepoImp implements AuthRepo {
           'password': password,
         },
       );
-      if (response?.statusCode == 200) {
-        return UserModel.fromJson(response?.data);
-      } else if (response?.statusCode == 400) {
+      if (response?.statusCode == 200 || response?.statusCode == 400) {
         return UserModel.fromJson(response?.data);
       }
     } catch (e) {
       print('Error during login: $e');
+      // Optionally, rethrow the error to let the caller handle it
+      throw e;
     }
     return null;
   }
