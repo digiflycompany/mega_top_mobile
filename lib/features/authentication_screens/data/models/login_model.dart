@@ -1,13 +1,15 @@
 class UserModel {
   bool? success;
   String? message;
+  int? errorCode;
   Data? data;
 
-  UserModel({this.success, this.message, this.data});
+  UserModel({this.success, this.message, this.errorCode, this.data});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'] ?? 'An error occurred';
+    errorCode = json['errorCode'];
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
@@ -15,6 +17,7 @@ class UserModel {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['success'] = success;
     data['message'] = message;
+    data['errorCode'] = errorCode;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
@@ -51,6 +54,7 @@ class User {
   List<dynamic>? wishlist;
   String? role;
   bool? isActive;
+  bool? isVerified;
   String? createdAt;
   String? updatedAt;
   int? iV;
@@ -63,6 +67,7 @@ class User {
         this.wishlist,
         this.role,
         this.isActive,
+        this.isVerified,
         this.createdAt,
         this.updatedAt,
         this.iV});
@@ -75,6 +80,7 @@ class User {
     wishlist = json['wishlist'] != null ? List<dynamic>.from(json['wishlist']) : null;
     role = json['role'];
     isActive = json['isActive'];
+    isVerified = json['isVerified'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     iV = json['__v'];
@@ -91,6 +97,7 @@ class User {
     }
     data['role'] = role;
     data['isActive'] = isActive;
+    data['isVerified'] = isVerified;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     data['__v'] = iV;

@@ -2,14 +2,14 @@ class EndPoints {
   EndPoints._internal();
 
   /// BASE
-  static const String baseUrl = 'https://api.megatop.com.eg';
+  static const String baseUrl = 'https://megatopapi.onrender.com';
 
   static const String categoriesAPI =
       'https://megatop.com.eg/wp-json/wc/v3/products/categories?per_page=100';
   static const String loginAPI =
       '$baseUrl/api/v1/users/login';
   static const String signUpAPI =
-      'https://megatop.com.eg/wp-json/custom/v1/register';
+      '$baseUrl/api/v1/users/signup';
   static const String activateEmailAPI =
       'https://megatop.com.eg/wp-json/custom/v1/activate';
   static const String resetPasswordAPI =

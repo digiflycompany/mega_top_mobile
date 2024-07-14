@@ -90,7 +90,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(LoginFailure(user?.message ?? 'Invalid credentials or network issues.'));
       }
     } catch (e) {
-      if (e is DioException && e.error == 'No internet connection') {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(NoInternetConnection());
       } else {
         emit(LoginFailure(e.toString()));
@@ -99,17 +99,20 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   }
 
   /// SIGNUP FUNCTION
-  Future<void> signUp(String email, String username, String password, String confirmPassword) async {
+  Future<void> signUp(String fullName, String phoneNumber, String email, String password) async {
     emit(SignUpLoading());
     try {
-      final user = await authRepo.signUp(email, username,password,confirmPassword);
-      if (user != null) {
+      final user = await authRepo.signUp(fullName, phoneNumber,email,password);
+      if (user != null && user.success == true) {
+        await PreferencesHelper.saveToken(token: user.data!.token!);
+        await PreferencesHelper.saveUserModel(user);
+        print(PreferencesHelper.getToken());
         emit(SignUpSuccess(user));
       } else {
-        emit(SignUpFailure('Invalid credentials or network issues.'));
+        emit(SignUpFailure(user?.message ?? 'Invalid credentials or network issues.'));
       }
     } catch (e) {
-      if (e is DioException && e.error == 'No internet connection') {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(NoInternetConnection());
       } else {
         emit(SignUpFailure(e.toString()));

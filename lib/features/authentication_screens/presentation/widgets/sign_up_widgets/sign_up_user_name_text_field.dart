@@ -24,7 +24,7 @@ class SignUpFullNameTextField extends StatelessWidget {
             max: 30,
             validator: (value) {
               if (value!.isEmpty) {
-                return AppStrings.pleaseEnterYourUserName;
+                return AppStrings.pleaseEnterYourFullName;
               }
               return null;
             },

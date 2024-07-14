@@ -23,11 +23,12 @@ class SignUpButton extends StatelessWidget {
           child: AuthButton(
             onTap: () {
               if (formKey.currentState!.validate()) {
-                final email = signUpCubit.signUpEmailController.text;
-                final username = signUpCubit.signUpFullNameController.text;
-                final password = signUpCubit.signUpPasswordController.text;
-                final confirmPassword = signUpCubit.signUpConfirmPasswordController.text;
-                signUpCubit.signUp(email, username, password, confirmPassword);
+                signUpCubit.signUp(
+                    signUpCubit.signUpFullNameController.text,
+                    signUpCubit.signUpPhoneController.text,
+                    signUpCubit.signUpEmailController.text,
+                    signUpCubit.signUpEmailController.text,
+                );
               }
             },
             content: state is SignUpLoading?const ButtonCircularProgress():Text(

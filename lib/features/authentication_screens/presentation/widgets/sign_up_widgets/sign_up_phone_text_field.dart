@@ -24,7 +24,7 @@ class SignUpPhoneTextField extends StatelessWidget {
             max: 11,
             validator: (value) {
               if (value!.isEmpty) {
-                return AppStrings.pleaseEnterYourUserName;
+                return AppStrings.pleaseEnterYourPhoneNumber;
               }
               return null;
             },

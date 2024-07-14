@@ -37,7 +37,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Routes.signUpEmailVerificationPageRoute.moveTo;
         }
         if(state is SignUpFailure){
-           authenticationCubit.showErrorToast(context, '',AppStrings.alreadyRegisteredUsingThisEmail);
+           authenticationCubit.showErrorToast(context, AppStrings.signUpFailed,state.error);
+        }
+        if(state is NoInternetConnection){
+          authenticationCubit.showErrorToast(context, AppStrings.signUpFailed,AppStrings.noInternetConnectionPlease);
         }
       },
       builder: (context, state) {
