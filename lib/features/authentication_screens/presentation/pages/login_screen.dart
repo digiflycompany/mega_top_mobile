@@ -37,11 +37,11 @@ class _LoginScreenState extends State<LoginScreen> {
           Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
         }
         if (state is LoginFailure) {
-          authenticationCubit.showErrorToast(context, state.error);
+          authenticationCubit.showErrorToast(context, AppStrings.loginFailed,state.error);
         }
         if (state is NoInternetConnection) {
           authenticationCubit.showErrorToast(
-              context, AppStrings.noInternetConnectionPlease);
+              context, AppStrings.loginFailed,AppStrings.noInternetConnectionPlease);
         }
       },
       builder: (context, state) {

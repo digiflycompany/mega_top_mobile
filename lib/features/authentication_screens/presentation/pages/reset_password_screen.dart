@@ -36,7 +36,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
            Routes.verifyEmailRoute.moveTo;
         }
         if(state is ResetPasswordFailure){
-          authenticationCubit.showErrorToast(context, AppStrings.userNotFoundWithProvidedEmail);
+          authenticationCubit.showErrorToast(context, '',AppStrings.userNotFoundWithProvidedEmail);
         }
       },
       builder: (context, state) {
