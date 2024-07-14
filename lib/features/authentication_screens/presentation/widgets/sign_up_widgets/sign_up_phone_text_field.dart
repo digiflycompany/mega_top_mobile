@@ -7,8 +7,8 @@ import 'package:mega_top_mobile/core/widgets/primary_text_field.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 
-class SignUpFullNameTextField extends StatelessWidget {
-  const SignUpFullNameTextField({super.key});
+class SignUpPhoneTextField extends StatelessWidget {
+  const SignUpPhoneTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,10 @@ class SignUpFullNameTextField extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(bottom: context.height24),
           child: PrimaryTextField(
-            controller: signUpCubit.signUpFullNameController,
-            hintText: AppStrings.fullNameEn,
-            prefixSvg: AppAssets.usernameIcon,
-            max: 30,
+            controller: signUpCubit.signUpPhoneController,
+            hintText: AppStrings.phoneNumberEn,
+            prefixSvg: AppAssets.phoneIcon,
+            max: 11,
             validator: (value) {
               if (value!.isEmpty) {
                 return AppStrings.pleaseEnterYourUserName;

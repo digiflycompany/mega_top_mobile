@@ -24,7 +24,7 @@ class SignUpButton extends StatelessWidget {
             onTap: () {
               if (formKey.currentState!.validate()) {
                 final email = signUpCubit.signUpEmailController.text;
-                final username = signUpCubit.signUpUsernameController.text;
+                final username = signUpCubit.signUpFullNameController.text;
                 final password = signUpCubit.signUpPasswordController.text;
                 final confirmPassword = signUpCubit.signUpConfirmPasswordController.text;
                 signUpCubit.signUp(email, username, password, confirmPassword);

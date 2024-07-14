@@ -21,8 +21,9 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController signUpEmailController = TextEditingController();
-  final TextEditingController signUpUsernameController = TextEditingController();
+  final TextEditingController signUpFullNameController = TextEditingController();
   final TextEditingController signUpPasswordController = TextEditingController();
+  final TextEditingController signUpPhoneController = TextEditingController();
   final TextEditingController signUpConfirmPasswordController = TextEditingController();
   final TextEditingController resetPasswordEmailController = TextEditingController();
   final TextEditingController createNewPasswordController = TextEditingController();

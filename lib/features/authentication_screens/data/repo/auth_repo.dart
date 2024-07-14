@@ -41,19 +41,19 @@ class AuthRepoImp implements AuthRepo {
 
   @override
   Future<SignUpModel?> signUp(
+      String fullName,
+      String phoneNumber,
       String email,
-      String username,
-      String password,
-      String confirmPassword
+      String password
       ) async {
     try {
       Response? response = await DioHelper.postData(
         url: EndPoints.signUpAPI,
         data: {
-          'fullName': email,
-          'phoneNumber': username,
-          'email': password,
-          'password': confirmPassword,
+          'fullName': fullName,
+          'phoneNumber': phoneNumber,
+          'email': email,
+          'password': password,
         },
       );
       if (response != null && response.statusCode == 200) {

@@ -102,6 +102,8 @@ class AppStrings {
   static const String loginOrCreateEnEn = 'Log in or create a new account';
   static const String continueWithGoogle = 'إنشاء حساب';
   static const String usernameEn = 'Username';
+  static const String phoneNumberEn = 'Phone Number';
+  static const String fullNameEn = 'Full Name';
   static const String confirmPasswordEn = 'Confirm password';
   static const String confirmOrderEn = 'Confirm Order';
   static const String applyEn = 'Apply';
