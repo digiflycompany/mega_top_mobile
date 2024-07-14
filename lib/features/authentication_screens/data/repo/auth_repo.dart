@@ -28,13 +28,13 @@ class AuthRepoImp implements AuthRepo {
           'password': password,
         },
       );
-      if (response?.statusCode == 200) {
-        return UserModel.fromJson(response?.data);
-      } else if (response?.statusCode == 400) {
+      if (response?.statusCode == 200 || response?.statusCode == 400) {
         return UserModel.fromJson(response?.data);
       }
     } catch (e) {
       print('Error during login: $e');
+      // Optionally, rethrow the error to let the caller handle it
+      throw e;
     }
     return null;
   }
@@ -50,10 +50,10 @@ class AuthRepoImp implements AuthRepo {
       Response? response = await DioHelper.postData(
         url: EndPoints.signUpAPI,
         data: {
-          'email': email,
-          'full_name': username,
-          'password': password,
-          'confirm_password': confirmPassword,
+          'fullName': email,
+          'phoneNumber': username,
+          'email': password,
+          'password': confirmPassword,
         },
       );
       if (response != null && response.statusCode == 200) {

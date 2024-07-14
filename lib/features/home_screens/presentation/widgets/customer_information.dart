@@ -20,8 +20,8 @@ class CustomerInformation extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {},
       builder: (context, state) {
-        String token = PreferencesHelper.getToken() ?? '';
-        bool isUserLoggedIn = token.isNotEmpty;
+        Object token = PreferencesHelper.getToken();
+        bool isUserLoggedIn = token.isNotNull;
         return Padding(
             padding: EdgeInsets.symmetric(vertical: context.height * 0.0165),
             child: Row(

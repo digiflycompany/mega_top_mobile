@@ -1,7 +1,7 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 
 class DioHelper {
@@ -20,24 +20,27 @@ class DioHelper {
 
   static Dio? dio = init();
 
-  static Future<Response?> postData(
-      {required String url,
-      Map<String, dynamic>? queryParameters,
-      String username = 'ck_9d47524cd8ae5eb47260cf8cf34144b04c219a45',
-      String password = 'cs_b20f3ce367d0ceac7d671b9e85832dd4a5324b73',
-      Map<String, dynamic>? data}) async {
-    //String? token = PreferencesHelper.getToken();
+  static Future<bool> _hasInternetConnection() async {
+    return await InternetConnectionChecker().hasConnection;
+  }
+
+  static Future<Response?> postData({
+    required String url,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    if (!await _hasInternetConnection()) {
+      throw DioException(
+        requestOptions: RequestOptions(path: url),
+        error: AppStrings.noInternetConnection,
+      );
+    }
+
     try {
-      Map<String, dynamic> headers = {};
-      String basicAuth =
-          'Basic ' + base64Encode(utf8.encode('$username:$password'));
-      headers['Authorization'] = basicAuth;
       Response? response = await dio?.post(
         url,
-        queryParameters: queryParameters,
-        //   options: Options(headers: {'Authorization': 'Bearer ${token}'}),
         data: data,
-        options: Options(headers: headers),
+        queryParameters: queryParameters,
       );
       if (kDebugMode) {
         print('STATUS CODE IS ${response?.statusCode}');
@@ -57,19 +60,18 @@ class DioHelper {
   static Future<Response?> getData({
     required String url,
     Map<String, dynamic>? queryParameters,
-    String username = 'ck_9d47524cd8ae5eb47260cf8cf34144b04c219a45',
-    String password = 'cs_b20f3ce367d0ceac7d671b9e85832dd4a5324b73',
   }) async {
-    try {
-      Map<String, dynamic> headers = {};
+    if (!await _hasInternetConnection()) {
+      throw DioException(
+        requestOptions: RequestOptions(path: url),
+        error: AppStrings.noInternetConnection,
+      );
+    }
 
-      String basicAuth =
-          'Basic ' + base64Encode(utf8.encode('$username:$password'));
-      headers['Authorization'] = basicAuth;
+    try {
       Response? response = await dio?.get(
         url,
         queryParameters: queryParameters,
-        //  options: Options(headers: headers),
       );
 
       if (kDebugMode) {
@@ -83,16 +85,6 @@ class DioHelper {
       if (kDebugMode) {
         print('DIO ERROR IS $e');
       }
-      return e is DioException ? e.response : null;
-    }
-  }
-
-  static Future<Response?> putData(
-      {required String url, required Map<String, dynamic> data}) async {
-    try {
-      Response? response = await dio?.put(url, data: data);
-      return response;
-    } catch (e) {
       return e is DioException ? e.response : null;
     }
   }

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
@@ -40,12 +41,14 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     newPasswordSuccess = true;
     emit(AuthenticationInitial());
   }
-  void showErrorToast(BuildContext context,String text) {
+
+  void showErrorToast(BuildContext context,String title,String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
       builder: (context) => Align(
         alignment: Alignment.bottomCenter,
         child: CustomErrorToast(
+          title: title,
           message: text,
           color: AppColors.redIconColor,
           onDismissed: () {
@@ -86,7 +89,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(LoginFailure(user?.message ?? 'Invalid credentials or network issues.'));
       }
     } catch (e) {
-      emit(LoginFailure(e.toString()));
+      if (e is DioException && e.error == 'No internet connection') {
+        emit(NoInternetConnection());
+      } else {
+        emit(LoginFailure(e.toString()));
+      }
     }
   }
 
@@ -101,7 +108,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(SignUpFailure('Invalid credentials or network issues.'));
       }
     } catch (e) {
-      emit(SignUpFailure(e.toString()));
+      if (e is DioException && e.error == 'No internet connection') {
+        emit(NoInternetConnection());
+      } else {
+        emit(SignUpFailure(e.toString()));
+      }
     }
   }
 
@@ -116,7 +127,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(EmailVerifiedFailure(AppStrings.incorrectCodeOrNetworkIssuesEn));
       }
     } catch (e) {
-      emit(EmailVerifiedFailure(e.toString()));
+      if (e is DioException && e.error == 'No internet connection') {
+        emit(NoInternetConnection());
+      } else {
+        emit(EmailVerifiedFailure(e.toString()));
+      }
     }
   }
 
@@ -131,7 +146,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(ResetPasswordFailure(AppStrings.incorrectEmailOrNetworkIssuesEn));
       }
     } catch (e) {
-      emit(ResetPasswordFailure(e.toString()));
+      if (e is DioException && e.error == 'No internet connection') {
+        emit(NoInternetConnection());
+      } else {
+        emit(ResetPasswordFailure(e.toString()));
+      }
     }
   }
 
@@ -146,10 +165,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(UpdatePasswordFailure('Invalid credentials'));
       }
     } catch (e) {
-      emit(UpdatePasswordFailure(e.toString()));
+      if (e is DioException && e.error == 'No internet connection') {
+        emit(NoInternetConnection());
+      } else {
+        emit(UpdatePasswordFailure(e.toString()));
+      }
     }
   }
-
 
   Future<void> deleteAccount(String email, int id) async {
     emit(DeleteAccountLoading());
@@ -161,10 +183,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(DeleteAccountFailure('Invalid credentials or network issues.'));
       }
     } catch (e) {
-      emit(DeleteAccountFailure(e.toString()));
+      if (e is DioException && e.error == 'No internet connection') {
+        emit(NoInternetConnection());
+      } else {
+        emit(DeleteAccountFailure(e.toString()));
+      }
     }
   }
-
-
 }
-

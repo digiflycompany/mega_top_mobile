@@ -45,6 +45,8 @@ dependencies:
   flutter_screenutil: ^5.9.0
   google_maps_flutter: ^2.5.3
   shared_preferences: ^2.2.2
+  flutter_secure_storage: ^9.2.2
+  internet_connection_checker: ^1.0.0+1
   flutter_localizations:
     sdk: flutter
   intl:

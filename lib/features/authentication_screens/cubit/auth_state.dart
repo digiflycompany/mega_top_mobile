@@ -86,3 +86,5 @@ class DeleteAccountFailure extends AuthenticationState {
 
   DeleteAccountFailure(this.error);
 }
+
+class NoInternetConnection extends AuthenticationState {}
