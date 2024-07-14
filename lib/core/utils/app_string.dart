@@ -11,6 +11,7 @@ class AppStrings {
   static const String previousEn = 'Previous';
   static const String companyEn = 'Company';
   static const String completed = 'Completed';
+  static const String signUpFailed = 'Sign Up Failed';
   static const String orderDetailsEn = 'Order details';
   static const String wrongInfo = 'بيانات غير صحيحة أو مشاكل في الشبكة';
   static const String numberOfProductsEn = 'Number of products';
@@ -24,7 +25,8 @@ class AppStrings {
       'Discover the latest in technology with a wide range of electronic products from top brands. Browse through our intuitive categories for smartphones, laptops, cameras, and more to find exactly what you need.';
   static const String pleaseEnterValidEmail =
       'Please enter a valid email address';
-  static const String pleaseEnterYourUserName = 'Please enter your username';
+  static const String pleaseEnterYourFullName = 'Please enter your full name';
+  static const String pleaseEnterYourPhoneNumber = 'Please enter your phone number';
   static const String pleaseEnterYourPassword = 'Please enter your password';
   static const String pleaseConfirmYourPassword =
       'Please confirm your password';
@@ -102,6 +104,8 @@ class AppStrings {
   static const String loginOrCreateEnEn = 'Log in or create a new account';
   static const String continueWithGoogle = 'إنشاء حساب';
   static const String usernameEn = 'Username';
+  static const String phoneNumberEn = 'Phone Number';
+  static const String fullNameEn = 'Full Name';
   static const String confirmPasswordEn = 'Confirm password';
   static const String confirmOrderEn = 'Confirm Order';
   static const String applyEn = 'Apply';

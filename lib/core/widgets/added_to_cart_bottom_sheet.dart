@@ -9,7 +9,7 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+//import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import '../utils/app_routes.dart';
 import 'cart_bottom_sheet_product_details.dart';
 
@@ -27,9 +27,9 @@ class AddToCartBottomSheet extends StatelessWidget {
     }
   },
   builder: (context, state) {
-    CategoryCubit categoryCubit = context.read<CategoryCubit>();
-    Object token = PreferencesHelper.getToken();
-    bool isUserLoggedIn = token.isNotNull;
+    //CategoryCubit categoryCubit = context.read<CategoryCubit>();
+  //  Object token = PreferencesHelper.getToken();
+   // bool isUserLoggedIn = token.isNotNull;
     return Container(
             height: context.height * 0.407,
             color: Colors.white,
@@ -47,13 +47,13 @@ class AddToCartBottomSheet extends StatelessWidget {
                         PrimaryButton(
                           text: AppStrings.viewCartEn,
                           onTap: () {
-                            if (isUserLoggedIn) {
-                              categoryCubit.addToCart(
-                                  PreferencesHelper.getID!, categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id, 1);
-                              categoryCubit.getProductsDetails(categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id);
-                            } else {
-                              Routes.signUpOrLoginPageRoute.moveTo;
-                            }
+                            // if (isUserLoggedIn) {
+                            //   categoryCubit.addToCart(
+                            //       PreferencesHelper.getID!, categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id, 1);
+                            //   categoryCubit.getProductsDetails(categoryCubit.selectedCategoriesModel!.productList[categoryCubit.selectedProductIndex].id);
+                            // } else {
+                            //   Routes.signUpOrLoginPageRoute.moveTo;
+                            // }
                           },
                         ),
                         VerticalSpace(context.height * 0.033),

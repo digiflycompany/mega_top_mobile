@@ -24,7 +24,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.initState();
     authenticationCubit = context.read<AuthenticationCubit>();
     authenticationCubit.signUpEmailController.clear();
-    authenticationCubit.signUpUsernameController.clear();
+    authenticationCubit.signUpPhoneController.clear();
+    authenticationCubit.signUpFullNameController.clear();
     authenticationCubit.signUpPasswordController.clear();
     authenticationCubit.signUpConfirmPasswordController.clear();
   }
@@ -36,7 +37,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Routes.signUpEmailVerificationPageRoute.moveTo;
         }
         if(state is SignUpFailure){
-           authenticationCubit.showErrorToast(context, '',AppStrings.alreadyRegisteredUsingThisEmail);
+           authenticationCubit.showErrorToast(context, AppStrings.signUpFailed,state.error);
+        }
+        if(state is NoInternetConnection){
+          authenticationCubit.showErrorToast(context, AppStrings.signUpFailed,AppStrings.noInternetConnectionPlease);
         }
       },
       builder: (context, state) {
@@ -72,7 +76,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void dispose() {
     // TODO: implement dispose
     authenticationCubit.signUpEmailController.dispose();
-    authenticationCubit.signUpUsernameController.dispose();
+    authenticationCubit.signUpFullNameController.dispose();
+    authenticationCubit.signUpPhoneController.dispose();
     authenticationCubit.signUpPasswordController.dispose();
     authenticationCubit.signUpConfirmPasswordController.dispose();
     super.dispose();

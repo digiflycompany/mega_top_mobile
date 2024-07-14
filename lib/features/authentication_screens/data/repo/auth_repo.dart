@@ -4,14 +4,13 @@ import 'package:mega_top_mobile/features/authentication_screens/data/models/dele
 import 'package:mega_top_mobile/features/authentication_screens/data/models/email_verification_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
-import 'package:mega_top_mobile/features/authentication_screens/data/models/sign_up_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class AuthRepo {
   Future<UserModel?> login(String email, String password);
   Future<DeleteAccountModel?> delete(String email, int id);
   Future<EmailVerificationModel?> verifyEmail(String email, String activationOtp);
-  Future<SignUpModel?> signUp(String username, String email, String password, String confirmPassword);
+  Future<UserModel?> signUp(String fullName, String phoneNumber, String email, String password);
   Future<ResetPasswordModel?> resetPassword(String email);
   Future<EmailVerificationModel?> updatePassword(String otp, String email, String password, String confirmPassword);
 
@@ -33,35 +32,34 @@ class AuthRepoImp implements AuthRepo {
       }
     } catch (e) {
       print('Error during login: $e');
-      // Optionally, rethrow the error to let the caller handle it
       throw e;
     }
     return null;
   }
 
   @override
-  Future<SignUpModel?> signUp(
+  Future<UserModel?> signUp(
+      String fullName,
+      String phoneNumber,
       String email,
-      String username,
-      String password,
-      String confirmPassword
+      String password
       ) async {
     try {
       Response? response = await DioHelper.postData(
         url: EndPoints.signUpAPI,
         data: {
-          'fullName': email,
-          'phoneNumber': username,
-          'email': password,
-          'password': confirmPassword,
+          'fullName': fullName,
+          'phoneNumber': phoneNumber,
+          'email': email,
+          'password': password,
         },
       );
-      if (response != null && response.statusCode == 200) {
-        SignUpModel user = SignUpModel.fromJson(response.data);
-        return user;
+      if (response?.statusCode == 200 || response?.statusCode == 400) {
+        return UserModel.fromJson(response?.data);
       }
     } catch (e) {
       print('Error during SignUp: $e');
+      throw e;
     }
     return null;
   }

@@ -28,7 +28,7 @@ class DeleteAccountScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        AuthenticationCubit cubit = context.read<AuthenticationCubit>();
+       // AuthenticationCubit cubit = context.read<AuthenticationCubit>();
         return Scaffold(
           appBar: PreferredSize(
               preferredSize: Size(double.infinity, context.height * 0.089),
@@ -66,9 +66,9 @@ class DeleteAccountScreen extends StatelessWidget {
                 child: CircularProgressIndicator.adaptive(),
               ),
             ):PrimaryOutlinedButton(
-              onTap: () {
-                cubit.deleteAccount(PreferencesHelper.getEmail, PreferencesHelper.getID!);
-              },
+              // onTap: () {
+              //   cubit.deleteAccount(PreferencesHelper.getEmail, PreferencesHelper.getID!);
+              // },
               borderColor: AppColors.red,
               text: AppStrings.deleteAccount,
               textColor: AppColors.red,
