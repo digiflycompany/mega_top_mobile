@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_fonts.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 
 class CustomErrorToast extends StatefulWidget {
   final Color color;
   final String message;
+  final String title;
   final VoidCallback onDismissed;
 
   const CustomErrorToast({
     Key? key,
     required this.message,
-    required this.onDismissed, required this.color,
+    required this.onDismissed, required this.color, required this.title,
   }) : super(key: key);
 
   @override
@@ -66,7 +66,7 @@ class _CustomErrorToastState extends State<CustomErrorToast>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppStrings.error,
+                widget.title,
                 style:  TextStyle(
                     color: Colors.white,
                     fontSize: 16.sp,

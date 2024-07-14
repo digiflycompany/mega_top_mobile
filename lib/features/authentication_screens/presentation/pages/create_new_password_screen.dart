@@ -36,7 +36,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
           authenticationCubit.passwordChangedSuccessfully(context);
         }
         if(state is UpdatePasswordFailure){
-          authenticationCubit.showErrorToast(context, AppStrings.invalidOtp);
+          authenticationCubit.showErrorToast(context, '',AppStrings.invalidOtp);
         }
       },
       builder: (context, state) {

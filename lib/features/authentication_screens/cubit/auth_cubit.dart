@@ -42,12 +42,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(AuthenticationInitial());
   }
 
-  void showErrorToast(BuildContext context,String text) {
+  void showErrorToast(BuildContext context,String title,String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
       builder: (context) => Align(
         alignment: Alignment.bottomCenter,
         child: CustomErrorToast(
+          title: title,
           message: text,
           color: AppColors.redIconColor,
           onDismissed: () {
