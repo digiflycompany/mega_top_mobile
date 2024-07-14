@@ -200,7 +200,8 @@ class AppStrings {
   static const String categoriesEn = 'Categories';
   static const String offersEn = 'Offers';
   static const String cartEn = 'Cart';
-  static const String checkYourInternetConnection = 'Check your internet connection';
+  static const String noInternetConnectionPlease = 'No internet connection. Please try again.';
+  static const String noInternetConnection = 'No internet connection';
   static const String storageEn = 'Storage';
   static const String accountEn = 'Account';
   static const String volts230En = '230 volts';
