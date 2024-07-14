@@ -50,10 +50,10 @@ class AuthRepoImp implements AuthRepo {
       Response? response = await DioHelper.postData(
         url: EndPoints.signUpAPI,
         data: {
-          'email': email,
-          'full_name': username,
-          'password': password,
-          'confirm_password': confirmPassword,
+          'fullName': email,
+          'phoneNumber': username,
+          'email': password,
+          'password': confirmPassword,
         },
       );
       if (response != null && response.statusCode == 200) {
