@@ -23,11 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void initState() {
     super.initState();
     authenticationCubit = context.read<AuthenticationCubit>();
-    authenticationCubit.signUpEmailController.clear();
-    authenticationCubit.signUpPhoneController.clear();
-    authenticationCubit.signUpFullNameController.clear();
-    authenticationCubit.signUpPasswordController.clear();
-    authenticationCubit.signUpConfirmPasswordController.clear();
+    authenticationCubit.initializeControllers();
   }
   @override
   Widget build(BuildContext context) {
@@ -75,11 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   void dispose() {
     // TODO: implement dispose
-    authenticationCubit.signUpEmailController.dispose();
-    authenticationCubit.signUpFullNameController.dispose();
-    authenticationCubit.signUpPhoneController.dispose();
-    authenticationCubit.signUpPasswordController.dispose();
-    authenticationCubit.signUpConfirmPasswordController.dispose();
+    authenticationCubit.disposeControllers();
     super.dispose();
   }
 }

@@ -24,8 +24,8 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     authenticationCubit = context.read<AuthenticationCubit>();
-    authenticationCubit.emailController.clear();
-    authenticationCubit.passwordController.clear();
+    authenticationCubit.emailController=TextEditingController();
+    authenticationCubit.passwordController=TextEditingController();
   }
 
   @override
@@ -76,8 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
-    authenticationCubit.emailController.dispose();
-    authenticationCubit.passwordController.dispose();
+    authenticationCubit.emailController?.dispose();
+    authenticationCubit.passwordController?.dispose();
     super.dispose();
   }
 }

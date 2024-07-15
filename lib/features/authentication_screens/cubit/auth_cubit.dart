@@ -18,20 +18,46 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final formKey = GlobalKey<FormState>();
   String passwordPattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
   final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController signUpEmailController = TextEditingController();
-  final TextEditingController signUpFullNameController = TextEditingController();
-  final TextEditingController signUpPasswordController = TextEditingController();
-  final TextEditingController signUpPhoneController = TextEditingController();
-  final TextEditingController signUpConfirmPasswordController = TextEditingController();
-  final TextEditingController resetPasswordEmailController = TextEditingController();
-  final TextEditingController createNewPasswordController = TextEditingController();
-  final TextEditingController confirmNewPasswordController = TextEditingController();
+  TextEditingController? emailController;
+  TextEditingController? passwordController;
+  TextEditingController? signUpEmailController;
+  TextEditingController? signUpFullNameController;
+  TextEditingController? signUpPasswordController;
+  TextEditingController? signUpPhoneController;
+  TextEditingController? signUpConfirmPasswordController;
+  TextEditingController? resetPasswordEmailController;
+  TextEditingController? createNewPasswordController;
+  TextEditingController? confirmNewPasswordController;
 
   bool isPasswordVisible = true;
   bool newPasswordSuccess = false;
-  String otp='';
+  String otp = '';
+
+  void initializeControllers() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    signUpEmailController = TextEditingController();
+    signUpFullNameController = TextEditingController();
+    signUpPasswordController = TextEditingController();
+    signUpPhoneController = TextEditingController();
+    signUpConfirmPasswordController = TextEditingController();
+    resetPasswordEmailController = TextEditingController();
+    createNewPasswordController = TextEditingController();
+    confirmNewPasswordController = TextEditingController();
+  }
+
+  void disposeControllers() {
+    emailController?.dispose();
+    passwordController?.dispose();
+    signUpEmailController?.dispose();
+    signUpFullNameController?.dispose();
+    signUpPasswordController?.dispose();
+    signUpPhoneController?.dispose();
+    signUpConfirmPasswordController?.dispose();
+    resetPasswordEmailController?.dispose();
+    createNewPasswordController?.dispose();
+    confirmNewPasswordController?.dispose();
+  }
 
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
