@@ -10,8 +10,8 @@ class EndPoints {
       '$baseUrl/api/v1/users/login';
   static const String signUpAPI =
       '$baseUrl/api/v1/users/signup';
-  static const String activateEmailAPI =
-      'https://megatop.com.eg/wp-json/custom/v1/activate';
+  static const String verifyEmailAPI =
+      '$baseUrl/api/v1/users/verify-email';
   static const String resetPasswordAPI =
       'https://megatop.com.eg/wp-json/custom/v1/reset-password';
   static const String updatePasswordAPI =

@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_offer_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_product_model.dart';

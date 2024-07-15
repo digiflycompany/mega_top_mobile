@@ -69,6 +69,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(AuthenticationInitial());
   }
 
+  /// Error Toast Function
   void showErrorToast(BuildContext context,String title,String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
@@ -150,14 +151,14 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> emailVerification(String email, String activationOtp) async {
     emit(EmailVerifiedLoading());
     try {
-      final user = await authRepo.verifyEmail(email, activationOtp);
-      if (user != null) {
+      final user = await authRepo.verifyEmail(otp);
+      if (user != null && user.success == true) {
         emit(EmailVerifiedSuccess(user));
       } else {
-        emit(EmailVerifiedFailure(AppStrings.incorrectCodeOrNetworkIssuesEn));
+        emit(EmailVerifiedFailure(user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
       }
     } catch (e) {
-      if (e is DioException && e.error == 'No internet connection') {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(NoInternetConnection());
       } else {
         emit(EmailVerifiedFailure(e.toString()));
