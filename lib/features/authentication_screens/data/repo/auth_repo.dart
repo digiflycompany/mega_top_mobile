@@ -1,18 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/delete_account_model.dart';
-import 'package:mega_top_mobile/features/authentication_screens/data/models/email_verification_model.dart';
-import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 abstract class AuthRepo {
   Future<UserModel?> login(String email, String password);
   Future<DeleteAccountModel?> delete(String email, int id);
-  Future<EmailVerificationModel?> verifyEmail(String email, String activationOtp);
+  Future<UserModel?> verifyEmail(String otp);
   Future<UserModel?> signUp(String fullName, String phoneNumber, String email, String password);
   Future<ResetPasswordModel?> resetPassword(String email);
-  Future<EmailVerificationModel?> updatePassword(String otp, String email, String password, String confirmPassword);
+  Future<UserModel?> updatePassword(String otp, String email, String password, String confirmPassword);
 
 }
 
@@ -64,21 +64,27 @@ class AuthRepoImp implements AuthRepo {
     return null;
   }
 
-  Future<EmailVerificationModel?> verifyEmail(String email, String activationOtp) async {
+  Future<UserModel?> verifyEmail(String otp) async {
     try {
+
       Response? response = await DioHelper.postData(
-        url: EndPoints.activateEmailAPI,
+        url: EndPoints.verifyEmailAPI,
         data: {
-          'email': email,
-          'activation_otp': activationOtp,
+          'verificationCode': otp,
         },
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer ${PreferencesHelper.getToken()}',
+          },
+        ),
       );
-      if (response != null && response.statusCode == 200) {
-        EmailVerificationModel emailVerificationModel = EmailVerificationModel.fromJson(response.data);
-        return emailVerificationModel;
+
+      if (response?.statusCode == 200 || response?.statusCode == 500) {
+        return UserModel.fromJson(response?.data);
       }
     } catch (e) {
-      print('Error during login: $e');
+      print('Error during email verification: $e');
+      throw e;
     }
     return null;
   }
@@ -103,7 +109,7 @@ class AuthRepoImp implements AuthRepo {
   }
 
   @override
-  Future<EmailVerificationModel?> updatePassword(
+  Future<UserModel?> updatePassword(
       String otp,
       String email,
       String password,
@@ -120,7 +126,7 @@ class AuthRepoImp implements AuthRepo {
         },
       );
       if (response != null && response.statusCode == 200) {
-        EmailVerificationModel user = EmailVerificationModel.fromJson(response.data);
+        UserModel user = UserModel.fromJson(response.data);
         return user;
       }
     } catch (e) {

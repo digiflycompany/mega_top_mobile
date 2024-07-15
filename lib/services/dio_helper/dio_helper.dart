@@ -28,6 +28,7 @@ class DioHelper {
     required String url,
     Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
+    Options? options,
   }) async {
     if (!await _hasInternetConnection()) {
       throw DioException(
@@ -41,6 +42,7 @@ class DioHelper {
         url,
         data: data,
         queryParameters: queryParameters,
+        options: options
       );
       if (kDebugMode) {
         print('STATUS CODE IS ${response?.statusCode}');
