@@ -69,9 +69,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
 
   @override
   void dispose() {
-    authenticationCubit.confirmNewPasswordController.clear();
-    authenticationCubit.createNewPasswordController.clear();
-    authenticationCubit.resetPasswordEmailController.clear();
+    authenticationCubit.disposeControllers();
     super.dispose();
   }
 }

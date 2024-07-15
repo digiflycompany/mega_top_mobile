@@ -24,7 +24,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   void initState() {
     // TODO: implement initState
     authenticationCubit = context.read<AuthenticationCubit>();
-    authenticationCubit.resetPasswordEmailController.clear();
+    authenticationCubit.initializeControllers();
     super.initState();
   }
   @override

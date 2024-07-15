@@ -17,7 +17,7 @@ class UserEmailText extends StatelessWidget {
           padding: EdgeInsets.only(
               top: context.height6, bottom: context.height24),
           child: Text(
-            '${userCubit.signUpEmailController.text}',
+            '${userCubit.signUpEmailController?.text}',
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
