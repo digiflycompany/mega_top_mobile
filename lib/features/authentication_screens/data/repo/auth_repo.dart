@@ -10,10 +10,10 @@ abstract class AuthRepo {
   Future<UserModel?> login(String email, String password);
   Future<DeleteAccountModel?> delete(String email, int id);
   Future<UserModel?> verifyEmail(String otp);
+  Future<UserModel?> resendEmailCode();
   Future<UserModel?> signUp(String fullName, String phoneNumber, String email, String password);
   Future<ResetPasswordModel?> resetPassword(String email);
   Future<UserModel?> updatePassword(String otp, String email, String password, String confirmPassword);
-
 }
 
 class AuthRepoImp implements AuthRepo {
@@ -74,7 +74,7 @@ class AuthRepoImp implements AuthRepo {
         },
         options: Options(
           headers: {
-            'Authorization': 'Bearer ${PreferencesHelper.getToken()}',
+            'Authorization': 'Bearer ${await PreferencesHelper.getToken()}',
           },
         ),
       );
@@ -151,6 +151,27 @@ class AuthRepoImp implements AuthRepo {
       }
     } catch (e) {
       print('Error during Account Deletion: $e');
+    }
+    return null;
+  }
+
+  @override
+  Future<UserModel?> resendEmailCode() async{
+    try {
+      Response? response = await DioHelper.postData(
+        url: EndPoints.resendEmailVerificationCode,
+        options: Options(
+          headers: {
+        'Authorization': 'Bearer ${await PreferencesHelper.getToken()}',
+        },
+        ),
+      );
+      if (response?.statusCode == 200 || response?.statusCode == 403) {
+        return UserModel.fromJson(response?.data);
+      }
+    } catch (e) {
+      print('Error during email verification: $e');
+      throw e;
     }
     return null;
   }

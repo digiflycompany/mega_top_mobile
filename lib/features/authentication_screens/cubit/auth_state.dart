@@ -46,6 +46,19 @@ class EmailVerifiedFailure extends AuthenticationState {
 
   EmailVerifiedFailure(this.error);
 }
+class EmailResendCodeLoading extends AuthenticationState {}
+
+class EmailResendCodeSuccess extends AuthenticationState {
+  final UserModel userModel;
+
+  EmailResendCodeSuccess(this.userModel);
+}
+
+class EmailResendCodeFailure extends AuthenticationState {
+  final String error;
+
+  EmailResendCodeFailure(this.error);
+}
 
 class ResetPasswordLoading extends AuthenticationState {}
 

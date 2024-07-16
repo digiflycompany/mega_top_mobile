@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_details_screen.dart';
@@ -15,6 +16,8 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/pages/wish_list_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
@@ -95,12 +98,18 @@ class RouteGenerator {
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.loginRoute:
         return buildPageRoute(
-            child: LoginScreen(),
+            child: BlocProvider(
+              create: (context) => AuthenticationCubit(AuthRepoImp()),
+              child: LoginScreen(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.signUpRoute:
         return buildPageRoute(
-            child: const SignUpScreen(),
+            child: BlocProvider(
+              create: (context) => AuthenticationCubit(AuthRepoImp()),
+              child: SignUpScreen(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.resetPasswordRoute:
@@ -226,7 +235,10 @@ class RouteGenerator {
         );
       case Routes.signUpEmailVerificationPageRoute:
         return buildPageRoute(
-          child: const SignUpEmailVerificationScreen(),
+          child: BlocProvider(
+            create: (context) => AuthenticationCubit(AuthRepoImp()),
+            child: SignUpEmailVerificationScreen(),
+          ),
         );
       case Routes.cartPageRoute:
         return buildPageRoute(
@@ -319,13 +331,14 @@ class RouteGenerator {
       );
     }
     return MaterialPageRoute<T>(
-      builder: (_) => AnnotatedRegion<SystemUiOverlayStyle>(
-          value: const SystemUiOverlayStyle(
-            statusBarColor: AppColors.transparent,
-            statusBarIconBrightness: Brightness.dark,
-            statusBarBrightness: Brightness.dark,
-          ),
-          child: child),
+      builder: (_) =>
+          AnnotatedRegion<SystemUiOverlayStyle>(
+              value: const SystemUiOverlayStyle(
+                statusBarColor: AppColors.transparent,
+                statusBarIconBrightness: Brightness.dark,
+                statusBarBrightness: Brightness.dark,
+              ),
+              child: child),
       settings: routeSettings,
     );
   }

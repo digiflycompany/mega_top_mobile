@@ -11,21 +11,39 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/resend_code_row.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/user_email_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/verify_email_button.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
-class SignUpEmailVerificationScreen extends StatelessWidget {
+class SignUpEmailVerificationScreen extends StatefulWidget {
   const SignUpEmailVerificationScreen({super.key});
+
+  @override
+  State<SignUpEmailVerificationScreen> createState() =>
+      _SignUpEmailVerificationScreenState();
+}
+
+class _SignUpEmailVerificationScreenState
+    extends State<SignUpEmailVerificationScreen> {
+  late AuthenticationCubit authenticationCubit;
+  @override
+  void initState() {
+    super.initState();
+    authenticationCubit = context.read<AuthenticationCubit>();
+    authenticationCubit.initializeControllers();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
-        if(state is EmailVerifiedSuccess){
-          PreferencesHelper.saveIsVisitor(isVisitor: true);
-          Routes.loginRoute.moveToCurrentRouteAndRemoveAll;
+        if (state is EmailVerifiedSuccess) {
+          Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
         }
-        if(state is EmailVerifiedFailure){
-
+        if (state is EmailVerifiedFailure) {
+          authenticationCubit.showErrorToast(
+              context, AppStrings.emailVerificationFailed, state.error);
+        }
+        if (state is EmailResendCodeFailure) {
+          authenticationCubit.showErrorToast(
+              context, AppStrings.sendingCodeFailed, state.error);
         }
       },
       builder: (context, state) {
@@ -35,14 +53,14 @@ class SignUpEmailVerificationScreen extends StatelessWidget {
               child: const CustomAppBar(AppStrings.verifyYourEmailEn)),
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: context.width16),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const PleaseEnterFourDigitsCodeText(),
-                const UserEmailText(),
+                PleaseEnterFourDigitsCodeText(),
+                UserEmailText(),
                 OTPRow(),
-                const VerifyEmailButton(),
-                const ResendCodeRow(),
+                VerifyEmailButton(),
+                ResendCodeRow(),
               ],
             ),
           ),

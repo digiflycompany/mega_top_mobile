@@ -24,7 +24,7 @@ class SignUpConfirmPasswordTextField extends StatelessWidget {
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return AppStrings.pleaseConfirmYourPassword;
-              } else if (signUpCubit.signUpConfirmPasswordController!.text!=signUpCubit.signUpPasswordController!.text) {
+              } else if (signUpCubit.signUpConfirmPasswordController.text != signUpCubit.signUpPasswordController.text) {
                 return AppStrings.passwordsNotMatching;
               }
               return null;

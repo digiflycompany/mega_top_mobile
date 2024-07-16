@@ -21,7 +21,6 @@ class VerifyEmailButton extends StatelessWidget {
           child: AuthButton(
             onTap: ()=>
               buttonCubit.emailVerification(
-                buttonCubit.signUpEmailController!.text,
                 buttonCubit.otp,
               ),
             content: state is EmailVerifiedLoading?const ButtonCircularProgress():Text(

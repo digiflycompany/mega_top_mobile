@@ -19,7 +19,7 @@ class VerifyEmailDescription extends StatelessWidget {
               text: AppStrings.pleaseEnter4DigitsEn,
             ),
             ForgotPasswordDescription(
-              text: '${userCubit.resetPasswordEmailController!.text}',
+              text: '${userCubit.resetPasswordEmailController.text}',
             ),
           ],
         );

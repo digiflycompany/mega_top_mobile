@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_title.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_body.dart';
@@ -27,7 +28,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+    return BlocProvider(
+  create: (context) => AuthenticationCubit(AuthRepoImp()),
+  child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if(state is SignUpSuccess){
           Routes.signUpEmailVerificationPageRoute.moveTo;
@@ -66,11 +69,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ));
       },
-    );
+    ),
+);
   }
   @override
   void dispose() {
-    // TODO: implement dispose
     authenticationCubit.disposeControllers();
     super.dispose();
   }

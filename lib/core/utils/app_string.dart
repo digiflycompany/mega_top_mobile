@@ -26,7 +26,8 @@ class AppStrings {
   static const String pleaseEnterValidEmail =
       'Please enter a valid email address';
   static const String pleaseEnterYourFullName = 'Please enter your full name';
-  static const String pleaseEnterYourPhoneNumber = 'Please enter your phone number';
+  static const String pleaseEnterYourPhoneNumber =
+      'Please enter your phone number';
   static const String pleaseEnterYourPassword = 'Please enter your password';
   static const String pleaseConfirmYourPassword =
       'Please confirm your password';
@@ -198,6 +199,8 @@ class AppStrings {
   static const String aboutProductDescriptionEn =
       'This product is part of the Easy UPS collection. It features a total of 4 power outlets, all of which provide battery backup and surge protection. It has an interactive line topology. The UPS has a high power rating of 156 joules. Its dimensions are 9.25 x 16.05 x 30.5 cm and its weight is 5.7 kg. Easy UPS provides a simple power protection solution for unstable power conditions in homes and small offices, ensuring stable and reliable connectivity in the moments that matter most. UPS is a CE certified product.';
   static const String homeEn = 'Home';
+  static const String emailVerificationFailed = 'Email verification failed';
+  static const String sendingCodeFailed = 'Sending code failed';
   static const String addToCartEn = 'Add to Cart';
   static const String aboutTheProductEn = 'About the product';
   static const String productSpecificationEn = 'product specification ';
@@ -205,7 +208,8 @@ class AppStrings {
   static const String offersEn = 'Offers';
   static const String cartEn = 'Cart';
   static const String loginFailed = 'Login Failed';
-  static const String noInternetConnectionPlease = 'No internet connection. Please try again.';
+  static const String noInternetConnectionPlease =
+      'No internet connection. Please try again.';
   static const String noInternetConnection = 'No internet connection';
   static const String storageEn = 'Storage';
   static const String accountEn = 'Account';
