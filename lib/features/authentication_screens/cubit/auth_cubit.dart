@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
@@ -20,8 +22,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   static AuthenticationCubit getCubit(context) => BlocProvider.of(context);
 
   final formKey = GlobalKey<FormState>();
-  String passwordPattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
-  final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+  String passwordPattern =
+      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
+  final emailRegex =
+      RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -29,7 +33,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   TextEditingController signUpFullNameController = TextEditingController();
   TextEditingController signUpPasswordController = TextEditingController();
   TextEditingController signUpPhoneController = TextEditingController();
-  TextEditingController signUpConfirmPasswordController = TextEditingController();
+  TextEditingController signUpConfirmPasswordController =
+      TextEditingController();
   TextEditingController resetPasswordEmailController = TextEditingController();
   TextEditingController createNewPasswordController = TextEditingController();
   TextEditingController confirmNewPasswordController = TextEditingController();
@@ -95,6 +100,28 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
+  void codeSentToast(BuildContext context) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: kToolbarHeight + MediaQuery.of(context).padding.top,
+        width: MediaQuery.of(context).size.width,
+        child: AnimatedOverlayIconToast(
+          toastIcon: AppAssets.checkIcon,
+          message: AppStrings.codeSentSuccessfully,
+          color: AppColors.primaryGreenColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
+  }
+
   void passwordChangedSuccessfully(BuildContext context) {
     showDialog(
       context: context,
@@ -117,7 +144,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         print(PreferencesHelper.getToken());
         emit(LoginSuccess(user));
       } else {
-        emit(LoginFailure(user?.message ?? 'Invalid credentials or network issues.'));
+        emit(LoginFailure(
+            user?.message ?? 'Invalid credentials or network issues.'));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -128,17 +156,20 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  Future<void> signUp(String fullName, String phoneNumber, String email, String password) async {
+  Future<void> signUp(String fullName, String phoneNumber, String email,
+      String password) async {
     emit(SignUpLoading());
     try {
-      final user = await authRepo.signUp(fullName, phoneNumber, email, password);
+      final user =
+          await authRepo.signUp(fullName, phoneNumber, email, password);
       if (user != null && user.success == true) {
         await PreferencesHelper.saveToken(token: user.data!.token!);
         await PreferencesHelper.saveUserModel(user);
         print(PreferencesHelper.getToken());
         emit(SignUpSuccess(user));
       } else {
-        emit(SignUpFailure(user?.message ?? 'Invalid credentials or network issues.'));
+        emit(SignUpFailure(
+            user?.message ?? 'Invalid credentials or network issues.'));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -156,7 +187,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       if (user != null && user.success == true) {
         emit(EmailVerifiedSuccess(user));
       } else {
-        emit(EmailVerifiedFailure(user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
+        emit(EmailVerifiedFailure(
+            user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -171,13 +203,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(ResetPasswordLoading());
     try {
       final user = await authRepo.resetPassword(email);
-      if (user != null) {
+      if (user != null && user.success == true) {
         emit(ResetPasswordSuccess(user));
       } else {
-        emit(ResetPasswordFailure(AppStrings.incorrectEmailOrNetworkIssuesEn));
+        emit(ResetPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
       }
     } catch (e) {
-      if (e is DioException && e.error == 'No internet connection') {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(NoInternetConnection());
       } else {
         emit(ResetPasswordFailure(e.toString()));
@@ -185,10 +217,32 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  Future<void> updatePassword(String otp, String email, String password, String confirmPassword) async {
+  Future<void> verifyResetPassword(String email,String resetPasswordCode) async {
+    emit(VerifyResetPasswordLoading());
+    try {
+      final user = await authRepo.verifyResetPassword(email,resetPasswordCode);
+      if (user != null && user.success == true) {
+        await PreferencesHelper.saveToken(token: user.token!);
+        print(await PreferencesHelper.getToken());
+        emit(VerifyResetPasswordSuccess(user));
+      } else {
+        emit(VerifyResetPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(NoInternetConnection());
+      } else {
+        emit(VerifyResetPasswordFailure(e.toString()));
+      }
+    }
+  }
+
+  Future<void> updatePassword(
+      String otp, String email, String password, String confirmPassword) async {
     emit(UpdatePasswordLoading());
     try {
-      final user = await authRepo.updatePassword(otp, email, password, confirmPassword);
+      final user =
+          await authRepo.updatePassword(otp, email, password, confirmPassword);
       if (user != null) {
         emit(UpdatePasswordSuccess(user));
       } else {
@@ -228,7 +282,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       if (user != null && user.success == true) {
         emit(EmailResendCodeSuccess(user));
       } else {
-        emit(EmailResendCodeFailure(user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
+        emit(EmailResendCodeFailure(
+            user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -238,5 +293,4 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
     }
   }
-
 }

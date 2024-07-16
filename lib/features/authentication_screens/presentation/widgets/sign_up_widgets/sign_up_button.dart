@@ -21,24 +21,29 @@ class SignUpButton extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(bottom: context.height16),
           child: AuthButton(
-            onTap: () {
-              if (formKey.currentState!.validate()) {
-                signUpCubit.signUp(
-                    signUpCubit.signUpFullNameController.text,
-                    signUpCubit.signUpPhoneController.text,
-                    signUpCubit.signUpEmailController.text,
-                    signUpCubit.signUpEmailController.text,
-                );
-              }
-            },
-            content: state is SignUpLoading?const ButtonCircularProgress():Text(
-              AppStrings.signUpEn,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 16.sp,
-              ),
-            ),
+            onTap: state is SignUpLoading
+                ? () {}
+                : () {
+                    if (formKey.currentState!.validate()) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      signUpCubit.signUp(
+                        signUpCubit.signUpFullNameController.text,
+                        signUpCubit.signUpPhoneController.text,
+                        signUpCubit.signUpEmailController.text,
+                        signUpCubit.signUpEmailController.text,
+                      );
+                    }
+                  },
+            content: state is SignUpLoading
+                ? const ButtonCircularProgress()
+                : Text(
+                    AppStrings.signUpEn,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16.sp,
+                    ),
+                  ),
           ),
         );
       },

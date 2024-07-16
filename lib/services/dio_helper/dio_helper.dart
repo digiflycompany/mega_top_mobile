@@ -38,12 +38,8 @@ class DioHelper {
     }
 
     try {
-      Response? response = await dio?.post(
-        url,
-        data: data,
-        queryParameters: queryParameters,
-        options: options
-      );
+      Response? response = await dio?.post(url,
+          data: data, queryParameters: queryParameters, options: options);
       if (kDebugMode) {
         print('STATUS CODE IS ${response?.statusCode}');
         print('STATUS MESSAGE IS ${response?.statusMessage}');
@@ -62,6 +58,7 @@ class DioHelper {
   static Future<Response?> getData({
     required String url,
     Map<String, dynamic>? queryParameters,
+    Options? options,
   }) async {
     if (!await _hasInternetConnection()) {
       throw DioException(
@@ -71,10 +68,8 @@ class DioHelper {
     }
 
     try {
-      Response? response = await dio?.get(
-        url,
-        queryParameters: queryParameters,
-      );
+      Response? response = await dio?.get(url,
+          queryParameters: queryParameters, options: options);
 
       if (kDebugMode) {
         print('STATUS CODE IS ${response?.statusCode}');

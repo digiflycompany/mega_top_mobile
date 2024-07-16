@@ -73,6 +73,8 @@ extension StringExtension on String {
 
   get moveTo => pushRoute(this);
 
+
+
   //get pushAndRemoveAllUntil => pushRoute(this, isNewTask: true);
 
   pushReplacementWithData(Map<String, dynamic>? arguments) =>

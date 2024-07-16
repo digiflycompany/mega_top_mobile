@@ -25,8 +25,9 @@ class ResetPasswordButton extends StatelessWidget {
               fontSize: 16.sp,
             ),
           ),
-          onTap: () {
+          onTap: state is ResetPasswordLoading?(){}:() {
             if(formKey.currentState!.validate()){
+              FocusManager.instance.primaryFocus?.unfocus();
               resetCubit.resetPassword(resetCubit.resetPasswordEmailController.text);
             }
           },

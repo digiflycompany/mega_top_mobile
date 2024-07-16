@@ -45,6 +45,9 @@ class _SignUpEmailVerificationScreenState
           authenticationCubit.showErrorToast(
               context, AppStrings.sendingCodeFailed, state.error);
         }
+        if (state is EmailResendCodeSuccess) {
+          authenticationCubit.codeSentToast(context);
+        }
       },
       builder: (context, state) {
         return Scaffold(

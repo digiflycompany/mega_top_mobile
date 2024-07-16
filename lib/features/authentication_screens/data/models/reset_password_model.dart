@@ -1,18 +1,27 @@
 class ResetPasswordModel {
-  String? status;
-  String? message;
+  final bool success;
+  final String? message;
+  final String? token;
 
-  ResetPasswordModel({this.status, this.message});
+  ResetPasswordModel({
+    required this.success,
+    this.message,
+    this.token,
+  });
 
-  ResetPasswordModel.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    message = json['message'];
+  factory ResetPasswordModel.fromJson(Map<String, dynamic> json) {
+    return ResetPasswordModel(
+      success: json['success'],
+      message: json['message'],
+      token: json['token'],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['message'] = this.message;
-    return data;
+    return {
+      'success': success,
+      'message': message,
+      'token': token,
+    };
   }
 }

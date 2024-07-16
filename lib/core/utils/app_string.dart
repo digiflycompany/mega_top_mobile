@@ -20,7 +20,7 @@ class AppStrings {
   static const String onboardingSecondScreenDescription =
       'Seamlessly add items to your cart with just a tap. Review your selections, adjust quantities, or continue shopping until you have everything you need.';
   static const String onboardingThirdScreenDescription =
-      'Sit back and relax while we handle the rest! Get real-time updates on your order status from dispatch to delivery. Enjoy fast, reliable, and hassle-free delivery right to your doorstep.';
+      'Get real-time updates on your order status from dispatch to delivery. Enjoy fast, reliable, and hassle-free delivery right to your doorstep.';
   static const String onboardingFirstScreenDescription =
       'Discover the latest in technology with a wide range of electronic products from top brands. Browse through our intuitive categories for smartphones, laptops, cameras, and more to find exactly what you need.';
   static const String pleaseEnterValidEmail =
@@ -91,6 +91,7 @@ class AppStrings {
   static const String createAccount = 'إنشاء حساب';
   static const String createAccountEn = 'Sign up';
   static const String continueWithGoogleEn = 'Continue with Google';
+  static const String codeSentSuccessfully = 'Code sent successfully';
   static const String theProductAddedToWishListEn =
       'The product added to wish list';
   static const String theProductRemovedFromWishListEn =
@@ -192,6 +193,7 @@ class AppStrings {
   static const String userNotFoundWithProvidedEmail =
       'User not found with provided email';
   static const String rackEn = 'Rack';
+  static const String resetPasswordFailed = 'Reset password failed';
   static const String productPriceEn = '1500 LE';
   static const String productOldPriceEn = '2300 LE';
   static const String productDetailedSmallDescriptionEn =
@@ -201,6 +203,7 @@ class AppStrings {
   static const String homeEn = 'Home';
   static const String emailVerificationFailed = 'Email verification failed';
   static const String sendingCodeFailed = 'Sending code failed';
+  static const String verifying = 'Sending code failed';
   static const String addToCartEn = 'Add to Cart';
   static const String aboutTheProductEn = 'About the product';
   static const String productSpecificationEn = 'product specification ';

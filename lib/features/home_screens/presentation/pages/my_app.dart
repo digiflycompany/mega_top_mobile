@@ -47,28 +47,33 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => OffersCubit(),
             ),
           ],
-          child: MaterialApp(
-            theme: AppTheme.lightTheme,
-            debugShowCheckedModeBanner: false,
-            supportedLocales: L10n.all,
-            locale: const Locale('en'),
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            navigatorKey: AppService().navigatorKey,
-            home: FutureBuilder<bool>(
-              future: PreferencesHelper.hasSeenOnboarding(),
-              builder: (context, snapshot) {
-                if (snapshot.data == true) {
-                  return HomePage();
-                } else {
-                  return OnBoardingScreens();
-                }
-              },
+          child: GestureDetector(
+            onTap: () {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: MaterialApp(
+              theme: AppTheme.lightTheme,
+              debugShowCheckedModeBanner: false,
+              supportedLocales: L10n.all,
+              locale: const Locale('en'),
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              navigatorKey: AppService().navigatorKey,
+              home: FutureBuilder<bool>(
+                future: PreferencesHelper.hasSeenOnboarding(),
+                builder: (context, snapshot) {
+                  if (snapshot.data == true) {
+                    return HomePage();
+                  } else {
+                    return OnBoardingScreens();
+                  }
+                },
+              ),
+              onGenerateRoute: RouteGenerator.getRoute,
             ),
-            onGenerateRoute: RouteGenerator.getRoute,
           ),
         );
       },
