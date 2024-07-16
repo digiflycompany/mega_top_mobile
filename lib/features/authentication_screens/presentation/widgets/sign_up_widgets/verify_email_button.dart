@@ -19,18 +19,23 @@ class VerifyEmailButton extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(top: context.height40),
           child: AuthButton(
-            onTap: ()=>
-              buttonCubit.emailVerification(
-                buttonCubit.otp,
-              ),
-            content: state is EmailVerifiedLoading?const ButtonCircularProgress():Text(
-              AppStrings.verifyEn,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 16.sp,
-              ),
-            ),
+            onTap: state is EmailVerifiedLoading
+                ? () {}
+                : () {
+                    buttonCubit.emailVerification(
+                      buttonCubit.otp,
+                    );
+                  },
+            content: state is EmailVerifiedLoading
+                ? const ButtonCircularProgress()
+                : Text(
+                    AppStrings.verifyEn,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16.sp,
+                    ),
+                  ),
           ),
         );
       },

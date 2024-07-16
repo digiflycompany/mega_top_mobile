@@ -21,21 +21,25 @@ class LoginButton extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(top: context.height40),
           child: AuthButton(
-            onTap: () {
-              if (formKey.currentState!.validate()) {
-                final username = loginCubit.emailController.text;
-                final password = loginCubit.passwordController.text;
-                loginCubit.login(username, password);
-              }
-            },
-            content: state is LoginLoading?const ButtonCircularProgress():Text(
-              AppStrings.loginEn,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 16.sp,
-              ),
-            ),
+            onTap: state is LoginLoading
+                ? () {}
+                : () {
+                    if (formKey.currentState!.validate()) {
+                      final username = loginCubit.emailController.text;
+                      final password = loginCubit.passwordController.text;
+                      loginCubit.login(username, password);
+                    }
+                  },
+            content: state is LoginLoading
+                ? const ButtonCircularProgress()
+                : Text(
+                    AppStrings.loginEn,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16.sp,
+                    ),
+                  ),
           ),
         );
       },
