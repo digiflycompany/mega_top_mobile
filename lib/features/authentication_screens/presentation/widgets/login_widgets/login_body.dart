@@ -18,11 +18,6 @@ class LoginBody extends StatefulWidget {
 
 class _LoginBodyState extends State<LoginBody> {
   late AuthenticationCubit authenticationCubit;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   authenticationCubit = context.read<AuthenticationCubit>();
-  // }
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();

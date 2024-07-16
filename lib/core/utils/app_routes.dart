@@ -80,6 +80,7 @@ class Routes {
   static const String compareProductPageRoute = "/compare_product_screen";
   static const String signUpEmailVerificationPageRoute = "/sign_up_email_verification_screen";
   static const String cartPageRoute = "/cart_screen";
+
 }
 
 class RouteGenerator {
@@ -114,17 +115,27 @@ class RouteGenerator {
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.resetPasswordRoute:
         return buildPageRoute(
-            child: const ResetPasswordScreen(),
+            child: BlocProvider(
+              create: (context) => AuthenticationCubit(AuthRepoImp()),
+              child: ResetPasswordScreen(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.verifyEmailRoute:
+        final email = routeSettings.arguments as String;
         return buildPageRoute(
-            child: const VerifyEmailScreen(),
+            child: BlocProvider(
+              create: (context) => AuthenticationCubit(AuthRepoImp()),
+              child: VerifyEmailScreen(email: email,),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.slide);
       case Routes.createNewPasswordRoute:
         return buildPageRoute(
-            child: const CreateNewPasswordScreen(),
+            child: BlocProvider(
+              create: (context) => AuthenticationCubit(AuthRepoImp()),
+              child: CreateNewPasswordScreen(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.slide);
       case Routes.homePageRoute:

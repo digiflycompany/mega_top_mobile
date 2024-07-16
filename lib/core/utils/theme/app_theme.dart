@@ -7,5 +7,6 @@ class AppTheme {
       scaffoldBackgroundColor: Colors.white,
       fontFamily: FontFamilies.cairo,
       splashColor: Colors.transparent,
+      useMaterial3: false,
       appBarTheme: CustomAppBarTheme.appBarTheme);
 }

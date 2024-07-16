@@ -22,7 +22,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   late AuthenticationCubit authenticationCubit;
   @override
   void initState() {
-    // TODO: implement initState
     authenticationCubit = context.read<AuthenticationCubit>();
     authenticationCubit.initializeControllers();
     super.initState();
@@ -33,10 +32,14 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if(state is ResetPasswordSuccess){
-           Routes.verifyEmailRoute.moveTo;
+          Navigator.pushNamed(
+            context,
+            Routes.verifyEmailRoute,
+            arguments: authenticationCubit.resetPasswordEmailController.text,
+          );
         }
         if(state is ResetPasswordFailure){
-          authenticationCubit.showErrorToast(context, '',AppStrings.userNotFoundWithProvidedEmail);
+          authenticationCubit.showErrorToast(context, AppStrings.resetPasswordFailed,state.error);
         }
       },
       builder: (context, state) {
@@ -63,5 +66,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         );
       },
     );
+  }
+  @override
+  void dispose() {
+    authenticationCubit.disposeControllers();
+    super.dispose();
   }
 }

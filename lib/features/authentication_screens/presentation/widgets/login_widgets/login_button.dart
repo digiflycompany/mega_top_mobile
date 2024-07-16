@@ -25,6 +25,7 @@ class LoginButton extends StatelessWidget {
                 ? () {}
                 : () {
                     if (formKey.currentState!.validate()) {
+                      FocusManager.instance.primaryFocus?.unfocus();
                       final username = loginCubit.emailController.text;
                       final password = loginCubit.passwordController.text;
                       loginCubit.login(username, password);

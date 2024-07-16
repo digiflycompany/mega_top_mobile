@@ -203,16 +203,36 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(ResetPasswordLoading());
     try {
       final user = await authRepo.resetPassword(email);
-      if (user != null) {
+      if (user != null && user.success == true) {
         emit(ResetPasswordSuccess(user));
       } else {
-        emit(ResetPasswordFailure(AppStrings.incorrectEmailOrNetworkIssuesEn));
+        emit(ResetPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
       }
     } catch (e) {
-      if (e is DioException && e.error == 'No internet connection') {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(NoInternetConnection());
       } else {
         emit(ResetPasswordFailure(e.toString()));
+      }
+    }
+  }
+
+  Future<void> verifyResetPassword(String email,String resetPasswordCode) async {
+    emit(VerifyResetPasswordLoading());
+    try {
+      final user = await authRepo.verifyResetPassword(email,resetPasswordCode);
+      if (user != null && user.success == true) {
+        await PreferencesHelper.saveToken(token: user.token!);
+        print(await PreferencesHelper.getToken());
+        emit(VerifyResetPasswordSuccess(user));
+      } else {
+        emit(VerifyResetPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(NoInternetConnection());
+      } else {
+        emit(VerifyResetPasswordFailure(e.toString()));
       }
     }
   }

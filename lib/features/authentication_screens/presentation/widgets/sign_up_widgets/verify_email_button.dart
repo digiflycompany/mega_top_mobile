@@ -22,7 +22,8 @@ class VerifyEmailButton extends StatelessWidget {
             onTap: state is EmailVerifiedLoading
                 ? () {}
                 : () {
-                    buttonCubit.emailVerification(
+              FocusManager.instance.primaryFocus?.unfocus();
+              buttonCubit.emailVerification(
                       buttonCubit.otp,
                     );
                   },

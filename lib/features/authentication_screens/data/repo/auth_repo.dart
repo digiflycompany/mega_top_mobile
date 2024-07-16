@@ -13,7 +13,8 @@ abstract class AuthRepo {
   Future<UserModel?> resendEmailCode();
   Future<UserModel?> signUp(
       String fullName, String phoneNumber, String email, String password);
-  Future<ResetPasswordModel?> resetPassword(String email);
+  Future<UserModel?> resetPassword(String email);
+  Future<ResetPasswordModel?> verifyResetPassword(String email, String resetPasswordCode);
   Future<UserModel?> updatePassword(
       String otp, String email, String password, String confirmPassword);
 }
@@ -87,7 +88,7 @@ class AuthRepoImp implements AuthRepo {
   }
 
   @override
-  Future<ResetPasswordModel?> resetPassword(String email) async {
+  Future<UserModel?> resetPassword(String email) async {
     try {
       Response? response = await DioHelper.postData(
         url: EndPoints.resetPasswordAPI,
@@ -95,13 +96,32 @@ class AuthRepoImp implements AuthRepo {
           'email': email,
         },
       );
-      if (response != null && response.statusCode == 200) {
-        ResetPasswordModel resetPasswordModel =
-            ResetPasswordModel.fromJson(response.data);
-        return resetPasswordModel;
+      if (response?.statusCode == 200 || response?.statusCode == 500) {
+        return UserModel.fromJson(response?.data);
       }
     } catch (e) {
       print('Error during reset password: $e');
+      throw e;
+    }
+    return null;
+  }
+
+  @override
+  Future<ResetPasswordModel?> verifyResetPassword(String email, String resetPasswordCode) async {
+    try {
+      Response? response = await DioHelper.postData(
+        url: EndPoints.verifyResetPasswordAPI,
+        data: {
+          'email': email,
+          'resetPasswordCode': resetPasswordCode,
+        },
+      );
+      if (response?.statusCode == 200 || response?.statusCode == 500) {
+        return ResetPasswordModel.fromJson(response?.data);
+      }
+    } catch (e) {
+      print('Error during verify reset password: $e');
+      throw e;
     }
     return null;
   }
@@ -167,4 +187,5 @@ class AuthRepoImp implements AuthRepo {
     }
     return null;
   }
+
 }

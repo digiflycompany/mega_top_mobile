@@ -25,6 +25,7 @@ class SignUpButton extends StatelessWidget {
                 ? () {}
                 : () {
                     if (formKey.currentState!.validate()) {
+                      FocusManager.instance.primaryFocus?.unfocus();
                       signUpCubit.signUp(
                         signUpCubit.signUpFullNameController.text,
                         signUpCubit.signUpPhoneController.text,
