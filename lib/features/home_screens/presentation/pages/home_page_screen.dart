@@ -27,7 +27,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final PageController _pageController = PageController();
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    print('TOKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN');
+    print(PreferencesHelper.getToken());
+    super.initState();
+  }
   final List<Widget> _pages = [
     const MainPage(),
     const CategoriesPage(),

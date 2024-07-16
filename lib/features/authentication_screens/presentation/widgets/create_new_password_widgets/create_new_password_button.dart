@@ -29,9 +29,9 @@ class CreateNewPasswordButton extends StatelessWidget {
             if(formKey.currentState!.validate()){
                authenticationCubit.updatePassword(
                    authenticationCubit.otp,
-                   authenticationCubit.resetPasswordEmailController!.text,
-                   authenticationCubit.createNewPasswordController!.text,
-                   authenticationCubit.confirmNewPasswordController!.text
+                   authenticationCubit.resetPasswordEmailController.text,
+                   authenticationCubit.createNewPasswordController.text,
+                   authenticationCubit.confirmNewPasswordController.text
                );
             }
           },

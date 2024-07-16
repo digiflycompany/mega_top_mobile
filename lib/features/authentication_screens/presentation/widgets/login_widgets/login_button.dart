@@ -23,9 +23,9 @@ class LoginButton extends StatelessWidget {
           child: AuthButton(
             onTap: () {
               if (formKey.currentState!.validate()) {
-                final username = loginCubit.emailController?.text;
-                final password = loginCubit.passwordController?.text;
-                loginCubit.login(username!, password!);
+                final username = loginCubit.emailController.text;
+                final password = loginCubit.passwordController.text;
+                loginCubit.login(username, password);
               }
             },
             content: state is LoginLoading?const ButtonCircularProgress():Text(

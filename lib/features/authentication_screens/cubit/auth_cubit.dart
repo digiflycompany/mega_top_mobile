@@ -13,21 +13,26 @@ import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.d
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthRepo authRepo;
-  AuthenticationCubit(this.authRepo) : super(AuthenticationInitial());
+  AuthenticationCubit(this.authRepo) : super(AuthenticationInitial()) {
+    initializeControllers();
+  }
+
   static AuthenticationCubit getCubit(context) => BlocProvider.of(context);
+
   final formKey = GlobalKey<FormState>();
   String passwordPattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
   final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
-  TextEditingController? emailController;
-  TextEditingController? passwordController;
-  TextEditingController? signUpEmailController;
-  TextEditingController? signUpFullNameController;
-  TextEditingController? signUpPasswordController;
-  TextEditingController? signUpPhoneController;
-  TextEditingController? signUpConfirmPasswordController;
-  TextEditingController? resetPasswordEmailController;
-  TextEditingController? createNewPasswordController;
-  TextEditingController? confirmNewPasswordController;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController signUpEmailController = TextEditingController();
+  TextEditingController signUpFullNameController = TextEditingController();
+  TextEditingController signUpPasswordController = TextEditingController();
+  TextEditingController signUpPhoneController = TextEditingController();
+  TextEditingController signUpConfirmPasswordController = TextEditingController();
+  TextEditingController resetPasswordEmailController = TextEditingController();
+  TextEditingController createNewPasswordController = TextEditingController();
+  TextEditingController confirmNewPasswordController = TextEditingController();
 
   bool isPasswordVisible = true;
   bool newPasswordSuccess = false;
@@ -47,16 +52,16 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   }
 
   void disposeControllers() {
-    emailController?.dispose();
-    passwordController?.dispose();
-    signUpEmailController?.dispose();
-    signUpFullNameController?.dispose();
-    signUpPasswordController?.dispose();
-    signUpPhoneController?.dispose();
-    signUpConfirmPasswordController?.dispose();
-    resetPasswordEmailController?.dispose();
-    createNewPasswordController?.dispose();
-    confirmNewPasswordController?.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    signUpEmailController.dispose();
+    signUpFullNameController.dispose();
+    signUpPasswordController.dispose();
+    signUpPhoneController.dispose();
+    signUpConfirmPasswordController.dispose();
+    resetPasswordEmailController.dispose();
+    createNewPasswordController.dispose();
+    confirmNewPasswordController.dispose();
   }
 
   void togglePasswordVisibility() {
@@ -69,8 +74,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(AuthenticationInitial());
   }
 
-  /// Error Toast Function
-  void showErrorToast(BuildContext context,String title,String text) {
+  void showErrorToast(BuildContext context, String title, String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
       builder: (context) => Align(
@@ -103,7 +107,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     });
   }
 
-  /// LOGIN FUNCTION
   Future<void> login(String email, String password) async {
     emit(LoginLoading());
     try {
@@ -125,11 +128,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  /// SIGNUP FUNCTION
   Future<void> signUp(String fullName, String phoneNumber, String email, String password) async {
     emit(SignUpLoading());
     try {
-      final user = await authRepo.signUp(fullName, phoneNumber,email,password);
+      final user = await authRepo.signUp(fullName, phoneNumber, email, password);
       if (user != null && user.success == true) {
         await PreferencesHelper.saveToken(token: user.data!.token!);
         await PreferencesHelper.saveUserModel(user);
@@ -147,11 +149,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  /// EMAIL VERIFICATION FUNCTION
-  Future<void> emailVerification(String email, String activationOtp) async {
+  Future<void> emailVerification(String verificationOtp) async {
     emit(EmailVerifiedLoading());
     try {
-      final user = await authRepo.verifyEmail(otp);
+      final user = await authRepo.verifyEmail(verificationOtp);
       if (user != null && user.success == true) {
         emit(EmailVerifiedSuccess(user));
       } else {
@@ -166,7 +167,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  /// RESET PASSWORD FUNCTION
   Future<void> resetPassword(String email) async {
     emit(ResetPasswordLoading());
     try {
@@ -185,7 +185,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  /// UPDATE PASSWORD FUNCTION
   Future<void> updatePassword(String otp, String email, String password, String confirmPassword) async {
     emit(UpdatePasswordLoading());
     try {
@@ -221,4 +220,23 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
     }
   }
+
+  Future<void> resendEmailCode() async {
+    emit(EmailResendCodeLoading());
+    try {
+      final user = await authRepo.resendEmailCode();
+      if (user != null && user.success == true) {
+        emit(EmailResendCodeSuccess(user));
+      } else {
+        emit(EmailResendCodeFailure(user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(NoInternetConnection());
+      } else {
+        emit(EmailResendCodeFailure(e.toString()));
+      }
+    }
+  }
+
 }

@@ -24,10 +24,10 @@ class SignUpButton extends StatelessWidget {
             onTap: () {
               if (formKey.currentState!.validate()) {
                 signUpCubit.signUp(
-                    signUpCubit.signUpFullNameController!.text,
-                    signUpCubit.signUpPhoneController!.text,
-                    signUpCubit.signUpEmailController!.text,
-                    signUpCubit.signUpEmailController!.text,
+                    signUpCubit.signUpFullNameController.text,
+                    signUpCubit.signUpPhoneController.text,
+                    signUpCubit.signUpEmailController.text,
+                    signUpCubit.signUpEmailController.text,
                 );
               }
             },
