@@ -27,17 +27,16 @@ class OnboardingDescription extends StatelessWidget {
           VerticalSpace(context.height * 0.017),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: context.width * 0.01),
-            child: SingleChildScrollView(
-              child: Container(
-                child: Text(
-                  description!,
-                  textAlign: TextAlign.center,
-                  textDirection: TextDirection.ltr,
-                  style: TextStyle(
-                      color: AppColors.greyTextColor,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500),
-                ),
+            child: Container(
+              height: context.height104,
+              child: Text(
+                description!,
+                textAlign: TextAlign.center,
+                textDirection: TextDirection.ltr,
+                style: TextStyle(
+                    color: AppColors.greyTextColor,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500),
               ),
             ),
           ),

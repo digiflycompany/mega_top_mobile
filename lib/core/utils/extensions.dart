@@ -222,3 +222,13 @@ extension ScreenSizeExt on BuildContext {
   double get height306 => screenHeight * 0.416;
   double get height344 => screenHeight * 0.468;
 }
+
+extension NavigationExtensions on BuildContext {
+  void moveWithArguments(String routeName, {Object? arguments}) {
+    Navigator.pushNamed(
+      this,
+      routeName,
+      arguments: arguments,
+    );
+  }
+}

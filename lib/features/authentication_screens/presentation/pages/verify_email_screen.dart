@@ -40,6 +40,10 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
           authenticationCubit.showErrorToast(
               context, AppStrings.emailVerificationFailed, state.error);
         }
+        if(state is NoInternetConnection){
+          authenticationCubit.showErrorToast(
+              context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
+        }
       },
       builder: (context, state) {
         return Scaffold(
@@ -70,7 +74,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   }
   @override
   void dispose() {
-    // TODO: implement dispose
     authenticationCubit.disposeControllers();
     super.dispose();
   }

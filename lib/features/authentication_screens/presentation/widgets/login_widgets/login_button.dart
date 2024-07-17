@@ -5,8 +5,8 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/auth_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_state.dart';
 
 class LoginButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -15,9 +15,9 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthenticationCubit, AuthenticationState>(
+    return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
-        AuthenticationCubit loginCubit = context.read<AuthenticationCubit>();
+        LoginCubit loginCubit = context.read<LoginCubit>();
         return Padding(
           padding: EdgeInsets.only(top: context.height40),
           child: AuthButton(
