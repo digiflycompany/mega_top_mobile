@@ -32,14 +32,16 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if(state is ResetPasswordSuccess){
-          Navigator.pushNamed(
-            context,
+          context.moveWithArguments(
             Routes.verifyEmailRoute,
             arguments: authenticationCubit.resetPasswordEmailController.text,
           );
         }
         if(state is ResetPasswordFailure){
           authenticationCubit.showErrorToast(context, AppStrings.resetPasswordFailed,state.error);
+        }
+        if(state is NoInternetConnection){
+          authenticationCubit.showErrorToast(context, AppStrings.resetPasswordFailed,AppStrings.noInternetConnectionPlease);
         }
       },
       builder: (context, state) {

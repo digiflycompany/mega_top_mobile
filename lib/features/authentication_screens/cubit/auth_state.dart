@@ -5,19 +5,19 @@ abstract class AuthenticationState {}
 
 class AuthenticationInitial extends AuthenticationState {}
 
-class LoginLoading extends AuthenticationState {}
-
-class LoginSuccess extends AuthenticationState {
-  final UserModel user;
-
-  LoginSuccess(this.user);
-}
-
-class LoginFailure extends AuthenticationState {
-  final String error;
-
-  LoginFailure(this.error);
-}
+// class LoginLoading extends AuthenticationState {}
+//
+// class LoginSuccess extends AuthenticationState {
+//   final UserModel user;
+//
+//   LoginSuccess(this.user);
+// }
+//
+// class LoginFailure extends AuthenticationState {
+//   final String error;
+//
+//   LoginFailure(this.error);
+// }
 
 class SignUpLoading extends AuthenticationState {}
 
@@ -112,4 +112,4 @@ class DeleteAccountFailure extends AuthenticationState {
   DeleteAccountFailure(this.error);
 }
 
-class NoInternetConnection extends AuthenticationState {}
+// class NoInternetConnection extends AuthenticationState {}

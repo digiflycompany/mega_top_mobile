@@ -59,7 +59,7 @@ class OnBoardingView extends StatelessWidget {
                   ],
                 ),
               ),
-              VerticalSpace(context.width * 0.044),
+              onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.033):VerticalSpace(context.height * 0.036),
               DotsIndicator(
                 dotsCount: 3,
                 position: onboardingCubit.getPageIndex(),
@@ -73,7 +73,7 @@ class OnBoardingView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5.0)),
                 ),
               ),
-              VerticalSpace(context.height * 0.05),
+              onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.035):VerticalSpace(context.height * 0.05),
               Padding(
                 padding:
                     EdgeInsets.symmetric(horizontal: context.width * 0.045),
@@ -92,7 +92,7 @@ class OnBoardingView extends StatelessWidget {
                              PreferencesHelper.setHasSeenOnboarding(true);
                     }),
               ),
-              VerticalSpace(context.width * 0.044),
+              onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.02):VerticalSpace(context.height * 0.034),
               if (onboardingCubit.getPageIndex() == 2)
                 RowTextButton(
                   firstText: AppStrings.alreadyHaveAnAccountEn,
@@ -103,7 +103,7 @@ class OnBoardingView extends StatelessWidget {
                     PreferencesHelper.saveIsVisitor(isVisitor: true);
                   },
                 ),
-              VerticalSpace(context.height * 0.044),
+              onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.02):VerticalSpace(context.height * 0.034),
             ],
           );
         },

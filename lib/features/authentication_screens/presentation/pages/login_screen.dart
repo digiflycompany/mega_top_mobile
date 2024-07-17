@@ -5,7 +5,8 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_title.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/login_body.dart';
@@ -29,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+    return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
           PreferencesHelper.saveIsVisitor(isVisitor: true);
@@ -38,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is LoginFailure) {
           authenticationCubit.showErrorToast(context, AppStrings.loginFailed,state.error);
         }
-        if (state is NoInternetConnection) {
+        if (state is LoginNoInternetConnection) {
           authenticationCubit.showErrorToast(
               context, AppStrings.loginFailed,AppStrings.noInternetConnectionPlease);
         }

@@ -293,4 +293,19 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
     }
   }
+
+  void handleSignUpEmailVerificationState(BuildContext context, AuthenticationState state) {
+    if (state is EmailVerifiedSuccess) {
+      Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+    } else if (state is EmailVerifiedFailure) {
+      showErrorToast(context, AppStrings.emailVerificationFailed, state.error);
+    } else if (state is EmailResendCodeFailure) {
+      showErrorToast(context, AppStrings.sendingCodeFailed, state.error);
+    } else if (state is EmailResendCodeSuccess) {
+      codeSentToast(context);
+    } else if (state is NoInternetConnection) {
+      showErrorToast(
+          context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
+    }
+  }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
@@ -33,22 +32,7 @@ class _SignUpEmailVerificationScreenState
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
-      listener: (context, state) {
-        if (state is EmailVerifiedSuccess) {
-          Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
-        }
-        if (state is EmailVerifiedFailure) {
-          authenticationCubit.showErrorToast(
-              context, AppStrings.emailVerificationFailed, state.error);
-        }
-        if (state is EmailResendCodeFailure) {
-          authenticationCubit.showErrorToast(
-              context, AppStrings.sendingCodeFailed, state.error);
-        }
-        if (state is EmailResendCodeSuccess) {
-          authenticationCubit.codeSentToast(context);
-        }
-      },
+      listener: (context, state) =>authenticationCubit.handleSignUpEmailVerificationState(context, state),
       builder: (context, state) {
         return Scaffold(
           appBar: PreferredSize(
