@@ -19,19 +19,19 @@ class AuthenticationInitial extends AuthenticationState {}
 //   LoginFailure(this.error);
 // }
 
-class SignUpLoading extends AuthenticationState {}
-
-class SignUpSuccess extends AuthenticationState {
-  final UserModel user;
-
-  SignUpSuccess(this.user);
-}
-
-class SignUpFailure extends AuthenticationState {
-  final String error;
-
-  SignUpFailure(this.error);
-}
+// class SignUpLoading extends AuthenticationState {}
+//
+// class SignUpSuccess extends AuthenticationState {
+//   final UserModel user;
+//
+//   SignUpSuccess(this.user);
+// }
+//
+// class SignUpFailure extends AuthenticationState {
+//   final String error;
+//
+//   SignUpFailure(this.error);
+// }
 
 class EmailVerifiedLoading extends AuthenticationState {}
 

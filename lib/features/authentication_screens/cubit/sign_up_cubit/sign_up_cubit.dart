@@ -3,38 +3,54 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/sign_up_cubit/sign_up_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
-class LoginCubit extends Cubit<LoginState> {
+class SignUpCubit extends Cubit<SignUpState> {
   final AuthRepo authRepo;
-  LoginCubit(this.authRepo) : super(LoginInitial()) {
+  SignUpCubit(this.authRepo) : super(SignUpInitial()) {
     initializeControllers();
   }
 
-  static LoginCubit getCubit(context) => BlocProvider.of(context);
+  static SignUpCubit getCubit(context) => BlocProvider.of(context);
 
   final formKey = GlobalKey<FormState>();
+  String passwordPattern =
+      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
+  final emailRegex =
+  RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController signUpEmailController = TextEditingController();
+  TextEditingController signUpFullNameController = TextEditingController();
+  TextEditingController signUpPasswordController = TextEditingController();
+  TextEditingController signUpPhoneController = TextEditingController();
+  TextEditingController signUpConfirmPasswordController =
+  TextEditingController();
+
   bool isPasswordVisible = true;
+  bool newPasswordSuccess = false;
 
   void initializeControllers() {
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
+    signUpEmailController = TextEditingController();
+    signUpFullNameController = TextEditingController();
+    signUpPasswordController = TextEditingController();
+    signUpPhoneController = TextEditingController();
+    signUpConfirmPasswordController = TextEditingController();
   }
 
   void disposeControllers() {
-    emailController.dispose();
-    passwordController.dispose();
+    signUpEmailController.dispose();
+    signUpFullNameController.dispose();
+    signUpPasswordController.dispose();
+    signUpPhoneController.dispose();
+    signUpConfirmPasswordController.dispose();
   }
 
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
-    emit(LoginInitial());
+    emit(SignUpInitial());
   }
 
   void showErrorToast(BuildContext context, String title, String text) {
@@ -58,24 +74,26 @@ class LoginCubit extends Cubit<LoginState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
-  Future<void> login(String email, String password) async {
-    emit(LoginLoading());
+  Future<void> signUp(String fullName, String phoneNumber, String email,
+      String password) async {
+    emit(SignUpLoading());
     try {
-      final user = await authRepo.login(email, password);
+      final user =
+      await authRepo.signUp(fullName, phoneNumber, email, password);
       if (user != null && user.success == true) {
         await PreferencesHelper.saveToken(token: user.data!.token!);
         await PreferencesHelper.saveUserModel(user);
         print(PreferencesHelper.getToken());
-        emit(LoginSuccess(user));
+        emit(SignUpSuccess(user));
       } else {
-        emit(LoginFailure(
+        emit(SignUpFailure(
             user?.message ?? 'Invalid credentials or network issues.'));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
-        emit(LoginNoInternetConnection());
+        emit(SignUpNoInternetConnection());
       } else {
-        emit(LoginFailure(e.toString()));
+        emit(SignUpFailure(e.toString()));
       }
     }
   }

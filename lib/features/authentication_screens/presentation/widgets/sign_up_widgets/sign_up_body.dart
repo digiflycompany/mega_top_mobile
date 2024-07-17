@@ -9,7 +9,7 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_user_name_text_field.dart';
 
 class SignUpBody extends StatelessWidget {
-  const SignUpBody({super.key});
+  const   SignUpBody({super.key});
 
   @override
   Widget build(BuildContext context) {
