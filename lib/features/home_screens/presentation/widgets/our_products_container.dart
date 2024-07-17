@@ -32,9 +32,9 @@ class OurProductsContainer extends StatelessWidget {
         final cubit = CategoryCubit().getCubit(context);
         return GestureDetector(
           onTap: () {
-            cubit.getSelectedCategories(
-                cubit.categories!.data!.categories![index].id!);
             cubit.selectedCategoryId = categoryId;
+            cubit.getSelectedCategories(
+                cubit.selectedCategoryId!);
             Routes.categoryItemsPageRoute.moveTo;
           },
           child: Container(

@@ -27,48 +27,45 @@ class CategoryItemsPage extends StatelessWidget {
             child: BlocBuilder<CategoryCubit, CategoryState>(
               builder: (BuildContext context, CategoryState state) {
                 return categoryCubit.selectedCategoryModel != null
-                    ? PrimaryAppBar(categoryCubit
-                        .selectedCategoryModel!
-                        .data!.products![categoryCubit.selectedProductIndex]
-                        .title!)
+                    ? PrimaryAppBar("products")
                     : PrimaryAppBar("");
               },
             )),
         body: BlocBuilder<CategoryCubit, CategoryState>(
           builder: (BuildContext context, state) {
             ///Error
-            // if (categoryCubit.selectedCategoryModel != null &&
-            //     categoryCubit.selectedCategoryModel!.productList.isNotEmpty) {
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-              child: Column(
-                children: [
-                  CategoryItemsOptionsRow(
-                    topPadding: context.height * 0.028,
-                    bottomPadding: context.height * 0.033,
-                  ),
-                  BlocConsumer<CategoryCubit, CategoryState>(
-                    listener: (context, state) {},
-                    builder: (context, state) {
-                      return categoryCubit.isGrid
-                          ? const CategoryItemsGridView()
-                          : const CategoryItemsListView();
-                    },
-                  ),
-                ],
-              ),
-            );
+            if (categoryCubit.selectedCategoryModel != null) {
+              return Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: context.width * 0.045),
+                child: Column(
+                  children: [
+                    CategoryItemsOptionsRow(
+                      topPadding: context.height * 0.028,
+                      bottomPadding: context.height * 0.033,
+                    ),
+                    BlocConsumer<CategoryCubit, CategoryState>(
+                      listener: (context, state) {},
+                      builder: (context, state) {
+                        return categoryCubit.isGrid
+                            ? const CategoryItemsGridView()
+                            : const CategoryItemsListView();
+                      },
+                    ),
+                  ],
+                ),
+              );
 
-            ///Error
-            // } else if (categoryCubit.selectedCategoryModel != null &&
-            //     categoryCubit.selectedCategoryModel!.productList.isEmpty &&
-            //     state is SelectedCategoryFailure) {
-            return Center(child: Text("products not found"));
-            // } else {
-            //   return Center(
-            //     child: CircularProgressIndicator(),
-            //   );
-            // }
+              ///Error
+            } else if (categoryCubit.selectedCategoryModel != null &&
+                //   categoryCubit.selectedCategoryModel!.productList.isEmpty &&
+                state is SelectedCategoryFailure) {
+              return Center(child: Text("products not found"));
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
           },
         ),
       ),
