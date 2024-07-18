@@ -45,7 +45,7 @@ class CategoriesRepoImp implements CategoriesRepo {
    late SelectedCategoryModel selectedCategories;
     try {
       Response? response =
-      await DioHelper.getData(url: EndPoints.categoriesAPI);
+      await DioHelper.getData(url: EndPoints.selectedCategoriesAPI);
          selectedCategories = SelectedCategoryModel.fromJson(response?.data);
     } catch (e) {
       print('Error fetching categories: $e');
