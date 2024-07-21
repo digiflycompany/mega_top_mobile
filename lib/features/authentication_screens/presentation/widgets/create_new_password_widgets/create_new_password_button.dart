@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/auth_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_state.dart';
 
 class CreateNewPasswordButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -13,9 +13,9 @@ class CreateNewPasswordButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthenticationCubit, AuthenticationState>(
+    return BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
       builder: (context, state) {
-        AuthenticationCubit authenticationCubit = context.read<AuthenticationCubit>();
+        ResetPasswordCubit resetPasswordCubit = context.read<ResetPasswordCubit>();
         return AuthButton(
           content: state is UpdatePasswordLoading ? const ButtonCircularProgress():Text(
             AppStrings.confirmPasswordEn,
@@ -27,11 +27,11 @@ class CreateNewPasswordButton extends StatelessWidget {
           ),
           onTap: () {
             if(formKey.currentState!.validate()){
-               authenticationCubit.updatePassword(
-                   authenticationCubit.otp,
-                   authenticationCubit.resetPasswordEmailController.text,
-                   authenticationCubit.createNewPasswordController.text,
-                   authenticationCubit.confirmNewPasswordController.text
+               resetPasswordCubit.updatePassword(
+                   resetPasswordCubit.otp,
+                   resetPasswordCubit.resetPasswordEmailController.text,
+                   resetPasswordCubit.createNewPasswordController.text,
+                   resetPasswordCubit.confirmNewPasswordController.text
                );
             }
           },

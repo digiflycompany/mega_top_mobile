@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_text_field.dart';
@@ -63,7 +62,7 @@ class _OTPEmailVerificationRowState extends State<OTPEmailVerificationRow> {
       },
       child: BlocBuilder<EmailVerificationCubit, EmailVerificationState>(
         builder: (context, state) {
-          AuthenticationCubit otpCubit = context.read<AuthenticationCubit>();
+          EmailVerificationCubit otpCubit = context.read<EmailVerificationCubit>();
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(4, (index) {

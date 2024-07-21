@@ -21,6 +21,8 @@ class SignUpPasswordTextField extends StatelessWidget {
             controller: signUpCubit.signUpPasswordController,
             hintText: AppStrings.passwordEn,
             prefixSvg: AppAssets.passwordIcon,
+            isPasswordVisible: signUpCubit.isPasswordVisible,
+            togglePassword: ()=>signUpCubit.togglePasswordVisibility(),
             validator: (value) {
               RegExp regExp = new RegExp(signUpCubit.passwordPattern);
               if (value == null || value.isEmpty) {

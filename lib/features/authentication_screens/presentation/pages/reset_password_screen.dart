@@ -4,8 +4,8 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/reset_password_widgets/reset_password_button.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/reset_password_widgets/reset_password_condition.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/reset_password_widgets/reset_password_description.dart';
@@ -19,29 +19,29 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  late AuthenticationCubit authenticationCubit;
+  late ResetPasswordCubit resetPasswordCubit;
   @override
   void initState() {
-    authenticationCubit = context.read<AuthenticationCubit>();
-    authenticationCubit.initializeControllers();
+    resetPasswordCubit = context.read<ResetPasswordCubit>();
+    resetPasswordCubit.initializeControllers();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+    return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
       listener: (context, state) {
         if(state is ResetPasswordSuccess){
           context.moveWithArguments(
             Routes.verifyEmailRoute,
-            arguments: authenticationCubit.resetPasswordEmailController.text,
+            arguments: resetPasswordCubit.resetPasswordEmailController.text,
           );
         }
         if(state is ResetPasswordFailure){
-          authenticationCubit.showErrorToast(context, AppStrings.resetPasswordFailed,state.error);
+          resetPasswordCubit.showErrorToast(context, AppStrings.resetPasswordFailed,state.error);
         }
-        if(state is NoInternetConnection){
-          authenticationCubit.showErrorToast(context, AppStrings.resetPasswordFailed,AppStrings.noInternetConnectionPlease);
+        if(state is ResetPasswordNoInternetConnection){
+          resetPasswordCubit.showErrorToast(context, AppStrings.resetPasswordFailed,AppStrings.noInternetConnectionPlease);
         }
       },
       builder: (context, state) {
@@ -71,7 +71,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   }
   @override
   void dispose() {
-    authenticationCubit.disposeControllers();
+    resetPasswordCubit.disposeControllers();
     super.dispose();
   }
 }

@@ -4,7 +4,6 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
@@ -20,11 +19,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late AuthenticationCubit authenticationCubit;
+  late LoginCubit authenticationCubit;
   @override
   void initState() {
     super.initState();
-    authenticationCubit = context.read<AuthenticationCubit>();
+    authenticationCubit = context.read<LoginCubit>();
     authenticationCubit.initializeControllers();
   }
 
