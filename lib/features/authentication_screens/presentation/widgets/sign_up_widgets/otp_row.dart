@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_text_field.dart';
 
-class OTPRow extends StatefulWidget {
+class OTPEmailVerificationRow extends StatefulWidget {
   final String? Function(String?)? validator;
-  const OTPRow({super.key, this.validator});
+  const OTPEmailVerificationRow({super.key, this.validator});
 
   @override
-  _OTPRowState createState() => _OTPRowState();
+  _OTPEmailVerificationRowState createState() => _OTPEmailVerificationRowState();
 }
 
-class _OTPRowState extends State<OTPRow> {
+class _OTPEmailVerificationRowState extends State<OTPEmailVerificationRow> {
   late List<TextEditingController> controllers;
   late List<FocusNode> focusNodes;
 
@@ -53,14 +54,14 @@ class _OTPRowState extends State<OTPRow> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthenticationCubit, AuthenticationState>(
+    return BlocListener<EmailVerificationCubit, EmailVerificationState>(
       listener: (context, state) {
-        if (state is EmailResendCodeSuccess) {
+        if (state is EmailVerificationResendCodeSuccess) {
           clearFields();
           FocusScope.of(context).requestFocus(focusNodes.first);
         }
       },
-      child: BlocBuilder<AuthenticationCubit, AuthenticationState>(
+      child: BlocBuilder<EmailVerificationCubit, EmailVerificationState>(
         builder: (context, state) {
           AuthenticationCubit otpCubit = context.read<AuthenticationCubit>();
           return Row(

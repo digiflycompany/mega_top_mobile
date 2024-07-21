@@ -19,3 +19,17 @@ class EmailVerificationFailure extends EmailVerificationState {
 }
 
 class EmailVerificationNoInternetConnection extends EmailVerificationState {}
+
+class EmailVerificationResendCodeLoading extends EmailVerificationState {}
+
+class EmailVerificationResendCodeSuccess extends EmailVerificationState {
+  final UserModel userModel;
+
+  EmailVerificationResendCodeSuccess(this.userModel);
+}
+
+class EmailVerificationResendCodeFailure extends EmailVerificationState {
+  final String error;
+
+  EmailVerificationResendCodeFailure(this.error);
+}
