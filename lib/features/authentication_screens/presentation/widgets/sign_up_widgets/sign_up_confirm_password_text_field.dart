@@ -21,6 +21,8 @@ class SignUpConfirmPasswordTextField extends StatelessWidget {
             controller: signUpCubit.signUpConfirmPasswordController,
             hintText: AppStrings.confirmPasswordEn,
             prefixSvg: AppAssets.passwordIcon,
+            isPasswordVisible: signUpCubit.isPasswordVisible,
+            togglePassword: ()=>signUpCubit.togglePasswordVisibility(),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return AppStrings.pleaseConfirmYourPassword;

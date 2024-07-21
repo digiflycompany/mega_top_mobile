@@ -21,6 +21,8 @@ class LoginPasswordTextField extends StatelessWidget {
             controller: loginCubit.passwordController,
             hintText: AppStrings.passwordEn,
             prefixSvg: AppAssets.passwordIcon,
+            isPasswordVisible: loginCubit.isPasswordVisible,
+            togglePassword: ()=>loginCubit.togglePasswordVisibility(),
             validator: (value) {
               if (value!.isEmpty) {
                 return AppStrings.pleaseEnterYourPassword;

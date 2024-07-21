@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_text_field.dart';
 
-class OTPEmailVerificationRow extends StatefulWidget {
+class OTPResetPasswordRow extends StatefulWidget {
   final String? Function(String?)? validator;
-  const OTPEmailVerificationRow({super.key, this.validator});
+  const OTPResetPasswordRow({super.key, this.validator});
 
   @override
-  _OTPEmailVerificationRowState createState() => _OTPEmailVerificationRowState();
+  _OTPResetPasswordRowState createState() => _OTPResetPasswordRowState();
 }
 
-class _OTPEmailVerificationRowState extends State<OTPEmailVerificationRow> {
+class _OTPResetPasswordRowState extends State<OTPResetPasswordRow> {
   late List<TextEditingController> controllers;
   late List<FocusNode> focusNodes;
 
@@ -53,16 +53,16 @@ class _OTPEmailVerificationRowState extends State<OTPEmailVerificationRow> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<EmailVerificationCubit, EmailVerificationState>(
+    return BlocListener<ResetPasswordCubit, ResetPasswordState>(
       listener: (context, state) {
-        if (state is EmailVerificationResendCodeSuccess) {
-          clearFields();
-          FocusScope.of(context).requestFocus(focusNodes.first);
-        }
+        // if (state is EmailVerificationResendCodeSuccess) {
+        //   clearFields();
+        //   FocusScope.of(context).requestFocus(focusNodes.first);
+        // }
       },
-      child: BlocBuilder<EmailVerificationCubit, EmailVerificationState>(
+      child: BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
         builder: (context, state) {
-          EmailVerificationCubit otpCubit = context.read<EmailVerificationCubit>();
+          ResetPasswordCubit resetPasswordCubit = context.read<ResetPasswordCubit>();
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(4, (index) {
@@ -72,10 +72,10 @@ class _OTPEmailVerificationRowState extends State<OTPEmailVerificationRow> {
                 focusNode: focusNodes[index],
                 onChanged: (value) {
                   nextField(value: value, index: index);
-                  otpCubit.otp = getOTP();
+                  resetPasswordCubit.otp = getOTP();
                 },
                 textInputAction:
-                    index == 3 ? TextInputAction.done : TextInputAction.next,
+                index == 3 ? TextInputAction.done : TextInputAction.next,
               );
             }),
           );

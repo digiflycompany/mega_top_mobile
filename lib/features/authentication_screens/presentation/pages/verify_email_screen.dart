@@ -4,8 +4,8 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_condition.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_otp.dart';
@@ -21,27 +21,27 @@ class VerifyEmailScreen extends StatefulWidget {
 }
 
 class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
-  late AuthenticationCubit authenticationCubit;
+  late ResetPasswordCubit resetPasswordCubit;
   @override
   void initState() {
-    authenticationCubit = context.read<AuthenticationCubit>();
-    authenticationCubit.initializeControllers();
+    resetPasswordCubit = context.read<ResetPasswordCubit>();
+    resetPasswordCubit.initializeControllers();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+    return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
       listener: (context, state) {
         if(state is VerifyResetPasswordSuccess){
           Routes.createNewPasswordRoute.moveTo;
         }
         if(state is VerifyResetPasswordFailure){
-          authenticationCubit.showErrorToast(
+          resetPasswordCubit.showErrorToast(
               context, AppStrings.emailVerificationFailed, state.error);
         }
-        if(state is NoInternetConnection){
-          authenticationCubit.showErrorToast(
+        if(state is ResetPasswordNoInternetConnection){
+          resetPasswordCubit.showErrorToast(
               context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
         }
       },
@@ -74,7 +74,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   }
   @override
   void dispose() {
-    authenticationCubit.disposeControllers();
+    resetPasswordCubit.disposeControllers();
     super.dispose();
   }
 }

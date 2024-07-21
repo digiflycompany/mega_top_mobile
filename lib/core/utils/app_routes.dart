@@ -16,8 +16,9 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/pages/wish_list_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
@@ -118,7 +119,7 @@ class RouteGenerator {
       case Routes.resetPasswordRoute:
         return buildPageRoute(
             child: BlocProvider(
-              create: (context) => AuthenticationCubit(AuthRepoImp()),
+              create: (context) => ResetPasswordCubit(AuthRepoImp()),
               child: ResetPasswordScreen(),
             ),
             routeSettings: routeSettings,
@@ -127,7 +128,7 @@ class RouteGenerator {
         final email = routeSettings.arguments as String;
         return buildPageRoute(
             child: BlocProvider(
-              create: (context) => AuthenticationCubit(AuthRepoImp()),
+              create: (context) => ResetPasswordCubit(AuthRepoImp()),
               child: VerifyEmailScreen(email: email,),
             ),
             routeSettings: routeSettings,
@@ -135,7 +136,7 @@ class RouteGenerator {
       case Routes.createNewPasswordRoute:
         return buildPageRoute(
             child: BlocProvider(
-              create: (context) => AuthenticationCubit(AuthRepoImp()),
+              create: (context) => ResetPasswordCubit(AuthRepoImp()),
               child: CreateNewPasswordScreen(),
             ),
             routeSettings: routeSettings,
@@ -249,7 +250,7 @@ class RouteGenerator {
       case Routes.signUpEmailVerificationPageRoute:
         return buildPageRoute(
           child: BlocProvider(
-            create: (context) => AuthenticationCubit(AuthRepoImp()),
+            create: (context) => EmailVerificationCubit(AuthRepoImp()),
             child: SignUpEmailVerificationScreen(),
           ),
         );
