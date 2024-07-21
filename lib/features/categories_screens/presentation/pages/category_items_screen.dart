@@ -10,12 +10,20 @@ import '../widgets/category_items_grid.dart';
 import '../widgets/category_items_list.dart';
 import '../widgets/category_items_options_row.dart';
 
-class CategoryItemsPage extends StatelessWidget {
+class CategoryItemsPage extends StatefulWidget {
   const CategoryItemsPage({super.key});
 
   @override
+  State<CategoryItemsPage> createState() => _CategoryItemsPageState();
+}
+
+class _CategoryItemsPageState extends State<CategoryItemsPage> {
+
+ late CategoryCubit categoryCubit;
+
+  @override
   Widget build(BuildContext context) {
-    CategoryCubit categoryCubit = context.read<CategoryCubit>();
+     categoryCubit = context.read<CategoryCubit>();
     return BlocProvider<categoryItemDetailsCubit>(
       create: (BuildContext context) {
         return categoryItemDetailsCubit();
@@ -70,5 +78,11 @@ class CategoryItemsPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    categoryCubit.selectedCategoryModel = null;
+    super.dispose();
   }
 }
