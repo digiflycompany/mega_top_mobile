@@ -4,7 +4,6 @@ class EndPoints {
   /// BASE
   static const String baseUrl = 'https://api.megatop.com.eg';
 
-  static const String categoriesAPI = '$baseUrl/api/v1/categories/';
   static const String loginAPI = '$baseUrl/api/v1/users/login';
   static const String signUpAPI =
       'https://megatop.com.eg/wp-json/custom/v1/register';
@@ -28,4 +27,7 @@ class EndPoints {
       'https://megatop.com.eg/wp-json/custom/v2/latest_products';
   static const String deleteAccountAPI =
       'https://megatop.com.eg/wp-json/custom/v1/users/delete/';
+  static const String categoriesAPI = '$baseUrl/api/v1/categories/';
+  static const String selectedCategoriesAPI =
+      '$baseUrl/api/v1/products';
 }

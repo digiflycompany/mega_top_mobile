@@ -42,21 +42,15 @@ class CategoriesRepoImp implements CategoriesRepo {
   @override
   Future<SelectedCategoryModel?> getSelectedCategories(
       String selectedCategory) async {
-    SelectedCategoryModel? selectedCategoryModel;
-    await DioHelper.getData(
-        url: "https://megatop.com.eg/wp-json/wc/v3/products",
-        queryParameters: {
-          "category": selectedCategory,
-          "per_page": 8,
-          "page": 1
-        }).then((value) {
-      ///Error
-      // selectedCategoryModel = selectedCategoryModel.fromJson(value?.data);
-      // print("${selectedCategoryModel!.productList.length}" + "products");
-    }).catchError((onError) {
-      print(onError.toString() + "??????");
-    });
-    return selectedCategoryModel;
+   late SelectedCategoryModel selectedCategories;
+    try {
+      Response? response =
+      await DioHelper.getData(url: EndPoints.selectedCategoriesAPI);
+         selectedCategories = SelectedCategoryModel.fromJson(response?.data);
+    } catch (e) {
+      print('Error fetching categories: $e');
+    }
+    return selectedCategories;
   }
 
   @override

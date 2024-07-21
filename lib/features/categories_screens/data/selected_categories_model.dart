@@ -1,234 +1,194 @@
 class SelectedCategoryModel {
-  bool? success;
-  Data? data;
+  SelectedCategoryModel({
+    required this.success,
+    required this.data,
+  });
 
-  SelectedCategoryModel({this.success, this.data});
+  final bool? success;
+  final Data? data;
 
-  SelectedCategoryModel.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  factory SelectedCategoryModel.fromJson(Map<String, dynamic> json){
+    return SelectedCategoryModel(
+      success: json["success"],
+      data: json["data"] == null ? null : Data.fromJson(json["data"]),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
-  }
 }
 
 class Data {
-  List<Products>? products;
-  Options? options;
-
-  Data({this.products, this.options});
-
-  Data.fromJson(Map<String, dynamic> json) {
-    if (json['products'] != null) {
-      products = <Products>[];
-      json['products'].forEach((v) {
-        products!.add(new Products.fromJson(v));
-      });
-    }
-    options =
-        json['options'] != null ? new Options.fromJson(json['options']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.products != null) {
-      data['products'] = this.products!.map((v) => v.toJson()).toList();
-    }
-    if (this.options != null) {
-      data['options'] = this.options!.toJson();
-    }
-    return data;
-  }
-}
-
-class Products {
-  String? sId;
-  String? title;
-  String? titleAr;
-  String? description;
-  int? quantity;
-  CategoryId? categoryId;
-  Price? price;
-  String? currency;
-  List<String>? images;
-  int? unitsSold;
-  AddedBy? addedBy;
-  bool? active;
-  String? createdAt;
-  String? updatedAt;
-
-  Products({
-    this.sId,
-    this.title,
-    this.titleAr,
-    this.description,
-    this.quantity,
-    this.categoryId,
-    this.price,
-    this.currency,
-    this.images,
-    this.unitsSold,
-    this.addedBy,
-    this.active,
-    this.createdAt,
-    this.updatedAt,
+  Data({
+    required this.products,
+    required this.options,
   });
 
-  Products.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
-    title = json['title'];
-    titleAr = json['titleAr'];
-    description = json['description'];
-    quantity = json['quantity'];
-    categoryId = json['categoryId'] != null
-        ? new CategoryId.fromJson(json['categoryId'])
-        : null;
-    price = json['price'] != null ? new Price.fromJson(json['price']) : null;
-    currency = json['currency'];
-    images = json['images'].cast<String>();
-    unitsSold = json['unitsSold'];
-    addedBy =
-        json['addedBy'] != null ? new AddedBy.fromJson(json['addedBy']) : null;
-    active = json['active'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
+  final List<Product> products;
+  final Options? options;
+
+  factory Data.fromJson(Map<String, dynamic> json){
+    return Data(
+      products: json["products"] == null ? [] : List<Product>.from(json["products"]!.map((x) => Product.fromJson(x))),
+      options: json["options"] == null ? null : Options.fromJson(json["options"]),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['title'] = this.title;
-    data['titleAr'] = this.titleAr;
-    data['description'] = this.description;
-    data['quantity'] = this.quantity;
-    if (this.categoryId != null) {
-      data['categoryId'] = this.categoryId!.toJson();
-    }
-    if (this.price != null) {
-      data['price'] = this.price!.toJson();
-    }
-    data['currency'] = this.currency;
-    data['images'] = this.images;
-    data['unitsSold'] = this.unitsSold;
-    if (this.addedBy != null) {
-      data['addedBy'] = this.addedBy!.toJson();
-    }
-    data['active'] = this.active;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    return data;
-  }
-}
-
-class CategoryId {
-  String? sId;
-  String? name;
-  String? nameAr;
-
-  CategoryId({this.sId, this.name, this.nameAr});
-
-  CategoryId.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
-    name = json['name'];
-    nameAr = json['nameAr'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['name'] = this.name;
-    data['nameAr'] = this.nameAr;
-    return data;
-  }
-}
-
-class Price {
-  int? originalPrice;
-  int? finalPrice;
-
-  Price({this.originalPrice, this.finalPrice});
-
-  Price.fromJson(Map<String, dynamic> json) {
-    originalPrice = json['originalPrice'];
-    finalPrice = json['finalPrice'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['originalPrice'] = this.originalPrice;
-    data['finalPrice'] = this.finalPrice;
-    return data;
-  }
-}
-
-class AddedBy {
-  String? sId;
-  String? fullName;
-  String? email;
-
-  AddedBy({this.sId, this.fullName, this.email});
-
-  AddedBy.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
-    fullName = json['fullName'];
-    email = json['email'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['fullName'] = this.fullName;
-    data['email'] = this.email;
-    return data;
-  }
 }
 
 class Options {
-  int? limit;
-  int? skip;
-  Sort? sort;
-  int? page;
+  Options({
+    required this.limit,
+    required this.skip,
+    required this.sort,
+    required this.page,
+  });
 
-  Options({this.limit, this.skip, this.sort, this.page});
+  final int? limit;
+  final int? skip;
+  final Sort? sort;
+  final int? page;
 
-  Options.fromJson(Map<String, dynamic> json) {
-    limit = json['limit'];
-    skip = json['skip'];
-    sort = json['sort'] != null ? new Sort.fromJson(json['sort']) : null;
-    page = json['page'];
+  factory Options.fromJson(Map<String, dynamic> json){
+    return Options(
+      limit: json["limit"],
+      skip: json["skip"],
+      sort: json["sort"] == null ? null : Sort.fromJson(json["sort"]),
+      page: json["page"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['limit'] = this.limit;
-    data['skip'] = this.skip;
-    if (this.sort != null) {
-      data['sort'] = this.sort!.toJson();
-    }
-    data['page'] = this.page;
-    return data;
-  }
 }
 
 class Sort {
-  String? createdAt;
+  Sort({
+    required this.createdAt,
+  });
 
-  Sort({this.createdAt});
+  final String? createdAt;
 
-  Sort.fromJson(Map<String, dynamic> json) {
-    createdAt = json['createdAt'];
+  factory Sort.fromJson(Map<String, dynamic> json){
+    return Sort(
+      createdAt: json["createdAt"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['createdAt'] = this.createdAt;
-    return data;
+}
+
+class Product {
+  Product({
+    required this.id,
+    required this.title,
+    required this.titleAr,
+    required this.description,
+    required this.quantity,
+    required this.categoryId,
+    required this.subcategoryId,
+    required this.price,
+    required this.currency,
+    required this.images,
+    required this.unitsSold,
+    required this.addedBy,
+    required this.active,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.v,
+  });
+
+  final String? id;
+  final String? title;
+  final String? titleAr;
+  final String? description;
+  final int? quantity;
+  final CategoryId? categoryId;
+  final List<CategoryId> subcategoryId;
+  final Price? price;
+  final String? currency;
+  final List<String> images;
+  final int? unitsSold;
+  final AddedBy? addedBy;
+  final bool? active;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final int? v;
+
+  factory Product.fromJson(Map<String, dynamic> json){
+    return Product(
+      id: json["_id"],
+      title: json["title"],
+      titleAr: json["titleAr"],
+      description: json["description"],
+      quantity: json["quantity"],
+      categoryId: json["categoryId"] == null ? null : CategoryId.fromJson(json["categoryId"]),
+      subcategoryId: json["subcategoryId"] == null ? [] : List<CategoryId>.from(json["subcategoryId"]!.map((x) => CategoryId.fromJson(x))),
+      price: json["price"] == null ? null : Price.fromJson(json["price"]),
+      currency: json["currency"],
+      images: json["images"] == null ? [] : List<String>.from(json["images"]!.map((x) => x)),
+      unitsSold: json["unitsSold"],
+      addedBy: json["addedBy"] == null ? null : AddedBy.fromJson(json["addedBy"]),
+      active: json["active"],
+      createdAt: DateTime.tryParse(json["createdAt"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updatedAt"] ?? ""),
+      v: json["__v"],
+    );
   }
+
+}
+
+class AddedBy {
+  AddedBy({
+    required this.id,
+    required this.fullName,
+    required this.email,
+  });
+
+  final String? id;
+  final String? fullName;
+  final String? email;
+
+  factory AddedBy.fromJson(Map<String, dynamic> json){
+    return AddedBy(
+      id: json["_id"],
+      fullName: json["fullName"],
+      email: json["email"],
+    );
+  }
+
+}
+
+class CategoryId {
+  CategoryId({
+    required this.id,
+    required this.name,
+    required this.nameAr,
+  });
+
+  final String? id;
+  final String? name;
+  final String? nameAr;
+
+  factory CategoryId.fromJson(Map<String, dynamic> json){
+    return CategoryId(
+      id: json["_id"],
+      name: json["name"],
+      nameAr: json["nameAr"],
+    );
+  }
+
+}
+
+class Price {
+  Price({
+    required this.originalPrice,
+    required this.finalPrice,
+  });
+
+  final int? originalPrice;
+  final int? finalPrice;
+
+  factory Price.fromJson(Map<String, dynamic> json){
+    return Price(
+      originalPrice: json["originalPrice"],
+      finalPrice: json["finalPrice"],
+    );
+  }
+
 }

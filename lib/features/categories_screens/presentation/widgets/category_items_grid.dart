@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
@@ -11,68 +12,17 @@ class CategoryItemsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final List<Product> products = [
-    //   Product(
-    //     productName: AppStrings.hardDiskEn,
-    //     productPhoto: AppAssets.upsSearchResult,
-    //     productType: AppStrings.storageUnitsEn,
-    //     productPrice: AppStrings.le1500,
-    //     discountPercent: AppStrings.discountPercentEn,
-    //     discount: true,
-    //   ),
-    //   Product(
-    //     productName: AppStrings.hardDiskEn,
-    //     productPhoto: AppAssets.storageUnitsSearchResult,
-    //     productType: AppStrings.storageUnitsEn,
-    //     productPrice: AppStrings.le1500,
-    //     discountPercent: AppStrings.discountPercentEn,
-    //     discount: false,
-    //   ),
-    //   Product(
-    //     productName: AppStrings.hardDiskEn,
-    //     productPhoto: AppAssets.storageUnitsSearchResult,
-    //     productType: AppStrings.storageUnitsEn,
-    //     productPrice: AppStrings.le1500,
-    //     discountPercent: AppStrings.discountPercentEn,
-    //     discount: false,
-    //   ),
-    //   Product(
-    //     productName: AppStrings.hardDiskEn,
-    //     productPhoto: AppAssets.storageUnitsSearchResult,
-    //     productType: AppStrings.storageUnitsEn,
-    //     productPrice: AppStrings.le1500,
-    //     discountPercent: AppStrings.discountPercentEn,
-    //     discount: false,
-    //   ),
-    //   Product(
-    //     productName: AppStrings.hardDiskEn,
-    //     productPhoto: AppAssets.storageUnitsSearchResult,
-    //     productType: AppStrings.storageUnitsEn,
-    //     productPrice: AppStrings.le1500,
-    //     discountPercent: AppStrings.discountPercentEn,
-    //     discount: false,
-    //   ),
-    //   Product(
-    //     productName: AppStrings.hardDiskEn,
-    //     productPhoto: AppAssets.storageUnitsSearchResult,
-    //     productType: AppStrings.storageUnitsEn,
-    //     productPrice: AppStrings.le1500,
-    //     discountPercent: AppStrings.discountPercentEn,
-    //     discount: false,
-    //   ),
-    // ];
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (BuildContext context, CategoryState state) {
         return Expanded(
           child: GridView.builder(
             physics: const BouncingScrollPhysics(),
-
-            ///Error
-            // itemCount: context
-            //     .read<CategoryCubit>()
-            //     .selectedCategoryModel!
-            //     .productList
-            //     .length,
+            itemCount: context
+                .read<CategoryCubit>()
+                .selectedCategoryModel!
+                .data!
+                .products
+                .length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: context.width * 0.027,
