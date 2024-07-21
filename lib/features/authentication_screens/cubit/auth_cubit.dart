@@ -134,51 +134,51 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     });
   }
 
-  Future<void> login(String email, String password) async {
-    emit(LoginLoading());
-    try {
-      final user = await authRepo.login(email, password);
-      if (user != null && user.success == true) {
-        await PreferencesHelper.saveToken(token: user.data!.token!);
-        await PreferencesHelper.saveUserModel(user);
-        print(PreferencesHelper.getToken());
-        emit(LoginSuccess(user));
-      } else {
-        emit(LoginFailure(
-            user?.message ?? 'Invalid credentials or network issues.'));
-      }
-    } catch (e) {
-      if (e is DioException && e.error == AppStrings.noInternetConnection) {
-        emit(NoInternetConnection());
-      } else {
-        emit(LoginFailure(e.toString()));
-      }
-    }
-  }
+  // Future<void> login(String email, String password) async {
+  //   emit(LoginLoading());
+  //   try {
+  //     final user = await authRepo.login(email, password);
+  //     if (user != null && user.success == true) {
+  //       await PreferencesHelper.saveToken(token: user.data!.token!);
+  //       await PreferencesHelper.saveUserModel(user);
+  //       print(PreferencesHelper.getToken());
+  //       emit(LoginSuccess(user));
+  //     } else {
+  //       emit(LoginFailure(
+  //           user?.message ?? 'Invalid credentials or network issues.'));
+  //     }
+  //   } catch (e) {
+  //     if (e is DioException && e.error == AppStrings.noInternetConnection) {
+  //       emit(NoInternetConnection());
+  //     } else {
+  //       emit(LoginFailure(e.toString()));
+  //     }
+  //   }
+  // }
 
-  Future<void> signUp(String fullName, String phoneNumber, String email,
-      String password) async {
-    emit(SignUpLoading());
-    try {
-      final user =
-          await authRepo.signUp(fullName, phoneNumber, email, password);
-      if (user != null && user.success == true) {
-        await PreferencesHelper.saveToken(token: user.data!.token!);
-        await PreferencesHelper.saveUserModel(user);
-        print(PreferencesHelper.getToken());
-        emit(SignUpSuccess(user));
-      } else {
-        emit(SignUpFailure(
-            user?.message ?? 'Invalid credentials or network issues.'));
-      }
-    } catch (e) {
-      if (e is DioException && e.error == AppStrings.noInternetConnection) {
-        emit(NoInternetConnection());
-      } else {
-        emit(SignUpFailure(e.toString()));
-      }
-    }
-  }
+  // Future<void> signUp(String fullName, String phoneNumber, String email,
+  //     String password) async {
+  //   emit(SignUpLoading());
+  //   try {
+  //     final user =
+  //         await authRepo.signUp(fullName, phoneNumber, email, password);
+  //     if (user != null && user.success == true) {
+  //       await PreferencesHelper.saveToken(token: user.data!.token!);
+  //       await PreferencesHelper.saveUserModel(user);
+  //       print(PreferencesHelper.getToken());
+  //       emit(SignUpSuccess(user));
+  //     } else {
+  //       emit(SignUpFailure(
+  //           user?.message ?? 'Invalid credentials or network issues.'));
+  //     }
+  //   } catch (e) {
+  //     if (e is DioException && e.error == AppStrings.noInternetConnection) {
+  //       emit(NoInternetConnection());
+  //     } else {
+  //       emit(SignUpFailure(e.toString()));
+  //     }
+  //   }
+  // }
 
   Future<void> emailVerification(String verificationOtp) async {
     emit(EmailVerifiedLoading());
@@ -275,37 +275,37 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  Future<void> resendEmailCode() async {
-    emit(EmailResendCodeLoading());
-    try {
-      final user = await authRepo.resendEmailCode();
-      if (user != null && user.success == true) {
-        emit(EmailResendCodeSuccess(user));
-      } else {
-        emit(EmailResendCodeFailure(
-            user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
-      }
-    } catch (e) {
-      if (e is DioException && e.error == AppStrings.noInternetConnection) {
-        emit(NoInternetConnection());
-      } else {
-        emit(EmailResendCodeFailure(e.toString()));
-      }
-    }
-  }
+  // Future<void> resendEmailCode() async {
+  //   emit(EmailResendCodeLoading());
+  //   try {
+  //     final user = await authRepo.resendEmailCode();
+  //     if (user != null && user.success == true) {
+  //       emit(EmailResendCodeSuccess(user));
+  //     } else {
+  //       emit(EmailResendCodeFailure(
+  //           user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
+  //     }
+  //   } catch (e) {
+  //     if (e is DioException && e.error == AppStrings.noInternetConnection) {
+  //       emit(NoInternetConnection());
+  //     } else {
+  //       emit(EmailResendCodeFailure(e.toString()));
+  //     }
+  //   }
+  // }
 
-  void handleSignUpEmailVerificationState(BuildContext context, AuthenticationState state) {
-    if (state is EmailVerifiedSuccess) {
-      Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
-    } else if (state is EmailVerifiedFailure) {
-      showErrorToast(context, AppStrings.emailVerificationFailed, state.error);
-    } else if (state is EmailResendCodeFailure) {
-      showErrorToast(context, AppStrings.sendingCodeFailed, state.error);
-    } else if (state is EmailResendCodeSuccess) {
-      codeSentToast(context);
-    } else if (state is NoInternetConnection) {
-      showErrorToast(
-          context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
-    }
-  }
+  // void handleSignUpEmailVerificationState(BuildContext context, AuthenticationState state) {
+  //   if (state is EmailVerifiedSuccess) {
+  //     Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+  //   } else if (state is EmailVerifiedFailure) {
+  //     showErrorToast(context, AppStrings.emailVerificationFailed, state.error);
+  //   } else if (state is EmailResendCodeFailure) {
+  //     showErrorToast(context, AppStrings.sendingCodeFailed, state.error);
+  //   } else if (state is EmailResendCodeSuccess) {
+  //     codeSentToast(context);
+  //   } else if (state is NoInternetConnection) {
+  //     showErrorToast(
+  //         context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
+  //   }
+  // }
 }

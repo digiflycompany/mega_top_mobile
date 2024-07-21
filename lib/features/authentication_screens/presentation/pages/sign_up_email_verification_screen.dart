@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_row.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/please_enter_four_digits_code_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/resend_code_row.dart';
@@ -21,18 +21,17 @@ class SignUpEmailVerificationScreen extends StatefulWidget {
 
 class _SignUpEmailVerificationScreenState
     extends State<SignUpEmailVerificationScreen> {
-  late AuthenticationCubit authenticationCubit;
+  late EmailVerificationCubit emailVerificationCubit;
   @override
   void initState() {
     super.initState();
-    authenticationCubit = context.read<AuthenticationCubit>();
-    authenticationCubit.initializeControllers();
+    emailVerificationCubit = context.read<EmailVerificationCubit>();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
-      listener: (context, state) =>authenticationCubit.handleSignUpEmailVerificationState(context, state),
+    return BlocConsumer<EmailVerificationCubit, EmailVerificationState>(
+      listener: (context, state) =>emailVerificationCubit.handleSignUpEmailVerificationState(context, state),
       builder: (context, state) {
         return Scaffold(
           appBar: PreferredSize(
@@ -45,7 +44,7 @@ class _SignUpEmailVerificationScreenState
               children: [
                 PleaseEnterFourDigitsCodeText(),
                 UserEmailText(),
-                OTPRow(),
+                OTPEmailVerificationRow(),
                 VerifyEmailButton(),
                 ResendCodeRow(),
               ],

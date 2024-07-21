@@ -33,32 +33,32 @@ class AuthenticationInitial extends AuthenticationState {}
 //   SignUpFailure(this.error);
 // }
 
-class EmailVerifiedLoading extends AuthenticationState {}
-
-class EmailVerifiedSuccess extends AuthenticationState {
-  final UserModel userModel;
-
-  EmailVerifiedSuccess(this.userModel);
-}
-
-class EmailVerifiedFailure extends AuthenticationState {
-  final String error;
-
-  EmailVerifiedFailure(this.error);
-}
-class EmailResendCodeLoading extends AuthenticationState {}
-
-class EmailResendCodeSuccess extends AuthenticationState {
-  final UserModel userModel;
-
-  EmailResendCodeSuccess(this.userModel);
-}
-
-class EmailResendCodeFailure extends AuthenticationState {
-  final String error;
-
-  EmailResendCodeFailure(this.error);
-}
+// class EmailVerifiedLoading extends AuthenticationState {}
+//
+// class EmailVerifiedSuccess extends AuthenticationState {
+//   final UserModel userModel;
+//
+//   EmailVerifiedSuccess(this.userModel);
+// }
+//
+// class EmailVerifiedFailure extends AuthenticationState {
+//   final String error;
+//
+//   EmailVerifiedFailure(this.error);
+// }
+// class EmailResendCodeLoading extends AuthenticationState {}
+//
+// class EmailResendCodeSuccess extends AuthenticationState {
+//   final UserModel userModel;
+//
+//   EmailResendCodeSuccess(this.userModel);
+// }
+//
+// class EmailResendCodeFailure extends AuthenticationState {
+//   final String error;
+//
+//   EmailResendCodeFailure(this.error);
+// }
 
 class ResetPasswordLoading extends AuthenticationState {}
 
