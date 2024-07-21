@@ -17,6 +17,7 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/pages/wish_list_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
@@ -249,7 +250,7 @@ class RouteGenerator {
       case Routes.signUpEmailVerificationPageRoute:
         return buildPageRoute(
           child: BlocProvider(
-            create: (context) => AuthenticationCubit(AuthRepoImp()),
+            create: (context) => EmailVerificationCubit(AuthRepoImp()),
             child: SignUpEmailVerificationScreen(),
           ),
         );

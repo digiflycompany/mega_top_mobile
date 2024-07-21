@@ -1,5 +1,3 @@
-import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
-import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 
 abstract class AuthenticationState {}
 
@@ -60,56 +58,56 @@ class AuthenticationInitial extends AuthenticationState {}
 //   EmailResendCodeFailure(this.error);
 // }
 
-class ResetPasswordLoading extends AuthenticationState {}
-
-class ResetPasswordSuccess extends AuthenticationState {
-  final UserModel userModel;
-
-  ResetPasswordSuccess(this.userModel);
-}
-
-class ResetPasswordFailure extends AuthenticationState {
-  final String error;
-
-  ResetPasswordFailure(this.error);
-}
-
-class VerifyResetPasswordLoading extends AuthenticationState {}
-
-class VerifyResetPasswordSuccess extends AuthenticationState {
-  final ResetPasswordModel resetPasswordModel;
-
-  VerifyResetPasswordSuccess(this.resetPasswordModel);
-}
-
-class VerifyResetPasswordFailure extends AuthenticationState {
-  final String error;
-
-  VerifyResetPasswordFailure(this.error);
-}
-
-class UpdatePasswordLoading extends AuthenticationState {}
-
-class UpdatePasswordSuccess extends AuthenticationState {
-  final UserModel userModel;
-
-  UpdatePasswordSuccess(this.userModel);
-}
-
-class UpdatePasswordFailure extends AuthenticationState {
-  final String error;
-
-  UpdatePasswordFailure(this.error);
-}
-
-class DeleteAccountSuccess extends AuthenticationState {}
-
-class DeleteAccountLoading extends AuthenticationState {}
-
-class DeleteAccountFailure extends AuthenticationState {
-  final String error;
-
-  DeleteAccountFailure(this.error);
-}
-
-// class NoInternetConnection extends AuthenticationState {}
+// class ResetPasswordLoading extends AuthenticationState {}
+//
+// class ResetPasswordSuccess extends AuthenticationState {
+//   final UserModel userModel;
+//
+//   ResetPasswordSuccess(this.userModel);
+// }
+//
+// class ResetPasswordFailure extends AuthenticationState {
+//   final String error;
+//
+//   ResetPasswordFailure(this.error);
+// }
+//
+// class VerifyResetPasswordLoading extends AuthenticationState {}
+//
+// class VerifyResetPasswordSuccess extends AuthenticationState {
+//   final ResetPasswordModel resetPasswordModel;
+//
+//   VerifyResetPasswordSuccess(this.resetPasswordModel);
+// }
+//
+// class VerifyResetPasswordFailure extends AuthenticationState {
+//   final String error;
+//
+//   VerifyResetPasswordFailure(this.error);
+// }
+//
+// class UpdatePasswordLoading extends AuthenticationState {}
+//
+// class UpdatePasswordSuccess extends AuthenticationState {
+//   final UserModel userModel;
+//
+//   UpdatePasswordSuccess(this.userModel);
+// }
+//
+// class UpdatePasswordFailure extends AuthenticationState {
+//   final String error;
+//
+//   UpdatePasswordFailure(this.error);
+// }
+//
+// class DeleteAccountSuccess extends AuthenticationState {}
+//
+// class DeleteAccountLoading extends AuthenticationState {}
+//
+// class DeleteAccountFailure extends AuthenticationState {
+//   final String error;
+//
+//   DeleteAccountFailure(this.error);
+// }
+//
+// // class NoInternetConnection extends AuthenticationState {}

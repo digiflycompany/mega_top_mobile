@@ -5,7 +5,8 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
 import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_condition.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_otp.dart';
@@ -31,7 +32,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+    return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
       listener: (context, state) {
         if(state is VerifyResetPasswordSuccess){
           Routes.createNewPasswordRoute.moveTo;
@@ -40,7 +41,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
           authenticationCubit.showErrorToast(
               context, AppStrings.emailVerificationFailed, state.error);
         }
-        if(state is NoInternetConnection){
+        if(state is ResetPasswordNoInternetConnection){
           authenticationCubit.showErrorToast(
               context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
         }
