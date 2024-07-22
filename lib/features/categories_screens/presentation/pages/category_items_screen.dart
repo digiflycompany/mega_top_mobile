@@ -34,9 +34,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
             preferredSize: Size(double.infinity, context.height * 0.089),
             child: BlocBuilder<CategoryCubit, CategoryState>(
               builder: (BuildContext context, CategoryState state) {
-                return categoryCubit.selectedCategoryModel != null
-                    ? PrimaryAppBar("products")
-                    : PrimaryAppBar("");
+                return PrimaryAppBar(categoryCubit.categories!.data!.categories![categoryCubit.selectedProductIndex].name!);
               },
             )),
         body: BlocBuilder<CategoryCubit, CategoryState>(

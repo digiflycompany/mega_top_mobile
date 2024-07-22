@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
@@ -22,7 +23,7 @@ class CategoryItemsGridView extends StatelessWidget {
                 .selectedCategoryModel!
                 .data!
                 .products
-                .length,
+                .length+1,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: context.width * 0.027,
@@ -30,19 +31,29 @@ class CategoryItemsGridView extends StatelessWidget {
               childAspectRatio: 0.68,
             ),
             itemBuilder: (BuildContext context, int index) {
-              //  final product = products[index];
-              return Padding(
-                padding: EdgeInsets.only(
-                  right: context.width * 0.011,
-                  left: context.width * 0.011,
-                  top: context.height * 0.004,
-                ),
-                child: ProductsGridContainer(
-                  index: index,
-                  discountPercent: "17% ",
-                  discount: false,
-                ),
-              );
+              if(index < context
+                  .read<CategoryCubit>()
+                  .selectedCategoryModel!
+                  .data!
+                  .products
+                  .length) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    right: context.width * 0.011,
+                    left: context.width * 0.011,
+                    top: context.height * 0.004,
+                  ),
+                  child: ProductsGridContainer(
+                    index: index,
+                    discountPercent: "17% ",
+                    discount: false,
+                  ),
+                );
+              }else{
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
             },
           ),
         );

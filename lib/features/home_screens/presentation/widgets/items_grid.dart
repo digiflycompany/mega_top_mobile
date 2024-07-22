@@ -143,7 +143,7 @@ class ProductsGridContainer extends StatelessWidget {
                             const AvailableContainer(),
                             const Spacer(),
                             Text(
-                              "${2000000}",
+                              cubit.selectedCategoryModel!.data!.products[index].price!.finalPrice!.toString(),
                               style: TextStyle(
                                   color: AppColors.primaryColor,
                                   fontSize: 12.sp,
