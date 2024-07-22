@@ -16,26 +16,29 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AccountOptionItem(
-      mainIcon: mainIcon ?? AppAssets.notificationIcon,
-      title: title ?? AppStrings.notifications,
-      onTap: onTap,
-      optionalData: optionalData ??
-          Container(
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.iconsBackgroundColor,
-            ),
-            width: 24.h,
-            height: 24.h,
-            child: const Center(
-              child: Text(
-                "3",
-                style: TextStyle(
-                    color: AppColors.primaryColor, fontWeight: FontWeight.w700),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 16.h),
+      child: AccountOptionItem(
+        mainIcon: mainIcon ?? AppAssets.notificationIcon,
+        title: title ?? AppStrings.notifications,
+        onTap: onTap,
+        optionalData: optionalData ??
+            Container(
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.iconsBackgroundColor,
+              ),
+              width: 24.h,
+              height: 24.h,
+              child: const Center(
+                child: Text(
+                  "3",
+                  style: TextStyle(
+                      color: AppColors.primaryColor, fontWeight: FontWeight.w700),
+                ),
               ),
             ),
-          ),
+      ),
     );
   }
 }

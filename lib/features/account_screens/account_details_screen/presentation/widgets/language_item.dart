@@ -14,15 +14,18 @@ class LanguageItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AccountOptionItem(
-      mainIcon: mainIcon ?? AppAssets.languageIcon,
-      title: title ?? AppStrings.languages,
-      optionalData: optionalData ??
-          Text(AppStrings.selectedLanguage,
-              style: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 13.sp)),
+    return Padding(
+      padding: EdgeInsets.only(bottom: 40.h),
+      child: AccountOptionItem(
+        mainIcon: mainIcon ?? AppAssets.languageIcon,
+        title: title ?? AppStrings.languages,
+        optionalData: optionalData ??
+            Text(AppStrings.selectedLanguage,
+                style: TextStyle(
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 13.sp)),
+      ),
     );
   }
 }
