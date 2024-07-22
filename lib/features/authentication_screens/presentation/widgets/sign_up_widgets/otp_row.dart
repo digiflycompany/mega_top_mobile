@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/email_verification_cubit/email_verification_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/otp_text_field.dart';
 
 class OTPEmailVerificationRow extends StatefulWidget {

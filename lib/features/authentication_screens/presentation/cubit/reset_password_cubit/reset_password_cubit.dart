@@ -7,8 +7,8 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_state.dart';
-import 'package:mega_top_mobile/features/authentication_screens/data/repo/auth_repo.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/repositories/auth_repo.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/success_pop_up.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
@@ -130,6 +130,25 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     }
   }
 
+  Future<void> resendResetPassword(String email) async {
+    emit(ResendResetPasswordCodeLoading());
+    try {
+      final user = await authRepo.resetPassword(email);
+      if (user != null && user.success == true) {
+        emit(ResendResetPasswordCodeSuccess(user));
+      } else {
+        emit(ResendResetPasswordCodeFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(ResetPasswordNoInternetConnection());
+      } else {
+        emit(ResendResetPasswordCodeFailure(e.toString()));
+      }
+    }
+  }
+
+
   Future<void> verifyResetPassword(String email,String resetPasswordCode) async {
     emit(VerifyResetPasswordLoading());
     try {
@@ -150,16 +169,14 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     }
   }
 
-  Future<void> updatePassword(
-      String otp, String email, String password, String confirmPassword) async {
+  Future<void> updatePassword(String password) async {
     emit(UpdatePasswordLoading());
     try {
-      final user =
-      await authRepo.updatePassword(otp, email, password, confirmPassword);
-      if (user != null) {
+      final user = await authRepo.updatePassword(password);
+      if (user != null && user.success == true) {
         emit(UpdatePasswordSuccess(user));
       } else {
-        emit(UpdatePasswordFailure('Invalid credentials'));
+        emit(UpdatePasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -167,6 +184,51 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       } else {
         emit(UpdatePasswordFailure(e.toString()));
       }
+    }
+  }
+
+  void handleCreatingNewPasswordStates(BuildContext context, ResetPasswordState state) {
+    if(state is UpdatePasswordSuccess){
+      passwordChangedSuccessfully(context);
+    }
+    if(state is UpdatePasswordFailure){
+      showErrorToast(context, '',AppStrings.invalidOtp);
+    }
+    if(state is ResetPasswordNoInternetConnection){
+      showErrorToast(
+          context, AppStrings.creatingNewPasswordFailed,AppStrings.noInternetConnectionPlease);
+    }
+  }
+
+  void handleVerifyingEmailStates(BuildContext context, ResetPasswordState state) {
+    if(state is VerifyResetPasswordSuccess){
+      Routes.createNewPasswordRoute.moveTo;
+    }
+    if(state is VerifyResetPasswordFailure){
+      showErrorToast(
+          context, AppStrings.emailVerificationFailed, state.error);
+    }
+    if(state is ResetPasswordNoInternetConnection){
+      showErrorToast(
+          context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
+    }
+    if(state is ResendResetPasswordCodeSuccess){
+      codeSentToast(context);
+    }
+  }
+
+  void handleResetPasswordStates(BuildContext context, ResetPasswordState state) {
+    if(state is ResetPasswordSuccess){
+      context.moveWithArguments(
+        Routes.verifyEmailRoute,
+        arguments: resetPasswordEmailController.text,
+      );
+    }
+    if(state is ResetPasswordFailure){
+      showErrorToast(context, AppStrings.resetPasswordFailed,state.error);
+    }
+    if(state is ResetPasswordNoInternetConnection){
+      showErrorToast(context, AppStrings.resetPasswordFailed,AppStrings.noInternetConnectionPlease);
     }
   }
 

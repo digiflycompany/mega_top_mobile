@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_condition.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_description.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_otp.dart';
@@ -32,19 +31,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
-      listener: (context, state) {
-        if(state is VerifyResetPasswordSuccess){
-          Routes.createNewPasswordRoute.moveTo;
-        }
-        if(state is VerifyResetPasswordFailure){
-          resetPasswordCubit.showErrorToast(
-              context, AppStrings.emailVerificationFailed, state.error);
-        }
-        if(state is ResetPasswordNoInternetConnection){
-          resetPasswordCubit.showErrorToast(
-              context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
-        }
-      },
+      listener: (context, state) => resetPasswordCubit.handleVerifyingEmailStates(context,state),
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.white,
@@ -62,7 +49,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     const VerifyEmailDescription(),
                     const VerifyEmailOtp(),
                     VerifyEmailResetPasswordButton(email: widget.email,),
-                    const VerifyEmailResendCode(),
+                    VerifyEmailResendCode(email: widget.email,),
                   ],
                 ),
               ),

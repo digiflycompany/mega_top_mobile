@@ -14,8 +14,8 @@ class EndPoints {
   static const String resetPasswordAPI = '$baseUrl/api/v1/users/reset-password';
   static const String verifyResetPasswordAPI =
       '$baseUrl/api/v1/users/verify-reset-password';
-  static const String updatePasswordAPI =
-      'https://megatop.com.eg/wp-json/custom/v1/update-password';
+  static const String updateProfileAPI =
+      '$baseUrl/api/v1/profile';
   static const String addWishList =
       'https://megatop.com.eg/wp-json/custom/v1/wishlist_add';
   static const String userDetailsAPI =
