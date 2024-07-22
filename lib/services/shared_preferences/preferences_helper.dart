@@ -33,12 +33,6 @@ class PreferencesHelper {
     return userModel.data!.user!.email ?? '';
   }
 
-  // static int? get getID {
-  //   UserModel? userModel = UserModel.fromJson(
-  //       json.decode('${preferences?.getString('userModel')}'));
-  //   return userModel.data!.user!.id;
-  // }
-
   static Future<void> saveIsVisitor({required bool isVisitor}) async {
     await preferences?.setBool("isVisitor", isVisitor);
   }

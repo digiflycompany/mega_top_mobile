@@ -35,13 +35,16 @@ class CustomFavouriteAppBar extends StatelessWidget {
         centerTitle: true,
         actions: [
           if(isUserLoggedIn)...[
-            Padding(
-              padding: EdgeInsets.only(right: context.width * 0.045),
-              child: GestureDetector(
-                onTap: ()=>Routes.wishListPageRoute.moveTo,
-                child: const CustomerIcon(
-                  icon: AppAssets.favouritesIcon,
-                  number: AppStrings.zero,
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.only(right: context.width * 0.045),
+                child: GestureDetector(
+                  onTap: ()=>Routes.wishListPageRoute.moveTo,
+                  child: const CustomerIcon(
+                    icon: AppAssets.favouritesIcon,
+                    number: AppStrings.zero,
+                  ),
                 ),
               ),
             ),

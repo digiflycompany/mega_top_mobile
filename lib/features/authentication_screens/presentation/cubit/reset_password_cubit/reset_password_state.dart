@@ -1,6 +1,6 @@
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/data/models/UpdateProfileModel.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
-import 'package:mega_top_mobile/features/profile_screen/data/UpdateProfileModel.dart';
 
 abstract class ResetPasswordState {}
 
