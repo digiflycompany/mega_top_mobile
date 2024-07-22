@@ -1,5 +1,6 @@
 import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
+import 'package:mega_top_mobile/features/profile_screen/data/UpdateProfileModel.dart';
 
 abstract class ResetPasswordState {}
 
@@ -36,9 +37,9 @@ class VerifyResetPasswordFailure extends ResetPasswordState {
 class UpdatePasswordLoading extends ResetPasswordState {}
 
 class UpdatePasswordSuccess extends ResetPasswordState {
-  final UserModel userModel;
+  final UpdateProfileModel updateProfileModel;
 
-  UpdatePasswordSuccess(this.userModel);
+  UpdatePasswordSuccess(this.updateProfileModel);
 }
 
 class UpdatePasswordFailure extends ResetPasswordState {
@@ -48,3 +49,17 @@ class UpdatePasswordFailure extends ResetPasswordState {
 }
 
 class ResetPasswordNoInternetConnection extends ResetPasswordState {}
+
+class ResendResetPasswordCodeSuccess extends ResetPasswordState {
+  final UserModel userModel;
+
+  ResendResetPasswordCodeSuccess(this.userModel);
+}
+
+class ResendResetPasswordCodeLoading extends ResetPasswordState {}
+
+class ResendResetPasswordCodeFailure extends ResetPasswordState {
+  final String error;
+
+  ResendResetPasswordCodeFailure(this.error);
+}

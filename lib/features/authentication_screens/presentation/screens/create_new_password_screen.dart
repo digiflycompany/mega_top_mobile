@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/reset_password_cubit/reset_password_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/confirm_new_password_text_field.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_button.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/create_new_password_widgets/create_new_password_condition.dart';
@@ -30,15 +30,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
     final _formKey = GlobalKey<FormState>();
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
-      listener: (context, state) {
-         resetPasswordCubit = context.read<ResetPasswordCubit>();
-        if(state is UpdatePasswordSuccess){
-          resetPasswordCubit.passwordChangedSuccessfully(context);
-        }
-        if(state is UpdatePasswordFailure){
-          resetPasswordCubit.showErrorToast(context, '',AppStrings.invalidOtp);
-        }
-      },
+      listener: (context, state) =>resetPasswordCubit.handleCreatingNewPasswordStates(context, state),
       builder: (context, state) {
         return Scaffold(
           key: _scaffoldKey,

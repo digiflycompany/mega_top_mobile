@@ -5,8 +5,8 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/auth_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/login_cubit/login_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/login_cubit/login_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/login_cubit/login_state.dart';
 
 class LoginButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;

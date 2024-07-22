@@ -3,6 +3,7 @@ import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/delete_account_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/reset_password_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
+import 'package:mega_top_mobile/features/profile_screen/data/UpdateProfileModel.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
@@ -15,8 +16,7 @@ abstract class AuthRepo {
       String fullName, String phoneNumber, String email, String password);
   Future<UserModel?> resetPassword(String email);
   Future<ResetPasswordModel?> verifyResetPassword(String email, String resetPasswordCode);
-  Future<UserModel?> updatePassword(
-      String otp, String email, String password, String confirmPassword);
+  Future<UpdateProfileModel?> updatePassword(String password,);
 }
 
 class AuthRepoImp implements AuthRepo {
@@ -127,27 +127,26 @@ class AuthRepoImp implements AuthRepo {
   }
 
   @override
-  Future<UserModel?> updatePassword(
-      String otp, String email, String password, String confirmPassword) async {
+  Future<UpdateProfileModel?> updatePassword(String password) async {
     try {
-      Response? response = await DioHelper.postData(
-        url: EndPoints.updatePasswordAPI,
+      Response? response = await DioHelper.putData(
+        url: EndPoints.updateProfileAPI,
         data: {
-          'otp': otp,
-          'email': email,
-          'password': password,
-          'confirm_password': confirmPassword,
+          "password": password
         },
+        options: await DioHelper.getOptions(),
       );
-      if (response != null && response.statusCode == 200) {
-        UserModel user = UserModel.fromJson(response.data);
-        return user;
+
+      if (response?.statusCode == 200 || response?.statusCode == 401) {
+        return UpdateProfileModel.fromJson(response?.data);
       }
     } catch (e) {
-      print('Error during Updating Password: $e');
+      print('Error during updating password: $e');
+      throw e;
     }
     return null;
   }
+
 
   @override
   Future<DeleteAccountModel?> delete(String email, int id) async {
