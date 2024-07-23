@@ -134,6 +134,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   /// Get Categories
+
   CategoriesModel? categories;
 
   Future<void> getCategories() async {
@@ -154,13 +155,30 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
+  int page = 1;
+
   SelectedCategoryModel? selectedCategoryModel;
 
   Future<void> getSelectedCategories(String selectedId) async {
     emit(SelectedCategoryLoading());
     try {
       selectedCategoryModel =
-          await categoriesRepo.getSelectedCategories(selectedId);
+          await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page);
+      emit(SelectedCategorySuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SelectedCategoryFailure(e.toString()));
+    }
+  }
+
+  bool hasMoreProducts = true;
+
+  Future<void> getMoreProduct(String selectedId) async {
+    emit(SelectedCategoryLoading());
+    try {
+      SelectedCategoryModel? moreProducts = await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page++);
+      selectedCategoryModel!.data!.products.addAll(moreProducts!.data!.products);
+      hasMoreProducts = moreProducts.data!.products.isNotEmpty;
       emit(SelectedCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");

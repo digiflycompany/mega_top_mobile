@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_item_details_cubit.dart';
@@ -18,12 +19,24 @@ class CategoryItemsPage extends StatefulWidget {
 }
 
 class _CategoryItemsPageState extends State<CategoryItemsPage> {
+  late CategoryCubit categoryCubit;
+  final controller = ScrollController();
 
- late CategoryCubit categoryCubit;
+  @override
+  void initState() {
+    final cubit = context.read<CategoryCubit>();
+    controller.addListener(() {
+      if (controller.position.maxScrollExtent == controller.offset) {
+        cubit.page++;
+        cubit.getMoreProduct(cubit.selectedCategoryId!);
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-     categoryCubit = context.read<CategoryCubit>();
+    categoryCubit = context.read<CategoryCubit>();
     return BlocProvider<categoryItemDetailsCubit>(
       create: (BuildContext context) {
         return categoryItemDetailsCubit();
@@ -34,7 +47,8 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
             preferredSize: Size(double.infinity, context.height * 0.089),
             child: BlocBuilder<CategoryCubit, CategoryState>(
               builder: (BuildContext context, CategoryState state) {
-                return PrimaryAppBar(categoryCubit.categories!.data!.categories![categoryCubit.selectedProductIndex].name!);
+                return PrimaryAppBar(categoryCubit.categories!.data!
+                    .categories![categoryCubit.selectedProductIndex].name!);
               },
             )),
         body: BlocBuilder<CategoryCubit, CategoryState>(
@@ -44,21 +58,36 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
               return Padding(
                 padding:
                     EdgeInsets.symmetric(horizontal: context.width * 0.045),
-                child: Column(
-                  children: [
-                    CategoryItemsOptionsRow(
-                      topPadding: context.height * 0.028,
-                      bottomPadding: context.height * 0.033,
-                    ),
-                    BlocConsumer<CategoryCubit, CategoryState>(
-                      listener: (context, state) {},
-                      builder: (context, state) {
-                        return categoryCubit.isGrid
-                            ? const CategoryItemsGridView()
-                            : const CategoryItemsListView();
-                      },
-                    ),
-                  ],
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  controller: controller,
+                  child: Column(
+                    children: [
+                      CategoryItemsOptionsRow(
+                        topPadding: context.height * 0.028,
+                        bottomPadding: context.height * 0.033,
+                      ),
+                      BlocConsumer<CategoryCubit, CategoryState>(
+                        listener: (context, state) {},
+                        builder: (context, state) {
+                          return categoryCubit.isGrid
+                              ? const CategoryItemsGridView()
+                              : const CategoryItemsListView();
+                        },
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      if (context.read<CategoryCubit>().hasMoreProducts)
+                          Center(child: SizedBox(
+                              height: 15.h,
+                              width: 15.h,
+                              child: CircularProgressIndicator())),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
+                  ),
                 ),
               );
 
@@ -81,6 +110,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
   @override
   void dispose() {
     categoryCubit.selectedCategoryModel = null;
+    categoryCubit.page = 1;
     super.dispose();
   }
 }
