@@ -34,7 +34,6 @@ class ProductsGridContainer extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
-            cubit.setCategoryProductIndex(selectedProductIndex: index);
             Routes.categoryProductDetailsPageRoute.moveTo;
           },
           child: Container(
@@ -130,7 +129,7 @@ class ProductsGridContainer extends StatelessWidget {
                         Align(
                           alignment: AlignmentDirectional.topStart,
                           child: Text(
-                            cubit.selectedCategoryModel!.data!.products[index].title!,
+                            cubit.selectedCategoryModel!.data!.products[index].categoryId!.name!,
                             style: TextStyle(
                                 color: AppColors.greyTextColor,
                                 fontWeight: FontWeight.w600,

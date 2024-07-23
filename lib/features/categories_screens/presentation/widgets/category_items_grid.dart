@@ -15,21 +15,6 @@ class CategoryItemsGridView extends StatefulWidget {
 }
 
 class _CategoryItemsGridViewState extends State<CategoryItemsGridView> {
-  final controller = ScrollController();
-
-
-  @override
-  void initState() {
-    final cubit = context.read<CategoryCubit>();
-    controller.addListener(() {
-      if(controller.position.maxScrollExtent == controller.offset)
-        {
-          cubit.page++;
-          cubit.getMoreProduct(cubit.selectedCategoryId!);
-        }
-    });
-    super.initState();
-  }
 
 
   @override
@@ -38,14 +23,13 @@ class _CategoryItemsGridViewState extends State<CategoryItemsGridView> {
       builder: (BuildContext context, CategoryState state) {
         return GridView.builder(
           shrinkWrap: true,
-        //  controller: controller,
           physics: const BouncingScrollPhysics(),
           itemCount: context
               .read<CategoryCubit>()
               .selectedCategoryModel!
               .data!
               .products
-              .length+1,
+              .length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: context.width * 0.027,
@@ -53,12 +37,6 @@ class _CategoryItemsGridViewState extends State<CategoryItemsGridView> {
             childAspectRatio: 0.68,
           ),
           itemBuilder: (BuildContext context, int index) {
-            if(index < context
-                .read<CategoryCubit>()
-                .selectedCategoryModel!
-                .data!
-                .products
-                .length) {
               return Padding(
                 padding: EdgeInsets.only(
                   right: context.width * 0.011,
@@ -71,11 +49,6 @@ class _CategoryItemsGridViewState extends State<CategoryItemsGridView> {
                   discount: false,
                 ),
               );
-            }
-            // else if(context
-            //     .read<CategoryCubit>().hasMoreProducts){
-            //   return Center(child: CircularProgressIndicator());
-            // }
           },
         );
       },

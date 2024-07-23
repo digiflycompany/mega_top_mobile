@@ -31,6 +31,7 @@ class CategoriesSmallCard extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             cubit.selectedCategoryId = cubit.categories!.data!.categories![index].id!;
+            cubit.setCategoryProductIndex(selectedProductIndex: index);
             cubit.getSelectedCategories(cubit.selectedCategoryId!);
             Routes.categoryItemsPageRoute.moveTo;
           },
