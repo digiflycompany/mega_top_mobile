@@ -111,6 +111,8 @@ class AppStrings {
   static const String confirmPasswordEn = 'Confirm password';
   static const String confirmOrderEn = 'Confirm Order';
   static const String applyEn = 'Apply';
+  static const String sorryThereIsNoInternet = 'Sorry, there is no internet!';
+  static const String pleaseCheckYourInternet = 'Please check your internet connection\n and try again';
   static const String resetEn = 'Reset';
   static const String signUpEn = 'Sign up';
   static const String or = 'أو';
@@ -166,6 +168,7 @@ class AppStrings {
   static const String upsEn = 'UPS';
   static const String editEn = 'Edit';
   static const String removeEn = 'Remove';
+  static const String retryToConnect = 'Retry to connect';
   static const String networkEn = 'Network';
   static const String hiLookEn = 'HiLook';
   static const String hikVisionEn = 'HikVision';
@@ -325,6 +328,7 @@ class AppStrings {
   static const String savedCards = 'Saved cards';
   static const String shippingAddresses = 'Shipping Addresses';
   static const String profileDetails = 'Profile Details';
+  static const String profileDetailsFailed = 'Profile Details Failed';
   static const String firstName = 'First name';
   static const String lastName = 'Last name';
   static const String save = 'Save';

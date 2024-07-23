@@ -1,4 +1,5 @@
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/data/models/user_details_model.dart';
+
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 
 abstract class AccountDetailsState {}
 

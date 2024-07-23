@@ -11,6 +11,8 @@ import 'package:mega_top_mobile/features/account_screens/compare_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/pages/notification_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/delete_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
@@ -193,7 +195,7 @@ class RouteGenerator {
         );
       case Routes.profilePageRoute:
         return buildPageRoute(
-          child: const ProfileScreen(),
+          child: ProfileScreen(),
         );
       case Routes.orderConfirmationPageRoute:
         return buildPageRoute(
@@ -201,7 +203,10 @@ class RouteGenerator {
         );
       case Routes.profileDetailsPageRoute:
         return buildPageRoute(
-          child: const EditProfileScreen(),
+          child: BlocProvider(
+            create: (context) => AccountDetailsCubit(AccountDetailsRepoImp()),
+            child: EditProfileScreen(),
+          ),
         );
       case Routes.passwordDetailsPageRoute:
         return buildPageRoute(

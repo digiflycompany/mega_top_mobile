@@ -14,8 +14,12 @@ class EndPoints {
   static const String resetPasswordAPI = '$baseUrl/api/v1/users/reset-password';
   static const String verifyResetPasswordAPI =
       '$baseUrl/api/v1/users/verify-reset-password';
-  static const String updateProfileAPI =
+  static const String accountDetailsAPI =
       '$baseUrl/api/v1/profile';
+  static const String updateAccountDetailsAPI =
+      '$baseUrl/api/v1/profile';
+  static const String deleteAccountAPI =
+      '$baseUrl/api/v1/profile/deactivate';
   static const String addWishList =
       'https://megatop.com.eg/wp-json/custom/v1/wishlist_add';
   static const String userDetailsAPI =
@@ -28,6 +32,4 @@ class EndPoints {
       'https://megatop.com.eg/wp-json/custom/v2/latest_offer';
   static const String latestProductsAPI =
       'https://megatop.com.eg/wp-json/custom/v2/latest_products';
-  static const String deleteAccountAPI =
-      'https://megatop.com.eg/wp-json/custom/v1/users/delete/';
 }

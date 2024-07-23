@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/data/models/user_details_model.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class AccountDetailsRepo {
@@ -13,7 +13,7 @@ class AccountDetailsRepoImp implements AccountDetailsRepo {
   Future<UserDetailsModel?> getUserDetails() async {
     try {
       Response? response = await DioHelper.getData(
-        url: EndPoints.loginAPI,
+        url: EndPoints.accountDetailsAPI,
         options: await DioHelper.getOptions(),
       );
       if (response?.statusCode == 200 || response?.statusCode == 401) {
