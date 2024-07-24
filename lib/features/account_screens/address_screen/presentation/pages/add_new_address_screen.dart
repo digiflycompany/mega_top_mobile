@@ -94,7 +94,14 @@ class AddNewAddressScreen extends StatelessWidget {
       ),
       bottomNavigationBar: ButtonBottomNavBar(
         button: PrimaryButton(
-          text: "Confirm Location",
+          content: Text(
+            AppStrings.confirmLocationEn,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 16.sp,
+            ),
+          ),
           onTap: () {
             Routes.addNewAddressDetailsPageRoute.moveTo;
           },

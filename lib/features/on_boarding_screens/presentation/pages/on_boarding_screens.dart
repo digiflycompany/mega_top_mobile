@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -78,9 +79,16 @@ class OnBoardingView extends StatelessWidget {
                 padding:
                     EdgeInsets.symmetric(horizontal: context.width * 0.045),
                 child: PrimaryButton(
-                    text: onboardingCubit.getPageIndex() == 2
-                        ? AppStrings.getStarted
-                        : AppStrings.nextEn,
+                    content: Text(
+                      onboardingCubit.getPageIndex() == 2
+                          ? AppStrings.getStarted
+                          : AppStrings.nextEn,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.sp,
+                      ),
+                    ),
                     onTap: () {
                       onboardingCubit.getPageIndex() == 2
                           ? Routes.homePageRoute.moveToCurrentRouteAndRemoveAll

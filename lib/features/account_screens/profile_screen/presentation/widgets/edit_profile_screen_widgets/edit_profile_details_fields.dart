@@ -45,6 +45,26 @@ class EditProfileDetailsFields extends StatelessWidget {
               } else if (state is AccountDetailsFailure) {
                 cubit.showErrorToast(context, AppStrings.profileDetailsFailed, state.error);
                 return Center(child: Text('Failed'),);
+              } else if(state is UpdatingAccountDetailsLoading){
+                return EditProfileDetailsShimmer();
+              }else if(state is UpdatingAccountDetailsSuccess){
+                cubit.savedSuccessToast(context);
+                return Column(
+                  children: [
+                    EditEmailTextField(
+                      title: AppStrings.emailEn,
+                      controller: cubit.emailController,
+                    ),
+                    EditFullNameTextField(
+                      title: AppStrings.firstName,
+                      controller: cubit.fullNameController,
+                    ),
+                    EditPhoneTextField(
+                      title: AppStrings.phoneNumberEn,
+                      controller: cubit.phoneController,
+                    ),
+                  ],
+                );
               } else if (state is AccountDetailsNoInternetConnection) {
                 return NoInternetScreen(buttonOnTap: () {
                   cubit.getAccountDetails();

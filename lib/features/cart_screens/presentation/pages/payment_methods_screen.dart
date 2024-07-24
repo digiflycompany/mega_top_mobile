@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
@@ -36,7 +37,14 @@ class PaymentMethodsPage extends StatelessWidget {
       ),
       bottomNavigationBar: ButtonBottomNavBar(
         button: PrimaryButton(
-          text: AppStrings.confirmPaymentProcessEn,
+          content: Text(
+            AppStrings.confirmPaymentProcessEn,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 16.sp,
+            ),
+          ),
           onTap: () => Routes.orderSummaryPageRoute.moveTo,
         ),
       ),

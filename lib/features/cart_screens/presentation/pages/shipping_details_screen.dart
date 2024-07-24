@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
@@ -54,7 +55,14 @@ class ShippingDetailsPage extends StatelessWidget {
             ),
       bottomNavigationBar: ButtonBottomNavBar(
         button: PrimaryButton(
-          text: AppStrings.confirmShippingAddressEn,
+          content: Text(
+            AppStrings.confirmShippingAddressEn,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 16.sp,
+            ),
+          ),
           onTap: () => Routes.paymentMethodsPageRoute.moveTo,
         ),
       ),
