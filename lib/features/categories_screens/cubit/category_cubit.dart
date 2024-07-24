@@ -192,6 +192,13 @@ class CategoryCubit extends Cubit<CategoryState> {
     this.selectedProductIndex = selectedProductIndex;
   }
 
+
+  void sortingFromHighPrice(){
+    selectedCategoryModel!.data!.products.sort((a,b)=> b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+  }
+
+
+
   Future<void> addToCart(int customerId, int productId, int quantity) async {
     emit(addToCartLoading());
     try {
