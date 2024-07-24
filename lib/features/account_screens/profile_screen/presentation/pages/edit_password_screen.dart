@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
+import 'package:mega_top_mobile/core/widgets/primary_padding.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
 class EditPasswordScreen extends StatelessWidget {
@@ -20,17 +21,10 @@ class EditPasswordScreen extends StatelessWidget {
             AppStrings.passwordSettings,
             favour: false,
           )),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.066),
+      body: PrimaryPadding(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            VerticalSpace(48.h),
-            const Text(
-              "Current password",
-              style: TextStyle(color: AppColors.greyTextColor),
-            ),
-            //const PasswordTextField(),
             VerticalSpace(48.h),
             const Text(
               "New password",
