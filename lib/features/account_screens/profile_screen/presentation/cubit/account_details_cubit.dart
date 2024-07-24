@@ -15,10 +15,23 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
+  final TextEditingController confirmNewPasswordController = TextEditingController();
 
   AccountDetailsCubit(this.accountDetailsRepo) : super(AccountDetailsInitial());
 
   static AccountDetailsCubit getCubit(context) => BlocProvider.of(context);
+  String passwordPattern =
+      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
+  final emailRegex =
+  RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+
+  bool isPasswordVisible = true;
+
+  void togglePasswordVisibility() {
+    isPasswordVisible = !isPasswordVisible;
+    emit(AccountDetailsInitial());
+  }
 
   void showErrorToast(BuildContext context, String title, String text) {
     OverlayEntry? overlayEntry;
@@ -110,11 +123,32 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
     }
   }
 
+  Future<void> updatePassword(String password,BuildContext context) async {
+    emit(UpdatingPasswordLoading());
+    try {
+      final user = await accountDetailsRepo.updatePassword(password);
+      if (user != null && user.success == true) {
+        emit(UpdatingPasswordSuccess(user));
+        savedSuccessToast(context);
+      } else {
+        emit(UpdatingPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(AccountDetailsNoInternetConnection());
+      } else {
+        emit(UpdatingPasswordFailure(e.toString()));
+      }
+    }
+  }
+
   @override
   Future<void> close() {
     fullNameController.dispose();
     emailController.dispose();
     phoneController.dispose();
+    newPasswordController.dispose();
+    confirmNewPasswordController.dispose();
     return super.close();
   }
 

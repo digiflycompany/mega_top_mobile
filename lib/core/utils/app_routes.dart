@@ -13,7 +13,6 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/presentat
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/delete_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
@@ -210,11 +209,10 @@ class RouteGenerator {
         );
       case Routes.passwordDetailsPageRoute:
         return buildPageRoute(
-          child: const EditPasswordScreen(),
-        );
-      case Routes.deleteAccountPageRoute:
-        return buildPageRoute(
-          child: const DeleteAccountScreen(),
+          child: BlocProvider(
+            create: (context) => AccountDetailsCubit(AccountDetailsRepoImp()),
+            child: EditPasswordScreen(),
+          ),
         );
       case Routes.addNewAddressPageRoute:
         return buildPageRoute(

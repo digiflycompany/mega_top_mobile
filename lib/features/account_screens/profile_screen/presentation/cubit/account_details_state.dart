@@ -1,4 +1,3 @@
-
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/updated_user_details_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 
@@ -35,3 +34,17 @@ class UpdatingAccountDetailsFailure extends AccountDetailsState {
 }
 
 class AccountDetailsNoInternetConnection extends AccountDetailsState {}
+
+class UpdatingPasswordLoading extends AccountDetailsState {}
+
+class UpdatingPasswordSuccess extends AccountDetailsState {
+  final UpdatedUserDetailsModel user;
+
+  UpdatingPasswordSuccess(this.user);
+}
+
+class UpdatingPasswordFailure extends AccountDetailsState {
+  final String error;
+
+  UpdatingPasswordFailure(this.error);
+}

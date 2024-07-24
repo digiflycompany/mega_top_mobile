@@ -29,8 +29,9 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController signUpConfirmPasswordController =
   TextEditingController();
 
-  bool isPasswordVisible = true;
   bool newPasswordSuccess = false;
+  bool isPasswordVisible = true;
+
 
   void initializeControllers() {
     signUpEmailController = TextEditingController();
