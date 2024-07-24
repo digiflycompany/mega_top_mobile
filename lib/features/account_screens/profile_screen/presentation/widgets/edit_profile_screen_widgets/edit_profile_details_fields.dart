@@ -5,10 +5,10 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_email_text_field.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_full_name_text_field.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_phone_text_field.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_details_shimmer.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/edit_email_text_field.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/edit_full_name_text_field.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/edit_phone_text_field.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/edit_profile_details_shimmer.dart';
 
 class EditProfileDetailsFields extends StatelessWidget {
   const EditProfileDetailsFields({super.key});
@@ -26,20 +26,19 @@ class EditProfileDetailsFields extends StatelessWidget {
               if (state is AccountDetailsLoading) {
                 return EditProfileDetailsShimmer();
               } else if (state is AccountDetailsSuccess) {
-                final user = state.user.data.user;
                 return Column(
                   children: [
                     EditEmailTextField(
                       title: AppStrings.emailEn,
-                      text: user.email,
+                      controller: cubit.emailController,
                     ),
                     EditFullNameTextField(
                       title: AppStrings.firstName,
-                      text: user.fullName,
+                      controller: cubit.fullNameController,
                     ),
                     EditPhoneTextField(
                       title: AppStrings.phoneNumberEn,
-                      text: user.phoneNumber, // Assuming the last name is the rest
+                      controller: cubit.phoneController,
                     ),
                   ],
                 );

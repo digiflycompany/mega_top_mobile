@@ -9,6 +9,10 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 
 class AccountDetailsCubit extends Cubit<AccountDetailsState> {
   final AccountDetailsRepo accountDetailsRepo;
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
   AccountDetailsCubit(this.accountDetailsRepo) : super(AccountDetailsInitial());
 
   static AccountDetailsCubit getCubit(context) => BlocProvider.of(context);
@@ -39,6 +43,9 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
     try {
       final user = await accountDetailsRepo.getUserDetails();
       if (user != null && user.success == true) {
+        fullNameController.text = user.data.user.fullName;
+        emailController.text = user.data.user.email;
+        phoneController.text = user.data.user.phoneNumber;
         emit(AccountDetailsSuccess(user));
       } else {
         emit(AccountDetailsFailure(
@@ -52,5 +59,4 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       }
     }
   }
-
 }
