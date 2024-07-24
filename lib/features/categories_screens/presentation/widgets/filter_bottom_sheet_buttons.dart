@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
@@ -15,7 +16,14 @@ class FilterBottomSheetButtons extends StatelessWidget {
       child: Column(
         children: [
           PrimaryButton(
-            text: AppStrings.applyEn,
+            content: Text(
+              AppStrings.applyEn,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              ),
+            ),
             onTap: ()=>Navigator.pop(context),
           ),
           VerticalSpace(context.height * 0.033),

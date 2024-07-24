@@ -9,6 +9,7 @@ class AppStrings {
   static const String error = 'Error';
   static const String previous = 'السابق';
   static const String previousEn = 'Previous';
+  static const String invalidCred = 'Invalid credentials or network issues.';
   static const String companyEn = 'Company';
   static const String completed = 'Completed';
   static const String signUpFailed = 'Sign Up Failed';
@@ -92,6 +93,7 @@ class AppStrings {
   static const String createAccountEn = 'Sign up';
   static const String continueWithGoogleEn = 'Continue with Google';
   static const String codeSentSuccessfully = 'Code sent successfully';
+  static const String savedSuccessfully = 'Saved successfully';
   static const String theProductAddedToWishListEn =
       'The product added to wish list';
   static const String theProductRemovedFromWishListEn =
@@ -152,6 +154,7 @@ class AppStrings {
   static const String discountPercentEn = '-17%';
   static const String viewAllEn = 'View all';
   static const String viewCartEn = 'View Cart';
+  static const String confirmLocationEn = "Confirm Location";
   static const String continueShoppingEn = 'Continue Shopping';
   static const String yourShipmentEn = 'Your shipment';
   static const String shippingDetailsEn = 'Shipping Details';

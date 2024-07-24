@@ -49,7 +49,14 @@ class EditPasswordScreen extends StatelessWidget {
       ),
       bottomNavigationBar: ButtonBottomNavBar(
         button: PrimaryButton(
-          text: "Save",
+          content: Text(
+            AppStrings.save,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 16.sp,
+            ),
+          ),
           onTap: () {
             Navigator.pop(context);
           },

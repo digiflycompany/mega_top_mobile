@@ -100,7 +100,14 @@ class AddNewAddressDetailsScreen extends StatelessWidget {
       ),
       bottomNavigationBar: ButtonBottomNavBar(
           button: PrimaryButton(
-        text: AppStrings.saveAddress,
+            content: Text(
+              AppStrings.saveAddress,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              ),
+            ),
         onTap: () {
           Routes.editAddressDetailsPageRoute.moveTo;
         },

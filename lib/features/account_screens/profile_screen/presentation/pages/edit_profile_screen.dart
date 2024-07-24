@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
-import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/edit_profile_details_fields.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/update_user_details_button.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -37,19 +36,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: context.width * 0.066),
-        child: SingleChildScrollView(
+        child: const SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: EditProfileDetailsFields(),
         ),
       ),
-      bottomNavigationBar: ButtonBottomNavBar(
-        button: PrimaryButton(
-          text: AppStrings.save,
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      bottomNavigationBar: const UpdateUserDetailsButton(),
     );
   }
 }

@@ -47,7 +47,14 @@ class GuestAccountScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 12.sp)),
               VerticalSpace(40.h),
               PrimaryButton(
-                text: AppStrings.signUpEn,
+                content: Text(
+                  AppStrings.signUpEn,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.sp,
+                  ),
+                ),
                 onTap: () {
                   Routes.signUpRoute.moveTo;
                 },

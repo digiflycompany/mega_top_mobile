@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -45,7 +46,14 @@ class AddToCartBottomSheet extends StatelessWidget {
                       children: [
                         /// View Cart Button
                         PrimaryButton(
-                          text: AppStrings.viewCartEn,
+                          content: Text(
+                            AppStrings.viewCartEn,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16.sp,
+                            ),
+                          ),
                           onTap: () {
                             // if (isUserLoggedIn) {
                             //   categoryCubit.addToCart(

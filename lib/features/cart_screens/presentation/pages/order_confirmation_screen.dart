@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
@@ -34,8 +35,15 @@ class OrderConfirmationScreen extends StatelessWidget {
             const Spacer(),
 
             /// View Order Button
-            const PrimaryButton(
-              text: AppStrings.viewOrderEn,
+            PrimaryButton(
+              content: Text(
+                AppStrings.viewOrderEn,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16.sp,
+                ),
+              ),
             ),
             VerticalSpace(context.height * 0.033),
 

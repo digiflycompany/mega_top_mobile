@@ -97,9 +97,16 @@ class EditAddressDetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const ButtonBottomNavBar(
+      bottomNavigationBar: ButtonBottomNavBar(
           button: PrimaryButton(
-        text: AppStrings.editAddress,
+            content: Text(
+              AppStrings.editAddress,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              ),
+            ),
       )),
     );
   }

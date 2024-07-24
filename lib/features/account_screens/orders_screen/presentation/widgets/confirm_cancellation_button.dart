@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
@@ -17,7 +18,14 @@ class ConfirmCancellationButton extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: context.width16),
           child: PrimaryButton(
-            text: AppStrings.confirm,
+            content: Text(
+              AppStrings.confirm,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              ),
+            ),
             onTap: () {
               Navigator.pop(context);
               globalCubit.showPrimaryToast(context, AppStrings.orderHasBeenCancelled);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -27,7 +28,14 @@ class SignUpOrLoginPage extends StatelessWidget {
 
             /// Sign Up Button
             PrimaryButton(
-              text: AppStrings.signUpEn,
+              content: Text(
+                AppStrings.signUpEn,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16.sp,
+                ),
+              ),
               onTap: () => Routes.signUpRoute.moveTo,
             ),
             VerticalSpace(context.height * 0.033),
