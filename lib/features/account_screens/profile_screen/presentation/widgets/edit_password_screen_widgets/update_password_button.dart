@@ -8,17 +8,18 @@ import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 
-class UpdateUserDetailsButton extends StatelessWidget {
-  const UpdateUserDetailsButton({super.key});
+class UpdatePasswordButton extends StatelessWidget {
+  final GlobalKey<FormState> formKey;
+  const UpdatePasswordButton({super.key, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
-    return ButtonBottomNavBar(
-      button: BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
-        builder: (context, state) {
-          AccountDetailsCubit cubit =context.read<AccountDetailsCubit>();
-          return PrimaryButton(
-            content: state is UpdatingAccountDetailsLoading?const ButtonCircularProgress():Text(
+    return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+      builder: (context, state) {
+        AccountDetailsCubit cubit = context.read<AccountDetailsCubit>();
+        return ButtonBottomNavBar(
+          button: PrimaryButton(
+            content: state is UpdatingPasswordLoading?const ButtonCircularProgress():Text(
               AppStrings.save,
               style: TextStyle(
                 color: Colors.white,
@@ -26,12 +27,14 @@ class UpdateUserDetailsButton extends StatelessWidget {
                 fontSize: 16.sp,
               ),
             ),
-            onTap: state is UpdatingAccountDetailsLoading?(){}:() {
-              cubit.updateAccountDetails(cubit.emailController.text, cubit.fullNameController.text, cubit.phoneController.text);
+            onTap: state is UpdatingPasswordLoading?(){}:() {
+              if(formKey.currentState!.validate()){
+                cubit.updatePassword(cubit.newPasswordController.text,context);
+              }
             },
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
