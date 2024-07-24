@@ -7,7 +7,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
-import 'package:mega_top_mobile/core/widgets/edit_text_form_field.dart';
+// import 'package:mega_top_mobile/core/widgets/edit_text_form_field.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/add_address_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/add_address_details_state.dart';
@@ -40,31 +40,31 @@ class EditAddressDetailsScreen extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const EditTextField(
-                      title: "Location",
-                      text:
-                          "Nasr City - Cairo Governorate - First District - 4450153",
-                    ),
-                    VerticalSpace(40.h),
-                    const EditTextField(
-                      title: "Additional address details",
-                      text: "First Abbas",
-                    ),
-                    VerticalSpace(40.h),
-                    const EditTextField(
-                      title: "First name",
-                      text: "Mohamed",
-                    ),
-                    VerticalSpace(40.h),
-                    const EditTextField(
-                      title: "Last name",
-                      text: "Nashaat",
-                    ),
-                    VerticalSpace(40.h),
-                    const EditTextField(
-                      title: "Mobile number",
-                      text: "01020889544",
-                    ),
+                    // const EditTextField(
+                    //   title: "Location",
+                    //   text:
+                    //       "Nasr City - Cairo Governorate - First District - 4450153",
+                    // ),
+                    // VerticalSpace(40.h),
+                    // const EditTextField(
+                    //   title: "Additional address details",
+                    //   text: "First Abbas",
+                    // ),
+                    // VerticalSpace(40.h),
+                    // const EditTextField(
+                    //   title: "First name",
+                    //   text: "Mohamed",
+                    // ),
+                    // VerticalSpace(40.h),
+                    // const EditTextField(
+                    //   title: "Last name",
+                    //   text: "Nashaat",
+                    // ),
+                    // VerticalSpace(40.h),
+                    // const EditTextField(
+                    //   title: "Mobile number",
+                    //   text: "01020889544",
+                    // ),
                     VerticalSpace(40.h),
                     Text(
                       "Address label (optional)",

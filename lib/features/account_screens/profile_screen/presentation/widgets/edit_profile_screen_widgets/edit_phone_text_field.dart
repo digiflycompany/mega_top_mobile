@@ -5,14 +5,14 @@ import 'package:mega_top_mobile/core/widgets/edit_text_form_field.dart';
 
 class EditPhoneTextField extends StatelessWidget {
   final String title;
-  final String text;
-  const EditPhoneTextField({super.key, required this.title, required this.text});
+  final TextEditingController controller;
+  const EditPhoneTextField({super.key, required this.title, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return EditTextField(
       title: title,
-      text: text,
+      controller: controller,
       suffix: Transform.scale(
         scale: 0.5,
         child: SvgPicture.asset(

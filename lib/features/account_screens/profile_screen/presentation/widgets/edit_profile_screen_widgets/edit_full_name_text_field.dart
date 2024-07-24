@@ -6,8 +6,8 @@ import 'package:mega_top_mobile/core/widgets/edit_text_form_field.dart';
 
 class EditFullNameTextField extends StatelessWidget {
   final String title;
-  final String text;
-  const EditFullNameTextField({super.key, required this.title, required this.text});
+  final TextEditingController controller;
+  const EditFullNameTextField({super.key, required this.title, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class EditFullNameTextField extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 40.h),
       child: EditTextField(
         title: title,
-        text: text, // Assuming the first name is the first part
+        controller: controller,
         suffix: Transform.scale(
           scale: 0.5,
           child: SvgPicture.asset(
