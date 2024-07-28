@@ -14,16 +14,18 @@ class EditPasswordScreen extends StatefulWidget {
 }
 
 class _EditPasswordScreenState extends State<EditPasswordScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const PrimaryAppBar(
-            AppStrings.passwordSettings,
-            favour: false,
-          )),
+        preferredSize: Size(double.infinity, context.height * 0.089),
+        child: const PrimaryAppBar(
+          AppStrings.passwordSettings,
+          favour: false,
+        ),
+      ),
       body: Form(
         key: _formKey,
         child: Padding(
@@ -38,7 +40,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: UpdatePasswordButton(formKey: _formKey,),
+      bottomNavigationBar: UpdatePasswordButton(formKey: _formKey),
     );
   }
 }

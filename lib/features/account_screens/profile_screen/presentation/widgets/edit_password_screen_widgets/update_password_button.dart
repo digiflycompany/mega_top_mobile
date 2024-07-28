@@ -8,10 +8,15 @@ import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 
-class UpdatePasswordButton extends StatelessWidget {
+class UpdatePasswordButton extends StatefulWidget {
   final GlobalKey<FormState> formKey;
   const UpdatePasswordButton({super.key, required this.formKey});
 
+  @override
+  State<UpdatePasswordButton> createState() => _UpdatePasswordButtonState();
+}
+
+class _UpdatePasswordButtonState extends State<UpdatePasswordButton> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
@@ -28,7 +33,7 @@ class UpdatePasswordButton extends StatelessWidget {
               ),
             ),
             onTap: state is UpdatingPasswordLoading?(){}:() {
-              if(formKey.currentState!.validate()){
+              if(widget.formKey.currentState!.validate()){
                 cubit.updatePassword(cubit.newPasswordController.text,context);
               }
             },
