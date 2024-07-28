@@ -42,13 +42,14 @@ class CustomerInformation extends StatelessWidget {
                       ),
                     ),
                   HorizontalSpace(context.width * 0.022),
-                  GestureDetector(
-                    onTap: () => Routes.notificationPageRoute.moveTo(),
-                    child: const CustomerIcon(
+                  if(isUserLoggedIn)
+                    GestureDetector(
+                     onTap: () => Routes.notificationPageRoute.moveTo(),
+                     child: const CustomerIcon(
                       icon: AppAssets.notificationIcon,
                       number: AppStrings.three,
+                     ),
                     ),
-                  ),
                 ],
               ),
             );

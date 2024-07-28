@@ -8,7 +8,7 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/shipping_addresses_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/compare_screen/presentation/pages/compare_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/pages/notification_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/screens/notification_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
