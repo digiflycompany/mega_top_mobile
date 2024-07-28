@@ -82,6 +82,7 @@ class AppStrings {
   static const String passwordEn = 'Password';
   static const String areYouSureYouWantToRemoveYourAccount = 'Are you sure you want to remove your account ?';
   static const String removeAccount = 'Remove account';
+  static const String removingAccountFailed = 'Removing account failed';
   static const String removeAccountCapitalA = 'Remove Account';
   static const String forgotPassword = 'هل نسيت كلمة المرور ؟';
   static const String forgotPasswordEn = 'Forgot Password ?';
@@ -195,7 +196,7 @@ class AppStrings {
   static const String welcomeEn = 'Welcome !';
   static const String searchHereEn = 'Search here ...';
   static const String yourPasswordHasBeenResetSuccessfullyEn =
-      'Your password has been\nreset successfully!';
+      'Your password has been\nchanged successfully!';
   static const String hardDiskEn = 'Hard disk 1 TB, purple';
   static const String storageUnitsEn = 'Storage units, hard disk';
   static const String availableEn = 'Available';

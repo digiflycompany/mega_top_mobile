@@ -4,12 +4,15 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/profile_screen_widgets/remove_account_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class AccountDetailsCubit extends Cubit<AccountDetailsState> {
   final AccountDetailsRepo accountDetailsRepo;
@@ -157,6 +160,37 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         return const RemoveAccountBottomSheet();
       },
     );
+  }
+
+  Future<void> removeAccount() async {
+    emit(RemoveAccountLoading());
+    try {
+      final user = await accountDetailsRepo.removeAccount();
+      if (user != null && user.success == true) {
+        emit(RemoveAccountSuccess(user));
+      } else {
+        emit(RemoveAccountFailure(
+            user?.message ?? AppStrings.invalidCred));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(AccountDetailsNoInternetConnection());
+      } else {
+        emit(RemoveAccountFailure(e.toString()));
+      }
+    }
+  }
+  void handleRemoveAccountStates(BuildContext context, AccountDetailsState state) {
+    if(state is RemoveAccountSuccess){
+      PreferencesHelper.logOut();
+      Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+    }
+    if(state is RemoveAccountFailure){
+      showErrorToast(context, AppStrings.removingAccountFailed,state.error);
+    }
+    if(state is AccountDetailsNoInternetConnection){
+      showErrorToast(context, AppStrings.removingAccountFailed,AppStrings.noInternetConnectionPlease);
+    }
   }
 
   @override

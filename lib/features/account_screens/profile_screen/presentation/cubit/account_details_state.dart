@@ -1,3 +1,4 @@
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/deactivated_user_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/updated_user_details_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 
@@ -48,3 +49,18 @@ class UpdatingPasswordFailure extends AccountDetailsState {
 
   UpdatingPasswordFailure(this.error);
 }
+
+class RemoveAccountLoading extends AccountDetailsState {}
+
+class RemoveAccountSuccess extends AccountDetailsState {
+  final DeactivatedUserModel user;
+
+  RemoveAccountSuccess(this.user);
+}
+
+class RemoveAccountFailure extends AccountDetailsState {
+  final String error;
+
+  RemoveAccountFailure(this.error);
+}
+
