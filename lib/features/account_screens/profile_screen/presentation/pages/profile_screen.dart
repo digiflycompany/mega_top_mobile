@@ -32,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
               const ProfileScreenHeader(),
               EditProfileItem(onTap: ()=>Routes.profileDetailsPageRoute.moveTo),
               EditPasswordItem(onTap: ()=>Routes.passwordDetailsPageRoute.moveTo),
-              DeleteAccountItem(onTap: ()=> Routes.deleteAccountPageRoute.moveTo),
+              DeleteAccountItem(),
             ],
           ),
         ),

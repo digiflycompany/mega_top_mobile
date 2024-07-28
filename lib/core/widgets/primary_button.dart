@@ -8,10 +8,12 @@ class PrimaryButton extends StatelessWidget {
   final Widget content;
   final int? fontSize;
   final bool isBlurred;
+  final Color? buttonColor;
 
   const PrimaryButton({
     super.key,
     this.onTap,
+    this.buttonColor= AppColors.primaryColor,
     required this.content,
     this.fontSize,
     this.isBlurred = false,
@@ -25,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
         width: double.infinity,
         height: context.height * 0.069,
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
+          color: buttonColor,
           borderRadius: BorderRadius.circular(4.r),
         ),
         child: Stack(
