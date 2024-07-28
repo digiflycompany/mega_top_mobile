@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/profile_screen_widgets/remove_account_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 
 class AccountDetailsCubit extends Cubit<AccountDetailsState> {
@@ -140,6 +141,22 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         emit(UpdatingPasswordFailure(e.toString()));
       }
     }
+  }
+
+  void showRemoveAccountBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(0),
+          topRight: Radius.circular(0),
+        ),
+      ),
+      builder: (_) {
+        return const RemoveAccountBottomSheet();
+      },
+    );
   }
 
   @override
