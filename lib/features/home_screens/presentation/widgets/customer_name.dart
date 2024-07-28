@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 
 class CustomerName extends StatelessWidget {
   final String? name;
@@ -21,7 +20,7 @@ class CustomerName extends StatelessWidget {
               fontWeight: FontWeight.w700,
               fontSize: 12.sp),
         ),
-        VerticalSpace(context.height * 0.01),
+        VerticalSpace(1.h),
         Text(
           AppStrings.welcomeEn,
           style: TextStyle(

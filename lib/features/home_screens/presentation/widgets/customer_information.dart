@@ -9,7 +9,6 @@ import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_icon.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_name.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_photo.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class CustomerInformation extends StatelessWidget {
@@ -20,43 +19,41 @@ class CustomerInformation extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {},
       builder: (context, state) {
-        Object token = PreferencesHelper.getToken();
-        bool isUserLoggedIn = token.isNotNull;
-        return Padding(
-            padding: EdgeInsets.symmetric(vertical: context.height * 0.0165),
-            child: Row(
-              children: [
-                const CustomerPhoto(
-                  photo: AppAssets.guestIcon,
-                ),
-                HorizontalSpace(context.width * 0.022),
-                CustomerName(
-                  //name: AppStrings.userName,
-                  //name: !PreferencesHelper.getIsVisitor?'${PreferencesHelper.getName}':'',
-                  //name: (PreferencesHelper.getToken()!.isNotEmpty) ? PreferencesHelper.getName : '',
-                  name: isUserLoggedIn ? PreferencesHelper.getName : '',
-                ),
-                const Spacer(),
-                if(isUserLoggedIn)...[
+        return FutureBuilder<String?>(
+          future: PreferencesHelper.getToken(),
+          builder: (context, snapshot) {
+            final token = snapshot.data;
+            final isUserLoggedIn = token != null;
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: context.height * 0.0165),
+              child: Row(
+                children: [
+                  HorizontalSpace(context.width * 0.022),
+                  CustomerName(
+                    name: isUserLoggedIn ? PreferencesHelper.getName : 'Visitor',
+                  ),
+                  const Spacer(),
+                  if (isUserLoggedIn)
+                    GestureDetector(
+                      onTap: () => Routes.wishListPageRoute.moveTo(),
+                      child: const CustomerIcon(
+                        icon: AppAssets.favouritesIcon,
+                        number: AppStrings.zero,
+                      ),
+                    ),
+                  HorizontalSpace(context.width * 0.022),
                   GestureDetector(
-                    onTap: () => Routes.wishListPageRoute.moveTo,
+                    onTap: () => Routes.notificationPageRoute.moveTo(),
                     child: const CustomerIcon(
-                      icon: AppAssets.favouritesIcon,
-                      number: AppStrings.zero,
+                      icon: AppAssets.notificationIcon,
+                      number: AppStrings.three,
                     ),
                   ),
                 ],
-                HorizontalSpace(context.width * 0.022),
-                GestureDetector(
-                  onTap: () => Routes.notificationPageRoute.moveTo,
-                  child: const CustomerIcon(
-                    icon: AppAssets.notificationIcon,
-                    number: AppStrings.three,
-                  ),
-                ),
-              ],
-            ),
-          );
+              ),
+            );
+          },
+        );
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/deactivated_user_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/updated_user_details_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
@@ -8,6 +9,7 @@ abstract class AccountDetailsRepo {
   Future<UserDetailsModel?> getUserDetails();
   Future<UpdatedUserDetailsModel?> updateUserDetails(String email ,String fullName ,String phone);
   Future<UpdatedUserDetailsModel?> updatePassword(String password,);
+  Future<DeactivatedUserModel?> removeAccount();
 
 }
 
@@ -68,6 +70,24 @@ class AccountDetailsRepoImp implements AccountDetailsRepo {
       }
     } catch (e) {
       print('Error during updating password: $e');
+      throw e;
+    }
+    return null;
+  }
+
+  @override
+  Future<DeactivatedUserModel?> removeAccount() async {
+    try {
+      Response? response = await DioHelper.putData(
+        url: EndPoints.deleteAccountAPI,
+        options: await DioHelper.getOptions(),
+      );
+
+      if (response?.statusCode == 200 || response?.statusCode == 401) {
+        return DeactivatedUserModel.fromJson(response?.data);
+      }
+    } catch (e) {
+      print('Error during removing account: $e');
       throw e;
     }
     return null;
