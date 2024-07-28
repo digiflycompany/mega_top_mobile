@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_item_details_cubit.dart';
@@ -28,7 +29,15 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
     controller.addListener(() {
       if (controller.position.maxScrollExtent == controller.offset) {
         cubit.page++;
-        cubit.getMoreProduct(cubit.selectedCategoryId!);
+        cubit.getMoreProduct(cubit.selectedCategoryId!)
+            .then((value){
+          if(cubit.hasMoreProducts == true)
+          {
+            cubit.selectOption(AppStrings.defaultEn);
+          }
+          cubit.hasMoreProducts = null;
+        });
+
       }
     });
     super.initState();
@@ -42,7 +51,6 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
         return categoryItemDetailsCubit();
       },
       child: Scaffold(
-        ///Error
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
             child: BlocBuilder<CategoryCubit, CategoryState>(
@@ -53,7 +61,6 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
             )),
         body: BlocBuilder<CategoryCubit, CategoryState>(
           builder: (BuildContext context, state) {
-            ///Error
             if (categoryCubit.selectedCategoryModel != null) {
               return Padding(
                 padding:
@@ -78,7 +85,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
                       SizedBox(
                         height: 15.h,
                       ),
-                      if (context.read<CategoryCubit>().hasMoreProducts)
+                      if (context.read<CategoryCubit>().hasMoreProducts == true)
                           Center(child: SizedBox(
                               height: 15.h,
                               width: 15.h,

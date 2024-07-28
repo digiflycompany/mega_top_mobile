@@ -26,10 +26,14 @@ class SortBottomSheet extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
                 child: Column(
                   children: [
-                    const SortBottomSheetAdaptiveRadioButton(
+                     SortBottomSheetAdaptiveRadioButton(
                       value: AppStrings.defaultEn,
                       label: AppStrings.defaultEn,
                       description: '',
+                      onTap:(){
+                        context.read<CategoryCubit>().page = 1;
+                        context.read<CategoryCubit>().getSelectedCategories(context.read<CategoryCubit>().selectedCategoryId!);
+                      } ,
                     ),
                     VerticalSpace(context.height * 0.01),
                      SortBottomSheetAdaptiveRadioButton(
@@ -39,10 +43,11 @@ class SortBottomSheet extends StatelessWidget {
                        onTap: context.read<CategoryCubit>().sortingFromHighPrice,
                     ),
                     VerticalSpace(context.height * 0.01),
-                    const SortBottomSheetAdaptiveRadioButton(
+                    SortBottomSheetAdaptiveRadioButton(
                       value: AppStrings.fromLowToHighEn,
                       label: AppStrings.price2En,
                       description: AppStrings.fromLowToHighEn,
+                      onTap: context.read<CategoryCubit>().sortingFromLowPrice,
                     ),
                   ],
                 ),

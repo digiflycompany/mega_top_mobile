@@ -162,6 +162,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> getSelectedCategories(String selectedId) async {
     emit(SelectedCategoryLoading());
     try {
+      hasMoreProducts = true;
+      selectedCategoryModel = null;
       selectedCategoryModel =
           await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page);
       emit(SelectedCategorySuccess());
@@ -171,7 +173,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  bool hasMoreProducts = true;
+  bool ? hasMoreProducts = true;
 
   Future<void> getMoreProduct(String selectedId) async {
     emit(SelectedCategoryLoading());
@@ -179,6 +181,8 @@ class CategoryCubit extends Cubit<CategoryState> {
       SelectedCategoryModel? moreProducts = await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page++);
       selectedCategoryModel!.data!.products.addAll(moreProducts!.data!.products);
       hasMoreProducts = moreProducts.data!.products.isNotEmpty;
+      print("hasMoreProducts");
+      print(hasMoreProducts);
       emit(SelectedCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");
@@ -195,6 +199,10 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   void sortingFromHighPrice(){
     selectedCategoryModel!.data!.products.sort((a,b)=> b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+  }
+
+  void sortingFromLowPrice(){
+    selectedCategoryModel!.data!.products.sort((a,b)=> a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
   }
 
 
