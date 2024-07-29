@@ -13,6 +13,7 @@ class AppStrings {
   static const String companyEn = 'Company';
   static const String completed = 'Completed';
   static const String signUpFailed = 'Sign Up Failed';
+  static const String updatingPasswordFailed = 'Updating password Failed';
   static const String orderDetailsEn = 'Order details';
   static const String wrongInfo = 'بيانات غير صحيحة أو مشاكل في الشبكة';
   static const String numberOfProductsEn = 'Number of products';
@@ -121,6 +122,7 @@ class AppStrings {
   static const String pleaseCheckYourInternet = 'Please check your internet connection\n and try again';
   static const String resetEn = 'Reset';
   static const String signUpEn = 'Sign up';
+  static const String editPassword = 'Edit password';
   static const String or = 'أو';
   static const String orEn = 'Or';
   static const String cancelEn = 'Cancel';

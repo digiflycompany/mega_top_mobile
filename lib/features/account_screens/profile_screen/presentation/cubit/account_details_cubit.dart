@@ -180,6 +180,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       }
     }
   }
+
   void handleRemoveAccountStates(BuildContext context, AccountDetailsState state) {
     if(state is RemoveAccountSuccess){
       PreferencesHelper.logOut();
@@ -192,6 +193,16 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       showErrorToast(context, AppStrings.removingAccountFailed,AppStrings.noInternetConnectionPlease);
     }
   }
+
+  void handleEditPasswordStates(BuildContext context, AccountDetailsState state) {
+    if(state is UpdatingPasswordFailure){
+      showErrorToast(context, AppStrings.updatingPasswordFailed,state.error);
+    }
+    if(state is AccountDetailsNoInternetConnection){
+      showErrorToast(context, AppStrings.updatingPasswordFailed,AppStrings.noInternetConnectionPlease);
+    }
+  }
+
 
   @override
   Future<void> close() {

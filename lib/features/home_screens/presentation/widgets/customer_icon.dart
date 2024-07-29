@@ -46,6 +46,7 @@ class CustomerIcon extends StatelessWidget {
                 child: Center(
                   child: Text(
                     number!,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,

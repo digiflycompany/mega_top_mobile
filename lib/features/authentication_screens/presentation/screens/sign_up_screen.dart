@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
@@ -28,17 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(
-        listener: (context, state) {
-          if(state is SignUpSuccess){
-            Routes.signUpEmailVerificationPageRoute.moveTo;
-          }
-          if(state is SignUpFailure){
-             signUpCubit.showErrorToast(context, AppStrings.signUpFailed,state.error);
-          }
-          if(state is SignUpNoInternetConnection){
-            signUpCubit.showErrorToast(context, AppStrings.signUpFailed,AppStrings.noInternetConnectionPlease);
-          }
-        },
+        listener: (context, state) =>context.read<SignUpCubit>().handleSignUpState(context, state),
         builder: (context, state) {
           return Scaffold(
               backgroundColor: Colors.white,

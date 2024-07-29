@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repositories/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/login_cubit/login_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
@@ -77,6 +79,20 @@ class LoginCubit extends Cubit<LoginState> {
       } else {
         emit(LoginFailure(e.toString()));
       }
+    }
+  }
+
+  void handleLoginStates(BuildContext context, LoginState state){
+    if (state is LoginSuccess) {
+      PreferencesHelper.saveIsVisitor(isVisitor: true);
+      Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+    }
+    if (state is LoginFailure) {
+       showErrorToast(context, AppStrings.loginFailed,state.error);
+    }
+    if (state is LoginNoInternetConnection) {
+      showErrorToast(
+          context, AppStrings.loginFailed,AppStrings.noInternetConnectionPlease);
     }
   }
 }
