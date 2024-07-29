@@ -19,7 +19,8 @@ class UpdatePasswordButton extends StatefulWidget {
 class _UpdatePasswordButtonState extends State<UpdatePasswordButton> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+    return BlocConsumer<AccountDetailsCubit, AccountDetailsState>(
+      listener: (context, state)=>context.read<AccountDetailsCubit>().handleEditPasswordStates(context, state),
       builder: (context, state) {
         AccountDetailsCubit cubit = context.read<AccountDetailsCubit>();
         return ButtonBottomNavBar(
