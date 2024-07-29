@@ -16,7 +16,7 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/pages/wish_list_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/screens/wish_list_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repositories/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/login_cubit/login_cubit.dart';
