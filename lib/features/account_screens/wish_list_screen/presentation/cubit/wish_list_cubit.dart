@@ -4,17 +4,17 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_state.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/cubit/wish_list_states.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repositories/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/login_cubit/login_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
-class NotificationCubit extends Cubit<NotificationState> {
+class WishListCubit extends Cubit<WishListState> {
   final AuthRepo authRepo;
-  NotificationCubit(this.authRepo) : super(NotificationInitial());
+  WishListCubit(this.authRepo) : super(WishListInitial());
 
-  static NotificationCubit getCubit(context) => BlocProvider.of(context);
+  static WishListCubit getCubit(context) => BlocProvider.of(context);
 
   final formKey = GlobalKey<FormState>();
 
