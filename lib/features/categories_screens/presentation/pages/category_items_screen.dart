@@ -70,7 +70,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
                   children: [
                     CategoryItemsOptionsRow(
                       topPadding: context.height * 0.028,
-                      bottomPadding: context.height * 0.033,
+                      bottomPadding: context.height * 0.015,
                     ),
                     Expanded(
                       child: SingleChildScrollView(

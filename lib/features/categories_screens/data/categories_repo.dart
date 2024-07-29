@@ -14,7 +14,8 @@ abstract class CategoriesRepo {
 
   Future<ProductDetailsModel?> getProductDetails(int productID);
 
-  Future<SelectedCategoryModel?> getSelectedCategories({required String selectedCategory,required int page});
+  Future<SelectedCategoryModel?> getSelectedCategories({required String selectedCategory,required int page,
+    int ? minPrice, int ? maxPrice});
 
   Future<Order?> makeOrder(int customerId, int productId, int quantity);
 
@@ -42,11 +43,15 @@ class CategoriesRepoImp implements CategoriesRepo {
   @override
   Future<SelectedCategoryModel?> getSelectedCategories({
       required String selectedCategory,
-      required int page}) async {
+      required int page,
+      int ? minPrice,
+      int ? maxPrice }) async {
    late SelectedCategoryModel selectedCategories;
     try {
       Response? response =
-      await DioHelper.getData(url: EndPoints.selectedCategoriesAPI,queryParameters: {"categoryId": selectedCategory,"page": page});
+      await DioHelper.getData(url: EndPoints.selectedCategoriesAPI,
+          queryParameters: {"categoryId": selectedCategory,"page": page, if(minPrice != null) "minPrice": minPrice,
+            if(maxPrice != null) "maxPrice": maxPrice});
          selectedCategories = SelectedCategoryModel.fromJson(response?.data);
     } catch (e) {
       print('Error fetching categories: $e');

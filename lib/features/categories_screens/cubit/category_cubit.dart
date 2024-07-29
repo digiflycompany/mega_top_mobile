@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -155,17 +156,21 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
+  final TextEditingController minPriceController = TextEditingController(text: null);
+  final TextEditingController maxPriceController = TextEditingController(text: null);
+
   int page = 1;
+   int ? minPrice;
+   int ? maxPrice;
 
   SelectedCategoryModel? selectedCategoryModel;
 
   Future<void> getSelectedCategories(String selectedId) async {
     emit(SelectedCategoryLoading());
     try {
-    //  hasMoreProducts = true;
       selectedCategoryModel = null;
       selectedCategoryModel =
-          await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page);
+          await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page,minPrice: minPrice,maxPrice: maxPrice);
       emit(SelectedCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");
@@ -178,7 +183,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> getMoreProduct(String selectedId) async {
     emit(SelectedCategoryLoading());
     try {
-      SelectedCategoryModel? moreProducts = await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page++);
+      SelectedCategoryModel? moreProducts = await categoriesRepo.
+      getSelectedCategories(selectedCategory: selectedId,page: page++,minPrice: minPrice,maxPrice: maxPrice);
       selectedCategoryModel!.data!.products.addAll(moreProducts!.data!.products);
       hasMoreProducts = moreProducts.data!.products.isNotEmpty;
       print("hasMoreProducts");
