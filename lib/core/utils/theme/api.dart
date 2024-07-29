@@ -14,22 +14,22 @@ class EndPoints {
   static const String resetPasswordAPI = '$baseUrl/api/v1/users/reset-password';
   static const String verifyResetPasswordAPI =
       '$baseUrl/api/v1/users/verify-reset-password';
-  static const String accountDetailsAPI =
-      '$baseUrl/api/v1/profile';
-  static const String updateAccountDetailsAPI =
-      '$baseUrl/api/v1/profile';
-  static const String deleteAccountAPI =
-      '$baseUrl/api/v1/profile/deactivate';
-  static const String addWishList =
-      'https://megatop.com.eg/wp-json/custom/v1/wishlist_add';
-  static const String userDetailsAPI =
-      'https://megatop.com.eg/wp-json/custom/v1/user_data';
+  static const String accountDetailsAPI = '$baseUrl/api/v1/profile';
+  static const String updateAccountDetailsAPI = '$baseUrl/api/v1/profile';
+  static const String deleteAccountAPI = '$baseUrl/api/v1/profile/deactivate';
+  static const String addToWishListAPI =
+      '$baseUrl/api/v1/users/customers/wishlist/add';
+  static const String removeFromWishListAPI =
+      '$baseUrl/api/v1/users/customers/wishlist/remove';
   static const String makeOrderAPI =
       'https://megatop.com.eg/wp-json/wc/v3/orders';
-  static const String myOrdersAPI =
-      'https://megatop.com.eg/wp-json/wc/v3/orders';
-  static const String lastOfferAPI =
-      'https://megatop.com.eg/wp-json/custom/v2/latest_offer';
-  static const String latestProductsAPI =
-      'https://megatop.com.eg/wp-json/custom/v2/latest_products';
+  static const String myOrdersAPI = 'https://megatop.com.eg/wp-json/wc/v3/orders';
+  static const String lastOfferAPI = 'https://megatop.com.eg/wp-json/custom/v2/latest_offer';
+  static const String latestProductsAPI = 'https://megatop.com.eg/wp-json/custom/v2/latest_products';
+
+  static const String notificationsAPI = '$baseUrl/api/v1/notifications';
+
+  static String getNotificationsAPI({required String contentType}) {
+    return '$notificationsAPI?contentType=$contentType';
+  }
 }

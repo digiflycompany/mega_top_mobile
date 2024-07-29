@@ -67,7 +67,8 @@ class LoginCubit extends Cubit<LoginState> {
       if (user != null && user.success == true) {
         await PreferencesHelper.saveToken(token: user.data!.token!);
         await PreferencesHelper.saveUserModel(user);
-        print(PreferencesHelper.getToken());
+        print('Tokeeeeeeeeen');
+        print(await PreferencesHelper.getToken());
         emit(LoginSuccess(user));
       } else {
         emit(LoginFailure(
