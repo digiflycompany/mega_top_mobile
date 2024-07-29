@@ -36,23 +36,27 @@ class UserDetailsModel {
 
 class UserData {
   final User user;
-  final int unreadNotificationsCount;
+  final int wishlistCount;
+  final Map<String, int> unreadNotificationsCount;
 
   UserData({
     required this.user,
+    required this.wishlistCount,
     required this.unreadNotificationsCount,
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) {
     return UserData(
       user: User.fromJson(json['user']),
-      unreadNotificationsCount: json['unreadNotificationsCount'] ?? 0,
+      wishlistCount: json['wishlistCount'] ?? 0,
+      unreadNotificationsCount: Map<String, int>.from(json['unreadNotificationsCount'] ?? {}),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'user': user.toJson(),
+      'wishlistCount': wishlistCount,
       'unreadNotificationsCount': unreadNotificationsCount,
     };
   }
@@ -60,7 +64,8 @@ class UserData {
   static UserData empty() {
     return UserData(
       user: User.empty(),
-      unreadNotificationsCount: 0,
+      wishlistCount: 0,
+      unreadNotificationsCount: {},
     );
   }
 }
@@ -70,7 +75,7 @@ class User {
   final String fullName;
   final String phoneNumber;
   final String email;
-  final List<dynamic> wishlist;
+  final List<WishlistItem> wishlist;
   final String role;
   final String createdAt;
   final String updatedAt;
@@ -96,7 +101,7 @@ class User {
       fullName: json['fullName'],
       phoneNumber: json['phoneNumber'],
       email: json['email'],
-      wishlist: json['wishlist'] ?? [],
+      wishlist: (json['wishlist'] as List).map((item) => WishlistItem.fromJson(item)).toList(),
       role: json['role'],
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
@@ -111,7 +116,7 @@ class User {
       'fullName': fullName,
       'phoneNumber': phoneNumber,
       'email': email,
-      'wishlist': wishlist,
+      'wishlist': wishlist.map((item) => item.toJson()).toList(),
       'role': role,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
@@ -133,5 +138,105 @@ class User {
       isActive: false,
       isVerified: false,
     );
+  }
+}
+
+class WishlistItem {
+  final String id;
+  final String title;
+  final String titleAr;
+  final String description;
+  final int quantity;
+  final String categoryId;
+  final List<String> subcategoryId;
+  final Price price;
+  final String currency;
+  final List<String> images;
+  final int unitsSold;
+  final String addedBy;
+  final bool active;
+  final String createdAt;
+  final String updatedAt;
+
+  WishlistItem({
+    required this.id,
+    required this.title,
+    required this.titleAr,
+    required this.description,
+    required this.quantity,
+    required this.categoryId,
+    required this.subcategoryId,
+    required this.price,
+    required this.currency,
+    required this.images,
+    required this.unitsSold,
+    required this.addedBy,
+    required this.active,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory WishlistItem.fromJson(Map<String, dynamic> json) {
+    return WishlistItem(
+      id: json['_id'],
+      title: json['title'],
+      titleAr: json['titleAr'],
+      description: json['description'],
+      quantity: json['quantity'],
+      categoryId: json['categoryId'],
+      subcategoryId: List<String>.from(json['subcategoryId']),
+      price: Price.fromJson(json['price']),
+      currency: json['currency'],
+      images: List<String>.from(json['images']),
+      unitsSold: json['unitsSold'],
+      addedBy: json['addedBy'],
+      active: json['active'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'title': title,
+      'titleAr': titleAr,
+      'description': description,
+      'quantity': quantity,
+      'categoryId': categoryId,
+      'subcategoryId': subcategoryId,
+      'price': price.toJson(),
+      'currency': currency,
+      'images': images,
+      'unitsSold': unitsSold,
+      'addedBy': addedBy,
+      'active': active,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+    };
+  }
+}
+
+class Price {
+  final double originalPrice;
+  final double finalPrice;
+
+  Price({
+    required this.originalPrice,
+    required this.finalPrice,
+  });
+
+  factory Price.fromJson(Map<String, dynamic> json) {
+    return Price(
+      originalPrice: json['originalPrice'].toDouble(),
+      finalPrice: json['finalPrice'].toDouble(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'originalPrice': originalPrice,
+      'finalPrice': finalPrice,
+    };
   }
 }

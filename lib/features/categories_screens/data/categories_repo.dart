@@ -59,7 +59,7 @@ class CategoriesRepoImp implements CategoriesRepo {
 
   @override
   Future<void> addToWishList(String productId,String token) async {
-   await DioHelper.postData(url: EndPoints.addWishList,queryParameters: {"token" : token},data: {"id":productId}).then((value) {
+   await DioHelper.postData(url: EndPoints.addToWishListAPI,queryParameters: {"token" : token},data: {"id":productId}).then((value) {
       print(value!.data);
     });
   }
