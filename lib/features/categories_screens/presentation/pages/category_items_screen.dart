@@ -28,6 +28,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
     final cubit = context.read<CategoryCubit>();
     controller.addListener(() {
       if (controller.position.maxScrollExtent == controller.offset) {
+        cubit.hasMoreProducts = true;
         cubit.page++;
         cubit.getMoreProduct(cubit.selectedCategoryId!)
             .then((value){
@@ -64,37 +65,38 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
             if (categoryCubit.selectedCategoryModel != null) {
               return Padding(
                 padding:
-                    EdgeInsets.symmetric(horizontal: context.width * 0.045),
-                child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  controller: controller,
-                  child: Column(
-                    children: [
-                      CategoryItemsOptionsRow(
-                        topPadding: context.height * 0.028,
-                        bottomPadding: context.height * 0.033,
-                      ),
-                      BlocConsumer<CategoryCubit, CategoryState>(
-                        listener: (context, state) {},
-                        builder: (context, state) {
-                          return categoryCubit.isGrid
-                              ? const CategoryItemsGridView()
-                              : const CategoryItemsListView();
-                        },
-                      ),
-                      SizedBox(
-                        height: 15.h,
-                      ),
-                      if (context.read<CategoryCubit>().hasMoreProducts == true)
-                          Center(child: SizedBox(
+                    EdgeInsets.symmetric(horizontal: context.width * 0.045,vertical: context.height * 0.015),
+                child: Column(
+                  children: [
+                    CategoryItemsOptionsRow(
+                      topPadding: context.height * 0.028,
+                      bottomPadding: context.height * 0.033,
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        controller: controller,
+                        child: Column(
+                          children: [
+                            categoryCubit.isGrid
+                                ? const CategoryItemsGridView()
+                                : const CategoryItemsListView(),
+                            SizedBox(
                               height: 15.h,
-                              width: 15.h,
-                              child: CircularProgressIndicator())),
-                      SizedBox(
-                        height: 10.h,
+                            ),
+                            if (context.read<CategoryCubit>().hasMoreProducts == true)
+                                Center(child: SizedBox(
+                                    height: 15.h,
+                                    width: 15.h,
+                                    child: CircularProgressIndicator())),
+                            SizedBox(
+                              height: 25.h,
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               );
 

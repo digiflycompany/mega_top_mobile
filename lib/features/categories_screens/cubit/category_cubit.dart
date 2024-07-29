@@ -162,7 +162,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> getSelectedCategories(String selectedId) async {
     emit(SelectedCategoryLoading());
     try {
-      hasMoreProducts = true;
+    //  hasMoreProducts = true;
       selectedCategoryModel = null;
       selectedCategoryModel =
           await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page);
@@ -173,7 +173,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  bool ? hasMoreProducts = true;
+  bool ? hasMoreProducts = false;
 
   Future<void> getMoreProduct(String selectedId) async {
     emit(SelectedCategoryLoading());
