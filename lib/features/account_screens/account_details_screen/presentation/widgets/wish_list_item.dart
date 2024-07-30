@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_option_item.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/small_circular_progress_indicator.dart';
 
 class WishListItem extends StatelessWidget {
-  const WishListItem({super.key, this.mainIcon, this.title, this.optionalData, this.onTap});
+  const WishListItem(
+      {super.key, this.mainIcon, this.title, this.optionalData, this.onTap});
 
   final String? mainIcon;
   final String? title;
@@ -15,26 +21,41 @@ class WishListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AccountOptionItem(
-      mainIcon: mainIcon ?? AppAssets.favourFilledIcon,
-      title: title ?? AppStrings.wishList,
-      onTap:onTap,
-      optionalData: optionalData ??
-          Container(
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.iconsBackgroundColor,
-            ),
-            width: 24.h,
-            height: 24.h,
-            child: const Center(
-              child: Text(
-                "0",
-                style: TextStyle(
-                    color: AppColors.primaryColor, fontWeight: FontWeight.w700),
-              ),
-            ),
-          ),
+    return BlocProvider(
+      create: (context) => AccountDetailsCubit(AccountDetailsRepoImp())..getAccountDetails(),
+      child: Builder(
+        builder: (context) {
+          final accountDetailsCubit = context.read<AccountDetailsCubit>();
+          return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+            builder: (context, state) {
+              return AccountOptionItem(
+                mainIcon: mainIcon ?? AppAssets.favourFilledIcon,
+                title: title ?? AppStrings.wishList,
+                onTap: onTap,
+                optionalData: optionalData ??
+                    Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.iconsBackgroundColor,
+                      ),
+                      width: 24.h,
+                      height: 24.h,
+                      child: Center(
+                        child: state is AccountDetailsLoading
+                            ? SmallCircularProgressIndicator()
+                            : Text(
+                          accountDetailsCubit.wishListCount.toString(),
+                          style: TextStyle(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
