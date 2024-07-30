@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/utils/global_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/data/models/product_model.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
 
 class WishListView extends StatelessWidget {
@@ -12,78 +11,35 @@ class WishListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Product> products = [
-      Product(
-        productName: AppStrings.upsVersion1En,
-        productPhoto: AppAssets.upsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.upsVersion1En,
-        productPhoto: AppAssets.upsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.upsVersion1En,
-        productPhoto: AppAssets.upsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.upsVersion1En,
-        productPhoto: AppAssets.upsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.upsVersion1En,
-        productPhoto: AppAssets.upsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-      Product(
-        productName: AppStrings.upsVersion1En,
-        productPhoto: AppAssets.upsSearchResult,
-        productType: AppStrings.storageUnitsEn,
-        productPrice: AppStrings.le1500,
-        discountPercent: AppStrings.discountPercentEn,
-        discount: false,
-      ),
-    ];
-    return Expanded(
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: products.length,
-        itemBuilder: (BuildContext context, int index) {
-          GlobalCubit globalCubit = context.read<GlobalCubit>();
-          final product = products[index];
-          return Padding(
-            padding: EdgeInsets.only(right: context.width*0.011,left: context.width*0.011, bottom: context.height*0.027,top: context.height*0.006),
-            child: ProductsListContainer(
-              productName: product.productName,
-              productPhoto: product.productPhoto,
-              productType: product.productType,
-              productPrice: product.productPrice,
-              discountPercent: product.discountPercent,
-              discount: product.discount,
-              icon: AppAssets.favourFilledIcon,
-              onTap: ()=>globalCubit.showRemoveFromFavouritesToast(context),
-            ),
-          );
-        },
-      ),
-    );
+    return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+  builder: (context, state) {
+    AccountDetailsCubit cubit = context.read<AccountDetailsCubit>();
+    if(state is AccountDetailsSuccess){
+        return Expanded(
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: cubit.wishListCount,
+            itemBuilder: (BuildContext context, int index) {
+              final wishListItem =state.user.data.user.wishlist[index];
+              return Padding(
+                padding: EdgeInsets.only(right: context.width*0.011,left: context.width*0.011, bottom: context.height*0.027,top: context.height*0.006),
+                child: ProductsListContainer(
+                  productName: wishListItem.title,
+                  productPhoto: wishListItem.images[0],
+                  productType: 'UPS',
+                  productPrice: wishListItem.price.finalPrice.toString(),
+                  discountPercent: '0',
+                  discount: false,
+                  icon: AppAssets.favourFilledIcon,
+                ),
+              );
+            },
+          ),
+        );
+    } else {
+      return Container();
+    }
+  },
+);
   }
 }

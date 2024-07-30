@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -41,7 +42,9 @@ class WishListItem extends StatelessWidget {
                       width: 24.h,
                       height: 24.h,
                       child: Center(
-                        child: state is AccountDetailsLoading
+                        child: state is AccountDetailsNoInternetConnection?Transform.scale(
+                            scale: 0.65,
+                            child: SvgPicture.asset(AppAssets.noInternetIcon)):state is AccountDetailsLoading
                             ? SmallCircularProgressIndicator()
                             : Text(
                           accountDetailsCubit.wishListCount.toString(),

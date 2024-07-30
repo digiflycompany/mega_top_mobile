@@ -232,7 +232,10 @@ class RouteGenerator {
         );
       case Routes.wishListPageRoute:
         return buildPageRoute(
-          child: const WishListScreen(),
+          child: BlocProvider(
+            create: (context) => AccountDetailsCubit(AccountDetailsRepoImp())..getAccountDetails(),
+            child: WishListScreen(),
+          ),
         );
       case Routes.shippingAddressPageRoute:
         return buildPageRoute(

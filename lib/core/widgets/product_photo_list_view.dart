@@ -22,7 +22,6 @@ class ProductPhotoListView extends StatelessWidget {
           child: Padding(
         padding: EdgeInsets.only(top: context.height * 0.016),
         child: CachedNetworkImage(
-
           width: photoWidth??context.width * 0.16, imageUrl: photo!,
         ),
       )),

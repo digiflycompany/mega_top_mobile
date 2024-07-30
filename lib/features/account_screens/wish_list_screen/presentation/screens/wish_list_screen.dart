@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
+import 'package:mega_top_mobile/core/widgets/product_list_shimmer.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/widgets/wish_list_count.dart';
 import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/widgets/wish_list_list_view.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
-import '../widgets/wish_list_count.dart';
-
 class WishListScreen extends StatelessWidget {
-  final bool isEmpty = false;
   const WishListScreen({super.key});
 
   @override
@@ -21,24 +22,36 @@ class WishListScreen extends StatelessWidget {
               AppStrings.wishListEn,
               favour: false,
             )),
-        body: isEmpty
-            ? const EmptyDataPage(
-                bigFontText: AppStrings.noWishListItemsEn,
-                smallFontText: AppStrings.browseOurProductsDescriptionEn,
-                buttonText: AppStrings.continueShoppingEn,
-                icon: AppAssets.wishListIcon,
-              )
-            : Padding(
+        body: BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+          builder: (context, state) {
+            AccountDetailsCubit cubit = context.read<AccountDetailsCubit>();
+            if(state is AccountDetailsSuccess){
+              return Padding(
                 padding:
-                    EdgeInsets.symmetric(horizontal: context.width * 0.045),
+                EdgeInsets.symmetric(horizontal: context.width * 0.045),
                 child: const Column(
                   children: [
-                    WishListCount(
-                      count: AppStrings.seven,
-                    ),
+                    WishListCount(),
                     WishListView(),
                   ],
                 ),
-              ));
+              );
+            }
+            else if(state is AccountDetailsLoading){
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal:context.width16),
+                    child: ProductsListShimmer(),
+                  );
+            }
+            else if(state is AccountDetailsNoInternetConnection){
+              return NoInternetScreen(buttonOnTap: () {
+                cubit.getAccountDetails();
+              },);
+            }
+            else {
+              return Container();
+            }
+          },
+        ));
   }
 }
