@@ -16,17 +16,22 @@ class ProductImages extends StatelessWidget {
         builder: (context, state) {
           return PageView.builder(
             physics: const BouncingScrollPhysics(),
-            itemCount: categoryCubit.selectedCategoriesModel!
-                .productList[categoryCubit.selectedProductIndex].images.length,
+
+            ///Error
+            // itemCount: categoryCubit.selectedCategoryModel!
+            //     .productList[categoryCubit.selectedProductIndex].images.length,
             onPageChanged: (index) => categoryCubit.setImageIndex(index),
             itemBuilder: (context, index) {
               return Center(
                 child: Image.network(
-                    categoryCubit
-                        .selectedCategoriesModel!
-                        .productList[categoryCubit.selectedProductIndex]
-                        .images[index]
-                        .src,
+
+                    ///Error
+                    "",
+                    // categoryCubit
+                    //     .selectedCategoryModel!
+                    //     .productList[categoryCubit.selectedProductIndex]
+                    //     .images[index]
+                    //     .src,
                     width: context.width * 0.4),
               );
             },

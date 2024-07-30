@@ -3,9 +3,6 @@ class EndPoints {
 
   /// BASE
   static const String baseUrl = 'https://api.megatop.com.eg';
-
-  static const String categoriesAPI =
-      'https://megatop.com.eg/wp-json/wc/v3/products/categories?per_page=100';
   static const String loginAPI = '$baseUrl/api/v1/users/login';
   static const String signUpAPI = '$baseUrl/api/v1/users/signup';
   static const String verifyEmailAPI = '$baseUrl/api/v1/users/verify-email';
@@ -23,13 +20,13 @@ class EndPoints {
       '$baseUrl/api/v1/users/customers/wishlist/remove';
   static const String makeOrderAPI =
       'https://megatop.com.eg/wp-json/wc/v3/orders';
-  static const String myOrdersAPI = 'https://megatop.com.eg/wp-json/wc/v3/orders';
-  static const String lastOfferAPI = 'https://megatop.com.eg/wp-json/custom/v2/latest_offer';
-  static const String latestProductsAPI = 'https://megatop.com.eg/wp-json/custom/v2/latest_products';
-
-  static const String notificationsAPI = '$baseUrl/api/v1/notifications';
-
-  static String getNotificationsAPI({required String contentType}) {
-    return '$notificationsAPI?contentType=$contentType';
-  }
+  static const String myOrdersAPI =
+      'https://megatop.com.eg/wp-json/wc/v3/orders';
+  static const String lastOfferAPI =
+      'https://megatop.com.eg/wp-json/custom/v2/latest_offer';
+  static const String latestProductsAPI =
+      'https://megatop.com.eg/wp-json/custom/v2/latest_products';
+  static const String categoriesAPI = '$baseUrl/api/v1/categories/';
+  static const String selectedCategoriesAPI =
+      '$baseUrl/api/v1/products';
 }

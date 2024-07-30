@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -28,7 +29,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
   CategoriesModel? categoriesModel;
 
-  late int? selectedCategoryId;
+  late String? selectedCategoryId;
 
   final List<String> images = [
     AppAssets.productBigPhoto,
@@ -134,16 +135,17 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   /// Get Categories
-  List<CategoriesModel> categories = [];
+
+  CategoriesModel? categories;
 
   Future<void> getCategories() async {
     emit(CategoryLoading());
     try {
-      List<CategoriesModel>? fetchedCategories =
-          await categoriesRepo.getCategories();
-      if (fetchedCategories!.isNotEmpty) {
+      CategoriesModel? fetchedCategories = await categoriesRepo.getCategories();
+      if (fetchedCategories != null) {
         categories = fetchedCategories;
-        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        print(
+            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         print(categories);
         emit(CategorySuccess());
       } else {
@@ -154,14 +156,39 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  SelectedCategoriesModel? selectedCategoriesModel;
+  final TextEditingController minPriceController = TextEditingController(text: null);
+  final TextEditingController maxPriceController = TextEditingController(text: null);
 
-  Future<void> getSelectedCategories(int selectedId) async {
+  int page = 1;
+   int ? minPrice;
+   int ? maxPrice;
+
+  SelectedCategoryModel? selectedCategoryModel;
+
+  Future<void> getSelectedCategories(String selectedId) async {
     emit(SelectedCategoryLoading());
     try {
-      selectedCategoriesModel =
-          await categoriesRepo.getSelectedCategories(selectedId);
-      print(selectedCategoriesModel!.productList[0].images[0].src + "///////");
+      selectedCategoryModel = null;
+      selectedCategoryModel =
+          await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page,minPrice: minPrice,maxPrice: maxPrice);
+      emit(SelectedCategorySuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SelectedCategoryFailure(e.toString()));
+    }
+  }
+
+  bool ? hasMoreProducts = false;
+
+  Future<void> getMoreProduct(String selectedId) async {
+    emit(SelectedCategoryLoading());
+    try {
+      SelectedCategoryModel? moreProducts = await categoriesRepo.
+      getSelectedCategories(selectedCategory: selectedId,page: page++,minPrice: minPrice,maxPrice: maxPrice);
+      selectedCategoryModel!.data!.products.addAll(moreProducts!.data!.products);
+      hasMoreProducts = moreProducts.data!.products.isNotEmpty;
+      print("hasMoreProducts");
+      print(hasMoreProducts);
       emit(SelectedCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");
@@ -174,6 +201,17 @@ class CategoryCubit extends Cubit<CategoryState> {
   void setCategoryProductIndex({required int selectedProductIndex}) {
     this.selectedProductIndex = selectedProductIndex;
   }
+
+
+  void sortingFromHighPrice(){
+    selectedCategoryModel!.data!.products.sort((a,b)=> b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+  }
+
+  void sortingFromLowPrice(){
+    selectedCategoryModel!.data!.products.sort((a,b)=> a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
+  }
+
+
 
   Future<void> addToCart(int customerId, int productId, int quantity) async {
     emit(addToCartLoading());

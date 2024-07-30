@@ -34,7 +34,6 @@ class ProductsGridContainer extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
-            cubit.setCategoryProductIndex(selectedProductIndex: index);
             Routes.categoryProductDetailsPageRoute.moveTo;
           },
           child: Container(
@@ -76,8 +75,8 @@ class ProductsGridContainer extends StatelessWidget {
                             padding:
                                 EdgeInsets.only(top: context.height * 0.012),
                             child: CachedNetworkImage(
-                              imageUrl: cubit.selectedCategoriesModel!
-                                  .productList[index].images[0].src,
+                              imageUrl: cubit.selectedCategoryModel!.data!
+                                  .products[index].images[0],
                               width: context.width * 0.2,
                             ),
                           ),
@@ -118,8 +117,7 @@ class ProductsGridContainer extends StatelessWidget {
                         Align(
                           alignment: AlignmentDirectional.topStart,
                           child: Text(
-                            cubit.selectedCategoriesModel!.productList[index]
-                                .name,
+                            cubit.selectedCategoryModel!.data!.products[index].title!,
                             maxLines: 2,
                             style: TextStyle(
                                 color: Colors.black,
@@ -131,8 +129,7 @@ class ProductsGridContainer extends StatelessWidget {
                         Align(
                           alignment: AlignmentDirectional.topStart,
                           child: Text(
-                            cubit.selectedCategoriesModel!.productList[index]
-                                .categories[0].name,
+                            cubit.selectedCategoryModel!.data!.products[index].categoryId!.name!,
                             style: TextStyle(
                                 color: AppColors.greyTextColor,
                                 fontWeight: FontWeight.w600,
@@ -145,7 +142,7 @@ class ProductsGridContainer extends StatelessWidget {
                             const AvailableContainer(),
                             const Spacer(),
                             Text(
-                              "${cubit.selectedCategoriesModel!.productList[index].price}",
+                              cubit.selectedCategoryModel!.data!.products[index].price!.finalPrice!.toString(),
                               style: TextStyle(
                                   color: AppColors.primaryColor,
                                   fontSize: 12.sp,
