@@ -120,6 +120,10 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
   void dispose() {
     categoryCubit.selectedCategoryModel = null;
     categoryCubit.page = 1;
+    categoryCubit.minPriceController.clear();
+    categoryCubit.maxPriceController.clear();
+    categoryCubit.minPrice = null;
+    categoryCubit.maxPrice = null;
     super.dispose();
   }
 }

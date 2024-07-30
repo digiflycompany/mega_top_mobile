@@ -156,12 +156,12 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  final TextEditingController minPriceController = TextEditingController(text: null);
-  final TextEditingController maxPriceController = TextEditingController(text: null);
+  final TextEditingController minPriceController = TextEditingController();
+  final TextEditingController maxPriceController = TextEditingController();
 
   int page = 1;
-   int ? minPrice;
-   int ? maxPrice;
+  int ? minPrice;
+  int ? maxPrice;
 
   SelectedCategoryModel? selectedCategoryModel;
 
