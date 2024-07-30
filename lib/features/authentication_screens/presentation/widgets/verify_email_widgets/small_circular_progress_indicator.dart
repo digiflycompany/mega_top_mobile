@@ -13,7 +13,7 @@ class SmallCircularProgressIndicator extends StatelessWidget {
         ),
       ),
       child: Transform.scale(
-          scale: 0.5, child: CircularProgressIndicator.adaptive()),
+          scale: 0.45, child: CircularProgressIndicator.adaptive()),
     );
   }
 }
