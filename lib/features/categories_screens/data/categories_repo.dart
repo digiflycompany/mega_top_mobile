@@ -27,7 +27,7 @@ class CategoriesRepoImp implements CategoriesRepo {
   Future<CategoriesModel?> getCategories() async {
     try {
       Response? response =
-          await DioHelper.getData(url: EndPoints.categoriesAPI);
+          await DioHelper.getData(url: EndPoints.categoriesAPI,queryParameters: {"limit":100});
       print(response?.data);
       print("response?.data");
       if (response?.data != null) {
