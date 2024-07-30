@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/guest_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
@@ -27,14 +26,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final PageController _pageController = PageController();
+  late Future<bool> _isUserLoggedInFuture;
 
-  final List<Widget> _pages = [
-    const MainPage(),
-    const CategoriesPage(),
-    const OffersPage(),
-    (PreferencesHelper.getToken().isNotNull) ? const CartPage() : const EmptyCartScreen(),
-    (PreferencesHelper.getToken().isNotNull) ? const UserAccountScreen() : const GuestAccountScreen(),
-  ];
+  Future<bool> _checkIfUserLoggedIn() async {
+    final token = await PreferencesHelper.getToken();
+    return token != null;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isUserLoggedInFuture = _checkIfUserLoggedIn();
+  }
 
   void _onItemTapped(int index) {
     _pageController.jumpToPage(index);
@@ -49,79 +52,92 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     HomeCubit homeCubit = context.read<HomeCubit>();
-    return Scaffold(
-      body: BlocConsumer<HomeCubit, HomeState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return  PageView(
-            controller: _pageController,
-            children: _pages,
-            onPageChanged: (index) {
-              setState(() {
-                homeCubit.setPageIndex(_currentIndex = index);
-              });
+    return FutureBuilder<bool>(
+      future: _isUserLoggedInFuture,
+      builder: (context, snapshot) {
+        final isUserLoggedIn = snapshot.data ?? false;
+        final List<Widget> _pages = [
+          const MainPage(),
+          const CategoriesPage(),
+          const OffersPage(),
+          isUserLoggedIn ? const CartPage() : const EmptyCartScreen(),
+          isUserLoggedIn ? const UserAccountScreen() : const GuestAccountScreen(),
+        ];
+        return Scaffold(
+          body: BlocConsumer<HomeCubit, HomeState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return PageView(
+                controller: _pageController,
+                children: _pages,
+                onPageChanged: (index) {
+                  setState(() {
+                    homeCubit.setPageIndex(_currentIndex = index);
+                  });
+                },
+              );
             },
-          );
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        selectedItemColor: AppColors.primaryColor,
-        unselectedItemColor: AppColors.blackGreyColor,
-        onTap: _onItemTapped,
-        showUnselectedLabels: true,
-        unselectedLabelStyle: TextStyle(
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w600,
-            color: AppColors.blackGreyColor),
-        selectedLabelStyle: TextStyle(
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w700,
-            color: AppColors.primaryColor),
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              _currentIndex == 0
-                  ? AppAssets.homeSelectedIcon
-                  : AppAssets.homeUnselectedIcon,
-            ),
-            label: AppStrings.homeEn,
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              _currentIndex == 1
-                  ? AppAssets.categoriesSelectedIcon
-                  : AppAssets.categoriesUnselectedIcon,
-            ),
-            label: AppStrings.categoriesEn,
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _currentIndex,
+            selectedItemColor: AppColors.primaryColor,
+            unselectedItemColor: AppColors.blackGreyColor,
+            onTap: _onItemTapped,
+            showUnselectedLabels: true,
+            unselectedLabelStyle: TextStyle(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.blackGreyColor),
+            selectedLabelStyle: TextStyle(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w700,
+                color: AppColors.primaryColor),
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 0
+                      ? AppAssets.homeSelectedIcon
+                      : AppAssets.homeUnselectedIcon,
+                ),
+                label: AppStrings.homeEn,
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 1
+                      ? AppAssets.categoriesSelectedIcon
+                      : AppAssets.categoriesUnselectedIcon,
+                ),
+                label: AppStrings.categoriesEn,
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 2
+                      ? AppAssets.offersSelectedIcon
+                      : AppAssets.offersUnselectedIcon,
+                ),
+                label: AppStrings.offersEn,
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 3
+                      ? AppAssets.cartSelectedIcon
+                      : AppAssets.cartUnselectedIcon,
+                ),
+                label: AppStrings.cartEn,
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 4
+                      ? AppAssets.accountSelectedIcon
+                      : AppAssets.accountUnselectedIcon,
+                ),
+                label: AppStrings.accountEn,
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              _currentIndex == 2
-                  ? AppAssets.offersSelectedIcon
-                  : AppAssets.offersUnselectedIcon,
-            ),
-            label: AppStrings.offersEn,
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              _currentIndex == 3
-                  ? AppAssets.cartSelectedIcon
-                  : AppAssets.cartUnselectedIcon,
-            ),
-            label: AppStrings.cartEn,
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              _currentIndex == 4
-                  ? AppAssets.accountSelectedIcon
-                  : AppAssets.accountUnselectedIcon,
-            ),
-            label: AppStrings.accountEn,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+//import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_checkout_button.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_items_list.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+//import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
+//import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
@@ -31,16 +31,16 @@ class _CartPageState extends State<CartPage> {
   // }
   void initState() {
     super.initState();  // Call `super.initState()` first as best practice.
-    var cubit = context.read<CategoryCubit>();
+    //var cubit = context.read<CategoryCubit>();
     //HomeCubit homeCubit = context.read<HomeCubit>();
 
     // Check if userDetails and userId are not null before using them.
-    int? userId = PreferencesHelper.getID;
-    if (userId != null) {
-      cubit.getMyOrders(userId);
-    } else {
-      debugPrint('User details or User ID is null');
-    }
+    // int? userId = PreferencesHelper.getID;
+    // if (userId != null) {
+    //   cubit.getMyOrders(userId);
+    // } else {
+    //   debugPrint('User details or User ID is null');
+    // }
   }
   Widget build(BuildContext context) {
     return Scaffold(

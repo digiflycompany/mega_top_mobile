@@ -6,8 +6,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
-import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/address_cubit.dart';
-import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/address_state.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/shipping_details_card_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
 

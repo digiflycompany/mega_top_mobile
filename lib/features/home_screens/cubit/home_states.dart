@@ -1,4 +1,4 @@
-import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 
 abstract class HomeState {}
 

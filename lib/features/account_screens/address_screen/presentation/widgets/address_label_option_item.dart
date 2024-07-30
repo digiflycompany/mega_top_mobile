@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/add_address_details_cubit.dart';
-import 'package:mega_top_mobile/features/account_screens/address_screen/cubit/add_address_details_state.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 
 class AddressLabelOptionItem extends StatelessWidget {
   const AddressLabelOptionItem(
@@ -15,21 +15,21 @@ class AddressLabelOptionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddAddressDetailsCubit, AddAddressDetailsState>(
-      listener: (BuildContext context, AddAddressDetailsState state) {},
-      builder: (BuildContext context, AddAddressDetailsState state) {
-        final cubit = AddAddressDetailsCubit.get(context);
+    return BlocConsumer<AddressCubit, AddressState>(
+      listener: (BuildContext context, AddressState state) {},
+      builder: (BuildContext context, AddressState state) {
+        //final cubit = context.read<AddressCubit>();
         return GestureDetector(
           onTap: () {
-            cubit.changeSelectedAddressLabelOption(text);
+            //cubit.changeSelectedAddressLabelOption(text);
           },
           child: Container(
             width: 100.w,
             height: 40.h,
             decoration: BoxDecoration(
-                color: cubit.selectedAddressLabelOption == text
-                    ? AppColors.otpBoxBorderColor
-                    : Colors.white,
+                // color: cubit.selectedAddressLabelOption == text
+                //     ? AppColors.otpBoxBorderColor
+                //     : Colors.white,
                 border: Border.all(color: AppColors.otpBoxBorderColor),
                 borderRadius: BorderRadius.circular(4.r)),
             padding: EdgeInsets.symmetric(horizontal: 16.w),

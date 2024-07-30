@@ -12,7 +12,6 @@ import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/about_us_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/call_us_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/language_item.dart';
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/notification_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/privacy_policy_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/terms_and_conditions_item.dart';
 
@@ -47,7 +46,14 @@ class GuestAccountScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 12.sp)),
               VerticalSpace(40.h),
               PrimaryButton(
-                text: AppStrings.signUpEn,
+                content: Text(
+                  AppStrings.signUpEn,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.sp,
+                  ),
+                ),
                 onTap: () {
                   Routes.signUpRoute.moveTo;
                 },
@@ -58,20 +64,20 @@ class GuestAccountScreen extends StatelessWidget {
                 onTap: () => Routes.loginRoute.moveTo,
               ),
               VerticalSpace(50.h),
-              Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Text(
-                    AppStrings.accountEn,
-                    style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.smallTextBlackColor),
-                  )),
-              VerticalSpace(25.h),
-              NotificationItem(
-                onTap: () => Routes.notificationPageRoute.moveTo,
-              ),
-              VerticalSpace(40.h),
+              // Align(
+              //     alignment: AlignmentDirectional.topStart,
+              //     child: Text(
+              //       AppStrings.accountEn,
+              //       style: TextStyle(
+              //           fontSize: 14.sp,
+              //           fontWeight: FontWeight.w700,
+              //           color: AppColors.smallTextBlackColor),
+              //     )),
+              // VerticalSpace(25.h),
+              // NotificationItem(
+              //   onTap: () => Routes.notificationPageRoute.moveTo,
+              // ),
+              // VerticalSpace(40.h),
               Align(
                   alignment: AlignmentDirectional.topStart,
                   child: Text(AppStrings.settings,

@@ -4,23 +4,25 @@ import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/password_text_field.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_state.dart';
 
 class SignUpPasswordTextField extends StatelessWidget {
   const SignUpPasswordTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthenticationCubit, AuthenticationState>(
+    return BlocBuilder<SignUpCubit, SignUpState>(
       builder: (context, state) {
-        AuthenticationCubit signUpCubit = context.read<AuthenticationCubit>();
+        SignUpCubit signUpCubit = context.read<SignUpCubit>();
         return Padding(
           padding: EdgeInsets.only(bottom: context.height24),
           child: PasswordTextField(
             controller: signUpCubit.signUpPasswordController,
             hintText: AppStrings.passwordEn,
             prefixSvg: AppAssets.passwordIcon,
+            isPasswordVisible: signUpCubit.isPasswordVisible,
+            togglePassword: ()=>signUpCubit.togglePasswordVisibility(),
             validator: (value) {
               RegExp regExp = new RegExp(signUpCubit.passwordPattern);
               if (value == null || value.isEmpty) {

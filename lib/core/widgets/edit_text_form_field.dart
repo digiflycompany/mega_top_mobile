@@ -5,11 +5,10 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 
 class EditTextField extends StatelessWidget {
   final Widget? suffix;
-  const EditTextField(
-      {super.key, this.suffix, required this.title, this.text, this.hintText});
+  final TextEditingController controller;
+  const EditTextField({super.key, this.suffix, required this.title, required this.controller, this.hintText});
 
   final String title;
-  final String? text;
   final String? hintText;
 
   @override
@@ -23,7 +22,7 @@ class EditTextField extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontSize: 13.sp)),
         TextFormField(
-          controller: TextEditingController(text: text),
+          controller: controller,
           style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14.sp),
           cursorColor: AppColors.blackGreyColor,
           cursorHeight: context.width * 0.046,
@@ -35,13 +34,13 @@ class EditTextField extends StatelessWidget {
                 fontSize: 12.sp),
             enabledBorder: const UnderlineInputBorder(
               borderSide:
-                  BorderSide(width: 1, color: AppColors.googleButtonBorder),
+              BorderSide(width: 1, color: AppColors.googleButtonBorder),
             ),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(width: 1, color: AppColors.primaryColor),
             ),
             prefixIconConstraints:
-                BoxConstraints(minWidth: context.width * 0.072),
+            BoxConstraints(minWidth: context.width * 0.072),
             suffixIcon: suffix,
           ),
         ),

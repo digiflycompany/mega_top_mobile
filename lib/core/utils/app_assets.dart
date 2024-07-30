@@ -19,11 +19,13 @@ class AppAssets {
   static const String arrowButton = "$svgPath/arrow_button.svg";
   static const String emailIcon = "$svgPath/email_icon.svg";
   static const String walletIcon = "$svgPath/wallet_icon.svg";
+  static const String noInternetIcon = "$svgPath/no_internet_icon.svg";
   static const String wishListIcon = "$svgPath/wish_list_icon.svg";
   static const String locationOutlinedBlueIcon =
       "$svgPath/location_outlined_blue_icon.svg";
   static const String creditCardIcon = "$svgPath/credit_card_icon.svg";
   static const String guestIcon = "$svgPath/guest_icon.svg";
+  static const String phoneIcon = "$svgPath/phone.svg";
   static const String emailSecondIcon = "$svgPath/mail_third_icon.svg";
   static const String googleIcon = "$svgPath/google_icon.svg";
   static const String hidePasswordIcon = "$svgPath/show_password.svg";
@@ -31,6 +33,7 @@ class AppAssets {
   static const String passwordIcon = "$svgPath/password_icon.svg";
   static const String usernameIcon = "$svgPath/username_icon.svg";
   static const String checkIcon = "$svgPath/check_icon.svg";
+  static const String removeAccountIcon = "$svgPath/remove_account_icon.svg";
   static const String checkBigIcon = "$svgPath/check_big_icon.svg";
   static const String checkMailBlueIcon = "$svgPath/check_mail_icon_blue.svg";
   static const String checkMailWhiteIcon = "$svgPath/check_mail_icon_white.svg";

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:mega_top_mobile/features/authentication_screens/data/models/login_model.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/login_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,12 +31,6 @@ class PreferencesHelper {
     UserModel? userModel = UserModel.fromJson(
         json.decode('${preferences?.getString('userModel')}'));
     return userModel.data!.user!.email ?? '';
-  }
-
-  static int? get getID {
-    UserModel? userModel = UserModel.fromJson(
-        json.decode('${preferences?.getString('userModel')}'));
-    return userModel.data!.user!.iV;
   }
 
   static Future<void> saveIsVisitor({required bool isVisitor}) async {

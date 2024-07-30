@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -59,7 +60,7 @@ class OnBoardingView extends StatelessWidget {
                   ],
                 ),
               ),
-              VerticalSpace(context.width * 0.044),
+              onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.033):VerticalSpace(context.height * 0.036),
               DotsIndicator(
                 dotsCount: 3,
                 position: onboardingCubit.getPageIndex(),
@@ -73,14 +74,21 @@ class OnBoardingView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5.0)),
                 ),
               ),
-              VerticalSpace(context.height * 0.05),
+              onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.035):VerticalSpace(context.height * 0.05),
               Padding(
                 padding:
                     EdgeInsets.symmetric(horizontal: context.width * 0.045),
                 child: PrimaryButton(
-                    text: onboardingCubit.getPageIndex() == 2
-                        ? AppStrings.getStarted
-                        : AppStrings.nextEn,
+                    content: Text(
+                      onboardingCubit.getPageIndex() == 2
+                          ? AppStrings.getStarted
+                          : AppStrings.nextEn,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.sp,
+                      ),
+                    ),
                     onTap: () {
                       onboardingCubit.getPageIndex() == 2
                           ? Routes.homePageRoute.moveToCurrentRouteAndRemoveAll
@@ -92,7 +100,7 @@ class OnBoardingView extends StatelessWidget {
                              PreferencesHelper.setHasSeenOnboarding(true);
                     }),
               ),
-              VerticalSpace(context.width * 0.044),
+              onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.02):VerticalSpace(context.height * 0.034),
               if (onboardingCubit.getPageIndex() == 2)
                 RowTextButton(
                   firstText: AppStrings.alreadyHaveAnAccountEn,
@@ -103,7 +111,7 @@ class OnBoardingView extends StatelessWidget {
                     PreferencesHelper.saveIsVisitor(isVisitor: true);
                   },
                 ),
-              VerticalSpace(context.height * 0.044),
+              onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.02):VerticalSpace(context.height * 0.034),
             ],
           );
         },

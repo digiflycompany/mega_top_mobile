@@ -9,8 +9,11 @@ class AppStrings {
   static const String error = 'Error';
   static const String previous = 'السابق';
   static const String previousEn = 'Previous';
+  static const String invalidCred = 'Invalid credentials or network issues.';
   static const String companyEn = 'Company';
   static const String completed = 'Completed';
+  static const String signUpFailed = 'Sign Up Failed';
+  static const String updatingPasswordFailed = 'Updating password Failed';
   static const String orderDetailsEn = 'Order details';
   static const String wrongInfo = 'بيانات غير صحيحة أو مشاكل في الشبكة';
   static const String numberOfProductsEn = 'Number of products';
@@ -19,12 +22,14 @@ class AppStrings {
   static const String onboardingSecondScreenDescription =
       'Seamlessly add items to your cart with just a tap. Review your selections, adjust quantities, or continue shopping until you have everything you need.';
   static const String onboardingThirdScreenDescription =
-      'Sit back and relax while we handle the rest! Get real-time updates on your order status from dispatch to delivery. Enjoy fast, reliable, and hassle-free delivery right to your doorstep.';
+      'Get real-time updates on your order status from dispatch to delivery. Enjoy fast, reliable, and hassle-free delivery right to your doorstep.';
   static const String onboardingFirstScreenDescription =
       'Discover the latest in technology with a wide range of electronic products from top brands. Browse through our intuitive categories for smartphones, laptops, cameras, and more to find exactly what you need.';
   static const String pleaseEnterValidEmail =
       'Please enter a valid email address';
-  static const String pleaseEnterYourUserName = 'Please enter your username';
+  static const String pleaseEnterYourFullName = 'Please enter your full name';
+  static const String pleaseEnterYourPhoneNumber =
+      'Please enter your phone number';
   static const String pleaseEnterYourPassword = 'Please enter your password';
   static const String pleaseConfirmYourPassword =
       'Please confirm your password';
@@ -76,6 +81,10 @@ class AppStrings {
   static const String emailEn = 'Email';
   static const String password = 'كلمة المرور';
   static const String passwordEn = 'Password';
+  static const String areYouSureYouWantToRemoveYourAccount = 'Are you sure you want to remove your account ?';
+  static const String removeAccount = 'Remove account';
+  static const String removingAccountFailed = 'Removing account failed';
+  static const String removeAccountCapitalA = 'Remove Account';
   static const String forgotPassword = 'هل نسيت كلمة المرور ؟';
   static const String forgotPasswordEn = 'Forgot Password ?';
   static const String signInWithGoogle = 'سجل عن طريق جوجل';
@@ -88,6 +97,8 @@ class AppStrings {
   static const String createAccount = 'إنشاء حساب';
   static const String createAccountEn = 'Sign up';
   static const String continueWithGoogleEn = 'Continue with Google';
+  static const String codeSentSuccessfully = 'Code sent successfully';
+  static const String savedSuccessfully = 'Saved successfully';
   static const String theProductAddedToWishListEn =
       'The product added to wish list';
   static const String theProductRemovedFromWishListEn =
@@ -102,11 +113,16 @@ class AppStrings {
   static const String loginOrCreateEnEn = 'Log in or create a new account';
   static const String continueWithGoogle = 'إنشاء حساب';
   static const String usernameEn = 'Username';
+  static const String phoneNumberEn = 'Phone Number';
+  static const String fullNameEn = 'Full Name';
   static const String confirmPasswordEn = 'Confirm password';
   static const String confirmOrderEn = 'Confirm Order';
   static const String applyEn = 'Apply';
+  static const String sorryThereIsNoInternet = 'Sorry, there is no internet!';
+  static const String pleaseCheckYourInternet = 'Please check your internet connection\n and try again';
   static const String resetEn = 'Reset';
   static const String signUpEn = 'Sign up';
+  static const String editPassword = 'Edit password';
   static const String or = 'أو';
   static const String orEn = 'Or';
   static const String cancelEn = 'Cancel';
@@ -129,6 +145,8 @@ class AppStrings {
   static const String ifYouDidNotRecCodeEn = 'If you didn’t receive code?';
   static const String resendCodeEn = 'Resend code';
   static const String checkoutEn = 'Checkout';
+  static const String newPassword = 'New password';
+  static const String confirmNewPassword = 'Confirm new password';
   static const String createNewPasswordEn = 'Create new password';
   static const String createNewPasswordDescriptionEn =
       'Your new password must be different\nfrom previously used password.';
@@ -144,6 +162,7 @@ class AppStrings {
   static const String discountPercentEn = '-17%';
   static const String viewAllEn = 'View all';
   static const String viewCartEn = 'View Cart';
+  static const String confirmLocationEn = "Confirm Location";
   static const String continueShoppingEn = 'Continue Shopping';
   static const String yourShipmentEn = 'Your shipment';
   static const String shippingDetailsEn = 'Shipping Details';
@@ -160,6 +179,7 @@ class AppStrings {
   static const String upsEn = 'UPS';
   static const String editEn = 'Edit';
   static const String removeEn = 'Remove';
+  static const String retryToConnect = 'Retry to connect';
   static const String networkEn = 'Network';
   static const String hiLookEn = 'HiLook';
   static const String hikVisionEn = 'HikVision';
@@ -178,7 +198,7 @@ class AppStrings {
   static const String welcomeEn = 'Welcome !';
   static const String searchHereEn = 'Search here ...';
   static const String yourPasswordHasBeenResetSuccessfullyEn =
-      'Your password has been\nreset successfully!';
+      'Your password has been\nchanged successfully!';
   static const String hardDiskEn = 'Hard disk 1 TB, purple';
   static const String storageUnitsEn = 'Storage units, hard disk';
   static const String availableEn = 'Available';
@@ -187,6 +207,7 @@ class AppStrings {
   static const String userNotFoundWithProvidedEmail =
       'User not found with provided email';
   static const String rackEn = 'Rack';
+  static const String resetPasswordFailed = 'Reset password failed';
   static const String productPriceEn = '1500 LE';
   static const String productOldPriceEn = '2300 LE';
   static const String productDetailedSmallDescriptionEn =
@@ -194,6 +215,9 @@ class AppStrings {
   static const String aboutProductDescriptionEn =
       'This product is part of the Easy UPS collection. It features a total of 4 power outlets, all of which provide battery backup and surge protection. It has an interactive line topology. The UPS has a high power rating of 156 joules. Its dimensions are 9.25 x 16.05 x 30.5 cm and its weight is 5.7 kg. Easy UPS provides a simple power protection solution for unstable power conditions in homes and small offices, ensuring stable and reliable connectivity in the moments that matter most. UPS is a CE certified product.';
   static const String homeEn = 'Home';
+  static const String emailVerificationFailed = 'Email verification failed';
+  static const String sendingCodeFailed = 'Sending code failed';
+  static const String verifying = 'Sending code failed';
   static const String addToCartEn = 'Add to Cart';
   static const String aboutTheProductEn = 'About the product';
   static const String productSpecificationEn = 'product specification ';
@@ -201,7 +225,9 @@ class AppStrings {
   static const String offersEn = 'Offers';
   static const String cartEn = 'Cart';
   static const String loginFailed = 'Login Failed';
-  static const String noInternetConnectionPlease = 'No internet connection. Please try again.';
+  static const String creatingNewPasswordFailed = 'Creating new Password Failed';
+  static const String noInternetConnectionPlease =
+      'No internet connection. Please try again.';
   static const String noInternetConnection = 'No internet connection';
   static const String storageEn = 'Storage';
   static const String accountEn = 'Account';
@@ -313,6 +339,7 @@ class AppStrings {
   static const String savedCards = 'Saved cards';
   static const String shippingAddresses = 'Shipping Addresses';
   static const String profileDetails = 'Profile Details';
+  static const String profileDetailsFailed = 'Profile Details Failed';
   static const String firstName = 'First name';
   static const String lastName = 'Last name';
   static const String save = 'Save';

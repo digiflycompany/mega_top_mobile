@@ -17,7 +17,7 @@ class ProductMainDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (BuildContext context, CategoryState state) {
-        final categoryCubit = context.read<CategoryCubit>();
+       // final categoryCubit = context.read<CategoryCubit>();
         return Padding(
           padding: EdgeInsets.only(top: context.height * 0.033),
           child: Column(

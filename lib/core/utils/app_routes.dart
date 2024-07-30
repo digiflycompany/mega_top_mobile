@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_details_screen.dart';
@@ -7,21 +8,27 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/shipping_addresses_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/compare_screen/presentation/pages/compare_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/pages/notification_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/screens/notification_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/delete_account_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_password_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/edit_profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/pages/wish_list_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/create_new_password_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/login_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/reset_password_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_email_verification_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_or_login_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/sign_up_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/pages/verify_email_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/screens/wish_list_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/data/repositories/auth_repo.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/login_cubit/login_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/create_new_password_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/login_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/reset_password_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_email_verification_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_or_login_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_screen.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/verify_email_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_confirmation_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_summary_screen.dart';
@@ -77,6 +84,7 @@ class Routes {
   static const String compareProductPageRoute = "/compare_product_screen";
   static const String signUpEmailVerificationPageRoute = "/sign_up_email_verification_screen";
   static const String cartPageRoute = "/cart_screen";
+
 }
 
 class RouteGenerator {
@@ -95,27 +103,43 @@ class RouteGenerator {
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.loginRoute:
         return buildPageRoute(
-            child: LoginScreen(),
+            child: BlocProvider(
+              create: (context) => LoginCubit(AuthRepoImp()),
+              child: LoginScreen(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.signUpRoute:
         return buildPageRoute(
-            child: const SignUpScreen(),
+            child: BlocProvider(
+              create: (context) => SignUpCubit(AuthRepoImp()),
+              child: SignUpScreen(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.resetPasswordRoute:
         return buildPageRoute(
-            child: const ResetPasswordScreen(),
+            child: BlocProvider(
+              create: (context) => ResetPasswordCubit(AuthRepoImp()),
+              child: ResetPasswordScreen(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.verifyEmailRoute:
+        final email = routeSettings.arguments as String;
         return buildPageRoute(
-            child: const VerifyEmailScreen(),
+            child: BlocProvider(
+              create: (context) => ResetPasswordCubit(AuthRepoImp()),
+              child: VerifyEmailScreen(email: email,),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.slide);
       case Routes.createNewPasswordRoute:
         return buildPageRoute(
-            child: const CreateNewPasswordScreen(),
+            child: BlocProvider(
+              create: (context) => ResetPasswordCubit(AuthRepoImp()),
+              child: CreateNewPasswordScreen(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.slide);
       case Routes.homePageRoute:
@@ -170,7 +194,7 @@ class RouteGenerator {
         );
       case Routes.profilePageRoute:
         return buildPageRoute(
-          child: const ProfileScreen(),
+          child: ProfileScreen(),
         );
       case Routes.orderConfirmationPageRoute:
         return buildPageRoute(
@@ -178,15 +202,17 @@ class RouteGenerator {
         );
       case Routes.profileDetailsPageRoute:
         return buildPageRoute(
-          child: const EditProfileScreen(),
+          child: BlocProvider(
+            create: (context) => AccountDetailsCubit(AccountDetailsRepoImp()),
+            child: EditProfileScreen(),
+          ),
         );
       case Routes.passwordDetailsPageRoute:
         return buildPageRoute(
-          child: const EditPasswordScreen(),
-        );
-      case Routes.deleteAccountPageRoute:
-        return buildPageRoute(
-          child: const DeleteAccountScreen(),
+          child: BlocProvider(
+            create: (context) => AccountDetailsCubit(AccountDetailsRepoImp()),
+            child: EditPasswordScreen(),
+          ),
         );
       case Routes.addNewAddressPageRoute:
         return buildPageRoute(
@@ -226,7 +252,10 @@ class RouteGenerator {
         );
       case Routes.signUpEmailVerificationPageRoute:
         return buildPageRoute(
-          child: const SignUpEmailVerificationScreen(),
+          child: BlocProvider(
+            create: (context) => EmailVerificationCubit(AuthRepoImp()),
+            child: SignUpEmailVerificationScreen(),
+          ),
         );
       case Routes.cartPageRoute:
         return buildPageRoute(
@@ -319,13 +348,14 @@ class RouteGenerator {
       );
     }
     return MaterialPageRoute<T>(
-      builder: (_) => AnnotatedRegion<SystemUiOverlayStyle>(
-          value: const SystemUiOverlayStyle(
-            statusBarColor: AppColors.transparent,
-            statusBarIconBrightness: Brightness.dark,
-            statusBarBrightness: Brightness.dark,
-          ),
-          child: child),
+      builder: (_) =>
+          AnnotatedRegion<SystemUiOverlayStyle>(
+              value: const SystemUiOverlayStyle(
+                statusBarColor: AppColors.transparent,
+                statusBarIconBrightness: Brightness.dark,
+                statusBarBrightness: Brightness.dark,
+              ),
+              child: child),
       settings: routeSettings,
     );
   }

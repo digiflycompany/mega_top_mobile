@@ -15,26 +15,29 @@ class OrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AccountOptionItem(
-      mainIcon: mainIcon ?? AppAssets.orderIcon,
-      title: title ?? AppStrings.orders,
-      onTap: onTap,
-      optionalData: optionalData ??
-          Container(
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.iconsBackgroundColor,
-            ),
-            width: 24.h,
-            height: 24.h,
-            child: const Center(
-              child: Text(
-                "0",
-                style: TextStyle(
-                    color: AppColors.primaryColor, fontWeight: FontWeight.w700),
+    return Padding(
+      padding: EdgeInsets.only(top: 25.h,bottom: 16.h),
+      child: AccountOptionItem(
+        mainIcon: mainIcon ?? AppAssets.orderIcon,
+        title: title ?? AppStrings.orders,
+        onTap: onTap,
+        optionalData: optionalData ??
+            Container(
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.iconsBackgroundColor,
+              ),
+              width: 24.h,
+              height: 24.h,
+              child: const Center(
+                child: Text(
+                  "0",
+                  style: TextStyle(
+                      color: AppColors.primaryColor, fontWeight: FontWeight.w700),
+                ),
               ),
             ),
-          ),
+      ),
     );
   }
 }

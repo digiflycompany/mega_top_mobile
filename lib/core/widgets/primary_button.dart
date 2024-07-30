@@ -5,14 +5,16 @@ import '../utils/app_color.dart';
 
 class PrimaryButton extends StatelessWidget {
   final Function()? onTap;
-  final String? text;
+  final Widget content;
   final int? fontSize;
   final bool isBlurred;
+  final Color? buttonColor;
 
   const PrimaryButton({
     super.key,
     this.onTap,
-    this.text,
+    this.buttonColor= AppColors.primaryColor,
+    required this.content,
     this.fontSize,
     this.isBlurred = false,
   });
@@ -25,20 +27,13 @@ class PrimaryButton extends StatelessWidget {
         width: double.infinity,
         height: context.height * 0.069,
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
+          color: buttonColor,
           borderRadius: BorderRadius.circular(4.r),
         ),
         child: Stack(
           children: [
             Center(
-              child: Text(
-                text!,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16.sp,
-                ),
-              ),
+              child: content
             ),
             if (isBlurred)
               Positioned.fill(

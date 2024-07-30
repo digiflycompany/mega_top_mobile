@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import '../../../../core/utils/spacer.dart';
-import '../../../../core/widgets/primary_empty_button.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'empty_cart_icon.dart';
 import 'empty_response_text.dart';
 
@@ -10,6 +10,7 @@ class EmptyDataPage extends StatelessWidget {
   final String? bigFontText;
   final String? smallFontText;
   final String? buttonText;
+  final Function()? buttonOnTap;
 
   const EmptyDataPage({
     super.key,
@@ -17,6 +18,7 @@ class EmptyDataPage extends StatelessWidget {
     this.buttonText,
     this.bigFontText,
     this.smallFontText,
+    this.buttonOnTap,
   });
 
   @override
@@ -37,6 +39,7 @@ class EmptyDataPage extends StatelessWidget {
           if (buttonText != null && buttonText!.isNotEmpty)
             PrimaryOutlinedButton(
               text: buttonText!,
+              onTap: buttonOnTap,
             ),
         ],
       ),

@@ -16,8 +16,6 @@ class PrimaryAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Object token = PreferencesHelper.getToken();
-    bool isUserLoggedIn = token.isNotNull;
     return SafeArea(
       child: Container(
         height: context.height * 0.087,
@@ -44,15 +42,24 @@ class PrimaryAppBar extends StatelessWidget {
               child: TitleText(text: text),
             ),
             const Spacer(),
-            if(isUserLoggedIn)...[
-              Padding(
-                padding: EdgeInsets.only(right: context.width * 0.045),
-                child: const CustomerIcon(
-                  icon: AppAssets.favouritesIcon,
-                  number: AppStrings.zero,
-                ),
-              )
-            ]
+            FutureBuilder<String?>(
+              future: PreferencesHelper.getToken(),
+              builder: (context, snapshot) {
+                final token = snapshot.data;
+                final isUserLoggedIn = token != null;
+                if (isUserLoggedIn && favour) {
+                  return Padding(
+                    padding: EdgeInsets.only(right: context.width * 0.045),
+                    child: const CustomerIcon(
+                      icon: AppAssets.favouritesIcon,
+                      number: AppStrings.zero,
+                    ),
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            ),
           ],
         ),
       ),

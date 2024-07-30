@@ -4,17 +4,17 @@ import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/primary_text_field.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_cubit.dart';
-import 'package:mega_top_mobile/features/authentication_screens/cubit/auth_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_cubit.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_state.dart';
 
 class ResetPasswordEmailField extends StatelessWidget {
   const ResetPasswordEmailField({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthenticationCubit, AuthenticationState>(
+    return BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
       builder: (context, state) {
-        AuthenticationCubit resetCubit = context.read<AuthenticationCubit>();
+        ResetPasswordCubit resetCubit = context.read<ResetPasswordCubit>();
         return Padding(
           padding: EdgeInsets.only(bottom: context.height40),
           child: PrimaryTextField(
