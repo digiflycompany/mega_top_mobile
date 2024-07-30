@@ -23,7 +23,14 @@ class FilterBottomSheetButtons extends StatelessWidget {
           child: Column(
             children: [
               PrimaryButton(
-                text: AppStrings.applyEn,
+                content: Text(
+                  AppStrings.applyEn,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.sp,
+                  ),
+                ),
                 onTap: (){
                   if(cubit.minPriceController.value.text.isEmptyOrNull || cubit.maxPriceController.value.text.isEmptyOrNull)
                     {
