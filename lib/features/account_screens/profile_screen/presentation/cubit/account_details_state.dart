@@ -64,3 +64,17 @@ class RemoveAccountFailure extends AccountDetailsState {
   RemoveAccountFailure(this.error);
 }
 
+class RemoveFromWishListLoading extends AccountDetailsState {}
+
+class RemoveFromWishListSuccess extends AccountDetailsState {
+  final UserDetailsModel user;
+
+  RemoveFromWishListSuccess(this.user);
+}
+
+class RemoveFromWishListFailure extends AccountDetailsState {
+  final String error;
+
+  RemoveFromWishListFailure(this.error);
+}
+

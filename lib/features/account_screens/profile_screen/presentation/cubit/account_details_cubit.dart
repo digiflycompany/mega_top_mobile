@@ -186,6 +186,25 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
     }
   }
 
+  Future<void> removeProductFormWishList(String productId) async {
+    emit(RemoveFromWishListLoading());
+    try {
+      final user = await accountDetailsRepo.removeProductFromWishList(productId);
+      if (user != null && user.success == true) {
+        emit(RemoveFromWishListSuccess(user));
+      } else {
+        emit(RemoveFromWishListFailure(
+            user?.message ?? AppStrings.invalidCred));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(AccountDetailsNoInternetConnection());
+      } else {
+        emit(RemoveFromWishListFailure(e.toString()));
+      }
+    }
+  }
+
   void handleRemoveAccountStates(BuildContext context, AccountDetailsState state) {
     if(state is RemoveAccountSuccess){
       PreferencesHelper.logOut();

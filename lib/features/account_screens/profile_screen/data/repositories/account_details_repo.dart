@@ -10,6 +10,7 @@ abstract class AccountDetailsRepo {
   Future<UpdatedUserDetailsModel?> updateUserDetails(String email ,String fullName ,String phone);
   Future<UpdatedUserDetailsModel?> updatePassword(String password,);
   Future<DeactivatedUserModel?> removeAccount();
+  Future<UserDetailsModel?> removeProductFromWishList(String productId);
 
 }
 
@@ -92,4 +93,26 @@ class AccountDetailsRepoImp implements AccountDetailsRepo {
     }
     return null;
   }
+
+  @override
+  Future<UserDetailsModel?> removeProductFromWishList(String productId) async {
+    try {
+      Response? response = await DioHelper.putData(
+        url: EndPoints.removeFromWishListAPI,
+        data: {
+          "productId": productId
+        },
+        options: await DioHelper.getOptions(),
+      );
+
+      if (response?.statusCode == 200 || response?.statusCode == 401) {
+        return UserDetailsModel.fromJson(response?.data);
+      }
+    } catch (e) {
+      print('Error during updating password: $e');
+      throw e;
+    }
+    return null;
+  }
+
 }
