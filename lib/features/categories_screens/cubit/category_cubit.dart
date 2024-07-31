@@ -195,6 +195,9 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
+
+
+
   int selectedProductIndex = 0;
 
   void setCategoryProductIndex({required int selectedProductIndex}) {

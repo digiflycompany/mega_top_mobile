@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_main_description.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/you_may_also_like_column.dart';
 
 class ProductDetailedBody extends StatelessWidget {
   const ProductDetailedBody({super.key});
@@ -18,7 +19,7 @@ class ProductDetailedBody extends StatelessWidget {
           // VerticalSpace(context.height * 0.04),
           // const ProductSpecificationColumn(),
           // VerticalSpace(context.height * 0.04),
-          // const YouMayAlsoLikeColumn(),
+           const YouMayAlsoLikeColumn(),
           // VerticalSpace(context.height * 0.04),
         ],
       ),

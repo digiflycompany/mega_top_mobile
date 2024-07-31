@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
-
 import '../../cubit/category_cubit.dart';
 import '../../cubit/category_state.dart';
 
@@ -16,23 +14,14 @@ class ProductImages extends StatelessWidget {
         builder: (context, state) {
           return PageView.builder(
             physics: const BouncingScrollPhysics(),
-
-            ///Error
-            // itemCount: categoryCubit.selectedCategoryModel!
-            //     .productList[categoryCubit.selectedProductIndex].images.length,
+            itemCount: categoryCubit.selectedCategoryModel!
+                .data!.products[categoryCubit.selectedProductIndex].images.length,
             onPageChanged: (index) => categoryCubit.setImageIndex(index),
             itemBuilder: (context, index) {
-              return Center(
-                child: Image.network(
+              return Image.network(
+                  categoryCubit.selectedCategoryModel!
+                      .data!.products[categoryCubit.selectedProductIndex].images[index],
 
-                    ///Error
-                    "",
-                    // categoryCubit
-                    //     .selectedCategoryModel!
-                    //     .productList[categoryCubit.selectedProductIndex]
-                    //     .images[index]
-                    //     .src,
-                    width: context.width * 0.4),
               );
             },
           );

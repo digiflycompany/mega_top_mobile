@@ -56,7 +56,8 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
             preferredSize: Size(double.infinity, context.height * 0.089),
             child: BlocBuilder<CategoryCubit, CategoryState>(
               builder: (BuildContext context, CategoryState state) {
-                return PrimaryAppBar(categoryCubit.categories!.data!
+                return PrimaryAppBar(
+                    categoryCubit.categories!.data!
                     .categories![categoryCubit.selectedProductIndex].name!);
               },
             )),
@@ -100,7 +101,6 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
                 ),
               );
 
-              ///Error
             } else if (categoryCubit.selectedCategoryModel != null &&
                 //   categoryCubit.selectedCategoryModel!.productList.isEmpty &&
                 state is SelectedCategoryFailure) {

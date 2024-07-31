@@ -60,27 +60,16 @@ class LatestProductsContainer extends StatelessWidget {
                     borderRadius: BorderRadius.circular(context.height * 0.0065),
                     color: AppColors.iconsBackgroundColor,
                   ),
-                  child: Center(
-                    child: productPhoto.isNotNull
-                        ? CachedNetworkImage(
-                      imageUrl: productPhoto!,
-                      width: context.width * 0.27,
-                      placeholder: (context, url) => Center(
-                        child: Theme(
-                          data: Theme.of(context).copyWith(
-                            colorScheme: ColorScheme.fromSwatch().copyWith(
-                              primary: AppColors.primaryColor,
-                            ),
-                          ),
-                          child: Transform.scale(
-                              scale: 0.6,
-                              child: CircularProgressIndicator.adaptive()),
-                        ),
-                      ),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                    )
-                        : Image.asset("assets/images/ad.png", width: context.width * 0.13),
-                  ),
+                  child: productPhoto.isNotNull
+                      ? Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15.h),
+                        child: CachedNetworkImage(
+                                            imageUrl: productPhoto!,
+                                            width: context.width * 0.27,
+                                            errorWidget: (context, url, error) => Icon(Icons.error),
+                                          ),
+                      )
+                      : Image.asset("assets/images/ad.png", width: context.width * 0.13),
                 ),
                 if (discount == true && discountPercent != null) ...[
                   Padding(

@@ -34,6 +34,7 @@ class ProductsGridContainer extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
+            cubit.setCategoryProductIndex(selectedProductIndex: index);
             Routes.categoryProductDetailsPageRoute.moveTo;
           },
           child: Container(

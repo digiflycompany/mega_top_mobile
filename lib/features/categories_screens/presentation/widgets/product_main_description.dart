@@ -8,6 +8,9 @@ import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_category.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_small_description.dart';
+import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_name.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_prices.dart';
 
 class ProductMainDescription extends StatelessWidget {
@@ -17,7 +20,7 @@ class ProductMainDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (BuildContext context, CategoryState state) {
-       // final categoryCubit = context.read<CategoryCubit>();
+        final categoryCubit = context.read<CategoryCubit>();
         return Padding(
           padding: EdgeInsets.only(top: context.height * 0.033),
           child: Column(
@@ -25,13 +28,12 @@ class ProductMainDescription extends StatelessWidget {
               /// Product Details Row ////
               Row(
                 children: [
-                  ///Error
-                  // Expanded(
-                  //   child: ProductDetailedNameText(
-                  //     name: categoryCubit.selectedCategoryModel!
-                  //         .productList[categoryCubit.selectedProductIndex].name,
-                  //   ),
-                  // ),
+                  Expanded(
+                    child: ProductDetailedNameText(
+                      name: categoryCubit.selectedCategoryModel!.data!
+                          .products[categoryCubit.selectedProductIndex].title,
+                    ),
+                  ),
                   HorizontalSpace(5.w),
                   const AvailableContainer(),
                   HorizontalSpace(context.width * 0.022),
@@ -44,23 +46,36 @@ class ProductMainDescription extends StatelessWidget {
               ),
               VerticalSpace(context.height * 0.011),
 
-              ///Error
-              // ProductDetailedCategory(
-              //   category: categoryCubit
-              //       .selectedCategoryModel!
-              //       .productList[categoryCubit.selectedProductIndex]
-              //       .categories[0]
-              //       .name,
-              // ),
+              ProductDetailedCategory(
+                category: categoryCubit
+                    .selectedCategoryModel!
+                    .data!
+                    .products[categoryCubit.selectedProductIndex]
+                    .categoryId!
+                    .name,
+              ),
               VerticalSpace(context.height * 0.022),
-              const ProductPrices(
-                oldPrice: AppStrings.productOldPriceEn,
-                currentPrice: AppStrings.productPriceEn,
+               ProductPrices(
+                 currentPrice: categoryCubit
+                   .selectedCategoryModel!
+                   .data!
+                   .products[categoryCubit.selectedProductIndex]
+                   .price!
+                   .finalPrice
+                   .toString(),
+                oldPrice: categoryCubit
+                    .selectedCategoryModel!
+                    .data!
+                    .products[categoryCubit.selectedProductIndex]
+                    .price!
+                    .originalPrice
+                    .toString(),
               ),
               VerticalSpace(context.height * 0.029),
-              // const ProductDetailedSmallDescription(
-              //   description: AppStrings.productDetailedSmallDescriptionEn,
-              // )
+              ProductDetailedSmallDescription(
+                description: categoryCubit.selectedCategoryModel!.data!
+                    .products[categoryCubit.selectedProductIndex].description,
+              )
             ],
           ),
         );
