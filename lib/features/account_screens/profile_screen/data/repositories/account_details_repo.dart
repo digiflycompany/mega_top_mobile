@@ -3,6 +3,7 @@ import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/deactivated_user_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/updated_user_details_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/data/models/remove_from_wish_list_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class AccountDetailsRepo {
@@ -10,7 +11,7 @@ abstract class AccountDetailsRepo {
   Future<UpdatedUserDetailsModel?> updateUserDetails(String email ,String fullName ,String phone);
   Future<UpdatedUserDetailsModel?> updatePassword(String password,);
   Future<DeactivatedUserModel?> removeAccount();
-  Future<UserDetailsModel?> removeProductFromWishList(String productId);
+  Future<RemoveFromWishListModel?> removeProductFromWishList(String productId);
 
 }
 
@@ -95,7 +96,7 @@ class AccountDetailsRepoImp implements AccountDetailsRepo {
   }
 
   @override
-  Future<UserDetailsModel?> removeProductFromWishList(String productId) async {
+  Future<RemoveFromWishListModel?> removeProductFromWishList(String productId) async {
     try {
       Response? response = await DioHelper.putData(
         url: EndPoints.removeFromWishListAPI,
@@ -106,10 +107,10 @@ class AccountDetailsRepoImp implements AccountDetailsRepo {
       );
 
       if (response?.statusCode == 200 || response?.statusCode == 401) {
-        return UserDetailsModel.fromJson(response?.data);
+        return RemoveFromWishListModel.fromJson(response?.data);
       }
     } catch (e) {
-      print('Error during updating password: $e');
+      print('Error during removing product: $e');
       throw e;
     }
     return null;

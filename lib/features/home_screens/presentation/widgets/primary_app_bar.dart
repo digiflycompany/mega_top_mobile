@@ -10,9 +10,11 @@ import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.d
 import 'customer_icon.dart';
 
 class PrimaryAppBar extends StatelessWidget {
-  const PrimaryAppBar(this.text, {super.key, this.favour = true});
+  const PrimaryAppBar(this.text, {super.key, this.favour = true, this.onTap});
+
   final String text;
   final bool favour;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,11 @@ class PrimaryAppBar extends StatelessWidget {
           children: [
             AppBarBackArrow(
               onTap: () {
-                Navigator.pop(context);
+                if (onTap != null) {
+                  onTap!();
+                } else {
+                  Navigator.pop(context);
+                }
               },
             ),
             HorizontalSpace(context.width * 0.022),

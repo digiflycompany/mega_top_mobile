@@ -1,6 +1,7 @@
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/deactivated_user_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/updated_user_details_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/data/models/remove_from_wish_list_model.dart';
 
 abstract class AccountDetailsState {}
 
@@ -67,7 +68,7 @@ class RemoveAccountFailure extends AccountDetailsState {
 class RemoveFromWishListLoading extends AccountDetailsState {}
 
 class RemoveFromWishListSuccess extends AccountDetailsState {
-  final UserDetailsModel user;
+  final RemoveFromWishListModel user;
 
   RemoveFromWishListSuccess(this.user);
 }

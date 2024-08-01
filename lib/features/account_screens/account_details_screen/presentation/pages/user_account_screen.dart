@@ -23,6 +23,7 @@ import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.d
 class UserAccountScreen extends StatelessWidget {
   const UserAccountScreen({super.key});
 
+  // @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
@@ -40,9 +41,7 @@ class UserAccountScreen extends StatelessWidget {
               OrderItem(
                 onTap: () => Routes.ordersPageRoute.moveTo,
               ),
-              WishListItem(
-                onTap: () => Routes.wishListPageRoute.moveTo,
-              ),
+              WishListItem(),
               NotificationItem(
                 onTap: () => Routes.notificationPageRoute.moveTo,
               ),

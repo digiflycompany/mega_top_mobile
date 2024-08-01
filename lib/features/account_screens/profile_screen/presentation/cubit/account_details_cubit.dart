@@ -62,7 +62,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
-  void savedSuccessToast(BuildContext context) {
+  void savedSuccessToast(BuildContext context,String message) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
@@ -70,7 +70,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         width: MediaQuery.of(context).size.width,
         child: AnimatedOverlayIconToast(
           toastIcon: AppAssets.checkIcon,
-          message: AppStrings.savedSuccessfully,
+          message: message,
           color: AppColors.primaryGreenColor,
           onDismissed: () {
             if (overlayEntry != null) {
@@ -138,7 +138,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       final user = await accountDetailsRepo.updatePassword(password);
       if (user != null && user.success == true) {
         emit(UpdatingPasswordSuccess(user));
-        savedSuccessToast(context);
+        savedSuccessToast(context,AppStrings.savedSuccessfully);
       } else {
         emit(UpdatingPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
       }
@@ -226,6 +226,20 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       showErrorToast(context, AppStrings.updatingPasswordFailed,AppStrings.noInternetConnectionPlease);
     }
   }
+
+  void handleRemovingFromWishList(BuildContext context, AccountDetailsState state) {
+    if(state is RemoveFromWishListSuccess){
+      savedSuccessToast(context, AppStrings.productRemovedSuccessfully);
+      getAccountDetails();
+    }
+    if(state is RemoveFromWishListFailure){
+      showErrorToast(context, AppStrings.removingProductFailed,state.error);
+    }
+    if(state is AccountDetailsNoInternetConnection){
+      showErrorToast(context, AppStrings.removingProductFailed,AppStrings.noInternetConnectionPlease);
+    }
+  }
+
 
 
   @override

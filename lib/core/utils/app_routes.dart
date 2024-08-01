@@ -190,7 +190,10 @@ class RouteGenerator {
         );
       case Routes.userAccountPageRoute:
         return buildPageRoute(
-          child: const UserAccountScreen(),
+          child: BlocProvider(
+            create: (context) => AccountDetailsCubit(AccountDetailsRepoImp()),
+            child: UserAccountScreen(),
+          ),
         );
       case Routes.profilePageRoute:
         return buildPageRoute(
@@ -233,7 +236,9 @@ class RouteGenerator {
       case Routes.wishListPageRoute:
         return buildPageRoute(
           child: BlocProvider(
-            create: (context) => AccountDetailsCubit(AccountDetailsRepoImp())..getAccountDetails(),
+            create: (context) =>
+            AccountDetailsCubit(AccountDetailsRepoImp())
+              ..getAccountDetails(),
             child: WishListScreen(),
           ),
         );

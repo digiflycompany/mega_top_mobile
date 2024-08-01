@@ -11,7 +11,8 @@ class WishListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+    return BlocConsumer<AccountDetailsCubit, AccountDetailsState>(
+      listener: (context, state){},
   builder: (context, state) {
     AccountDetailsCubit cubit = context.read<AccountDetailsCubit>();
     if(state is AccountDetailsSuccess){
@@ -26,11 +27,12 @@ class WishListView extends StatelessWidget {
                 child: ProductsListContainer(
                   productName: wishListItem.title,
                   productPhoto: wishListItem.images[0],
-                  productType: 'UPS',
+                  productType: wishListItem.categoryId.name,
                   productPrice: wishListItem.price.finalPrice.toString(),
                   discountPercent: '0',
                   discount: false,
                   icon: AppAssets.favourFilledIcon,
+                  onTap: ()=>cubit.removeProductFormWishList(wishListItem.id),
                 ),
               );
             },
