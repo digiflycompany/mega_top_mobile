@@ -22,9 +22,11 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
   final TextEditingController newPasswordController = TextEditingController();
   final TextEditingController confirmNewPasswordController = TextEditingController();
   int _wishListCount = 0;
-
+  int _unreadNotificationCount = 0;
   int get wishListCount => _wishListCount;
   set wishListCount(int value) => _wishListCount = value;
+  int get unreadNotificationCount => _unreadNotificationCount;
+  set unreadNotificationCount(int value) => _unreadNotificationCount = value;
 
   AccountDetailsCubit(this.accountDetailsRepo) : super(AccountDetailsInitial());
 
@@ -96,6 +98,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         emailController.text = user.data.user.email;
         phoneController.text = user.data.user.phoneNumber;
         wishListCount = user.data.wishlistCount;
+        unreadNotificationCount = user.data.unreadNotificationsCount['ad']!;
         emit(AccountDetailsSuccess(user));
       } else {
         emit(AccountDetailsFailure(

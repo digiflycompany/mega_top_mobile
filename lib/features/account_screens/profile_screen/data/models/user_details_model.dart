@@ -157,6 +157,7 @@ class WishlistItem {
   final bool active;
   final String createdAt;
   final String updatedAt;
+  final int version;
 
   WishlistItem({
     required this.id,
@@ -174,6 +175,7 @@ class WishlistItem {
     required this.active,
     required this.createdAt,
     required this.updatedAt,
+    required this.version,
   });
 
   factory WishlistItem.fromJson(Map<String, dynamic> json) {
@@ -195,6 +197,7 @@ class WishlistItem {
       active: json['active'],
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
+      version: json['__v'],
     );
   }
 
@@ -215,6 +218,7 @@ class WishlistItem {
       'active': active,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
+      '__v': version,
     };
   }
 }
@@ -286,8 +290,8 @@ class Price {
 
   factory Price.fromJson(Map<String, dynamic> json) {
     return Price(
-      originalPrice: json['originalPrice'].toDouble(),
-      finalPrice: json['finalPrice'].toDouble(),
+      originalPrice: (json['originalPrice'] as num).toDouble(),
+      finalPrice: (json['finalPrice'] as num).toDouble(),
     );
   }
 
