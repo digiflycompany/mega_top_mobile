@@ -14,12 +14,11 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 
 class WishListItem extends StatelessWidget {
   const WishListItem(
-      {super.key, this.mainIcon, this.title, this.optionalData, this.onTap});
+      {super.key, this.mainIcon, this.title, this.optionalData});
 
   final String? mainIcon;
   final String? title;
   final Widget? optionalData;
-  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
