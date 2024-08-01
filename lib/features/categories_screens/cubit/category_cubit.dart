@@ -213,6 +213,10 @@ class CategoryCubit extends Cubit<CategoryState> {
     selectedCategoryModel!.data!.products.sort((a,b)=> a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
   }
 
+  int getDiscountPercentage({required int finalPrice,required int originPrice}){
+    return 1-(finalPrice/originPrice).toInt();
+  }
+
 
 
   Future<void> addToCart(int customerId, int productId, int quantity) async {

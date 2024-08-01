@@ -19,26 +19,23 @@ class DiscountContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
-      height: height,
+       width: width,
+       height: height,
       padding: EdgeInsets.symmetric(
-          horizontal: context.width * 0.010, vertical: context.height * 0.003),
+          horizontal: context.width * 0.010),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(context.height * 0.003),
         color: AppColors.redIconColor,
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            discountPercent!,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: fontSize ?? 12.sp,
-            ),
+      child: Center(
+        child: Text(
+          discountPercent!,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w700,
+            fontSize: fontSize ?? 12.sp,
           ),
-        ],
+        ),
       ),
     );
   }

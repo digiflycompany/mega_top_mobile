@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -67,31 +69,34 @@ class _LatestProductsListState extends State<LatestProductsList> {
                         .products
                         .length,
                     itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          LatestProductsContainer(
-                            productName: cubit.selectedCategoryModel!.data!.products[index].title,
-                            productPhoto: cubit.selectedCategoryModel!.data!
-                                .products[index].images[0],
-                            productType: cubit.selectedCategoryModel!.data!.products[index].categoryId!.name!,
-                            productPrice: cubit.selectedCategoryModel!.data!.products[index].price!.finalPrice!.toString(),
-                          ),
-                          HorizontalSpace(context.width * 0.045),
-                        ],
-                      );
+                        return Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                cubit.setCategoryProductIndex(
+                                    selectedProductIndex: index);
+                                Routes.categoryProductDetailsPageRoute.moveTo;
+                              },
+                              child: LatestProductsContainer(
+                                productName: cubit.selectedCategoryModel!.data!
+                                    .products[index].title,
+                                productPhoto: cubit.selectedCategoryModel!.data!
+                                    .products[index].images[0],
+                                productType: cubit.selectedCategoryModel!.data!
+                                    .products[index].categoryId!.name!,
+                                productPrice: cubit.selectedCategoryModel!.data!
+                                    .products[index].price!.finalPrice!
+                                    .toString(),
+                              ),
+                            ),
+                            HorizontalSpace(context.width * 0.045),
+                          ],
+                        );
+
+
                     },
                   ),
                 ),
-                SizedBox(
-                  width: 25.w,
-                ),
-                if (context.read<CategoryCubit>().hasMoreProducts == true)
-                  Center(child: SizedBox(
-                      height: 15.h,
-                      width: 15.h,
-                      child: CircularProgressIndicator())),
-
-
               ],
             ),
           );
