@@ -48,7 +48,7 @@ class EditProfileDetailsFields extends StatelessWidget {
               } else if(state is UpdatingAccountDetailsLoading){
                 return EditProfileDetailsShimmer();
               }else if(state is UpdatingAccountDetailsSuccess){
-                cubit.savedSuccessToast(context);
+                cubit.savedSuccessToast(context,AppStrings.savedSuccessfully);
                 return Column(
                   children: [
                     EditEmailTextField(

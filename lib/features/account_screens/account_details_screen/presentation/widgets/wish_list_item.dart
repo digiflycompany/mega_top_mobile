@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_option_item.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
@@ -32,7 +33,11 @@ class WishListItem extends StatelessWidget {
               return AccountOptionItem(
                 mainIcon: mainIcon ?? AppAssets.favourFilledIcon,
                 title: title ?? AppStrings.wishList,
-                onTap: onTap,
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.wishListPageRoute).then((_) {
+                    accountDetailsCubit.getAccountDetails();
+                  });
+                },
                 optionalData: optionalData ??
                     Container(
                       decoration: const BoxDecoration(
@@ -42,9 +47,11 @@ class WishListItem extends StatelessWidget {
                       width: 24.h,
                       height: 24.h,
                       child: Center(
-                        child: state is AccountDetailsNoInternetConnection?Transform.scale(
+                        child: state is AccountDetailsNoInternetConnection
+                            ? Transform.scale(
                             scale: 0.65,
-                            child: SvgPicture.asset(AppAssets.noInternetIcon)):state is AccountDetailsLoading
+                            child: SvgPicture.asset(AppAssets.noInternetIcon))
+                            : state is AccountDetailsLoading
                             ? SmallCircularProgressIndicator()
                             : Text(
                           accountDetailsCubit.wishListCount.toString(),

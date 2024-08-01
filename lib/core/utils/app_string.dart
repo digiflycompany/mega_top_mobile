@@ -14,6 +14,8 @@ class AppStrings {
   static const String completed = 'Completed';
   static const String signUpFailed = 'Sign Up Failed';
   static const String updatingPasswordFailed = 'Updating password Failed';
+  static const String removingProductFailed = 'Removing Product Failed';
+  static const String productRemovedSuccessfully = 'Product Removed Successfully';
   static const String orderDetailsEn = 'Order details';
   static const String wrongInfo = 'بيانات غير صحيحة أو مشاكل في الشبكة';
   static const String numberOfProductsEn = 'Number of products';
