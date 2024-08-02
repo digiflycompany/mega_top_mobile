@@ -271,6 +271,8 @@ class AppStrings {
   static const String yourShoppingCartIsEmptyEn = 'Your shopping cart is empty';
   static const String browseProductsLongTextEn =
       'Browse our products and add the products you want to buy to the shopping cart by clicking the add button.';
+  static const String browseProductsFavLongTextEn =
+      'Browse our products and add the products you like to\nyour favorite products list by clicking on the heart sign.';
   static const String sonyEn = 'Sony';
   static const String fromEn = 'From';
   static const String toEn = 'To';

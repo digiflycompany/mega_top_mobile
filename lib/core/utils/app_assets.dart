@@ -107,6 +107,7 @@ class AppAssets {
   static const String removeFromWishListIcon =
       "$svgPath/removed_from_wish_list_icon.svg";
   static const String favourFilledIcon = "$svgPath/favour_filled_icon.svg";
+  static const String emptyWishListIcon = "$svgPath/empty-wish_list_icon.svg";
   static const String cartButtonIcon = "$svgPath/cart_button_icon.svg";
   static const String checkMediumIcon = "$svgPath/check_medium_icon.svg";
   static const String hiLookImg = "$imagesPath/hiLook.png";
