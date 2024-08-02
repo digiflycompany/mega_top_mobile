@@ -12,7 +12,8 @@ class WishListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AccountDetailsCubit, AccountDetailsState>(
-      listener: (context, state){},
+      listener: (context, state) {},
+      //listener: (context, state)=>context.read<AccountDetailsCubit>().handleRemovingFromWishList(context,state),
   builder: (context, state) {
     AccountDetailsCubit cubit = context.read<AccountDetailsCubit>();
     if(state is AccountDetailsSuccess){
