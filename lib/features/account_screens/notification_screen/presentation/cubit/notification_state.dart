@@ -1,4 +1,4 @@
-import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/data/models/notification_model.dart';
 
 abstract class NotificationState {}
 
@@ -7,7 +7,7 @@ class NotificationInitial extends NotificationState {}
 class NotificationLoading extends NotificationState {}
 
 class NotificationSuccess extends NotificationState {
-  final UserModel user;
+  final NotificationModel user;
 
   NotificationSuccess(this.user);
 }

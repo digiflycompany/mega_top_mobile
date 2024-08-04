@@ -9,16 +9,18 @@ import 'package:mega_top_mobile/features/account_screens/notification_screen/pre
 
 class NotificationCard extends StatelessWidget {
   final String notificationImage;
-  final String notificationDiscountPercent;
+  final String notificationTitle;
   final String notificationDescription;
   final String notificationDate;
-  const NotificationCard({super.key, required this.notificationImage, required this.notificationDiscountPercent, required this.notificationDescription, required this.notificationDate,});
+  const NotificationCard({super.key, required this.notificationImage,
+    required this.notificationTitle,
+    required this.notificationDescription, required this.notificationDate,});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: context.height*0.41,
+      height: context.height*0.38,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(4.r),
@@ -37,7 +39,7 @@ class NotificationCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             NotificationCardImage(photo: notificationImage),
-            NotificationCardTitle(discountPercent: notificationDiscountPercent,),
+            NotificationCardTitle(title: notificationTitle,),
             NotificationCardDescription(description: notificationDescription),
             const Spacer(),
             NotificationCardDate(date: notificationDate)
