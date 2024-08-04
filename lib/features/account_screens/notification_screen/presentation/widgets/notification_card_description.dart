@@ -9,14 +9,16 @@ class NotificationCardDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: EdgeInsets.only(top: context.height*0.01),
-      child: Text(
-        description,
-        style: TextStyle(
-            color: AppColors.notificationDescriptionColor,
-            fontWeight: FontWeight.w500,
-            fontSize: 12.sp
+    return  Container(
+      height: context.height32,
+      child: FittedBox(
+        child: Text(
+          description,
+          style: TextStyle(
+              color: AppColors.notificationDescriptionColor,
+              fontWeight: FontWeight.w500,
+              fontSize: 12.sp
+          ),
         ),
       ),
     );

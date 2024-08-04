@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class NotificationModel {
   final bool? success;
   final List<Notification>? notifications;
@@ -69,8 +71,8 @@ class Notification {
       contentType: json['contentType'],
       adId: AdId.fromJson(json['adId']),
       sender: json['sender'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
+      createdAt: formatDateOnly(json['createdAt']),
+      updatedAt: formatDateOnly(json['updatedAt']),
     );
   }
 
@@ -155,8 +157,8 @@ class AdId {
       productId: json['productId'],
       isSlider: json['isSlider'],
       isActive: json['isActive'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
+      createdAt: formatDateOnly(json['createdAt']),
+      updatedAt: formatDateOnly(json['updatedAt']),
       descriptionAr: json['descriptionAr'],
       subtitleAr: json['subtitleAr'],
       titleAr: json['titleAr'],
@@ -233,4 +235,10 @@ class Sort {
     data['createdAt'] = this.createdAt;
     return data;
   }
+}
+
+String formatDateOnly(String dateTime) {
+  DateTime parsedDate = DateTime.parse(dateTime);
+  DateFormat formatter = DateFormat('yyyy-MM-dd'); // You can adjust the format as needed
+  return formatter.format(parsedDate);
 }

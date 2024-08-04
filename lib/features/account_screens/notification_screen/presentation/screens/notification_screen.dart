@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/widgets/notification_list.dart';
+import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_state.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/widgets/notification_card.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/widgets/shimmer_notification_card.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
-import '../../../../../core/utils/app_string.dart';
-import '../../../../home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
 class NotificationScreen extends StatelessWidget {
-  final bool isEmpty = false;
   const NotificationScreen({super.key});
 
   @override
@@ -19,18 +24,58 @@ class NotificationScreen extends StatelessWidget {
               AppStrings.notifications,
               favour: false,
             )),
-        body: isEmpty
-            ? const EmptyDataPage(
+        body: BlocConsumer<NotificationCubit, NotificationState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            if(state is NotificationLoading){
+              return ShimmerNotificationCard();
+            }
+            else if(state is NotificationSuccess && state.user.notifications!.length>0){
+              return Padding(
+                  padding: EdgeInsets.only(
+                      right: context.width * 0.022,
+                      left: context.width * 0.022,
+                      top: context.height * 0.016,
+                      bottom: context.height * 0.016),
+                  child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: state.user.notifications!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final notificationItem =state.user.notifications![index].adId;
+                      return Padding(
+                          padding: EdgeInsets.only(top: context.height*0.016,bottom: context.height*0.016,right: context.width*0.022,left: context.width*0.022),
+                          child: NotificationCard(
+                            notificationImage: notificationItem.image,
+                            notificationTitle: notificationItem.title,
+                            notificationDescription: notificationItem.description,
+                            notificationDate: notificationItem.updatedAt,
+                          )
+                      );
+                    },
+                  )
+              );
+            } else if(state is NotificationSuccess && state.user.notifications!.length==0){
+              return EmptyDataPage(
                 icon: AppAssets.emptyNotificationsIcon,
                 bigFontText: AppStrings.noNotifications,
-                smallFontText: AppStrings.emptyComparePageDescriptionEn,
-              )
-            : Padding(
-                padding: EdgeInsets.only(
-                    right: context.width * 0.022,
-                    left: context.width * 0.022,
-                    top: context.height * 0.016,
-                    bottom: context.height * 0.016),
-                child: const NotificationList()));
+                smallFontText: AppStrings.noWishListItemsEn,
+              );
+            } else if(state is NotificationNoInternetConnection){
+              return NoInternetScreen(
+                  buttonOnTap: ()=>context.read<NotificationCubit>().getUserNotification()
+              );
+            }
+            return Center(
+              child: Text(
+                AppStrings.serverError,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14.sp
+                ),
+              ),
+            );
+          },
+        ));
   }
 }

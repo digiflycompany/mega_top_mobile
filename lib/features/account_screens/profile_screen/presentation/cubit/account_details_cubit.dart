@@ -98,20 +98,23 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         emailController.text = user.data.user.email;
         phoneController.text = user.data.user.phoneNumber;
         wishListCount = user.data.wishlistCount;
-        unreadNotificationCount = user.data.unreadNotificationsCount['ad']!;
+        unreadNotificationCount = user.data.unreadNotificationsCount['ad'] ?? 0;
         emit(AccountDetailsSuccess(user));
       } else {
         emit(AccountDetailsFailure(
             user?.message ?? AppStrings.invalidCred));
+        //print(user!.message);
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(AccountDetailsNoInternetConnection());
       } else {
         emit(AccountDetailsFailure(e.toString()));
+        print(e.toString()); // Log the error message
       }
     }
   }
+
 
   Future<void> updateAccountDetails(String email ,String fullName ,String phone) async {
     emit(UpdatingAccountDetailsLoading());

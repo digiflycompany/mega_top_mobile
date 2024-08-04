@@ -8,6 +8,8 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/shipping_addresses_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/compare_screen/presentation/pages/compare_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/data/repositories/notification_repo.dart';
+import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/screens/notification_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
@@ -231,7 +233,10 @@ class RouteGenerator {
         );
       case Routes.notificationPageRoute:
         return buildPageRoute(
-          child: const NotificationScreen(),
+          child: BlocProvider(
+            create: (context) => NotificationCubit(NotificationsRepoImp())..getUserNotification(),
+            child: NotificationScreen(),
+          ),
         );
       case Routes.wishListPageRoute:
         return buildPageRoute(

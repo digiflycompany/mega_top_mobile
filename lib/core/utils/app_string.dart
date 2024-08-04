@@ -120,6 +120,7 @@ class AppStrings {
   static const String confirmPasswordEn = 'Confirm password';
   static const String confirmOrderEn = 'Confirm Order';
   static const String applyEn = 'Apply';
+  static const String serverError = 'Server Error';
   static const String sorryThereIsNoInternet = 'Sorry, there is no internet!';
   static const String pleaseCheckYourInternet = 'Please check your internet connection\n and try again';
   static const String resetEn = 'Reset';

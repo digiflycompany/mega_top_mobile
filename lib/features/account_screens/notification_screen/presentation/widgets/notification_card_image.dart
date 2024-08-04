@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
@@ -14,9 +15,10 @@ class NotificationCardImage extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
       ),
-      child: Image.asset(
-        photo,
-        fit: BoxFit.fill,
+      child: CachedNetworkImage(
+        imageUrl: photo,
+        //width: photoWidth ?? context.width * 0.16,
+        fit: BoxFit.cover,
       ),
     );
   }
