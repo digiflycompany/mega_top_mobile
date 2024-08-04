@@ -243,8 +243,6 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
     }
   }
 
-
-
   @override
   Future<void> close() {
     fullNameController.dispose();

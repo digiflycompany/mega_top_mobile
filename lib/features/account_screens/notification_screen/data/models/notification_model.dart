@@ -1,13 +1,15 @@
 class NotificationModel {
-  final bool success;
-  final NotificationData? data;
+  final bool? success;
+  final List<Notification>? notifications;
+  final Options? options;
   final String? message;
   final int? statusCode;
   final int? errorCode;
 
   NotificationModel({
-    required this.success,
-    this.data,
+    this.success,
+    this.notifications,
+    this.options,
     this.message,
     this.statusCode,
     this.errorCode,
@@ -15,8 +17,13 @@ class NotificationModel {
 
   factory NotificationModel.fromJson(Map<String, dynamic> json) {
     return NotificationModel(
-      success: json['success'] ?? false,
-      data: json.containsKey('data') ? NotificationData.fromJson(json['data']) : null,
+      success: json['success'],
+      notifications: json['data'] != null && json['data']['notifications'] != null
+          ? List<Notification>.from(json['data']['notifications'].map((x) => Notification.fromJson(x)))
+          : null,
+      options: json['data'] != null && json['data']['options'] != null
+          ? Options.fromJson(json['data']['options'])
+          : null,
       message: json['message'],
       statusCode: json['statusCode'],
       errorCode: json['errorCode'],
@@ -24,39 +31,15 @@ class NotificationModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'success': success,
-      'data': data?.toJson(),
-      'message': message,
-      'statusCode': statusCode,
-      'errorCode': errorCode,
-    };
-  }
-}
-
-class NotificationData {
-  final List<Notification> notifications;
-  final Options options;
-
-  NotificationData({
-    required this.notifications,
-    required this.options,
-  });
-
-  factory NotificationData.fromJson(Map<String, dynamic> json) {
-    return NotificationData(
-      notifications: (json['notifications'] as List)
-          .map((notification) => Notification.fromJson(notification))
-          .toList(),
-      options: Options.fromJson(json['options']),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'notifications': notifications.map((notification) => notification.toJson()).toList(),
-      'options': options.toJson(),
-    };
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.success != null) data['success'] = this.success;
+    if (this.notifications != null)
+      data['data'] = {'notifications': this.notifications!.map((x) => x.toJson()).toList()};
+    if (this.options != null) data['data']['options'] = this.options!.toJson();
+    if (this.message != null) data['message'] = this.message;
+    if (this.statusCode != null) data['statusCode'] = this.statusCode;
+    if (this.errorCode != null) data['errorCode'] = this.errorCode;
+    return data;
   }
 }
 
@@ -64,47 +47,43 @@ class Notification {
   final String id;
   final List<Target> targets;
   final String contentType;
-  final Ad ad;
+  final AdId adId;
   final String sender;
   final String createdAt;
   final String updatedAt;
-  final int version;
 
   Notification({
     required this.id,
     required this.targets,
     required this.contentType,
-    required this.ad,
+    required this.adId,
     required this.sender,
     required this.createdAt,
     required this.updatedAt,
-    required this.version,
   });
 
   factory Notification.fromJson(Map<String, dynamic> json) {
     return Notification(
       id: json['_id'],
-      targets: (json['targets'] as List).map((target) => Target.fromJson(target)).toList(),
+      targets: List<Target>.from(json['targets'].map((x) => Target.fromJson(x))),
       contentType: json['contentType'],
-      ad: Ad.fromJson(json['adId']),
+      adId: AdId.fromJson(json['adId']),
       sender: json['sender'],
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
-      version: json['__v'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      '_id': id,
-      'targets': targets.map((target) => target.toJson()).toList(),
-      'contentType': contentType,
-      'adId': ad.toJson(),
-      'sender': sender,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-      '__v': version,
-    };
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['_id'] = this.id;
+    data['targets'] = this.targets.map((x) => x.toJson()).toList();
+    data['contentType'] = this.contentType;
+    data['adId'] = this.adId.toJson();
+    data['sender'] = this.sender;
+    data['createdAt'] = this.createdAt;
+    data['updatedAt'] = this.updatedAt;
+    return data;
   }
 }
 
@@ -125,86 +104,82 @@ class Target {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'userId': userId,
-      'read': read,
-    };
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['userId'] = this.userId;
+    data['read'] = this.read;
+    return data;
   }
 }
 
-class Ad {
+class AdId {
   final String id;
   final String image;
   final String addedBy;
   final String title;
   final String subtitle;
   final String description;
-  final String titleAr;
-  final String subtitleAr;
-  final String descriptionAr;
   final String productId;
   final bool isSlider;
   final bool isActive;
   final String createdAt;
   final String updatedAt;
-  final int version;
+  final String? descriptionAr;
+  final String? subtitleAr;
+  final String? titleAr;
 
-  Ad({
+  AdId({
     required this.id,
     required this.image,
     required this.addedBy,
     required this.title,
     required this.subtitle,
     required this.description,
-    required this.titleAr,
-    required this.subtitleAr,
-    required this.descriptionAr,
     required this.productId,
     required this.isSlider,
     required this.isActive,
     required this.createdAt,
     required this.updatedAt,
-    required this.version,
+    this.descriptionAr,
+    this.subtitleAr,
+    this.titleAr,
   });
 
-  factory Ad.fromJson(Map<String, dynamic> json) {
-    return Ad(
+  factory AdId.fromJson(Map<String, dynamic> json) {
+    return AdId(
       id: json['_id'],
       image: json['image'],
       addedBy: json['addedBy'],
       title: json['title'],
       subtitle: json['subtitle'],
       description: json['description'],
-      titleAr: json['titleAr'],
-      subtitleAr: json['subtitleAr'],
-      descriptionAr: json['descriptionAr'],
       productId: json['productId'],
       isSlider: json['isSlider'],
       isActive: json['isActive'],
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
-      version: json['__v'],
+      descriptionAr: json['descriptionAr'],
+      subtitleAr: json['subtitleAr'],
+      titleAr: json['titleAr'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      '_id': id,
-      'image': image,
-      'addedBy': addedBy,
-      'title': title,
-      'subtitle': subtitle,
-      'description': description,
-      'titleAr': titleAr,
-      'subtitleAr': subtitleAr,
-      'descriptionAr': descriptionAr,
-      'productId': productId,
-      'isSlider': isSlider,
-      'isActive': isActive,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-      '__v': version,
-    };
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['_id'] = this.id;
+    data['image'] = this.image;
+    data['addedBy'] = this.addedBy;
+    data['title'] = this.title;
+    data['subtitle'] = this.subtitle;
+    data['description'] = this.description;
+    data['productId'] = this.productId;
+    data['isSlider'] = this.isSlider;
+    data['isActive'] = this.isActive;
+    data['createdAt'] = this.createdAt;
+    data['updatedAt'] = this.updatedAt;
+    if (this.descriptionAr != null) data['descriptionAr'] = this.descriptionAr;
+    if (this.subtitleAr != null) data['subtitleAr'] = this.subtitleAr;
+    if (this.titleAr != null) data['titleAr'] = this.titleAr;
+    return data;
   }
 }
 
@@ -231,12 +206,12 @@ class Options {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'limit': limit,
-      'skip': skip,
-      'sort': sort.toJson(),
-      'page': page,
-    };
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['limit'] = this.limit;
+    data['skip'] = this.skip;
+    data['sort'] = this.sort.toJson();
+    data['page'] = this.page;
+    return data;
   }
 }
 
@@ -254,8 +229,8 @@ class Sort {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'createdAt': createdAt,
-    };
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['createdAt'] = this.createdAt;
+    return data;
   }
 }
