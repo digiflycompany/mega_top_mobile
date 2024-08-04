@@ -53,4 +53,8 @@ class NotificationCubit extends Cubit<NotificationState> {
     }
   }
 
+  Future<void> close() {
+    return super.close();
+  }
+
 }
