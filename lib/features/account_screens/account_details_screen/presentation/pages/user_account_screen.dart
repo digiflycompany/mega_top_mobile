@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
@@ -17,7 +16,6 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/terms_and_conditions_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/user_information.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/wish_list_item.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 
 class UserAccountScreen extends StatelessWidget {
@@ -31,44 +29,27 @@ class UserAccountScreen extends StatelessWidget {
           child: const CustomFavouriteAppBar(AppStrings.accountEn)),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-        child: SingleChildScrollView(
+        child: const SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const UserInformation(),
-              const AccountScreenHeadline(text: AppStrings.accountEn,),
-              OrderItem(
-                onTap: () => Routes.ordersPageRoute.moveTo,
-              ),
+              UserInformation(),
+              AccountScreenHeadline(text: AppStrings.accountEn,),
+              OrderItem(),
               WishListItem(),
-              NotificationItem(
-                onTap: () => Routes.notificationPageRoute.moveTo,
-              ),
-              ShippingItem(onTap: () {
-                Routes.shippingAddressPageRoute.moveTo;
-              }),
-              CompareItem(
-                onTap: () {
-                  Routes.compareProductPageRoute.moveTo;
-                },
-              ),
-              const AccountScreenHeadline(text: AppStrings.settings,),
-              ProfileItem(onTap: () {
-                Routes.profilePageRoute.moveTo;
-              }),
-              const LanguageItem(),
-              const AccountScreenHeadline(text: AppStrings.contactUs,),
-              const CallUsItem(),
-              const AboutUsItem(),
-              const TermsAndConditionsItem(),
-              const PrivacyPolicyItem(),
-              SignOutItem(
-                onTap: (){
-                  PreferencesHelper.logOut();
-                  Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
-                },
-              ),
+              NotificationItem(),
+              ShippingItem(),
+              CompareItem(),
+              AccountScreenHeadline(text: AppStrings.settings,),
+              ProfileItem(),
+              LanguageItem(),
+              AccountScreenHeadline(text: AppStrings.contactUs,),
+              CallUsItem(),
+              AboutUsItem(),
+              TermsAndConditionsItem(),
+              PrivacyPolicyItem(),
+              SignOutItem(),
             ],
           ),
         ),

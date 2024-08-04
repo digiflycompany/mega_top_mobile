@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_option_item.dart';
 
 class CompareItem extends StatelessWidget {
   const CompareItem(
-      {super.key, this.mainIcon, this.title, this.optionalData, this.onTap});
+      {super.key, this.mainIcon, this.title, this.optionalData});
 
   final String? mainIcon;
   final String? title;
   final Widget? optionalData;
-  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class CompareItem extends StatelessWidget {
       child: AccountOptionItem(
         mainIcon: mainIcon ?? AppAssets.compare,
         title: title ?? AppStrings.compareProducts,
-        onTap: onTap,
+        onTap: ()=>Routes.compareProductPageRoute.moveTo,
       ),
     );
   }
