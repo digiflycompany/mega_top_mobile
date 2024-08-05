@@ -2,7 +2,7 @@ class EndPoints {
   EndPoints._internal();
 
   /// BASE
-  static const String baseUrl = 'https://api.megatop.com.eg';
+  static const String baseUrl = 'http://144.76.110.163:3005';
   static const String loginAPI = '$baseUrl/api/v1/users/login';
   static const String signUpAPI = '$baseUrl/api/v1/users/signup';
   static const String verifyEmailAPI = '$baseUrl/api/v1/users/verify-email';
@@ -23,7 +23,7 @@ class EndPoints {
   static const String myOrdersAPI =
       'https://megatop.com.eg/wp-json/wc/v3/orders';
   static const String lastOfferAPI =
-      'https://megatop.com.eg/wp-json/custom/v2/latest_offer';
+      'http://144.76.110.163:3005/api/v1/products?isOffer=true';
   static const String latestProductsAPI =
       'https://megatop.com.eg/wp-json/custom/v2/latest_products';
   static const String categoriesAPI = '$baseUrl/api/v1/categories/';

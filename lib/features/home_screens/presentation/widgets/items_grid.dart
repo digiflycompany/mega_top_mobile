@@ -15,27 +15,29 @@ import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/spacer.dart';
 
 class ProductsGridContainer extends StatelessWidget {
-  final int index;
 
-  final String? discountPercent;
-  final bool? discount;
   const ProductsGridContainer(
       {super.key,
       required this.index,
       this.discount = false,
-      this.discountPercent});
+      this.discountPercent,
+      this.product,  this.onTap});
+
+  final int index;
+  final String? discountPercent;
+  final bool? discount;
+  final product;
+  final Function ? onTap;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CategoryCubit, CategoryState>(
       listener: (BuildContext context, CategoryState state) {},
       builder: (BuildContext context, CategoryState state) {
-        final cubit = context.read<CategoryCubit>();
-
+     //   final cubit = context.read<CategoryCubit>();
         return GestureDetector(
           onTap: () {
-            cubit.setCategoryProductIndex(selectedProductIndex: index);
-            Routes.categoryProductDetailsPageRoute.moveTo;
+              onTap!();
           },
           child: Container(
             width: context.width * 0.43,
@@ -76,8 +78,7 @@ class ProductsGridContainer extends StatelessWidget {
                             padding:
                                 EdgeInsets.only(top: context.height * 0.012),
                             child: CachedNetworkImage(
-                              imageUrl: cubit.selectedCategoryModel!.data!
-                                  .products[index].images[0],
+                              imageUrl: product.images[0],
                               width: context.width * 0.2,
                             ),
                           ),
@@ -118,7 +119,7 @@ class ProductsGridContainer extends StatelessWidget {
                         Align(
                           alignment: AlignmentDirectional.topStart,
                           child: Text(
-                            cubit.selectedCategoryModel!.data!.products[index].title!,
+                            product.title!,
                             maxLines: 2,
                             style: TextStyle(
                                 color: Colors.black,
@@ -130,7 +131,7 @@ class ProductsGridContainer extends StatelessWidget {
                         Align(
                           alignment: AlignmentDirectional.topStart,
                           child: Text(
-                            cubit.selectedCategoryModel!.data!.products[index].categoryId!.name!,
+                            product.categoryId!.name!,
                             style: TextStyle(
                                 color: AppColors.greyTextColor,
                                 fontWeight: FontWeight.w600,
@@ -143,7 +144,7 @@ class ProductsGridContainer extends StatelessWidget {
                             const AvailableContainer(),
                             const Spacer(),
                             Text(
-                              cubit.selectedCategoryModel!.data!.products[index].price!.finalPrice!.toString(),
+                              product.price!.finalPrice!.toString(),
                               style: TextStyle(
                                   color: AppColors.primaryColor,
                                   fontSize: 12.sp,
