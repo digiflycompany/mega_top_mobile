@@ -212,30 +212,30 @@ class CategoryCubit extends Cubit<CategoryState> {
 
 
 
-  Future<void> addToCart(int customerId, int productId, int quantity) async {
-    emit(addToCartLoading());
-    try {
-      categoriesRepo.makeOrder(customerId, productId, quantity);
-      emit(addToCartSuccess());
-    } catch (e) {
-      emit(addToCartFailure(e.toString()));
-    }
-  }
+  // Future<void> addToCart(int customerId, int productId, int quantity) async {
+  //   emit(addToCartLoading());
+  //   try {
+  //     categoriesRepo.makeOrder(customerId, productId, quantity);
+  //     emit(addToCartSuccess());
+  //   } catch (e) {
+  //     emit(addToCartFailure(e.toString()));
+  //   }
+  // }
 
   OrderList? orders;
-  Future<void> getMyOrders(int customerID) async {
-    emit(myOrdersLoading());
-    try {
-      orders = await categoriesRepo.getMyOrders(customerID);
-      if (orders!.isNotNull) {
-        emit(myOrdersSuccess());
-      } else {
-        emit(myOrdersFailure('No categories found'));
-      }
-    } catch (e) {
-      emit(myOrdersFailure(e.toString()));
-    }
-  }
+  // Future<void> getMyOrders(int customerID) async {
+  //   emit(myOrdersLoading());
+  //   try {
+  //     orders = await categoriesRepo.getMyOrders(customerID);
+  //     if (orders!.isNotNull) {
+  //       emit(myOrdersSuccess());
+  //     } else {
+  //       emit(myOrdersFailure('No categories found'));
+  //     }
+  //   } catch (e) {
+  //     emit(myOrdersFailure(e.toString()));
+  //   }
+  // }
 
   ProductDetailsModel? productDetailsModel;
   Future<void> getProductsDetails(int productID) async {
