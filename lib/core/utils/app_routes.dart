@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
-import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_details_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/shipping_addresses_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/compare_screen/presentation/pages/compare_screen.dart';
@@ -223,7 +223,7 @@ class RouteGenerator {
         return buildPageRoute(
           child: BlocProvider(
             create: (context) => AddressCubit(),
-            child: AddNewAddressDetailsScreen(),
+            child: AddNewAddressScreen(),
           ),
         );
       case Routes.editAddressDetailsPageRoute:

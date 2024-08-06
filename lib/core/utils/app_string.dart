@@ -157,6 +157,7 @@ class AppStrings {
   static const String confirmYourNewPasswordEn = 'Confirm your new password';
   static const String congratulationsEn = 'Congratulations';
   static const String city = 'City';
+  static const String cityCanNotBeEmpty = 'City can not be empty';
   static const String selectYourCity = 'Select your city';
   static const String addressNasrCityEn =
       'Nasr City District, Abbas Al Akkad Street, 222ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss';
@@ -358,8 +359,8 @@ class AppStrings {
   static const String addNewAddress = 'Add New Address';
   static const String address = 'Address';
   static const String addressHint = "Center - Governorate - Location - Place";
-  static const String additionalAddressDetails = "Additional address details";
-  static const String additionalAddressDetailsHint = "Apartment Number - Floor number - Notes";
+  static const String addressDetails = "Address details";
+  static const String addressDetailsHint = "Apartment Number - Floor number - Notes";
   static const String editAddress = 'Edit Address';
   static const String work = 'Work';
   static const String removeItem = 'Remove item :';
