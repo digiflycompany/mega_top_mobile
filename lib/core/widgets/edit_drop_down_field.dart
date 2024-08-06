@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 
@@ -12,6 +13,7 @@ class EditDropdownField extends StatelessWidget {
   final String? hintText;
   final String? selectedValue;
   final ValueChanged<String?>? onChanged;
+  final String? Function(String?)? validator;
 
   const EditDropdownField({
     super.key,
@@ -21,6 +23,7 @@ class EditDropdownField extends StatelessWidget {
     this.hintText,
     this.selectedValue,
     this.onChanged,
+    this.validator,
   });
 
   @override
@@ -62,6 +65,12 @@ class EditDropdownField extends StatelessWidget {
             ),
           ),
           onChanged: onChanged,
+          validator: validator ?? (value) {
+            if (value == null || value.isEmpty) {
+              return AppStrings.cityCanNotBeEmpty;
+            }
+            return null;
+          },
         ),
       ],
     );
