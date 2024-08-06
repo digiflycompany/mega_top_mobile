@@ -45,7 +45,6 @@ class ShippingAddressDetailsList extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   final card = shippingCard[index];
                   return ShippingDetailsCard(
-                    deliveryPlace: card.deliveryPlace,
                     customerName: card.customerName,
                     customerAddress: card.customerAddress,
                     customerCity: card.customerPhone,
@@ -61,7 +60,7 @@ class ShippingAddressDetailsList extends StatelessWidget {
         VerticalSpace(context.height * 0.012),
         PrimaryOutlinedButton(
           text: AppStrings.addNewAddressEn,
-          onTap: ()=> Routes.addNewAddressPageRoute.moveTo,
+          onTap: ()=> Routes.addNewAddressDetailsPageRoute.moveTo,
         ),
         VerticalSpace(context.height * 0.069),
       ],

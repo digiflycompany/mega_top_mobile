@@ -49,7 +49,6 @@ class ShippingDetailsCardList extends StatelessWidget {
                 return GestureDetector(
                   onTap: () => cartCubit.selectCard(index),
                   child: ShippingDetailsCard(
-                    deliveryPlace: card.deliveryPlace,
                     customerName: card.customerName,
                     customerAddress: card.customerAddress,
                     customerCity: card.customerPhone,

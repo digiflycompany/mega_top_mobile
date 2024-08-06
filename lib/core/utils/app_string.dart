@@ -156,6 +156,8 @@ class AppStrings {
   static const String enterYourNewPasswordEn = 'Enter your new password';
   static const String confirmYourNewPasswordEn = 'Confirm your new password';
   static const String congratulationsEn = 'Congratulations';
+  static const String city = 'City';
+  static const String selectYourCity = 'Select your city';
   static const String addressNasrCityEn =
       'Nasr City District, Abbas Al Akkad Street, 222ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss';
   static const String telephoneAddressEn = 'Cairo';
@@ -346,12 +348,18 @@ class AppStrings {
   static const String profileDetails = 'Profile Details';
   static const String profileDetailsFailed = 'Profile Details Failed';
   static const String firstName = 'First name';
+  static const String name = 'Name';
+  static const String enterYourNameHere = 'Enter your name here';
   static const String lastName = 'Last name';
   static const String save = 'Save';
   static const String saveAddress = 'Save Address';
   static const String passwordSettings = 'Password Settings';
   static const String deleteAccount = 'Delete Account';
   static const String addNewAddress = 'Add New Address';
+  static const String address = 'Address';
+  static const String addressHint = "Center - Governorate - Location - Place";
+  static const String additionalAddressDetails = "Additional address details";
+  static const String additionalAddressDetailsHint = "Apartment Number - Floor number - Notes";
   static const String editAddress = 'Edit Address';
   static const String work = 'Work';
   static const String removeItem = 'Remove item :';
