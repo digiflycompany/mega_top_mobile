@@ -10,11 +10,13 @@ class CustomerAddressShippingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      address!,
+      address ?? '',
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
         color: AppColors.greyTextColor,
         fontSize: 14.sp,
         fontWeight: FontWeight.w500,
+        height: 1.5.h
       ),
     );
   }

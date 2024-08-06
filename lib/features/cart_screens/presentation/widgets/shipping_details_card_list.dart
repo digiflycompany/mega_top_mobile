@@ -52,7 +52,7 @@ class ShippingDetailsCardList extends StatelessWidget {
                     deliveryPlace: card.deliveryPlace,
                     customerName: card.customerName,
                     customerAddress: card.customerAddress,
-                    customerPhone: card.customerPhone,
+                    customerCity: card.customerPhone,
                     isSelected: isSelected,
                   ),
                 );
