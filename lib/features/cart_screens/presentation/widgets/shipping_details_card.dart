@@ -7,7 +7,6 @@ import '../../../../core/utils/spacer.dart';
 import 'customer_details_shipping_card.dart';
 
 class ShippingDetailsCard extends StatelessWidget {
-  final String? deliveryPlace;
   final String? customerName;
   final String? customerAddress;
   final String? customerCity;
@@ -16,7 +15,6 @@ class ShippingDetailsCard extends StatelessWidget {
   final Function()? removeOnTap;
   const ShippingDetailsCard(
       {super.key,
-        this.deliveryPlace,
         this.customerName,
         this.customerAddress,
         this.customerCity,
