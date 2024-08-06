@@ -91,7 +91,19 @@ class CategoryCubit extends Cubit<CategoryState> {
         ),
       ),
       builder: (_) {
-        return const SortBottomSheet();
+        return SortBottomSheet(
+          onTapDefault: () {
+            page = 1;
+            getSelectedCategories(
+                selectedCategoryId!);
+          },
+          onTapFromHighPrice: () {
+            sortingFromHighPrice;
+          },
+          onTapFromLowPrice: (){
+            sortingFromLowPrice;
+          },
+        );
       },
     );
   }
@@ -159,8 +171,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   final TextEditingController maxPriceController = TextEditingController();
 
   int page = 1;
-  int ? minPrice;
-  int ? maxPrice;
+  int? minPrice;
+  int? maxPrice;
 
   SelectedCategoryModel? selectedCategoryModel;
 
@@ -168,8 +180,11 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(SelectedCategoryLoading());
     try {
       selectedCategoryModel = null;
-      selectedCategoryModel =
-          await categoriesRepo.getSelectedCategories(selectedCategory: selectedId,page: page,minPrice: minPrice,maxPrice: maxPrice);
+      selectedCategoryModel = await categoriesRepo.getSelectedCategories(
+          selectedCategory: selectedId,
+          page: page,
+          minPrice: minPrice,
+          maxPrice: maxPrice);
       emit(SelectedCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");
@@ -177,14 +192,19 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  bool ? hasMoreProducts = false;
+  bool? hasMoreProducts = false;
 
   Future<void> getMoreProduct(String selectedId) async {
     emit(SelectedCategoryLoading());
     try {
-      SelectedCategoryModel? moreProducts = await categoriesRepo.
-      getSelectedCategories(selectedCategory: selectedId,page: page++,minPrice: minPrice,maxPrice: maxPrice);
-      selectedCategoryModel!.data!.products.addAll(moreProducts!.data!.products);
+      SelectedCategoryModel? moreProducts =
+          await categoriesRepo.getSelectedCategories(
+              selectedCategory: selectedId,
+              page: page++,
+              minPrice: minPrice,
+              maxPrice: maxPrice);
+      selectedCategoryModel!.data!.products
+          .addAll(moreProducts!.data!.products);
       hasMoreProducts = moreProducts.data!.products.isNotEmpty;
       print("hasMoreProducts");
       print(hasMoreProducts);
@@ -195,29 +215,26 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-
-
-
   int selectedProductIndex = 0;
 
   void setCategoryProductIndex({required int selectedProductIndex}) {
     this.selectedProductIndex = selectedProductIndex;
   }
 
-
-  void sortingFromHighPrice(){
-    selectedCategoryModel!.data!.products.sort((a,b)=> b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+  void sortingFromHighPrice() {
+    selectedCategoryModel!.data!.products
+        .sort((a, b) => b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
   }
 
-  void sortingFromLowPrice(){
-    selectedCategoryModel!.data!.products.sort((a,b)=> a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
+  void sortingFromLowPrice() {
+    selectedCategoryModel!.data!.products
+        .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
   }
 
-  int getDiscountPercentage({required int finalPrice,required int originPrice}){
-    return 1-(finalPrice/originPrice).toInt();
+  int getDiscountPercentage(
+      {required int finalPrice, required int originPrice}) {
+    return 1 - (finalPrice / originPrice).toInt();
   }
-
-
 
   Future<void> addToCart(int customerId, int productId, int quantity) async {
     emit(addToCartLoading());
@@ -230,6 +247,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   OrderList? orders;
+
   Future<void> getMyOrders(int customerID) async {
     emit(myOrdersLoading());
     try {
@@ -245,6 +263,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   ProductDetailsModel? productDetailsModel;
+
   Future<void> getProductsDetails(int productID) async {
     emit(productDetailsLoading());
     try {

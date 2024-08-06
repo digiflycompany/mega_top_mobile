@@ -73,6 +73,29 @@ class OffersCubit extends Cubit<OffersState> {
     }
   }
 
+
+  int selectedProductIndex = 0;
+
+  void setCategoryProductIndex({required int selectedProductIndex}) {
+    this.selectedProductIndex = selectedProductIndex;
+  }
+
+  void sortingFromHighPrice() {
+    offerModel!.data!.products
+        .sort((a, b) => b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+  }
+
+  void sortingFromLowPrice() {
+    offerModel!.data!.products
+        .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
+  }
+
+  int getDiscountPercentage(
+      {required int finalPrice, required int originPrice}) {
+    return 1 - (finalPrice / originPrice).toInt();
+  }
+
+
   void showSortBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -84,7 +107,14 @@ class OffersCubit extends Cubit<OffersState> {
         ),
       ),
       builder: (_) {
-        return const SortBottomSheet();
+        return SortBottomSheet(
+          onTapDefault: () {
+            page = 1;
+            getOffers();
+          },
+          onTapFromHighPrice: sortingFromHighPrice,
+          onTapFromLowPrice: sortingFromLowPrice,
+        );
       },
     );
   }
@@ -143,8 +173,20 @@ class OffersCubit extends Cubit<OffersState> {
     }
   }
 
-  int getDiscountPercentage({required int finalPrice,required int originPrice}){
-    return 1-(finalPrice/originPrice).toInt();
+  bool ? hasMoreProducts = false;
+
+  Future<void> getMoreProduct() async {
+    emit(OffersLoading());
+    try {
+      OfferModel? moreProducts = await offersRepo.
+      getOffers(page: page++);
+      offerModel!.data!.products.addAll(moreProducts!.data!.products);
+      print("ooooooooooooooooooooof");
+      hasMoreProducts = moreProducts.data!.products.isNotEmpty;
+      emit(OffersSuccess());
+    } catch (e) {
+      emit(OffersFailure(e.toString()));
+    }
   }
 
 

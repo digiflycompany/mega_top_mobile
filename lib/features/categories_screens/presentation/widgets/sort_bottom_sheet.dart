@@ -8,7 +8,12 @@ import '../../../../core/utils/spacer.dart';
 import 'bottom_sheet_app_bar.dart';
 
 class SortBottomSheet extends StatelessWidget {
-  const SortBottomSheet({super.key});
+  const SortBottomSheet({super.key, required this.onTapDefault, required this.onTapFromHighPrice, required this.onTapFromLowPrice});
+
+  final Function onTapDefault;
+  final Function onTapFromHighPrice;
+  final Function onTapFromLowPrice;
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,24 +34,21 @@ class SortBottomSheet extends StatelessWidget {
                       value: AppStrings.defaultEn,
                       label: AppStrings.defaultEn,
                       description: '',
-                      onTap:(){
-                        context.read<CategoryCubit>().page = 1;
-                        context.read<CategoryCubit>().getSelectedCategories(context.read<CategoryCubit>().selectedCategoryId!);
-                      } ,
+                      onTap:onTapDefault ,
                     ),
                     VerticalSpace(context.height * 0.01),
                      SortBottomSheetAdaptiveRadioButton(
                       value: AppStrings.fromHighToLowEn,
                       label: AppStrings.priceEn,
                       description: AppStrings.fromHighToLowEn,
-                       onTap: context.read<CategoryCubit>().sortingFromHighPrice,
+                       onTap: onTapFromHighPrice,
                     ),
                     VerticalSpace(context.height * 0.01),
                     SortBottomSheetAdaptiveRadioButton(
                       value: AppStrings.fromLowToHighEn,
                       label: AppStrings.price2En,
                       description: AppStrings.fromLowToHighEn,
-                      onTap: context.read<CategoryCubit>().sortingFromLowPrice,
+                      onTap: onTapFromLowPrice,
                     ),
                   ],
                 ),
