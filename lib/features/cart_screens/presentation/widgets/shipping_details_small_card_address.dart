@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import '../../../../core/utils/spacer.dart';
-import 'delivery_title.dart';
+import 'customer_name.dart';
 
 class ShippingDetailsSmallCardAddress extends StatelessWidget {
-  final String? deliveryPlace;
+  final String? customerName;
   final String? address;
   final String? phone;
   const ShippingDetailsSmallCardAddress(
-      {super.key, this.deliveryPlace, this.address, this.phone});
+      {super.key, this.customerName, this.address, this.phone});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class ShippingDetailsSmallCardAddress extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        DeliveryTitle(
-          text: deliveryPlace,
+        CustomerName(
+          text: customerName,
           fontSize: 14.sp,
         ),
         VerticalSpace(context.height * 0.006),

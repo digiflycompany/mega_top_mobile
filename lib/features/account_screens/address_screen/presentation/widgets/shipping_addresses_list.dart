@@ -48,7 +48,7 @@ class ShippingAddressDetailsList extends StatelessWidget {
                     deliveryPlace: card.deliveryPlace,
                     customerName: card.customerName,
                     customerAddress: card.customerAddress,
-                    customerPhone: card.customerPhone,
+                    customerCity: card.customerPhone,
                     editOnTap: () =>
                         globalCubit.showPrimaryToast(context,AppStrings.addressHasBeenEdited),
                     removeOnTap: () => addressCubit.showRemoveItemDialog(context),

@@ -25,7 +25,7 @@ class ShippingDetailsSmallDescription extends StatelessWidget {
                   SvgPicture.asset(AppAssets.locationOutlinedBlueIcon),
                   HorizontalSpace(context.width*0.022),
                   const ShippingDetailsSmallCardAddress(
-                    deliveryPlace: AppStrings.homeEn,
+                    customerName: AppStrings.homeEn,
                     address: AppStrings.addressNasrCityEn,
                     phone: AppStrings.telephoneAddressEn,
                   )

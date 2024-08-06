@@ -10,7 +10,7 @@ class ShippingDetailsCard extends StatelessWidget {
   final String? deliveryPlace;
   final String? customerName;
   final String? customerAddress;
-  final String? customerPhone;
+  final String? customerCity;
   final bool isSelected;
   final Function()? editOnTap;
   final Function()? removeOnTap;
@@ -19,7 +19,7 @@ class ShippingDetailsCard extends StatelessWidget {
         this.deliveryPlace,
         this.customerName,
         this.customerAddress,
-        this.customerPhone,
+        this.customerCity,
         this.isSelected=false, this.editOnTap, this.removeOnTap});
 
   @override
@@ -28,7 +28,7 @@ class ShippingDetailsCard extends StatelessWidget {
       padding: EdgeInsets.only(bottom: context.width * 0.045),
       child: Container(
         width: double.infinity,
-        height: context.height * 0.252,
+        height: context.height * 0.23,
         decoration: BoxDecoration(
           color: isSelected ? AppColors.iconsBackgroundColor : Colors.white,
           border: Border.all(
@@ -56,7 +56,7 @@ class ShippingDetailsCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ShippingCardOptions(
-                deliveryPlace: deliveryPlace,
+                customerName: customerName,
                 editOnTap: editOnTap,
                 removeOnTap: removeOnTap,
               ),
@@ -65,11 +65,10 @@ class ShippingDetailsCard extends StatelessWidget {
                 thickness: 1.w,
                 color: AppColors.onboardingBackgroundColor,
               ),
-              const Spacer(),
+              VerticalSpace(context.height * 0.0165),
               CustomerDetailsShippingAddress(
-                customerName: customerName,
                 customerAddress: customerAddress,
-                customerPhone: customerPhone,
+                customerCity: customerCity,
               )
             ],
           ),

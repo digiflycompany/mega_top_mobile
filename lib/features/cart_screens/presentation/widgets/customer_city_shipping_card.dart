@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_color.dart';
 
-class CustomerPhoneShippingCard extends StatelessWidget {
-  final String? phone;
-  const CustomerPhoneShippingCard({super.key, this.phone});
+class CustomerCityShippingCard extends StatelessWidget {
+  final String? city;
+  const CustomerCityShippingCard({super.key, this.city});
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      phone!,
+      "City: $city",
       style: TextStyle(
         color: AppColors.greyTextColor,
         fontSize: 14.sp,

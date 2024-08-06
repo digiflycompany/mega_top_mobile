@@ -157,8 +157,8 @@ class AppStrings {
   static const String confirmYourNewPasswordEn = 'Confirm your new password';
   static const String congratulationsEn = 'Congratulations';
   static const String addressNasrCityEn =
-      'Nasr City District, Abbas Al Akkad Street, 222';
-  static const String telephoneAddressEn = 'T: 01020889544';
+      'Nasr City District, Abbas Al Akkad Street, 222ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss';
+  static const String telephoneAddressEn = 'Cairo';
   static const String customerNameEn = 'Mohamed Nashaat';
   static const String ourProductsEn = 'Our products';
   static const String bestSellerEn = 'Best seller';
