@@ -33,7 +33,7 @@ class ShippingAddressDetailsList extends StatelessWidget {
                   return ShippingDetailsCard(
                     customerName: addressItem.name,
                     customerAddress: addressItem.firstLine,
-                    customerCity: addressItem.secondLine,
+                    customerCity: addressItem.cityId.name,
                     editOnTap: () {},
                     removeOnTap: () {},
                   );

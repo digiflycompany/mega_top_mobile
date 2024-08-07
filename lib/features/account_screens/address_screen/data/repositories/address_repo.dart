@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/data/models/cities_model.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/data/models/user_address_model.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/models/user_addresses_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class AddressRepo {
   Future<UserAddressesModel?> getUserAddresses();
+  Future<CitiesModel?> getCities();
+  Future<UserAddressModel?> addNewAddress(String name, String address, String addressDetails, String cityId);
 }
 
 class AddressRepoImp implements AddressRepo {
@@ -21,6 +25,45 @@ class AddressRepoImp implements AddressRepo {
       }
     } catch (e) {
       print('Error during getting user Addresses: $e');
+      throw e;
+    }
+    return null;
+  }
+
+  @override
+  Future<CitiesModel?> getCities() async {
+    try {
+      Response? response = await DioHelper.getData(
+        url: EndPoints.citiesAPI,
+      );
+      if (response?.statusCode == 200 || response?.statusCode == 401) {
+        return CitiesModel.fromJson(response?.data);
+      }
+    } catch (e) {
+      print('Error during getting cities: $e');
+      throw e;
+    }
+    return null;
+  }
+
+  @override
+  Future<UserAddressModel?> addNewAddress(String name, String address, String addressDetails, String cityId) async {
+    try {
+      Response? response = await DioHelper.postData(
+        url: EndPoints.addAddressAPI,
+        data: {
+          "name": name,
+          "firstLine": address,
+          "cityId": cityId,
+          "secondLine": addressDetails,
+        },
+        options: await DioHelper.getOptions(),
+      );
+      if (response?.statusCode == 200 || response?.statusCode == 401) {
+        return UserAddressModel.fromJson(response?.data);
+      }
+    } catch (e) {
+      print('Error during adding new address: $e');
       throw e;
     }
     return null;
