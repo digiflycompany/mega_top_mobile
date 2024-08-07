@@ -12,6 +12,7 @@ class SortBottomSheetAdaptiveRadioButton extends StatelessWidget {
   final String label;
   final String? description;
   final Function? onTap;
+  final cubit;
 
   const SortBottomSheetAdaptiveRadioButton({
     Key? key,
@@ -19,18 +20,19 @@ class SortBottomSheetAdaptiveRadioButton extends StatelessWidget {
     required this.label,
     this.description,
     this.onTap,
+    required this.cubit,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
-        CategoryCubit categoryCubit = context.read<CategoryCubit>();
+    //    CategoryCubit categoryCubit = context.read<CategoryCubit>();
         return GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            if(value != categoryCubit.selectedValue) {
-              categoryCubit.selectOption(value);
+            if(value != cubit.selectedValue) {
+              cubit.selectOption(value);
               onTap!();
               Navigator.pop(context);
             }
@@ -48,10 +50,10 @@ class SortBottomSheetAdaptiveRadioButton extends StatelessWidget {
                     activeColor: AppColors.primaryColor,
                     focusColor: AppColors.primaryColor,
                     value: value,
-                    groupValue: categoryCubit.selectedValue,
-                    onChanged: (String? newValue) {
+                    groupValue: cubit.selectedValue,
+                    onChanged: (dynamic newValue) {
                       if (newValue != null) {
-                        categoryCubit.selectOption(newValue);
+                        cubit.selectOption(newValue);
                       }
                     },
                   ),

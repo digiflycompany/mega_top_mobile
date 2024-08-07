@@ -7,15 +7,8 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_state
 
 import '../../../home_screens/presentation/widgets/items_grid.dart';
 
-class CategoryItemsGridView extends StatefulWidget {
+class CategoryItemsGridView extends StatelessWidget {
   const CategoryItemsGridView({super.key});
-
-  @override
-  State<CategoryItemsGridView> createState() => _CategoryItemsGridViewState();
-}
-
-class _CategoryItemsGridViewState extends State<CategoryItemsGridView> {
-
 
   @override
   Widget build(BuildContext context) {

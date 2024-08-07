@@ -83,11 +83,14 @@ class OffersCubit extends Cubit<OffersState> {
   void sortingFromHighPrice() {
     offerModel!.data!.products
         .sort((a, b) => b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+   // emit(OffersSuccess());
+
   }
 
   void sortingFromLowPrice() {
     offerModel!.data!.products
         .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
+  //  emit(OffersSuccess());
   }
 
   int getDiscountPercentage(
@@ -112,8 +115,13 @@ class OffersCubit extends Cubit<OffersState> {
             page = 1;
             getOffers();
           },
-          onTapFromHighPrice: sortingFromHighPrice,
-          onTapFromLowPrice: sortingFromLowPrice,
+          onTapFromHighPrice: (){
+            sortingFromHighPrice();
+          },
+          onTapFromLowPrice:(){
+            sortingFromLowPrice();
+          } ,
+          cubit: getCubit(context),
         );
       },
     );

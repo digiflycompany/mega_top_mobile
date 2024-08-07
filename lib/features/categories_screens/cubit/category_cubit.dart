@@ -103,6 +103,7 @@ class CategoryCubit extends Cubit<CategoryState> {
           onTapFromLowPrice: (){
             sortingFromLowPrice();
           },
+          cubit: getCubit(context),
         );
       },
     );
