@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/data/repositories/address_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/address_label_option_item.dart';
@@ -32,7 +33,7 @@ class EditAddressDetailsScreen extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: BlocProvider<AddressCubit>(
-            create: (BuildContext context) => AddressCubit(),
+            create: (BuildContext context) => AddressCubit(AddressRepoImp()),
             child: BlocConsumer<AddressCubit, AddressState>(
               listener: (BuildContext context, AddressState state) {},
               builder: (BuildContext context, AddressState state) {
