@@ -23,8 +23,8 @@ class EndPoints {
       '$baseUrl/api/v1/addresses/';
   static const String addAddressAPI =
       '$baseUrl/api/v1/addresses';
-  static const String lastOfferAPI =
-      'https://megatop.com.eg/wp-json/custom/v2/latest_offer';
+  static const String citiesAPI =
+      '$baseUrl/api/v1/cities?limit=100';
   static const String latestProductsAPI =
       'https://megatop.com.eg/wp-json/custom/v2/latest_products';
   static const String categoriesAPI = '$baseUrl/api/v1/categories/';

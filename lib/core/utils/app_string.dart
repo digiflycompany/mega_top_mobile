@@ -158,6 +158,10 @@ class AppStrings {
   static const String congratulationsEn = 'Congratulations';
   static const String city = 'City';
   static const String cityCanNotBeEmpty = 'City can not be empty';
+  static const String pleaseEnterYourAddress = 'Please enter your address';
+  static const String pleaseChooseYourCity = 'Please choose your city';
+  static const String pleaseEnterYourName = 'Please enter your name';
+  static const String pleaseEnterYourAddressDetails = 'Please enter your address details';
   static const String selectYourCity = 'Select your city';
   static const String addressNasrCityEn =
       'Nasr City District, Abbas Al Akkad Street, 222ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss';

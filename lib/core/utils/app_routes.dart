@@ -222,10 +222,7 @@ class RouteGenerator {
         );
       case Routes.addNewAddressDetailsPageRoute:
         return buildPageRoute(
-          child: BlocProvider(
-            create: (context) => AddressCubit(AddressRepoImp()),
-            child: AddNewAddressScreen(),
-          ),
+          child: const AddNewAddressScreen(),
         );
       case Routes.editAddressDetailsPageRoute:
         return buildPageRoute(

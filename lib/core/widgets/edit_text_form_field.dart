@@ -6,10 +6,18 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 class EditTextField extends StatelessWidget {
   final Widget? suffix;
   final TextEditingController? controller;
-  const EditTextField({super.key, this.suffix, required this.title, this.controller, this.hintText});
-
   final String title;
   final String? hintText;
+  final String? Function(String?)? validator;
+
+  const EditTextField({
+    super.key,
+    this.suffix,
+    required this.title,
+    this.controller,
+    this.hintText,
+    this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +51,7 @@ class EditTextField extends StatelessWidget {
             BoxConstraints(minWidth: context.width * 0.072),
             suffixIcon: suffix,
           ),
+          validator: validator,
         ),
       ],
     );
