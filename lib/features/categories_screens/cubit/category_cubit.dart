@@ -98,10 +98,10 @@ class CategoryCubit extends Cubit<CategoryState> {
                 selectedCategoryId!);
           },
           onTapFromHighPrice: () {
-            sortingFromHighPrice;
+            sortingFromHighPrice();
           },
           onTapFromLowPrice: (){
-            sortingFromLowPrice;
+            sortingFromLowPrice();
           },
         );
       },
