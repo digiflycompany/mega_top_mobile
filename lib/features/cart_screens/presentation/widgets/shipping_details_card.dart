@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_card_options.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/spacer.dart';
 import 'customer_details_shipping_card.dart';
 
 class ShippingDetailsCard extends StatelessWidget {

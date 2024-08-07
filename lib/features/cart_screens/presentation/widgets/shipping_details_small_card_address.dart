@@ -19,7 +19,6 @@ class ShippingDetailsSmallCardAddress extends StatelessWidget {
       children: [
         CustomerName(
           text: customerName,
-          fontSize: 14.sp,
         ),
         VerticalSpace(context.height * 0.006),
 

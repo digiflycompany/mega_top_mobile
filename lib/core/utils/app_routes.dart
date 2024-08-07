@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/data/repositories/address_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
@@ -222,7 +223,7 @@ class RouteGenerator {
       case Routes.addNewAddressDetailsPageRoute:
         return buildPageRoute(
           child: BlocProvider(
-            create: (context) => AddressCubit(),
+            create: (context) => AddressCubit(AddressRepoImp()),
             child: AddNewAddressScreen(),
           ),
         );
@@ -250,7 +251,10 @@ class RouteGenerator {
         );
       case Routes.shippingAddressPageRoute:
         return buildPageRoute(
-          child: const ShippingAddressScreen(),
+          child: BlocProvider(
+            create: (context) => AddressCubit(AddressRepoImp())..getUserAddresses(),
+            child: ShippingAddressScreen(),
+          ),
         );
       case Routes.ordersPageRoute:
         return buildPageRoute(

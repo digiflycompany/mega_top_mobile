@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
-import 'package:mega_top_mobile/features/cart_screens/data/shipping_details_card_model.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/shipping_addresses_list_shimmer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
 
 class ShippingAddressDetailsList extends StatelessWidget {
@@ -16,51 +17,45 @@ class ShippingAddressDetailsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<ShippingDetailsCardModel> shippingCard = [
-      ShippingDetailsCardModel(
-        deliveryPlace: AppStrings.homeEn,
-        customerName: AppStrings.customerNameEn,
-        customerAddress: AppStrings.addressNasrCityEn,
-        customerPhone: AppStrings.telephoneAddressEn,
-      ),
-      ShippingDetailsCardModel(
-        deliveryPlace: AppStrings.companyEn,
-        customerName: AppStrings.customerNameEn,
-        customerAddress: AppStrings.addressNasrCityEn,
-        customerPhone: AppStrings.telephoneAddressEn,
-      ),
-    ];
     return Column(
       children: [
-        BlocProvider(
-          create: (context) => AddressCubit(),
-          child: BlocBuilder<AddressCubit, AddressState>(
-            builder: (context, state) {
-              AddressCubit addressCubit = context.read<AddressCubit>();
-              GlobalCubit globalCubit = context.read<GlobalCubit>();
+        BlocBuilder<AddressCubit, AddressState>(
+          builder: (context, state) {
+            if (state is UserAddressesLoading) {
+              return ShippingAddressesListShimmer();
+            } else if (state is UserAddressesSuccess) {
               return ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: shippingCard.length,
+                itemCount: state.user.data.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final card = shippingCard[index];
+                  final addressItem = state.user.data[index];
                   return ShippingDetailsCard(
-                    customerName: card.customerName,
-                    customerAddress: card.customerAddress,
-                    customerCity: card.customerPhone,
-                    editOnTap: () =>
-                        globalCubit.showPrimaryToast(context,AppStrings.addressHasBeenEdited),
-                    removeOnTap: () => addressCubit.showRemoveItemDialog(context),
+                    customerName: addressItem.name,
+                    customerAddress: addressItem.firstLine,
+                    customerCity: addressItem.secondLine,
+                    editOnTap: () {},
+                    removeOnTap: () {},
                   );
                 },
               );
-            },
-          ),
+            } else if (state is AddressNoInternetConnection) {
+              return NoInternetScreen(
+                  buttonOnTap: () =>
+                      context.read<AddressCubit>().getUserAddresses()
+              );
+            }
+            return Container();
+          },
         ),
         VerticalSpace(context.height * 0.012),
-        PrimaryOutlinedButton(
-          text: AppStrings.addNewAddressEn,
-          onTap: ()=> Routes.addNewAddressDetailsPageRoute.moveTo,
+        BlocBuilder<AddressCubit, AddressState>(
+          builder: (context, state) {
+            return state is AddressNoInternetConnection?VerticalSpace(20.h):PrimaryOutlinedButton(
+              text: AppStrings.addNewAddressEn,
+              onTap: () => Routes.addNewAddressDetailsPageRoute.moveTo,
+            );
+          },
         ),
         VerticalSpace(context.height * 0.069),
       ],

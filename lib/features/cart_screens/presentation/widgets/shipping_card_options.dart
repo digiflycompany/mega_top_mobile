@@ -20,7 +20,7 @@ class ShippingCardOptions extends StatelessWidget {
         SvgPicture.asset(AppAssets.locationOutlinedIcon),
         HorizontalSpace(context.width * 0.022),
         CustomerName(text: customerName,),
-        HorizontalSpace(context.width * 0.022),
+        const Spacer(),
         EditShippingDetailsContainer(onTap: editOnTap,),
         HorizontalSpace(context.width * 0.045),
         RemoveShippingDetailsContainer(editOnTap: removeOnTap,)
