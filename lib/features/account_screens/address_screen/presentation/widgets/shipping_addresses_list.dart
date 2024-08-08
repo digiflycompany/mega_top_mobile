@@ -35,7 +35,12 @@ class ShippingAddressDetailsList extends StatelessWidget {
                     customerAddress: addressItem.firstLine,
                     customerCity: addressItem.cityId.name,
                     editOnTap: () {},
-                    removeOnTap: () {},
+                    removeOnTap: (){
+                      context.read<AddressCubit>().showRemoveItemDialog(
+                        context,
+                        addressItem.id
+                      );
+                    },
                   );
                 },
               );

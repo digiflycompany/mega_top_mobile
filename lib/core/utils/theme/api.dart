@@ -30,8 +30,10 @@ class EndPoints {
   static const String categoriesAPI = '$baseUrl/api/v1/categories/';
   static const String selectedCategoriesAPI =
       '$baseUrl/api/v1/products';
-
   static String notificationsAPI(String contentType) {
     return '$baseUrl/api/v1/notifications?contentType=$contentType';
+  }
+  static String removeAddressAPI(String addressID) {
+    return '$baseUrl/api/v1/addresses/$addressID';
   }
 }

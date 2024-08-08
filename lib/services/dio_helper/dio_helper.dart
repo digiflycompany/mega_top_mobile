@@ -96,7 +96,6 @@ class DioHelper {
     }
   }
 
-
   static Future<Response?> getData({
     required String url,
     Map<String, dynamic>? queryParameters,
@@ -111,6 +110,37 @@ class DioHelper {
 
     try {
       Response? response = await dio?.get(url,
+          queryParameters: queryParameters, options: options);
+
+      if (kDebugMode) {
+        print('STATUS CODE IS ${response?.statusCode}');
+        print('SENT DATA IS ${response?.requestOptions.data}');
+        print('STATUS MESSAGE IS ${response?.statusMessage}');
+        print('RESPONSE IS ${response}');
+      }
+      return response;
+    } catch (e) {
+      if (kDebugMode) {
+        print('DIO ERROR IS $e');
+      }
+      return e is DioException ? e.response : null;
+    }
+  }
+
+  static Future<Response?> deleteData({
+    required String url,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
+    if (!await _hasInternetConnection()) {
+      throw DioException(
+        requestOptions: RequestOptions(path: url),
+        error: AppStrings.noInternetConnection,
+      );
+    }
+
+    try {
+      Response? response = await dio?.delete(url,
           queryParameters: queryParameters, options: options);
 
       if (kDebugMode) {
