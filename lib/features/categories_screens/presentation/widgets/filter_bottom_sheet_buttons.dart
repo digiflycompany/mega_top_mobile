@@ -5,19 +5,23 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../../../core/widgets/primary_button.dart';
 import '../../../../core/widgets/primary_empty_button.dart';
 
 class FilterBottomSheetButtons extends StatelessWidget {
-  const FilterBottomSheetButtons({super.key});
+  const FilterBottomSheetButtons({super.key, required this.getProductsFunction,required this.cubit});
+
+  final Function getProductsFunction;
+  final cubit;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit,CategoryState>(
       builder: (BuildContext context, CategoryState state) {
-        final cubit = context.read<CategoryCubit>();
+        final cubit = CategoryCubit().getCubit(context);
         return Padding(
           padding: EdgeInsets.only(bottom: context.height * 0.022),
           child: Column(
@@ -32,23 +36,24 @@ class FilterBottomSheetButtons extends StatelessWidget {
                   ),
                 ),
                 onTap: (){
-                  if(cubit.minPriceController.value.text.isEmptyOrNull || cubit.maxPriceController.value.text.isEmptyOrNull)
-                    {
+                  if(cubit.minPriceController.text.isEmptyOrNull || cubit.maxPriceController.text.isEmptyOrNull)
+                  {
 
-                    }
-                  else if(int.tryParse(cubit.minPriceController.text)! > int.tryParse(cubit.maxPriceController.text)!)
-                    {
-                      Fluttertoast.showToast(
-                          msg: "Minimum price cannot be greater than the maximum price",
-                          toastLength: Toast.LENGTH_SHORT,
-                          textColor: Colors.white,
-                          fontSize: 12.sp
-                      );
-                    }else{
+                  }
+                  if(int.tryParse(cubit.minPriceController.text)! > int.tryParse(cubit.maxPriceController.text)!)
+                  {
+                    Fluttertoast.showToast(
+                        msg: "Minimum price cannot be greater than the maximum price",
+                        toastLength: Toast.LENGTH_SHORT,
+                        textColor: Colors.white,
+                        fontSize: 12.sp
+                    );
+                  }else{
                     cubit.page = 1;
                     cubit.minPrice = int.tryParse(cubit.minPriceController.text);
                     cubit.maxPrice = int.tryParse(cubit.maxPriceController.text);
-                    cubit.getSelectedCategories(cubit.selectedCategoryId!);
+                    //   cubit.getSelectedCategories(cubit.selectedCategoryId!);
+                    getProductsFunction();
                     Navigator.pop(context);
                   }
                 },
@@ -61,9 +66,10 @@ class FilterBottomSheetButtons extends StatelessWidget {
                   cubit.maxPriceController.clear();
                   cubit.minPrice = null;
                   cubit.maxPrice = null;
-                  cubit.getSelectedCategories(cubit.selectedCategoryId!);
+                  //    cubit.getSelectedCategories(cubit.selectedCategoryId!);
+                  getProductsFunction();
                   Navigator.pop(context);
-                  },
+                },
                 text: AppStrings.resetEn,
               ),
             ],

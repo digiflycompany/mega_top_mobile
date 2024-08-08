@@ -122,9 +122,14 @@ class CategoryCubit extends Cubit<CategoryState> {
         ),
       ),
       builder: (BuildContext context) {
-        return const FractionallySizedBox(
+        return FractionallySizedBox(
           heightFactor: 1.0, // For full screen height
-          child: FilterBottomSheet(),
+          child: FilterBottomSheet(
+            cubit: getCubit(context),
+            getProductsFunction: (){
+              getSelectedCategories(selectedCategoryId!);
+            },
+          ),
         );
       },
     );

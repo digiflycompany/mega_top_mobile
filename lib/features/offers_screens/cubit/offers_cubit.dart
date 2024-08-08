@@ -83,14 +83,11 @@ class OffersCubit extends Cubit<OffersState> {
   void sortingFromHighPrice() {
     offerModel!.data!.products
         .sort((a, b) => b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
-   // emit(OffersSuccess());
-
   }
 
   void sortingFromLowPrice() {
     offerModel!.data!.products
         .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
-  //  emit(OffersSuccess());
   }
 
   int getDiscountPercentage(
@@ -140,9 +137,13 @@ class OffersCubit extends Cubit<OffersState> {
         ),
       ),
       builder: (BuildContext context) {
-        return const FractionallySizedBox(
+        return  FractionallySizedBox(
           heightFactor: 1.0, // For full screen height
-          child: FilterBottomSheet(),
+          child: FilterBottomSheet(
+            cubit: getCubit(context),
+            getProductsFunction: getOffers,
+
+          ),
         );
       },
     );
@@ -166,7 +167,13 @@ class OffersCubit extends Cubit<OffersState> {
 
 
   OfferModel ? offerModel;
+
+  final TextEditingController minPriceController = TextEditingController();
+  final TextEditingController maxPriceController = TextEditingController();
+
   int page = 1;
+  int? minPrice;
+  int? maxPrice;
 
   Future<void> getOffers() async{
     emit(OffersLoading());

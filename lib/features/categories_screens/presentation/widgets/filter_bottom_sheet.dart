@@ -6,7 +6,11 @@ import '../../../../core/utils/app_string.dart';
 import 'bottom_sheet_app_bar.dart';
 
 class FilterBottomSheet extends StatelessWidget {
-  const FilterBottomSheet({super.key});
+  const FilterBottomSheet({super.key, required this.getProductsFunction,required this.cubit});
+
+  final Function getProductsFunction;
+  final cubit;
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,10 @@ class FilterBottomSheet extends StatelessWidget {
         children: [
           const BottomSheetAppBar(AppStrings.filterByEn),
           VerticalSpace(context.height * 0.033),
-          const FilterBottomSheetBody(),
+          FilterBottomSheetBody(
+            getProductsFunction: getProductsFunction,
+            cubit: cubit,
+          ),
         ],
       ),
     );

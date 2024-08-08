@@ -8,7 +8,10 @@ import 'package:mega_top_mobile/features/categories_screens/presentation/widgets
 import '../../../../core/utils/app_string.dart';
 
 class FilterBottomSheetBody extends StatelessWidget {
-  const FilterBottomSheetBody({super.key});
+  const FilterBottomSheetBody({super.key, required this.getProductsFunction ,required this.cubit});
+
+  final Function getProductsFunction;
+  final cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +34,12 @@ class FilterBottomSheetBody extends StatelessWidget {
             VerticalSpace(context.height * 0.02),
             const BrandsCheckList(),
             VerticalSpace(context.height * 0.025),
-            const PriceContainer(),
+            PriceContainer(minPriceController: cubit.minPriceController,maxPriceController: cubit.maxPriceController,),
             const Spacer(),
-            const FilterBottomSheetButtons(),
+            FilterBottomSheetButtons(
+              getProductsFunction: getProductsFunction,
+              cubit: cubit,
+            ),
           ],
         ),
       ),
