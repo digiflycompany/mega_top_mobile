@@ -27,9 +27,3 @@ class ShippingAddressScreen extends StatelessWidget {
   }
 }
 
-// EmptyDataPage(
-// icon: AppAssets.emptyAddressIcon,
-// bigFontText: AppStrings.noShippingAddressEn,
-// smallFontText: AppStrings.emptyComparePageDescriptionEn,
-// buttonText: AppStrings.addNewAddressEn,
-// )

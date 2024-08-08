@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/shipping_addresses_list_shimmer.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
 
 class ShippingAddressDetailsList extends StatelessWidget {
@@ -17,14 +18,15 @@ class ShippingAddressDetailsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<AddressCubit, AddressState>(
-          builder: (context, state) {
-            if (state is UserAddressesLoading) {
-              return ShippingAddressesListShimmer();
-            } else if (state is UserAddressesSuccess) {
-              return ListView.builder(
+    return BlocBuilder<AddressCubit, AddressState>(
+      builder: (context, state) {
+        if (state is UserAddressesLoading) {
+          return ShippingAddressesListShimmer();
+        }
+        else if (state is UserAddressesSuccess && state.user.data.length>0) {
+          return Column(
+            children: [
+              ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: state.user.data.length,
@@ -43,31 +45,42 @@ class ShippingAddressDetailsList extends StatelessWidget {
                     },
                   );
                 },
-              );
-            } else if (state is AddressNoInternetConnection) {
-              return NoInternetScreen(
-                  buttonOnTap: () =>
-                      context.read<AddressCubit>().getUserAddresses()
-              );
+              ),
+              VerticalSpace(context.height * 0.012),
+              PrimaryOutlinedButton(
+                    text: AppStrings.addNewAddressEn,
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute).then((_) {
+                        context.read<AddressCubit>().getUserAddresses();
+                      });
+                    },
+                  ),
+              VerticalSpace(context.height * 0.069),
+            ],
+          );
+        }
+        else if (state is UserAddressesSuccess && state.user.data.length==0) {
+          return EmptyDataPage(
+            icon: AppAssets.emptyAddressIcon,
+            bigFontText: AppStrings.noShippingAddressEn,
+            smallFontText: AppStrings.emptyAddressPageDescription,
+            buttonText: AppStrings.addNewAddressEn,
+            buttonOnTap: () {
+              Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute)
+                  .then((_) {
+                context.read<AddressCubit>().getUserAddresses();
+              });
             }
-            return Container();
-          },
-        ),
-        VerticalSpace(context.height * 0.012),
-        BlocBuilder<AddressCubit, AddressState>(
-          builder: (context, state) {
-            return state is AddressNoInternetConnection?VerticalSpace(20.h):PrimaryOutlinedButton(
-              text: AppStrings.addNewAddressEn,
-              onTap: () {
-                Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute).then((_) {
-                  context.read<AddressCubit>().getUserAddresses();
-                });
-              },
-            );
-          },
-        ),
-        VerticalSpace(context.height * 0.069),
-      ],
+          );
+        }
+        else if (state is AddressNoInternetConnection) {
+          return NoInternetScreen(
+              buttonOnTap: () =>
+                  context.read<AddressCubit>().getUserAddresses()
+          );
+        }
+        return Container();
+      },
     );
   }
 }
