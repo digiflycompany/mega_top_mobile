@@ -1,4 +1,5 @@
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/models/cities_model.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/data/models/delete_address_model.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/models/user_address_model.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/models/user_addresses_model.dart';
 
@@ -46,6 +47,20 @@ class CitiesFailure extends AddressState {
   final String error;
 
   CitiesFailure(this.error);
+}
+
+class DeleteAddressLoading extends AddressState {}
+
+class DeleteAddressSuccess extends AddressState {
+  final DeleteAddressModel user;
+
+  DeleteAddressSuccess(this.user);
+}
+
+class DeleteAddressFailure extends AddressState {
+  final String error;
+
+  DeleteAddressFailure(this.error);
 }
 
 class AddressNoInternetConnection extends AddressState {}

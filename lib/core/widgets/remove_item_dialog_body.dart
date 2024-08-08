@@ -5,7 +5,8 @@ import 'package:mega_top_mobile/core/widgets/cancel_remove_row.dart';
 
 class RemoveItemDialogBody extends StatelessWidget {
   final String? description;
-  const RemoveItemDialogBody({super.key, required this.description});
+  final Function() onTap;
+  const RemoveItemDialogBody({super.key, required this.description, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class RemoveItemDialogBody extends StatelessWidget {
             ),
             const Spacer(),
             ///
-            const CancelRemoveRow()
+            CancelRemoveRow(onTap: onTap,)
           ],
         ),
       ),

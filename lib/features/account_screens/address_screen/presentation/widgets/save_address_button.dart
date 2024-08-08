@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
@@ -19,10 +17,8 @@ class SaveAddressButton extends StatelessWidget {
     return BlocConsumer<AddressCubit, AddressState>(
       listener: (context, state){
         if(state is AddNewAddressSuccess){
+          Navigator.pop(context);
           context.read<AddressCubit>().savedSuccessToast(context, AppStrings.savedSuccessfully);
-          Future.delayed(Duration(seconds: 1), () {
-            Routes.shippingAddressPageRoute.moveTo;
-          });
         }
       },
       builder: (context, state) {
@@ -37,7 +33,7 @@ class SaveAddressButton extends StatelessWidget {
                   fontSize: 16.sp,
                 ),
               ),
-              onTap: () {
+              onTap: state is AddNewAddressLoading?(){}:() {
                 if(formKey.currentState!.validate()){
                   cubit.addNewAddress(
                       cubit.nameController.text,

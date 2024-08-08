@@ -35,7 +35,12 @@ class ShippingAddressDetailsList extends StatelessWidget {
                     customerAddress: addressItem.firstLine,
                     customerCity: addressItem.cityId.name,
                     editOnTap: () {},
-                    removeOnTap: () {},
+                    removeOnTap: (){
+                      context.read<AddressCubit>().showRemoveItemDialog(
+                        context,
+                        addressItem.id
+                      );
+                    },
                   );
                 },
               );
@@ -53,7 +58,11 @@ class ShippingAddressDetailsList extends StatelessWidget {
           builder: (context, state) {
             return state is AddressNoInternetConnection?VerticalSpace(20.h):PrimaryOutlinedButton(
               text: AppStrings.addNewAddressEn,
-              onTap: () => Routes.addNewAddressDetailsPageRoute.moveTo,
+              onTap: () {
+                Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute).then((_) {
+                  context.read<AddressCubit>().getUserAddresses();
+                });
+              },
             );
           },
         ),

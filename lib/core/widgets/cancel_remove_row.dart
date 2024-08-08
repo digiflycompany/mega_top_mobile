@@ -6,7 +6,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 
 class CancelRemoveRow extends StatelessWidget {
-  const CancelRemoveRow({super.key});
+  final Function() onTap;
+  const CancelRemoveRow({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class CancelRemoveRow extends StatelessWidget {
         ),
         HorizontalSpace(context.width*0.088),
         GestureDetector(
-          onTap: ()=>Navigator.pop(context),
+          onTap: onTap,
           child: Text(
             AppStrings.removeEn,
             style: TextStyle(
