@@ -142,7 +142,6 @@ class OffersCubit extends Cubit<OffersState> {
           child: FilterBottomSheet(
             cubit: getCubit(context),
             getProductsFunction: getOffers,
-
           ),
         );
       },
@@ -180,7 +179,8 @@ class OffersCubit extends Cubit<OffersState> {
     try {
       offerModel = null;
       offerModel =
-      await offersRepo.getOffers(page: page);
+      await offersRepo.getOffers(page: page,minPrice: minPrice,
+          maxPrice: maxPrice);
       emit(OffersSuccess());
     } catch (e) {
       print(e.toString() + "///////");
@@ -194,7 +194,7 @@ class OffersCubit extends Cubit<OffersState> {
     emit(OffersLoading());
     try {
       OfferModel? moreProducts = await offersRepo.
-      getOffers(page: page++);
+      getOffers(page: page++,minPrice: minPrice,maxPrice: maxPrice);
       offerModel!.data!.products.addAll(moreProducts!.data!.products);
       print("ooooooooooooooooooooof");
       hasMoreProducts = moreProducts.data!.products.isNotEmpty;

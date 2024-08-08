@@ -118,7 +118,13 @@ class _OffersPageState extends State<OffersPage> {
 
   @override
   void dispose() {
+  //  offersCubit.offerModel = null;
+    offersCubit.selectOption(AppStrings.defaultEn);
     offersCubit.page = 1;
+    offersCubit.minPriceController.clear();
+    offersCubit.maxPriceController.clear();
+    offersCubit.minPrice = null;
+    offersCubit.maxPrice = null;
     super.dispose();
   }
 }

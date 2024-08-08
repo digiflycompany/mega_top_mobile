@@ -21,7 +21,7 @@ class FilterBottomSheetButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit,CategoryState>(
       builder: (BuildContext context, CategoryState state) {
-        final cubit = CategoryCubit().getCubit(context);
+     //   final cubit = CategoryCubit().getCubit(context);
         return Padding(
           padding: EdgeInsets.only(bottom: context.height * 0.022),
           child: Column(
@@ -36,7 +36,7 @@ class FilterBottomSheetButtons extends StatelessWidget {
                   ),
                 ),
                 onTap: (){
-                  if(cubit.minPriceController.text.isEmptyOrNull || cubit.maxPriceController.text.isEmptyOrNull)
+                  if((cubit.minPriceController.text as String).isEmptyOrNull || (cubit.maxPriceController.text as String).isEmptyOrNull)
                   {
 
                   }
