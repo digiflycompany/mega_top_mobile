@@ -23,6 +23,10 @@ class AddressCubit extends Cubit<AddressState> {
   String city = '';
   String id = '';
 
+  void updateCity(String cityId) {
+    city = cityId;
+  }
+
   Future<void> getUserAddresses() async {
     emit(UserAddressesLoading());
     try {
@@ -105,17 +109,21 @@ class AddressCubit extends Cubit<AddressState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
-  void showRemoveItemDialog(BuildContext context,String addressID) {
+  void showRemoveItemDialog(BuildContext context, String addressID) {
     if (Platform.isIOS) {
       showCupertinoDialog(
         context: context,
         builder: (BuildContext context) {
           return CupertinoAlertDialog(
             content: RemoveItemDialog(
-              onTap:(){
+              onTap: () {
                 deleteAddress(addressID);
-                Navigator.pop(context);
-              }
+                Future.delayed(Duration(milliseconds: 400), () {
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                });
+              },
             ),
           );
         },
@@ -128,10 +136,14 @@ class AddressCubit extends Cubit<AddressState> {
             backgroundColor: Colors.white,
             contentPadding: EdgeInsets.zero,
             content: RemoveItemDialog(
-                onTap:(){
-                  deleteAddress(addressID);
-                  Navigator.pop(context);
-                }
+              onTap: () {
+                deleteAddress(addressID);
+                Future.delayed(Duration(seconds: 1), () {
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                });
+              },
             ),
           );
         },
@@ -176,6 +188,37 @@ class AddressCubit extends Cubit<AddressState> {
     }
   }
 
+  Future<void> updateAddress(
+      String addressID,
+      String name,
+      String address,
+      String addressDetails,
+      String cityId
+      ) async {
+    emit(EditAddressLoading());
+    try {
+      final user = await addressRepo.updateAddress(
+          addressID,
+          name,
+          address,
+          addressDetails,
+          cityId
+      );
+      if (user != null && user.success == true) {
+        emit(EditAddressSuccess(user));
+        getUserAddresses();
+      } else {
+        emit(EditAddressFailure(user?.message ?? AppStrings.invalidCred));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(AddressNoInternetConnection());
+      } else {
+        emit(EditAddressFailure(e.toString()));
+      }
+    }
+  }
+
   void handleAddNewAddressState(BuildContext context, AddressState state){
     if(state is AddNewAddressSuccess){
       Navigator.pop(context);
@@ -183,6 +226,20 @@ class AddressCubit extends Cubit<AddressState> {
     }
     else if(state is AddNewAddressFailure){
       showErrorToast(context, AppStrings.savingAddressFailed,state.error);
+    }
+  }
+  void handleUpdateAddressState(BuildContext context, AddressState state){
+    if(state is EditAddressSuccess){
+      Navigator.pop(context);
+      savedSuccessToast(context, AppStrings.updatedSuccessfully);
+    }
+    else if(state is EditAddressFailure){
+      showErrorToast(context, AppStrings.editingAddressFailed,state.error);
+    }
+  }
+  void handleDeleteAddressState(BuildContext context, AddressState state){
+    if(state is DeleteAddressSuccess){
+      savedSuccessToast(context, AppStrings.removedSuccessfully);
     }
   }
 

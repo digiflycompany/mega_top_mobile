@@ -19,7 +19,8 @@ class ShippingAddressDetailsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddressCubit, AddressState>(
+    return BlocConsumer<AddressCubit, AddressState>(
+      listener: (context, state)=>context.read<AddressCubit>().handleDeleteAddressState(context,state),
       builder: (context, state) {
         if (state is UserAddressesLoading) {
           return ShippingAddressesListShimmer();
@@ -47,9 +48,12 @@ class ShippingAddressDetailsList extends StatelessWidget {
                             addressDetails: addressItem.secondLine,
                             addressID: addressItem.id,
                             city: addressItem.cityId.name,
+                            cityID: addressItem.cityId.id,
                           ),
                         ),
-                      );
+                      ).then((_) {
+                        context.read<AddressCubit>().getUserAddresses();
+                      });
                     },
                     removeOnTap: (){
                       context.read<AddressCubit>().showRemoveItemDialog(

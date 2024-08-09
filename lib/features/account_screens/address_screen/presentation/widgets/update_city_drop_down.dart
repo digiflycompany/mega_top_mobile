@@ -6,15 +6,29 @@ import 'package:mega_top_mobile/core/widgets/edit_drop_down_field.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 
-class UpdateCityDropDown extends StatelessWidget {
-  final String? city;
+class UpdateCityDropDown extends StatefulWidget {
+  final String? initialCityName;
   final Function(String?) onCityChanged;
 
   const UpdateCityDropDown({
     super.key,
-    required this.city,
+    required this.initialCityName,
     required this.onCityChanged,
   });
+
+  @override
+  _UpdateCityDropDownState createState() => _UpdateCityDropDownState();
+}
+
+class _UpdateCityDropDownState extends State<UpdateCityDropDown> {
+  String? selectedCityName;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the selectedCityName with the initial city name provided
+    selectedCityName = widget.initialCityName;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +43,17 @@ class UpdateCityDropDown extends StatelessWidget {
               title: AppStrings.city,
               items: cityNames,
               hintText: AppStrings.selectYourCity,
-              selectedValue: city,
+              selectedValue: selectedCityName,
               onChanged: (value) async {
-                print('Selected item: $value');
-                final selectedCity = cities.firstWhere((city) => city.name == value);
-                onCityChanged(selectedCity.id);
+                if (value != null) {
+                  print('Selected item: $value');
+                  final selectedCity = cities.firstWhere((city) => city.name == value);
+                  setState(() {
+                    selectedCityName = selectedCity.name; // Update the selected city name
+                  });
+                  widget.onCityChanged(selectedCity.id);
+                  context.read<AddressCubit>().updateCity(selectedCity.id);
+                }
               },
               validator: (value) {
                 if (value == null || value.isEmpty) {

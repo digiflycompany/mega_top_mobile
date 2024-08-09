@@ -47,7 +47,6 @@ class AddressData {
   final String cityName;
   final String firstLine;
   final String secondLine;
-  final String googleMapsLink;
   final bool active;
   final String createdAt;
   final String updatedAt;
@@ -61,7 +60,6 @@ class AddressData {
     required this.cityName,
     required this.firstLine,
     required this.secondLine,
-    required this.googleMapsLink,
     required this.active,
     required this.createdAt,
     required this.updatedAt,
@@ -77,7 +75,6 @@ class AddressData {
       cityName: json['cityName'] ?? '',
       firstLine: json['firstLine'] ?? '',
       secondLine: json['secondLine'] ?? '',
-      googleMapsLink: json['googleMapsLink'] ?? '',
       active: json['active'] ?? false,
       createdAt: json['createdAt'] ?? '',
       updatedAt: json['updatedAt'] ?? '',
@@ -94,7 +91,6 @@ class AddressData {
     data['cityName'] = cityName;
     data['firstLine'] = firstLine;
     data['secondLine'] = secondLine;
-    data['googleMapsLink'] = googleMapsLink;
     data['active'] = active;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
