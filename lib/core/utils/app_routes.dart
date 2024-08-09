@@ -6,7 +6,6 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/repositories/address_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/add_new_address_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/edit_address_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/pages/shipping_addresses_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/compare_screen/presentation/pages/compare_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/data/repositories/notification_repo.dart';
@@ -77,7 +76,7 @@ class Routes {
   static const String addNewAddressPageRoute = "/add_new_address_screen";
   static const String addNewAddressDetailsPageRoute =
       "/add_new_address_details_screen";
-  static const String editAddressDetailsPageRoute =
+  static const String editAddressPageRoute =
       "/edit_address_details_screen";
   static const String notificationPageRoute = "/notification_screen";
   static const String wishListPageRoute = "/wish_list_screen";
@@ -224,10 +223,13 @@ class RouteGenerator {
         return buildPageRoute(
           child: const AddNewAddressScreen(),
         );
-      case Routes.editAddressDetailsPageRoute:
-        return buildPageRoute(
-          child: const EditAddressDetailsScreen(),
-        );
+      // case Routes.editAddressPageRoute:
+      //   return buildPageRoute(
+      //     child: BlocProvider(
+      //       create: (BuildContext context) => AddressCubit(AddressRepoImp())..getCities(),
+      //       child: EditAddressScreen(),
+      //     ),
+      //   );
       case Routes.notificationPageRoute:
         return buildPageRoute(
           child: BlocProvider(
@@ -249,7 +251,9 @@ class RouteGenerator {
       case Routes.shippingAddressPageRoute:
         return buildPageRoute(
           child: BlocProvider(
-            create: (context) => AddressCubit(AddressRepoImp())..getUserAddresses(),
+            create: (context) =>
+            AddressCubit(AddressRepoImp())
+              ..getUserAddresses(),
             child: ShippingAddressScreen(),
           ),
         );

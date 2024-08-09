@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/core/widgets/remove_item_dialog.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/repositories/address_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 
 class AddressCubit extends Cubit<AddressState> {
   final AddressRepo addressRepo;
@@ -21,6 +21,7 @@ class AddressCubit extends Cubit<AddressState> {
   TextEditingController addressDetailsController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   String city = '';
+  String id = '';
 
   Future<void> getUserAddresses() async {
     emit(UserAddressesLoading());
@@ -81,6 +82,27 @@ class AddressCubit extends Cubit<AddressState> {
         emit(CitiesFailure(e.toString()));
       }
     }
+  }
+
+  void showErrorToast(BuildContext context, String title, String text) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Align(
+        alignment: Alignment.bottomCenter,
+        child: CustomErrorToast(
+          title: title,
+          message: text,
+          color: AppColors.redIconColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
   }
 
   void showRemoveItemDialog(BuildContext context,String addressID) {
@@ -151,6 +173,16 @@ class AddressCubit extends Cubit<AddressState> {
       } else {
         emit(DeleteAddressFailure(e.toString()));
       }
+    }
+  }
+
+  void handleAddNewAddressState(BuildContext context, AddressState state){
+    if(state is AddNewAddressSuccess){
+      Navigator.pop(context);
+      savedSuccessToast(context, AppStrings.savedSuccessfully);
+    }
+    else if(state is AddNewAddressFailure){
+      showErrorToast(context, AppStrings.savingAddressFailed,state.error);
     }
   }
 

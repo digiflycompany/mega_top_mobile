@@ -324,6 +324,7 @@ class AppStrings {
   static const String orderNumberEn = ' #002377';
   static const String orderDayAndDateEn = 'On Sunday 17/12/2023';
   static const String notifications = 'Notifications';
+  static const String emptyAddressPageDescription = 'You have no saved addresses, press the button below to add some';
   static const String noProductAddedToCompareEn =
       'No products added to compare';
   static const String emptyComparePageDescriptionEn =
@@ -358,6 +359,7 @@ class AppStrings {
   static const String lastName = 'Last name';
   static const String save = 'Save';
   static const String saveAddress = 'Save Address';
+  static const String savingAddressFailed = 'Saving address failed';
   static const String passwordSettings = 'Password Settings';
   static const String deleteAccount = 'Delete Account';
   static const String addNewAddress = 'Add New Address';
