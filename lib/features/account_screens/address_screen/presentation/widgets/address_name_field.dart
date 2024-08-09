@@ -7,7 +7,8 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 
 class AddressNameField extends StatelessWidget {
-  const AddressNameField({super.key});
+  final TextEditingController controller;
+  const AddressNameField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class AddressNameField extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(bottom: 40.h),
           child: EditTextField(
-            controller: context.read<AddressCubit>().nameController,
+            controller: controller,
             title: AppStrings.name,
             hintText: AppStrings.enterYourNameHere,
             validator: (value){

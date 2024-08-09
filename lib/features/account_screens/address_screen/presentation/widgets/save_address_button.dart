@@ -15,12 +15,7 @@ class SaveAddressButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddressCubit, AddressState>(
-      listener: (context, state){
-        if(state is AddNewAddressSuccess){
-          Navigator.pop(context);
-          context.read<AddressCubit>().savedSuccessToast(context, AppStrings.savedSuccessfully);
-        }
-      },
+      listener: (context, state)=>context.read<AddressCubit>().handleAddNewAddressState(context,state),
       builder: (context, state) {
         AddressCubit cubit = context.read<AddressCubit>();
         return ButtonBottomNavBar(

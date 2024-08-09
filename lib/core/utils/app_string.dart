@@ -359,6 +359,7 @@ class AppStrings {
   static const String lastName = 'Last name';
   static const String save = 'Save';
   static const String saveAddress = 'Save Address';
+  static const String savingAddressFailed = 'Saving address failed';
   static const String passwordSettings = 'Password Settings';
   static const String deleteAccount = 'Delete Account';
   static const String addNewAddress = 'Add New Address';
