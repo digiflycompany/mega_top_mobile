@@ -44,13 +44,16 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
               horizontal: context.width * 0.045,
               vertical: context.height * 0.033,
             ),
-            child: BlocBuilder<AddressCubit, AddressState>(
-              builder: (context, state) {
-                AddressCubit cubit = context.read<AddressCubit>();
-                  return state is CitiesLoading?const AddNewAddressShimmer():state is AddressNoInternetConnection?NoInternetScreen(
-                    buttonOnTap: () => context.read<AddressCubit>().getCities(),
-                  ):SingleChildScrollView(
-                    child: Column(
+            child: SingleChildScrollView(
+              child: BlocBuilder<AddressCubit, AddressState>(
+                builder: (context, state) {
+                  AddressCubit cubit = context.read<AddressCubit>();
+                    return state is CitiesLoading?
+                    const AddNewAddressShimmer():
+                    state is AddressNoInternetConnection?
+                    NoInternetScreen(buttonOnTap: () => context.read<AddressCubit>().getCities(),):
+                    state is AddNewAddressLoading?const AddNewAddressShimmer():
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AddressField(controller: cubit.addressController,),
@@ -58,9 +61,9 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                         CityDropDown(),
                         AddressNameField(controller: cubit.nameController,),
                       ],
-                    ),
-                  );
-              },
+                    );
+                },
+              ),
             ),
           ),
         ),

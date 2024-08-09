@@ -101,6 +101,7 @@ class AppStrings {
   static const String continueWithGoogleEn = 'Continue with Google';
   static const String codeSentSuccessfully = 'Code sent successfully';
   static const String savedSuccessfully = 'Saved successfully';
+  static const String updatedSuccessfully = 'Updated successfully';
   static const String removedSuccessfully = 'Removed successfully';
   static const String theProductAddedToWishListEn =
       'The product added to wish list';
@@ -361,6 +362,7 @@ class AppStrings {
   static const String save = 'Save';
   static const String saveAddress = 'Save Address';
   static const String savingAddressFailed = 'Saving address failed';
+  static const String editingAddressFailed = 'Editing address failed';
   static const String passwordSettings = 'Password Settings';
   static const String deleteAccount = 'Delete Account';
   static const String addNewAddress = 'Add New Address';

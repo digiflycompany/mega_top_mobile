@@ -9,6 +9,7 @@ class EditAddressScreenProvider extends StatelessWidget {
   final String address;
   final String addressDetails;
   final String city;
+  final String cityID;
   final String addressID;
 
   const EditAddressScreenProvider({
@@ -17,6 +18,7 @@ class EditAddressScreenProvider extends StatelessWidget {
     required this.address,
     required this.addressDetails,
     required this.city,
+    required this.cityID,
     required this.addressID,
   });
 
@@ -29,6 +31,7 @@ class EditAddressScreenProvider extends StatelessWidget {
         address: address,
         addressDetails: addressDetails,
         city: city,
+        cityID: cityID,
         addressID: addressID,
       ),
     );

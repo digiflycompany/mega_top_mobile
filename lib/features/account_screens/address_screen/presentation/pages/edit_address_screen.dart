@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
-import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/add_new_address_shimmer.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/address_details_field.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/address_field.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/address_name_field.dart';
+import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/edit_address_button.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/update_city_drop_down.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
@@ -20,6 +18,7 @@ class EditAddressScreen extends StatefulWidget {
   final String address;
   final String addressDetails;
   final String city;
+  final String cityID;
   final String addressID;
 
   const EditAddressScreen({
@@ -28,6 +27,7 @@ class EditAddressScreen extends StatefulWidget {
     required this.address,
     required this.addressDetails,
     required this.city,
+    required this.cityID,
     required this.addressID,
   });
 
@@ -41,7 +41,6 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-
     cubit = context.read<AddressCubit>();
     cubit.nameController.text = widget.name;
     cubit.addressController.text = widget.address;
@@ -56,7 +55,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, context.height * 0.089),
         child: const PrimaryAppBar(
-          AppStrings.addNewAddress,
+          AppStrings.editAddress,
           favour: false,
         ),
       ),
@@ -73,13 +72,14 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
               const AddNewAddressShimmer():
               state is AddressNoInternetConnection?
               NoInternetScreen(buttonOnTap: ()=>context.read<AddressCubit>()..getCities()):
+              state is EditAddressLoading?const AddNewAddressShimmer():
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AddressField(controller: cubit.addressController),
                   AddressDetailsField(controller: cubit.addressDetailsController),
                   UpdateCityDropDown(
-                    city: cubit.city,
+                    initialCityName: cubit.city,
                     onCityChanged: (newCityId) {
                       setState(() {
                         cubit.city = newCityId!;
@@ -93,18 +93,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: ButtonBottomNavBar(
-        button: PrimaryButton(
-          content: Text(
-            AppStrings.editAddress,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 16.sp,
-            ),
-          ),
-        ),
-      ),
+      bottomNavigationBar: EditAddressButton(addressID: widget.addressID,),
     );
   }
 }

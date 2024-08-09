@@ -36,4 +36,7 @@ class EndPoints {
   static String removeAddressAPI(String addressID) {
     return '$baseUrl/api/v1/addresses/$addressID';
   }
+  static String updateAddressAPI(String addressID) {
+    return '$baseUrl/api/v1/addresses/$addressID';
+  }
 }
