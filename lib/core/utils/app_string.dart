@@ -101,6 +101,7 @@ class AppStrings {
   static const String continueWithGoogleEn = 'Continue with Google';
   static const String codeSentSuccessfully = 'Code sent successfully';
   static const String savedSuccessfully = 'Saved successfully';
+  static const String removedSuccessfully = 'Removed successfully';
   static const String theProductAddedToWishListEn =
       'The product added to wish list';
   static const String theProductRemovedFromWishListEn =

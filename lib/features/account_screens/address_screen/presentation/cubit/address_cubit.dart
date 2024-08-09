@@ -185,6 +185,11 @@ class AddressCubit extends Cubit<AddressState> {
       showErrorToast(context, AppStrings.savingAddressFailed,state.error);
     }
   }
+  void handleDeleteAddressState(BuildContext context, AddressState state){
+    if(state is DeleteAddressSuccess){
+      savedSuccessToast(context, AppStrings.removedSuccessfully);
+    }
+  }
 
   @override
   Future<void> close() {
