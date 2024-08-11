@@ -7,6 +7,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_screen_title_text.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
@@ -34,7 +35,7 @@ class ShippingDetailsPage extends StatelessWidget {
               buttonText: AppStrings.addNewAddressEn,
             )
           : BlocProvider(
-              create: (context) => CartCubit(),
+              create: (context) => CartCubit(CartRepoImp()),
               child: Padding(
                 padding:
                     EdgeInsets.symmetric(horizontal: context.width * 0.045),

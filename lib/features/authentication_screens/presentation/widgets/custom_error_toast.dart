@@ -75,14 +75,16 @@ class _CustomErrorToastState extends State<CustomErrorToast>
                     decoration: TextDecoration.none
                 ),
               ),
-              Text(
-                widget.message,
-                style:  TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.sp,
-                    fontFamily: FontFamilies.cairo,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.none
+              FittedBox(
+                child: Text(
+                  widget.message,
+                  style:  TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.sp,
+                      fontFamily: FontFamilies.cairo,
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.none
+                  ),
                 ),
               ),
             ],

@@ -124,7 +124,7 @@ class AppStrings {
   static const String applyEn = 'Apply';
   static const String serverError = 'Server Error';
   static const String sorryThereIsNoInternet = 'Sorry, there is no internet!';
-  static const String pleaseCheckYourInternet = 'Please check your internet connection\n and try again';
+  static const String pleaseCheckYourInternet = 'Please check your internet connection and try again';
   static const String resetEn = 'Reset';
   static const String signUpEn = 'Sign up';
   static const String editPassword = 'Edit password';
@@ -232,6 +232,7 @@ class AppStrings {
   static const String sendingCodeFailed = 'Sending code failed';
   static const String verifying = 'Sending code failed';
   static const String addToCartEn = 'Add to Cart';
+  static const String addToCartFailed = 'Add to cart failed';
   static const String aboutTheProductEn = 'About the product';
   static const String productSpecificationEn = 'product specification ';
   static const String categoriesEn = 'Categories';

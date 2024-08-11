@@ -13,6 +13,7 @@ class ProductPhotoAndCategoryColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         /// Added To Product Text ///
         Text(
@@ -22,27 +23,6 @@ class ProductPhotoAndCategoryColumn extends StatelessWidget {
               fontWeight: FontWeight.w700,
               fontSize: 16.sp),
         ),
-        // const Spacer(),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.start,
-        //   children: [
-        //     /// Product Photo ///
-        //     Image.asset(
-        //       productImage!,
-        //       height: context.width * 0.066,
-        //     ),
-        //     HorizontalSpace(context.width * 0.04),
-        //
-        //     /// Product Category ///
-        //     Text(
-        //       productCategory!,
-        //       style: TextStyle(
-        //           color: Colors.black,
-        //           fontWeight: FontWeight.w700,
-        //           fontSize: 14.sp),
-        //     )
-        //   ],
-        // )
       ],
     );
   }

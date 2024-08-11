@@ -36,7 +36,7 @@ class ShippingDetailsCardList extends StatelessWidget {
     ];
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
-        CartCubit cartCubit = CartCubit.getCubit(context);
+       // CartCubit cartCubit = CartCubit.getCubit(context);
         return Column(
           children: [
             ListView.builder(
@@ -45,14 +45,14 @@ class ShippingDetailsCardList extends StatelessWidget {
               itemCount: shippingCard.length,
               itemBuilder: (BuildContext context, int index) {
                 final card = shippingCard[index];
-                final isSelected = cartCubit.selectedCardIndex == index;
+                //final isSelected = cartCubit.selectedCardIndex == index;
                 return GestureDetector(
-                  onTap: () => cartCubit.selectCard(index),
+                  //onTap: () => cartCubit.selectCard(index),
                   child: ShippingDetailsCard(
                     customerName: card.customerName,
                     customerAddress: card.customerAddress,
                     customerCity: card.customerPhone,
-                    isSelected: isSelected,
+                    //isSelected: isSelected,
                   ),
                 );
               },
