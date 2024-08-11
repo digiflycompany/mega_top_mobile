@@ -4,9 +4,6 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/data/models/product_model.dart';
 
 class OffersItemsListView extends StatelessWidget {
   const OffersItemsListView({super.key});

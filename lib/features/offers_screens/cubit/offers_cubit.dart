@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
-import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
@@ -92,7 +91,7 @@ class OffersCubit extends Cubit<OffersState> {
 
   int getDiscountPercentage(
       {required int finalPrice, required int originPrice}) {
-    return 1 - (finalPrice / originPrice).toInt();
+    return 1 - finalPrice ~/ originPrice;
   }
 
 

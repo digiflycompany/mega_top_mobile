@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_grid.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/data/models/product_model.dart';
-import '../../../home_screens/presentation/widgets/items_grid.dart';
 
 class OffersItemsGridView extends StatelessWidget {
   const OffersItemsGridView({super.key});

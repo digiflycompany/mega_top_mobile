@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import '../utils/app_assets.dart';
-import '../utils/app_color.dart';
-import '../utils/app_string.dart';
-import '../utils/spacer.dart';
 
 class NotAvailableContainer extends StatelessWidget {
   const NotAvailableContainer({super.key});

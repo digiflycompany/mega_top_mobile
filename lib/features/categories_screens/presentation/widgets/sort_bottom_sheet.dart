@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_radio_button.dart';
-import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
 import 'bottom_sheet_app_bar.dart';
 
 class SortBottomSheet extends StatelessWidget {
