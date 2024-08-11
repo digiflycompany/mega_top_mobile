@@ -8,7 +8,7 @@ class ProductDetailedSmallDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return SelectableText(
       description!,
       style: TextStyle(
           color: Colors.black,

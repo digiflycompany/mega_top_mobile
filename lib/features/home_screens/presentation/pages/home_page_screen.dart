@@ -9,10 +9,12 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/empty_cart_screen.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/categories_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/main_screen.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offers_screen.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
@@ -41,6 +43,10 @@ class _HomePageState extends State<HomePage> {
 
   void _onItemTapped(int index) {
     _pageController.jumpToPage(index);
+     // if(index == 2)
+     //  {
+     //    context.read<OffersCubit>().getOffers();
+     //  }
   }
 
   @override

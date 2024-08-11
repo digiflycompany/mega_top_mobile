@@ -1,48 +1,103 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_products_container.dart';
 
-class LatestProductsList extends StatelessWidget {
+class LatestProductsList extends StatefulWidget {
   const LatestProductsList({super.key});
 
   @override
+  State<LatestProductsList> createState() => _LatestProductsListState();
+}
+
+class _LatestProductsListState extends State<LatestProductsList> {
+
+  late CategoryCubit categoryCubit;
+  final controller = ScrollController();
+
+  @override
+  void initState() {
+    final cubit = context.read<CategoryCubit>();
+    controller.addListener(() {
+      if (controller.position.maxScrollExtent == controller.offset) {
+        cubit.hasMoreProducts = true;
+        cubit.page++;
+        cubit.getMoreProduct(cubit.selectedCategoryId!)
+            .then((value){
+          if(cubit.hasMoreProducts == true)
+          {
+            cubit.selectOption(AppStrings.defaultEn);
+          }
+          cubit.hasMoreProducts = null;
+        });
+      }
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
+    categoryCubit = context.read<CategoryCubit>();
+    return BlocConsumer<CategoryCubit, CategoryState>(
       listener: (context, state) {},
       builder: (context, state) {
-        var cubit = context.read<HomeCubit>();
-        if(cubit.latestProducts.isNotEmpty){
-          var latestProducts= cubit.latestProducts;
-          print('ALLALALALALALLLLALALALALALLALLALALALALALLALALALALALLLLLLLLLLLLALALLA');
-          print(latestProducts[0].name);
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.width * 0.03),
-            child: SizedBox(
-              height: context.height * 0.485,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: latestProducts.length,
-                itemBuilder: (context, index) {
-                  final latestProduct = latestProducts[index];
-                  return Row(
-                    children: [
-                      LatestProductsContainer(
-                        productName: latestProduct.name,
-                        productPhoto: latestProduct.image,
-                        productType: AppStrings.storageUnitsEn,
-                        productPrice: latestProduct.price,
-                      ),
-                      HorizontalSpace(context.width * 0.045),
-                    ],
-                  );
-                },
-              ),
+        var cubit = context.read<CategoryCubit>();
+        if(cubit.selectedCategoryModel != null){
+          return SizedBox(
+            height: context.height * 0.485,
+            child: Row(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    controller: controller,
+                    physics: BouncingScrollPhysics(),
+                    itemCount: cubit
+                        .selectedCategoryModel!
+                        .data!
+                        .products
+                        .length,
+                    itemBuilder: (context, index) {
+                        return Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                cubit.setCategoryProductIndex(
+                                    selectedProductIndex: index);
+                                Routes.categoryProductDetailsPageRoute.moveTo;
+                              },
+                              child: LatestProductsContainer(
+                                productName: cubit.selectedCategoryModel!.data!
+                                    .products[index].title,
+                                productPhoto: cubit.selectedCategoryModel!.data!
+                                    .products[index].images[0],
+                                productType: cubit.selectedCategoryModel!.data!
+                                    .products[index].categoryId!.name!,
+                                productPrice: cubit.selectedCategoryModel!.data!
+                                    .products[index].price!.finalPrice!
+                                    .toString(),
+                              ),
+                            ),
+                            HorizontalSpace(context.width * 0.045),
+                          ],
+                        );
+
+
+                    },
+                  ),
+                ),
+              ],
             ),
           );
         }
@@ -59,4 +114,6 @@ class LatestProductsList extends StatelessWidget {
       },
     );
   }
+
+
 }

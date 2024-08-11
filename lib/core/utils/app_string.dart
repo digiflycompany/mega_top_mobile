@@ -214,6 +214,7 @@ class AppStrings {
   static const String hardDiskEn = 'Hard disk 1 TB, purple';
   static const String storageUnitsEn = 'Storage units, hard disk';
   static const String availableEn = 'Available';
+  static const String outOfStockEn = 'Out of Stock';
   static const String latestOffersEn = 'Latest offers';
   static const String discount15PercentEn = 'Discount 15%';
   static const String userNotFoundWithProvidedEmail =

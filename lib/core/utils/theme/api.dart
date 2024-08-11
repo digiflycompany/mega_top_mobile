@@ -19,6 +19,12 @@ class EndPoints {
       '$baseUrl/api/v1/users/customers/wishlist/add';
   static const String removeFromWishListAPI =
       '$baseUrl/api/v1/users/customers/wishlist/remove';
+  static const String makeOrderAPI =
+      'https://megatop.com.eg/wp-json/wc/v3/orders';
+  static const String myOrdersAPI =
+      'https://megatop.com.eg/wp-json/wc/v3/orders';
+  static const String lastOfferAPI =
+      'http://144.76.110.163:3005/api/v1/products?isOffer=true';
   static const String userAddressesAPI =
       '$baseUrl/api/v1/addresses/';
   static const String addAddressAPI =

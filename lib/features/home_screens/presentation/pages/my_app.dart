@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
              // create: (BuildContext context) => HomeCubit()..getLastOffers(),
             ),
             BlocProvider<OffersCubit>(
-              create: (BuildContext context) => OffersCubit(),
+              create: (BuildContext context) => OffersCubit()..getOffers(),
             ),
           ],
           child: GestureDetector(

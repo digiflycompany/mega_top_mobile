@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
@@ -16,7 +17,7 @@ class ProductDetailedImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (BuildContext context, CategoryState state) {
-        //final categoryCubit = context.read<CategoryCubit>();
+        final categoryCubit = context.read<CategoryCubit>();
         return Container(
           width: double.infinity,
           height: context.height * 0.338,
@@ -27,14 +28,12 @@ class ProductDetailedImage extends StatelessWidget {
               Column(
                 children: [
                   ProductImages(),
-
-                  ///Error
-                  // if (categoryCubit
-                  //         .selectedCategoryModel!
-                  //         .productList[categoryCubit.selectedProductIndex]
-                  //         .images
-                  //         .length >
-                  //     1)
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  if (categoryCubit.selectedCategoryModel!
+                      .data!.products[categoryCubit.selectedProductIndex].images.length >
+                      1)
                   ProductImagesDots(),
                 ],
               ),

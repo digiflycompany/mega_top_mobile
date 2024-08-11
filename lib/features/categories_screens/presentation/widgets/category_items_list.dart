@@ -15,6 +15,7 @@ class CategoryItemsListView extends StatelessWidget {
       builder: (BuildContext context, CategoryState state) {
         final cubit = context.read<CategoryCubit>();
         return ListView.builder(
+          scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemCount: cubit
@@ -30,6 +31,7 @@ class CategoryItemsListView extends StatelessWidget {
                   bottom: context.height * 0.027,
                   top: context.height * 0.006),
               child: ProductsListContainer(
+                index : index,
                 productName: cubit.selectedCategoryModel!.data!.products[index].title,
                 productPhoto: cubit.selectedCategoryModel!.data!
                     .products[index].images[0],
