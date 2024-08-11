@@ -25,7 +25,6 @@ class AddToCartBottomSheet extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-
                         /// View Cart Button
                         PrimaryButton(
                           content: Text(
@@ -39,7 +38,6 @@ class AddToCartBottomSheet extends StatelessWidget {
                           onTap: () {},
                         ),
                         VerticalSpace(context.height * 0.033),
-
                         /// Continue Shopping Button
                         PrimaryOutlinedButton(
                           text: AppStrings.continueShoppingEn,

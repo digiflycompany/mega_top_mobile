@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/utils/spacer.dart';
 
 class AddToCartButton extends StatelessWidget {
   final Function()? onTap;
@@ -23,11 +20,6 @@ class AddToCartButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              AppAssets.cartButtonIcon,
-              width: context.width * 0.066,
-            ),
-            HorizontalSpace(context.width * 0.022),
             content
           ],
         ),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/product_detailed_image.dart';
@@ -60,29 +63,25 @@ class _CategoryProductDetailsPageState
               return BlocProvider(
                 create: (context) => CartCubit(CartRepoImp()),
                 child: BlocConsumer<CartCubit, CartState>(
-                  listener: (context,state){
-                    if(state is CartUpdated){
-                      context.read<CartCubit>().sendCartToApi();
-                    }
-                    if (state is CartSentToAPISuccess){
-                      context.read<CartCubit>().showAddedToCartBottomSheet(context);
-                    }
-                    if(state is CartSentToAPIFailure){
-                      context.read<CartCubit>().showErrorToast(context, AppStrings.addToCartFailed, state.error);
-                    }
-                    if(state is CartNoInternetConnection){
-                      context.read<CartCubit>().showErrorToast(context, AppStrings.addToCartFailed, AppStrings.pleaseCheckYourInternet);
-                    }
-                  },
+                  listener: (context,state)=>context.read<CartCubit>().handleAddToCartStates(context, state),
                   builder: (context, state) {
                     CartCubit cubit = context.read<CartCubit>();
                     return AddToCartButton(
-                      content: state is CartSentToAPILoading?const SmallWhiteCircularProgressIndicator():Text(
-                        AppStrings.addToCartEn,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.sp),
+                      content: state is CartSentToAPILoading?const SmallWhiteCircularProgressIndicator():Row(
+                        children: [
+                          SvgPicture.asset(
+                            AppAssets.cartButtonIcon,
+                            width: context.width * 0.066,
+                          ),
+                          HorizontalSpace(context.width * 0.022),
+                          Text(
+                            AppStrings.addToCartEn,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16.sp),
+                          ),
+                        ],
                       ),
                       onTap: () async {
                         final token = await PreferencesHelper.getToken();

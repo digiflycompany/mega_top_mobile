@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/spacer.dart';
 
 class LatestProductsContainer extends StatelessWidget {
   final String? productPhoto;
@@ -61,14 +59,12 @@ class LatestProductsContainer extends StatelessWidget {
                     color: AppColors.iconsBackgroundColor,
                   ),
                   child: productPhoto.isNotNull
-                      ? Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15.h),
-                        child: CachedNetworkImage(
-                                            imageUrl: productPhoto!,
-                                            width: context.width * 0.27,
-                                            errorWidget: (context, url, error) => Icon(Icons.error),
-                                          ),
-                      )
+                      ? CachedNetworkImage(
+                                          imageUrl: productPhoto!,
+                                          width: double.infinity,
+                                          fit: BoxFit.fill,
+                                          errorWidget: (context, url, error) => Icon(Icons.error),
+                                        )
                       : Image.asset("assets/images/ad.png", width: context.width * 0.13),
                 ),
                 if (discount == true && discountPercent != null) ...[
@@ -94,15 +90,15 @@ class LatestProductsContainer extends StatelessWidget {
                     ),
                   )
                 ],
-                Align(
-                  alignment: AlignmentDirectional.topEnd,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: context.height * 0.022,
-                        horizontal: context.width * 0.045),
-                    child: SvgPicture.asset(AppAssets.favourOutlinedIcon),
-                  ),
-                ),
+                // Align(
+                //   alignment: AlignmentDirectional.topEnd,
+                //   child: Padding(
+                //     padding: EdgeInsets.symmetric(
+                //         vertical: context.height * 0.022,
+                //         horizontal: context.width * 0.045),
+                //     child: SvgPicture.asset(AppAssets.favourOutlinedIcon),
+                //   ),
+                // ),
               ],
             ),
           ),

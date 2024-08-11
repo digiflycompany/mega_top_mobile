@@ -103,7 +103,23 @@ class CartCubit extends Cubit<CartState> {
     );
     Overlay.of(context).insert(overlayEntry!);
   }
-  // Future<void> sendCartToApi() async {
+
+  void handleAddToCartStates(BuildContext context, CartState state){
+    if(state is CartUpdated){
+      context.read<CartCubit>().sendCartToApi();
+    }
+    if (state is CartSentToAPISuccess){
+      context.read<CartCubit>().showAddedToCartBottomSheet(context);
+    }
+    if(state is CartSentToAPIFailure){
+      context.read<CartCubit>().showErrorToast(context, AppStrings.addToCartFailed, state.error);
+    }
+    if(state is CartNoInternetConnection){
+      context.read<CartCubit>().showErrorToast(context, AppStrings.addToCartFailed, AppStrings.pleaseCheckYourInternet);
+    }
+  }
+
+// Future<void> sendCartToApi() async {
   //   try {
   //     await cartRepo.addProductsToCart(cartProducts);
   //   } catch (e) {
