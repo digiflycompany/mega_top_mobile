@@ -25,7 +25,6 @@ class SignUpOrLoginPage extends StatelessWidget {
             VerticalSpace(context.height * 0.055),
             const LoginOrContinueColumn(),
             VerticalSpace(context.height * 0.11),
-
             /// Sign Up Button
             PrimaryButton(
               content: Text(

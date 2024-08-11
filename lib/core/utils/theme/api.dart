@@ -34,6 +34,7 @@ class EndPoints {
   static const String latestProductsAPI =
       'https://megatop.com.eg/wp-json/custom/v2/latest_products';
   static const String categoriesAPI = '$baseUrl/api/v1/categories/';
+  static const String addToCartAPI = '$baseUrl/api/v1/users/customers/cart';
   static const String selectedCategoriesAPI =
       '$baseUrl/api/v1/products';
   static String notificationsAPI(String contentType) {

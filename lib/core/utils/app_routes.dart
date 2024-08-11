@@ -163,7 +163,7 @@ class RouteGenerator {
             duration: 150.milliseconds);
       case Routes.categoryItemsPageRoute:
         return buildPageRoute(
-            child: const CategoryItemsPage(),
+            child: CategoryItemsPage(),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.categoryProductDetailsPageRoute:
@@ -223,13 +223,13 @@ class RouteGenerator {
         return buildPageRoute(
           child: const AddNewAddressScreen(),
         );
-      // case Routes.editAddressPageRoute:
-      //   return buildPageRoute(
-      //     child: BlocProvider(
-      //       create: (BuildContext context) => AddressCubit(AddressRepoImp())..getCities(),
-      //       child: EditAddressScreen(),
-      //     ),
-      //   );
+    // case Routes.editAddressPageRoute:
+    //   return buildPageRoute(
+    //     child: BlocProvider(
+    //       create: (BuildContext context) => AddressCubit(AddressRepoImp())..getCities(),
+    //       child: EditAddressScreen(),
+    //     ),
+    //   );
       case Routes.notificationPageRoute:
         return buildPageRoute(
           child: BlocProvider(

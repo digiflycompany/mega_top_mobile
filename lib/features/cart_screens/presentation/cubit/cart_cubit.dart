@@ -1,50 +1,73 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/add_new_card_bottom_sheet.dart';
+import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
 import 'cart_states.dart';
 
 class CartCubit extends Cubit<CartState> {
-  CartCubit() : super(CartInitial());
-  int itemCount = 1;
-  int selectedCardIndex = 0;
-  int selectedPaymentCardIndex = 0;
-  String selectedValue = AppStrings.cashOnDeliveryEn;
+  final CartRepo cartRepo;
+  CartCubit(this.cartRepo) : super(CartInitial());
 
-  static CartCubit getCubit(context) => BlocProvider.of<CartCubit>(context);
+  List<Map<String, dynamic>> cartProducts = [];
 
-  /// Card Function
-  void selectCard(int index) {
-    selectedCardIndex = index;
-    emit(CartCardSelected(selectedCardIndex));
-  }
-
-  /// Payment Card Function
-  void selectPaymentCard(int index) {
-    selectedPaymentCardIndex = index;
-    emit(PaymentCardSelected(selectedPaymentCardIndex));
-  }
-
-  /// Payment Card Radio Button Selection
-  void selectOption(String newValue) {
-    selectedValue = newValue;
+  void addProductToCart(String? id) {
+    final existingProduct = cartProducts.firstWhere(
+          (product) => product['_id'] == id,
+      orElse: () => {},
+    );
+    if (existingProduct.isNotEmpty) {
+      existingProduct['quantity'] += 1;
+      ProductAddedToCartSuccess();
+    } else {
+      cartProducts.add({
+        '_id': id,
+        'quantity': 1,
+      });
+      ProductAddedToCartSuccess();
+    }
     emit(CartUpdated());
   }
 
-  void increment() {
-    itemCount++;
-    emit(CartItemCountChanged(itemCount));
+  void removeProductFromCart(String id) {
+    cartProducts.removeWhere((product) => product['_id'] == id);
+    emit(CartUpdated());
   }
 
-  void decrement() {
-    if (itemCount > 1) {
-      itemCount--;
-      emit(CartItemCountChanged(itemCount));
+  void updateProductQuantity(String id, int quantity) {
+    final existingProduct = cartProducts.firstWhere(
+          (product) => product['_id'] == id,
+      orElse: () => {},
+    );
+
+    if (existingProduct.isNotEmpty) {
+      existingProduct['quantity'] = quantity;
+    }
+    emit(CartUpdated());
+  }
+
+  Future<void> sendCartToApi() async {
+    emit(CartSentToAPILoading());
+    try {
+      final user = await cartRepo.addProductsToCart(cartProducts);
+      if (user != null && user.success == true) {
+        emit(CartSentToAPISuccess(user));
+      } else {
+        emit(CartSentToAPIFailure(user?.message ?? AppStrings.invalidCred));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(CartNoInternetConnection());
+      } else {
+        emit(CartSentToAPIFailure(e.toString()));
+      }
     }
   }
 
-  /// Function For Showing Adding New Card Bottom Sheet
-  void showAddNewCardBottomSheet(BuildContext context) {
+  void showAddedToCartBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
@@ -55,8 +78,36 @@ class CartCubit extends Cubit<CartState> {
         ),
       ),
       builder: (_) {
-        return const AddNewCardBottomSheet();
+        return const AddToCartBottomSheet();
       },
     );
   }
+
+  void showErrorToast(BuildContext context, String title, String text) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Align(
+        alignment: Alignment.bottomCenter,
+        child: CustomErrorToast(
+          title: title,
+          message: text,
+          color: AppColors.redIconColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
+  }
+  // Future<void> sendCartToApi() async {
+  //   try {
+  //     await cartRepo.addProductsToCart(cartProducts);
+  //   } catch (e) {
+  //     print('Error while sending cart data to API: $e');
+  //   }
+  // }
 }

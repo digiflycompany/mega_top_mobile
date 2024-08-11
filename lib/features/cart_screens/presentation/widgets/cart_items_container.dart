@@ -6,10 +6,10 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/core/widgets/product_photo_list_view.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/arithmetic_container.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/basket_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_name.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_price.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_quantity.dart';
@@ -91,10 +91,10 @@ class CartItemsContainer extends StatelessWidget {
                   ),
                   const Spacer(),
                   BlocProvider(
-                    create: (context) => CartCubit(),
+                    create: (context) => CartCubit(CartRepoImp()),
                     child: BlocBuilder<CartCubit, CartState>(
                       builder: (context, state) {
-                        CartCubit cartCubit = context.read<CartCubit>();
+                        //CartCubit cartCubit = context.read<CartCubit>();
                         return Row(
                           children: [
                             CartListProductPrice(
@@ -107,15 +107,15 @@ class CartItemsContainer extends StatelessWidget {
                             ),
                             HorizontalSpace(context.width * 0.04),
                             CartListProductQuantity(
-                              number: '${cartCubit.itemCount}',
+                              number: '0',
                             ),
                             HorizontalSpace(context.width * 0.04),
-                            cartCubit.itemCount == 1
-                                ? const BasketContainer()
-                                : ArithmeticContainer(
-                                    icon: AppAssets.minusIcon,
-                                    //onTap: cartCubit.decrement,
-                                  ),
+                            // cartCubit.itemCount == 1
+                            //     ? const BasketContainer()
+                            //     : ArithmeticContainer(
+                            //         icon: AppAssets.minusIcon,
+                            //         //onTap: cartCubit.decrement,
+                            //       ),
                           ],
                         );
                       },

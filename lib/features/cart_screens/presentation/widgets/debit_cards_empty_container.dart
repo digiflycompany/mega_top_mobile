@@ -28,7 +28,7 @@ class DebitCardsEmptyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
-        CartCubit cartCubit = CartCubit.getCubit(context);
+        //CartCubit cartCubit = CartCubit.getCubit(context);
         return Container(
           width: double.infinity,
           height: context.height * 0.099,
@@ -58,11 +58,11 @@ class DebitCardsEmptyContainer extends StatelessWidget {
                     activeColor: AppColors.primaryColor,
                     focusColor: Colors.black,
                     value: value,
-                    groupValue: cartCubit.selectedValue,
+                    groupValue: value,
                     onChanged: (String? newValue) {
                       if (newValue != null) {
-                        cartCubit.selectOption(newValue);
-                        cartCubit.selectPaymentCard(paymentCardIndex!);
+                      //  cartCubit.selectOption(newValue);
+                        //cartCubit.selectPaymentCard(paymentCardIndex!);
                       }
                     },
                   ),

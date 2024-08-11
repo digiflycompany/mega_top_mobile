@@ -15,15 +15,15 @@ class CategoriesPage extends StatelessWidget {
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.categoriesEn)),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-        child: Column(
-          children: [
-            VerticalSpace(context.height24),
-            const CategoriesGrid(),
-            VerticalSpace(context.height24),
-          ],
-        ),
-      ),
+            padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+            child: Column(
+              children: [
+                VerticalSpace(context.height24),
+                const CategoriesGrid(),
+                VerticalSpace(context.height24),
+              ],
+            ),
+          ),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
-import 'package:mega_top_mobile/features/cart_screens/data/shipping_details_card_model.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/models/shipping_details_card_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
@@ -36,7 +36,7 @@ class ShippingDetailsCardList extends StatelessWidget {
     ];
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
-        CartCubit cartCubit = CartCubit.getCubit(context);
+       // CartCubit cartCubit = CartCubit.getCubit(context);
         return Column(
           children: [
             ListView.builder(
@@ -45,14 +45,14 @@ class ShippingDetailsCardList extends StatelessWidget {
               itemCount: shippingCard.length,
               itemBuilder: (BuildContext context, int index) {
                 final card = shippingCard[index];
-                final isSelected = cartCubit.selectedCardIndex == index;
+                //final isSelected = cartCubit.selectedCardIndex == index;
                 return GestureDetector(
-                  onTap: () => cartCubit.selectCard(index),
+                  //onTap: () => cartCubit.selectCard(index),
                   child: ShippingDetailsCard(
                     customerName: card.customerName,
                     customerAddress: card.customerAddress,
                     customerCity: card.customerPhone,
-                    isSelected: isSelected,
+                    //isSelected: isSelected,
                   ),
                 );
               },

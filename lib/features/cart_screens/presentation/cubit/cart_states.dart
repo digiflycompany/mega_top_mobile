@@ -1,3 +1,5 @@
+import 'package:mega_top_mobile/features/cart_screens/data/models/add_to_cart_model.dart';
+
 abstract class CartState {}
 
 class CartInitial extends CartState {}
@@ -15,6 +17,24 @@ class CartCardSelected extends CartState {
 
   CartCardSelected(this.selectedCardIndex);
 }
+
+class ProductAddedToCartSuccess extends CartState{}
+
+class CartSentToAPISuccess extends CartState{
+  final AddToCartModel user;
+
+  CartSentToAPISuccess(this.user);
+}
+
+class CartSentToAPIFailure extends CartState{
+  final String error;
+
+  CartSentToAPIFailure(this.error);
+}
+
+class CartSentToAPILoading extends CartState{}
+
+class CartNoInternetConnection extends CartState{}
 
 class PaymentCardSelected extends CartState {
   final int? selectedPaymentCardIndex;
