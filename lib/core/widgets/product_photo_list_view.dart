@@ -26,6 +26,8 @@ class ProductPhotoListView extends StatelessWidget {
           imageUrl: photo!,
           width: photoWidth ?? context.width * 0.16,
           fit: BoxFit.cover,
+          errorWidget: (context, url, error) =>
+              Icon(Icons.error),
         )
             : Container(), // Or a placeholder if you prefer
       ),

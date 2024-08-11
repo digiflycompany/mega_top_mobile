@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
-import 'package:mega_top_mobile/features/cart_screens/cubit/cart_cubit.dart';
-import 'package:mega_top_mobile/features/cart_screens/cubit/cart_states.dart';
+import 'package:mega_top_mobile/core/widgets/product_photo_list_view.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/arithmetic_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/basket_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_name.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_price.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_quantity.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_list_product_type.dart';
-
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/widgets/product_photo_list_view.dart';
 
 class CartItemsContainer extends StatelessWidget {
   final String? productPhoto;

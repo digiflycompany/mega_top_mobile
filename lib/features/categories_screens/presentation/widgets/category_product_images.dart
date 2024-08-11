@@ -1,7 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../cubit/category_cubit.dart';
-import '../../cubit/category_state.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 
 class ProductImages extends StatelessWidget {
   const ProductImages({super.key});
@@ -18,10 +19,13 @@ class ProductImages extends StatelessWidget {
                 .data!.products[categoryCubit.selectedProductIndex].images.length,
             onPageChanged: (index) => categoryCubit.setImageIndex(index),
             itemBuilder: (context, index) {
-              return Image.network(
-                  categoryCubit.selectedCategoryModel!
+              return CachedNetworkImage(
+                imageUrl:categoryCubit.selectedCategoryModel!
                       .data!.products[categoryCubit.selectedProductIndex].images[index],
-
+                fit: BoxFit.fill,
+                width: double.infinity,
+                errorWidget: (context, url, error) =>
+                    Icon(Icons.error),
               );
             },
           );
