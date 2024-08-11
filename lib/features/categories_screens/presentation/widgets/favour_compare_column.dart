@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/white_box_icon.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class FavourCompareColumn extends StatelessWidget {
   const FavourCompareColumn({super.key});
@@ -28,11 +30,16 @@ class FavourCompareColumn extends StatelessWidget {
                   icon: categoryCubit.addedToFavourites
                       ? AppAssets.favourFilledIcon
                       : AppAssets.favourOutlinedIcon,
-                  onTap: () {
-                    categoryCubit.addedToFavourites
-                        ? globalCubit.showRemoveFromFavouritesToast(context)
-                        : globalCubit.showAddToFavouritesToast(context);
-                    categoryCubit.toggleFavourite();
+                  onTap: () async {
+                    final token = await PreferencesHelper.getToken();
+                    if( token == null){
+                        Routes.signUpOrLoginPageRoute.moveTo;
+                    }else{
+                      categoryCubit.addedToFavourites
+                          ? globalCubit.showRemoveFromFavouritesToast(context)
+                          : globalCubit.showAddToFavouritesToast(context);
+                      categoryCubit.toggleFavourite();
+                    }
                   },
                 ),
                 // VerticalSpace(context.height * 0.012),

@@ -8,6 +8,8 @@ class CategorySuccess extends CategoryState {}
 
 class CategoryLoading extends CategoryState {}
 
+class CategoryNoInternetConnection extends CategoryState {}
+
 class CategoryFailure extends CategoryState {
   final String error;
 

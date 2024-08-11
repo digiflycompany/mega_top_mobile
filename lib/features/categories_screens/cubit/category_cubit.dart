@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
@@ -159,17 +160,21 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryLoading());
     try {
       CategoriesModel? fetchedCategories = await categoriesRepo.getCategories();
-      if (fetchedCategories != null) {
+      if (fetchedCategories != null && fetchedCategories.success==true) {
         categories = fetchedCategories;
-        print(
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         print(categories);
         emit(CategorySuccess());
       } else {
-        emit(CategoryFailure('No categories found'));
+        emit(CategoryNoInternetConnection());
+        //emit(CategoryFailure('No categories found'));
       }
     } catch (e) {
-      emit(CategoryFailure(e.toString()));
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(CategoryNoInternetConnection());
+      }else {
+        emit(CategoryFailure(e.toString()));
+      }
     }
   }
 

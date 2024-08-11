@@ -13,51 +13,54 @@ class OurProductsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CategoryCubit, CategoryState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        var cubit = context.read<CategoryCubit>();
-        if (cubit.categories != null) {
-          var categories = cubit.categories;
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.width * 0.03),
-            child: SizedBox(
-              height: context.height * 0.14,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: categories!.data!.categories!.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final category = categories.data!.categories![index];
-                  return Row(
-                    children: [
-                      OurProductsContainer(
-                        productPhoto: category.image,
-                        productName: category.name,
-                        // productQuantity:
-                        //     category.count.toString() + AppStrings.products,
-                        categoryId: category.id,
-                        index: index,
-                      ),
-                      HorizontalSpace(
-                          context.width * 0.045), // Space between items
-                    ],
-                  );
-                },
+    return BlocProvider(
+      create: (context) => CategoryCubit()..getCategories(),
+      child: BlocConsumer<CategoryCubit, CategoryState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var cubit = context.read<CategoryCubit>();
+          if (cubit.categories != null) {
+            var categories = cubit.categories;
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: context.width * 0.03),
+              child: SizedBox(
+                height: context.height * 0.14,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories!.data!.categories!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final category = categories.data!.categories![index];
+                    return Row(
+                      children: [
+                        OurProductsContainer(
+                          productPhoto: category.image,
+                          productName: category.name,
+                          // productQuantity:
+                          //     category.count.toString() + AppStrings.products,
+                          categoryId: category.id,
+                          index: index,
+                        ),
+                        HorizontalSpace(
+                            context.width * 0.045), // Space between items
+                      ],
+                    );
+                  },
+                ),
               ),
+            );
+          }
+          return Center(
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                colorScheme: ColorScheme.fromSwatch().copyWith(
+                  primary: AppColors.primaryColor,
+                ),
+              ),
+              child: CircularProgressIndicator.adaptive(),
             ),
           );
-        }
-        return Center(
-          child: Theme(
-            data: Theme.of(context).copyWith(
-              colorScheme: ColorScheme.fromSwatch().copyWith(
-                primary: AppColors.primaryColor,
-              ),
-            ),
-            child: CircularProgressIndicator.adaptive(),
-          ),
-        );
-      },
+        },
+      ),
     );
   }
 }

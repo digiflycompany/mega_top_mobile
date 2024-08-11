@@ -37,7 +37,8 @@ class CategoriesGrid extends StatelessWidget {
               },
             ),
           );
-        } else {
+        }
+        else {
           return Expanded(
             child: Center(
               child: Theme(
