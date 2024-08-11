@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/features/categories_screens/data/categories_mode
 import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/product_details_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/your_orders_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
@@ -240,6 +241,21 @@ class CategoryCubit extends Cubit<CategoryState> {
   int getDiscountPercentage(
       {required int finalPrice, required int originPrice}) {
     return 1 - (finalPrice / originPrice).toInt();
+  }
+
+  SubCategoriesModel? subCategoriesModel;
+
+  Future<void> getSubCategories(String categoriesId) async {
+    emit(SelectedCategoryLoading());
+    try {
+      subCategoriesModel = null;
+      subCategoriesModel = await categoriesRepo.getSubCategories(
+        categoryId: categoriesId);
+      emit(SelectedCategorySuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SelectedCategoryFailure(e.toString()));
+    }
   }
 
   Future<void> addToCart(int customerId, int productId, int quantity) async {

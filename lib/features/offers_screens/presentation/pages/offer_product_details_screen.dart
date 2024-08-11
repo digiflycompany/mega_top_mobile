@@ -6,23 +6,23 @@ import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/product_detailed_image.dart';
 import 'package:mega_top_mobile/core/widgets/product_details_app_bar.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
+import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/product_detailed_body.dart';
 
 import '../../../../core/widgets/status_bar_color.dart';
-import '../widgets/product_detailed_body.dart';
 
-class CategoryProductDetailsPage extends StatefulWidget {
-  const CategoryProductDetailsPage({super.key});
+class OfferProductDetailsPage extends StatefulWidget {
+  const OfferProductDetailsPage({super.key});
 
   @override
-  State<CategoryProductDetailsPage> createState() =>
-      _CategoryProductDetailsPageState();
+  State<OfferProductDetailsPage> createState() =>
+      _OfferProductDetailsPageState();
 }
 
-class _CategoryProductDetailsPageState
-    extends State<CategoryProductDetailsPage> {
-  late CategoryCubit categoryCubit;
+class _OfferProductDetailsPageState
+    extends State<OfferProductDetailsPage> {
+  late OffersCubit offerCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +31,15 @@ class _CategoryProductDetailsPageState
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
             child: const ProductDetailsAppBar()),
-        body: BlocBuilder<CategoryCubit, CategoryState>(
-          builder: (BuildContext context, CategoryState state) {
-            categoryCubit = context.read<CategoryCubit>();
-            return SingleChildScrollView(
+        body: BlocBuilder<OffersCubit, OffersState>(
+          builder: (BuildContext context, OffersState state) {
+            offerCubit = context.read<OffersCubit>();
+            return  SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  ProductDetailedImage(images: categoryCubit.selectedCategoryModel!
-                      .data!.products[categoryCubit.selectedProductIndex].images,imagePosition: categoryCubit.currentImageIndex,),
+                  ProductDetailedImage(images: offerCubit.offerModel!.data!.products[offerCubit.selectedProductIndex].images,
+                  imagePosition: offerCubit.currentImageIndex,),
                   ProductDetailedBody(),
                 ],
               ),
@@ -48,14 +48,14 @@ class _CategoryProductDetailsPageState
         ),
         bottomNavigationBar: ButtonBottomNavBar(
           button: AddToCartButton(
-            onTap: () => categoryCubit.showAddedToCartBottomSheet(context),
+            onTap: () => offerCubit.showAddedToCartBottomSheet(context),
           ),
         ));
   }
 
   @override
   void dispose() {
-    categoryCubit.setImageIndex(0);
+    offerCubit.setImageIndex(0);
     super.dispose();
   }
 }

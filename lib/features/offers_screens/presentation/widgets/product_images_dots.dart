@@ -8,10 +8,7 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_state
 import '../../../../core/utils/app_color.dart';
 
 class ProductImagesDots extends StatelessWidget {
-  const ProductImagesDots({super.key, required this.imageLength, required this.imagePosition});
-
- final int imageLength;
- final int imagePosition;
+  const ProductImagesDots({super.key});
 
   @override
   Widget build(BuildContext context) {

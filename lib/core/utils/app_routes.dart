@@ -39,6 +39,7 @@ import 'package:mega_top_mobile/features/categories_screens/presentation/pages/c
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
+import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offer_product_details_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
 
 import 'app_color.dart';
@@ -84,6 +85,8 @@ class Routes {
   static const String compareProductPageRoute = "/compare_product_screen";
   static const String signUpEmailVerificationPageRoute = "/sign_up_email_verification_screen";
   static const String cartPageRoute = "/cart_screen";
+
+  static const String offerProductDetailsPageRoute = "/offer_screen";
 
 }
 
@@ -167,6 +170,11 @@ class RouteGenerator {
       case Routes.categoryProductDetailsPageRoute:
         return buildPageRoute(
             child: const CategoryProductDetailsPage(),
+            routeSettings: routeSettings,
+            pageRouteAnimation: PageRouteAnimation.fade);
+      case Routes.offerProductDetailsPageRoute:
+        return buildPageRoute(
+            child: const OfferProductDetailsPage(),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.signUpOrLoginPageRoute:
