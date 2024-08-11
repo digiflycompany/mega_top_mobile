@@ -10,9 +10,9 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
+import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
 import 'package:mega_top_mobile/core/widgets/product_detailed_image.dart';
 import 'package:mega_top_mobile/core/widgets/product_details_app_bar.dart';
-import 'package:mega_top_mobile/core/widgets/small_white_circular_progress_indicator.dart';
 import 'package:mega_top_mobile/core/widgets/status_bar_color.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
@@ -67,7 +67,7 @@ class _CategoryProductDetailsPageState
                   builder: (context, state) {
                     CartCubit cubit = context.read<CartCubit>();
                     return AddToCartButton(
-                      content: state is CartSentToAPILoading?const SmallWhiteCircularProgressIndicator():Row(
+                      content: state is CartSentToAPILoading?const ButtonCircularProgress():Row(
                         children: [
                           SvgPicture.asset(
                             AppAssets.cartButtonIcon,
