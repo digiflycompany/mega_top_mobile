@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/widgets/primary_empty_button.dart';
-import '../../cubit/cart_cubit.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 
 class AddNewCardButton extends StatelessWidget {
   const AddNewCardButton({super.key});

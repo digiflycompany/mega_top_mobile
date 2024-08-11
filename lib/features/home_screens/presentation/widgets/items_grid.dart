@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -65,13 +63,12 @@ class ProductsGridContainer extends StatelessWidget {
                         BorderRadius.circular(context.height * 0.0065),
                         color: AppColors.iconsBackgroundColor,
                       ),
-                      child: Padding(
-                        padding:
-                        EdgeInsets.only(top: context.height * 0.012),
-                        child: CachedNetworkImage(
-                          imageUrl: product.images[0],
-                          width: context.width * 0.2,
-                        ),
+                      child: CachedNetworkImage(
+                        imageUrl: product.images[0],
+                        fit: BoxFit.fill,
+                        width: double.infinity,
+                        errorWidget: (context, url, error) =>
+                            Icon(Icons.error),
                       ),
                     ),
                     discount == true
@@ -84,17 +81,17 @@ class ProductsGridContainer extends StatelessWidget {
                       ),
                     )
                         : Container(),
-                    Align(
-                        alignment: AlignmentDirectional.topEnd,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: context.height * 0.012,
-                              horizontal: context.width * 0.022),
-                          child: SvgPicture.asset(
-                            AppAssets.favourOutlinedIcon,
-                            width: context.width * 0.054,
-                          ),
-                        )),
+                    // Align(
+                    //     alignment: AlignmentDirectional.topEnd,
+                    //     child: Padding(
+                    //       padding: EdgeInsets.symmetric(
+                    //           vertical: context.height * 0.012,
+                    //           horizontal: context.width * 0.022),
+                    //       child: SvgPicture.asset(
+                    //         AppAssets.favourOutlinedIcon,
+                    //         width: context.width * 0.054,
+                    //       ),
+                    //     )),
                   ],
                 ),
               ),

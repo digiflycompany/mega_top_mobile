@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
-import 'package:mega_top_mobile/features/cart_screens/cubit/cart_cubit.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_screen_title_text.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
-
-import '../../../../core/utils/app_routes.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
-import '../widgets/cart_screen_title_text.dart';
-import '../widgets/shipping_details_card_list.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card_list.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
 class ShippingDetailsPage extends StatelessWidget {
   final bool isEmpty = false;

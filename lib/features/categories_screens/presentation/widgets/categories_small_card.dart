@@ -45,38 +45,39 @@ class CategoriesSmallCard extends StatelessWidget {
                   color: AppColors.onboardingBackgroundColor),
               borderRadius: BorderRadius.circular(context.height * 0.006),
             ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: context.height * 0.011,
-                  horizontal: context.width * 0.021),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  categoryPhoto.isNotNull
-                      ? Expanded(
-                          child: CachedNetworkImage(
-                            imageUrl: categoryPhoto!,
-                            width: context.width * 0.15,
-                            // placeholder: (context, url) => Center(
-                            //   child: Theme(
-                            //     data: Theme.of(context).copyWith(
-                            //       colorScheme:
-                            //           ColorScheme.fromSwatch().copyWith(
-                            //         primary: AppColors.primaryColor,
-                            //       ),
-                            //     ),
-                            //     child: Transform.scale(
-                            //         scale: 0.6,
-                            //         child:
-                            //             CircularProgressIndicator.adaptive()),
-                            //   ),
-                            // ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                          ),
-                        )
-                      : Image.asset("assets/images/ad.png"),
-                  Text(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                categoryPhoto.isNotNull
+                    ? Expanded(
+                        child: CachedNetworkImage(
+                          imageUrl: categoryPhoto!,
+                          fit: BoxFit.fill,
+                          width: double.infinity,
+                          // placeholder: (context, url) => Center(
+                          //   child: Theme(
+                          //     data: Theme.of(context).copyWith(
+                          //       colorScheme:
+                          //           ColorScheme.fromSwatch().copyWith(
+                          //         primary: AppColors.primaryColor,
+                          //       ),
+                          //     ),
+                          //     child: Transform.scale(
+                          //         scale: 0.6,
+                          //         child:
+                          //             CircularProgressIndicator.adaptive()),
+                          //   ),
+                          // ),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
+                        ),
+                      )
+                    : Image.asset("assets/images/ad.png"),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: context.height * 0.005,
+                      horizontal: context.width * 0.021),
+                  child: Text(
                     categoryName!,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -85,8 +86,8 @@ class CategoriesSmallCard extends StatelessWidget {
                       fontSize: 13.sp,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );
