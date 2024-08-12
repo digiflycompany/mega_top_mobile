@@ -187,7 +187,9 @@ class CategoryCubit extends Cubit<CategoryState> {
           selectedCategory: selectedId,
           page: page,
           minPrice: minPrice,
-          maxPrice: maxPrice);
+          maxPrice: maxPrice,
+          subCategories: subCategoriesQuery(),
+      );
       emit(SelectedCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");
@@ -216,6 +218,20 @@ class CategoryCubit extends Cubit<CategoryState> {
       print(e.toString() + "///////");
       emit(SelectedCategoryFailure(e.toString()));
     }
+  }
+
+
+  List<String> subCategoriesQuery(){
+    List<String> subCategoriesList=[];
+
+    for(int i=0;i<checkboxStates.length-1;i++)
+      {
+        if(checkboxStates[i] == true)
+          {
+            subCategoriesList.add(subCategoriesModel!.data!.subcategories[i].id!);
+          }
+      }
+    return subCategoriesList;
   }
 
   int selectedProductIndex = 0;

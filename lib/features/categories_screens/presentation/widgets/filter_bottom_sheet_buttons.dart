@@ -36,22 +36,31 @@ class FilterBottomSheetButtons extends StatelessWidget {
                   ),
                 ),
                 onTap: (){
-                  if((cubit.minPriceController.text as String).isEmptyOrNull || (cubit.maxPriceController.text as String).isEmptyOrNull)
+                  if((cubit.minPriceController.text as String).isNotNullOrEmpty && (cubit.maxPriceController.text as String).isNotNullOrEmpty)
                   {
-
+                    if(int.tryParse(cubit.minPriceController.text)! > int.tryParse(cubit.maxPriceController.text)!)
+                    {
+                      Fluttertoast.showToast(
+                          msg: "Minimum price cannot be greater than the maximum price",
+                          toastLength: Toast.LENGTH_SHORT,
+                          textColor: Colors.white,
+                          fontSize: 12.sp
+                      );
+                    }else{
+                      cubit.page = 1;
+                      cubit.minPrice = int.tryParse(cubit.minPriceController.text);
+                      cubit.maxPrice = int.tryParse(cubit.maxPriceController.text);
+                      cubit.selectOption(AppStrings.defaultEn);
+                      //   cubit.getSelectedCategories(cubit.selectedCategoryId!);
+                      getProductsFunction();
+                      Navigator.pop(context);
+                    }
                   }
-                  if(int.tryParse(cubit.minPriceController.text)! > int.tryParse(cubit.maxPriceController.text)!)
-                  {
-                    Fluttertoast.showToast(
-                        msg: "Minimum price cannot be greater than the maximum price",
-                        toastLength: Toast.LENGTH_SHORT,
-                        textColor: Colors.white,
-                        fontSize: 12.sp
-                    );
-                  }else{
+                  else{
                     cubit.page = 1;
                     cubit.minPrice = int.tryParse(cubit.minPriceController.text);
                     cubit.maxPrice = int.tryParse(cubit.maxPriceController.text);
+                    cubit.selectOption(AppStrings.defaultEn);
                     //   cubit.getSelectedCategories(cubit.selectedCategoryId!);
                     getProductsFunction();
                     Navigator.pop(context);
@@ -66,6 +75,8 @@ class FilterBottomSheetButtons extends StatelessWidget {
                   cubit.maxPriceController.clear();
                   cubit.minPrice = null;
                   cubit.maxPrice = null;
+                  cubit.initializeCheckboxes(cubit.subCategoriesModel!.data!.subcategories.length);
+                  cubit.selectOption(AppStrings.defaultEn);
                   //    cubit.getSelectedCategories(cubit.selectedCategoryId!);
                   getProductsFunction();
                   Navigator.pop(context);
