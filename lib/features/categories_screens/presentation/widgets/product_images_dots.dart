@@ -13,6 +13,7 @@ class ProductImagesDots extends StatelessWidget {
  final int imageLength;
  final int imagePosition;
 
+
   @override
   Widget build(BuildContext context) {
     CategoryCubit categoryCubit = context.read<CategoryCubit>();

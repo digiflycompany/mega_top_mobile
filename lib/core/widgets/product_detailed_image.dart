@@ -13,10 +13,11 @@ import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart'
 import '../utils/app_color.dart';
 
 class ProductDetailedImage extends StatelessWidget {
-  const ProductDetailedImage({super.key, required this.images, required this.imagePosition});
+  const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit});
 
   final List<String> images;
   final int imagePosition;
+  final cubit;
 
 
   @override
@@ -33,7 +34,7 @@ class ProductDetailedImage extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  ProductImages(images: images,),
+                  ProductImages(images: images,cubit: cubit,),
                   SizedBox(
                     height: 10.h,
                   ),

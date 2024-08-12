@@ -39,7 +39,8 @@ class _OfferProductDetailsPageState
               child: Column(
                 children: [
                   ProductDetailedImage(images: offerCubit.offerModel!.data!.products[offerCubit.selectedProductIndex].images,
-                  imagePosition: offerCubit.currentImageIndex,),
+                  imagePosition: offerCubit.currentImageIndex,
+                  cubit: offerCubit,),
                   ProductDetailedBody(),
                 ],
               ),

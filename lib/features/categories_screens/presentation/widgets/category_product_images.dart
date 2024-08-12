@@ -4,9 +4,10 @@ import '../../cubit/category_cubit.dart';
 import '../../cubit/category_state.dart';
 
 class ProductImages extends StatelessWidget {
-  const ProductImages({super.key, required this.images});
+  const ProductImages({super.key, required this.images,required this.cubit});
 
   final List<String> images;
+  final cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ProductImages extends StatelessWidget {
           return PageView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: images.length,
-            onPageChanged: (index) => categoryCubit.setImageIndex(index),
+            onPageChanged: (index) => cubit.setImageIndex(index),
             itemBuilder: (context, index) {
               return Image.network(
                 images[index],

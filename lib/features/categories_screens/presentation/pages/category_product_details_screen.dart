@@ -39,7 +39,9 @@ class _CategoryProductDetailsPageState
               child: Column(
                 children: [
                   ProductDetailedImage(images: categoryCubit.selectedCategoryModel!
-                      .data!.products[categoryCubit.selectedProductIndex].images,imagePosition: categoryCubit.currentImageIndex,),
+                      .data!.products[categoryCubit.selectedProductIndex].images,
+                    imagePosition: categoryCubit.currentImageIndex,
+                  cubit: categoryCubit,),
                   ProductDetailedBody(),
                 ],
               ),
