@@ -14,15 +14,20 @@ class FilterBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const BottomSheetAppBar(AppStrings.filterByEn),
-        VerticalSpace(context.height * 0.033),
-        FilterBottomSheetBody(
-          getProductsFunction: getProductsFunction,
-          cubit: cubit,
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      child: Column(
+        children: [
+          const BottomSheetAppBar(AppStrings.filterByEn),
+          VerticalSpace(context.height * 0.033),
+          FilterBottomSheetBody(
+            getProductsFunction: getProductsFunction,
+            cubit: cubit,
+          ),
+        ],
+      ),
     );
   }
 }

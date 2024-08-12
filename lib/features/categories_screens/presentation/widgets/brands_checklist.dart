@@ -18,11 +18,11 @@ class BrandsCheckList extends StatelessWidget {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
         final checkboxStates = categoryCubit.checkboxStates;
-        return Expanded(
-          child: Scrollbar(
-            thumbVisibility: true,
+        return Scrollbar(
+          thumbVisibility: true,
+          child: SizedBox(
+            height: 200.h,
             child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               itemCount: categoryCubit.subCategoriesModel!.data!.subcategories.length,
               separatorBuilder: (context, index) => const VerticalSpace(1),
