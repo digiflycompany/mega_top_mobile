@@ -8,6 +8,11 @@ abstract class AddressState {}
 
 class AddressInitial extends AddressState {}
 
+class AddressSelected extends AddressState {
+  final String address;
+  AddressSelected(this.address);
+}
+
 class UserAddressesLoading extends AddressState {}
 
 class UserAddressesSuccess extends AddressState {

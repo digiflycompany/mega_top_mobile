@@ -13,62 +13,71 @@ class ShippingDetailsCard extends StatelessWidget {
   final bool isSelected;
   final Function()? editOnTap;
   final Function()? removeOnTap;
+  final Function()? onTap;
   const ShippingDetailsCard(
       {super.key,
         this.customerName,
         this.customerAddress,
         this.customerCity,
-        this.isSelected=false, this.editOnTap, this.removeOnTap});
+        this.isSelected=false,
+        this.editOnTap,
+        this.removeOnTap,
+        this.onTap
+      });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: context.width * 0.045),
-      child: Container(
-        width: double.infinity,
-        height: context.height * 0.23,
-        decoration: BoxDecoration(
-          color: isSelected ? AppColors.iconsBackgroundColor : Colors.white,
-          border: Border.all(
-              width: 1.w,
-              color: isSelected
-                  ? AppColors.primaryColor
-                  : AppColors.smallContainerGreyColor),
-          borderRadius: BorderRadius.circular(4.r),
-          boxShadow: [
-            BoxShadow(
-              color: isSelected
-                  ? AppColors.iconsBackgroundColor
-                  : AppColors.transparent,
-              offset: isSelected ? const Offset(0, 2) : const Offset(0, 2),
-              blurRadius: isSelected ? 12 : 0,
-              spreadRadius: 0,
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: context.width * 0.045,
-              vertical: context.height * 0.022),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ShippingCardOptions(
-                customerName: customerName,
-                editOnTap: editOnTap,
-                removeOnTap: removeOnTap,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: Container(
+          width: double.infinity,
+          height: context.height * 0.23,
+          decoration: BoxDecoration(
+            color: isSelected ? AppColors.iconsBackgroundColor : Colors.white,
+            border: Border.all(
+                width: 1.w,
+                color: isSelected
+                    ? AppColors.primaryColor
+                    : AppColors.smallContainerGreyColor),
+            borderRadius: BorderRadius.circular(4.r),
+            boxShadow: [
+              BoxShadow(
+                color: isSelected
+                    ? AppColors.iconsBackgroundColor
+                    : AppColors.transparent,
+                offset: isSelected ? const Offset(0, 2) : const Offset(0, 2),
+                blurRadius: isSelected ? 12 : 0,
+                spreadRadius: 0,
               ),
-              VerticalSpace(context.height * 0.0165),
-              Divider(
-                thickness: 1.w,
-                color: AppColors.onboardingBackgroundColor,
-              ),
-              VerticalSpace(context.height * 0.0165),
-              CustomerDetailsShippingAddress(
-                customerAddress: customerAddress,
-                customerCity: customerCity,
-              )
             ],
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: context.width * 0.045,
+                vertical: context.height * 0.022),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ShippingCardOptions(
+                  customerName: customerName,
+                  editOnTap: editOnTap,
+                  removeOnTap: removeOnTap,
+                ),
+                VerticalSpace(context.height * 0.0165),
+                Divider(
+                  thickness: 1.w,
+                  color: AppColors.onboardingBackgroundColor,
+                ),
+                VerticalSpace(context.height * 0.0165),
+                CustomerDetailsShippingAddress(
+                  customerAddress: customerAddress,
+                  customerCity: customerCity,
+                )
+              ],
+            ),
           ),
         ),
       ),

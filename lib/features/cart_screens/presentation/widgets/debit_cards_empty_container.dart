@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_states.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_icon.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_text.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/spacer.dart';
 
 class DebitCardsEmptyContainer extends StatelessWidget {
   final String? paymentIcon;
@@ -26,10 +23,7 @@ class DebitCardsEmptyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartCubit, CartState>(
-      builder: (context, state) {
-        //CartCubit cartCubit = CartCubit.getCubit(context);
-        return Container(
+    return  Container(
           width: double.infinity,
           height: context.height * 0.099,
           decoration: BoxDecoration(
@@ -71,7 +65,5 @@ class DebitCardsEmptyContainer extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
   }
 }

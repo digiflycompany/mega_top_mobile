@@ -35,7 +35,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_sc
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_confirmation_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_summary_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/payment_methods_screen.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/pages/shipping_details_screen.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/pages/checkout_address_details_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/category_items_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/category_product_details_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
@@ -64,7 +64,7 @@ class Routes {
   static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen";
   static const String categoryProductDetailsPageRoute =
       "/category_product_details_screen";
-  static const String shippingDetailsPageRoute = "/shipping_details_screen";
+  static const String checkoutAddressDetailsPageRoute = "/shipping_details_screen";
   static const String paymentMethodsPageRoute = "/payment_methods_screen";
   static const String orderSummaryPageRoute = "/order_summary_screen";
   static const String userAccountPageRoute = "/user_account_screen";
@@ -176,9 +176,12 @@ class RouteGenerator {
             child: const SignUpOrLoginPage(),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
-      case Routes.shippingDetailsPageRoute:
+      case Routes.checkoutAddressDetailsPageRoute:
         return buildPageRoute(
-            child: const ShippingDetailsPage(),
+            child: BlocProvider(
+              create: (context) => AddressCubit(AddressRepoImp())..getUserAddresses(),
+              child: CheckoutAddressDetailsPage(),
+            ),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.paymentMethodsPageRoute:

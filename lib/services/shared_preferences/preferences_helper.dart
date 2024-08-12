@@ -13,6 +13,27 @@ class PreferencesHelper {
     preferences = await SharedPreferences.getInstance();
   }
 
+  static Future<void> saveSelectedAddress({
+    required String id,
+    required String name,
+    required String address,
+    required String cityName,
+  }) async {
+    await preferences?.setString('selectedAddressId', id);
+    await preferences?.setString('selectedAddressName', name);
+    await preferences?.setString('selectedAddress', address);
+    await preferences?.setString('selectedCityName', cityName);
+  }
+
+  static Map<String, String?> getSelectedAddress() {
+    return {
+      'id': preferences?.getString('selectedAddressId'),
+      'name': preferences?.getString('selectedAddressName'),
+      'address': preferences?.getString('selectedAddress'),
+      'cityName': preferences?.getString('selectedCityName'),
+    };
+  }
+
   static Future<void> saveToken({required String token}) async {
     await _secureStorage.write(key: "token", value: token);
   }
@@ -31,6 +52,20 @@ class PreferencesHelper {
     UserModel? userModel = UserModel.fromJson(
         json.decode('${preferences?.getString('userModel')}'));
     return userModel.data!.user!.email ?? '';
+  }
+
+  static String get getPhone {
+    UserModel? userModel = UserModel.fromJson(
+        json.decode('${preferences?.getString('userModel')}'));
+    return userModel.data!.user!.phoneNumber ?? '';
+  }
+
+  static Future<void> saveWishListCount(int count) async {
+    await preferences?.setInt('wishListCount', count);
+  }
+
+  static int getWishListCount() {
+    return preferences?.getInt('wishListCount') ?? 0;
   }
 
   static Future<void> saveIsVisitor({required bool isVisitor}) async {
@@ -92,7 +127,6 @@ class PreferencesHelper {
     await preferences?.remove('cart');
   }
 
-  // Method to increase quantity
   static Future<void> increaseQuantity(String productId) async {
     List<Map<String, dynamic>> cart = getCart();
     final productIndex = cart.indexWhere((item) => item['_id'] == productId);
@@ -103,7 +137,6 @@ class PreferencesHelper {
     }
   }
 
-  // Method to decrease quantity
   static Future<void> decreaseQuantity(String productId) async {
     List<Map<String, dynamic>> cart = getCart();
     final productIndex = cart.indexWhere((item) => item['_id'] == productId);
@@ -118,7 +151,6 @@ class PreferencesHelper {
     }
   }
 
-  // Method to remove product from cart
   static Future<void> removeProduct(String productId) async {
     List<Map<String, dynamic>> cart = getCart();
     cart.removeWhere((item) => item['_id'] == productId);

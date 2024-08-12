@@ -43,18 +43,6 @@ class CartCubit extends Cubit<CartState> {
     emit(CartUpdated());
   }
 
-  void updateProductQuantity(String id, int quantity) {
-    final existingProductIndex = cartProducts.indexWhere(
-          (product) => product['_id'] == id,
-    );
-
-    if (existingProductIndex != -1) {
-      cartProducts[existingProductIndex]['quantity'] = quantity;
-      PreferencesHelper.saveCart(cartProducts);
-      emit(CartUpdated());
-    }
-  }
-
   Future<void> sendCartToApi(List<Map<String, dynamic>> cartProducts) async {
     emit(CartSentToAPILoading());
     try {
@@ -73,25 +61,6 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  // Future<void> getUserCart() async {
-  //   emit(GetUserCartLoading());
-  //   try {
-  //     final user = await cartRepo.getUserCart();
-  //     if (user != null && user.success == true) {
-  //       cartProducts = user.data!.products.cast<Map<String, dynamic>>(); // Assume this is the correct format
-  //       PreferencesHelper.saveCart(cartProducts);
-  //       emit(GetUserCartSuccess(user));
-  //     } else {
-  //       emit(GetUserCartFailure(user?.message ?? AppStrings.invalidCred));
-  //     }
-  //   } catch (e) {
-  //     if (e is DioException && e.error == AppStrings.noInternetConnection) {
-  //       emit(CartNoInternetConnection());
-  //     } else {
-  //       emit(GetUserCartFailure(e.toString()));
-  //     }
-  //   }
-  // }
   Future<void> getUserCart() async {
     emit(GetUserCartLoading());
     try {
@@ -170,4 +139,5 @@ class CartCubit extends Cubit<CartState> {
       showErrorToast(context, AppStrings.addToCartFailed, AppStrings.pleaseCheckYourInternet);
     }
   }
+
 }
