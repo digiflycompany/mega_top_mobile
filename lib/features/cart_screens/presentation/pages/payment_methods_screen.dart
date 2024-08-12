@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_screen_title_text.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_ways_list.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
-import '../../../../core/utils/app_string.dart';
-import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
-import '../widgets/payment_ways_list.dart';
 
 class PaymentMethodsPage extends StatelessWidget {
   const PaymentMethodsPage({super.key});
@@ -45,7 +45,7 @@ class PaymentMethodsPage extends StatelessWidget {
               fontSize: 16.sp,
             ),
           ),
-          onTap: () => Routes.orderSummaryPageRoute.moveTo,
+          onTap: () => Routes.checkoutAddressDetailsPageRoute.moveTo,
         ),
       ),
     );

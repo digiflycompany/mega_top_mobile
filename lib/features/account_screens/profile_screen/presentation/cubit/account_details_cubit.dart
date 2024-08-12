@@ -99,11 +99,10 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         phoneController.text = user.data.user.phoneNumber;
         wishListCount = user.data.wishlistCount;
         unreadNotificationCount = user.data.unreadNotificationsCount['ad'] ?? 0;
+        await PreferencesHelper.saveWishListCount(wishListCount);
         emit(AccountDetailsSuccess(user));
       } else {
-        emit(AccountDetailsFailure(
-            user?.message ?? AppStrings.invalidCred));
-        //print(user!.message);
+        emit(AccountDetailsFailure(user?.message ?? AppStrings.invalidCred));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {

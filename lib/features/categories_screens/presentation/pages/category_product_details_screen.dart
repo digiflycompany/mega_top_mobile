@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -20,7 +19,6 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_st
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_body.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class CategoryProductDetailsPage extends StatefulWidget {
   const CategoryProductDetailsPage({super.key});
@@ -89,10 +87,6 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
                     ],
                   ),
                   onTap: () async {
-                    final token = await PreferencesHelper.getToken();
-                    if (token == null) {
-                      Routes.signUpOrLoginPageRoute.moveTo;
-                    } else {
                       context.read<CartCubit>().addProductToCart(
                         categoryCubit.selectedCategoryModel!
                             .data!.products[categoryCubit.selectedProductIndex]
@@ -108,7 +102,6 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
                             .images[0],
                       );
                       print('Product added to cart');
-                    }
                   },
                 );
               },
