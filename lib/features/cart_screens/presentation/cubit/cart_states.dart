@@ -1,5 +1,4 @@
 import 'package:mega_top_mobile/features/cart_screens/data/models/add_to_cart_model.dart';
-import 'package:mega_top_mobile/features/cart_screens/data/models/user_cart_model.dart';
 
 abstract class CartState {}
 
@@ -35,19 +34,33 @@ class CartSentToAPIFailure extends CartState{
 
 class CartSentToAPILoading extends CartState{}
 
-class GetUserCartSuccess extends CartState{
-  final UserCartModel user;
+// class GetUserCartSuccess extends CartState{
+//   final UserCartModel user;
+//
+//   GetUserCartSuccess(this.user);
+// }
+//
+// class GetUserCartFailure extends CartState{
+//   final String error;
+//
+//   GetUserCartFailure(this.error);
+// }
 
-  GetUserCartSuccess(this.user);
+class GetUserCartLoading extends CartState {}
+
+class GetUserCartSuccess extends CartState {
+  final List<Map<String, dynamic>> cartProducts;
+
+  GetUserCartSuccess({required this.cartProducts});
 }
 
-class GetUserCartFailure extends CartState{
+class GetUserCartFailure extends CartState {
   final String error;
 
   GetUserCartFailure(this.error);
 }
 
-class GetUserCartLoading extends CartState{}
+// class GetUserCartLoading extends CartState{}
 
 class CartNoInternetConnection extends CartState{}
 

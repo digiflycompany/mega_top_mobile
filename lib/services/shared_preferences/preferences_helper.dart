@@ -92,4 +92,37 @@ class PreferencesHelper {
     await preferences?.remove('cart');
   }
 
+  // Method to increase quantity
+  static Future<void> increaseQuantity(String productId) async {
+    List<Map<String, dynamic>> cart = getCart();
+    final productIndex = cart.indexWhere((item) => item['_id'] == productId);
+
+    if (productIndex != -1) {
+      cart[productIndex]['quantity'] += 1;
+      await saveCart(cart);
+    }
+  }
+
+  // Method to decrease quantity
+  static Future<void> decreaseQuantity(String productId) async {
+    List<Map<String, dynamic>> cart = getCart();
+    final productIndex = cart.indexWhere((item) => item['_id'] == productId);
+
+    if (productIndex != -1) {
+      if (cart[productIndex]['quantity'] > 1) {
+        cart[productIndex]['quantity'] -= 1;
+      } else {
+        cart.removeAt(productIndex);
+      }
+      await saveCart(cart);
+    }
+  }
+
+  // Method to remove product from cart
+  static Future<void> removeProduct(String productId) async {
+    List<Map<String, dynamic>> cart = getCart();
+    cart.removeWhere((item) => item['_id'] == productId);
+    await saveCart(cart);
+  }
+
 }
