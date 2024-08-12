@@ -69,7 +69,7 @@ class CategoriesRepoImp implements CategoriesRepo {
     late SubCategoriesModel subCategoriesModel;
     try {
       Response? response =
-          await DioHelper.getData(url: EndPoints.selectedCategoriesAPI,
+          await DioHelper.getData(url: EndPoints.subCategoriesAPI,
           queryParameters: {"categoryId": categoryId,"limit": 100});
       subCategoriesModel = SubCategoriesModel.fromJson(response?.data);
     } catch (e) {

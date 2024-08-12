@@ -25,7 +25,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   String _selectedValue = AppStrings.defaultEn;
 
   String get selectedValue => _selectedValue;
-  final Map<String, bool> checkboxStates = {};
+  List< bool> checkboxStates = [];
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
   CategoriesModel? categoriesModel;
 
@@ -62,10 +62,8 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryInitial());
   }
 
-  void initializeCheckboxes(List<String> items) {
-    for (var item in items) {
-      checkboxStates[item] = false;
-    }
+  void initializeCheckboxes(int subCategoriesLength) {
+      checkboxStates= List.filled(subCategoriesLength, false);
     emit(CategoryUpdated());
   }
 
@@ -74,11 +72,9 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryProductUpdated());
   }
 
-  void toggleCheckbox(String item) {
-    if (checkboxStates.containsKey(item)) {
-      checkboxStates[item] = !checkboxStates[item]!;
+  void toggleCheckbox(int index) {
+      checkboxStates[index] = !checkboxStates[index];
       emit(CategoryUpdated());
-    }
   }
 
   void showSortBottomSheet(BuildContext context) {
@@ -246,15 +242,15 @@ class CategoryCubit extends Cubit<CategoryState> {
   SubCategoriesModel? subCategoriesModel;
 
   Future<void> getSubCategories(String categoriesId) async {
-    emit(SelectedCategoryLoading());
+    emit(SubCategoryLoading());
     try {
       subCategoriesModel = null;
       subCategoriesModel = await categoriesRepo.getSubCategories(
         categoryId: categoriesId);
-      emit(SelectedCategorySuccess());
+      emit(SubCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");
-      emit(SelectedCategoryFailure(e.toString()));
+      emit(SubCategoryFailure(e.toString()));
     }
   }
 

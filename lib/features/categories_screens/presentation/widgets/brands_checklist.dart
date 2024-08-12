@@ -14,43 +14,47 @@ class BrandsCheckList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CategoryCubit categoryCubit = context.read<CategoryCubit>();
-    categoryCubit.initializeCheckboxes(
-        [AppStrings.dellEn, AppStrings.acerEn, AppStrings.toshibaEn]);
+
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
         final checkboxStates = categoryCubit.checkboxStates;
-        return ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: checkboxStates.length,
-          separatorBuilder: (context, index) => const VerticalSpace(1),
-          itemBuilder: (context, index) {
-            String item = checkboxStates.keys.elementAt(index);
-            bool isChecked = checkboxStates[item] ?? false;
+        return Expanded(
+          child: Scrollbar(
+            thumbVisibility: true,
+            child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: categoryCubit.subCategoriesModel!.data!.subcategories.length,
+              separatorBuilder: (context, index) => const VerticalSpace(1),
+              itemBuilder: (context, index) {
+                // String item = checkboxStates.keys.elementAt(index);
+                // bool isChecked = checkboxStates[item] ?? false;
 
-            return InkWell(
-              onTap: () => categoryCubit.toggleCheckbox(item),
-              child: Row(
-                children: [
-                  Checkbox(
-                    activeColor: AppColors.primaryColor,
-                    value: isChecked,
-                    onChanged: (bool? newValue) {
-                      categoryCubit.toggleCheckbox(item);
-                    },
+                return InkWell(
+                  onTap: () => categoryCubit.toggleCheckbox(index),
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        activeColor: AppColors.primaryColor,
+                        value: categoryCubit.checkboxStates[index],
+                        onChanged: (bool? newValue) {
+                          categoryCubit.toggleCheckbox(index);
+                        },
+                      ),
+                      Expanded(
+                          child: Text(
+                        categoryCubit.subCategoriesModel!.data!.subcategories[index].name!,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.sp),
+                      )),
+                    ],
                   ),
-                  Expanded(
-                      child: Text(
-                    item,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.sp),
-                  )),
-                ],
-              ),
-            );
-          },
+                );
+              },
+            ),
+          ),
         );
       },
     );

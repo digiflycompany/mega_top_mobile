@@ -26,6 +26,16 @@ class SelectedCategoryFailure extends CategoryState {
   SelectedCategoryFailure(this.error);
 }
 
+class SubCategoryLoading extends CategoryState {}
+
+class SubCategorySuccess extends CategoryState {}
+
+class SubCategoryFailure extends CategoryState {
+  final String error;
+
+  SubCategoryFailure(this.error);
+}
+
 class addToCartLoading extends CategoryState {}
 
 class addToCartSuccess extends CategoryState {}

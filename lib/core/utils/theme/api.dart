@@ -29,4 +29,6 @@ class EndPoints {
   static const String categoriesAPI = '$baseUrl/api/v1/categories/';
   static const String selectedCategoriesAPI =
       '$baseUrl/api/v1/products';
+  static const String subCategoriesAPI =
+      '$baseUrl/api/v1/subcategories';
 }
