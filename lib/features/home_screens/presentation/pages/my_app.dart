@@ -6,8 +6,6 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_services_dart.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
-import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
@@ -33,9 +31,6 @@ class MyApp extends StatelessWidget {
             BlocProvider<CategoryCubit>(
               create: (BuildContext context) =>
                   CategoryCubit()..getCategories(),
-            ),
-            BlocProvider<CartCubit>(
-              create: (BuildContext context) => CartCubit(CartRepoImp()),
             ),
             BlocProvider<GlobalCubit>(
               create: (BuildContext context) => GlobalCubit(),

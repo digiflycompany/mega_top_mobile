@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
@@ -53,7 +55,7 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  Future<void> sendCartToApi() async {
+  Future<void> sendCartToApi(List<Map<String, dynamic>> cartProducts) async {
     emit(CartSentToAPILoading());
     try {
       final user = await cartRepo.addProductsToCart(cartProducts);
@@ -93,16 +95,33 @@ class CartCubit extends Cubit<CartState> {
   Future<void> getUserCart() async {
     emit(GetUserCartLoading());
     try {
-      cartProducts = PreferencesHelper.getCart();
-      if (cartProducts.isNotEmpty) {
-        emit(GetUserCartSuccess(cartProducts: cartProducts));
-      } else {
-        emit(GetUserCartSuccess(cartProducts: []));
-      }
+      final cartProducts = PreferencesHelper.getCart();
+      emit(GetUserCartSuccess(cartProducts: cartProducts));
     } catch (e) {
       emit(GetUserCartFailure(e.toString()));
     }
   }
+
+  Future<void> increaseQuantity(String productId) async {
+    await PreferencesHelper.increaseQuantity(productId);
+    refreshCart();
+  }
+
+  Future<void> decreaseQuantity(String productId) async {
+    await PreferencesHelper.decreaseQuantity(productId);
+    refreshCart();
+  }
+
+  Future<void> removeProduct(String productId) async {
+    await PreferencesHelper.removeProduct(productId);
+    refreshCart();
+  }
+
+  void refreshCart() {
+    final updatedCart = PreferencesHelper.getCart();
+    emit(GetUserCartSuccess(cartProducts: updatedCart));
+  }
+
   void showAddedToCartBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -140,16 +159,13 @@ class CartCubit extends Cubit<CartState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
-  void handleAddToCartStates(BuildContext context, CartState state) {
-    if (state is CartUpdated) {
-      showAddedToCartBottomSheet(context);
+  void handleCartToAPIStates(BuildContext context, CartState state) {
+    if (state is CartSentToAPISuccess) {
+      Routes.paymentMethodsPageRoute.moveTo;
     }
-    // else if (state is CartSentToAPISuccess) {
-    //   showAddedToCartBottomSheet(context);
-    // }
-    // else if (state is CartSentToAPIFailure) {
-    //   showErrorToast(context, AppStrings.addToCartFailed, state.error);
-    // }
+    else if (state is CartSentToAPIFailure) {
+      showErrorToast(context, AppStrings.addToCartFailed, state.error);
+    }
     else if (state is CartNoInternetConnection) {
       showErrorToast(context, AppStrings.addToCartFailed, AppStrings.pleaseCheckYourInternet);
     }
