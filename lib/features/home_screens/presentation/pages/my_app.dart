@@ -6,7 +6,8 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_services_dart.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/orders_cubit.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
@@ -33,15 +34,14 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) =>
                   CategoryCubit()..getCategories(),
             ),
-            BlocProvider<OrdersCubit>(
-              create: (BuildContext context) => OrdersCubit(),
+            BlocProvider<CartCubit>(
+              create: (BuildContext context) => CartCubit(CartRepoImp()),
             ),
             BlocProvider<GlobalCubit>(
               create: (BuildContext context) => GlobalCubit(),
             ),
             BlocProvider<HomeCubit>(
               create: (BuildContext context) => HomeCubit(),
-             // create: (BuildContext context) => HomeCubit()..getLastOffers(),
             ),
             BlocProvider<OffersCubit>(
               create: (BuildContext context) => OffersCubit()..getOffers(),
