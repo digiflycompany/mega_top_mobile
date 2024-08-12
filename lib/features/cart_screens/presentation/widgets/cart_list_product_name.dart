@@ -7,12 +7,14 @@ class CartListProductName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text!,
-      style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.w700,
-          fontSize: 12.sp
+    return FittedBox(
+      child: Text(
+        text!,
+        style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w700,
+            fontSize: 12.sp
+        ),
       ),
     );
   }
