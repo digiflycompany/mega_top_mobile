@@ -92,6 +92,15 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
                         categoryCubit.selectedCategoryModel!
                             .data!.products[categoryCubit.selectedProductIndex]
                             .id,
+                        categoryCubit.selectedCategoryModel!
+                            .data!.products[categoryCubit.selectedProductIndex]
+                            .title,
+                        categoryCubit.selectedCategoryModel!
+                            .data!.products[categoryCubit.selectedProductIndex]
+                            .price!.finalPrice.toString(),
+                        categoryCubit.selectedCategoryModel!
+                            .data!.products[categoryCubit.selectedProductIndex]
+                            .images[0],
                       );
                       print('Product added to cart');
                     }

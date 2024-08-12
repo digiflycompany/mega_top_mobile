@@ -21,13 +21,13 @@ class CartItemsListView extends StatelessWidget {
       child: BlocConsumer<CartCubit, CartState>(
         listener: (context, state) {},
         builder: (context, state) {
-          if(state is GetUserCartSuccess && state.user.data!.products.length>0){
+          if (state is GetUserCartSuccess && state.cartProducts.isNotEmpty) {
             return Expanded(
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
-                itemCount: state.user.data!.products.length,
+                itemCount: state.cartProducts.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final cartItem =state.user.data!.products[index];
+                  final cartItem = state.cartProducts[index];
                   return Padding(
                     padding: EdgeInsets.only(
                         right: context.width * 0.011,
@@ -35,51 +35,33 @@ class CartItemsListView extends StatelessWidget {
                         bottom: context.height * 0.027,
                         top: context.height * 0.006),
                     child: CartItemsContainer(
-                      productName: cartItem.title,
-                      productPhoto: cartItem.images[0],
-                      productPrice: cartItem.price.finalPrice.toString(),
-                      quantity: cartItem.quantity.toString(),
+                      productId: cartItem['_id'],
+                      productName: cartItem['name'],
+                      productPhoto: cartItem['image'],
+                      productPrice: cartItem['price'],
+                      quantity: cartItem['quantity'].toString(),
                     ),
                   );
                 },
               ),
             );
-          }
-          else if(state is GetUserCartSuccess && state.user.data!.products.length == 0){
+          } else if (state is GetUserCartSuccess && state.cartProducts.isEmpty) {
             return EmptyDataPage(
               icon: AppAssets.emptyCartIcon,
               bigFontText: AppStrings.yourShoppingCartIsEmptyEn,
               smallFontText: AppStrings.browseOurProductsDescriptionEn,
-              buttonText: AppStrings.continueShoppingEn,
             );
-          }
-          else if(state is CartNoInternetConnection){
+          } else if (state is CartNoInternetConnection) {
             return NoInternetScreen(
-                buttonOnTap:()=> context.read<CartCubit>().getUserCart()
+              buttonOnTap: () => context.read<CartCubit>().getUserCart(),
             );
-          }
-          else if(state is GetUserCartLoading){
+          } else if (state is GetUserCartLoading) {
             return ShimmerCartItemsContainer();
-          }
-          else {
+          } else {
             return Container();
           }
         },
       ),
     );
-
-    // if(cubit.orders.isNull){
-    //   return EmptyDataPage(
-    //     icon: AppAssets.emptyCartIcon,
-    //     bigFontText: AppStrings.yourShoppingCartIsEmptyEn,
-    //     smallFontText: AppStrings.browseOurProductsDescriptionEn,
-    //     buttonText: AppStrings.continueShoppingEn,
-    //   );
-    // }
-    // else {
-    //   return Center(
-    //     child: CircularProgressIndicator.adaptive(),
-    //   );
-    // }
   }
 }
