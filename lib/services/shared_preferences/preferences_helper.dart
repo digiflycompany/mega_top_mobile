@@ -73,4 +73,23 @@ class PreferencesHelper {
   static  getApplicationFirstPage() async {
     return await getToken() != null ? HomePage() : LoginScreen();
   }
+
+  static Future<void> saveCart(List<Map<String, dynamic>> cartProducts) async {
+    String cartJson = json.encode(cartProducts);
+    await preferences?.setString('cart', cartJson);
+  }
+
+  static List<Map<String, dynamic>> getCart() {
+    String? cartJson = preferences?.getString('cart');
+    if (cartJson != null) {
+      List<dynamic> cartList = json.decode(cartJson);
+      return cartList.map((item) => item as Map<String, dynamic>).toList();
+    }
+    return [];
+  }
+
+  static Future<void> clearCart() async {
+    await preferences?.remove('cart');
+  }
+
 }

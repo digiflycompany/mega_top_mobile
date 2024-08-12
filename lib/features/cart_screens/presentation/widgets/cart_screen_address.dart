@@ -13,7 +13,7 @@ class CartScreenAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+      padding: EdgeInsets.symmetric(horizontal: context.width * 0.045,vertical: context.height * 0.028),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -30,10 +30,6 @@ class CartScreenAddress extends StatelessWidget {
               fontSize: 14.sp,
             ),
           ),
-          HorizontalSpace(context.width * 0.011),
-
-          /// Bottom Arrow Icon
-          SvgPicture.asset(AppAssets.bottomArrowIcon),
         ],
       ),
     );

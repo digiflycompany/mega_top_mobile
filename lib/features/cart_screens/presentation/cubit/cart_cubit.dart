@@ -6,47 +6,48 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import 'cart_states.dart';
 
 class CartCubit extends Cubit<CartState> {
   final CartRepo cartRepo;
   CartCubit(this.cartRepo) : super(CartInitial());
 
-  List<Map<String, dynamic>> cartProducts = [];
+  List<Map<String, dynamic>> cartProducts = PreferencesHelper.getCart();
 
   void addProductToCart(String? id) {
-    final existingProduct = cartProducts.firstWhere(
+    final existingProductIndex = cartProducts.indexWhere(
           (product) => product['_id'] == id,
-      orElse: () => {},
     );
-    if (existingProduct.isNotEmpty) {
-      existingProduct['quantity'] += 1;
-      ProductAddedToCartSuccess();
+
+    if (existingProductIndex != -1) {
+      cartProducts[existingProductIndex]['quantity'] += 1;
     } else {
       cartProducts.add({
         '_id': id,
         'quantity': 1,
       });
-      ProductAddedToCartSuccess();
     }
+    PreferencesHelper.saveCart(cartProducts);
     emit(CartUpdated());
   }
 
   void removeProductFromCart(String id) {
     cartProducts.removeWhere((product) => product['_id'] == id);
+    PreferencesHelper.saveCart(cartProducts);
     emit(CartUpdated());
   }
 
   void updateProductQuantity(String id, int quantity) {
-    final existingProduct = cartProducts.firstWhere(
+    final existingProductIndex = cartProducts.indexWhere(
           (product) => product['_id'] == id,
-      orElse: () => {},
     );
 
-    if (existingProduct.isNotEmpty) {
-      existingProduct['quantity'] = quantity;
+    if (existingProductIndex != -1) {
+      cartProducts[existingProductIndex]['quantity'] = quantity;
+      PreferencesHelper.saveCart(cartProducts);
+      emit(CartUpdated());
     }
-    emit(CartUpdated());
   }
 
   Future<void> sendCartToApi() async {
@@ -63,6 +64,26 @@ class CartCubit extends Cubit<CartState> {
         emit(CartNoInternetConnection());
       } else {
         emit(CartSentToAPIFailure(e.toString()));
+      }
+    }
+  }
+
+  Future<void> getUserCart() async {
+    emit(GetUserCartLoading());
+    try {
+      final user = await cartRepo.getUserCart();
+      if (user != null && user.success == true) {
+        cartProducts = user.data!.products.cast<Map<String, dynamic>>(); // Assume this is the correct format
+        PreferencesHelper.saveCart(cartProducts);
+        emit(GetUserCartSuccess(user));
+      } else {
+        emit(GetUserCartFailure(user?.message ?? AppStrings.invalidCred));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(CartNoInternetConnection());
+      } else {
+        emit(GetUserCartFailure(e.toString()));
       }
     }
   }
@@ -104,26 +125,15 @@ class CartCubit extends Cubit<CartState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
-  void handleAddToCartStates(BuildContext context, CartState state){
-    if(state is CartUpdated){
-      context.read<CartCubit>().sendCartToApi();
-    }
-    if (state is CartSentToAPISuccess){
-      context.read<CartCubit>().showAddedToCartBottomSheet(context);
-    }
-    if(state is CartSentToAPIFailure){
-      context.read<CartCubit>().showErrorToast(context, AppStrings.addToCartFailed, state.error);
-    }
-    if(state is CartNoInternetConnection){
-      context.read<CartCubit>().showErrorToast(context, AppStrings.addToCartFailed, AppStrings.pleaseCheckYourInternet);
+  void handleAddToCartStates(BuildContext context, CartState state) {
+    if (state is CartUpdated) {
+      sendCartToApi();
+    } else if (state is CartSentToAPISuccess) {
+      showAddedToCartBottomSheet(context);
+    } else if (state is CartSentToAPIFailure) {
+      showErrorToast(context, AppStrings.addToCartFailed, state.error);
+    } else if (state is CartNoInternetConnection) {
+      showErrorToast(context, AppStrings.addToCartFailed, AppStrings.pleaseCheckYourInternet);
     }
   }
-
-// Future<void> sendCartToApi() async {
-  //   try {
-  //     await cartRepo.addProductsToCart(cartProducts);
-  //   } catch (e) {
-  //     print('Error while sending cart data to API: $e');
-  //   }
-  // }
 }
