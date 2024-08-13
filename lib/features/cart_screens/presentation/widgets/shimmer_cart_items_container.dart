@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ShimmerCartItemsContainer extends StatelessWidget {
   const ShimmerCartItemsContainer({super.key});

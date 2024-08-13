@@ -4,7 +4,6 @@ import 'package:mega_top_mobile/features/categories_screens/data/categories_mode
 import 'package:mega_top_mobile/features/categories_screens/data/product_details_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
-import 'package:mega_top_mobile/features/categories_screens/data/your_orders_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class CategoriesRepo {

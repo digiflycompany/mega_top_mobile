@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_small_description.dart';
+
 import '../../../../core/utils/app_color.dart';
 import 'card_title_text.dart';
 import 'custom_divider.dart';

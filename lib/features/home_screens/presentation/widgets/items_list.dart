@@ -12,7 +12,6 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_state
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_routes.dart';
 import '../../../../core/widgets/product_photo_list_view.dart';
 
 class ProductsListContainer extends StatelessWidget {
@@ -42,7 +41,6 @@ class ProductsListContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(builder: (context, state) {
-      final cubit = context.read<CategoryCubit>();
       return GestureDetector(
         onTap: () {
           onTap!();

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/your_latest_search_row.dart';
+
 import '../../../../core/utils/spacer.dart';
 import 'latest_search_list.dart';
 

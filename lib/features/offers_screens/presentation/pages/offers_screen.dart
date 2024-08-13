@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart'
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_grid.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_list.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_options_row.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widgets/app_bar_fav_icon.dart';
 

@@ -4,6 +4,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_card.dart';
+
 import '../../../../core/utils/app_string.dart';
 import '../../../home_screens/presentation/widgets/primary_app_bar.dart';
 import '../widgets/payment_method_small_card.dart';

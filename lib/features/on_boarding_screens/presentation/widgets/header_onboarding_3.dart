@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/widgets/back_arrow_icon.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/curved_container.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/skip_text.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+
 import '../../../../core/utils/app_assets.dart';
 
 class ThirdHeader extends StatelessWidget {

@@ -16,7 +16,6 @@ class ProductImagesDots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CategoryCubit categoryCubit = context.read<CategoryCubit>();
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
         return Padding(

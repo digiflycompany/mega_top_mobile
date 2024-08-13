@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+
 import '../../../../core/utils/app_color.dart';
 
 class CustomerPhoto extends StatelessWidget {

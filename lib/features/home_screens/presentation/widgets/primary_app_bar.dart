@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_back_icon.dart';
 import 'package:mega_top_mobile/core/widgets/title_app_bar.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+
 import 'customer_icon.dart';
 
 class PrimaryAppBar extends StatelessWidget {

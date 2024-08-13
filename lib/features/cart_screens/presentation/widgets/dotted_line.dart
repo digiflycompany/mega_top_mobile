@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+
 import 'dotted_custom_lines.dart';
 
 class DottedLine extends StatelessWidget {

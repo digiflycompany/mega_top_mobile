@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/spacer.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ShimmerNotificationCard extends StatelessWidget {
   const ShimmerNotificationCard({super.key});

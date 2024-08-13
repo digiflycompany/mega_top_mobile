@@ -284,15 +284,15 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  Future<void> addToCart(int customerId, int productId, int quantity) async {
-    emit(addToCartLoading());
-    try {
-      categoriesRepo.makeOrder(customerId, productId, quantity);
-      emit(addToCartSuccess());
-    } catch (e) {
-      emit(addToCartFailure(e.toString()));
-    }
-  }
+  // Future<void> addToCart(int customerId, int productId, int quantity) async {
+  //   emit(addToCartLoading());
+  //   try {
+  //     categoriesRepo.makeOrder(customerId, productId, quantity);
+  //     emit(addToCartSuccess());
+  //   } catch (e) {
+  //     emit(addToCartFailure(e.toString()));
+  //   }
+  // }
 
   OrderList? orders;
 

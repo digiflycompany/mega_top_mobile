@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
-import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
-
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
 import 'package:mega_top_mobile/features/offers_screens/data/offer_model.dart';
 import 'package:mega_top_mobile/features/offers_screens/data/offers_repo.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/sort_bottom_sheet.dart';
+
 import '../../../core/utils/app_assets.dart';
 
 class OffersCubit extends Cubit<OffersState> {
