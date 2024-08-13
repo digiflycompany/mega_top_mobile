@@ -123,6 +123,26 @@ class PreferencesHelper {
     return [];
   }
 
+  static Map<String, dynamic> getCartSummary() {
+    List<Map<String, dynamic>> cart = getCart();
+    int totalQuantity = 0;
+    double totalPrice = 0.0;
+
+    for (var item in cart) {
+      int quantity = item['quantity'] ?? 0;
+      double price = double.tryParse(item['price'].toString()) ?? 0.0;
+      totalQuantity += quantity;
+      totalPrice += quantity * price;
+    }
+
+    return {
+      'totalQuantity': totalQuantity,
+      'totalPrice': totalPrice,
+      'totalItems': cart.length,
+    };
+  }
+
+
   static Future<void> clearCart() async {
     await preferences?.remove('cart');
   }

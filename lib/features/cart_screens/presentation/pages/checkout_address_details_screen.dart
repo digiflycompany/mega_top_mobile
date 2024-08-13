@@ -128,7 +128,7 @@ class _CheckoutAddressDetailsPageState extends State<CheckoutAddressDetailsPage>
         ),
       ),
       bottomNavigationBar: ButtonBottomNavBar(
-        button: PrimaryButton(
+        button:PrimaryButton(
           content: Text(
             AppStrings.confirmShippingAddressEn,
             style: TextStyle(
@@ -141,9 +141,10 @@ class _CheckoutAddressDetailsPageState extends State<CheckoutAddressDetailsPage>
             if (selectedAddressId != null) {
               Routes.orderSummaryPageRoute.moveTo;
             } else {
+              context.read<AddressCubit>().showErrorToast(context, AppStrings.confirmingAddressFailedEn, AppStrings.youHaveToSelectAnAddress);
             }
           },
-        ),
+        )
       ),
     );
   }

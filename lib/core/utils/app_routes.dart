@@ -31,6 +31,8 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/scr
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_or_login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/verify_email_screen.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_confirmation_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_summary_screen.dart';
@@ -179,7 +181,9 @@ class RouteGenerator {
       case Routes.checkoutAddressDetailsPageRoute:
         return buildPageRoute(
             child: BlocProvider(
-              create: (context) => AddressCubit(AddressRepoImp())..getUserAddresses(),
+              create: (context) =>
+              AddressCubit(AddressRepoImp())
+                ..getUserAddresses(),
               child: CheckoutAddressDetailsPage(),
             ),
             routeSettings: routeSettings,
@@ -191,7 +195,10 @@ class RouteGenerator {
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.orderSummaryPageRoute:
         return buildPageRoute(
-          child: const OrderSummaryScreen(),
+          child: BlocProvider(
+            create: (context) => CartCubit(CartRepoImp()),
+            child: OrderSummaryScreen(),
+          ),
         );
       case Routes.userAccountPageRoute:
         return buildPageRoute(

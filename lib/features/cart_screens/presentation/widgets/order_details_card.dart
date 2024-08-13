@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import '../../../../core/utils/app_color.dart';
 import 'card_title_text.dart';
 import 'custom_divider.dart';
 import 'order_details_description.dart';
@@ -16,7 +16,7 @@ class OrderDetailsCard extends StatelessWidget {
       padding: EdgeInsets.only(top: context.height * 0.033),
       child: Container(
         width: double.infinity,
-        height: context.height * 0.284,
+        height: context.height * 0.24,
         decoration: BoxDecoration(
           color: Colors.white,
           border:
@@ -28,9 +28,7 @@ class OrderDetailsCard extends StatelessWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CardTitleText(
-                title: AppStrings.orderDetailsEn,
-              ),
+              CardTitleText(title: AppStrings.orderDetailsEn,),
               CustomDivider(),
               OrderDetailsDescription(),
             ],

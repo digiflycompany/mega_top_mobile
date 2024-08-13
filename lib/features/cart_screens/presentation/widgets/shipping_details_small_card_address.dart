@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import '../../../../core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'customer_name.dart';
 
 class ShippingDetailsSmallCardAddress extends StatelessWidget {
   final String? customerName;
   final String? address;
-  final String? phone;
+  final String? city;
   const ShippingDetailsSmallCardAddress(
-      {super.key, this.customerName, this.address, this.phone});
+      {super.key, this.customerName, this.address, this.city});
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +24,45 @@ class ShippingDetailsSmallCardAddress extends StatelessWidget {
         VerticalSpace(context.height * 0.006),
 
         /// Address
-        Text(
-          address!,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w500,
-              fontSize: 12.sp),
+        Container(
+          width: double.infinity, // or specify a fixed width
+          child: Text(
+            address!,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1, // ensure only one line is displayed with ellipsis
+            style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                fontSize: 12.sp),
+          ),
         ),
         VerticalSpace(context.height * 0.006),
 
         /// Phone Number
-        Text(
-          phone!,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w500,
-              fontSize: 12.sp),
+        Container(
+          width: double.infinity, // or specify a fixed width
+          child: Row(
+            children: [
+              Text(
+                AppStrings.city2,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1, // ensure only one line is displayed with ellipsis
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12.sp),
+              ),
+              Text(
+                city!,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1, // ensure only one line is displayed with ellipsis
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12.sp),
+              ),
+            ],
+          ),
         ),
       ],
     );
