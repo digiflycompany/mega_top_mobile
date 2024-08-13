@@ -5,6 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../../../core/widgets/primary_button.dart';
@@ -18,9 +20,9 @@ class FilterBottomSheetButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryCubit,CategoryState>(
-      builder: (BuildContext context, CategoryState state) {
-     //   final cubit = CategoryCubit().getCubit(context);
+    return BlocBuilder<OffersCubit,OffersState>(
+      builder: (BuildContext context, OffersState state) {
+     //   final cubit = OffersCubit().getCubit(context);
         return Padding(
           padding: EdgeInsets.only(bottom: context.height * 0.022),
           child: Column(
@@ -74,8 +76,6 @@ class FilterBottomSheetButtons extends StatelessWidget {
                   cubit.maxPriceController.clear();
                   cubit.minPrice = null;
                   cubit.maxPrice = null;
-                  cubit.initializeCheckboxes(cubit.subCategoriesModel!.data!.subcategories.length);
-                  cubit.selectOption(AppStrings.defaultEn);
                   //    cubit.getSelectedCategories(cubit.selectedCategoryId!);
                   getProductsFunction();
                   Navigator.pop(context);

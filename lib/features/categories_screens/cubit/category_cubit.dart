@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/features/categories_screens/data/categories_mode
 import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/product_details_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/your_orders_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
@@ -25,7 +26,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   String _selectedValue = AppStrings.defaultEn;
 
   String get selectedValue => _selectedValue;
-  final Map<String, bool> checkboxStates = {};
+  List< bool> checkboxStates = [];
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
   CategoriesModel? categoriesModel;
 
@@ -62,10 +63,8 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryInitial());
   }
 
-  void initializeCheckboxes(List<String> items) {
-    for (var item in items) {
-      checkboxStates[item] = false;
-    }
+  void initializeCheckboxes(int subCategoriesLength) {
+      checkboxStates= List.filled(subCategoriesLength, false);
     emit(CategoryUpdated());
   }
 
@@ -74,12 +73,10 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryProductUpdated());
   }
 
-  void toggleCheckbox(String item) {
-    if (checkboxStates.containsKey(item)) {
-      checkboxStates[item] = !checkboxStates[item]!;
+  void toggleCheckbox(int index) {
+      checkboxStates[index] = !checkboxStates[index];
       emit(CategoryUpdated());
     }
-  }
 
   void showSortBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -195,7 +192,9 @@ class CategoryCubit extends Cubit<CategoryState> {
           selectedCategory: selectedId,
           page: page,
           minPrice: minPrice,
-          maxPrice: maxPrice);
+          maxPrice: maxPrice,
+          subCategories: subCategoriesQuery(),
+      );
       emit(SelectedCategorySuccess());
     } catch (e) {
       print(e.toString() + "///////");
@@ -224,6 +223,20 @@ class CategoryCubit extends Cubit<CategoryState> {
       print(e.toString() + "///////");
       emit(SelectedCategoryFailure(e.toString()));
     }
+  }
+
+
+  List<String> subCategoriesQuery(){
+    List<String> subCategoriesList=[];
+
+    for(int i=0;i<checkboxStates.length-1;i++)
+      {
+        if(checkboxStates[i] == true)
+          {
+            subCategoriesList.add(subCategoriesModel!.data!.subcategories[i].id!);
+          }
+      }
+    return subCategoriesList;
   }
 
   int selectedProductIndex = 0;
@@ -256,6 +269,30 @@ class CategoryCubit extends Cubit<CategoryState> {
   //     emit(addToCartFailure(e.toString()));
   //   }
   // }
+  SubCategoriesModel? subCategoriesModel;
+
+  Future<void> getSubCategories(String categoriesId) async {
+    emit(SubCategoryLoading());
+    try {
+      subCategoriesModel = null;
+      subCategoriesModel = await categoriesRepo.getSubCategories(
+        categoryId: categoriesId);
+      emit(SubCategorySuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SubCategoryFailure(e.toString()));
+    }
+  }
+
+  Future<void> addToCart(int customerId, int productId, int quantity) async {
+    emit(addToCartLoading());
+    try {
+      categoriesRepo.makeOrder(customerId, productId, quantity);
+      emit(addToCartSuccess());
+    } catch (e) {
+      emit(addToCartFailure(e.toString()));
+    }
+  }
 
   OrderList? orders;
 

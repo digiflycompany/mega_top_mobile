@@ -7,17 +7,24 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_state
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/category_product_images.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/favour_compare_column.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_images_dots.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
 
 import '../utils/app_color.dart';
 
 class ProductDetailedImage extends StatelessWidget {
-  const ProductDetailedImage({super.key});
+  const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit});
+
+  final List<String> images;
+  final int imagePosition;
+  final cubit;
+
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryCubit, CategoryState>(
-      builder: (BuildContext context, CategoryState state) {
-        final categoryCubit = context.read<CategoryCubit>();
+    return BlocBuilder<OffersCubit, OffersState>(
+      builder: (BuildContext context, OffersState state) {
+        final offersCubit = context.read<OffersCubit>();
         return Container(
           width: double.infinity,
           height: context.height * 0.338,
@@ -27,14 +34,15 @@ class ProductDetailedImage extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  ProductImages(),
+                  ProductImages(images: images,cubit: cubit,),
                   SizedBox(
                     height: 10.h,
                   ),
-                  if (categoryCubit.selectedCategoryModel!
-                      .data!.products[categoryCubit.selectedProductIndex].images.length >
-                      1)
-                  ProductImagesDots(),
+                  // if (offersCubit.offerModel!
+                  //     .data!.products[offersCubit.selectedProductIndex].images.length >
+                  //     1)
+                    if (images.length > 1)
+                  ProductImagesDots(imageLength: images.length,imagePosition: imagePosition,),
                 ],
               ),
               FavourCompareColumn(),

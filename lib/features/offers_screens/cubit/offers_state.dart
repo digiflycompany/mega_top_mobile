@@ -16,3 +16,13 @@ class OffersFailure extends OffersState {
   OffersFailure(this.error);
 }
 
+class SubCategoryLoading extends OffersState {}
+
+class SubCategorySuccess extends OffersState {}
+
+class SubCategoryFailure extends OffersState {
+  final String error;
+
+  SubCategoryFailure(this.error);
+}
+

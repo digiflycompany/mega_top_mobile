@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_grid.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
@@ -35,6 +36,10 @@ class OffersItemsGridView extends StatelessWidget {
                 discountPercent: cubit.getDiscountPercentage(finalPrice: product.price!.finalPrice!,
                     originPrice: product.price!.originalPrice!).toString(),
                 product: product,
+                onTap: (){
+                  context.read<OffersCubit>().setCategoryProductIndex(selectedProductIndex: index);
+                  Routes.offerProductDetailsPageRoute.moveTo;
+                },
               ),
             );
           },

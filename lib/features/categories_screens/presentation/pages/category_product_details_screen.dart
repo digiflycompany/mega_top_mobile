@@ -36,81 +36,82 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
     const CustomStatusBarColor(color: AppColors.onboardingBackgroundColor);
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, context.height * 0.089),
-        child: const ProductDetailsAppBar(),
-      ),
-      body: BlocBuilder<CategoryCubit, CategoryState>(
-        builder: (BuildContext context, CategoryState state) {
-          categoryCubit = context.read<CategoryCubit>();
-          return SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              children: const [
-                ProductDetailedImage(),
-                ProductDetailedBody(),
-              ],
-            ),
-          );
-        },
-      ),
-      bottomNavigationBar: ButtonBottomNavBar(
-        button: BlocBuilder<CategoryCubit, CategoryState>(
-          builder: (context, state) {
-            final categoryCubit = context.read<CategoryCubit>();
-            return BlocProvider(
-                create: (context) => CartCubit(CartRepoImp()),
-               child: BlocConsumer<CartCubit, CartState>(
-              listener: (context, state) {
-                if (state is CartUpdated) {
-                  context.read<CartCubit>().showAddedToCartBottomSheet(context);
-                }
-              },
-              builder: (context, state) {
-                return AddToCartButton(
-                  content: state is CartSentToAPILoading
-                      ? const ButtonCircularProgress()
-                      : Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppAssets.cartButtonIcon,
-                        width: context.width * 0.066,
-                      ),
-                      HorizontalSpace(context.width * 0.022),
-                      Text(
-                        AppStrings.addToCartEn,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.sp),
-                      ),
-                    ],
-                  ),
-                  onTap: () async {
-                      context.read<CartCubit>().addProductToCart(
-                        categoryCubit.selectedCategoryModel!
-                            .data!.products[categoryCubit.selectedProductIndex]
-                            .id,
-                        categoryCubit.selectedCategoryModel!
-                            .data!.products[categoryCubit.selectedProductIndex]
-                            .title,
-                        categoryCubit.selectedCategoryModel!
-                            .data!.products[categoryCubit.selectedProductIndex]
-                            .price!.finalPrice.toString(),
-                        categoryCubit.selectedCategoryModel!
-                            .data!.products[categoryCubit.selectedProductIndex]
-                            .images[0],
-                      );
-                      print('Product added to cart');
-                  },
-                );
-              },
-            ),
+        appBar: PreferredSize(
+            preferredSize: Size(double.infinity, context.height * 0.089),
+            child: const ProductDetailsAppBar()),
+        body: BlocBuilder<CategoryCubit, CategoryState>(
+          builder: (BuildContext context, CategoryState state) {
+            categoryCubit = context.read<CategoryCubit>();
+            return SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  ProductDetailedImage(images: categoryCubit.selectedCategoryModel!
+                      .data!.products[categoryCubit.selectedProductIndex].images,
+                    imagePosition: categoryCubit.currentImageIndex,
+                  cubit: categoryCubit,),
+                  ProductDetailedBody(),
+                ],
+              ),
             );
           },
         ),
-      ),
-    );
+        bottomNavigationBar: ButtonBottomNavBar(
+          button: BlocBuilder<CategoryCubit, CategoryState>(
+            builder: (context, state) {
+              final categoryCubit = context.read<CategoryCubit>();
+              return BlocProvider(
+                create: (context) => CartCubit(CartRepoImp()),
+                child: BlocConsumer<CartCubit, CartState>(
+                  listener: (context, state) {
+                    if (state is CartUpdated) {
+                      context.read<CartCubit>().showAddedToCartBottomSheet(context);
+                    }
+                  },
+                  builder: (context, state) {
+                    return AddToCartButton(
+                      content: state is CartSentToAPILoading
+                          ? const ButtonCircularProgress()
+                          : Row(
+                        children: [
+                          SvgPicture.asset(
+                            AppAssets.cartButtonIcon,
+                            width: context.width * 0.066,
+                          ),
+                          HorizontalSpace(context.width * 0.022),
+                          Text(
+                            AppStrings.addToCartEn,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16.sp),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {
+                        context.read<CartCubit>().addProductToCart(
+                          categoryCubit.selectedCategoryModel!
+                              .data!.products[categoryCubit.selectedProductIndex]
+                              .id,
+                          categoryCubit.selectedCategoryModel!
+                              .data!.products[categoryCubit.selectedProductIndex]
+                              .title,
+                          categoryCubit.selectedCategoryModel!
+                              .data!.products[categoryCubit.selectedProductIndex]
+                              .price!.finalPrice.toString(),
+                          categoryCubit.selectedCategoryModel!
+                              .data!.products[categoryCubit.selectedProductIndex]
+                              .images[0],
+                        );
+                        print('Product added to cart');
+                      },
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ),);
   }
 
   @override

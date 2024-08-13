@@ -117,6 +117,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
     categoryCubit.maxPriceController.clear();
     categoryCubit.minPrice = null;
     categoryCubit.maxPrice = null;
+    categoryCubit.initializeCheckboxes(categoryCubit.subCategoriesModel!.data!.subcategories.length);
     super.dispose();
   }
 }

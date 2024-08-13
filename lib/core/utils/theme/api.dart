@@ -39,6 +39,8 @@ class EndPoints {
   static const String checkoutAPI = '$baseUrl/api/v1/orders/customer-checkout';
   static const String selectedCategoriesAPI =
       '$baseUrl/api/v1/products';
+  static const String subCategoriesAPI =
+      '$baseUrl/api/v1/subcategories';
   static String notificationsAPI(String contentType) {
     return '$baseUrl/api/v1/notifications?contentType=$contentType';
   }

@@ -3,6 +3,8 @@ import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/product_details_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/selected_categories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/your_orders_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class CategoriesRepo {
@@ -13,12 +15,16 @@ abstract class CategoriesRepo {
   Future<ProductDetailsModel?> getProductDetails(int productID);
 
   Future<SelectedCategoryModel?> getSelectedCategories({required String selectedCategory,required int page,
-    int ? minPrice, int ? maxPrice});
+    int ? minPrice, int ? maxPrice,List<String> subCategories});
+  Future<SubCategoriesModel?> getSubCategories({required String categoryId});
 
   // Future<Order?> makeOrder(int customerId, int productId, int quantity);
 
   Future<void> addToWishList(String ProductId, String token);
 }
+
+
+
 
 class CategoriesRepoImp implements CategoriesRepo {
   @override
@@ -43,18 +49,35 @@ class CategoriesRepoImp implements CategoriesRepo {
       required String selectedCategory,
       required int page,
       int ? minPrice,
-      int ? maxPrice }) async {
+      int ? maxPrice,
+      List<String> ? subCategories,
+  }) async {
    late SelectedCategoryModel selectedCategories;
     try {
       Response? response =
       await DioHelper.getData(url: EndPoints.selectedCategoriesAPI,
           queryParameters: {"categoryId": selectedCategory,"page": page, if(minPrice != null) "minPrice": minPrice,
-            if(maxPrice != null) "maxPrice": maxPrice});
+            if(maxPrice != null) "maxPrice": maxPrice,
+            if(subCategories != null && subCategories.isNotEmpty) "subcategoryId": subCategories});
          selectedCategories = SelectedCategoryModel.fromJson(response?.data);
     } catch (e) {
       print('Error fetching categories: $e');
     }
     return selectedCategories;
+  }
+
+  @override
+  Future<SubCategoriesModel?> getSubCategories({required String categoryId}) async {
+    late SubCategoriesModel subCategoriesModel;
+    try {
+      Response? response =
+          await DioHelper.getData(url: EndPoints.subCategoriesAPI,
+          queryParameters: {"categoryId": categoryId,"limit": 100});
+      subCategoriesModel = SubCategoriesModel.fromJson(response?.data);
+    } catch (e) {
+      print('Error fetching SubCategories: $e');
+    }
+    return subCategoriesModel;
   }
 
   @override
@@ -130,4 +153,6 @@ class CategoriesRepoImp implements CategoriesRepo {
     }
     return null;
   }
+
+
 }
