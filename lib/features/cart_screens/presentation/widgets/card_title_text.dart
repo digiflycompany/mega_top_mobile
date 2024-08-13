@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import '../../../../core/utils/app_color.dart';
 
 class CardTitleText extends StatelessWidget {
   final String? title;
-  const CardTitleText({super.key, this.title});
+  const CardTitleText({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

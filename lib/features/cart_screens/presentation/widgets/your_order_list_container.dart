@@ -1,30 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
-import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_name.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_price.dart';
-import 'package:mega_top_mobile/core/widgets/list_product_type.dart';
-
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/widgets/product_photo_list_view.dart';
+import 'package:mega_top_mobile/core/widgets/product_photo_list_view.dart';
 
 class YourOrderListContainer extends StatelessWidget {
   final String? productPhoto;
   final String? productName;
-  final String? productType;
   final String? productPrice;
-  final String? discountPercent;
-  final bool? discount;
   const YourOrderListContainer(
       {super.key,
       this.productPhoto,
       this.productName,
-      this.productType,
       this.productPrice,
-      this.discount = false,
-      this.discountPercent});
+ });
 
   @override
   Widget build(BuildContext context) {
@@ -49,18 +41,18 @@ class YourOrderListContainer extends StatelessWidget {
                 ProductPhotoListView(
                   photo: productPhoto,
                 ),
-                discount == true
-                    ? Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: context.height * 0.009,
-                            horizontal: context.width * 0.016),
-                        child: DiscountContainer(
-                          discountPercent: discountPercent,
-                          width: context.width * 0.1,
-                          height: context.height * 0.028,
-                        ),
-                      )
-                    : Container(),
+                // discount == true
+                //     ? Padding(
+                //         padding: EdgeInsets.symmetric(
+                //             vertical: context.height * 0.009,
+                //             horizontal: context.width * 0.016),
+                //         child: DiscountContainer(
+                //           discountPercent: discountPercent,
+                //           width: context.width * 0.1,
+                //           height: context.height * 0.028,
+                //         ),
+                //       )
+                //     : Container(),
               ],
             ),
           ),
@@ -80,9 +72,6 @@ class YourOrderListContainer extends StatelessWidget {
                       ),
                       const Spacer(),
                     ],
-                  ),
-                  ListProductType(
-                    text: productType,
                   ),
                   const Spacer(),
                   Row(

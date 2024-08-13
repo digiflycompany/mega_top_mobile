@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 
 import '../../../../core/utils/app_string.dart';
 
@@ -21,7 +22,7 @@ class NumberOfProductsRow extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: 14.sp),
         ),
-
+        HorizontalSpace(4.w),
         /// Product quantity
         Text(
           productQuantity!,

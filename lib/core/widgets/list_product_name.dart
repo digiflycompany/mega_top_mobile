@@ -7,11 +7,13 @@ class ListProductName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text!,
-      style: TextStyle(
-          color: Colors.black, fontWeight: FontWeight.w700, fontSize: 13.sp),
-      overflow: TextOverflow.ellipsis,
+    return FittedBox(
+      child: Text(
+        text!,
+        style: TextStyle(
+            color: Colors.black, fontWeight: FontWeight.w700, fontSize: 13.sp),
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }

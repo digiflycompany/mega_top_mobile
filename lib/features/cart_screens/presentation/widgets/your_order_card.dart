@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_title_text.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_list.dart';
-import '../../../../core/utils/app_color.dart';
-import 'card_title_text.dart';
 
 class YourOrderCard extends StatelessWidget {
-  final String? paymentMethod;
-  const YourOrderCard({super.key, this.paymentMethod});
+  const YourOrderCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class YourOrderCard extends StatelessWidget {
             mainAxisSize:
                 MainAxisSize.min, // Make the column take up only required space
             children: [
-              const CardTitleText(title: AppStrings.yourOrderTwoProductsEn),
+              OrderDetailsTitleText(),
               const CustomDivider(),
               VerticalSpace(context.height * 0.033),
               const YourOrderList(),

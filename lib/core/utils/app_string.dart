@@ -125,6 +125,7 @@ class AppStrings {
   static const String serverError = 'Server Error';
   static const String sorryThereIsNoInternet = 'Sorry, there is no internet!';
   static const String pleaseCheckYourInternet = 'Please check your internet connection and try again';
+  static const String youHaveToSelectAnAddress = 'You have to select an address';
   static const String resetEn = 'Reset';
   static const String signUpEn = 'Sign up';
   static const String editPassword = 'Edit password';
@@ -159,6 +160,7 @@ class AppStrings {
   static const String confirmYourNewPasswordEn = 'Confirm your new password';
   static const String congratulationsEn = 'Congratulations';
   static const String city = 'City';
+  static const String city2 = 'City: ';
   static const String cityCanNotBeEmpty = 'City can not be empty';
   static const String pleaseEnterYourAddress = 'Please enter your address';
   static const String pleaseChooseYourCity = 'Please choose your city';
@@ -176,6 +178,7 @@ class AppStrings {
   static const String viewCartEn = 'View Cart';
   static const String confirmLocationEn = "Confirm Location";
   static const String continueShoppingEn = 'Continue Shopping';
+  static const String confirmingAddressFailedEn = 'Confirming address failed';
   static const String yourShipmentEn = 'Your shipment';
   static const String shippingDetailsEn = 'Shipping Details';
   static const String selectTheDeliveryAddressEn =
@@ -321,6 +324,9 @@ class AppStrings {
   static const String products3En = 'products';
   static const String viewOrderEn = 'View Order';
   static const String yourOrderTwoProductsEn = 'Your order (2 products)';
+  static const String yourOrder = 'Your order ';
+  static const String openBracket = '(';
+  static const String closeBracket = ' products) ';
   static const String yourOrderReceivedSuccessfullyEn =
       'Your order received successfully';
   static const String yourOrderNumberIsEn = 'Your order number is :';
