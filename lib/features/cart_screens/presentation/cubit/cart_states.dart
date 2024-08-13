@@ -1,4 +1,5 @@
 import 'package:mega_top_mobile/features/cart_screens/data/models/add_to_cart_model.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/models/checkout_model.dart';
 
 abstract class CartState {}
 
@@ -33,6 +34,20 @@ class CartSentToAPIFailure extends CartState{
 }
 
 class CartSentToAPILoading extends CartState{}
+
+class CheckoutSuccess extends CartState{
+  final CheckoutModel user;
+
+  CheckoutSuccess(this.user);
+}
+
+class CheckoutFailure extends CartState{
+  final String error;
+
+  CheckoutFailure(this.error);
+}
+
+class CheckoutLoading extends CartState{}
 
 // class GetUserCartSuccess extends CartState{
 //   final UserCartModel user;

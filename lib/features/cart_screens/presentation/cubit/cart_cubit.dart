@@ -38,6 +38,24 @@ class CartCubit extends Cubit<CartState> {
     emit(CartUpdated());
   }
 
+  Future<void> checkout(String addressId,String name,String phoneNumber,String email) async{
+    emit(CheckoutLoading());
+    try {
+      final user = await cartRepo.checkOutRepo(addressId,name,phoneNumber,email);
+      if (user != null && user.success == true) {
+        emit(CheckoutSuccess(user));
+      } else {
+        emit(CheckoutFailure(user?.message ?? AppStrings.invalidCred));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(CartNoInternetConnection());
+      } else {
+        emit(CheckoutFailure(e.toString()));
+      }
+    }
+  }
+
   void removeProductFromCart(String id) {
     cartProducts.removeWhere((product) => product['_id'] == id);
     PreferencesHelper.saveCart(cartProducts);
@@ -138,6 +156,20 @@ class CartCubit extends Cubit<CartState> {
     }
     else if (state is CartNoInternetConnection) {
       showErrorToast(context, AppStrings.addToCartFailed, AppStrings.pleaseCheckYourInternet);
+    }
+  }
+
+  void handleCheckoutStates(BuildContext context, CartState state) {
+    if (state is CheckoutSuccess) {
+      PreferencesHelper.clearCart();
+      PreferencesHelper.clearSelectedAddress();
+      Routes.ordersDetailsPageRoute.moveTo;
+    }
+    else if (state is CheckoutFailure) {
+      showErrorToast(context, AppStrings.checkoutFailed, state.error);
+    }
+    else if (state is CartNoInternetConnection) {
+      showErrorToast(context, AppStrings.checkoutFailed, AppStrings.pleaseCheckYourInternet);
     }
   }
 

@@ -151,6 +151,7 @@ class AppStrings {
   static const String ifYouDidNotRecCodeEn = 'If you didn’t receive code?';
   static const String resendCodeEn = 'Resend code';
   static const String checkoutEn = 'Checkout';
+  static const String checkoutFailed = 'Checkout failed';
   static const String newPassword = 'New password';
   static const String confirmNewPassword = 'Confirm new password';
   static const String createNewPasswordEn = 'Create new password';
