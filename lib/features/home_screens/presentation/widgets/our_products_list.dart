@@ -27,9 +27,10 @@ class OurProductsList extends StatelessWidget {
                 height: context.height * 0.14,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: categories!.data!.categories!.length,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
-                    final category = categories.data!.categories![index];
+                    final category = categories!.data!.categories![index];
                     return Row(
                       children: [
                         OurProductsContainer(

@@ -40,10 +40,6 @@ class _HomePageState extends State<HomePage> {
 
   void _onItemTapped(int index) {
     _pageController.jumpToPage(index);
-     // if(index == 2)
-     //  {
-     //    context.read<OffersCubit>().getOffers();
-     //  }
   }
 
   @override
