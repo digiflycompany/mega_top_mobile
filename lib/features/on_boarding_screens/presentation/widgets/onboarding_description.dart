@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 
 class OnboardingDescription extends StatelessWidget {
   final String? title;
@@ -17,12 +16,14 @@ class OnboardingDescription extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
       child: Column(
         children: [
-          Text(
-            title!,
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w700),
+          FittedBox(
+            child: Text(
+              title!,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w700),
+            ),
           ),
           VerticalSpace(context.height * 0.017),
           Padding(
