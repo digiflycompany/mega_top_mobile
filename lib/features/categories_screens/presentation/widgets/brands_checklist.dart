@@ -8,8 +8,15 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_state
 
 import '../../cubit/category_cubit.dart';
 
-class BrandsCheckList extends StatelessWidget {
+class BrandsCheckList extends StatefulWidget {
   const BrandsCheckList({super.key});
+
+  @override
+  State<BrandsCheckList> createState() => _BrandsCheckListState();
+}
+
+class _BrandsCheckListState extends State<BrandsCheckList> {
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +27,11 @@ class BrandsCheckList extends StatelessWidget {
         final checkboxStates = categoryCubit.checkboxStates;
         return Scrollbar(
           thumbVisibility: true,
+          controller: _scrollController,
           child: SizedBox(
             height: 200.h,
             child: ListView.separated(
+              controller: _scrollController,
               shrinkWrap: true,
               itemCount: categoryCubit.subCategoriesModel!.data!.subcategories.length,
               separatorBuilder: (context, index) => const VerticalSpace(1),
