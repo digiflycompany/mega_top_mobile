@@ -15,8 +15,6 @@ class BrandsCheckList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OffersCubit offersCubit = context.read<OffersCubit>();
-    offersCubit.initializeCheckboxes(
-        [AppStrings.dellEn, AppStrings.acerEn, AppStrings.toshibaEn]);
     return BlocBuilder<OffersCubit, OffersState>(
       builder: (context, state) {
         final checkboxStates = offersCubit.checkboxStates;
@@ -26,23 +24,20 @@ class BrandsCheckList extends StatelessWidget {
           itemCount: checkboxStates.length,
           separatorBuilder: (context, index) => const VerticalSpace(1),
           itemBuilder: (context, index) {
-            String item = checkboxStates.keys.elementAt(index);
-            bool isChecked = checkboxStates[item] ?? false;
-
             return InkWell(
-              onTap: () => offersCubit.toggleCheckbox(item),
+              onTap: () => offersCubit.toggleCheckbox(index),
               child: Row(
                 children: [
                   Checkbox(
                     activeColor: AppColors.primaryColor,
-                    value: isChecked,
+                    value: offersCubit.checkboxStates[index],
                     onChanged: (bool? newValue) {
-                      offersCubit.toggleCheckbox(item);
+                      offersCubit.toggleCheckbox(index);
                     },
                   ),
                   Expanded(
                       child: Text(
-                    item,
+                        offersCubit.subCategoriesModel!.data!.subcategories[index].name!,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,

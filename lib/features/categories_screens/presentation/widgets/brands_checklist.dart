@@ -24,7 +24,6 @@ class _BrandsCheckListState extends State<BrandsCheckList> {
 
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
-        final checkboxStates = categoryCubit.checkboxStates;
         return Scrollbar(
           thumbVisibility: true,
           controller: _scrollController,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
@@ -33,6 +34,14 @@ class OffersItemsListView extends StatelessWidget {
                 productPhoto: product.images[0],
                 productType: product.categoryId!.name,
                 productPrice: product.price!.finalPrice!.toString(),
+                onTap: (){
+                  context.read<OffersCubit>().setCategoryProductIndex(selectedProductIndex: index);
+                  Routes.offerProductDetailsPageRoute.moveTo;
+                },
+                onTapFavourite: (){
+                  context.read<OffersCubit>().setCategoryProductIndex(selectedProductIndex: index);
+                  Routes.offerProductDetailsPageRoute.moveTo;
+                },
                 // discountPercent: product.discountPercent,
                 // discount: product.discount,
               ),

@@ -20,19 +20,19 @@ class FilterBottomSheetBody extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
         child: Column(
           children: [
-            Align(
-              alignment: AlignmentDirectional.topStart,
-              child: Text(
-                AppStrings.brandEn,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15.sp,
-                ),
-              ),
-            ),
-            VerticalSpace(context.height * 0.02),
-            const BrandsCheckList(),
+            // Align(
+            //   alignment: AlignmentDirectional.topStart,
+            //   child: Text(
+            //     AppStrings.brandEn,
+            //     style: TextStyle(
+            //       color: Colors.black,
+            //       fontWeight: FontWeight.w700,
+            //       fontSize: 15.sp,
+            //     ),
+            //   ),
+            // ),
+            // VerticalSpace(context.height * 0.02),
+          //  const BrandsCheckList(),
             VerticalSpace(context.height * 0.025),
             PriceContainer(minPriceController: cubit.minPriceController,maxPriceController: cubit.maxPriceController,),
             const Spacer(),

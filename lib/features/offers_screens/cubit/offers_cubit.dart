@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_repo.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
+
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
 import 'package:mega_top_mobile/features/offers_screens/data/offer_model.dart';
 import 'package:mega_top_mobile/features/offers_screens/data/offers_repo.dart';
+import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/filter_bottom_sheet.dart';
+import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/sort_bottom_sheet.dart';
 import '../../../core/utils/app_assets.dart';
 
 class OffersCubit extends Cubit<OffersState> {
@@ -21,7 +23,7 @@ class OffersCubit extends Cubit<OffersState> {
   bool addedToCompare = false;
   String _selectedValue = AppStrings.defaultEn;
   String get selectedValue => _selectedValue;
-  final Map<String, bool> checkboxStates = {};
+  List< bool> checkboxStates = [];
 
   OffersRepo offersRepo = new OfferRepoImp();
 
@@ -54,10 +56,8 @@ class OffersCubit extends Cubit<OffersState> {
     emit(OffersInitial());
   }
 
-  void initializeCheckboxes(List<String> items) {
-    for (var item in items) {
-      checkboxStates[item] = false;
-    }
+  void initializeCheckboxes(int subCategoriesLength) {
+    checkboxStates= List.filled(subCategoriesLength, false);
     emit(OffersUpdated());
   }
 
@@ -66,13 +66,23 @@ class OffersCubit extends Cubit<OffersState> {
     emit(OffersProductUpdated());
   }
 
-  void toggleCheckbox(String item) {
-    if (checkboxStates.containsKey(item)) {
-      checkboxStates[item] = !checkboxStates[item]!;
-      emit(OffersUpdated());
-    }
+  void toggleCheckbox(int index) {
+    checkboxStates[index] = !checkboxStates[index];
+    emit(OffersUpdated());
   }
 
+  List<String> subCategoriesQuery(){
+    List<String> subCategoriesList=[];
+
+    for(int i=0;i<checkboxStates.length-1;i++)
+    {
+      if(checkboxStates[i] == true)
+      {
+        subCategoriesList.add(subCategoriesModel!.data!.subcategories[i].id!);
+      }
+    }
+    return subCategoriesList;
+  }
 
   int selectedProductIndex = 0;
 
@@ -93,6 +103,21 @@ class OffersCubit extends Cubit<OffersState> {
   int getDiscountPercentage(
       {required int finalPrice, required int originPrice}) {
     return 1 - (finalPrice / originPrice).toInt();
+  }
+
+  SubCategoriesModel? subCategoriesModel;
+
+  Future<void> getSubCategories(String categoriesId) async {
+    emit(SubCategoryLoading());
+    try {
+      subCategoriesModel = null;
+      subCategoriesModel = await offersRepo.getSubCategories(
+          categoryId: categoriesId);
+      emit(SubCategorySuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SubCategoryFailure(e.toString()));
+    }
   }
 
 

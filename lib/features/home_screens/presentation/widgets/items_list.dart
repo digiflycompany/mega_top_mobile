@@ -24,7 +24,8 @@ class ProductsListContainer extends StatelessWidget {
   final String? discountPercent;
   final bool? discount;
   final String? icon;
-  final Function()? onTap;
+  final Function ? onTap;
+  final Function()? onTapFavourite;
 
   const ProductsListContainer(
       {super.key,
@@ -35,8 +36,8 @@ class ProductsListContainer extends StatelessWidget {
       this.discount = false,
       this.discountPercent,
       this.icon = AppAssets.favourOutlinedIcon,
-      this.onTap,
-      this.index});
+      this.onTapFavourite,
+      this.index, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +45,7 @@ class ProductsListContainer extends StatelessWidget {
       final cubit = context.read<CategoryCubit>();
       return GestureDetector(
         onTap: () {
-          cubit.setCategoryProductIndex(selectedProductIndex: index!);
-          Routes.categoryProductDetailsPageRoute.moveTo;
+          onTap!();
         },
         child: Container(
           width: double.infinity,
@@ -108,7 +108,7 @@ class ProductsListContainer extends StatelessWidget {
                             ),
                           ),
                           GestureDetector(
-                              onTap: onTap,
+                              onTap: onTapFavourite,
                               child: SvgPicture.asset(
                                 icon!,
                                 width: context.width * 0.06,

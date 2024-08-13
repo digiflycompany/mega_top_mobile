@@ -79,7 +79,7 @@ class WishListView extends StatelessWidget {
               discountPercent: product.discountPercent,
               discount: product.discount,
               icon: AppAssets.favourFilledIcon,
-              onTap: ()=>globalCubit.showRemoveFromFavouritesToast(context),
+              onTapFavourite: ()=>globalCubit.showRemoveFromFavouritesToast(context),
             ),
           );
         },

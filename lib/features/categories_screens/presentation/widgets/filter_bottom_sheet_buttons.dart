@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
-import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/spacer.dart';
 import '../../../../core/widgets/primary_button.dart';

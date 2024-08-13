@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
@@ -37,6 +38,10 @@ class CategoryItemsListView extends StatelessWidget {
                     .products[index].images[0],
                 productType: cubit.selectedCategoryModel!.data!.products[index].categoryId!.name!,
                 productPrice: cubit.selectedCategoryModel!.data!.products[index].price!.finalPrice!.toString(),
+             onTap: (){
+               cubit.setCategoryProductIndex(selectedProductIndex: index!);
+               Routes.categoryProductDetailsPageRoute.moveTo;
+             },
              //   discountPercent: product.discountPercent,
              //   discount: product.discount,
               ),
