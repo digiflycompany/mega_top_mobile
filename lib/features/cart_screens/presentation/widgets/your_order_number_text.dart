@@ -18,7 +18,7 @@ class YourOrderNumberText extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              AppStrings.yourOrderNumberIsEn,
+              AppStrings.yourOrderIDIsEn,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w500,

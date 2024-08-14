@@ -35,6 +35,13 @@ class PreferencesHelper {
     };
   }
 
+  static Future<void> clearSelectedAddress() async {
+    await preferences?.remove('selectedAddressId');
+    await preferences?.remove('selectedAddressName');
+    await preferences?.remove('selectedAddress');
+    await preferences?.remove('selectedCityName');
+  }
+
   static Future<void> saveToken({required String token}) async {
     await _secureStorage.write(key: "token", value: token);
   }
@@ -142,7 +149,6 @@ class PreferencesHelper {
       'totalItems': cart.length,
     };
   }
-
 
   static Future<void> clearCart() async {
     await preferences?.remove('cart');

@@ -151,6 +151,7 @@ class AppStrings {
   static const String ifYouDidNotRecCodeEn = 'If you didn’t receive code?';
   static const String resendCodeEn = 'Resend code';
   static const String checkoutEn = 'Checkout';
+  static const String checkoutFailed = 'Checkout failed';
   static const String newPassword = 'New password';
   static const String confirmNewPassword = 'Confirm new password';
   static const String createNewPasswordEn = 'Create new password';
@@ -329,7 +330,7 @@ class AppStrings {
   static const String closeBracket = ' products) ';
   static const String yourOrderReceivedSuccessfullyEn =
       'Your order received successfully';
-  static const String yourOrderNumberIsEn = 'Your order number is :';
+  static const String yourOrderIDIsEn = 'Your order id is : ';
   static const String orderNumberText = 'Order number :';
   static const String orderNumberEn = ' #002377';
   static const String orderDayAndDateEn = 'On Sunday 17/12/2023';

@@ -12,7 +12,11 @@ import '../../../../core/utils/spacer.dart';
 import '../widgets/order_success_text.dart';
 
 class OrderConfirmationScreen extends StatelessWidget {
-  const OrderConfirmationScreen({super.key});
+  final String? orderId;
+  const OrderConfirmationScreen({
+    super.key,
+    required this.orderId
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +34,8 @@ class OrderConfirmationScreen extends StatelessWidget {
               img: AppAssets.orderSuccessImg,
             ),
             const OrderSuccessText(),
-            const YourOrderNumberText(
-              orderNumber: AppStrings.orderNumberEn,
+            YourOrderNumberText(
+              orderNumber: orderId,
             ),
             const Spacer(),
 
