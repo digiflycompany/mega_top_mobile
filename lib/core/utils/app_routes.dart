@@ -11,7 +11,6 @@ import 'package:mega_top_mobile/features/account_screens/compare_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/notification_screen/data/repositories/notification_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/screens/notification_screen.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
@@ -44,7 +43,6 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offer_product_details_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
-
 import 'app_color.dart';
 
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
@@ -281,10 +279,10 @@ class RouteGenerator {
         return buildPageRoute(
           child: const OrdersScreen(),
         );
-      case Routes.ordersDetailsPageRoute:
-        return buildPageRoute(
-          child: const OrdersDetailsScreen(),
-        );
+      // case Routes.ordersDetailsPageRoute:
+      //   return buildPageRoute(
+      //     child: const OrdersDetailsScreen(),
+      //   );
       case Routes.compareProductPageRoute:
         return buildPageRoute(
           child: const CompareScreen(),

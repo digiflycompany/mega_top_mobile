@@ -17,7 +17,7 @@ class OrderNumber extends StatelessWidget {
             fontSize: 14.sp
         ),
         children: [
-          const TextSpan(text: AppStrings.orderNumberText),
+          const TextSpan(text: AppStrings.orderIDText),
           /// Order Number
           TextSpan(
             text: orderNumber,

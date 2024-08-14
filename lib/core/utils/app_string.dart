@@ -209,6 +209,7 @@ class AppStrings {
   static const String reasonForCancellation = 'Reason for cancellation :';
   static const String sortByEn = 'Sort by :';
   static const String waitingForConfirmationEn = 'Waiting for confirmation';
+  static const String inProgressEn = 'In progress';
   static const String confirmPaymentProcessEn = 'Confirm Payment Process';
   static const String filterByEn = 'Filter by';
   static const String welcomeEn = 'Welcome !';
@@ -331,8 +332,8 @@ class AppStrings {
   static const String yourOrderReceivedSuccessfullyEn =
       'Your order received successfully';
   static const String yourOrderIDIsEn = 'Your order id is : ';
-  static const String orderNumberText = 'Order number :';
-  static const String orderNumberEn = ' #002377';
+  static const String orderIDText = 'Order id: ';
+  static const String orderNumberEn = '#002377';
   static const String orderDayAndDateEn = 'On Sunday 17/12/2023';
   static const String notifications = 'Notifications';
   static const String emptyAddressPageDescription = 'You have no saved addresses, press the button below to add some';

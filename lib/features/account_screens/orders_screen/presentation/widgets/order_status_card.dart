@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_state.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/stepper_widgets/custom_stepper.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
 
 class OrderStatusCard extends StatelessWidget {
   final String? orderStatus;
@@ -17,7 +15,6 @@ class OrderStatusCard extends StatelessWidget {
       padding: EdgeInsets.only(top: context.height24),
       child: Container(
         width: double.infinity,
-        //height: context.height306,
         decoration: BoxDecoration(
           color: Colors.white,
           border:
@@ -30,11 +27,6 @@ class OrderStatusCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               OrderNumberAndState(orderStatus: orderStatus,statusColor: boxColor,horizontalPadding: context.width16,textColor: AppColors.smallTextBlackColor,),
-              CustomDivider(
-                topPadding: context.height16,
-                bottomPadding: context.height16,
-              ),
-              CustomStepper(),
             ],
           ),
         ),

@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/cancel_order.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_status_card.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_card.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_checkout_card.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_method_small_card.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_small_card.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_card.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_checkout_details_small_card.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_checkout_card.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
+import '../../../../cart_screens/data/models/checkout_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
-  const OrdersDetailsScreen({super.key});
+  final String? orderId;
+  final bool? completed;
+  final List<Product>? products;
+  final DropOffAddress? dropOffAddress;
+  const OrdersDetailsScreen({super.key,
+    required this.orderId,
+    required this.completed,
+    required this.products,
+    required this.dropOffAddress});
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +33,25 @@ class OrdersDetailsScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.width16,),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
-          child: const Column(
+          child: Column(
             children: [
               OrderStatusCard(),
-              OrderDetailsCard(),
-              ShippingDetailsSmallCard(),
+              OrderDetailsCheckoutCard(
+                productPrice: products!.length.toString(),
+                productQuantity: products!.length.toString(),
+                totalPrice: products!.length.toString(),
+              ),
+              ShippingCheckoutDetailsSmallCard(
+                name: dropOffAddress!.name,
+                address: dropOffAddress!.firstLine,
+                city: dropOffAddress!.cityName,
+              ),
               PaymentMethodSmallCard(
                 paymentMethod: AppStrings.cashOnDeliveryEn,
               ),
-              YourOrderCard(),
-              CancelOrderCard(),
+              YourOrderCheckoutCard(
+                products: products,
+              ),
             ],
           ),
         ),

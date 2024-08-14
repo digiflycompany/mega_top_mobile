@@ -37,7 +37,10 @@ class AddToCartBottomSheet extends StatelessWidget {
                               fontSize: 16.sp,
                             ),
                           ),
-                          onTap: ()=>Routes.cartPageRoute.moveTo,
+                          onTap: () {
+                            Navigator.pop(context);
+                            Routes.cartPageRoute.moveTo;
+                          },
                         ),
                         VerticalSpace(context.height * 0.033),
                         /// Continue Shopping Button
