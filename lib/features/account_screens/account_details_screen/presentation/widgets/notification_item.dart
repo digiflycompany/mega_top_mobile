@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
@@ -10,7 +9,7 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/notification_screen/data/repositories/notification_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_state.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/small_circular_progress_indicator.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class NotificationItem extends StatelessWidget {
   const NotificationItem(
@@ -48,19 +47,8 @@ class NotificationItem extends StatelessWidget {
                         width: 24.h,
                         height: 24.h,
                         child: Center(
-                          child: state is NotificationNoInternetConnection
-                              ? Transform.scale(
-                              scale: 0.65,
-                              child: SvgPicture.asset(AppAssets.noInternetIcon))
-                              : state is NotificationLoading
-                              ? SmallCircularProgressIndicator()
-                              : state is NotificationSuccess? Text(
-                            state.user.notifications!.length.toString(),
-                            style: TextStyle(
-                                color: AppColors.primaryColor,
-                                fontWeight: FontWeight.w700),
-                          ):Text(
-                            AppStrings.zero,
+                          child: Text(
+                            PreferencesHelper.getNotificationCount().toString(),
                             style: TextStyle(
                                 color: AppColors.primaryColor,
                                 fontWeight: FontWeight.w700),

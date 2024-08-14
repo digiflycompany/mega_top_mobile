@@ -75,6 +75,13 @@ class PreferencesHelper {
   static int getWishListCount() {
     return preferences?.getInt('wishListCount') ?? 0;
   }
+  static Future<void> saveNotificationCount(int count) async {
+    await preferences?.setInt('notificationCount', count);
+  }
+
+  static int getNotificationCount() {
+    return preferences?.getInt('notificationCount') ?? 0;
+  }
 
   static Future<void> saveIsVisitor({required bool isVisitor}) async {
     await preferences?.setBool("isVisitor", isVisitor);

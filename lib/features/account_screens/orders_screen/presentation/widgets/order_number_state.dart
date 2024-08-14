@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_text.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_state_box.dart';
 
@@ -20,9 +20,8 @@ class OrderNumberAndState extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          OrderNumber(orderNumber: AppStrings.orderNumberEn,textColor: textColor,),
-          HorizontalSpace(context.width12),
-          OrderStateBox(text: orderStatus??AppStrings.waitingForConfirmationEn,color: statusColor??AppColors.yellowColor,),
+          Expanded(child: OrderNumber(orderNumber: AppStrings.orderNumberEn,textColor: textColor,)),
+          Expanded(child: OrderStateBox(text: orderStatus??AppStrings.inProgressEn,color: statusColor??AppColors.yellowColor,)),
         ],
       ),
     );

@@ -20,13 +20,13 @@ class CartCubit extends Cubit<CartState> {
   List<Map<String, dynamic>> cartProducts = PreferencesHelper.getCart();
 
   void addProductToCart(String? id,String? name,String? price,String? image) {
-    final existingProductIndex = cartProducts.indexWhere(
-          (product) => product['_id'] == id,
-    );
-
-    if (existingProductIndex != -1) {
-      cartProducts[existingProductIndex]['quantity'] += 1;
-    } else {
+    // final existingProductIndex = cartProducts.indexWhere(
+    //       (product) => product['_id'] == id,
+    // );
+    //
+    // if (existingProductIndex != -1) {
+    //   cartProducts[existingProductIndex]['quantity'] += 1;
+    // } else
       cartProducts.add({
         '_id': id,
         'quantity': 1,
@@ -34,7 +34,7 @@ class CartCubit extends Cubit<CartState> {
         'price': price,
         'image': image,
       });
-    }
+
     PreferencesHelper.saveCart(cartProducts);
     emit(CartUpdated());
   }
@@ -162,22 +162,39 @@ class CartCubit extends Cubit<CartState> {
 
   void handleCheckoutStates(BuildContext context, CartState state) {
     if (state is CheckoutSuccess) {
-      PreferencesHelper.clearCart();
-      PreferencesHelper.clearSelectedAddress();
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => OrderConfirmationScreen(
-              orderId: state.user.data!.id,
-            ),
+      int count = 0;
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => OrderConfirmationScreen(
+            orderId: state.user.data!.id,
+            products: state.user.data!.products,
+            dropOffAddress: state.user.data!.dropOffAddress,
+            completed: state.user.data!.completed,
           ),
-      );
-      //Routes.orderConfirmationPageRoute.moveTo;
-    }
-    else if (state is CheckoutFailure) {
+        ),
+            (Route<dynamic> route) {
+          return count++ == 5;
+        },
+      ).then((_) {
+        PreferencesHelper.clearCart();
+        PreferencesHelper.clearSelectedAddress();
+        cartProducts.clear();
+      });
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => OrderConfirmationScreen(
+      //       orderId: state.user.data!.id,
+      //       products: state.user.data!.products,
+      //       dropOffAddress: state.user.data!.dropOffAddress,
+      //       completed: state.user.data!.completed,
+      //     ),
+      //   ),
+      // );
+    } else if (state is CheckoutFailure) {
       showErrorToast(context, AppStrings.checkoutFailed, state.error);
-    }
-    else if (state is CartNoInternetConnection) {
+    } else if (state is CartNoInternetConnection) {
       showErrorToast(context, AppStrings.checkoutFailed, AppStrings.pleaseCheckYourInternet);
     }
   }

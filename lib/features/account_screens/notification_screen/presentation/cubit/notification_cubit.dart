@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/data/repositories/notification_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class NotificationCubit extends Cubit<NotificationState> {
   final NotificationsRepo notificationsRepo;
@@ -39,7 +40,9 @@ class NotificationCubit extends Cubit<NotificationState> {
     try {
       final user = await notificationsRepo.getUserNotification();
       if (user != null && user.success == true) {
+        PreferencesHelper.saveNotificationCount(user.notifications!.length);
         emit(NotificationSuccess(user));
+
       } else {
         emit(NotificationFailure(
             user?.message ?? AppStrings.invalidCred));
