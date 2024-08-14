@@ -1,88 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/best_seller_container.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_offer_container.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/spacer.dart';
 
 class LatestOffersList extends StatelessWidget {
-  const LatestOffersList({super.key});
+  const LatestOffersList({super.key,d, required this.categoryId});
+
+  final String categoryId;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
-      listener: (BuildContext context, HomeState state) {},
-      builder: (BuildContext context, HomeState state) {
-        final homeCubit = context.read<HomeCubit>();
-        if (homeCubit.latestOfferModel.isNotNull) {
-          return SizedBox(
-            height: context.height * 0.326,
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
+    return BlocProvider(
+      create: (BuildContext context)=> CategoryCubit()..getSelectedCategories(categoryId),
+      child: BlocConsumer<CategoryCubit, CategoryState>(
+        listener: (BuildContext context, CategoryState state) {},
+        builder: (BuildContext context, CategoryState state) {
+        //  final homeCubit = context.read<HomeCubit>();
+          final cubit = context.read<CategoryCubit>();
+          //   if (homeCubit.latestOfferModel.isNotNull) {
+            return SizedBox(
+              height: context.height * 0.485,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    AppAssets.upsOffers,
-                    width: context.width * 0.7,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: context.height * 0.022,
-                        bottom: context.height * 0.033),
-                    child: Column(
-                      children: [
-                        LatestOffersContainer(
-                          productPhoto: homeCubit
-                              .latestOfferModel!.latestOfferList[0].image,
-                          productName: homeCubit
-                              .latestOfferModel!.latestOfferList[0].name,
-                        ),
-                        Spacer(),
-                        LatestOffersContainer(
-                          productPhoto: homeCubit
-                              .latestOfferModel!.latestOfferList[1].image,
-                          productName: homeCubit
-                              .latestOfferModel!.latestOfferList[1].name,
-                        ),
-                      ],
-                    ),
-                  ),
-                  HorizontalSpace(context.height * 0.022),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: context.height * 0.025,
-                        bottom: context.height * 0.03),
-                    child: Column(
-                      children: [
-                        LatestOffersContainer(
-                          productPhoto: homeCubit
-                              .latestOfferModel!.latestOfferList[2].image,
-                          productName: homeCubit
-                              .latestOfferModel!.latestOfferList[2].name,
-                        ),
-                        Spacer(),
-                        LatestOffersContainer(
-                          productPhoto: homeCubit
-                              .latestOfferModel!.latestOfferList[3].image,
-                          productName: homeCubit
-                              .latestOfferModel!.latestOfferList[3].name,
-                        ),
-                      ],
-                    ),
-                  ),
+                  Expanded(
+                    child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context,index){
+                          return BestSellerContainer(
+                            productName: cubit.selectedCategoryModel!.data!
+                                .products[index].title,
+                            productPhoto: cubit.selectedCategoryModel!.data!
+                                .products[index].images[0],
+                            productType: cubit.selectedCategoryModel!.data!
+                                .products[index].categoryId!.name!,
+                            productPrice: cubit.selectedCategoryModel!.data!
+                                .products[index].price!.finalPrice!
+                                .toString(),
+                          );
+                        }, separatorBuilder: (context,index){
+                      return SizedBox(
+                        width: 10.w,
+                      );
+                    }, itemCount: 4),
+                  )
                 ],
               ),
-            ),
-          );
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
+            );
+         }
+          // else {
+          //   return Center(child: CircularProgressIndicator());
+          // }
+      //  },
+      ),
     );
   }
 }
