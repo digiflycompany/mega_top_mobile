@@ -6,13 +6,20 @@ import '../../../../core/utils/app_string.dart';
 
 class SearchTextField extends StatelessWidget {
   final FocusNode? focusNode;
-  const SearchTextField({super.key, this.focusNode});
+  final TextEditingController ? textFormField;
+  final Function ? onTap;
+  const SearchTextField({super.key, this.focusNode,required this.textFormField, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: TextFormField(
+        onTap: (){
+          onTap!();
+        },
+        controller: textFormField,
         focusNode: focusNode,
+        textInputAction: TextInputAction.search,
         cursorColor: AppColors.greyTextColor,
         decoration: InputDecoration(
           border: InputBorder.none,

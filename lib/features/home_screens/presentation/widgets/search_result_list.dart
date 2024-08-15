@@ -25,7 +25,7 @@ class SearchResultList extends StatelessWidget {
               BlocConsumer<HomeCubit, HomeState>(
                 listener: (context, state) {},
                 builder: (context, state) {
-                  return homeCubit.isGrid?const SearchResultGridView():const SearchResultListView();
+                  return homeCubit.isGrid? SearchResultGridView(homeCubit: homeCubit,): SearchResultListView(homeCubit: homeCubit);
                 },
               ),
             ],

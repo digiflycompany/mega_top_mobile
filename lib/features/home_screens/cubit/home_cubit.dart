@@ -1,8 +1,13 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
+import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_offer_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_product_model.dart';
+import 'package:mega_top_mobile/features/home_screens/data/models/search_model.dart';
+import 'package:mega_top_mobile/features/home_screens/data/models/search_repo.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
@@ -90,5 +95,95 @@ class HomeCubit extends Cubit<HomeState> {
   //     emit(LatestProductFailure(e.toString()));
   //   }
   // }
+
+
+  List< bool> checkboxStates = [];
+
+  void initializeCheckboxes(int subCategoriesLength) {
+    checkboxStates= List.filled(subCategoriesLength, false);
+    emit(HomeUpdated());
+  }
+
+  void toggleCheckbox(int index) {
+    checkboxStates[index] = !checkboxStates[index];
+    emit(HomeUpdated());
+  }
+
+  List<String> subCategoriesQuery(){
+    List<String> subCategoriesList=[];
+
+    for(int i=0;i<checkboxStates.length-1;i++)
+    {
+      if(checkboxStates[i] == true)
+      {
+        subCategoriesList.add(subCategoriesModel!.data!.subcategories[i].id!);
+      }
+    }
+    return subCategoriesList;
+  }
+
+  SubCategoriesModel? subCategoriesModel;
+
+  Future<void> getSubCategories(String categoriesId) async {
+    emit(SubCategoryLoading());
+    try {
+      subCategoriesModel = null;
+      subCategoriesModel = await searchRepo.getSubCategories(
+          categoryId: categoriesId);
+      emit(SubCategorySuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SubCategoryFailure(e.toString()));
+    }
+  }
+
+  int _currentImageIndex = 0;
+
+  int get currentImageIndex => _currentImageIndex;
+
+  void setImageDetailsIndex(int index) {
+    _currentImageIndex = index;
+    emit(HomeUpdated());
+  }
+
+
+
+  int selectedProductIndex = 0;
+
+  void setCategoryProductIndex({required int selectedProductIndex}) {
+    this.selectedProductIndex = selectedProductIndex;
+  }
+
+
+  SearchRepo searchRepo = new CategoriesRepoImp();
+
+  SearchModel? searchModel;
+
+  int page = 1;
+  int? minPrice;
+  int? maxPrice;
+
+  TextEditingController searchWord = TextEditingController();
+
+
+  Future<void> search() async {
+    emit(SearchLoading());
+    try {
+      searchModel = null;
+      searchModel = await searchRepo.getSearch(
+        searchWord: searchWord.text,
+        page: page,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
+        subCategories: subCategoriesQuery()
+      );
+
+      emit(SearchSuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SearchFailure(e.toString()));
+    }
+  }
+
 
 }
