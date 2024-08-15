@@ -248,9 +248,6 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
     if(state is RemoveFromWishListFailure){
       showErrorToast(context, AppStrings.removingProductFailed,state.error);
     }
-    if(state is AccountDetailsNoInternetConnection){
-      showErrorToast(context, AppStrings.removingProductFailed,AppStrings.noInternetConnectionPlease);
-    }
   }
 
   @override

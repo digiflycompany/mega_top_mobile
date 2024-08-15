@@ -21,8 +21,8 @@ class OrderNumberAndState extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(flex:1,child: OrderNumber(orderNumber: orderId,textColor: textColor,)),
-          Expanded(flex:1,child: OrderStateBox(text: orderStatus??AppStrings.inProgressEn,color: statusColor??AppColors.yellowColor,)),
+          Expanded(child: OrderNumber(orderNumber: orderId,textColor: textColor,)),
+          Expanded(child: OrderStateBox(text: orderStatus??AppStrings.inProgressEn,color: statusColor??AppColors.yellowColor,)),
         ],
       ),
     );

@@ -67,7 +67,7 @@ class WishListScreen extends StatelessWidget {
         bigFontText: AppStrings.noWishListItemsEn,
         smallFontText: AppStrings.browseProductsFavLongTextEn,
         buttonText: AppStrings.continueShoppingEn,
-        buttonOnTap: () {},
+        buttonOnTap: ()=>Navigator.pop(context),
       );
     }
   }

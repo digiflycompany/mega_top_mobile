@@ -8,6 +8,7 @@ class AppStrings {
   static const String nextEn = 'Next';
   static const String error = 'Error';
   static const String failedToLoadOrders = 'Failed to load orders';
+  static const String failedToLoadOrderDetails = 'Failed to load order details';
   static const String previous = 'السابق';
   static const String previousEn = 'Previous';
   static const String invalidCred = 'Invalid credentials or network issues.';
