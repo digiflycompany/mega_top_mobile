@@ -111,7 +111,7 @@ class GlobalCubit extends Cubit<GlobalState> {
   Future<void> removeFromWishList(String productId) async {
     emit(RemoveFromWishListLoading());
     try {
-      final user = await globalRepo.addToWishList(productId);
+      final user = await globalRepo.removeFromWishList(productId);
       if (user != null && user.success == true) {
         emit(RemoveFromWishListSuccess(user));
       } else {

@@ -5,7 +5,6 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/best_seller_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_offers_list.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_products_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_app_bar.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/our_products_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/our_products_row.dart';

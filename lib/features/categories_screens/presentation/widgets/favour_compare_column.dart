@@ -12,7 +12,7 @@ import 'package:mega_top_mobile/features/categories_screens/presentation/widgets
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class FavourCompareColumn extends StatelessWidget {
-  final String productId;
+  final String? productId;
 
   const FavourCompareColumn({super.key, required this.productId});
 
@@ -35,17 +35,19 @@ class FavourCompareColumn extends StatelessWidget {
                   child: Column(
                     children: [
                       WhiteBoxIcon(
-                        icon: context.read<AccountDetailsCubit>().isProductInWishlist(productId)
-                            ? AppAssets.favourOutlinedIcon
-                            : AppAssets.favourFilledIcon,
+                        icon: PreferencesHelper.isProductInWishlist(productId!)==true
+                            ? AppAssets.favourFilledIcon
+                            : AppAssets.favourOutlinedIcon,
                         onTap: () async {
                           final token = await PreferencesHelper.getToken();
                           if (token == null) {
                             Routes.signUpOrLoginPageRoute.moveTo;
                           } else {
-                            context.read<AccountDetailsCubit>().isProductInWishlist(productId)
-                                ? globalCubit.addToWishList(productId)
-                                : globalCubit.removeFromWishList(productId);
+                            if(PreferencesHelper.isProductInWishlist(productId!)==true){
+                              globalCubit.removeFromWishList(productId!);
+                            } else {
+                              globalCubit.addToWishList(productId!);
+                            }
                             // globalCubit.toggleFavourite();
                           }
                         },

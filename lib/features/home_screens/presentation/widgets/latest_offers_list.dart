@@ -4,13 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/best_seller_container.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_offer_container.dart';
-
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/spacer.dart';
 
 class LatestOffersList extends StatelessWidget {
   const LatestOffersList({super.key,d, required this.categoryId});

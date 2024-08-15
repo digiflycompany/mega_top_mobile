@@ -105,7 +105,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         emailController.text = user.data.user.email;
         phoneController.text = user.data.user.phoneNumber;
         wishListCount = user.data.wishlistCount;
-        _wishList = user.data.user.wishlist;
+        PreferencesHelper.saveWishlist(user.data.user.wishlist);
         unreadNotificationCount = user.data.unreadNotificationsCount['ad'] ?? 0;
         await PreferencesHelper.saveWishListCount(wishListCount);
         emit(AccountDetailsSuccess(user));

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/login_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
@@ -67,6 +68,33 @@ class PreferencesHelper {
         json.decode('${preferences?.getString('userModel')}'));
     return userModel.data!.user!.phoneNumber ?? '';
   }
+
+  static Future<void> saveWishlist(List<WishlistItem> wishList) async {
+    String wishlistJson = json.encode(wishList.map((item) => item.toJson()).toList());
+    await preferences?.setString('wishlist', wishlistJson);
+  }
+
+  static List<WishlistItem> getWishlist() {
+    String? wishlistJson = preferences?.getString('wishlist');
+    if (wishlistJson != null) {
+      List<dynamic> wishlistList = json.decode(wishlistJson);
+      return wishlistList.map((item) => WishlistItem.fromJson(item)).toList();
+    }
+    return [];
+  }
+
+  static bool isProductInWishlist(String productId) {
+    List<WishlistItem> wishList = getWishlist();
+    return wishList.any((item) => item.id == productId);
+  }
+
+  // static Future<void> saveEmail(int count) async {
+  //   await preferences?.setInt('email', count);
+  // }
+  //
+  // static String getEmail() {
+  //   return preferences?.getString('wishListCount') ?? 0;
+  // }
 
   static Future<void> saveWishListCount(int count) async {
     await preferences?.setInt('wishListCount', count);

@@ -50,6 +50,7 @@ class _OfferProductDetailsPageState
                   ProductDetailedImage(images: offerCubit.offerModel!.data!.products[offerCubit.selectedProductIndex].images,
                   imagePosition: offerCubit.currentImageIndex,
                   cubit: offerCubit,
+                  productId: offerCubit.offerModel!.data!.products[offerCubit.selectedProductIndex].id,
                   ),
                   ProductDetailedBody(),
                 ],

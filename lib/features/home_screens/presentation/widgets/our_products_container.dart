@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
@@ -29,7 +28,6 @@ class OurProductsContainer extends StatelessWidget {
     return BlocConsumer<CategoryCubit, CategoryState>(
       listener: (context, state) {},
       builder: (context, state) {
-        final cubit = CategoryCubit().getCubit(context);
         return GestureDetector(
           onTap: () {
             // cubit.selectedCategoryId = categoryId;

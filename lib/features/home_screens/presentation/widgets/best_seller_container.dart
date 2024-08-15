@@ -1,12 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
-import 'package:mega_top_mobile/core/widgets/discount_container.dart';
-
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/spacer.dart';
 
@@ -73,26 +69,26 @@ class BestSellerContainer extends StatelessWidget {
                                         width: context.width * 0.27,
                                       ),
                   ),
-                  discount == true
-                      ? Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: context.height * 0.012,
-                              horizontal: context.width * 0.022),
-                          child: DiscountContainer(
-                            width: context.width * 0.11,
-                            height: context.height * 0.033,
-                            discountPercent: discountPercent,
-                          ),
-                        )
-                      : Container(),
-                  Align(
-                      alignment: AlignmentDirectional.topEnd,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: context.height * 0.022,
-                            horizontal: context.width * 0.045),
-                        child: SvgPicture.asset(AppAssets.favourOutlinedIcon),
-                      )),
+                  // discount == true
+                  //     ? Padding(
+                  //         padding: EdgeInsets.symmetric(
+                  //             vertical: context.height * 0.012,
+                  //             horizontal: context.width * 0.022),
+                  //         child: DiscountContainer(
+                  //           width: context.width * 0.11,
+                  //           height: context.height * 0.033,
+                  //           discountPercent: discountPercent,
+                  //         ),
+                  //       )
+                  //     : Container(),
+                  // Align(
+                  //     alignment: AlignmentDirectional.topEnd,
+                  //     child: Padding(
+                  //       padding: EdgeInsets.symmetric(
+                  //           vertical: context.height * 0.022,
+                  //           horizontal: context.width * 0.045),
+                  //       child: SvgPicture.asset(AppAssets.favourOutlinedIcon),
+                  //     )),
                 ],
               ),
             ),
