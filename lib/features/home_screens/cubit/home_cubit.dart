@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
@@ -20,7 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   //HomePageRepo homePageRepo = new HomePageRepoImp();
 
-  void setImageIndex(int index) {
+  void setImageAdsIndex(int index) {
     emit(ImageChanged(index: index));
   }
 
@@ -141,12 +142,23 @@ class HomeCubit extends Cubit<HomeState> {
 
   int get currentImageIndex => _currentImageIndex;
 
-  void setImageDetailsIndex(int index) {
+  void setImageIndex(int index) {
     _currentImageIndex = index;
     emit(HomeUpdated());
   }
 
 
+  String _selectedValue = AppStrings.defaultEn;
+
+  void selectOption(String newValue) {
+    _selectedValue = newValue;
+    emit(HomeUpdated());
+  }
+
+  int getDiscountPercentage(
+      {required int finalPrice, required int originPrice}) {
+    return 1 - finalPrice ~/ originPrice;
+  }
 
   int selectedProductIndex = 0;
 
@@ -185,5 +197,27 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+
+  bool? hasMoreProducts = false;
+
+  Future<void> getMoreProduct() async {
+    emit(SearchLoading());
+    try {
+      SearchModel? moreProducts =
+      await searchRepo.getSearch(
+          page: page++,
+          minPrice: minPrice,
+          maxPrice: maxPrice, searchWord: searchWord.text);
+      searchModel!.data!.products
+          .addAll(moreProducts!.data!.products);
+      hasMoreProducts = moreProducts.data!.products.isNotEmpty;
+      print("hasMoreProducts");
+      print(hasMoreProducts);
+      emit(SearchSuccess());
+    } catch (e) {
+      print(e.toString() + "///////");
+      emit(SearchFailure(e.toString()));
+    }
+  }
 
 }

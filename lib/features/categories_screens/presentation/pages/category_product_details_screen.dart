@@ -19,6 +19,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_st
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_body.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/product_detailed_body_in_search.dart';
 
 class CategoryProductDetailsPage extends StatefulWidget {
   const CategoryProductDetailsPage({super.key});

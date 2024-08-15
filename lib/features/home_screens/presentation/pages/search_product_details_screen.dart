@@ -27,6 +27,7 @@ import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_product_detailed_body.dart';
 
 class SearchProductDetailsPage extends StatefulWidget {
   const SearchProductDetailsPage({super.key});
@@ -58,7 +59,7 @@ class _SearchProductDetailsPageState extends State<SearchProductDetailsPage> {
                       .data!.products[homeCubit.selectedProductIndex].images,
                     imagePosition: homeCubit.currentImageIndex,
                   cubit: homeCubit,),
-                  ProductDetailedBody(),
+                  SearchProductDetailedBody(),
                 ],
               ),
             );

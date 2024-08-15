@@ -35,7 +35,7 @@ class SearchResultListView extends StatelessWidget {
               productPrice: product.price!.finalPrice!.toString(),
               onTap: (){
                 homeCubit.setCategoryProductIndex(selectedProductIndex: index);
-                Routes.categoryProductDetailsPageRoute.moveTo;
+                Routes.searchProductDetailsPageRoute.moveTo;
               },
             ),
           );

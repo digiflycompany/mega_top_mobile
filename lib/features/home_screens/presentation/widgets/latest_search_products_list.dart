@@ -20,7 +20,7 @@ class LatestSearchProductsList extends StatefulWidget {
 
 class _LatestSearchProductsListState extends State<LatestSearchProductsList> {
 
-  late HomeCubit categoryCubit;
+  late HomeCubit homeCubit;
   final controller = ScrollController();
 
   @override
@@ -30,7 +30,7 @@ class _LatestSearchProductsListState extends State<LatestSearchProductsList> {
       if (controller.position.maxScrollExtent == controller.offset) {
         cubit.hasMoreProducts = true;
         cubit.page++;
-        cubit.getMoreProduct(cubit.selectedCategoryId!)
+        cubit.getMoreProduct()
             .then((value){
           if(cubit.hasMoreProducts == true)
           {
@@ -45,12 +45,12 @@ class _LatestSearchProductsListState extends State<LatestSearchProductsList> {
 
   @override
   Widget build(BuildContext context) {
-    categoryCubit = context.read<HomeCubit>();
+    homeCubit = context.read<HomeCubit>();
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = context.read<HomeCubit>();
-        if(cubit.selectedCategoryModel != null){
+        if(cubit.searchModel != null){
           return SizedBox(
             height: context.height * 0.485,
             child: Row(
@@ -61,7 +61,7 @@ class _LatestSearchProductsListState extends State<LatestSearchProductsList> {
                     controller: controller,
                     physics: BouncingScrollPhysics(),
                     itemCount: cubit
-                        .selectedCategoryModel!
+                        .searchModel!
                         .data!
                         .products
                         .length,
@@ -72,16 +72,16 @@ class _LatestSearchProductsListState extends State<LatestSearchProductsList> {
                               onTap: () {
                                 cubit.setCategoryProductIndex(
                                     selectedProductIndex: index);
-                                Routes.categoryProductDetailsPageRoute.moveTo;
+                                Routes.searchProductDetailsPageRoute.moveTo;
                               },
                               child: LatestProductsContainer(
-                                productName: cubit.selectedCategoryModel!.data!
+                                productName: cubit.searchModel!.data!
                                     .products[index].title,
-                                productPhoto: cubit.selectedCategoryModel!.data!
+                                productPhoto: cubit.searchModel!.data!
                                     .products[index].images[0],
-                                productType: cubit.selectedCategoryModel!.data!
+                                productType: cubit.searchModel!.data!
                                     .products[index].categoryId!.name!,
-                                productPrice: cubit.selectedCategoryModel!.data!
+                                productPrice: cubit.searchModel!.data!
                                     .products[index].price!.finalPrice!
                                     .toString(),
                               ),
