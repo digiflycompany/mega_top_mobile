@@ -47,43 +47,46 @@ class Data {
 }
 
 class User {
-  String? sId;
-  String? fullName;
-  String? phoneNumber;
-  String? email;
-  List<dynamic>? wishlist;
-  String? role;
-  bool? isActive;
-  bool? isVerified;
-  String? createdAt;
-  String? updatedAt;
-  int? iV;
+  String sId;
+  String fullName;
+  String phoneNumber;
+  String email;
+  List<dynamic> wishlist;
+  String role;
+  bool isActive;
+  bool isVerified;
+  String createdAt;
+  String updatedAt;
+  int iV;
 
-  User(
-      {this.sId,
-        this.fullName,
-        this.phoneNumber,
-        this.email,
-        this.wishlist,
-        this.role,
-        this.isActive,
-        this.isVerified,
-        this.createdAt,
-        this.updatedAt,
-        this.iV});
+  User({
+    required this.sId,
+    required this.fullName,
+    required this.phoneNumber,
+    required this.email,
+    required this.wishlist,
+    required this.role,
+    required this.isActive,
+    required this.isVerified,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.iV,
+  });
 
-  User.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
-    fullName = json['fullName'];
-    phoneNumber = json['phoneNumber'];
-    email = json['email'];
-    wishlist = json['wishlist'] != null ? List<dynamic>.from(json['wishlist']) : null;
-    role = json['role'];
-    isActive = json['isActive'];
-    isVerified = json['isVerified'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
-    iV = json['__v'];
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      sId: json['_id'] ?? '',
+      fullName: json['fullName'] ?? '',
+      phoneNumber: json['phoneNumber'] ?? '',
+      email: json['email'] ?? '',
+      wishlist: json['wishlist'] != null ? List<dynamic>.from(json['wishlist']) : [],
+      role: json['role'] ?? '',
+      isActive: json['isActive'] ?? false,
+      isVerified: json['isVerified'] ?? false,
+      createdAt: json['createdAt'] ?? '',
+      updatedAt: json['updatedAt'] ?? '',
+      iV: json['__v'] ?? 0,
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -92,9 +95,7 @@ class User {
     data['fullName'] = fullName;
     data['phoneNumber'] = phoneNumber;
     data['email'] = email;
-    if (wishlist != null) {
-      data['wishlist'] = wishlist!.map((v) => v).toList();
-    }
+    data['wishlist'] = wishlist.map((v) => v).toList();
     data['role'] = role;
     data['isActive'] = isActive;
     data['isVerified'] = isVerified;

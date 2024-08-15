@@ -51,22 +51,22 @@ class PreferencesHelper {
     return await _secureStorage.read(key: "token");
   }
 
-  static String get getName {
-    UserModel? userModel = UserModel.fromJson(
-        json.decode('${preferences?.getString('userModel')}'));
-    return userModel.data!.user!.fullName ?? '';
-  }
+  // static String get getName {
+  //   UserModel? userModel = UserModel.fromJson(
+  //       json.decode('${preferences?.getString('userModel')}'));
+  //   return userModel.data!.user!.fullName;
+  // }
 
-  static String get getEmail {
-    UserModel? userModel = UserModel.fromJson(
-        json.decode('${preferences?.getString('userModel')}'));
-    return userModel.data!.user!.email ?? '';
-  }
+  // static String get getEmail {
+  //   UserModel? userModel = UserModel.fromJson(
+  //       json.decode('${preferences?.getString('userModel')}'));
+  //   return userModel.data!.user!.email ?? '';
+  // }
 
   static String get getPhone {
     UserModel? userModel = UserModel.fromJson(
         json.decode('${preferences?.getString('userModel')}'));
-    return userModel.data!.user!.phoneNumber ?? '';
+    return userModel.data!.user!.phoneNumber;
   }
 
   static Future<void> saveWishlist(List<WishlistItem> wishList) async {
@@ -88,13 +88,22 @@ class PreferencesHelper {
     return wishList.any((item) => item.id == productId);
   }
 
-  // static Future<void> saveEmail(int count) async {
-  //   await preferences?.setInt('email', count);
-  // }
-  //
-  // static String getEmail() {
-  //   return preferences?.getString('wishListCount') ?? 0;
-  // }
+  static Future<void> saveEmail(String email) async {
+    await preferences?.setString('email', email);
+  }
+
+  // Method to get email
+  static String getEmail() {
+    return preferences?.getString('email') ?? '';
+  }
+
+  static Future<void> saveName(String name) async {
+    await preferences?.setString('name', name);
+  }
+
+  static String getName() {
+    return preferences?.getString('name') ?? '';
+  }
 
   static Future<void> saveWishListCount(int count) async {
     await preferences?.setInt('wishListCount', count);

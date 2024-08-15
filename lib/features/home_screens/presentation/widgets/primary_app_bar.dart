@@ -7,7 +7,6 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_back_icon.dart';
 import 'package:mega_top_mobile/core/widgets/title_app_bar.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
@@ -61,45 +60,42 @@ class PrimaryAppBar extends StatelessWidget {
                 if (isUserLoggedIn && favour) {
                   return Builder(
                       builder: (context) {
-                        return BlocProvider(
-                          create: (context) => AccountDetailsCubit(AccountDetailsRepoImp()),
-                          child: BlocBuilder<
-                              AccountDetailsCubit,
-                              AccountDetailsState>(
-                            builder: (context, state) {
-                              return Align(
-                                alignment: Alignment.center,
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      right: context.width * 0.045),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, Routes.wishListPageRoute)
-                                          .then((_) {
-                                        context.read<AccountDetailsCubit>().getAccountDetails();
-                                      });
-                                    },
-                                    child:
-                                    // state is AccountDetailsNoInternetConnection
-                                    //     ? Transform.scale(
-                                    //     scale: 0.35,
-                                    //     child: SvgPicture.asset(AppAssets.noInternetIcon))
-                                    //     : state is AccountDetailsLoading
-                                    //     ? SmallCircularProgressIndicator()
-                                    //     :
-                                    CustomerIcon(
-                                      icon: AppAssets.favouritesIcon,
-                                      //number: accountDetailsCubit.wishListCount.toString(),
-                                      number: PreferencesHelper
-                                          .getWishListCount()
-                                          .toString(),
-                                    ),
+                        return BlocBuilder<
+                            AccountDetailsCubit,
+                            AccountDetailsState>(
+                          builder: (context, state) {
+                            return Align(
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    right: context.width * 0.045),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, Routes.wishListPageRoute)
+                                        .then((_) {
+                                      context.read<AccountDetailsCubit>().getAccountDetails();
+                                    });
+                                  },
+                                  child:
+                                  // state is AccountDetailsNoInternetConnection
+                                  //     ? Transform.scale(
+                                  //     scale: 0.35,
+                                  //     child: SvgPicture.asset(AppAssets.noInternetIcon))
+                                  //     : state is AccountDetailsLoading
+                                  //     ? SmallCircularProgressIndicator()
+                                  //     :
+                                  CustomerIcon(
+                                    icon: AppAssets.favouritesIcon,
+                                    //number: accountDetailsCubit.wishListCount.toString(),
+                                    number: PreferencesHelper
+                                        .getWishListCount()
+                                        .toString(),
                                   ),
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          },
                         );
                       }
                   );

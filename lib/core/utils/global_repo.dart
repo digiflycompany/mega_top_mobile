@@ -8,6 +8,7 @@ abstract class GlobalRepo {
   Future<WishListModel?> addToWishList(String productId);
   Future<WishListModel?> removeFromWishList(String productId);
   Future<MainPageProductsModel?> getLatestOffersProducts();
+  Future<MainPageProductsModel?> getLatestProducts();
 }
 
 class GlobalRepoImp implements GlobalRepo {
@@ -64,6 +65,23 @@ class GlobalRepoImp implements GlobalRepo {
       }
     } catch (e) {
       print('Error during getting latest offers: $e');
+      throw e;
+    }
+    return null;
+  }
+
+  @override
+  Future<MainPageProductsModel?> getLatestProducts() async {
+    try {
+      Response? response = await DioHelper.getData(
+        url: EndPoints.latestProductsAPI,
+        options: await DioHelper.getOptions(),
+      );
+      if (response?.statusCode == 200 || response?.statusCode == 401 || response?.statusCode == 400) {
+        return MainPageProductsModel.fromJson(response?.data);
+      }
+    } catch (e) {
+      print('Error during getting latest products: $e');
       throw e;
     }
     return null;

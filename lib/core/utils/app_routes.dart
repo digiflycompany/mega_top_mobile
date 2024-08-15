@@ -209,10 +209,7 @@ class RouteGenerator {
         );
       case Routes.userAccountPageRoute:
         return buildPageRoute(
-          child: BlocProvider(
-            create: (context) => AccountDetailsCubit(AccountDetailsRepoImp()),
-            child: UserAccountScreen(),
-          ),
+          child: UserAccountScreen(),
         );
       case Routes.profilePageRoute:
         return buildPageRoute(

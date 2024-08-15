@@ -14,8 +14,8 @@ class ConfirmOrderButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final email = PreferencesHelper.getEmail;
-    final name = PreferencesHelper.getName;
+    final email = PreferencesHelper.getEmail.toString();
+    final name = PreferencesHelper.getName();
     final phone = PreferencesHelper.getPhone;
     final addressId = PreferencesHelper.getSelectedAddress()['id'].toString();
     return BlocConsumer<CartCubit, CartState>(

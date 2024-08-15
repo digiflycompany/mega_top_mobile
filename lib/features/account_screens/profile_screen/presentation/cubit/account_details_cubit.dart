@@ -106,6 +106,8 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         phoneController.text = user.data.user.phoneNumber;
         wishListCount = user.data.wishlistCount;
         PreferencesHelper.saveWishlist(user.data.user.wishlist);
+        await PreferencesHelper.saveEmail(user.data.user.email);
+        await PreferencesHelper.saveName(user.data.user.fullName);
         unreadNotificationCount = user.data.unreadNotificationsCount['ad'] ?? 0;
         await PreferencesHelper.saveWishListCount(wishListCount);
         emit(AccountDetailsSuccess(user));
@@ -131,6 +133,8 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         fullNameController.text = user.data.user.fullName;
         emailController.text = user.data.user.email;
         phoneController.text = user.data.user.phoneNumber;
+        await PreferencesHelper.saveEmail(user.data.user.email);
+        await PreferencesHelper.saveName(user.data.user.fullName);
         emit(UpdatingAccountDetailsSuccess(user));
       } else {
         emit(UpdatingAccountDetailsFailure(

@@ -6,7 +6,6 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_option_item.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
@@ -20,39 +19,36 @@ class WishListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AccountDetailsCubit(AccountDetailsRepoImp()),
-      child: BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
-        builder: (context, state) {
-          return AccountOptionItem(
-            mainIcon: mainIcon ?? AppAssets.favourFilledIcon,
-            title: title ?? AppStrings.wishList,
-            onTap: () {
-              Navigator.pushNamed(context, Routes.wishListPageRoute).then((
-                  _) {
-                context.read<AccountDetailsCubit>().getAccountDetails();
-              });
-            },
-            optionalData: optionalData ??
-                Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.iconsBackgroundColor,
-                  ),
-                  width: 24.h,
-                  height: 24.h,
-                  child: Center(
-                    child: Text(
-                      PreferencesHelper.getWishListCount().toString(),
-                      style: TextStyle(
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.w700),
-                    ),
+    return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+      builder: (context, state) {
+        return AccountOptionItem(
+          mainIcon: mainIcon ?? AppAssets.favourFilledIcon,
+          title: title ?? AppStrings.wishList,
+          onTap: () {
+            Navigator.pushNamed(context, Routes.wishListPageRoute).then((
+                _) {
+              context.read<AccountDetailsCubit>().getAccountDetails();
+            });
+          },
+          optionalData: optionalData ??
+              Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.iconsBackgroundColor,
+                ),
+                width: 24.h,
+                height: 24.h,
+                child: Center(
+                  child: Text(
+                    PreferencesHelper.getWishListCount().toString(),
+                    style: TextStyle(
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
-          );
-        },
-      ),
+              ),
+        );
+      },
     );
   }
 }

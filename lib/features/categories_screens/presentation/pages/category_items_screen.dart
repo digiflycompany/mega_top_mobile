@@ -83,7 +83,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
                               Center(child: SizedBox(
                                   height: 15.h,
                                   width: 15.h,
-                                  child: CircularProgressIndicator())),
+                                  child: CircularProgressIndicator.adaptive())),
                           SizedBox(
                             height: 25.h,
                           ),
@@ -100,7 +100,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
             return Center(child: Text("products not found"));
           } else {
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator.adaptive(),
             );
           }
         },

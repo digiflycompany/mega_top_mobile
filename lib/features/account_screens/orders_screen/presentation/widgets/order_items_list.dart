@@ -12,9 +12,9 @@ class OrderItemsList extends StatelessWidget {
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        itemCount: order.products!.length,
+        itemCount: order.products.length,
         itemBuilder: (BuildContext context, int index) {
-          final product = order.products![index];
+          final product = order.products[index];
           return ProductsListCard(
             productName: product.title,
             productPhoto: product.image,

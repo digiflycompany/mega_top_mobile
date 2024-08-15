@@ -30,7 +30,7 @@ class BestSellerContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-    //    onTap!();
+        onTap!();
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: context.height12,horizontal: context.width8),

@@ -52,7 +52,7 @@ class LatestOffersList extends StatelessWidget {
             );
          }
           else {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator.adaptive());
           }
        },
       ),
