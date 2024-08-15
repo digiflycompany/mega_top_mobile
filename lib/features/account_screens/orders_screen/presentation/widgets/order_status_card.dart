@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_state.dart';
 
 class OrderStatusCard extends StatelessWidget {
   final String? orderStatus;
+  final String? orderId;
   final Color? boxColor;
-  const OrderStatusCard({super.key, this.orderStatus, this.boxColor});
+  const OrderStatusCard({super.key, this.orderStatus, this.boxColor, this.orderId});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class OrderStatusCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //OrderNumberAndState(orderStatus: orderStatus,statusColor: boxColor,horizontalPadding: context.width16,textColor: AppColors.smallTextBlackColor,),
+              OrderNumberAndState(orderStatus: orderStatus,statusColor: boxColor,horizontalPadding: context.width16,textColor: AppColors.smallTextBlackColor,orderId: orderId,),
             ],
           ),
         ),

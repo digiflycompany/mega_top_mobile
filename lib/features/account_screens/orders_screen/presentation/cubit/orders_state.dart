@@ -1,4 +1,5 @@
 import 'package:mega_top_mobile/features/account_screens/orders_screen/data/models/orders_model.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/models/checkout_model.dart';
 
 abstract class OrdersState {}
 
@@ -17,6 +18,21 @@ class OrdersFailure extends OrdersState {
 
   OrdersFailure(this.error);
 }
+
+class UserOrderLoading extends OrdersState {}
+
+class UserOrderLoaded extends OrdersState {
+  final CheckoutModel user;
+
+  UserOrderLoaded(this.user);
+}
+
+class UserOrderFailure extends OrdersState {
+  final String error;
+
+  UserOrderFailure(this.error);
+}
+
 
 class OrdersUpdated extends OrdersState {}
 

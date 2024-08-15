@@ -37,7 +37,7 @@ class OrdersDetailsScreen extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: [
-              OrderStatusCard(),
+              OrderStatusCard(orderId: orderId,),
               OrderDetailsCheckoutCard(
                 productPrice: totalPrice,
                 productQuantity: products!.length.toString(),

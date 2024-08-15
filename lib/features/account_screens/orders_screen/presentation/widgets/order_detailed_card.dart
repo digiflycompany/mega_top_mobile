@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/your_order_details_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_date_day.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_number_state.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
@@ -19,7 +19,16 @@ class OrderDetailedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: ()=>Routes.ordersDetailsPageRoute.moveTo,
+      onTap: (){
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => YourOrderDetailsScreen(
+                orderId: orderId,
+              ),
+            )
+        );
+      },
       child: Container(
         width: double.infinity,
         height: context.height204,

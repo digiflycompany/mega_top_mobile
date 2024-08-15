@@ -53,4 +53,7 @@ class EndPoints {
   static String updateAddressAPI(String addressID) {
     return '$baseUrl/api/v1/addresses/$addressID';
   }
+  static String myOrderAPI(String orderId) {
+    return '$baseUrl/api/v1/orders/$orderId';
+  }
 }

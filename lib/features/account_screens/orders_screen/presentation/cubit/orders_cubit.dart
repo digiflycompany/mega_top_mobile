@@ -69,6 +69,24 @@ class OrdersCubit extends Cubit<OrdersState> {
     emit(OrderConditionSelected(selected));
   }
 
+  Future<void> getUserOrder(String orderId) async {
+    emit(UserOrderLoading());
+    try {
+      final user = await ordersRepo.getOrder(orderId: orderId);
+      if (user != null && user.success == true) {
+        emit(UserOrderLoaded(user));
+      } else {
+        emit(UserOrderFailure(user?.message ?? AppStrings.invalidCred));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(OrdersNoInternetConnection());
+      } else {
+        emit(UserOrderFailure(e.toString()));
+      }
+    }
+  }
+
   /// Method to load orders with pagination
   Future<void> loadOrders() async {
     if (!hasMoreOrders) return; // No more orders to load
