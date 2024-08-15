@@ -33,7 +33,7 @@ class BestSellerContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        onTap!();
+    //    onTap!();
       },
       child: Container(
         width: context.width * 0.707,

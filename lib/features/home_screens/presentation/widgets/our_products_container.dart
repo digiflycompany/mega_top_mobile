@@ -32,13 +32,10 @@ class OurProductsContainer extends StatelessWidget {
         final cubit = CategoryCubit().getCubit(context);
         return GestureDetector(
           onTap: () {
-            cubit.selectedCategoryId = cubit.categories!.data!.categories![index].id!;
-            cubit.setCategoryProductIndex(selectedProductIndex: index);
-            cubit.getSelectedCategories(cubit.selectedCategoryId!);
-            cubit.getSubCategories(cubit.selectedCategoryId!).then((onValue){
-              cubit.initializeCheckboxes(cubit.subCategoriesModel!.data!.subcategories.length);
-            });
-            Routes.categoryItemsPageRoute.moveTo;
+            // cubit.selectedCategoryId = categoryId;
+            // cubit.getSelectedCategories(
+            //     cubit.selectedCategoryId!);
+            // Routes.categoryItemsPageRoute.moveTo;
           },
           child: Container(
             width: context.width * 0.48575,
