@@ -126,6 +126,24 @@ class GlobalCubit extends Cubit<GlobalState> {
     }
   }
 
+  Future<void> getLatestOffers() async {
+    emit(LatestOffersLoading());
+    try {
+      final user = await globalRepo.getLatestOffersProducts();
+      if (user != null && user.success == true) {
+        emit(LatestOffersSuccess(user));
+      } else {
+        emit(LatestOffersFailure(user?.message ?? AppStrings.invalidCred));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(ProductsNoInternetConnection());
+      } else {
+        emit(LatestOffersFailure(e.toString()));
+      }
+    }
+  }
+
   void showAddToFavouritesToast(BuildContext context) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
