@@ -5,15 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/category_product_images.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/favour_compare_column.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_images_dots.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class ProductDetailedImage extends StatelessWidget {
-  const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit});
-
+  const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit,});
   final List<String> images;
   final int imagePosition;
   final cubit;
@@ -43,22 +40,22 @@ class ProductDetailedImage extends StatelessWidget {
                   ProductImagesDots(imageLength: images.length,imagePosition: imagePosition,),
                 ],
               ),
-              FutureBuilder<String?>(
-                future: PreferencesHelper.getToken(),
-                builder:(context,snapshot){
-                  final token = snapshot.data;
-                  final isUserLoggedIn = token != null;
-                  if(isUserLoggedIn){
-                    return Builder(
-                        builder: (context) {
-                          return FavourCompareColumn();
-                        }
-                    );
-                  } else{
-                    return Container();
-                  }
-                },
-              ),
+              // FutureBuilder<String?>(
+              //   future: PreferencesHelper.getToken(),
+              //   builder:(context,snapshot){
+              //     final token = snapshot.data;
+              //     final isUserLoggedIn = token != null;
+              //     if(isUserLoggedIn){
+              //       return Builder(
+              //           builder: (context) {
+              //             return FavourCompareColumn(productId: productId,);
+              //           }
+              //       );
+              //     } else{
+              //       return Container();
+              //     }
+              //   },
+              // ),
             ],
           ),
         );

@@ -9,23 +9,15 @@ class ListProductPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          text!,
-          style: TextStyle(
-              color: AppColors.primaryColor,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w700),
-        ),
-        Text(
-          ' LE',
-          style: TextStyle(
-              color: AppColors.primaryColor,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w700),
-        ),
-      ],
+    return Expanded(
+      child: Text(
+        text!,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+            color: AppColors.primaryColor,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w700),
+      ),
     );
   }
 }

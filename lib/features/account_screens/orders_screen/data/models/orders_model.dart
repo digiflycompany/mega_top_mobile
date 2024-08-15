@@ -1,75 +1,73 @@
-class CheckoutModel {
+class OrdersModel {
+  final bool? success;
+  final List<OrderData>? data;
   final String? message;
   final int? statusCode;
   final int? errorCode;
-  final bool? success;
-  final CheckoutData? data;
 
-  CheckoutModel({
+  OrdersModel({
+    this.success,
+    this.data,
     this.message,
     this.statusCode,
     this.errorCode,
-    this.success,
-    this.data,
   });
 
-  factory CheckoutModel.fromJson(Map<String, dynamic> json) {
-    return CheckoutModel(
+  factory OrdersModel.fromJson(Map<String, dynamic> json) {
+    return OrdersModel(
+      success: json['success'],
+      data: json['data'] != null
+          ? List<OrderData>.from(json['data'].map((x) => OrderData.fromJson(x)))
+          : null,
       message: json['message'],
       statusCode: json['statusCode'],
       errorCode: json['errorCode'],
-      success: json['success'],
-      data: json['data'] != null ? CheckoutData.fromJson(json['data']) : null,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
+      'success': success,
+      'data': data?.map((x) => x.toJson()).toList(),
       'message': message,
       'statusCode': statusCode,
       'errorCode': errorCode,
-      'success': success,
-      'data': data?.toJson(),
     };
   }
 }
 
-class CheckoutData {
+class OrderData {
+  final String? id;
   final String? userId;
   final List<Product>? products;
-  final String? companyName;
   final String? addedBy;
   final bool? completed;
   final ConsigneeInfo? consigneeInfo;
   final DropOffAddress? dropOffAddress;
-  final String? id;
   final DateTime? createdAt;
   final DateTime? updatedAt;
-  final int? v;
-  final int? totalPrice;
+  final int? version;
 
-  CheckoutData({
+  OrderData({
+    this.id,
     this.userId,
     this.products,
-    this.companyName,
     this.addedBy,
     this.completed,
     this.consigneeInfo,
     this.dropOffAddress,
-    this.id,
     this.createdAt,
     this.updatedAt,
-    this.v,
-    this.totalPrice,
+    this.version,
   });
 
-  factory CheckoutData.fromJson(Map<String, dynamic> json) {
-    return CheckoutData(
+  factory OrderData.fromJson(Map<String, dynamic> json) {
+    return OrderData(
+      id: json['_id'],
       userId: json['userId'],
       products: json['products'] != null
           ? List<Product>.from(json['products'].map((x) => Product.fromJson(x)))
           : null,
-      companyName: json['companyName'],
       addedBy: json['addedBy'],
       completed: json['completed'],
       consigneeInfo: json['consigneeInfo'] != null
@@ -78,32 +76,28 @@ class CheckoutData {
       dropOffAddress: json['dropOffAddress'] != null
           ? DropOffAddress.fromJson(json['dropOffAddress'])
           : null,
-      id: json['_id'],
       createdAt: json['createdAt'] != null
           ? DateTime.parse(json['createdAt'])
           : null,
       updatedAt: json['updatedAt'] != null
           ? DateTime.parse(json['updatedAt'])
           : null,
-      v: json['__v'],
-      totalPrice: json['totalPrice'],
+      version: json['__v'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
+      '_id': id,
       'userId': userId,
       'products': products?.map((x) => x.toJson()).toList(),
-      'companyName': companyName,
       'addedBy': addedBy,
       'completed': completed,
       'consigneeInfo': consigneeInfo?.toJson(),
       'dropOffAddress': dropOffAddress?.toJson(),
-      '_id': id,
       'createdAt': createdAt?.toIso8601String(),
       'updatedAt': updatedAt?.toIso8601String(),
-      '__v': v,
-      'totalPrice': totalPrice,
+      '__v': version,
     };
   }
 }

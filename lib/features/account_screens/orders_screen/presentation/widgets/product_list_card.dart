@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_name.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_price.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_type.dart';
@@ -57,27 +56,27 @@ class ProductsListCard extends StatelessWidget {
                     width: context.width88,
                     photoWidth: context.width44,
                   ),
-                  discount == true
-                      ? Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: context.height * 0.008,
-                        horizontal: context.width * 0.014),
-                    child: DiscountContainer(
-                      discountPercent: discountPercent,
-                      width: context.width32,
-                      height: context.height16,
-                      fontSize: 10.sp,
-                    ),
-                  )
-                      : Container(),
+                  // discount == true
+                  //     ? Padding(
+                  //   padding: EdgeInsets.symmetric(
+                  //       vertical: context.height * 0.008,
+                  //       horizontal: context.width * 0.014),
+                  //   child: DiscountContainer(
+                  //     discountPercent: discountPercent,
+                  //     width: context.width32,
+                  //     height: context.height16,
+                  //     fontSize: 10.sp,
+                  //   ),
+                  // )
+                  //     : Container(),
                 ],
               ),
             ),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: context.height11,
-                    bottom: context.height11),
+                    top: context.height6,
+                    bottom: context.height4),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

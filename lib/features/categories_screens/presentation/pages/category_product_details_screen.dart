@@ -49,7 +49,8 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
                   ProductDetailedImage(images: categoryCubit.selectedCategoryModel!
                       .data!.products[categoryCubit.selectedProductIndex].images,
                     imagePosition: categoryCubit.currentImageIndex,
-                  cubit: categoryCubit,),
+                  cubit: categoryCubit,
+                  ),
                   ProductDetailedBody(),
                 ],
               ),

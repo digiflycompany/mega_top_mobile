@@ -21,8 +21,8 @@ class EndPoints {
       '$baseUrl/api/v1/users/customers/wishlist/remove';
   static const String makeOrderAPI =
       'https://megatop.com.eg/wp-json/wc/v3/orders';
-  static const String myOrdersAPI =
-      'https://megatop.com.eg/wp-json/wc/v3/orders';
+  // static const String myOrdersAPI =
+  //     '$baseUrl/api/v1/orders?page=1&limit=1&completed=false';
   static const String lastOfferAPI =
       'http://144.76.110.163:3005/api/v1/products?isOffer=true';
   static const String userAddressesAPI =
@@ -46,6 +46,9 @@ class EndPoints {
   }
   static String removeAddressAPI(String addressID) {
     return '$baseUrl/api/v1/addresses/$addressID';
+  }
+  static String myOrdersAPI(int page,int limit) {
+    return '$baseUrl/api/v1/orders?page=$page&limit=$limit&completed=false';
   }
   static String updateAddressAPI(String addressID) {
     return '$baseUrl/api/v1/addresses/$addressID';

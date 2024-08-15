@@ -15,7 +15,7 @@ class YourOrderCheckoutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: context.height * 0.033),
+      padding: EdgeInsets.only(top: context.height * 0.033,bottom: context.height64),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(

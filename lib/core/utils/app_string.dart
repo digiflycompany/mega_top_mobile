@@ -7,6 +7,7 @@ class AppStrings {
   static const String next = 'التالى';
   static const String nextEn = 'Next';
   static const String error = 'Error';
+  static const String failedToLoadOrders = 'Failed to load orders';
   static const String previous = 'السابق';
   static const String previousEn = 'Previous';
   static const String invalidCred = 'Invalid credentials or network issues.';
@@ -103,6 +104,8 @@ class AppStrings {
   static const String savedSuccessfully = 'Saved successfully';
   static const String updatedSuccessfully = 'Updated successfully';
   static const String removedSuccessfully = 'Removed successfully';
+  static const String addToWishListFailed = 'Add to wish list failed';
+  static const String removeFromWishListFailed = 'remove from wish list failed';
   static const String theProductAddedToWishListEn =
       'The product added to wish list';
   static const String theProductRemovedFromWishListEn =
@@ -124,6 +127,7 @@ class AppStrings {
   static const String applyEn = 'Apply';
   static const String serverError = 'Server Error';
   static const String sorryThereIsNoInternet = 'Sorry, there is no internet!';
+  static const String noInternet = 'No internet';
   static const String pleaseCheckYourInternet = 'Please check your internet connection and try again';
   static const String youHaveToSelectAnAddress = 'You have to select an address';
   static const String resetEn = 'Reset';

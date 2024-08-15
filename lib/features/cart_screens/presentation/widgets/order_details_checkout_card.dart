@@ -9,9 +9,9 @@ import 'card_title_text.dart';
 import 'custom_divider.dart';
 
 class OrderDetailsCheckoutCard extends StatelessWidget {
-  final String productPrice;
+  final String? productPrice;
   final String productQuantity;
-  final String totalPrice;
+  final String? totalPrice;
   const OrderDetailsCheckoutCard({
     super.key,
     required this.productPrice,

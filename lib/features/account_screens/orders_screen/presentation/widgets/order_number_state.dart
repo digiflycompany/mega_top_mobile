@@ -8,10 +8,11 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/presentat
 
 class OrderNumberAndState extends StatelessWidget {
   final String? orderStatus;
+  final String? orderId;
   final Color? statusColor;
   final Color? textColor;
   final double? horizontalPadding;
-  const OrderNumberAndState({super.key, this.orderStatus, this.statusColor, this.horizontalPadding, this.textColor});
+  const OrderNumberAndState({super.key, this.orderStatus, this.statusColor, this.horizontalPadding, this.textColor, required this.orderId});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,8 @@ class OrderNumberAndState extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(child: OrderNumber(orderNumber: AppStrings.orderNumberEn,textColor: textColor,)),
-          Expanded(child: OrderStateBox(text: orderStatus??AppStrings.inProgressEn,color: statusColor??AppColors.yellowColor,)),
+          Expanded(flex:1,child: OrderNumber(orderNumber: orderId,textColor: textColor,)),
+          Expanded(flex:1,child: OrderStateBox(text: orderStatus??AppStrings.inProgressEn,color: statusColor??AppColors.yellowColor,)),
         ],
       ),
     );

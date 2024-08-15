@@ -6,9 +6,9 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/total
 import 'number_of_products_row.dart';
 
 class OrderDetailsCheckoutDescription extends StatelessWidget {
-  final String productPrice;
+  final String? productPrice;
   final String productQuantity;
-  final String totalPrice;
+  final String? totalPrice;
   const OrderDetailsCheckoutDescription({super.key,
     required this.productPrice,
     required this.productQuantity,

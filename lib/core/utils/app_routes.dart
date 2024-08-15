@@ -11,6 +11,8 @@ import 'package:mega_top_mobile/features/account_screens/compare_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/notification_screen/data/repositories/notification_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/screens/notification_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/data/repositories/orders_repo.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/cubit/orders_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
@@ -216,13 +218,13 @@ class RouteGenerator {
         return buildPageRoute(
           child: ProfileScreen(),
         );
-      // case Routes.orderConfirmationPageRoute:
-      //   return buildPageRoute(
-      //     child: BlocProvider(
-      //       create: (context) => CartCubit(CartRepoImp()),
-      //       child: OrderConfirmationScreen(),
-      //     ),
-      //   );
+    // case Routes.orderConfirmationPageRoute:
+    //   return buildPageRoute(
+    //     child: BlocProvider(
+    //       create: (context) => CartCubit(CartRepoImp()),
+    //       child: OrderConfirmationScreen(),
+    //     ),
+    //   );
       case Routes.profileDetailsPageRoute:
         return buildPageRoute(
           child: BlocProvider(
@@ -277,12 +279,15 @@ class RouteGenerator {
         );
       case Routes.ordersPageRoute:
         return buildPageRoute(
-          child: const OrdersScreen(),
+          child: BlocProvider(
+            create: (context) => OrdersCubit(OrdersRepoImp())..loadOrders(),
+            child: OrdersScreen(),
+          ),
         );
-      // case Routes.ordersDetailsPageRoute:
-      //   return buildPageRoute(
-      //     child: const OrdersDetailsScreen(),
-      //   );
+    // case Routes.ordersDetailsPageRoute:
+    //   return buildPageRoute(
+    //     child: const OrdersDetailsScreen(),
+    //   );
       case Routes.compareProductPageRoute:
         return buildPageRoute(
           child: const CompareScreen(),

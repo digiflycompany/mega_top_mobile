@@ -41,6 +41,8 @@ class WishListScreen extends StatelessWidget {
       return _buildSuccessState(context, state);
     } else if (state is AccountDetailsLoading) {
       return _buildLoadingState(context);
+    }else if (state is RemoveFromWishListLoading) {
+      return _buildLoadingState(context);
     } else if (state is AccountDetailsNoInternetConnection) {
       return _buildNoInternetState(cubit);
     } else {

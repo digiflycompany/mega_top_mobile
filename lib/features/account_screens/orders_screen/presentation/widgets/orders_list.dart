@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/orders_cubit.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/orders_state.dart';
+import 'package:mega_top_mobile/core/widgets/big_circular_progress_indicator.dart';
+import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/cubit/orders_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/cubit/orders_state.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_detailed_card.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_items_list.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/product_card.dart';
 
 class OrdersList extends StatelessWidget {
   const OrdersList({super.key});
@@ -19,38 +18,39 @@ class OrdersList extends StatelessWidget {
     return BlocBuilder<OrdersCubit, OrdersState>(
       builder: (context, state) {
         OrdersCubit ordersCubit = context.read<OrdersCubit>();
+
+        if (state is OrdersLoading && ordersCubit.orders.isEmpty) {
+          return const Center(child: BigCircularProgressIndicator());
+        }
+
+        if (state is OrdersFailure) {
+          ordersCubit.showErrorToast(context, AppStrings.failedToLoadOrders, state.error);
+        }
+        if (state is OrdersNoInternetConnection) {
+          return NoInternetScreen(buttonOnTap: ()=>ordersCubit.refreshOrders());
+        }
         return Padding(
           padding: EdgeInsets.symmetric(
               horizontal: context.width16, vertical: context.height24),
-          child: ordersCubit.selected == 0 ? Column(
-            children: [
-              const OrderDetailedCard(card: OrderItemsList(),),
-              VerticalSpace(context.height24),
-              const OrderDetailedCard(card: ProductOrderCard(
-                productName: AppStrings.upsVersion1En,
-                productPhoto: AppAssets.upsSearchResult,
-                productType: AppStrings.storageUnitsEn,
-                productPrice: AppStrings.le1500,
-                discountPercent: AppStrings.discountPercentEn,
-                discount: true,
-              ),),
-            ],
-          ) : Column(
-            children: [
-              const OrderDetailedCard(card: OrderItemsList(),orderStatus: AppStrings.completed,statusColor: AppColors.primaryGreenColor,),
-              VerticalSpace(context.height24),
-              const OrderDetailedCard(card: ProductOrderCard(
-                productName: AppStrings.upsVersion1En,
-                productPhoto: AppAssets.upsSearchResult,
-                productType: AppStrings.storageUnitsEn,
-                productPrice: AppStrings.le1500,
-                discountPercent: AppStrings.discountPercentEn,
-                discount: true,
-              ),
-              orderStatus: AppStrings.cancelledEn,
-              statusColor: AppColors.primarySecondRedColor,
-              ),
-            ],
+          child: ListView.builder(
+            itemCount: ordersCubit.orders.length + (ordersCubit.hasMoreOrders ? 1 : 0),
+            itemBuilder: (context, index) {
+              if (index < ordersCubit.orders.length) {
+                final order = ordersCubit.orders[index];
+                return Column(
+                  children: [
+                    OrderDetailedCard(
+                      orderId: order.id,
+                      card: OrderItemsList(order: order),
+                    ),
+                    VerticalSpace(context.height24),
+                  ],
+                );
+              } else {
+                ordersCubit.loadOrders();
+                return const Center(child: BigCircularProgressIndicator());
+              }
+            },
           ),
         );
       },
