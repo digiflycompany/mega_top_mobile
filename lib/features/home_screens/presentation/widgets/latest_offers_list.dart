@@ -26,7 +26,7 @@ class LatestOffersList extends StatelessWidget {
         builder: (BuildContext context, CategoryState state) {
         //  final homeCubit = context.read<HomeCubit>();
           final cubit = context.read<CategoryCubit>();
-          //   if (homeCubit.latestOfferModel.isNotNull) {
+             if (cubit.selectedCategoryModel.isNotNull) {
             return SizedBox(
               height: context.height * 0.485,
               child: Row(
@@ -57,10 +57,10 @@ class LatestOffersList extends StatelessWidget {
               ),
             );
          }
-          // else {
-          //   return Center(child: CircularProgressIndicator());
-          // }
-      //  },
+          else {
+            return Center(child: CircularProgressIndicator());
+          }
+       },
       ),
     );
   }

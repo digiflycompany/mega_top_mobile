@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
@@ -24,64 +25,73 @@ class BestSellerList extends StatelessWidget {
           child: BlocBuilder<CategoryCubit,CategoryState>(
             builder: (BuildContext context, CategoryState state) {
               final cubit = context.read<CategoryCubit>();
-              return Row(
-                children: [
-                  Expanded(
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context,index){
-                          return BestSellerContainer(
-                            productName: cubit.selectedCategoryModel!.data!
-                                .products[index].title,
-                            productPhoto: cubit.selectedCategoryModel!.data!
-                                .products[index].images[0],
-                            productType: cubit.selectedCategoryModel!.data!
-                                .products[index].categoryId!.name!,
-                            productPrice: cubit.selectedCategoryModel!.data!
-                                .products[index].price!.finalPrice!
-                                .toString(),
-                            onTap: (){
-                              cubit.selectedCategoryId = cubit.categories!.data!.categories![index].id!;
-                              cubit.setCategoryProductIndex(selectedProductIndex: index);
-                              cubit.getSelectedCategories(cubit.selectedCategoryId!);
-                              cubit.getSubCategories(cubit.selectedCategoryId!).then((onValue){
-                                cubit.initializeCheckboxes(cubit.subCategoriesModel!.data!.subcategories.length);
-                              });
-                              Routes.categoryItemsPageRoute.moveTo;
-                            },
-                          );
-                        }, separatorBuilder: (context,index){
-                      return SizedBox(
-                        width: 10.w,
-                      );
-                    }, itemCount: 4),
-                  )
-                ],
-                // children: [
-                //   const BestSellerContainer(
-                //     productName: AppStrings.hardDiskEn,
-                //     productPhoto: AppAssets.hardDiskImage,
-                //     productType: AppStrings.storageUnitsEn,
-                //     productPrice: AppStrings.le1500,
-                //     discountPercent: AppStrings.discountPercentEn,
-                //     discount: true,
-                //   ),
-                //   HorizontalSpace(context.width * 0.045),
-                //   const BestSellerContainer(
-                //     productName: AppStrings.hardDiskEn,
-                //     productPhoto: AppAssets.hardDiskImage,
-                //     productType: AppStrings.storageUnitsEn,
-                //     productPrice: AppStrings.le1500,
-                //   ),
-                //   HorizontalSpace(context.width * 0.045),
-                //   const BestSellerContainer(
-                //     productName: AppStrings.hardDiskEn,
-                //     productPhoto: AppAssets.hardDiskImage,
-                //     productType: AppStrings.storageUnitsEn,
-                //     productPrice: AppStrings.le1500,
-                //   ),
-                // ],
+    if (cubit.selectedCategoryModel.isNotNull) {
+      return Row(
+        children: [
+          Expanded(
+            child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return BestSellerContainer(
+                    productName: cubit.selectedCategoryModel!.data!
+                        .products[index].title,
+                    productPhoto: cubit.selectedCategoryModel!.data!
+                        .products[index].images[0],
+                    productType: cubit.selectedCategoryModel!.data!
+                        .products[index].categoryId!.name!,
+                    productPrice: cubit.selectedCategoryModel!.data!
+                        .products[index].price!.finalPrice!
+                        .toString(),
+                    onTap: () {
+                      // cubit.selectedCategoryId =
+                      // cubit.categories!.data!.categories![index].id!;
+                      // cubit.setCategoryProductIndex(
+                      //     selectedProductIndex: index);
+                      // cubit.getSelectedCategories(cubit.selectedCategoryId!);
+                      // cubit.getSubCategories(cubit.selectedCategoryId!).then((
+                      //     onValue) {
+                      //   cubit.initializeCheckboxes(
+                      //       cubit.subCategoriesModel!.data!.subcategories
+                      //           .length);
+                      // });
+                      // Routes.categoryItemsPageRoute.moveTo;
+                    },
+                  );
+                }, separatorBuilder: (context, index) {
+              return SizedBox(
+                width: 10.w,
               );
+            }, itemCount: 4),
+          )
+        ],
+        // children: [
+        //   const BestSellerContainer(
+        //     productName: AppStrings.hardDiskEn,
+        //     productPhoto: AppAssets.hardDiskImage,
+        //     productType: AppStrings.storageUnitsEn,
+        //     productPrice: AppStrings.le1500,
+        //     discountPercent: AppStrings.discountPercentEn,
+        //     discount: true,
+        //   ),
+        //   HorizontalSpace(context.width * 0.045),
+        //   const BestSellerContainer(
+        //     productName: AppStrings.hardDiskEn,
+        //     productPhoto: AppAssets.hardDiskImage,
+        //     productType: AppStrings.storageUnitsEn,
+        //     productPrice: AppStrings.le1500,
+        //   ),
+        //   HorizontalSpace(context.width * 0.045),
+        //   const BestSellerContainer(
+        //     productName: AppStrings.hardDiskEn,
+        //     productPhoto: AppAssets.hardDiskImage,
+        //     productType: AppStrings.storageUnitsEn,
+        //     productPrice: AppStrings.le1500,
+        //   ),
+        // ],
+      );
+    }          else {
+      return Center(child: CircularProgressIndicator());
+    }
             },
           ),
         ),
