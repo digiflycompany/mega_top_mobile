@@ -25,13 +25,11 @@ class LatestOffersContainer extends StatelessWidget {
         padding: EdgeInsets.only(top: context.height * 0.012),
         child: Column(
           children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.network(
-                  productPhoto!,
-                  //width: context.width * 0.095,
-                ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.network(
+                productPhoto!,
+                //width: context.width * 0.095,
               ),
             ),
             VerticalSpace(context.height * 0.008),

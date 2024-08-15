@@ -3,7 +3,6 @@ class EndPoints {
 
   /// BASE
   static const String baseUrl = 'https://api.megatop.com.eg';
-  //static const String baseUrl = 'http://144.76.110.163:3005';
   static const String loginAPI = '$baseUrl/api/v1/users/login';
   static const String signUpAPI = '$baseUrl/api/v1/users/signup';
   static const String verifyEmailAPI = '$baseUrl/api/v1/users/verify-email';
