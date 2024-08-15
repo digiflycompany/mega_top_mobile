@@ -162,7 +162,6 @@ class CategoryCubit extends Cubit<CategoryState> {
         print(categories);
         emit(CategorySuccess());
       } else {
-        emit(CategoryNoInternetConnection());
         //emit(CategoryFailure('No categories found'));
       }
     } catch (e) {
