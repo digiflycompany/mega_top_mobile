@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mega_top_mobile/core/utils/extensions.dart';
 
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
 
 class ViewAllRow extends StatelessWidget {
   final String? bigText;
@@ -23,16 +17,16 @@ class ViewAllRow extends StatelessWidget {
               fontWeight: FontWeight.w700,
               fontSize: 18.sp),
         ),
-        const Spacer(),
-        Text(
-          AppStrings.viewAllEn,
-          style: TextStyle(
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 14.sp),
-        ),
-        HorizontalSpace(context.width * 0.022),
-        SvgPicture.asset(AppAssets.primaryArrow),
+        // const Spacer(),
+        // Text(
+        //   AppStrings.viewAllEn,
+        //   style: TextStyle(
+        //       color: AppColors.primaryColor,
+        //       fontWeight: FontWeight.w700,
+        //       fontSize: 14.sp),
+        // ),
+        // HorizontalSpace(context.width * 0.022),
+        // SvgPicture.asset(AppAssets.primaryArrow),
       ],
     );
   }

@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/core/utils/theme/wish_list_model.dart';
+import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class GlobalRepo {
   Future<WishListModel?> addToWishList(String productId);
   Future<WishListModel?> removeFromWishList(String productId);
+  Future<MainPageProductsModel?> getLatestOffersProducts();
 }
 
 class GlobalRepoImp implements GlobalRepo {
@@ -30,6 +32,7 @@ class GlobalRepoImp implements GlobalRepo {
     return null;
   }
 
+  @override
   Future<WishListModel?> removeFromWishList(String productId) async {
     try {
       Response? response = await DioHelper.putData(
@@ -44,6 +47,23 @@ class GlobalRepoImp implements GlobalRepo {
       }
     } catch (e) {
       print('Error during removing product from wish list: $e');
+      throw e;
+    }
+    return null;
+  }
+
+  @override
+  Future<MainPageProductsModel?> getLatestOffersProducts() async {
+    try {
+      Response? response = await DioHelper.getData(
+        url: EndPoints.latestOffersAPI,
+        options: await DioHelper.getOptions(),
+      );
+      if (response?.statusCode == 200 || response?.statusCode == 401 || response?.statusCode == 400) {
+        return MainPageProductsModel.fromJson(response?.data);
+      }
+    } catch (e) {
+      print('Error during getting latest offers: $e');
       throw e;
     }
     return null;

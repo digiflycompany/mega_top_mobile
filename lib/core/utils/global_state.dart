@@ -1,4 +1,5 @@
 import 'package:mega_top_mobile/core/utils/theme/wish_list_model.dart';
+import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 
 abstract class GlobalState {}
 
@@ -37,6 +38,23 @@ class RemoveFromWishListFailure extends GlobalState {
 }
 
 class WishListNoInternetConnection extends GlobalState {}
+
+class ProductsNoInternetConnection extends GlobalState {}
+
+class LatestOffersSuccess extends GlobalState {
+  final MainPageProductsModel user;
+
+  LatestOffersSuccess(this.user);
+}
+
+class LatestOffersFailure extends GlobalState {
+  final String error;
+
+  LatestOffersFailure(this.error);
+
+}
+
+class LatestOffersLoading extends GlobalState {}
 
 
 
