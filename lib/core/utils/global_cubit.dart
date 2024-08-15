@@ -16,6 +16,19 @@ class GlobalCubit extends Cubit<GlobalState> {
   GlobalCubit(this.globalRepo) : super(GlobalInitial());
   bool addedToFavourites = false;
   bool addedToCompare = false;
+
+  int _currentImageIndex = 0;
+
+  int get currentImageIndex => _currentImageIndex;
+
+  void setImageIndex(int index) {
+    _currentImageIndex = index;
+  }
+
+  int getDiscountPercentage(
+      {required int finalPrice, required int originPrice}) {
+    return 1 - finalPrice ~/ originPrice;
+  }
   /// Show Primary Toast
   void showPrimaryToast(BuildContext context,String text) {
     OverlayEntry? overlayEntry;
@@ -126,23 +139,23 @@ class GlobalCubit extends Cubit<GlobalState> {
     }
   }
 
-  Future<void> getLatestOffers() async {
-    emit(LatestOffersLoading());
-    try {
-      final user = await globalRepo.getLatestOffersProducts();
-      if (user != null && user.success == true) {
-        emit(LatestOffersSuccess(user));
-      } else {
-        emit(LatestOffersFailure(user?.message ?? AppStrings.invalidCred));
-      }
-    } catch (e) {
-      if (e is DioException && e.error == AppStrings.noInternetConnection) {
-        emit(ProductsNoInternetConnection());
-      } else {
-        emit(LatestOffersFailure(e.toString()));
-      }
-    }
-  }
+  // Future<void> getLatestOffers() async {
+  //   emit(LatestOffersLoading());
+  //   try {
+  //     final user = await globalRepo.getLatestOffersProducts();
+  //     if (user != null && user.success == true) {
+  //       emit(LatestOffersSuccess(user));
+  //     } else {
+  //       emit(LatestOffersFailure(user?.message ?? AppStrings.invalidCred));
+  //     }
+  //   } catch (e) {
+  //     if (e is DioException && e.error == AppStrings.noInternetConnection) {
+  //       emit(ProductsNoInternetConnection());
+  //     } else {
+  //       emit(LatestOffersFailure(e.toString()));
+  //     }
+  //   }
+  // }
 
   void showAddToFavouritesToast(BuildContext context) {
     OverlayEntry? overlayEntry;

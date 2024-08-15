@@ -175,7 +175,7 @@ class CartCubit extends Cubit<CartState> {
           ),
         ),
             (Route<dynamic> route) {
-          return count++ == 5;
+          return count++ == 4;
         },
       ).then((_) {
         PreferencesHelper.clearCart();

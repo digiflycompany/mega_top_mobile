@@ -30,8 +30,11 @@ class ProfileScreen extends StatelessWidget {
             children: [
               const ProfileScreenLogo(),
               const ProfileScreenHeader(),
-              EditProfileItem(onTap: ()=>Routes.profileDetailsPageRoute.moveTo),
-              EditPasswordItem(onTap: ()=>Routes.passwordDetailsPageRoute.moveTo),
+              EditProfileItem(
+                  onTap: () => Routes.profileDetailsPageRoute.moveTo
+              ),
+              EditPasswordItem(
+                  onTap: () => Routes.passwordDetailsPageRoute.moveTo),
               DeleteAccountItem(),
             ],
           ),

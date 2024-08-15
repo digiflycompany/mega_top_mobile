@@ -7,8 +7,12 @@ import 'package:mega_top_mobile/core/utils/app_services_dart.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/global_repo.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
@@ -33,8 +37,17 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) =>
                   CategoryCubit()..getCategories(),
             ),
+            BlocProvider<LatestOffersCubit>(
+              create: (BuildContext context) => LatestOffersCubit(GlobalRepoImp())..getLatestOffers(),
+            ),
+            BlocProvider<LatestProductsCubit>(
+              create: (BuildContext context) => LatestProductsCubit(GlobalRepoImp())..getLatestProducts(),
+            ),
             BlocProvider<GlobalCubit>(
-              create: (BuildContext context) => GlobalCubit(GlobalRepoImp())..getLatestOffers(),
+              create: (BuildContext context) => GlobalCubit(GlobalRepoImp()),
+            ),
+            BlocProvider<AccountDetailsCubit>(
+              create: (BuildContext context) => AccountDetailsCubit(AccountDetailsRepoImp()),
             ),
             BlocProvider<HomeCubit>(
               create: (BuildContext context) => HomeCubit(),

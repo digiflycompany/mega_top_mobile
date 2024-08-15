@@ -70,7 +70,6 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   void setImageIndex(int index) {
     _currentImageIndex = index;
-    emit(CategoryProductUpdated());
   }
 
   void toggleCheckbox(int index) {

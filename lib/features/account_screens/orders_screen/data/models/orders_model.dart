@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class OrdersModel {
   final bool? success;
   final List<OrderData>? data;
@@ -36,53 +38,54 @@ class OrdersModel {
   }
 }
 
+
 class OrderData {
-  final String? id;
-  final String? userId;
-  final List<Product>? products;
-  final String? addedBy;
-  final bool? completed;
-  final ConsigneeInfo? consigneeInfo;
-  final DropOffAddress? dropOffAddress;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
-  final int? version;
+  final String id;
+  final String userId;
+  final List<Product> products;
+  final String addedBy;
+  final bool completed;
+  final ConsigneeInfo consigneeInfo;
+  final DropOffAddress dropOffAddress;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final int version;
 
   OrderData({
-    this.id,
-    this.userId,
-    this.products,
-    this.addedBy,
-    this.completed,
-    this.consigneeInfo,
-    this.dropOffAddress,
-    this.createdAt,
-    this.updatedAt,
-    this.version,
+    required this.id,
+    required this.userId,
+    required this.products,
+    required this.addedBy,
+    required this.completed,
+    required this.consigneeInfo,
+    required this.dropOffAddress,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.version,
   });
 
   factory OrderData.fromJson(Map<String, dynamic> json) {
     return OrderData(
-      id: json['_id'],
-      userId: json['userId'],
+      id: json['_id'] ?? '',
+      userId: json['userId'] ?? '',
       products: json['products'] != null
           ? List<Product>.from(json['products'].map((x) => Product.fromJson(x)))
-          : null,
-      addedBy: json['addedBy'],
-      completed: json['completed'],
+          : [],
+      addedBy: json['addedBy'] ?? '',
+      completed: json['completed'] ?? false,
       consigneeInfo: json['consigneeInfo'] != null
           ? ConsigneeInfo.fromJson(json['consigneeInfo'])
-          : null,
+          : ConsigneeInfo(name: '', phoneNumber: '', email: ''),
       dropOffAddress: json['dropOffAddress'] != null
           ? DropOffAddress.fromJson(json['dropOffAddress'])
-          : null,
+          : DropOffAddress(name: '', id: '', cityId: '', cityName: '', firstLine: '', secondLine: ''),
       createdAt: json['createdAt'] != null
           ? DateTime.parse(json['createdAt'])
-          : null,
+          : DateTime.now(),
       updatedAt: json['updatedAt'] != null
           ? DateTime.parse(json['updatedAt'])
-          : null,
-      version: json['__v'],
+          : DateTime.now(),
+      version: json['__v'] ?? 0,
     );
   }
 
@@ -90,15 +93,20 @@ class OrderData {
     return {
       '_id': id,
       'userId': userId,
-      'products': products?.map((x) => x.toJson()).toList(),
+      'products': products.map((x) => x.toJson()).toList(),
       'addedBy': addedBy,
       'completed': completed,
-      'consigneeInfo': consigneeInfo?.toJson(),
-      'dropOffAddress': dropOffAddress?.toJson(),
-      'createdAt': createdAt?.toIso8601String(),
-      'updatedAt': updatedAt?.toIso8601String(),
+      'consigneeInfo': consigneeInfo.toJson(),
+      'dropOffAddress': dropOffAddress.toJson(),
+      'createdAt': createdAt.toIso8601String(),
+      'updatedAt': updatedAt.toIso8601String(),
       '__v': version,
     };
+  }
+
+  // Getter to return createdAt in dd-mm-yyyy format
+  String get formattedCreatedAt {
+    return DateFormat('dd-MM-yyyy').format(createdAt);
   }
 }
 

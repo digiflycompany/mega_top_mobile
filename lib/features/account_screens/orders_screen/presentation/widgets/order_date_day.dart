@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 
 class OrderDateAndDay extends StatelessWidget {
-  const OrderDateAndDay({super.key});
+  final String date;
+  const OrderDateAndDay({super.key, required this.date});
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      AppStrings.orderDayAndDateEn,
+      date,
       style: TextStyle(
         color: AppColors.greyTextColor,
         fontWeight: FontWeight.w600,

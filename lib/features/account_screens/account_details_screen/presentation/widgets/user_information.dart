@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class UserInformation extends StatelessWidget {
@@ -8,21 +11,25 @@ class UserInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 25.h,bottom: 40.h),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+      builder: (context, state) {
+        return Padding(
+          padding: EdgeInsets.only(top: 25.h, bottom: 40.h),
+          child: Row(
             children: [
-              Text(PreferencesHelper.getName,
-                  style: TextStyle(fontWeight: FontWeight.w700)),
-              Text(PreferencesHelper.getEmail,
-                  style: TextStyle(color: AppColors.greyTextColor)),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(PreferencesHelper.getName(),
+                      style: TextStyle(fontWeight: FontWeight.w700)),
+                  Text(PreferencesHelper.getEmail().toString(),
+                      style: TextStyle(color: AppColors.greyTextColor)),
+                ],
+              ),
             ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
+import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_details_screen.dart';
 import 'best_seller_container.dart';
 
-class BestSellerList extends StatelessWidget {
-  const BestSellerList({super.key});
+class MainPageLatestProductList extends StatelessWidget {
+  const MainPageLatestProductList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,22 +36,19 @@ class BestSellerList extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => MainPageProductDetailsScreen(
-                                   name: state.user.products![index].title,
-                                   quantity:state.user.products![index].quantity,
-                                   categoryName: state.user.products![index].categoryId.name,
-                                   cubit: context.read<LatestProductsCubit>(),
-                                   description: state.user.products![index].description,
-                                   finalPrice: state.user.products![index].price.finalPrice.toString(),
-                                   originalPrice: state.user.products![index].price.originalPrice.toString(),
-                                   productId: state.user.products![index].id,
-                                   imagePosition: context.read<LatestProductsCubit>().currentImageIndex,
-                                   images: state.user.products![index].images,
+                                    name: state.user.products![index].title,
+                                    quantity:state.user.products![index].quantity,
+                                    categoryName: state.user.products![index].categoryId.name,
+                                    cubit: context.read<GlobalCubit>(),
+                                    description: state.user.products![index].description,
+                                    finalPrice: state.user.products![index].price.finalPrice.toString(),
+                                    originalPrice: state.user.products![index].price.originalPrice.toString(),
+                                    productId: state.user.products![index].id,
+                                    imagePosition: context.read<GlobalCubit>().currentImageIndex,
+                                    images: state.user.products![index].images,
                                   ),
                                 ),
-                              ).then((_) {
-                                context.read<AccountDetailsCubit>()
-                                    .getAccountDetails();
-                              });;
+                              );
                             },
                           );
                         }, separatorBuilder: (context, index) {
@@ -89,7 +86,7 @@ class BestSellerList extends StatelessWidget {
             }else if(state is LatestProductsLoading){
               return const ShimmerBestSellerContainer();
             }
-           return Container();
+            return Container();
           },
         ),
       ),

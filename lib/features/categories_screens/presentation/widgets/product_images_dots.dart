@@ -1,11 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 
-import '../../../../core/utils/app_color.dart';
 
 class ProductImagesDots extends StatelessWidget {
   const ProductImagesDots({super.key, required this.imageLength, required this.imagePosition});
@@ -16,9 +13,7 @@ class ProductImagesDots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryCubit, CategoryState>(
-      builder: (context, state) {
-        return Padding(
+    return Padding(
           padding: EdgeInsets.only(bottom: context.height * 0.022),
           child: DotsIndicator(
             dotsCount: imageLength,
@@ -35,7 +30,5 @@ class ProductImagesDots extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
   }
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_icon.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_name.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
@@ -24,25 +27,37 @@ class CustomerInformation extends StatelessWidget {
             children: [
               HorizontalSpace(context.width * 0.022),
               CustomerName(
-                name: isUserLoggedIn ? PreferencesHelper.getName : 'Visitor',
+                name: isUserLoggedIn ? PreferencesHelper.getName() : 'Visitor',
               ),
               const Spacer(),
               if (isUserLoggedIn)
-                GestureDetector(
-                  onTap: () => Routes.wishListPageRoute.moveTo(),
-                  child: const CustomerIcon(
-                    icon: AppAssets.favouritesIcon,
-                    number: AppStrings.zero,
-                  ),
+                BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+                  builder: (context, state) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, Routes.wishListPageRoute)
+                            .then((_) {
+                          context.read<AccountDetailsCubit>()
+                              .getAccountDetails();
+                        });
+                      },
+                      child: CustomerIcon(
+                        icon: AppAssets.favouritesIcon,
+                        number: PreferencesHelper.getWishListCount()
+                            .toString(),
+                      ),
+                    );
+                  },
                 ),
               HorizontalSpace(context.width * 0.022),
               if(isUserLoggedIn)
                 GestureDetector(
-                 onTap: () => Routes.notificationPageRoute.moveTo(),
-                 child: const CustomerIcon(
-                  icon: AppAssets.notificationIcon,
-                  number: AppStrings.three,
-                 ),
+                  onTap: () => Routes.notificationPageRoute.moveTo(),
+                  child: const CustomerIcon(
+                    icon: AppAssets.notificationIcon,
+                    number: AppStrings.three,
+                  ),
                 ),
             ],
           ),

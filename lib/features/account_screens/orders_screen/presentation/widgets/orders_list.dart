@@ -39,11 +39,13 @@ class OrdersList extends StatelessWidget {
                 final order = ordersCubit.orders[index];
                 return Column(
                   children: [
+                    VerticalSpace(context.height12),
                     OrderDetailedCard(
+                      orderDate: order.formattedCreatedAt,
                       orderId: order.id,
                       card: OrderItemsList(order: order),
                     ),
-                    VerticalSpace(context.height24),
+                    VerticalSpace(context.height12),
                   ],
                 );
               } else {

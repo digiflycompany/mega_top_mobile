@@ -12,8 +12,9 @@ class OrderDetailedCard extends StatelessWidget {
   final Widget card;
   final String? orderStatus;
   final String? orderId;
+  final String orderDate;
   final Color statusColor;
-  const OrderDetailedCard({super.key, required this.card, this.orderStatus, this.statusColor=AppColors.yellowColor, required this.orderId,});
+  const OrderDetailedCard({super.key, required this.card, this.orderStatus, this.statusColor=AppColors.yellowColor, required this.orderId, required this.orderDate,});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class OrderDetailedCard extends StatelessWidget {
             children: [
               OrderNumberAndState(orderStatus: orderStatus,statusColor: statusColor,orderId: orderId,),
               VerticalSpace(context.height12),
-              const OrderDateAndDay(),
+              OrderDateAndDay(date: orderDate,),
               CustomDivider(
                 topPadding: context.height16,
                 bottomPadding: context.height16,

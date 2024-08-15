@@ -81,7 +81,7 @@ class _OffersPageState extends State<OffersPage> {
                             Center(child: SizedBox(
                                 height: 15.h,
                                 width: 15.h,
-                                child: CircularProgressIndicator())),
+                                child: CircularProgressIndicator.adaptive())),
                           SizedBox(
                             height: 25.h,
                           ),
@@ -100,7 +100,7 @@ class _OffersPageState extends State<OffersPage> {
                       );
                 } else {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator.adaptive(),
                   );
                 }
               },
