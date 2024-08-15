@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
+import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/profile_screen_widgets/remove_account_bottom_sheet.dart';
@@ -37,6 +38,12 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
   RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
   bool isPasswordVisible = true;
+
+  List<WishlistItem> _wishList = [];
+
+  bool isProductInWishlist(String productId) {
+    return _wishList.any((item) => item.id == productId);
+  }
 
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
@@ -98,6 +105,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         emailController.text = user.data.user.email;
         phoneController.text = user.data.user.phoneNumber;
         wishListCount = user.data.wishlistCount;
+        _wishList = user.data.user.wishlist;
         unreadNotificationCount = user.data.unreadNotificationsCount['ad'] ?? 0;
         await PreferencesHelper.saveWishListCount(wishListCount);
         emit(AccountDetailsSuccess(user));

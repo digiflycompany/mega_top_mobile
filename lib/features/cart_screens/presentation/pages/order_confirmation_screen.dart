@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_success_icon.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_success_text.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_number_text.dart';
@@ -11,6 +15,7 @@ import '../../data/models/checkout_model.dart';
 
 class OrderConfirmationScreen extends StatelessWidget {
   final String? orderId;
+  final String? totalPrice;
   final bool? completed;
   final List<Product>? products;
   final DropOffAddress? dropOffAddress;
@@ -20,7 +25,7 @@ class OrderConfirmationScreen extends StatelessWidget {
     required this.orderId,
     required this.completed,
     required this.products,
-    required this.dropOffAddress,
+    required this.dropOffAddress, required this.totalPrice,
   });
 
   @override
@@ -44,17 +49,31 @@ class OrderConfirmationScreen extends StatelessWidget {
             ),
             const Spacer(),
             /// View Order Button
-            // PrimaryButton(
-            //   content: Text(
-            //     AppStrings.viewOrderEn,
-            //     style: TextStyle(
-            //       color: Colors.white,
-            //       fontWeight: FontWeight.w700,
-            //       fontSize: 16.sp,
-            //     ),
-            //   ),
-            // ),
-            // VerticalSpace(context.height * 0.033),
+            PrimaryButton(
+              content: Text(
+                AppStrings.viewOrderEn,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16.sp,
+                ),
+              ),
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OrdersDetailsScreen(
+                      totalPrice: totalPrice,
+                      orderId: orderId,
+                      products: products,
+                      dropOffAddress: dropOffAddress,
+                      completed: completed,
+                    ),
+                  )
+                );
+              },
+            ),
+            VerticalSpace(context.height * 0.033),
             /// Continue Shopping Button
             PrimaryOutlinedButton(
               text: AppStrings.continueShoppingEn,

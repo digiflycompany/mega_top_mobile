@@ -20,13 +20,13 @@ class CartCubit extends Cubit<CartState> {
   List<Map<String, dynamic>> cartProducts = PreferencesHelper.getCart();
 
   void addProductToCart(String? id,String? name,String? price,String? image) {
-    // final existingProductIndex = cartProducts.indexWhere(
-    //       (product) => product['_id'] == id,
-    // );
-    //
-    // if (existingProductIndex != -1) {
-    //   cartProducts[existingProductIndex]['quantity'] += 1;
-    // } else
+    final existingProductIndex = cartProducts.indexWhere(
+          (product) => product['_id'] == id,
+    );
+
+    if (existingProductIndex != -1) {
+      cartProducts[existingProductIndex]['quantity'] += 1;
+    } else
       cartProducts.add({
         '_id': id,
         'quantity': 1,
@@ -167,6 +167,7 @@ class CartCubit extends Cubit<CartState> {
         context,
         MaterialPageRoute(
           builder: (context) => OrderConfirmationScreen(
+            totalPrice: state.user.data!.totalPrice.toString(),
             orderId: state.user.data!.id,
             products: state.user.data!.products,
             dropOffAddress: state.user.data!.dropOffAddress,

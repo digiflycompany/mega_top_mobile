@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 
 class OrderNumber extends StatelessWidget {
-  final String orderNumber;
+  final String? orderNumber;
   final Color? textColor;
   const OrderNumber({super.key, required this.orderNumber, this.textColor});
 

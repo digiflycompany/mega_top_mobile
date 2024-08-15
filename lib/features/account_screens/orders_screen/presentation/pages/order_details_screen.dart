@@ -11,6 +11,7 @@ import '../../../../cart_screens/data/models/checkout_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   final String? orderId;
+  final String? totalPrice;
   final bool? completed;
   final List<Product>? products;
   final DropOffAddress? dropOffAddress;
@@ -18,7 +19,8 @@ class OrdersDetailsScreen extends StatelessWidget {
     required this.orderId,
     required this.completed,
     required this.products,
-    required this.dropOffAddress});
+    required this.dropOffAddress,
+    required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +39,9 @@ class OrdersDetailsScreen extends StatelessWidget {
             children: [
               OrderStatusCard(),
               OrderDetailsCheckoutCard(
-                productPrice: products!.length.toString(),
+                productPrice: totalPrice,
                 productQuantity: products!.length.toString(),
-                totalPrice: products!.length.toString(),
+                totalPrice: totalPrice,
               ),
               ShippingCheckoutDetailsSmallCard(
                 name: dropOffAddress!.name,

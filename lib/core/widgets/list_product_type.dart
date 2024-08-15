@@ -9,13 +9,15 @@ class ListProductType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text!,
-      style: TextStyle(
-          color: AppColors.greyTextColor,
-          fontWeight: FontWeight.w600,
-          overflow: TextOverflow.ellipsis,
-          fontSize: 10.sp),
+    return Expanded(
+      child: Text(
+        text!,
+        style: TextStyle(
+            color: AppColors.greyTextColor,
+            fontWeight: FontWeight.w600,
+            overflow: TextOverflow.ellipsis,
+            fontSize: 10.sp),
+      ),
     );
   }
 }

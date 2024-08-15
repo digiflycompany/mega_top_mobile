@@ -22,7 +22,7 @@ class YourOrderCheckoutList extends StatelessWidget {
               right: context.width * 0.045),
           child: YourOrderListContainer(
             productName: cartItem.title,
-            productPhoto: cartItem.title,
+            productPhoto: cartItem.image,
             productPrice: cartItem.finalPrice.toString()
           ),
         );

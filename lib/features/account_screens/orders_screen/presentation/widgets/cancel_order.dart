@@ -6,8 +6,8 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/orders_cubit.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/cubit/orders_state.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/cubit/orders_cubit.dart';
+import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/cubit/orders_state.dart';
 
 class CancelOrderCard extends StatelessWidget {
   const CancelOrderCard({super.key});
