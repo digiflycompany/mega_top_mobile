@@ -16,16 +16,7 @@ import 'package:mega_top_mobile/core/widgets/status_bar_color.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_states.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_body.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_product_detailed_body.dart';
 
@@ -58,7 +49,10 @@ class _SearchProductDetailsPageState extends State<SearchProductDetailsPage> {
                   ProductDetailedImage(images: homeCubit.searchModel!
                       .data!.products[homeCubit.selectedProductIndex].images,
                     imagePosition: homeCubit.currentImageIndex,
-                  cubit: homeCubit,),
+                  cubit: homeCubit,
+                  productId: homeCubit.searchModel!
+                      .data!.products[homeCubit.selectedProductIndex].id,
+                  ),
                   SearchProductDetailedBody(),
                 ],
               ),
