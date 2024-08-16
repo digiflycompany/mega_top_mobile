@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -18,7 +19,7 @@ class CustomSearchBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: context.height * 0.012),
       child: GestureDetector(
         onTap: () {
-          //Routes.searchPageRoute.moveTo;
+          Routes.searchPageRoute.moveTo;
         },
         child: Container(
           width: double.infinity,

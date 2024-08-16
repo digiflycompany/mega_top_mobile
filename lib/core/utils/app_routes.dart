@@ -41,6 +41,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/pages/payment
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/category_items_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/category_product_details_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_product_details_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_result_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offer_product_details_screen.dart';
@@ -66,6 +67,8 @@ class Routes {
   static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen";
   static const String categoryProductDetailsPageRoute =
       "/category_product_details_screen";
+  static const String searchProductDetailsPageRoute =
+      "/search_product_details_screen";
   static const String checkoutAddressDetailsPageRoute = "/shipping_details_screen";
   static const String paymentMethodsPageRoute = "/payment_methods_screen";
   static const String orderSummaryPageRoute = "/order_summary_screen";
@@ -173,6 +176,11 @@ class RouteGenerator {
       case Routes.categoryProductDetailsPageRoute:
         return buildPageRoute(
             child: const CategoryProductDetailsPage(),
+            routeSettings: routeSettings,
+            pageRouteAnimation: PageRouteAnimation.fade);
+        case Routes.searchProductDetailsPageRoute:
+        return buildPageRoute(
+            child: const SearchProductDetailsPage(),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.offerProductDetailsPageRoute:

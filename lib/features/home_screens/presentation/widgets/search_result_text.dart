@@ -22,6 +22,9 @@ class SearchResultCount extends StatelessWidget {
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w700),
           ),
+          SizedBox(
+            width: 5.w,
+          ),
           Text(
             AppStrings.resultsFound,
             style: TextStyle(

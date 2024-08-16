@@ -46,7 +46,7 @@ class _AdvertisementListState extends State<AdvertisementList> {
                 physics: const BouncingScrollPhysics(),
                 itemCount: itemCount,
                 onPageChanged: (int index) {
-                  homeCubit.setImageIndex(currentIndex = index);
+                  homeCubit.setImageAdsIndex(currentIndex = index);
                 },
                 itemBuilder: (context, index) {
                   return Padding(

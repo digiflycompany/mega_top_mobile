@@ -5,11 +5,10 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/category_product_images.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/favour_compare_column.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_images_dots.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class ProductDetailedImage extends StatelessWidget {
-  const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit, required this.productId,});
+  const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit, this.productId,});
   final List<String> images;
   final int imagePosition;
   final String? productId;
@@ -34,8 +33,8 @@ class ProductDetailedImage extends StatelessWidget {
                   // if (offersCubit.offerModel!
                   //     .data!.products[offersCubit.selectedProductIndex].images.length >
                   //     1)
-                    if (images.length > 1)
-                  ProductImagesDots(imageLength: images.length,imagePosition: imagePosition,),
+                  //   if (images.length > 1)
+                  // ProductImagesDots(imageLength: images.length,imagePosition: imagePosition,),
                 ],
               ),
               FutureBuilder<String?>(
