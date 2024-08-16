@@ -100,10 +100,8 @@ class ProductsListContainer extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
-                            child: ListProductName(
-                              text: productName,
-                            ),
+                          ListProductName(
+                            text: productName,
                           ),
                           GestureDetector(
                               onTap: onTapFavourite,

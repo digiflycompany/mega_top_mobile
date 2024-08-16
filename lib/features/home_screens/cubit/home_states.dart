@@ -49,3 +49,25 @@ class LatestOfferFailure extends HomeState {
 
   LatestOfferFailure(this.error);
 }
+
+class SearchSuccess extends HomeState {}
+
+class SearchLoading extends HomeState {}
+
+class SearchFailure extends HomeState {
+  final String error;
+
+  SearchFailure(this.error);
+}
+
+class SubCategoryLoading extends HomeState {}
+
+class SubCategorySuccess extends HomeState {}
+
+class SubCategoryFailure extends HomeState {
+  final String error;
+
+  SubCategoryFailure(this.error);
+}
+
+class HomeUpdated extends HomeState {}

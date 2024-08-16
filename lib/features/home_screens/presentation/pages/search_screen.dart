@@ -31,12 +31,13 @@ class SearchPage extends StatelessWidget {
                   children: [
                     VerticalSpace(context.height * 0.012),
                     const PrimarySearchBar(),
-                    homeCubit.noResult
-                        ? VerticalSpace(context.height * 0.165)
-                        : VerticalSpace(context.height * 0.03),
-                    homeCubit.noResult
-                        ? const NoResultColumn()
-                        : const LatestSearchColumn(),
+
+                    // homeCubit.noResult
+                    //     ? VerticalSpace(context.height * 0.165)
+                    //     : VerticalSpace(context.height * 0.03),
+                    // homeCubit.noResult
+                    //     ? const NoResultColumn()
+                    //     : const LatestSearchColumn(),
                   ],
                 ),
               ),

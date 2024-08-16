@@ -19,18 +19,26 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_st
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_body.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/product_detailed_body_in_search.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_product_detailed_body.dart';
 
-class CategoryProductDetailsPage extends StatefulWidget {
-  const CategoryProductDetailsPage({super.key});
+class SearchProductDetailsPage extends StatefulWidget {
+  const SearchProductDetailsPage({super.key});
 
   @override
-  State<CategoryProductDetailsPage> createState() =>
-      _CategoryProductDetailsPageState();
+  State<SearchProductDetailsPage> createState() =>
+      _SearchProductDetailsPageState();
 }
 
-class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage> {
-  late CategoryCubit categoryCubit;
+class _SearchProductDetailsPageState extends State<SearchProductDetailsPage> {
+  late HomeCubit homeCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -40,30 +48,27 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
             child: const ProductDetailsAppBar()),
-        body: BlocBuilder<CategoryCubit, CategoryState>(
-          builder: (BuildContext context, CategoryState state) {
-            categoryCubit = context.read<CategoryCubit>();
+        body: BlocBuilder<HomeCubit, HomeState>(
+          builder: (BuildContext context, HomeState state) {
+            homeCubit = context.read<HomeCubit>();
             return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  ProductDetailedImage(images: categoryCubit.selectedCategoryModel!
-                      .data!.products[categoryCubit.selectedProductIndex].images,
-                    imagePosition: categoryCubit.currentImageIndex,
-                  cubit: categoryCubit,
-                  productId: categoryCubit.selectedCategoryModel!
-                      .data!.products[categoryCubit.selectedProductIndex].id,
-                  ),
-                  ProductDetailedBody(),
+                  ProductDetailedImage(images: homeCubit.searchModel!
+                      .data!.products[homeCubit.selectedProductIndex].images,
+                    imagePosition: homeCubit.currentImageIndex,
+                  cubit: homeCubit,),
+                  SearchProductDetailedBody(),
                 ],
               ),
             );
           },
         ),
         bottomNavigationBar: ButtonBottomNavBar(
-          button: BlocBuilder<CategoryCubit, CategoryState>(
+          button: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
-              final categoryCubit = context.read<CategoryCubit>();
+              final homeCubit = context.read<HomeCubit>();
               return BlocProvider(
                 create: (context) => CartCubit(CartRepoImp()),
                 child: BlocConsumer<CartCubit, CartState>(
@@ -94,17 +99,17 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
                       ),
                       onTap: () async {
                         context.read<CartCubit>().addProductToCart(
-                          categoryCubit.selectedCategoryModel!
-                              .data!.products[categoryCubit.selectedProductIndex]
+                          homeCubit.searchModel!
+                              .data!.products[homeCubit.selectedProductIndex]
                               .id,
-                          categoryCubit.selectedCategoryModel!
-                              .data!.products[categoryCubit.selectedProductIndex]
+                          homeCubit.searchModel!
+                              .data!.products[homeCubit.selectedProductIndex]
                               .title,
-                          categoryCubit.selectedCategoryModel!
-                              .data!.products[categoryCubit.selectedProductIndex]
+                          homeCubit.searchModel!
+                              .data!.products[homeCubit.selectedProductIndex]
                               .price!.finalPrice.toString(),
-                          categoryCubit.selectedCategoryModel!
-                              .data!.products[categoryCubit.selectedProductIndex]
+                          homeCubit.searchModel!
+                              .data!.products[homeCubit.selectedProductIndex]
                               .images[0],
                         );
                         print('Product added to cart');
@@ -120,7 +125,7 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
 
   @override
   void dispose() {
-    categoryCubit.setImageIndex(0);
+    homeCubit.setImageIndex(0);
     super.dispose();
   }
 }
