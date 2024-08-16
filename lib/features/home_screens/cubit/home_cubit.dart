@@ -9,6 +9,8 @@ import 'package:mega_top_mobile/features/home_screens/data/models/latest_offer_m
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_product_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/search_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/search_repo.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_bottom_sheet_in_search.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/sort_bottom_sheet_in_search.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
@@ -147,8 +149,10 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeUpdated());
   }
 
-
   String _selectedValue = AppStrings.defaultEn;
+
+  String get selectedValue => _selectedValue;
+
 
   void selectOption(String newValue) {
     _selectedValue = newValue;
@@ -171,6 +175,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   SearchModel? searchModel;
 
+
+  final TextEditingController minPriceController = TextEditingController();
+  final TextEditingController maxPriceController = TextEditingController();
   int page = 1;
   int? minPrice;
   int? maxPrice;
@@ -197,6 +204,16 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+  void sortingFromHighPrice() {
+    searchModel!.data!.products
+        .sort((a, b) => b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+  }
+
+  void sortingFromLowPrice() {
+    searchModel!.data!.products
+        .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
+  }
+
 
   bool? hasMoreProducts = false;
 
@@ -219,5 +236,61 @@ class HomeCubit extends Cubit<HomeState> {
       emit(SearchFailure(e.toString()));
     }
   }
+
+  void showSortBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(0),
+          topRight: Radius.circular(0),
+        ),
+      ),
+      builder: (_) {
+        return SortBottomSheetInSearch(
+          onTapDefault: () {
+            page = 1;
+            search();
+          },
+          onTapFromHighPrice: () {
+            sortingFromHighPrice();
+          },
+          onTapFromLowPrice: (){
+            sortingFromLowPrice();
+          },
+          cubit: getCubit(context),
+        );
+      },
+    );
+  }
+
+  void showFilterBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(0),
+          topRight: Radius.circular(0),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return FractionallySizedBox(
+          heightFactor: 1.0, // For full screen height
+          child: FilterBottomSheetInSearch(
+            cubit: getCubit(context),
+            getProductsFunction: (){
+              search();
+            },
+          ),
+        );
+      },
+    );
+  }
+
+
 
 }

@@ -41,12 +41,15 @@ class ItemsOptionsRow extends StatelessWidget {
             },
           ),
           const Spacer(),
-          const FilterSortContainer(
+          FilterSortContainer(
             icon: AppAssets.sortIcon,
+            onTap: () => homeCubit.showSortBottomSheet(context),
           ),
           HorizontalSpace(context.width * 0.022),
-          const FilterSortContainer(
+          FilterSortContainer(
             icon: AppAssets.filterIcon,
+            onTap: () => homeCubit.showFilterBottomSheet(context),
+
           )
         ],
       ),

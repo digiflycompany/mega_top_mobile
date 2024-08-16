@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
@@ -8,8 +9,11 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/searc
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_result_list_view.dart';
 
 class SearchResultList extends StatelessWidget {
-  const SearchResultList({super.key});
+  const SearchResultList({super.key, required this.controller});
 
+  //final  HomeCubit  homeCubit;
+  final ScrollController controller ;
+  // @override
   @override
   Widget build(BuildContext context) {
     HomeCubit homeCubit = context.read<HomeCubit>();
@@ -25,7 +29,7 @@ class SearchResultList extends StatelessWidget {
               BlocConsumer<HomeCubit, HomeState>(
                 listener: (context, state) {},
                 builder: (context, state) {
-                  return homeCubit.isGrid? SearchResultGridView(homeCubit: homeCubit,): SearchResultListView(homeCubit: homeCubit);
+                  return homeCubit.isGrid? SearchResultGridView(homeCubit: homeCubit,controller: controller,): SearchResultListView(homeCubit: homeCubit,controller: controller,);
                 },
               ),
             ],
@@ -35,3 +39,4 @@ class SearchResultList extends StatelessWidget {
     );
   }
 }
+

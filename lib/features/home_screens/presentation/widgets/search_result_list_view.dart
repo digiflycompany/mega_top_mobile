@@ -8,19 +8,26 @@ import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../data/models/product_model.dart';
 
-class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key, required this.homeCubit});
+class SearchResultListView extends StatefulWidget {
+  const SearchResultListView({super.key, required this.homeCubit, required this.controller});
 
   final HomeCubit homeCubit;
+  final ScrollController  controller;
 
+  @override
+  State<SearchResultListView> createState() => _SearchResultListViewState();
+}
+
+class _SearchResultListViewState extends State<SearchResultListView> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+        controller: widget.controller,
         physics: const BouncingScrollPhysics(),
-        itemCount: homeCubit.searchModel!.data!.products.length, // Set the item count to the length of the products list
+        itemCount: widget.homeCubit.searchModel!.data!.products.length, // Set the item count to the length of the products list
         itemBuilder: (BuildContext context, int index) {
-          final product = homeCubit.searchModel!.data!.products[index];
+          final product = widget.homeCubit.searchModel!.data!.products[index];
           return Padding(
             padding: EdgeInsets.only(
                 right: context.width * 0.011,
@@ -34,7 +41,7 @@ class SearchResultListView extends StatelessWidget {
               productType: product.categoryId!.name!,
               productPrice: product.price!.finalPrice!.toString(),
               onTap: (){
-                homeCubit.setCategoryProductIndex(selectedProductIndex: index);
+                widget.homeCubit.setCategoryProductIndex(selectedProductIndex: index);
                 Routes.searchProductDetailsPageRoute.moveTo;
               },
             ),

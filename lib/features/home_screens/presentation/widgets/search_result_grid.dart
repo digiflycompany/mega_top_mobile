@@ -10,9 +10,10 @@ import '../../data/models/product_model.dart';
 import 'items_grid.dart';
 
 class SearchResultGridView extends StatelessWidget {
-  const SearchResultGridView({super.key, required this.homeCubit});
+  const SearchResultGridView({super.key, required this.homeCubit, required this.controller});
 
   final HomeCubit homeCubit;
+  final ScrollController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +69,7 @@ class SearchResultGridView extends StatelessWidget {
     // ];
     return Expanded(
       child: GridView.builder(
+        controller: controller,
         physics: const BouncingScrollPhysics(),
         itemCount: homeCubit.searchModel!.data!.products.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
