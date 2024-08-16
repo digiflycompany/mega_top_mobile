@@ -58,14 +58,21 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
               HorizontalSpace(context.width * 0.045),
               GestureDetector(
                   onTap: () {
-                    homeCubit.search();
-                    Routes.searchResultPageRoute.moveTo;
+                    if(homeCubit.searchWord.text.isNotNullOrEmpty)
+                      {
+                        homeCubit.search();
+                        Routes.searchResultPageRoute.moveTo;
+                      }
                   },
                   child: SvgPicture.asset(AppAssets.searchIcon)),
               HorizontalSpace(context.width * 0.022),
               SearchTextField(
-                onTap: (){
-           //       homeCubit.search();
+                onFieldSubmitted: (){
+                  if(homeCubit.searchWord.text.isNotNullOrEmpty)
+                  {
+                    homeCubit.search();
+                    Routes.searchResultPageRoute.moveTo;
+                  }
                 },
                 textFormField: homeCubit.searchWord,
                 focusNode: _focusNode,

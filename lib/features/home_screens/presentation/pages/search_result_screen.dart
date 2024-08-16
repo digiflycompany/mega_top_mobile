@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -20,13 +21,13 @@ class SearchResultPage extends StatefulWidget {
 }
 
   final controller = ScrollController();
-  late HomeCubit homeCubit;
+  late HomeCubit cubit;
 
 class _SearchResultPageState extends State<SearchResultPage> {
 
   @override
   void initState() {
-    final cubit = context.read<HomeCubit>();
+     cubit = context.read<HomeCubit>();
     controller.addListener(() {
       if (controller.position.maxScrollExtent == controller.offset) {
         cubit.hasMoreProducts = true;
@@ -78,13 +79,13 @@ class _SearchResultPageState extends State<SearchResultPage> {
   }
   @override
   void dispose() {
-    homeCubit.searchModel = null;
-    homeCubit.selectOption(AppStrings.defaultEn);
-    homeCubit.page = 1;
-    homeCubit.minPriceController.clear();
-    homeCubit.maxPriceController.clear();
-    homeCubit.minPrice = null;
-    homeCubit.maxPrice = null;
+    cubit.searchModel = null;
+    cubit.selectOption(AppStrings.defaultEn);
+    cubit.page = 1;
+    cubit.minPriceController.clear();
+    cubit.maxPriceController.clear();
+    cubit.minPrice = null;
+    cubit.maxPrice = null;
     super.dispose();
   }
 }

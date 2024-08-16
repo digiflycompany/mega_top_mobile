@@ -7,15 +7,15 @@ import '../../../../core/utils/app_string.dart';
 class SearchTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextEditingController ? textFormField;
-  final Function ? onTap;
-  const SearchTextField({super.key, this.focusNode,required this.textFormField, required this.onTap});
+  final Function ? onFieldSubmitted;
+  const SearchTextField({super.key, this.focusNode,required this.textFormField, required this.onFieldSubmitted});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: TextFormField(
-        onTap: (){
-          onTap!();
+        onFieldSubmitted: (value){
+          onFieldSubmitted!();
         },
         controller: textFormField,
         focusNode: focusNode,
@@ -29,6 +29,7 @@ class SearchTextField extends StatelessWidget {
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
           ),
+
         ),
       ),
     );
