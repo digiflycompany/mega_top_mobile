@@ -32,16 +32,14 @@ class CategoriesPage extends StatelessWidget {
                 }
                 else if(cubit.categoriesModel.isNull)
                 {
-                  return Expanded(
-                    child: Center(
-                      child: Theme(
-                        data: Theme.of(context).copyWith(
-                          colorScheme: ColorScheme.fromSwatch().copyWith(
-                            primary: AppColors.primaryColor,
-                          ),
+                  return Center(
+                    child: Theme(
+                      data: Theme.of(context).copyWith(
+                        colorScheme: ColorScheme.fromSwatch().copyWith(
+                          primary: AppColors.primaryColor,
                         ),
-                        child: CircularProgressIndicator.adaptive(),
                       ),
+                      child: CircularProgressIndicator.adaptive(),
                     ),
                   );
                 }else if(cubit.categoriesModel!.data!.categories!.length > 0){
