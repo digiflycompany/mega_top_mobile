@@ -15,8 +15,7 @@ class CategoriesGrid extends StatelessWidget {
       listener: (BuildContext context, CategoryState state) {},
       builder: (context, state) {
         var cubit = context.read<CategoryCubit>();
-        if (cubit.categories != null) {
-          var categories = cubit.categories;
+          var categories = cubit.categoriesModel;
           return Expanded(
             child: GridView.builder(
               physics: const BouncingScrollPhysics(),
@@ -38,21 +37,6 @@ class CategoriesGrid extends StatelessWidget {
             ),
           );
         }
-        else {
-          return Expanded(
-            child: Center(
-              child: Theme(
-                data: Theme.of(context).copyWith(
-                  colorScheme: ColorScheme.fromSwatch().copyWith(
-                    primary: AppColors.primaryColor,
-                  ),
-                ),
-                child: CircularProgressIndicator.adaptive(),
-              ),
-            ),
-          );
-        }
-      },
     );
   }
 }

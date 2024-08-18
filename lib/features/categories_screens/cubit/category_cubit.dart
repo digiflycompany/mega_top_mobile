@@ -28,7 +28,6 @@ class CategoryCubit extends Cubit<CategoryState> {
   String get selectedValue => _selectedValue;
   List< bool> checkboxStates = [];
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
-  CategoriesModel? categoriesModel;
 
   late String? selectedCategoryId;
 
@@ -150,16 +149,15 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   /// Get Categories
 
-  CategoriesModel? categories;
+  CategoriesModel? categoriesModel;
 
   Future<void> getCategories() async {
     emit(CategoryLoading());
     try {
       CategoriesModel? fetchedCategories = await categoriesRepo.getCategories();
       if (fetchedCategories != null && fetchedCategories.success==true) {
-        categories = fetchedCategories;
-        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-        print(categories);
+        categoriesModel = fetchedCategories;
+        print(categoriesModel);
         emit(CategorySuccess());
       } else {
         emit(CategoryNoInternetConnection());

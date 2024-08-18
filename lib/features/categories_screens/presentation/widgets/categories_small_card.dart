@@ -30,7 +30,7 @@ class CategoriesSmallCard extends StatelessWidget {
         final cubit = CategoryCubit().getCubit(context);
         return GestureDetector(
           onTap: () {
-            cubit.selectedCategoryId = cubit.categories!.data!.categories![index].id!;
+            cubit.selectedCategoryId = cubit.categoriesModel!.data!.categories![index].id!;
             cubit.setCategoryProductIndex(selectedProductIndex: index);
             cubit.getSelectedCategories(cubit.selectedCategoryId!);
             cubit.getSubCategories(cubit.selectedCategoryId!).then((onValue){

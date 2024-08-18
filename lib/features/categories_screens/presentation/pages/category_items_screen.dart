@@ -51,7 +51,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
           child: BlocBuilder<CategoryCubit, CategoryState>(
             builder: (BuildContext context, CategoryState state) {
               return PrimaryAppBar(
-                  categoryCubit.categories!.data!
+                  categoryCubit.categoriesModel!.data!
                   .categories![categoryCubit.selectedProductIndex].name!);
             },
           )),
