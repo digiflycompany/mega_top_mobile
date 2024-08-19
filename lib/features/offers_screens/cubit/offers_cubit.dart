@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -202,29 +203,42 @@ class OffersCubit extends Cubit<OffersState> {
     emit(OffersLoading());
     try {
       offerModel = null;
-      offerModel =
-      await offersRepo.getOffers(page: page,minPrice: minPrice,
+      OfferModel? fetchedOffers = await offersRepo.getOffers(page: page,minPrice: minPrice,
           maxPrice: maxPrice);
-      emit(OffersSuccess());
+      if (fetchedOffers != null && fetchedOffers.success==true) {
+        offerModel = fetchedOffers;
+        emit(OffersSuccess());
+      }else {
+        emit(OffersNoInternetConnection());
+      }
     } catch (e) {
-      print(e.toString() + "///////");
-      emit(OffersFailure(e.toString()));
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(OffersNoInternetConnection());
+      }else {
+        emit(OffersFailure(e.toString()));
+      }
     }
   }
 
   bool ? hasMoreProducts = false;
 
   Future<void> getMoreProduct() async {
-    emit(OffersLoading());
+    emit(OffersMoreProductLoading());
     try {
-      OfferModel? moreProducts = await offersRepo.
-      getOffers(page: page++,minPrice: minPrice,maxPrice: maxPrice);
-      offerModel!.data!.products.addAll(moreProducts!.data!.products);
-      print("ooooooooooooooooooooof");
-      hasMoreProducts = moreProducts.data!.products.isNotEmpty;
-      emit(OffersSuccess());
+      OfferModel? moreProducts = await offersRepo.getOffers(page: page,minPrice: minPrice,maxPrice: maxPrice);
+      if (moreProducts != null && moreProducts.success==true) {
+        offerModel!.data!.products.addAll(moreProducts!.data!.products);
+        hasMoreProducts = moreProducts.data!.products.isNotEmpty;
+        emit(OffersMoreProductSuccess());
+      }else{
+        emit(OffersMoreProductNoInternetConnection());
+      }
     } catch (e) {
-      emit(OffersFailure(e.toString()));
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(OffersMoreProductNoInternetConnection());
+      }else {
+        emit(OffersMoreProductFailure(e.toString()));
+      }
     }
   }
 
