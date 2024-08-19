@@ -53,8 +53,8 @@ class CategoriesPage extends StatelessWidget {
                 }else if(cubit.categoriesModel!.data!.categories!.length == 0){
                  return EmptyDataPage(
                     icon: AppAssets.emptyNotificationsIcon,
-                    bigFontText: AppStrings.noNotifications,
-                    smallFontText: AppStrings.noWishListItemsEn,
+                    bigFontText: AppStrings.noCategoriesEn,
+                    smallFontText: AppStrings.noCategoriesListItemsEn,
                   );
                 }
                   return Center(

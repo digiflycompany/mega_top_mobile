@@ -58,101 +58,97 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
             },
           )),
       body: BlocConsumer<CategoryCubit, CategoryState>(
-        listener: (BuildContext context, CategoryState state) {
-          if(state is SelectedCategoryMoreProductsNoInternetConnection ){
-            context.read<CategoryCubit>().page--;
-            Fluttertoast.showToast(msg: AppStrings.pleaseCheckYourInternet);
-          }
-        },
-        builder: (BuildContext context, state) {
-          if (state is SelectedCategoryNoInternetConnection || state is SubCategoryNoInternetConnection) {
-            return NoInternetScreen(
-                buttonOnTap: () { categoryCubit
-                    .getSelectedCategories(categoryCubit.selectedCategoryId!);
-                categoryCubit.getSubCategories(categoryCubit.selectedCategoryId!).then((onValue){
-                  if(categoryCubit.subCategoriesModel != null){
-                    categoryCubit.initializeCheckboxes(categoryCubit.subCategoriesModel!.data!.subcategories.length);
-                  }
-                });
-                });
-          }
-           else if(categoryCubit.selectedCategoryModel.isNull || categoryCubit.subCategoriesModel.isNull)
-           {
-             return Center(
-               child: Theme(
-                 data: Theme.of(context).copyWith(
-                   colorScheme: ColorScheme.fromSwatch().copyWith(
-                     primary: AppColors.primaryColor,
-                   ),
-                 ),
-                 child: CircularProgressIndicator.adaptive(),
-               ),
-             );
-           }
-         else if (categoryCubit.selectedCategoryModel!.data!.products.length > 0 ||
-                categoryCubit.subCategoriesModel!.data!.subcategories.length > 0
-          ) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: context.width * 0.045,
-                  vertical: context.height * 0.015),
-              child: Column(
-                children: [
-                  CategoryItemsOptionsRow(
-                    topPadding: context.height * 0.028,
-                    bottomPadding: context.height * 0.015,
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      controller: controller,
-                      child: Column(
-                        children: [
-                          categoryCubit.isGrid
-                              ? const CategoryItemsGridView()
-                              : const CategoryItemsListView(),
-                          SizedBox(
-                            height: 15.h,
-                          ),
-                          if (context.read<CategoryCubit>().hasMoreProducts ==
-                              true)
-                            Center(
-                                child: SizedBox(
-                                    height: 15.h,
-                                    width: 15.h,
-                                    child:
-                                        CircularProgressIndicator.adaptive())),
-                          SizedBox(
-                            height: 25.h,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          } else if (categoryCubit.selectedCategoryModel!.data!.products.length == 0 ||
-              categoryCubit.subCategoriesModel!.data!.subcategories.length == 0) {
-            return EmptyDataPage(
-              icon: AppAssets.emptyNotificationsIcon,
-              bigFontText: AppStrings.noNotifications,
-              smallFontText: AppStrings.noWishListItemsEn,
-            );
-          } else {
-            return Center(
-              child: Text(
-                AppStrings.serverError,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14.sp
+          listener: (BuildContext context, CategoryState state) {
+        if (state is SelectedCategoryMoreProductsNoInternetConnection) {
+          context.read<CategoryCubit>().page--;
+          Fluttertoast.showToast(msg: AppStrings.pleaseCheckYourInternet);
+        }},
+
+          builder: (BuildContext context, state) {
+        if (state is SelectedCategoryNoInternetConnection ||
+            state is SubCategoryNoInternetConnection) {
+          return NoInternetScreen(buttonOnTap: () {
+            categoryCubit
+                .getSelectedCategories(categoryCubit.selectedCategoryId!);
+            categoryCubit
+                .getSubCategories(categoryCubit.selectedCategoryId!)
+                .then((onValue) {
+              if (categoryCubit.subCategoriesModel != null) {
+                categoryCubit.initializeCheckboxes(categoryCubit
+                    .subCategoriesModel!.data!.subcategories.length);
+              }
+            });
+          });
+        } else if (categoryCubit.selectedCategoryModel.isNull ||
+            categoryCubit.subCategoriesModel.isNull) {
+          return Center(
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                colorScheme: ColorScheme.fromSwatch().copyWith(
+                  primary: AppColors.primaryColor,
                 ),
               ),
-            );
-          }
+              child: CircularProgressIndicator.adaptive(),
+            ),
+          );
+        } else if (categoryCubit.selectedCategoryModel!.data!.products.length > 0 ) {
+          return Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: context.width * 0.045,
+                vertical: context.height * 0.015),
+            child: Column(
+              children: [
+                CategoryItemsOptionsRow(
+                  topPadding: context.height * 0.028,
+                  bottomPadding: context.height * 0.015,
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    controller: controller,
+                    child: Column(
+                      children: [
+                        categoryCubit.isGrid
+                            ? const CategoryItemsGridView()
+                            : const CategoryItemsListView(),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        if (context.read<CategoryCubit>().hasMoreProducts ==
+                            true)
+                          Center(
+                              child: SizedBox(
+                                  height: 15.h,
+                                  width: 15.h,
+                                  child: CircularProgressIndicator.adaptive())),
+                        SizedBox(
+                          height: 25.h,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        } else if (categoryCubit.selectedCategoryModel!.data!.products.length == 0) {
+          return EmptyDataPage(
+            icon: AppAssets.emptyNotificationsIcon,
+            bigFontText: AppStrings.noProductsEn,
+            smallFontText: AppStrings.noProductListItemsEn,
+          );
+        } else {
+          return Center(
+            child: Text(
+              AppStrings.serverError,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14.sp),
+            ),
+          );
         }
-      ),
+      }),
     );
   }
 

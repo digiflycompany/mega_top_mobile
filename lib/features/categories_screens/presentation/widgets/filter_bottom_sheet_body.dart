@@ -35,6 +35,7 @@ class FilterBottomSheetBody extends StatelessWidget {
                 ),
               ),
               VerticalSpace(context.height * 0.02),
+              if(cubit.subCategoriesModel!.data!.subcategories.length > 0)
               const BrandsCheckList(),
               VerticalSpace(context.height * 0.025),
               PriceContainer(minPriceController: cubit.minPriceController,maxPriceController: cubit.maxPriceController),

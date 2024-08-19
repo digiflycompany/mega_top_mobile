@@ -391,4 +391,9 @@ class AppStrings {
   static const String addressHasBeenEdited = 'Address has been edited';
   static const String shippingAddressesEn = 'Shipping Addresses';
   static const String signOut = 'Sign out';
+  static const String noProductsEn = 'No products';
+  static const String noProductListItemsEn = 'No products list items';
+  static const String noCategoriesEn = 'No Categories';
+  static const String noCategoriesListItemsEn = 'No categories list items';
+
 }
