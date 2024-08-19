@@ -27,7 +27,7 @@ class CartPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.circleAvatarBackground,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(context.height * 0.089), // Changed to Size.fromHeight
+          preferredSize: Size.fromHeight(context.height * 0.089),
           child: const CustomFavouriteAppBar(AppStrings.shoppingCartEn),
         ),
         body: Column(
@@ -41,7 +41,7 @@ class CartPage extends StatelessWidget {
                   child: Column(
                     children: [
                       VerticalSpace(context.height * 0.033),
-                      const Expanded( // Added Expanded to ensure ListView fills available space
+                      const Expanded(
                         child: CartItemsListView(),
                       ),
                     ],
@@ -52,31 +52,41 @@ class CartPage extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: BlocConsumer<CartCubit, CartState>(
-          listener: (context,state) =>context.read<CartCubit>().handleCartToAPIStates(context, state),
+          listener: (context, state) => context.read<CartCubit>().handleCartToAPIStates(context, state),
           builder: (context, state) {
-            return ButtonBottomNavBar(
-              button: CartCheckoutButton(
-                content: state is CartSentToAPILoading
-                    ? const Center(child: ButtonCircularProgress())
-                    : const CheckoutButtonContent(),
-                onTap: state is CartSentToAPILoading
-                    ? null
-                    :() async {
-                  final token = await PreferencesHelper.getToken();
-                  if (token == null) {
-                    Routes.signUpOrLoginPageRoute.moveTo;
-                  }
-                  else{
-                    if(PreferencesHelper.getCart().length==0){
-                      context.read<CartCubit>().showErrorToast(context, AppStrings.addToCartFailed, AppStrings.yourShoppingCartIsEmptyEn);
-                    } else{
-                      context.read<CartCubit>().sendCartToApi(
-                          PreferencesHelper.getCart());
+            final cartLength = PreferencesHelper.getCart().length;
+
+            if (cartLength > 0) {
+              return ButtonBottomNavBar(
+                button: CartCheckoutButton(
+                  content: state is CartSentToAPILoading
+                      ? const Center(child: ButtonCircularProgress())
+                      : const CheckoutButtonContent(),
+                  onTap: state is CartSentToAPILoading
+                      ? null
+                      : () async {
+                    final token = await PreferencesHelper.getToken();
+                    if (token == null) {
+                      Routes.signUpOrLoginPageRoute.moveTo;
+                    } else {
+                      if (cartLength == 0) {
+                        context.read<CartCubit>().showErrorToast(
+                          context,
+                          AppStrings.addToCartFailed,
+                          AppStrings.yourShoppingCartIsEmptyEn,
+                        );
+                      } else {
+                        context.read<CartCubit>().sendCartToApi(
+                          PreferencesHelper.getCart(),
+                        );
+                      }
                     }
-                  }
-                },
-              ),
-            );
+                  },
+                ),
+              );
+            } else {
+              return const SizedBox(); // Return an empty SizedBox when the cart is empty
+            }
           },
         ),
       ),

@@ -9,6 +9,15 @@ class LatestOffersCubit extends Cubit<LatestOffersState> {
   final GlobalRepo globalRepo;
   LatestOffersCubit(this.globalRepo) : super(LatestOffersInitial());
 
+
+  int _currentImageIndex = 0;
+
+  int get currentImageIndex => _currentImageIndex;
+
+  void setImageIndex(int index) {
+    _currentImageIndex = index;
+  }
+
   Future<void> getLatestOffers() async {
     emit(LatestOffersLoading());
     try {

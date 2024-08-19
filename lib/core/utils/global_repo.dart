@@ -58,7 +58,6 @@ class GlobalRepoImp implements GlobalRepo {
     try {
       Response? response = await DioHelper.getData(
         url: EndPoints.latestOffersAPI,
-        options: await DioHelper.getOptions(),
       );
       if (response?.statusCode == 200 || response?.statusCode == 401 || response?.statusCode == 400) {
         return MainPageProductsModel.fromJson(response?.data);
@@ -75,7 +74,6 @@ class GlobalRepoImp implements GlobalRepo {
     try {
       Response? response = await DioHelper.getData(
         url: EndPoints.latestProductsAPI,
-        options: await DioHelper.getOptions(),
       );
       if (response?.statusCode == 200 || response?.statusCode == 401 || response?.statusCode == 400) {
         return MainPageProductsModel.fromJson(response?.data);

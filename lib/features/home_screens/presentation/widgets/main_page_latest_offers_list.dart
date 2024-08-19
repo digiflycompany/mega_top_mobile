@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_details_screen.dart';
@@ -39,12 +38,12 @@ class MainPageLatestOffersList extends StatelessWidget {
                                     name: state.user.products![index].title,
                                     quantity:state.user.products![index].quantity,
                                     categoryName: state.user.products![index].categoryId.name,
-                                    cubit: context.read<GlobalCubit>(),
+                                    cubit: context.read<LatestOffersCubit>(),
                                     description: state.user.products![index].description,
                                     finalPrice: state.user.products![index].price.finalPrice.toString(),
                                     originalPrice: state.user.products![index].price.originalPrice.toString(),
                                     productId: state.user.products![index].id,
-                                    imagePosition: context.read<GlobalCubit>().currentImageIndex,
+                                    imagePosition: context.read<LatestOffersCubit>().currentImageIndex,
                                     images: state.user.products![index].images,
                                   ),
                                 ),

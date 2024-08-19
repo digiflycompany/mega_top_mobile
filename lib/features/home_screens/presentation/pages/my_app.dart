@@ -4,7 +4,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_services_dart.dart';
-import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/global_repo.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
@@ -42,9 +41,6 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider<LatestProductsCubit>(
               create: (BuildContext context) => LatestProductsCubit(GlobalRepoImp())..getLatestProducts(),
-            ),
-            BlocProvider<GlobalCubit>(
-              create: (BuildContext context) => GlobalCubit(GlobalRepoImp()),
             ),
             BlocProvider<AccountDetailsCubit>(
               create: (BuildContext context) => AccountDetailsCubit(AccountDetailsRepoImp()),

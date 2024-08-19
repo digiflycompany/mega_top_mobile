@@ -6,15 +6,11 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/core/widgets/not_available_container.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_category.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_small_description.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_name.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_prices.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 
 class SearchProductMainDescription extends StatelessWidget {

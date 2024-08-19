@@ -228,6 +228,9 @@ class OffersCubit extends Cubit<OffersState> {
     }
   }
 
-
+  @override
+  Future<void> close() {
+    return super.close();
+  }
 }
 

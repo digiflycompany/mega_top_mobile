@@ -338,4 +338,9 @@ class CategoryCubit extends Cubit<CategoryState> {
       emit(productDetailsFailure(e.toString()));
     }
   }
+
+  @override
+  Future<void> close() {
+    return super.close();
+  }
 }
