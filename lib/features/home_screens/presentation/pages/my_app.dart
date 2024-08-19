@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_services_dart.dart';
 import 'package:mega_top_mobile/core/utils/global_repo.dart';
+import 'package:mega_top_mobile/core/utils/locale/locale_cubit.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
@@ -19,9 +20,7 @@ import 'package:mega_top_mobile/l10n/l10n.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key,
-  });
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +28,24 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-        builder: (BuildContext context, Widget? child) {
+      builder: (BuildContext context, Widget? child) {
         return MultiBlocProvider(
           providers: [
             BlocProvider<CategoryCubit>(
               create: (BuildContext context) =>
-                  CategoryCubit()..getCategories(),
+              CategoryCubit()..getCategories(),
             ),
             BlocProvider<LatestOffersCubit>(
-              create: (BuildContext context) => LatestOffersCubit(GlobalRepoImp())..getLatestOffers(),
+              create: (BuildContext context) =>
+              LatestOffersCubit(GlobalRepoImp())..getLatestOffers(),
             ),
             BlocProvider<LatestProductsCubit>(
-              create: (BuildContext context) => LatestProductsCubit(GlobalRepoImp())..getLatestProducts(),
+              create: (BuildContext context) =>
+              LatestProductsCubit(GlobalRepoImp())..getLatestProducts(),
             ),
             BlocProvider<AccountDetailsCubit>(
-              create: (BuildContext context) => AccountDetailsCubit(AccountDetailsRepoImp()),
+              create: (BuildContext context) =>
+                  AccountDetailsCubit(AccountDetailsRepoImp()),
             ),
             BlocProvider<HomeCubit>(
               create: (BuildContext context) => HomeCubit(),
@@ -51,33 +53,40 @@ class MyApp extends StatelessWidget {
             BlocProvider<OffersCubit>(
               create: (BuildContext context) => OffersCubit()..getOffers(),
             ),
+            BlocProvider<LocaleCubit>(
+              create: (BuildContext context) => LocaleCubit(),
+            ),
           ],
           child: GestureDetector(
             onTap: () {
               FocusManager.instance.primaryFocus?.unfocus();
             },
-            child: MaterialApp(
-              theme: AppTheme.lightTheme,
-              debugShowCheckedModeBanner: false,
-              supportedLocales: L10n.all,
-              locale: const Locale('en'),
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              navigatorKey: AppService().navigatorKey,
-              home: FutureBuilder<bool>(
-                future: PreferencesHelper.hasSeenOnboarding(),
-                builder: (context, snapshot) {
-                  if (snapshot.data == true) {
-                    return HomePage();
-                  } else {
-                    return OnBoardingScreens();
-                  }
-                },
-              ),
-              onGenerateRoute: RouteGenerator.getRoute,
+            child: BlocBuilder<LocaleCubit, Locale>(
+              builder: (context, locale) {
+                return MaterialApp(
+                  theme: AppTheme.lightTheme,
+                  debugShowCheckedModeBanner: false,
+                  supportedLocales: L10n.all,
+                  locale: locale,
+                  localizationsDelegates: const [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  navigatorKey: AppService().navigatorKey,
+                  home: FutureBuilder<bool>(
+                    future: PreferencesHelper.hasSeenOnboarding(),
+                    builder: (context, snapshot) {
+                      if (snapshot.data == true) {
+                        return HomePage();
+                      } else {
+                        return OnBoardingScreens();
+                      }
+                    },
+                  ),
+                  onGenerateRoute: RouteGenerator.getRoute,
+                );
+              },
             ),
           ),
         );

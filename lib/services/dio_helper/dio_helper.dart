@@ -9,6 +9,8 @@ class DioHelper {
   static BaseOptions opts = BaseOptions(
     baseUrl: EndPoints.baseUrl,
     receiveDataWhenStatusError: true,
+    connectTimeout: const Duration(seconds: 10), // Set connection timeout
+    receiveTimeout: const Duration(seconds: 10), // Set receive timeout
     followRedirects: false,
     validateStatus: (status) {
       return status! <= 500;
@@ -57,11 +59,20 @@ class DioHelper {
         print('RESPONSE IS ${response}');
       }
       return response;
-    } catch (e) {
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.connectionTimeout || e.type == DioExceptionType.receiveTimeout) {
+        if (kDebugMode) {
+          print('DIO TIMEOUT ERROR IS $e');
+        }
+        throw DioException(
+          requestOptions: e.requestOptions,
+          error: AppStrings.noInternetConnection,
+        );
+      }
       if (kDebugMode) {
         print('DIO ERROR IS $e');
       }
-      return e is DioException ? e.response : null;
+      return e.response;
     }
   }
 
@@ -88,11 +99,20 @@ class DioHelper {
         print('RESPONSE IS ${response}');
       }
       return response;
-    } catch (e) {
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.connectionTimeout || e.type == DioExceptionType.receiveTimeout) {
+        if (kDebugMode) {
+          print('DIO TIMEOUT ERROR IS $e');
+        }
+        throw DioException(
+          requestOptions: e.requestOptions,
+          error: AppStrings.noInternetConnection,
+        );
+      }
       if (kDebugMode) {
         print('DIO ERROR IS $e');
       }
-      return e is DioException ? e.response : null;
+      return e.response;
     }
   }
 
@@ -119,11 +139,20 @@ class DioHelper {
         print('RESPONSE IS ${response}');
       }
       return response;
-    } catch (e) {
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.connectionTimeout || e.type == DioExceptionType.receiveTimeout) {
+        if (kDebugMode) {
+          print('DIO TIMEOUT ERROR IS $e');
+        }
+        throw DioException(
+          requestOptions: e.requestOptions,
+          error: AppStrings.noInternetConnection,
+        );
+      }
       if (kDebugMode) {
         print('DIO ERROR IS $e');
       }
-      return e is DioException ? e.response : null;
+      return e.response;
     }
   }
 
@@ -150,11 +179,20 @@ class DioHelper {
         print('RESPONSE IS ${response}');
       }
       return response;
-    } catch (e) {
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.connectionTimeout || e.type == DioExceptionType.receiveTimeout) {
+        if (kDebugMode) {
+          print('DIO TIMEOUT ERROR IS $e');
+        }
+        throw DioException(
+          requestOptions: e.requestOptions,
+          error: AppStrings.noInternetConnection,
+        );
+      }
       if (kDebugMode) {
         print('DIO ERROR IS $e');
       }
-      return e is DioException ? e.response : null;
+      return e.response;
     }
   }
 }
