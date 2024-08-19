@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -126,18 +127,18 @@ class HomeCubit extends Cubit<HomeState> {
 
   SubCategoriesModel? subCategoriesModel;
 
-  Future<void> getSubCategories(String categoriesId) async {
-    emit(SubCategoryLoading());
-    try {
-      subCategoriesModel = null;
-      subCategoriesModel = await searchRepo.getSubCategories(
-          categoryId: categoriesId);
-      emit(SubCategorySuccess());
-    } catch (e) {
-      print(e.toString() + "///////");
-      emit(SubCategoryFailure(e.toString()));
-    }
-  }
+  // Future<void> getSubCategories(String categoriesId) async {
+  //   emit(SubCategoryLoading());
+  //   try {
+  //     subCategoriesModel = null;
+  //     subCategoriesModel = await searchRepo.getSubCategories(
+  //         categoryId: categoriesId);
+  //     emit(SubCategorySuccess());
+  //   } catch (e) {
+  //     print(e.toString() + "///////");
+  //     emit(SubCategoryFailure(e.toString()));
+  //   }
+  // }
 
   int _currentImageIndex = 0;
 
@@ -188,18 +189,25 @@ class HomeCubit extends Cubit<HomeState> {
     emit(SearchLoading());
     try {
       searchModel = null;
-      searchModel = await searchRepo.getSearch(
+      SearchModel? fetchedProducts = await searchRepo.getSearch(
         searchWord: searchWord.text,
         page: page,
         minPrice: minPrice,
         maxPrice: maxPrice,
         subCategories: subCategoriesQuery()
       );
-
-      emit(SearchSuccess());
+      if (fetchedProducts != null && fetchedProducts.success==true) {
+        searchModel = fetchedProducts;
+        emit(SearchSuccess());
+      }else {
+        emit(SearchNoInternetConnection());
+      }
     } catch (e) {
-      print(e.toString() + "///////");
-      emit(SearchFailure(e.toString()));
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(SearchNoInternetConnection());
+      }else {
+        emit(SearchFailure(e.toString()));
+      }
     }
   }
 
@@ -217,22 +225,30 @@ class HomeCubit extends Cubit<HomeState> {
   bool? hasMoreProducts = false;
 
   Future<void> getMoreProduct() async {
-    emit(SearchLoading());
+    emit(SearchMoreProductsLoading());
     try {
       SearchModel? moreProducts =
       await searchRepo.getSearch(
-          page: page++,
+          page: page,
           minPrice: minPrice,
           maxPrice: maxPrice, searchWord: searchWord.text);
-      searchModel!.data!.products
-          .addAll(moreProducts!.data!.products);
-      hasMoreProducts = moreProducts.data!.products.isNotEmpty;
-      print("hasMoreProducts");
-      print(hasMoreProducts);
-      emit(SearchSuccess());
+      if (moreProducts != null && moreProducts.success==true) {
+        searchModel!.data!.products
+            .addAll(moreProducts.data!.products);
+        hasMoreProducts = moreProducts.data!.products.isNotEmpty;
+        print("hasMoreProducts");
+        print(hasMoreProducts);
+        emit(SearchMoreProductsSuccess());
+      }else{
+        emit(SearchMoreProductsNoInternetConnection());
+      }
+
     } catch (e) {
-      print(e.toString() + "///////");
-      emit(SearchFailure(e.toString()));
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(SearchMoreProductsNoInternetConnection());
+      }else {
+        emit(SearchMoreProductsFailure(e.toString()));
+      }
     }
   }
 
