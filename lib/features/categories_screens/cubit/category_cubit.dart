@@ -185,40 +185,56 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(SelectedCategoryLoading());
     try {
       selectedCategoryModel = null;
-      selectedCategoryModel = await categoriesRepo.getSelectedCategories(
+      SelectedCategoryModel? fetchedCategories = await categoriesRepo.getSelectedCategories(
           selectedCategory: selectedId,
           page: page,
           minPrice: minPrice,
           maxPrice: maxPrice,
           subCategories: subCategoriesQuery(),
       );
-      emit(SelectedCategorySuccess());
+      if (fetchedCategories != null && fetchedCategories.success==true) {
+        selectedCategoryModel = fetchedCategories;
+        emit(SelectedCategorySuccess());
+      } else {
+        emit(SelectedCategoryNoInternetConnection());
+      }
     } catch (e) {
-      print(e.toString() + "///////");
-      emit(SelectedCategoryFailure(e.toString()));
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(SelectedCategoryNoInternetConnection());
+      }else {
+        emit(SelectedCategoryFailure(e.toString()));
+      }
     }
   }
 
   bool? hasMoreProducts = false;
 
   Future<void> getMoreProduct(String selectedId) async {
-    emit(SelectedCategoryLoading());
+    emit(SelectedCategoryMoreProductsLoading());
     try {
       SelectedCategoryModel? moreProducts =
           await categoriesRepo.getSelectedCategories(
               selectedCategory: selectedId,
-              page: page++,
+              page: page,
               minPrice: minPrice,
               maxPrice: maxPrice);
-      selectedCategoryModel!.data!.products
-          .addAll(moreProducts!.data!.products);
-      hasMoreProducts = moreProducts.data!.products.isNotEmpty;
-      print("hasMoreProducts");
-      print(hasMoreProducts);
-      emit(SelectedCategorySuccess());
+      if (moreProducts != null && moreProducts.success==true) {
+        selectedCategoryModel!.data!.products
+            .addAll(moreProducts.data!.products);
+        hasMoreProducts = moreProducts.data!.products.isNotEmpty;
+        print("hasMoreProducts");
+        print(hasMoreProducts);
+        emit(SelectedCategoryMoreProductsSuccess());
+      }else{
+        emit(SelectedCategoryMoreProductsNoInternetConnection());
+      }
+
     } catch (e) {
-      print(e.toString() + "///////");
-      emit(SelectedCategoryFailure(e.toString()));
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(SelectedCategoryMoreProductsNoInternetConnection());
+      }else {
+        emit(SelectedCategoryMoreProductsFailure(e.toString()));
+      }
     }
   }
 
@@ -272,12 +288,20 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(SubCategoryLoading());
     try {
       subCategoriesModel = null;
-      subCategoriesModel = await categoriesRepo.getSubCategories(
+      SubCategoriesModel? fetchedSubCategories = await categoriesRepo.getSubCategories(
         categoryId: categoriesId);
-      emit(SubCategorySuccess());
+      if (fetchedSubCategories != null && fetchedSubCategories.success==true) {
+        subCategoriesModel = fetchedSubCategories;
+        emit(SubCategorySuccess());
+      }else{
+        emit(SubCategoryNoInternetConnection());
+      }
     } catch (e) {
-      print(e.toString() + "///////");
-      emit(SubCategoryFailure(e.toString()));
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(SubCategoryNoInternetConnection());
+      }else {
+        emit(SubCategoryFailure(e.toString()));
+      }
     }
   }
 

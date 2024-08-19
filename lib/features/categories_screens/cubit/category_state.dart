@@ -28,6 +28,20 @@ class SelectedCategoryFailure extends CategoryState {
   SelectedCategoryFailure(this.error);
 }
 
+class SelectedCategoryNoInternetConnection extends CategoryState {}
+
+class SelectedCategoryMoreProductsLoading extends CategoryState {}
+
+class SelectedCategoryMoreProductsSuccess extends CategoryState {}
+
+class SelectedCategoryMoreProductsFailure extends CategoryState {
+  final String error;
+
+  SelectedCategoryMoreProductsFailure(this.error);
+}
+
+class SelectedCategoryMoreProductsNoInternetConnection extends CategoryState {}
+
 class SubCategoryLoading extends CategoryState {}
 
 class SubCategorySuccess extends CategoryState {}
@@ -37,6 +51,8 @@ class SubCategoryFailure extends CategoryState {
 
   SubCategoryFailure(this.error);
 }
+
+class SubCategoryNoInternetConnection extends CategoryState {}
 
 class addToCartLoading extends CategoryState {}
 

@@ -34,7 +34,9 @@ class CategoriesSmallCard extends StatelessWidget {
             cubit.setCategoryProductIndex(selectedProductIndex: index);
             cubit.getSelectedCategories(cubit.selectedCategoryId!);
             cubit.getSubCategories(cubit.selectedCategoryId!).then((onValue){
-              cubit.initializeCheckboxes(cubit.subCategoriesModel!.data!.subcategories.length);
+              if(cubit.subCategoriesModel != null){
+                cubit.initializeCheckboxes(cubit.subCategoriesModel!.data!.subcategories.length);
+              }
             });
             Routes.categoryItemsPageRoute.moveTo;
           },

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
@@ -29,10 +34,8 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
       if (controller.position.maxScrollExtent == controller.offset) {
         cubit.hasMoreProducts = true;
         cubit.page++;
-        cubit.getMoreProduct(cubit.selectedCategoryId!)
-            .then((value){
-          if(cubit.hasMoreProducts == true)
-          {
+        cubit.getMoreProduct(cubit.selectedCategoryId!).then((value) {
+          if (cubit.hasMoreProducts == true) {
             cubit.selectOption(AppStrings.defaultEn);
           }
           cubit.hasMoreProducts = null;
@@ -50,17 +53,49 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
           preferredSize: Size(double.infinity, context.height * 0.089),
           child: BlocBuilder<CategoryCubit, CategoryState>(
             builder: (BuildContext context, CategoryState state) {
-              return PrimaryAppBar(
-                  categoryCubit.categoriesModel!.data!
+              return PrimaryAppBar(categoryCubit.categoriesModel!.data!
                   .categories![categoryCubit.selectedProductIndex].name!);
             },
           )),
-      body: BlocBuilder<CategoryCubit, CategoryState>(
+      body: BlocConsumer<CategoryCubit, CategoryState>(
+        listener: (BuildContext context, CategoryState state) {
+          if(state is SelectedCategoryMoreProductsNoInternetConnection ){
+            context.read<CategoryCubit>().page--;
+            Fluttertoast.showToast(msg: AppStrings.pleaseCheckYourInternet);
+          }
+        },
         builder: (BuildContext context, state) {
-          if (categoryCubit.selectedCategoryModel != null) {
+          if (state is SelectedCategoryNoInternetConnection || state is SubCategoryNoInternetConnection) {
+            return NoInternetScreen(
+                buttonOnTap: () { categoryCubit
+                    .getSelectedCategories(categoryCubit.selectedCategoryId!);
+                categoryCubit.getSubCategories(categoryCubit.selectedCategoryId!).then((onValue){
+                  if(categoryCubit.subCategoriesModel != null){
+                    categoryCubit.initializeCheckboxes(categoryCubit.subCategoriesModel!.data!.subcategories.length);
+                  }
+                });
+                });
+          }
+           else if(categoryCubit.selectedCategoryModel.isNull || categoryCubit.subCategoriesModel.isNull)
+           {
+             return Center(
+               child: Theme(
+                 data: Theme.of(context).copyWith(
+                   colorScheme: ColorScheme.fromSwatch().copyWith(
+                     primary: AppColors.primaryColor,
+                   ),
+                 ),
+                 child: CircularProgressIndicator.adaptive(),
+               ),
+             );
+           }
+         else if (categoryCubit.selectedCategoryModel!.data!.products.length > 0 ||
+                categoryCubit.subCategoriesModel!.data!.subcategories.length > 0
+          ) {
             return Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: context.width * 0.045,vertical: context.height * 0.015),
+              padding: EdgeInsets.symmetric(
+                  horizontal: context.width * 0.045,
+                  vertical: context.height * 0.015),
               child: Column(
                 children: [
                   CategoryItemsOptionsRow(
@@ -79,11 +114,14 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
                           SizedBox(
                             height: 15.h,
                           ),
-                          if (context.read<CategoryCubit>().hasMoreProducts == true)
-                              Center(child: SizedBox(
-                                  height: 15.h,
-                                  width: 15.h,
-                                  child: CircularProgressIndicator.adaptive())),
+                          if (context.read<CategoryCubit>().hasMoreProducts ==
+                              true)
+                            Center(
+                                child: SizedBox(
+                                    height: 15.h,
+                                    width: 15.h,
+                                    child:
+                                        CircularProgressIndicator.adaptive())),
                           SizedBox(
                             height: 25.h,
                           ),
@@ -94,16 +132,26 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
                 ],
               ),
             );
-          } else if (categoryCubit.selectedCategoryModel != null &&
-              //   categoryCubit.selectedCategoryModel!.productList.isEmpty &&
-              state is SelectedCategoryFailure) {
-            return Center(child: Text("products not found"));
+          } else if (categoryCubit.selectedCategoryModel!.data!.products.length == 0 ||
+              categoryCubit.subCategoriesModel!.data!.subcategories.length == 0) {
+            return EmptyDataPage(
+              icon: AppAssets.emptyNotificationsIcon,
+              bigFontText: AppStrings.noNotifications,
+              smallFontText: AppStrings.noWishListItemsEn,
+            );
           } else {
             return Center(
-              child: CircularProgressIndicator.adaptive(),
+              child: Text(
+                AppStrings.serverError,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14.sp
+                ),
+              ),
             );
           }
-        },
+        }
       ),
     );
   }
@@ -117,7 +165,8 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
     categoryCubit.maxPriceController.clear();
     categoryCubit.minPrice = null;
     categoryCubit.maxPrice = null;
-    categoryCubit.initializeCheckboxes(categoryCubit.subCategoriesModel!.data!.subcategories.length);
+    categoryCubit.initializeCheckboxes(
+        categoryCubit.subCategoriesModel!.data!.subcategories.length);
     super.dispose();
   }
 }
