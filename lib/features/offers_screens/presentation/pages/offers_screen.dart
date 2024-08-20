@@ -7,8 +7,6 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_grid.dart';

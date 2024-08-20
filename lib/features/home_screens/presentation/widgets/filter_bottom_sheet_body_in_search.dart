@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet_buttons.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/price_container.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/brands_checklist.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_bottom_sheet_buttons_in_search.dart';
-
-import '../../../../core/utils/app_string.dart';
 
 class FilterBottomSheetBodyInSearch extends StatelessWidget {
   const FilterBottomSheetBodyInSearch({super.key, required this.getProductsFunction ,required this.cubit});

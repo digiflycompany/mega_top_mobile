@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/bottom_sheet_app_bar.dart';
-import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet_body.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_bottom_sheet_body_in_search.dart';
 
 import '../../../../core/utils/app_string.dart';

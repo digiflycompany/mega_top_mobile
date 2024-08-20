@@ -227,7 +227,7 @@ class OffersCubit extends Cubit<OffersState> {
     try {
       OfferModel? moreProducts = await offersRepo.getOffers(page: page,minPrice: minPrice,maxPrice: maxPrice);
       if (moreProducts != null && moreProducts.success==true) {
-        offerModel!.data!.products.addAll(moreProducts!.data!.products);
+        offerModel!.data!.products.addAll(moreProducts.data!.products);
         hasMoreProducts = moreProducts.data!.products.isNotEmpty;
         emit(OffersMoreProductSuccess());
       }else{
