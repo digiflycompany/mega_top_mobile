@@ -59,6 +59,20 @@ class SearchFailure extends HomeState {
 
   SearchFailure(this.error);
 }
+class SearchNoInternetConnection extends HomeState {}
+
+
+class SearchMoreProductsSuccess extends HomeState {}
+
+class SearchMoreProductsLoading extends HomeState {}
+
+class SearchMoreProductsFailure extends HomeState {
+  final String error;
+
+  SearchMoreProductsFailure(this.error);
+}
+class SearchMoreProductsNoInternetConnection extends HomeState {}
+
 
 class SubCategoryLoading extends HomeState {}
 

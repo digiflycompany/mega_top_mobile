@@ -51,7 +51,7 @@ class CategoriesRepoImp implements CategoriesRepo {
       int ? maxPrice,
       List<String> ? subCategories,
   }) async {
-   late SelectedCategoryModel selectedCategories;
+    SelectedCategoryModel ? selectedCategories;
     try {
       Response? response =
       await DioHelper.getData(url: EndPoints.selectedCategoriesAPI,
@@ -67,7 +67,7 @@ class CategoriesRepoImp implements CategoriesRepo {
 
   @override
   Future<SubCategoriesModel?> getSubCategories({required String categoryId}) async {
-    late SubCategoriesModel subCategoriesModel;
+    SubCategoriesModel ? subCategoriesModel;
     try {
       Response? response =
           await DioHelper.getData(url: EndPoints.subCategoriesAPI,

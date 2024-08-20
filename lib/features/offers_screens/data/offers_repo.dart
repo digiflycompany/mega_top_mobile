@@ -18,7 +18,7 @@ class OfferRepoImp implements OffersRepo{
      int ? minPrice,
      int ? maxPrice
   }) async {
-    late OfferModel offerModel;
+    OfferModel ? offerModel;
     try {
       Response? response =
       await DioHelper.getData(url: EndPoints.lastOfferAPI,
@@ -32,7 +32,7 @@ class OfferRepoImp implements OffersRepo{
 
   @override
   Future<SubCategoriesModel?> getSubCategories({required String categoryId}) async {
-    late SubCategoriesModel subCategoriesModel;
+    SubCategoriesModel ? subCategoriesModel;
     try {
       Response? response =
       await DioHelper.getData(url: EndPoints.subCategoriesAPI,

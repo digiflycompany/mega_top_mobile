@@ -19,8 +19,8 @@ class OurProductsList extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = context.read<CategoryCubit>();
-          if (cubit.categories != null) {
-            var categories = cubit.categories;
+          if (cubit.categoriesModel != null) {
+            var categories = cubit.categoriesModel;
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: context.width * 0.03),
               child: SizedBox(

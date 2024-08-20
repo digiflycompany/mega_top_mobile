@@ -51,7 +51,7 @@ class CategoriesRepoImp implements SearchRepo {
       String ? searchWord,
       List<String> ? subCategories,
   }) async {
-   late SearchModel selectedCategories;
+    SearchModel ? selectedCategories;
     try {
       Response? response =
       await DioHelper.getData(url: EndPoints.selectedCategoriesAPI,
@@ -67,7 +67,7 @@ class CategoriesRepoImp implements SearchRepo {
 
   @override
   Future<SubCategoriesModel?> getSubCategories({required String categoryId}) async {
-    late SubCategoriesModel subCategoriesModel;
+     SubCategoriesModel ? subCategoriesModel;
     try {
       Response? response =
           await DioHelper.getData(url: EndPoints.subCategoriesAPI,
