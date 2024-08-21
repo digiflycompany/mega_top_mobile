@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
@@ -11,7 +10,6 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
-
 import '../widgets/category_items_grid.dart';
 import '../widgets/category_items_list.dart';
 import '../widgets/category_items_options_row.dart';
@@ -61,7 +59,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
           listener: (BuildContext context, CategoryState state) {
         if (state is SelectedCategoryMoreProductsNoInternetConnection) {
           context.read<CategoryCubit>().page--;
-          Fluttertoast.showToast(msg: AppStrings.pleaseCheckYourInternet);
+          context.read<CategoryCubit>().showErrorToast(context, AppStrings.noInternetConnection, AppStrings.pleaseCheckYourInternet);
         }},
 
           builder: (BuildContext context, state) {

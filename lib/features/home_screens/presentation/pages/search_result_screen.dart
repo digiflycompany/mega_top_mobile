@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
@@ -56,7 +55,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
           listener: (BuildContext context, HomeState state) {
             if (state is SearchMoreProductsNoInternetConnection) {
               context.read<HomeCubit>().page--;
-              Fluttertoast.showToast(msg: AppStrings.pleaseCheckYourInternet);
+              context.read<HomeCubit>().showErrorToast(context, AppStrings.noInternetConnection, AppStrings.pleaseCheckYourInternet);
             }
           },
           builder: (BuildContext context, HomeState state) {

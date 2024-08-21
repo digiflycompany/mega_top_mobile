@@ -77,7 +77,6 @@ class FilterBottomSheetButtons extends StatelessWidget {
                   cubit.maxPrice = null;
                   cubit.initializeCheckboxes(cubit.subCategoriesModel!.data!.subcategories.length);
                   cubit.selectOption(AppStrings.defaultEn);
-                  //    cubit.getSelectedCategories(cubit.selectedCategoryId!);
                   getProductsFunction();
                   Navigator.pop(context);
                 },

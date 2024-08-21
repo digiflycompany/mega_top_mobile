@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
@@ -12,9 +13,6 @@ import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart'
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_grid.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_list.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_options_row.dart';
-
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/widgets/app_bar_fav_icon.dart';
 
 class OffersPage extends StatefulWidget {
   const OffersPage({super.key});
@@ -55,7 +53,7 @@ class _OffersPageState extends State<OffersPage> {
         listener: (BuildContext context, OffersState state) {
           if (state is OffersMoreProductNoInternetConnection) {
             context.read<OffersCubit>().page--;
-            Fluttertoast.showToast(msg: AppStrings.pleaseCheckYourInternet);
+            context.read<OffersCubit>().showErrorToast(context, AppStrings.noInternetConnection, AppStrings.pleaseCheckYourInternet);
           }
         },
         builder: (BuildContext context, OffersState state) {
