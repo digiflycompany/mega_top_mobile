@@ -352,7 +352,7 @@ class AppStrings {
   static const String notificationDate = '8 jan 2024';
   static const String currentOrdersEn = 'Current orders (2)';
   static const String previousOrdersEn = 'Previous Orders (1)';
-  static const String noCurrentOrdersEn = 'No current orders';
+  static const String noCurrentOrdersEn = 'No orders';
   static const String languages = 'Languages';
   static const String contactUs = 'Contact us';
   static const String callUs = 'Call us';
