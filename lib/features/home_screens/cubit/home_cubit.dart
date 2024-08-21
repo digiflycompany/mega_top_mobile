@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
+import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_offer_model.dart';
@@ -304,6 +306,26 @@ class HomeCubit extends Cubit<HomeState> {
         );
       },
     );
+  }
+  void showErrorToast(BuildContext context, String title, String text) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Align(
+        alignment: Alignment.bottomCenter,
+        child: CustomErrorToast(
+          title: title,
+          message: text,
+          color: AppColors.redIconColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
   }
 
   @override
