@@ -29,7 +29,7 @@ class EndPoints {
   static const String addAddressAPI =
       '$baseUrl/api/v1/addresses';
   static const String citiesAPI =
-      '$baseUrl/api/v1/cities?limit=100';
+      '$baseUrl/api/v1/cities?limit=100&sortOrder=asc';
   static const String categoriesAPI = '$baseUrl/api/v1/categories/';
   static const String addToCartAPI = '$baseUrl/api/v1/users/customers/cart';
   static const String getUserCartAPI = '$baseUrl/api/v1/users/customers/cart';
