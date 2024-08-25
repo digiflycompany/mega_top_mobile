@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_details_screen.dart';
 
 class WishListView extends StatelessWidget {
   const WishListView({super.key});
@@ -33,7 +34,28 @@ class WishListView extends StatelessWidget {
                   discountPercent: '0',
                   discount: false,
                   icon: AppAssets.favourFilledIcon,
-                  onTap: ()=>cubit.removeProductFormWishList(wishListItem.id),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainPageProductDetailsScreen(
+                          name: wishListItem.title,
+                          quantity:wishListItem.quantity,
+                          categoryName: wishListItem.categoryId.name,
+                          cubit: context.read<AccountDetailsCubit>(),
+                          description: wishListItem.description,
+                          finalPrice: wishListItem.price.finalPrice.toString(),
+                          originalPrice: wishListItem.price.originalPrice.toString(),
+                          productId: wishListItem.id,
+                          imagePosition: 0,
+                          images: wishListItem.images,
+                        ),
+                      ),
+                    ).then((_) {
+                      context.read<AccountDetailsCubit>().getAccountDetails();
+                    });
+                  },
+                  onTapFavourite: ()=>cubit.removeProductFormWishList(wishListItem.id),
                 ),
               );
             },
