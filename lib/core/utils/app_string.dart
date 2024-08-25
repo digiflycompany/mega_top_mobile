@@ -361,7 +361,8 @@ class AppStrings {
   static const String privacyPolicy = 'Privacy Policy';
   static const String userName = 'Mohamed Nashaat';
   static const String userEmail = 'mohamednashaat7733@gmail.com';
-  static const String selectedLanguage = 'العربية';
+  static const String arabicLanguage = 'العربية';
+  static const String englishLanguage = 'English';
   static const String orders = 'Orders';
   static const String compareProducts = 'Compare Products';
   static const String profile = 'Profile';

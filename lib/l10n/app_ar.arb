@@ -1,4 +1,7 @@
 {
-  "language": "language",
-  "hello": "hello"
+  "@@locale": "ar",
+  "account": "الحساب",
+  "hello": "مرحبا",
+  "home": "الصفحة الرئيسية",
+  "settings": "الإعدادات"
 }

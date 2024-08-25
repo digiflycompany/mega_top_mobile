@@ -1,4 +1,7 @@
 {
-  "language": "language",
-  "hello": "hello"
+  "@@locale": "en",
+  "account": "Account",
+  "hello": "Hello",
+  "home": "Home",
+  "settings": "Settings"
 }

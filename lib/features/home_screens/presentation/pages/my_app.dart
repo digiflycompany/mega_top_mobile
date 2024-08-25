@@ -18,6 +18,8 @@ import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart'
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
 import 'package:mega_top_mobile/l10n/l10n.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -69,6 +71,7 @@ class MyApp extends StatelessWidget {
                   supportedLocales: L10n.all,
                   locale: locale,
                   localizationsDelegates: const [
+                    AppLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate,
                     GlobalCupertinoLocalizations.delegate,
