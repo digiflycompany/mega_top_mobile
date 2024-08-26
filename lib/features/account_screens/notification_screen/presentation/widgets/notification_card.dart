@@ -9,8 +9,8 @@ import 'package:mega_top_mobile/features/account_screens/notification_screen/pre
 
 class NotificationCard extends StatelessWidget {
   final String notificationImage;
-  final String notificationTitle;
-  final String notificationDescription;
+  final String? notificationTitle;
+  final String? notificationDescription;
   final String notificationDate;
   const NotificationCard({super.key, required this.notificationImage,
     required this.notificationTitle,

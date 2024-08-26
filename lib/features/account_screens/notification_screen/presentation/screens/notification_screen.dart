@@ -11,6 +11,7 @@ import 'package:mega_top_mobile/features/account_screens/notification_screen/pre
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/widgets/shimmer_notification_card.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -20,8 +21,8 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
-            child: const PrimaryAppBar(
-              AppStrings.notifications,
+            child: PrimaryAppBar(
+              AppLocalizations.of(context)!.notifications,
               favour: false,
             )),
         body: BlocConsumer<NotificationCubit, NotificationState>(
@@ -42,7 +43,7 @@ class NotificationScreen extends StatelessWidget {
                     itemCount: state.user.notifications!.length,
                     itemBuilder: (BuildContext context, int index) {
                       final notificationItem =state.user.notifications![index].adId;
-                      return Padding(
+                        return Padding(
                           padding: EdgeInsets.only(top: context.height*0.016,bottom: context.height*0.016,right: context.width*0.022,left: context.width*0.022),
                           child: NotificationCard(
                             notificationImage: notificationItem.image,
@@ -57,8 +58,8 @@ class NotificationScreen extends StatelessWidget {
             } else if(state is NotificationSuccess && state.user.notifications!.length==0){
               return EmptyDataPage(
                 icon: AppAssets.emptyNotificationsIcon,
-                bigFontText: AppStrings.noNotifications,
-                smallFontText: AppStrings.noWishListItemsEn,
+                bigFontText: AppLocalizations.of(context)!.noNotifications,
+                smallFontText: AppLocalizations.of(context)!.thereIsNoNewNotification,
               );
             } else if(state is NotificationNoInternetConnection){
               return NoInternetScreen(
