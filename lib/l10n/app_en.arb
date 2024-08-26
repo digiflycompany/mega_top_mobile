@@ -26,5 +26,7 @@
   "sorryThereIsNoInternet": "Sorry, there is no internet!",
   "pleaseCheckYourInternetConnection": "Please check your internet connection\nand try again.",
   "retryToConnect": "Retry to connect",
+  "noNotifications": "No notifications",
+  "thereIsNoNewNotification": "There are no new notifications at the moment. We will\nnotify you when there is something that deserves your\nattention",
   "settings": "Settings"
 }

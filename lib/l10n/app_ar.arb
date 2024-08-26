@@ -26,5 +26,7 @@
   "sorryThereIsNoInternet": "عفواً , لايوجد انترنت !",
   "pleaseCheckYourInternetConnection": "يرجى التحقق من اتصالك بالإنترنت\nوالمحاولة مرة أخرى.",
   "retryToConnect": "أعد محاولة الإتصال",
+  "noNotifications": "لا يوجد إشعارات",
+  "thereIsNoNewNotification": " لا توجد إشعارات جديدة في الوقت الحالي. سنخطرك عندما\nيكون هناك شيء يستحق انتباهك.",
   "settings": "الإعدادات"
 }

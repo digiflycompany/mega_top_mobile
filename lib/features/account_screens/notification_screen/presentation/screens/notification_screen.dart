@@ -58,8 +58,8 @@ class NotificationScreen extends StatelessWidget {
             } else if(state is NotificationSuccess && state.user.notifications!.length==0){
               return EmptyDataPage(
                 icon: AppAssets.emptyNotificationsIcon,
-                bigFontText: AppStrings.noNotifications,
-                smallFontText: AppStrings.noWishListItemsEn,
+                bigFontText: AppLocalizations.of(context)!.noNotifications,
+                smallFontText: AppLocalizations.of(context)!.thereIsNoNewNotification,
               );
             } else if(state is NotificationNoInternetConnection){
               return NoInternetScreen(
