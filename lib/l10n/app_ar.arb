@@ -3,5 +3,15 @@
   "account": "الحساب",
   "hello": "مرحبا",
   "home": "الصفحة الرئيسية",
+  "orders": "الطلبات",
+  "wishList": "المنتجات المفضلة",
+  "notifications": "الإشعارات",
+  "shippingAddresses": "عناوين الشحن",
+  "profile": "الملف الشخصي",
+  "languages": "اللغات",
+  "contactUs": "تواصل معنا",
+  "callUs": "اتصل بنا",
+  "aboutUs": "من نحن",
+  "signOut": "تسجيل الخروج",
   "settings": "الإعدادات"
 }

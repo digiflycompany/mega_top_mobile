@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/locale/locale_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_option_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LanguageItem extends StatelessWidget {
   const LanguageItem({super.key, this.mainIcon, this.title, this.optionalData});
@@ -28,7 +29,7 @@ class LanguageItem extends StatelessWidget {
           }
         },
         mainIcon: mainIcon ?? AppAssets.languageIcon,
-        title: title ?? AppStrings.languages,
+        title: title ?? AppLocalizations.of(context)!.languages,
         optionalData: GestureDetector(
           child: optionalData ??
               BlocBuilder<LocaleCubit, Locale>(

@@ -3,5 +3,15 @@
   "account": "Account",
   "hello": "Hello",
   "home": "Home",
+  "orders": "Orders",
+  "wishList": "Wish List",
+  "notifications": "Notifications",
+  "shippingAddresses": "Shipping Addresses",
+  "profile": "Profile",
+  "languages": "Languages",
+  "contactUs": "Contact us",
+  "callUs": "Call us",
+  "aboutUs": "About us",
+  "signOut": "Sign out",
   "settings": "Settings"
 }
