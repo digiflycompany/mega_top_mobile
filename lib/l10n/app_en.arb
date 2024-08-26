@@ -13,5 +13,18 @@
   "callUs": "Call us",
   "aboutUs": "About us",
   "signOut": "Sign out",
+  "welcomeToMegaTop": "Welcome to Mega Top",
+  "loginOrCreateNewAccount": "Log in or create a new account",
+  "login": "Login",
+  "signUp": "Sign up",
+  "noWishListItems": "No wish list items",
+  "browseOurProducts": "Browse our products and add the products you like to\n your favorite products list by clicking on the heart sign.",
+  "continueShopping": "Continue Shopping",
+  "yourWishList": "Your wish list",
+  "products": "products",
+  "available": "Available",
+  "sorryThereIsNoInternet": "Sorry, there is no internet!",
+  "pleaseCheckYourInternetConnection": "Please check your internet connection\nand try again.",
+  "retryToConnect": "Retry to connect",
   "settings": "Settings"
 }

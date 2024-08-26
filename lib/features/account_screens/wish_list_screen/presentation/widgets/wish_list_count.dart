@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WishListCount extends StatelessWidget {
   const WishListCount({super.key});
@@ -20,7 +20,7 @@ class WishListCount extends StatelessWidget {
         children: [
           /// Your Wish List Text
           Text(
-            AppStrings.yourWishListEn,
+            AppLocalizations.of(context)!.yourWishList,
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,
@@ -40,7 +40,7 @@ class WishListCount extends StatelessWidget {
           HorizontalSpace(context.width*0.011),
           /// Products Text
           Text(
-            AppStrings.products3En,
+            AppLocalizations.of(context)!.products,
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w600,

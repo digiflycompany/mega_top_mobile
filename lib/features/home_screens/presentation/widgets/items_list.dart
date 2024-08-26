@@ -61,11 +61,12 @@ class ProductsListContainer extends StatelessWidget {
             ],
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                    left: context.width * 0.022,
-                    right: context.width * 0.045,
+                padding: EdgeInsetsDirectional.only(
+                    start: context.width * 0.022,
+                    end: context.width * 0.045,
                     top: context.height * 0.012,
                     bottom: context.height * 0.012),
                 child: Stack(
@@ -90,8 +91,8 @@ class ProductsListContainer extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(
-                      right: context.width * 0.045,
+                  padding: EdgeInsetsDirectional.only(
+                      end: context.width * 0.045,
                       top: context.height * 0.03,
                       bottom: context.height * 0.03),
                   child: Column(
@@ -114,7 +115,7 @@ class ProductsListContainer extends StatelessWidget {
                       ListProductType(
                         text: productType,
                       ),
-                      const Spacer(),
+                      //const Spacer(),
                       Row(
                         children: [
                           const AvailableContainer(),
