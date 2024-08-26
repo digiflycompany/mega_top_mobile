@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 
 class NotificationCardTitle extends StatelessWidget {
-  final String title;
+  final String? title;
   const NotificationCardTitle({super.key, required this.title,
   });
 
@@ -15,7 +15,7 @@ class NotificationCardTitle extends StatelessWidget {
         height: context.height32,
         child: FittedBox(
           child: Text(
-            title,
+            title!,
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,
