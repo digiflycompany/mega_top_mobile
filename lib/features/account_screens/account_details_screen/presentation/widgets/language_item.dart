@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/locale/locale_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_option_item.dart';
 
 class LanguageItem extends StatelessWidget {
@@ -18,7 +20,7 @@ class LanguageItem extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 40.h),
       child: AccountOptionItem(
         onTap: (){
-          //context.read<LocaleCubit>().toEnglish();
+          context.read<LocaleCubit>().toEnglish();
         },
         mainIcon: mainIcon ?? AppAssets.languageIcon,
         title: title ?? AppStrings.languages,
