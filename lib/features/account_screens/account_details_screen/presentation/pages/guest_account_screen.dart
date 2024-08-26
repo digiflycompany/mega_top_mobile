@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/about_us_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_screen_headline.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/call_us_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/language_item.dart';
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/privacy_policy_item.dart';
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/terms_and_conditions_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GuestAccountScreen extends StatelessWidget {
   const GuestAccountScreen({super.key});
@@ -23,7 +21,7 @@ class GuestAccountScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const CustomFavouriteAppBar(AppStrings.accountEn)),
+          child: CustomFavouriteAppBar(AppLocalizations.of(context)!.account)),
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: context.width * 0.045,
@@ -39,15 +37,15 @@ class GuestAccountScreen extends StatelessWidget {
                 height: 80.h,
               ),
               VerticalSpace(30.h),
-              Text(AppStrings.welcomeToMegaTopEn,
+              Text(AppLocalizations.of(context)!.welcomeToMegaTop,
                   style:
                       TextStyle(fontWeight: FontWeight.w700, fontSize: 14.sp)),
-              Text(AppStrings.loginOrCreateEnEn,
+              Text(AppLocalizations.of(context)!.loginOrCreateNewAccount,
                   style: TextStyle(fontSize: 12.sp)),
               VerticalSpace(40.h),
               PrimaryButton(
                 content: Text(
-                  AppStrings.signUpEn,
+                  AppLocalizations.of(context)!.signUp,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
@@ -60,50 +58,16 @@ class GuestAccountScreen extends StatelessWidget {
               ),
               VerticalSpace(24.h),
               PrimaryOutlinedButton(
-                text: AppStrings.loginEn,
+                text: AppLocalizations.of(context)!.login,
                 onTap: () => Routes.loginRoute.moveTo,
               ),
               VerticalSpace(50.h),
-              // Align(
-              //     alignment: AlignmentDirectional.topStart,
-              //     child: Text(
-              //       AppStrings.accountEn,
-              //       style: TextStyle(
-              //           fontSize: 14.sp,
-              //           fontWeight: FontWeight.w700,
-              //           color: AppColors.smallTextBlackColor),
-              //     )),
-              // VerticalSpace(25.h),
-              // NotificationItem(
-              //   onTap: () => Routes.notificationPageRoute.moveTo,
-              // ),
-              // VerticalSpace(40.h),
-              Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Text(AppStrings.settings,
-                      style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.smallTextBlackColor))),
+              AccountScreenHeadline(text: AppLocalizations.of(context)!.settings),
               VerticalSpace(25.h),
               const LanguageItem(),
-              VerticalSpace(40.h),
-              Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Text(AppStrings.contactUs,
-                      style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.smallTextBlackColor))),
-              VerticalSpace(25.h),
+              AccountScreenHeadline(text: AppLocalizations.of(context)!.contactUs),
               const CallUsItem(),
-              VerticalSpace(16.h),
               const AboutUsItem(),
-              VerticalSpace(16.h),
-              const TermsAndConditionsItem(),
-              VerticalSpace(16.h),
-              const PrivacyPolicyItem(),
-              VerticalSpace(33.h),
               //const SignOutItem(),
             ],
           ),

@@ -3,6 +3,11 @@
 <plist version="1.0">
 	<dict>
 		<key>CFBundleDevelopmentRegion</key>
+		<key>LSApplicationQueriesSchemes</key>
+        <array>
+          <string>http</string>
+          <string>https</string>
+        </array>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
 		<string>Mega Top Mobile</string>

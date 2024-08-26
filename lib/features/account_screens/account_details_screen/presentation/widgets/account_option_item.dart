@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/locale/locale_cubit.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 
+
 class AccountOptionItem extends StatelessWidget {
-  const AccountOptionItem(
-      {super.key,
-      required this.mainIcon,
-      required this.title,
-      this.optionalData,
-      this.onTap});
+  const AccountOptionItem({super.key,
+    required this.mainIcon,
+    required this.title,
+    this.optionalData,
+    this.onTap});
 
   final String mainIcon;
   final String title;
@@ -46,7 +48,13 @@ class AccountOptionItem extends StatelessWidget {
           const Spacer(),
           if (optionalData != null) optionalData!,
           HorizontalSpace(5.w),
-          Icon(Icons.keyboard_arrow_right, size: 27.r),
+          BlocBuilder<LocaleCubit, Locale>(
+            builder: (context, locale) {
+              return Icon(
+                  locale.languageCode == 'en' ? Icons.keyboard_arrow_right:Icons.keyboard_arrow_left,
+                  size: 27.r);
+            },
+          ),
         ],
       ),
     );

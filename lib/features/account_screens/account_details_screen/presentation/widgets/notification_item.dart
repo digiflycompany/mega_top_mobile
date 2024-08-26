@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_option_item.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/data/repositories/notification_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_state.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationItem extends StatelessWidget {
   const NotificationItem(
@@ -32,7 +32,7 @@ class NotificationItem extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 16.h),
                 child: AccountOptionItem(
                   mainIcon: mainIcon ?? AppAssets.notificationIcon,
-                  title: title ?? AppStrings.notifications,
+                  title: title ?? AppLocalizations.of(context)!.notifications,
                   onTap: () {
                     Navigator.pushNamed(context, Routes.notificationPageRoute).then((_) {
                       cubit.getUserNotification();

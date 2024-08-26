@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -9,6 +10,7 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/presentat
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/cubit/orders_state.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_detailed_card.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_items_list.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 
 class OrdersList extends StatelessWidget {
   const OrdersList({super.key});
@@ -18,11 +20,16 @@ class OrdersList extends StatelessWidget {
     return BlocBuilder<OrdersCubit, OrdersState>(
       builder: (context, state) {
         OrdersCubit ordersCubit = context.read<OrdersCubit>();
-
+        if(state is OrdersLoaded && ordersCubit.orders.isEmpty){
+          return EmptyDataPage(
+            icon: AppAssets.emptyOrderIcon,
+            smallFontText: AppStrings.noCurrentOrdersEn,
+            bigFontText: AppStrings.emptyOrderScreenDescriptionEn,
+          );
+        }
         if (state is OrdersLoading && ordersCubit.orders.isEmpty) {
           return const Center(child: BigCircularProgressIndicator());
         }
-
         if (state is OrdersFailure) {
           ordersCubit.showErrorToast(context, AppStrings.failedToLoadOrders, state.error);
         }

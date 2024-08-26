@@ -30,7 +30,7 @@ class CustomFavouriteAppBar extends StatelessWidget {
       child: AppBar(
         backgroundColor: Colors.white,
         title: Padding(
-          padding: EdgeInsets.only(top: context.height * 0.008),
+          padding: EdgeInsetsDirectional.only(top: context.height * 0.008),
           child: TitleText(text: text),
         ),
         centerTitle: true,
@@ -50,8 +50,8 @@ class CustomFavouriteAppBar extends StatelessWidget {
                         return Align(
                           alignment: Alignment.center,
                           child: Padding(
-                            padding: EdgeInsets.only(
-                                right: context.width * 0.045),
+                            padding: EdgeInsetsDirectional.only(
+                                end: context.width * 0.045),
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.pushNamed(
