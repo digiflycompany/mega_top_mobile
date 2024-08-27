@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_string.dart';
 
 class TotalPriceAmountRow extends StatelessWidget {
   final String? totalAmount;
@@ -16,7 +16,7 @@ class TotalPriceAmountRow extends StatelessWidget {
       children: [
         /// Total Amount Text
         Text(
-          AppStrings.totalAmountEn,
+          AppLocalizations.of(context)!.totalAmount,
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
@@ -35,7 +35,7 @@ class TotalPriceAmountRow extends StatelessWidget {
 
         /// LE
         Text(
-          AppStrings.leEn,
+          AppLocalizations.of(context)!.le,
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,

@@ -8,6 +8,8 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipp
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_checkout_card.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import '../../../../cart_screens/data/models/checkout_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class OrdersDetailsScreen extends StatelessWidget {
   final String? orderId;
@@ -27,8 +29,8 @@ class OrdersDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const PrimaryAppBar(
-            AppStrings.orderDetailsEn,
+          child: PrimaryAppBar(
+            AppLocalizations.of(context)!.orderDetails,
             favour: false,
           )),
       body: Padding(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-
-import '../../../../core/utils/app_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NumberOfProductsRow extends StatelessWidget {
   final String? productQuantity;
@@ -16,7 +15,7 @@ class NumberOfProductsRow extends StatelessWidget {
       children: [
         /// Number Of Products Text
         Text(
-          AppStrings.numberOfProductsEn,
+          AppLocalizations.of(context)!.numberOfProducts,
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w500,
@@ -44,7 +43,7 @@ class NumberOfProductsRow extends StatelessWidget {
 
         /// LE
         Text(
-          AppStrings.leEn,
+          AppLocalizations.of(context)!.le,
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w500,
