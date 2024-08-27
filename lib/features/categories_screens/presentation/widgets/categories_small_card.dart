@@ -57,7 +57,7 @@ class CategoriesSmallCard extends StatelessWidget {
                     ? Expanded(
                         child: CachedNetworkImage(
                           imageUrl: categoryPhoto!,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           width: double.infinity,
                           // placeholder: (context, url) => Center(
                           //   child: Theme(

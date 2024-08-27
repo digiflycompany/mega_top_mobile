@@ -17,7 +17,7 @@ class MainPageProductImages extends StatelessWidget {
         itemBuilder: (context, index) {
           return CachedNetworkImage(
             imageUrl:images[index],
-            fit: BoxFit.fill,
+            fit: BoxFit.contain,
             width: double.infinity,
             errorWidget: (context, url, error) =>
                 Icon(Icons.error),
