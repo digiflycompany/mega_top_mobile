@@ -11,6 +11,8 @@ import 'package:mega_top_mobile/features/account_screens/orders_screen/presentat
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_detailed_card.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_items_list.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class OrdersList extends StatelessWidget {
   const OrdersList({super.key});
@@ -23,8 +25,8 @@ class OrdersList extends StatelessWidget {
         if(state is OrdersLoaded && ordersCubit.orders.isEmpty){
           return EmptyDataPage(
             icon: AppAssets.emptyOrderIcon,
-            smallFontText: AppStrings.noCurrentOrdersEn,
-            bigFontText: AppStrings.emptyOrderScreenDescriptionEn,
+            smallFontText: AppLocalizations.of(context)!.noOrders,
+            bigFontText: AppLocalizations.of(context)!.allOrdersWillBeSaved,
           );
         }
         if (state is OrdersLoading && ordersCubit.orders.isEmpty) {
