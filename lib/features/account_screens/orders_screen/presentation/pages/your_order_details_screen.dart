@@ -56,7 +56,7 @@ class YourOrderDetailsScreen extends StatelessWidget {
                         city: state.user.data!.dropOffAddress!.cityName,
                       ),
                       PaymentMethodSmallCard(
-                        paymentMethod: AppStrings.cashOnDeliveryEn,
+                        paymentMethod: AppLocalizations.of(context)!.cashOnDelivery,
                       ),
                       YourOrderCheckoutCard(
                         products: state.user.data!.products,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-
 import 'customer_name.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ShippingDetailsSmallCardAddress extends StatelessWidget {
   final String? customerName;
@@ -45,7 +45,7 @@ class ShippingDetailsSmallCardAddress extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                AppStrings.city2,
+                AppLocalizations.of(context)!.city,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1, // ensure only one line is displayed with ellipsis
                 style: TextStyle(

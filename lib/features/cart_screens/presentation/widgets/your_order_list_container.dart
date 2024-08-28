@@ -31,9 +31,9 @@ class YourOrderListContainer extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.only(
-              left: context.width * 0.022,
-              right: context.width * 0.045,
+            padding: EdgeInsetsDirectional.only(
+              start: context.width * 0.022,
+              end: context.width * 0.045,
               top: context.height * 0.012,
               bottom: context.height * 0.012,
             ),
@@ -47,8 +47,8 @@ class YourOrderListContainer extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(
-                right: context.width * 0.045,
+              padding: EdgeInsetsDirectional.only(
+                end: context.width * 0.045,
                 top: context.height * 0.025,
                 bottom: context.height * 0.025,
               ),
