@@ -3,12 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/global_repo.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_state.dart';
-
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 
 class LatestOffersCubit extends Cubit<LatestOffersState> {
   final GlobalRepo globalRepo;
   LatestOffersCubit(this.globalRepo) : super(LatestOffersInitial());
 
+  final List<String>? placeHolderImages=[
+    AppAssets.megaTop2Logo,
+  ];
 
   int _currentImageIndex = 0;
 

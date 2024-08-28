@@ -46,7 +46,8 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
               physics: BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  ProductDetailedImage(images: categoryCubit.selectedCategoryModel!
+                  ProductDetailedImage(images:  categoryCubit.selectedCategoryModel!
+                      .data!.products[categoryCubit.selectedProductIndex].images.length==0?context.read<CategoryCubit>().placeHolderImages:categoryCubit.selectedCategoryModel!
                       .data!.products[categoryCubit.selectedProductIndex].images,
                     imagePosition: categoryCubit.currentImageIndex,
                   cubit: categoryCubit,

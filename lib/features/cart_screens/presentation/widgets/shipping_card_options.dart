@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/remove_shipping_details_container.dart';
-
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/spacer.dart';
 import 'customer_name.dart';
 import 'edit_shipping_details_container.dart';
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
 
 class RemoveShippingDetailsContainer extends StatelessWidget {
   final Function()? editOnTap;
@@ -25,7 +25,7 @@ class RemoveShippingDetailsContainer extends StatelessWidget {
 
           /// Remove Text
           Text(
-            AppStrings.removeEn,
+            AppLocalizations.of(context)!.remove,
             style: TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,

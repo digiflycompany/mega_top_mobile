@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
@@ -18,7 +19,9 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
   HomeCubit getCubit(context) => BlocProvider.of(context);
-
+  final List<String>? placeHolderImages=[
+    AppAssets.megaTop2Logo,
+  ];
   bool isGrid = true;
 
   bool noResult = false;

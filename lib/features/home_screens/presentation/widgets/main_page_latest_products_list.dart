@@ -27,7 +27,7 @@ class MainPageLatestProductList extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return BestSellerContainer(
                             productName: state.user.products![index].title,
-                            productPhoto: state.user.products![index].images[0],
+                            productPhoto: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages![0]:state.user.products![index].images![0],
                             productType: state.user.products![index].categoryId.name,
                             productPrice: state.user.products![index].price.finalPrice.toString(),
                             onTap: () {

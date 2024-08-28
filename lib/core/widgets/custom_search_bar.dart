@@ -40,23 +40,23 @@ class CustomSearchBar extends StatelessWidget {
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500),
               ),
-              const Spacer(),
-              Container(
-                width: context.width * 0.145,
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(context.height * 0.006),
-                    bottomRight: Radius.circular(context.height * 0.006),
-                  ),
-                ),
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: context.width * 0.045),
-                  child: SvgPicture.asset(AppAssets.filterWhiteIcon),
-                ),
-              )
+              // const Spacer(),
+              // Container(
+              //   width: context.width * 0.145,
+              //   height: double.infinity,
+              //   decoration: BoxDecoration(
+              //     color: AppColors.primaryColor,
+              //     borderRadius: BorderRadius.only(
+              //       topRight: Radius.circular(context.height * 0.006),
+              //       bottomRight: Radius.circular(context.height * 0.006),
+              //     ),
+              //   ),
+              //   child: Padding(
+              //     padding:
+              //         EdgeInsets.symmetric(horizontal: context.width * 0.045),
+              //     child: SvgPicture.asset(AppAssets.filterWhiteIcon),
+              //   ),
+              // )
             ],
           ),
         ),

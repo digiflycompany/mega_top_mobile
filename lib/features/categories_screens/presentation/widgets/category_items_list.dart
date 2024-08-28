@@ -35,6 +35,7 @@ class CategoryItemsListView extends StatelessWidget {
                 index : index,
                 productName: cubit.selectedCategoryModel!.data!.products[index].title,
                 productPhoto: cubit.selectedCategoryModel!.data!
+                    .products[index].images.length==0?context.read<CategoryCubit>().placeHolderImages![0]:cubit.selectedCategoryModel!.data!
                     .products[index].images[0],
                 productType: cubit.selectedCategoryModel!.data!.products[index].categoryId!.name!,
                 productPrice: cubit.selectedCategoryModel!.data!.products[index].price!.finalPrice!.toString(),

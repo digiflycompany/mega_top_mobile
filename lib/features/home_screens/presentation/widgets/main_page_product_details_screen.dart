@@ -21,7 +21,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_detailed_image.dart';
 
 class MainPageProductDetailsScreen extends StatelessWidget {
-  final List<String> images;
+  final List<String>? images;
   final int imagePosition;
   final String? productId;
   final cubit;
@@ -109,7 +109,7 @@ class MainPageProductDetailsScreen extends StatelessWidget {
                         productId,
                         name,
                         finalPrice,
-                        images[0],
+                        images![0],
                       );
                       print('Product added to cart');
                     },

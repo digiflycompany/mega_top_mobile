@@ -8,7 +8,6 @@ import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_cubit.
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_state.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_state.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/adds_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/best_seller_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_latest_offers_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_latest_products_list.dart';
@@ -35,8 +34,8 @@ class MainPageProducts extends StatelessWidget {
             return Column(
               children: [
                 VerticalSpace(context.height * 0.008),
-                const AdvertisementList(),
-                VerticalSpace(context.height * 0.04),
+                // const AdvertisementList(),
+                // VerticalSpace(context.height * 0.04),
                 const ViewAllRow(
                   bigText: AppStrings.bestSellerEn,
                 ),
