@@ -68,6 +68,7 @@ class BestSellerContainer extends StatelessWidget {
                         color: AppColors.iconsBackgroundColor,
                       ),
                       child: CachedNetworkImage(
+                        fit: BoxFit.contain,
                         imageUrl: productPhoto!,
                                           width: context.width * 0.27,
                                         ),

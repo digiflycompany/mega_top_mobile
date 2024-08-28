@@ -62,7 +62,7 @@ class LatestProductsContainer extends StatelessWidget {
                       ? CachedNetworkImage(
                                           imageUrl: productPhoto!,
                                           width: double.infinity,
-                                          fit: BoxFit.fill,
+                                          fit: BoxFit.contain,
                                           errorWidget: (context, url, error) => Icon(Icons.error),
                                         )
                       : Image.asset("assets/images/ad.png", width: context.width * 0.13),

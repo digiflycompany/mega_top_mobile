@@ -18,7 +18,7 @@ class NotificationCardImage extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: photo,
         //width: photoWidth ?? context.width * 0.16,
-        fit: BoxFit.cover,
+        fit: BoxFit.contain,
         errorWidget: (context, url, error) =>
             Icon(Icons.error),
       ),

@@ -10,8 +10,8 @@ class CardTitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-          bottom: context.height * 0.022, left: context.width * 0.045),
+      padding: EdgeInsetsDirectional.only(
+          bottom: context.height * 0.022, start: context.width * 0.045),
       child: Text(
         title!,
         style: TextStyle(

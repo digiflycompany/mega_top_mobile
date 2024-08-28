@@ -56,6 +56,7 @@ class OurProductsContainer extends StatelessWidget {
                 children: [
                   productPhoto.isNotNull
                       ? CachedNetworkImage(
+                    fit: BoxFit.contain,
                     imageUrl: productPhoto!,
                     width: context.width * 0.13,
                     errorWidget: (context, url, error) => Icon(Icons.error),
