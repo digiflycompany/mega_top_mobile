@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/global_repo.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_state.dart';
@@ -9,7 +10,9 @@ class LatestProductsCubit extends Cubit<LatestProductsState> {
   final GlobalRepo globalRepo;
   LatestProductsCubit(this.globalRepo) : super(LatestProductsInitial());
   int _currentImageIndex = 0;
-
+  final List<String>? placeHolderImages=[
+    AppAssets.megaTop2Logo,
+  ];
   int get currentImageIndex => _currentImageIndex;
 
   void setImageIndex(int index) {

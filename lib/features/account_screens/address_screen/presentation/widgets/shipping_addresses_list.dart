@@ -13,6 +13,7 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/shipping_addresses_list_shimmer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShippingAddressDetailsList extends StatelessWidget {
   const ShippingAddressDetailsList({super.key});
@@ -66,7 +67,7 @@ class ShippingAddressDetailsList extends StatelessWidget {
               ),
               VerticalSpace(context.height * 0.012),
               PrimaryOutlinedButton(
-                    text: AppStrings.addNewAddressEn,
+                    text: AppLocalizations.of(context)!.addNewAddress,
                     onTap: () {
                       Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute).then((_) {
                         context.read<AddressCubit>().getUserAddresses();

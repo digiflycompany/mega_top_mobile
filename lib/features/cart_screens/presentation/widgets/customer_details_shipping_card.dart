@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/customer_city_shipping_card.dart';
-
 import 'customer_address_shipping_card.dart';
 
 class CustomerDetailsShippingAddress extends StatelessWidget {

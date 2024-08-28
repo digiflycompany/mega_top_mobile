@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -24,6 +25,9 @@ class ProductsGridContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String>? placeHolderImages=[
+      AppAssets.megaTop2Logo,
+    ];
     return GestureDetector(
       onTap: () {
         onTap!();
@@ -64,7 +68,8 @@ class ProductsGridContainer extends StatelessWidget {
                         color: AppColors.iconsBackgroundColor,
                       ),
                       child: CachedNetworkImage(
-                        imageUrl: product.images[0],
+                        //imageUrl: product.images[0],
+                        imageUrl: product.images.length==0?placeHolderImages![0]:product.images[0],
                         fit: BoxFit.contain,
                         width: double.infinity,
                         errorWidget: (context, url, error) =>

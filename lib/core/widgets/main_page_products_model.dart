@@ -54,7 +54,7 @@ class Product {
   final List<SubCategory> subcategoryId;
   final Price price;
   final String currency;
-  final List<String> images;
+  final List<String>? images;
   final int unitsSold;
   final AddedBy addedBy;
   final bool active;

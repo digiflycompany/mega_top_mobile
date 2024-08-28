@@ -26,7 +26,9 @@ class CategoryCubit extends Cubit<CategoryState> {
   bool addedToFavourites = false;
   bool addedToCompare = false;
   String _selectedValue = AppStrings.defaultEn;
-
+  final List<String>? placeHolderImages=[
+    AppAssets.megaTop2Logo,
+  ];
   String get selectedValue => _selectedValue;
   List< bool> checkboxStates = [];
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
