@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RemoveItemDialogTitle extends StatelessWidget {
   const RemoveItemDialogTitle({super.key});
@@ -30,7 +30,7 @@ class RemoveItemDialogTitle extends StatelessWidget {
         child: Align(
           alignment: AlignmentDirectional.centerStart,
           child: Text(
-            AppStrings.removeItem,
+            AppLocalizations.of(context)!.removeItem,
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,
