@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/repositories/address_repo.dart';
@@ -13,6 +12,7 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/city_drop_down.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/save_address_button.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddNewAddressScreen extends StatefulWidget {
   const AddNewAddressScreen({super.key});
@@ -32,8 +32,8 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
         resizeToAvoidBottomInset: true,
         appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const PrimaryAppBar(
-            AppStrings.addNewAddress,
+          child: PrimaryAppBar(
+            AppLocalizations.of(context)!.addNewAddress,
             favour: false,
           ),
         ),

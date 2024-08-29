@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditAddressButton extends StatelessWidget {
   final String addressID;
@@ -21,7 +21,7 @@ class EditAddressButton extends StatelessWidget {
         return ButtonBottomNavBar(
           button: PrimaryButton(
             content: state is EditAddressLoading?const ButtonCircularProgress():Text(
-              AppStrings.editAddress,
+              AppLocalizations.of(context)!.editAddress,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
