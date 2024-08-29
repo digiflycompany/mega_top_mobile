@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/edit_drop_down_field.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UpdateCityDropDown extends StatefulWidget {
   final String? initialCityName;
@@ -40,9 +40,9 @@ class _UpdateCityDropDownState extends State<UpdateCityDropDown> {
           return Padding(
             padding: EdgeInsets.only(bottom: 40.h),
             child: EditDropdownField(
-              title: AppStrings.city,
+              title: AppLocalizations.of(context)!.cityTextField,
               items: cityNames,
-              hintText: AppStrings.selectYourCity,
+              hintText: AppLocalizations.of(context)!.selectYourCity,
               selectedValue: selectedCityName,
               onChanged: (value) async {
                 if (value != null) {
@@ -57,7 +57,7 @@ class _UpdateCityDropDownState extends State<UpdateCityDropDown> {
               },
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return AppStrings.pleaseChooseYourCity;
+                  return AppLocalizations.of(context)!.pleaseChooseYourCity;
                 }
                 return null;
               },

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
@@ -81,9 +80,9 @@ class ShippingAddressDetailsList extends StatelessWidget {
         else if (state is UserAddressesSuccess && state.user.data.length==0) {
           return EmptyDataPage(
             icon: AppAssets.emptyAddressIcon,
-            bigFontText: AppStrings.noShippingAddressEn,
-            smallFontText: AppStrings.emptyAddressPageDescription,
-            buttonText: AppStrings.addNewAddressEn,
+            bigFontText: AppLocalizations.of(context)!.noShippingAddresses,
+            smallFontText: AppLocalizations.of(context)!.youHaveNoSavedAddresses,
+            buttonText: AppLocalizations.of(context)!.addNewAddress,
             buttonOnTap: () {
               Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute)
                   .then((_) {
