@@ -37,6 +37,10 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
   final emailRegex =
   RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
+  final List<String>? placeHolderImages=[
+    AppAssets.megaTop2Logo,
+  ];
+
   bool isPasswordVisible = true;
 
   List<WishlistItem> _wishList = [];

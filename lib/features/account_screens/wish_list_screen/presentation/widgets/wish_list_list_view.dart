@@ -31,7 +31,7 @@ class WishListView extends StatelessWidget {
                 padding: EdgeInsets.only(right: context.width*0.011,left: context.width*0.011, bottom: context.height*0.027,top: context.height*0.006),
                 child: ProductsListContainer(
                   productName: wishListItem.title,
-                  productPhoto: wishListItem.images[0],
+                  productPhoto:  wishListItem.images.length==0?context.read<AccountDetailsCubit>().placeHolderImages![0]:wishListItem.images[0],
                   productType: locale.languageCode == 'en'?wishListItem.categoryId.name:wishListItem.categoryId.nameAr,
                   productPrice: wishListItem.price.finalPrice.toString(),
                   discountPercent: '0',
@@ -51,7 +51,7 @@ class WishListView extends StatelessWidget {
                           originalPrice: wishListItem.price.originalPrice.toString(),
                           productId: wishListItem.id,
                           imagePosition: 0,
-                          images: wishListItem.images,
+                          images: wishListItem.images.length==0?context.read<AccountDetailsCubit>().placeHolderImages:wishListItem.images,
                         ),
                       ),
                     ).then((_) {

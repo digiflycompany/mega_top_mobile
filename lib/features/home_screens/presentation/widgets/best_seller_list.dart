@@ -45,7 +45,7 @@ class BestSellerList extends StatelessWidget {
                                    originalPrice: state.user.products![index].price.originalPrice.toString(),
                                    productId: state.user.products![index].id,
                                    imagePosition: context.read<LatestProductsCubit>().currentImageIndex,
-                                   images: state.user.products![index].images,
+                                    images: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages!:state.user.products![index].images!,
                                   ),
                                 ),
                               ).then((_) {

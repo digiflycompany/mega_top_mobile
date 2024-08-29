@@ -44,7 +44,7 @@ class MainPageLatestOffersList extends StatelessWidget {
                                     originalPrice: state.user.products![index].price.originalPrice.toString(),
                                     productId: state.user.products![index].id,
                                     imagePosition: context.read<LatestOffersCubit>().currentImageIndex,
-                                    images: state.user.products![index].images,
+                                    images: state.user.products![index].images!.length==0?context.read<LatestOffersCubit>().placeHolderImages!:state.user.products![index].images!,
                                   ),
                                 ),
                               );
