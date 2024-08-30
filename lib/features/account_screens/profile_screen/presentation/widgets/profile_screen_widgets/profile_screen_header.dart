@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreenHeader extends StatelessWidget {
   const ProfileScreenHeader({super.key});
@@ -17,7 +18,7 @@ class ProfileScreenHeader extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Welcome, ",
+              Text(AppLocalizations.of(context)!.welcome,
                   style: TextStyle(
                       fontWeight: FontWeight.w700, fontSize: 16.sp)),
               Text(PreferencesHelper.getName(),

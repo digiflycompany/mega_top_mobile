@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/profile_screen_widgets/profile_option_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfileItem extends StatelessWidget {
   const EditProfileItem({super.key, this.mainIcon, this.title, this.onTap});
@@ -22,7 +23,7 @@ class EditProfileItem extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 24.h),
           child: ProfileOptionItem(
             mainIcon: AppAssets.editProfileIcon,
-            title: "Edit profile details",
+            title: AppLocalizations.of(context)!.editProfileDetails,
             onTap: () {
               Navigator.pushNamed(
                 context,
