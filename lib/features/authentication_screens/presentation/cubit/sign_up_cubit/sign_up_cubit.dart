@@ -22,7 +22,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   String passwordPattern =
       r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
   final emailRegex =
-  RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+  RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$');
 
   TextEditingController signUpEmailController = TextEditingController();
   TextEditingController signUpFullNameController = TextEditingController();
