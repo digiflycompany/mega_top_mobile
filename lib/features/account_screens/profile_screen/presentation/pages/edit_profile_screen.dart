@@ -16,6 +16,7 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   late AccountDetailsCubit accountDetailsCubit;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -34,14 +35,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           favour: false,
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.066),
-        child: const SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: EditProfileDetailsFields(),
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: context.width * 0.066),
+          child: const SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: EditProfileDetailsFields(),
+          ),
         ),
       ),
-      bottomNavigationBar: const UpdateUserDetailsButton(),
+      bottomNavigationBar: UpdateUserDetailsButton(formKey: _formKey,),
     );
   }
 }
