@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/password_text_field.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditPasswordTextField extends StatelessWidget {
   final String title;
@@ -33,11 +33,28 @@ class EditPasswordTextField extends StatelessWidget {
               isPasswordVisible: cubit.isPasswordVisible,
               togglePassword: () => cubit.togglePasswordVisibility(),
               validator: (value) {
-                RegExp regExp = new RegExp(cubit.passwordPattern);
                 if (value == null || value.isEmpty) {
-                  return AppStrings.pleaseEnterYourPassword;
-                } else if (!regExp.hasMatch(value)) {
-                  return AppStrings.passwordVerification;
+                  return AppLocalizations.of(context)!.pleaseEnterYourPassword;
+                }
+
+                if (!RegExp(r'^(?=.*[A-Z])').hasMatch(value)) {
+                  return AppLocalizations.of(context)!.passwordFirstValidation;
+                }
+
+                if (!RegExp(r'^(?=.*[a-z])').hasMatch(value)) {
+                  return AppLocalizations.of(context)!.passwordSecondValidation;
+                }
+
+                if (!RegExp(r'^(?=.*\d)').hasMatch(value)) {
+                  return AppLocalizations.of(context)!.passwordThirdValidation;
+                }
+
+                if (!RegExp(r'^(?=.*[@$!%*?&])').hasMatch(value)) {
+                  return AppLocalizations.of(context)!.passwordFourthValidation;
+                }
+
+                if (value.length < 7) {
+                  return AppLocalizations.of(context)!.passwordFifthValidation;
                 }
                 return null;
               },

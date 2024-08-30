@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/password_text_field.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_password_screen_widgets/update_password_shimmer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ConfirmNewPasswordTextFieldItem extends StatelessWidget {
   const ConfirmNewPasswordTextFieldItem({super.key});
@@ -22,7 +22,7 @@ class ConfirmNewPasswordTextFieldItem extends StatelessWidget {
             state is UpdatingPasswordLoading?UpdatePasswordShimmer():Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(AppStrings.confirmNewPassword,
+                Text(AppLocalizations.of(context)!.confirmNewPassword,
                     style: TextStyle(
                         color: AppColors.greyTextColor,
                         fontWeight: FontWeight.w500,
@@ -34,9 +34,9 @@ class ConfirmNewPasswordTextFieldItem extends StatelessWidget {
                   togglePassword: () => cubit.togglePasswordVisibility(),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return AppStrings.pleaseConfirmYourPassword;
+                      return AppLocalizations.of(context)!.pleaseConfirmYourPassword;
                     } else if (cubit.confirmNewPasswordController.text != cubit.newPasswordController.text) {
-                      return AppStrings.passwordsNotMatching;
+                      return AppLocalizations.of(context)!.passwordsDoNotMatch;
                     }
                     return null;
                   },
