@@ -1,6 +1,10 @@
 {
   "@@locale": "en",
   "account": "Account",
+  "homeNavBar": "Home",
+  "categories": "Categories",
+  "offers": "Offers",
+  "cart": "Cart",
   "hello": "Hello",
   "home": "Home",
   "orders": "Orders",

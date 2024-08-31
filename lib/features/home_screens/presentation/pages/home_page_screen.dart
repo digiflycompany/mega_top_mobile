@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/guest_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
@@ -14,6 +13,7 @@ import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/main_screen.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offers_screen.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                       ? AppAssets.homeSelectedIcon
                       : AppAssets.homeUnselectedIcon,
                 ),
-                label: AppStrings.homeEn,
+                label: AppLocalizations.of(context)!.homeNavBar,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                       ? AppAssets.categoriesSelectedIcon
                       : AppAssets.categoriesUnselectedIcon,
                 ),
-                label: AppStrings.categoriesEn,
+                label: AppLocalizations.of(context)!.categories,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                       ? AppAssets.offersSelectedIcon
                       : AppAssets.offersUnselectedIcon,
                 ),
-                label: AppStrings.offersEn,
+                label: AppLocalizations.of(context)!.offers,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                       ? AppAssets.cartSelectedIcon
                       : AppAssets.cartUnselectedIcon,
                 ),
-                label: AppStrings.cartEn,
+                label: AppLocalizations.of(context)!.cart,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                       ? AppAssets.accountSelectedIcon
                       : AppAssets.accountUnselectedIcon,
                 ),
-                label: AppStrings.accountEn,
+                label: AppLocalizations.of(context)!.account,
               ),
             ],
           ),

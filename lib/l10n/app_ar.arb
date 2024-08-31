@@ -1,6 +1,10 @@
 {
   "@@locale": "ar",
   "account": "الحساب",
+  "homeNavBar": "الرئيسية",
+  "categories": "الأقسام",
+  "offers": "العروض",
+  "cart": "سلة التسوق",
   "hello": "مرحبا",
   "home": "الصفحة الرئيسية",
   "orders": "الطلبات",
