@@ -14,6 +14,7 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/profile_screen_widgets/remove_account_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AccountDetailsCubit extends Cubit<AccountDetailsState> {
   final AccountDetailsRepo accountDetailsRepo;
@@ -235,7 +236,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       showErrorToast(context, AppStrings.removingAccountFailed,state.error);
     }
     if(state is AccountDetailsNoInternetConnection){
-      showErrorToast(context, AppStrings.removingAccountFailed,AppStrings.noInternetConnectionPlease);
+      showErrorToast(context, AppStrings.removingAccountFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
@@ -244,7 +245,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       showErrorToast(context, AppStrings.updatingPasswordFailed,state.error);
     }
     if(state is AccountDetailsNoInternetConnection){
-      showErrorToast(context, AppStrings.updatingPasswordFailed,AppStrings.noInternetConnectionPlease);
+      showErrorToast(context, AppStrings.updatingPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 

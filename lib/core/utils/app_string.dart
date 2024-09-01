@@ -250,8 +250,8 @@ class AppStrings {
   static const String cartEn = 'Cart';
   static const String loginFailed = 'Login Failed';
   static const String creatingNewPasswordFailed = 'Creating new Password Failed';
-  static const String noInternetConnectionPlease =
-      'No internet connection. Please try again.';
+  // static const String noInternetConnectionPlease =
+  //     'No internet connection. Please try again.';
   static const String noInternetConnection = 'No internet connection';
   static const String storageEn = 'Storage';
   static const String accountEn = 'Account';

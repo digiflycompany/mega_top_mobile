@@ -31,9 +31,9 @@ class CategoryItemsGridView extends StatelessWidget {
           ),
           itemBuilder: (BuildContext context, int index) {
               return Padding(
-                padding: EdgeInsets.only(
-                  right: context.width * 0.011,
-                  left: context.width * 0.011,
+                padding: EdgeInsetsDirectional.only(
+                  end: context.width * 0.011,
+                  start: context.width * 0.011,
                   top: context.height * 0.004,
                 ),
                 child: ProductsGridContainer(

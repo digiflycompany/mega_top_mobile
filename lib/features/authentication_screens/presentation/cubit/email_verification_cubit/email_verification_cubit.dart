@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repositories/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmailVerificationCubit extends Cubit<EmailVerificationState> {
   final AuthRepo authRepo;
@@ -114,7 +115,7 @@ class EmailVerificationCubit extends Cubit<EmailVerificationState> {
       codeSentToast(context);
     } else if (state is EmailVerificationNoInternetConnection) {
       showErrorToast(
-          context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
+          context, AppStrings.emailVerificationFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 }

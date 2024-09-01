@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_toast.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GlobalCubit extends Cubit<GlobalState> {
   final GlobalRepo globalRepo;
@@ -165,7 +166,7 @@ class GlobalCubit extends Cubit<GlobalState> {
         width: MediaQuery.of(context).size.width,
         child: AnimatedOverlayIconToast(
           toastIcon: AppAssets.addToWishListIcon,
-          message: AppStrings.theProductAddedToWishListEn,
+          message: AppLocalizations.of(context)!.theProductAddedToWishList,
           color: AppColors.primaryGreenColor,
           onDismissed: () {
             if (overlayEntry != null) {
@@ -187,7 +188,7 @@ class GlobalCubit extends Cubit<GlobalState> {
         width: MediaQuery.of(context).size.width,
         child: AnimatedOverlayIconToast(
           toastIcon: AppAssets.removeFromWishListIcon,
-          message: AppStrings.theProductRemovedFromWishListEn,
+          message: AppLocalizations.of(context)!.theProductRemovedFromWishList,
           color: AppColors.primaryRedColor,
           onDismissed: () {
             if (overlayEntry != null) {
@@ -217,7 +218,7 @@ class GlobalCubit extends Cubit<GlobalState> {
       showErrorToast(context, AppStrings.removeFromWishListFailed, state.error);
     }
     if(state is WishListNoInternetConnection){
-      showErrorToast(context, AppStrings.noInternet, AppStrings.noInternetConnectionPlease);
+      showErrorToast(context, AppLocalizations.of(context)!.noInternet, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 

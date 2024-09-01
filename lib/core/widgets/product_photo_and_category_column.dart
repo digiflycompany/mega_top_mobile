@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../utils/app_color.dart';
-import '../utils/app_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductPhotoAndCategoryColumn extends StatelessWidget {
   final String? productImage;
@@ -18,7 +17,7 @@ class ProductPhotoAndCategoryColumn extends StatelessWidget {
       children: [
         /// Added To Product Text ///
         Text(
-          AppStrings.theProductAddedToCartEn,
+          AppLocalizations.of(context)!.productAddedToCart,
           style: TextStyle(
               color: AppColors.primaryGreenColor,
               fontWeight: FontWeight.w700,

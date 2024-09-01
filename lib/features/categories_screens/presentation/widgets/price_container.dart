@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/price_text_field.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PriceContainer extends StatelessWidget {
   const PriceContainer({super.key, required this.minPriceController, required this.maxPriceController});
@@ -19,7 +19,7 @@ class PriceContainer extends StatelessWidget {
         Align(
           alignment: AlignmentDirectional.topStart,
           child: Text(
-            AppStrings.priceBottomSheetEn,
+            AppLocalizations.of(context)!.price2,
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
@@ -32,7 +32,7 @@ class PriceContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              AppStrings.fromEn,
+              AppLocalizations.of(context)!.from,
               style: TextStyle(
                   color: AppColors.smallTextBlackColor,
                   fontWeight: FontWeight.w600,
@@ -41,7 +41,7 @@ class PriceContainer extends StatelessWidget {
             Expanded(
               child: Center(
                 child: Text(
-                  AppStrings.toEn,
+                  AppLocalizations.of(context)!.to,
                   style: TextStyle(
                       color: AppColors.smallTextBlackColor,
                       fontWeight: FontWeight.w600,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotAvailableContainer extends StatelessWidget {
   const NotAvailableContainer({super.key});
@@ -21,7 +21,7 @@ class NotAvailableContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            AppStrings.outOfStockEn,
+            AppLocalizations.of(context)!.outOfStock,
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,

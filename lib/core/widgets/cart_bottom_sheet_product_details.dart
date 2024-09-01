@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/product_photo_and_category_column.dart';
-
-import '../utils/app_assets.dart';
-import '../utils/app_color.dart';
-import '../utils/app_string.dart';
-import '../utils/spacer.dart';
 import 'animated_check_sign_circle.dart';
 
 class CartBottomSheetProductDetails extends StatelessWidget {

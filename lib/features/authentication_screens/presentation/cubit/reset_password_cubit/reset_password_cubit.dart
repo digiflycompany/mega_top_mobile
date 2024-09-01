@@ -12,6 +12,7 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/cub
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/success_pop_up.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final AuthRepo authRepo;
@@ -196,7 +197,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     }
     if(state is ResetPasswordNoInternetConnection){
       showErrorToast(
-          context, AppStrings.creatingNewPasswordFailed,AppStrings.noInternetConnectionPlease);
+          context, AppStrings.creatingNewPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
@@ -210,7 +211,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     }
     if(state is ResetPasswordNoInternetConnection){
       showErrorToast(
-          context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
+          context, AppStrings.emailVerificationFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
     if(state is ResendResetPasswordCodeSuccess){
       codeSentToast(context);
@@ -228,7 +229,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       showErrorToast(context, AppStrings.resetPasswordFailed,state.error);
     }
     if(state is ResetPasswordNoInternetConnection){
-      showErrorToast(context, AppStrings.resetPasswordFailed,AppStrings.noInternetConnectionPlease);
+      showErrorToast(context, AppStrings.resetPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
