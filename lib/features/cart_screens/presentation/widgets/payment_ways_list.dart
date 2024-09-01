@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/models/payment_card_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PaymentWaysList extends StatelessWidget {
   const PaymentWaysList({super.key});
@@ -11,7 +11,7 @@ class PaymentWaysList extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<PaymentCardModel> paymentCard = [
       PaymentCardModel(
-        paymentType: AppStrings.cashOnDeliveryEn,
+        paymentType:  AppLocalizations.of(context)!.cashOnDelivery,
         paymentIcon: AppAssets.walletIcon,
       ),
     ];

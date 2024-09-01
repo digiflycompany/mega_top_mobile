@@ -10,8 +10,8 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/order_confirmation_screen.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
-
 import 'cart_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CartCubit extends Cubit<CartState> {
   final CartRepo cartRepo;
@@ -153,10 +153,10 @@ class CartCubit extends Cubit<CartState> {
       Routes.paymentMethodsPageRoute.moveTo;
     }
     else if (state is CartSentToAPIFailure) {
-      showErrorToast(context, AppStrings.addToCartFailed, state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.addToCartFailed, state.error);
     }
     else if (state is CartNoInternetConnection) {
-      showErrorToast(context, AppStrings.addToCartFailed, AppStrings.pleaseCheckYourInternet);
+      showErrorToast(context, AppLocalizations.of(context)!.addToCartFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
