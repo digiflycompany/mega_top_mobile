@@ -67,8 +67,8 @@ class PrimaryAppBar extends StatelessWidget {
                             return Align(
                               alignment: Alignment.center,
                               child: Padding(
-                                padding: EdgeInsets.only(
-                                    right: context.width * 0.045),
+                                padding: EdgeInsetsDirectional.only(
+                                    end: context.width * 0.045),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.pushNamed(
