@@ -5,8 +5,7 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/brands_checklist.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet_buttons.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/price_container.dart';
-
-import '../../../../core/utils/app_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FilterBottomSheetBody extends StatelessWidget {
   const FilterBottomSheetBody({super.key, required this.getProductsFunction ,required this.cubit});
@@ -26,7 +25,7 @@ class FilterBottomSheetBody extends StatelessWidget {
               Align(
                 alignment: AlignmentDirectional.topStart,
                 child: Text(
-                  AppStrings.brandEn,
+                  AppLocalizations.of(context)!.brand,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,

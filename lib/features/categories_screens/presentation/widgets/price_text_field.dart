@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
 
 class PriceTextField extends StatelessWidget {
   const PriceTextField({super.key, required this.price});
@@ -24,7 +24,7 @@ class PriceTextField extends StatelessWidget {
             controller: price,
             cursorColor: AppColors.blackGreyColor,
             decoration: InputDecoration(
-              labelText: AppStrings.priceInEgpEn,
+              labelText: AppLocalizations.of(context)!.priceInEGP,
               labelStyle: TextStyle(
                   color: AppColors.blackGreyColor,
                   fontWeight: FontWeight.w500,
