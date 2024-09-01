@@ -16,6 +16,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cart_screen_address.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/checkout_button_content.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -28,7 +29,7 @@ class CartPage extends StatelessWidget {
         backgroundColor: AppColors.circleAvatarBackground,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(context.height * 0.089),
-          child: const CustomFavouriteAppBar(AppStrings.shoppingCartEn),
+          child: CustomFavouriteAppBar(AppLocalizations.of(context)!.cart),
         ),
         body: Column(
           children: [
