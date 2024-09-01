@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
@@ -54,13 +53,13 @@ class CategoriesPage extends StatelessWidget {
                 }else if(cubit.categoriesModel!.data!.categories!.length == 0){
                  return EmptyDataPage(
                     icon: AppAssets.emptyNotificationsIcon,
-                    bigFontText: AppStrings.noCategoriesEn,
-                    smallFontText: AppStrings.noCategoriesListItemsEn,
+                    bigFontText: AppLocalizations.of(context)!.noCategories,
+                    smallFontText: AppLocalizations.of(context)!.noCategoriesListItems,
                   );
                 }
                   return Center(
                     child: Text(
-                      AppStrings.serverError,
+                      AppLocalizations.of(context)!.serverError,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,

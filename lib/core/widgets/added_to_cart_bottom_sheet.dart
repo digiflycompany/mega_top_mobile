@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
-
 import 'cart_bottom_sheet_product_details.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddToCartBottomSheet extends StatelessWidget {
   const AddToCartBottomSheet({super.key});
@@ -30,7 +29,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                         /// View Cart Button
                         PrimaryButton(
                           content: Text(
-                            AppStrings.viewCartEn,
+                            AppLocalizations.of(context)!.viewCart,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
@@ -45,7 +44,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                         VerticalSpace(context.height * 0.033),
                         /// Continue Shopping Button
                         PrimaryOutlinedButton(
-                          text: AppStrings.continueShoppingEn,
+                          text: AppLocalizations.of(context)!.continueShopping,
                           onTap: () => Navigator.pop(context),
                         ),
                       ],

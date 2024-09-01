@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/features/authentication_screens/data/repositorie
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   final AuthRepo authRepo;
@@ -109,7 +110,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       showErrorToast(context, AppStrings.signUpFailed,state.error);
     }
     if(state is SignUpNoInternetConnection){
-      showErrorToast(context, AppStrings.signUpFailed,AppStrings.noInternetConnectionPlease);
+      showErrorToast(context, AppStrings.signUpFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 }

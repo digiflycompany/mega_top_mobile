@@ -30,8 +30,8 @@ class FavourCompareColumn extends StatelessWidget {
               return Align(
                 alignment: AlignmentDirectional.topEnd,
                 child: Padding(
-                  padding: EdgeInsets.only(
-                      right: context.width * 0.045,
+                  padding: EdgeInsetsDirectional.only(
+                      end: context.width * 0.045,
                       top: context.height * 0.010),
                   child: Column(
                     children: [
