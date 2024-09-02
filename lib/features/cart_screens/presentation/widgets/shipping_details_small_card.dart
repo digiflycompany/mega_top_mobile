@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_small_description.dart';
-
-import '../../../../core/utils/app_color.dart';
 import 'card_title_text.dart';
 import 'custom_divider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShippingDetailsSmallCard extends StatelessWidget {
   const ShippingDetailsSmallCard({super.key});
@@ -26,11 +25,11 @@ class ShippingDetailsSmallCard extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: context.height * 0.022),
-          child: const Column(
+          child:  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CardTitleText(
-                title: AppStrings.shippingDetailsEn,
+                title: AppLocalizations.of(context)!.shippingDetails,
               ),
               CustomDivider(),
               ShippingDetailsSmallDescription()

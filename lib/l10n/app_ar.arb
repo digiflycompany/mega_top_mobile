@@ -115,6 +115,7 @@
   "selectTheDeliveryAddress": "اختر عنوان التوصيل",
   "confirmingAddressFailed": "فشل تأكيد العنوان",
   "youHaveToSelectAnAddress": "يجب عليك تحديد عنوان",
+  "orderSummary": "ملخص الطلب",
   "confirmShippingAddress": "تأكيد عنوان الشحن",
   "city": "المدينة: ",
   "name": "الإسم",

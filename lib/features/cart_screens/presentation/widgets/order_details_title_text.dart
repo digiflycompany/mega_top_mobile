@@ -4,6 +4,7 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderDetailsTitleText extends StatelessWidget {
   const OrderDetailsTitleText({super.key});
@@ -12,12 +13,12 @@ class OrderDetailsTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartSummary = PreferencesHelper.getCartSummary();
     return Padding(
-      padding: EdgeInsets.only(
-          bottom: context.height * 0.022, left: context.width * 0.045),
+      padding: EdgeInsetsDirectional.only(
+          bottom: context.height * 0.022, start: context.width * 0.045),
       child: Row(
         children: [
           Text(
-            AppStrings.yourOrder,
+            AppLocalizations.of(context)!.yourOrder,
             style: TextStyle(
                 color: AppColors.smallTextBlackColor,
                 fontWeight: FontWeight.w700,
