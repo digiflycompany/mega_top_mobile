@@ -16,10 +16,10 @@ class YourOrderList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         final cartItem = cart[index];
         return Padding(
-          padding: EdgeInsets.only(
+          padding: EdgeInsetsDirectional.only(
               bottom: context.height * 0.022,
-              left: context.width * 0.045,
-              right: context.width * 0.045),
+              start: context.width * 0.045,
+              end: context.width * 0.045),
           child: YourOrderListContainer(
             productName: cartItem['name'],
             productPhoto: cartItem['image'],
