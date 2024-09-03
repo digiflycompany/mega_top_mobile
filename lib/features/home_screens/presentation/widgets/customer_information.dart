@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_icon.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/customer_name.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerInformation extends StatelessWidget {
   const CustomerInformation({super.key});
@@ -27,7 +28,7 @@ class CustomerInformation extends StatelessWidget {
             children: [
               HorizontalSpace(context.width * 0.022),
               CustomerName(
-                name: isUserLoggedIn ? PreferencesHelper.getName() : 'Visitor',
+                name: isUserLoggedIn ? PreferencesHelper.getName() : AppLocalizations.of(context)!.visitor,
               ),
               const Spacer(),
               if (isUserLoggedIn)

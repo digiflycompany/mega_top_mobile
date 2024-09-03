@@ -4,11 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-// import '../utils/app_routes.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({super.key});
@@ -34,7 +33,7 @@ class CustomSearchBar extends StatelessWidget {
               SvgPicture.asset(AppAssets.searchIcon),
               HorizontalSpace(context.width * 0.022),
               Text(
-                AppStrings.searchHereEn,
+                AppLocalizations.of(context)!.searchHere,
                 style: TextStyle(
                     color: AppColors.blackGreyColor,
                     fontSize: 14.sp,
