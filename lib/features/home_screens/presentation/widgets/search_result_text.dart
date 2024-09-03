@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
 
 class SearchResultCount extends StatelessWidget {
   final String? searchCount;
@@ -26,7 +26,7 @@ class SearchResultCount extends StatelessWidget {
             width: 5.w,
           ),
           Text(
-            AppStrings.resultsFound,
+            AppLocalizations.of(context)!.resultsFound,
             style: TextStyle(
                 color: AppColors.blackColor,
                 fontSize: 14.sp,

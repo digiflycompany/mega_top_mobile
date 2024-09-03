@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerName extends StatelessWidget {
   final String? name;
@@ -22,7 +22,7 @@ class CustomerName extends StatelessWidget {
         ),
         VerticalSpace(1.h),
         Text(
-          AppStrings.welcomeEn,
+          AppLocalizations.of(context)!.welcomeHomeScreen,
           style: TextStyle(
               color: AppColors.greyTextColor,
               fontWeight: FontWeight.w600,

@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FilterBottomSheetButtonsInSearch extends StatelessWidget {
   const FilterBottomSheetButtonsInSearch({super.key, required this.getProductsFunction,required this.cubit});
@@ -27,7 +28,7 @@ class FilterBottomSheetButtonsInSearch extends StatelessWidget {
             children: [
               PrimaryButton(
                 content: Text(
-                  AppStrings.applyEn,
+                  AppLocalizations.of(context)!.apply,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
@@ -79,7 +80,7 @@ class FilterBottomSheetButtonsInSearch extends StatelessWidget {
                   getProductsFunction();
                   Navigator.pop(context);
                 },
-                text: AppStrings.resetEn,
+                text: AppLocalizations.of(context)!.reset,
               ),
             ],
           ),

@@ -12,82 +12,79 @@ class MainPageLatestProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: context.width * 0.03),
-      child: SizedBox(
-        height: context.height * 0.5,
-        child: BlocBuilder<LatestProductsCubit,LatestProductsState>(
-          builder: (context,state) {
-            if(state is LatestProductsSuccess){
-              return Row(
-                children: [
-                  Expanded(
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return BestSellerContainer(
-                            productName: state.user.products![index].title,
-                            productPhoto: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages![0]:state.user.products![index].images![0],
-                            productType: state.user.products![index].categoryId.name,
-                            productPrice: state.user.products![index].price.finalPrice.toString(),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MainPageProductDetailsScreen(
-                                    name: state.user.products![index].title,
-                                    quantity:state.user.products![index].quantity,
-                                    categoryName: state.user.products![index].categoryId.name,
-                                    cubit: context.read<LatestProductsCubit>(),
-                                    description: state.user.products![index].description,
-                                    finalPrice: state.user.products![index].price.finalPrice.toString(),
-                                    originalPrice: state.user.products![index].price.originalPrice.toString(),
-                                    productId: state.user.products![index].id,
-                                    imagePosition: context.read<LatestProductsCubit>().currentImageIndex,
-                                    images: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages!:state.user.products![index].images!,
-                                  ),
+    return SizedBox(
+      height: context.height * 0.5,
+      child: BlocBuilder<LatestProductsCubit,LatestProductsState>(
+        builder: (context,state) {
+          if(state is LatestProductsSuccess){
+            return Row(
+              children: [
+                Expanded(
+                  child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return BestSellerContainer(
+                          productName: state.user.products![index].title,
+                          productPhoto: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages![0]:state.user.products![index].images![0],
+                          productType: state.user.products![index].categoryId.name,
+                          productPrice: state.user.products![index].price.finalPrice.toString(),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainPageProductDetailsScreen(
+                                  name: state.user.products![index].title,
+                                  quantity:state.user.products![index].quantity,
+                                  categoryName: state.user.products![index].categoryId.name,
+                                  cubit: context.read<LatestProductsCubit>(),
+                                  description: state.user.products![index].description,
+                                  finalPrice: state.user.products![index].price.finalPrice.toString(),
+                                  originalPrice: state.user.products![index].price.originalPrice.toString(),
+                                  productId: state.user.products![index].id,
+                                  imagePosition: context.read<LatestProductsCubit>().currentImageIndex,
+                                  images: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages!:state.user.products![index].images!,
                                 ),
-                              );
-                            },
-                          );
-                        }, separatorBuilder: (context, index) {
-                      return SizedBox(
-                        width: 0.w,
-                      );
-                    }, itemCount: 5),
-                  )
-                ],
-                // children: [
-                //   const BestSellerContainer(
-                //     productName: AppStrings.hardDiskEn,
-                //     productPhoto: AppAssets.hardDiskImage,
-                //     productType: AppStrings.storageUnitsEn,
-                //     productPrice: AppStrings.le1500,
-                //     discountPercent: AppStrings.discountPercentEn,
-                //     discount: true,
-                //   ),
-                //   HorizontalSpace(context.width * 0.045),
-                //   const BestSellerContainer(
-                //     productName: AppStrings.hardDiskEn,
-                //     productPhoto: AppAssets.hardDiskImage,
-                //     productType: AppStrings.storageUnitsEn,
-                //     productPrice: AppStrings.le1500,
-                //   ),
-                //   HorizontalSpace(context.width * 0.045),
-                //   const BestSellerContainer(
-                //     productName: AppStrings.hardDiskEn,
-                //     productPhoto: AppAssets.hardDiskImage,
-                //     productType: AppStrings.storageUnitsEn,
-                //     productPrice: AppStrings.le1500,
-                //   ),
-                // ],
-              );
-            }else if(state is LatestProductsLoading){
-              return const ShimmerBestSellerContainer();
-            }
-            return Container();
-          },
-        ),
+                              ),
+                            );
+                          },
+                        );
+                      }, separatorBuilder: (context, index) {
+                    return SizedBox(
+                      width: 0.w,
+                    );
+                  }, itemCount: 5),
+                )
+              ],
+              // children: [
+              //   const BestSellerContainer(
+              //     productName: AppStrings.hardDiskEn,
+              //     productPhoto: AppAssets.hardDiskImage,
+              //     productType: AppStrings.storageUnitsEn,
+              //     productPrice: AppStrings.le1500,
+              //     discountPercent: AppStrings.discountPercentEn,
+              //     discount: true,
+              //   ),
+              //   HorizontalSpace(context.width * 0.045),
+              //   const BestSellerContainer(
+              //     productName: AppStrings.hardDiskEn,
+              //     productPhoto: AppAssets.hardDiskImage,
+              //     productType: AppStrings.storageUnitsEn,
+              //     productPrice: AppStrings.le1500,
+              //   ),
+              //   HorizontalSpace(context.width * 0.045),
+              //   const BestSellerContainer(
+              //     productName: AppStrings.hardDiskEn,
+              //     productPhoto: AppAssets.hardDiskImage,
+              //     productType: AppStrings.storageUnitsEn,
+              //     productPrice: AppStrings.le1500,
+              //   ),
+              // ],
+            );
+          }else if(state is LatestProductsLoading){
+            return const ShimmerBestSellerContainer();
+          }
+          return Container();
+        },
       ),
     );
   }
