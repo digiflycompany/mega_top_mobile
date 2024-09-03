@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_search_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -16,7 +16,7 @@ class SearchPage extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
-            child: const PrimaryAppBar(AppStrings.searchForProductsEn)),
+            child: PrimaryAppBar(AppLocalizations.of(context)!.searchForTheProduct)),
         body: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {},
           builder: (context, state) {
