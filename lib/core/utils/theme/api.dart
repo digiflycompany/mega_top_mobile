@@ -23,7 +23,7 @@ class EndPoints {
   // static const String myOrdersAPI =
   //     '$baseUrl/api/v1/orders?page=1&limit=1&completed=false';
   static const String lastOfferAPI =
-      'http://144.76.110.163:3005/api/v1/products?isOffer=true';
+      '$baseUrl/api/v1/products?isOffer=true';
   static const String userAddressesAPI =
       '$baseUrl/api/v1/addresses/';
   static const String addAddressAPI =

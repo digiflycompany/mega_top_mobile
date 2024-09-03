@@ -123,9 +123,15 @@ class OffersCubit extends Cubit<OffersState> {
         .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
   }
 
-  int getDiscountPercentage(
-      {required int finalPrice, required int originPrice}) {
-    return 1 - finalPrice ~/ originPrice;
+  int getDiscountPercentage({
+    required int finalPrice,
+    required int originPrice,
+  }) {
+    if (finalPrice > originPrice || originPrice == 0) {
+      return 0;
+    }
+    int discountPercentage = ((originPrice - finalPrice) * 100) ~/ originPrice;
+    return discountPercentage.clamp(0, 100);
   }
 
   SubCategoriesModel? subCategoriesModel;

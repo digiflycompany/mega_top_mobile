@@ -164,10 +164,22 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeUpdated());
   }
 
-  int getDiscountPercentage(
-      {required int finalPrice, required int originPrice}) {
-    return 1 - finalPrice ~/ originPrice;
+  int getDiscountPercentage({
+    required int finalPrice,
+    required int originPrice,
+  }) {
+    // Check if the final price is zero or greater than or equal to the original price
+    if (finalPrice >= originPrice || originPrice == 0) {
+      return 0;
+    }
+
+    // Calculate the discount percentage
+    int discountPercentage = ((originPrice - finalPrice) * 100) ~/ originPrice;
+
+    // Ensure the result is between 0% and 100%
+    return discountPercentage.clamp(0, 100);
   }
+
 
   int selectedProductIndex = 0;
 
