@@ -194,9 +194,9 @@ class CartCubit extends Cubit<CartState> {
       //   ),
       // );
     } else if (state is CheckoutFailure) {
-      showErrorToast(context, AppStrings.checkoutFailed, state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.orderSummary, state.error);
     } else if (state is CartNoInternetConnection) {
-      showErrorToast(context, AppStrings.checkoutFailed, AppStrings.pleaseCheckYourInternet);
+      showErrorToast(context, AppLocalizations.of(context)!.checkoutFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 

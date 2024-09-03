@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
@@ -11,6 +10,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_success_text.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_number_text.dart';
 import '../../data/models/checkout_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class OrderConfirmationScreen extends StatelessWidget {
@@ -51,7 +51,7 @@ class OrderConfirmationScreen extends StatelessWidget {
             /// View Order Button
             PrimaryButton(
               content: Text(
-                AppStrings.viewOrderEn,
+                AppLocalizations.of(context)!.viewOrder,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -76,7 +76,7 @@ class OrderConfirmationScreen extends StatelessWidget {
             VerticalSpace(context.height * 0.033),
             /// Continue Shopping Button
             PrimaryOutlinedButton(
-              text: AppStrings.continueShoppingEn,
+              text: AppLocalizations.of(context)!.continueShoppingOrderConfirmationScreen,
               onTap: () => Navigator.pop(context),
             ),
           ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
 
 class OrderSuccessText extends StatelessWidget {
   const OrderSuccessText({super.key});
@@ -14,7 +14,7 @@ class OrderSuccessText extends StatelessWidget {
       children: [
         VerticalSpace(context.height * 0.033),
         Text(
-          AppStrings.yourOrderReceivedSuccessfullyEn,
+          AppLocalizations.of(context)!.yourOrderReceivedSuccessfully,
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
