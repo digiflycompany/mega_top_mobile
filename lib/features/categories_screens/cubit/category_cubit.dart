@@ -291,10 +291,22 @@ class CategoryCubit extends Cubit<CategoryState> {
         .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
   }
 
-  int getDiscountPercentage(
-      {required int finalPrice, required int originPrice}) {
-    return 1 - finalPrice ~/ originPrice;
+  int getDiscountPercentage({
+    required int finalPrice,
+    required int originPrice,
+  }) {
+    // Check if the final price is zero or greater than or equal to the original price
+    if (finalPrice >= originPrice || originPrice == 0) {
+      return 0;
+    }
+
+    // Calculate the discount percentage
+    int discountPercentage = ((originPrice - finalPrice) * 100) ~/ originPrice;
+
+    // Ensure the result is between 0% and 100%
+    return discountPercentage.clamp(0, 100);
   }
+
 
   // Future<void> addToCart(int customerId, int productId, int quantity) async {
   //   emit(addToCartLoading());
