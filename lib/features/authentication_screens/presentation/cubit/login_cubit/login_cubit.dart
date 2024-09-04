@@ -92,11 +92,11 @@ class LoginCubit extends Cubit<LoginState> {
       Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
     }
     if (state is LoginFailure) {
-       showErrorToast(context, AppStrings.loginFailed,state.error);
+       showErrorToast(context, AppLocalizations.of(context)!.loginFailed,state.error);
     }
     if (state is LoginNoInternetConnection) {
       showErrorToast(
-          context, AppStrings.loginFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
+          context, AppLocalizations.of(context)!.loginFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 }

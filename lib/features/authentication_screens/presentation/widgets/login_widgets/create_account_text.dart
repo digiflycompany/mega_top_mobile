@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/widgets/row_two_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../../core/utils/app_routes.dart';
-import '../../../../../core/utils/app_string.dart';
-import '../../../../../core/widgets/row_two_text.dart';
 
 class CreateAccountText extends StatelessWidget {
   const CreateAccountText({super.key});
@@ -13,8 +13,8 @@ class CreateAccountText extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: context.height16),
       child: RowTextButton(
-        firstText: AppStrings.doNotHaveAccountEn,
-        buttonText: AppStrings.createAccountEn,
+        firstText: AppLocalizations.of(context)!.doNotHaveAnAccount,
+        buttonText: AppLocalizations.of(context)!.signUp,
         onTap: () {
           Routes.signUpRoute.moveTo;
         },

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../../core/utils/app_color.dart';
-import '../../../../../core/utils/app_string.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key,});
@@ -16,12 +16,12 @@ class ForgotPassword extends StatelessWidget {
       child: GestureDetector(
         onTap: ()=>Routes.resetPasswordRoute.moveTo,
         child: Padding(
-          padding: EdgeInsets.only(
-              left: context.width * 0.025,
+          padding: EdgeInsetsDirectional.only(
+              start: context.width * 0.025,
               top: context.height * 0.009,
               bottom: context.height * 0.009),
           child: Text(
-            AppStrings.forgotPasswordEn,
+            AppLocalizations.of(context)!.forgotPassword,
             style: TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w500,
