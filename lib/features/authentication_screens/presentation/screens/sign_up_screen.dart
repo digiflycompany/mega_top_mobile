@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_title.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_body.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -40,14 +40,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       colors: [AppColors.gradientColor, Colors.white],
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Column(
                       children: [
-                        AuthenticationLogo(),
+                        const AuthenticationLogo(),
                         AuthenticationTitle(
-                          text: AppStrings.createNewAccountEn,
+                          text: AppLocalizations.of(context)!.createNewAccount,
                         ),
-                        SignUpBody(),
+                        const SignUpBody(),
                       ],
                     ),
                   ),

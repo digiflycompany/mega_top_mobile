@@ -108,14 +108,14 @@ class EmailVerificationCubit extends Cubit<EmailVerificationState> {
     if (state is EmailVerificationSuccess) {
       Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
     } else if (state is EmailVerificationFailure) {
-      showErrorToast(context, AppStrings.emailVerificationFailed, state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.emailVerificationFailed, state.error);
     } else if (state is EmailVerificationResendCodeFailure) {
-      showErrorToast(context, AppStrings.sendingCodeFailed, state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.sendingCodeFailed, state.error);
     } else if (state is EmailVerificationResendCodeSuccess) {
       codeSentToast(context);
     } else if (state is EmailVerificationNoInternetConnection) {
       showErrorToast(
-          context, AppStrings.emailVerificationFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
+          context, AppLocalizations.of(context)!.emailVerificationFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 }

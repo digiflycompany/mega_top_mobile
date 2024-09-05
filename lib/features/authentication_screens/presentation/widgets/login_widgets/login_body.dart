@@ -6,7 +6,6 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/cub
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/login_button.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/login_email_text_field.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_widgets/login_password_text_field.dart';
-
 import 'create_account_text.dart';
 import 'forgot_password_text.dart';
 

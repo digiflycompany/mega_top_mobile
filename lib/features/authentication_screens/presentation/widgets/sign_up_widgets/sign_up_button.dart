@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/auth_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -37,7 +37,7 @@ class SignUpButton extends StatelessWidget {
             content: state is SignUpLoading
                 ? const ButtonCircularProgress()
                 : Text(
-                    AppStrings.signUpEn,
+              AppLocalizations.of(context)!.signUp,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,

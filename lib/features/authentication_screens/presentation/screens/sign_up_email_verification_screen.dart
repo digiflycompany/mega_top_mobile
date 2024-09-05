@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_cubit.dart';
@@ -10,9 +9,11 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/resend_code_row.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/user_email_text.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/verify_email_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpEmailVerificationScreen extends StatefulWidget {
-  const SignUpEmailVerificationScreen({super.key});
+  final String email;
+  const SignUpEmailVerificationScreen({super.key, required this.email});
 
   @override
   State<SignUpEmailVerificationScreen> createState() =>
@@ -36,14 +37,14 @@ class _SignUpEmailVerificationScreenState
         return Scaffold(
           appBar: PreferredSize(
               preferredSize: Size(double.infinity, context.height * 0.089),
-              child: const CustomAppBar(AppStrings.verifyYourEmailEn)),
+              child: CustomAppBar(AppLocalizations.of(context)!.verifyYourEmail)),
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: context.width16),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 PleaseEnterFourDigitsCodeText(),
-                UserEmailText(),
+                UserEmailText(email: widget.email,),
                 OTPEmailVerificationRow(),
                 VerifyEmailButton(),
                 ResendCodeRow(),
