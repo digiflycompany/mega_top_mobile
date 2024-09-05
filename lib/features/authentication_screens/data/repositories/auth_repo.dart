@@ -116,7 +116,7 @@ class AuthRepoImp implements AuthRepo {
           'resetPasswordCode': resetPasswordCode,
         },
       );
-      if (response?.statusCode == 200 || response?.statusCode == 500) {
+      if (response?.statusCode == 200 || response?.statusCode == 500 || response?.statusCode == 403) {
         return ResetPasswordModel.fromJson(response?.data);
       }
     } catch (e) {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/auth_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerifyEmailButton extends StatelessWidget {
   const VerifyEmailButton({super.key});
@@ -30,7 +30,7 @@ class VerifyEmailButton extends StatelessWidget {
             content: state is EmailVerificationLoading
                 ? const ButtonCircularProgress()
                 : Text(
-                    AppStrings.verifyEn,
+              AppLocalizations.of(context)!.verify,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,

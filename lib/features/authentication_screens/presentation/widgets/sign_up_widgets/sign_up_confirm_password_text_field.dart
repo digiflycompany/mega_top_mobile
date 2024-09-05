@@ -23,14 +23,7 @@ class SignUpConfirmPasswordTextField extends StatelessWidget {
             prefixSvg: AppAssets.passwordIcon,
             isPasswordVisible: signUpCubit.isPasswordVisible,
             togglePassword: ()=>signUpCubit.togglePasswordVisibility(),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return AppStrings.pleaseConfirmYourPassword;
-              } else if (signUpCubit.signUpConfirmPasswordController.text != signUpCubit.signUpPasswordController.text) {
-                return AppStrings.passwordsNotMatching;
-              }
-              return null;
-            },
+            validator: (value)=>signUpCubit.validateConfirmPassword(value??'', context),
           ),
         );
       },

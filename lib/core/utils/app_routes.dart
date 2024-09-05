@@ -21,14 +21,12 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/pages/profile_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/screens/wish_list_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repositories/auth_repo.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/login_cubit/login_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/create_new_password_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/reset_password_screen.dart';
-import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_email_verification_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_or_login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/verify_email_screen.dart';
@@ -297,13 +295,13 @@ class RouteGenerator {
         return buildPageRoute(
           child: const CompareScreen(),
         );
-      case Routes.signUpEmailVerificationPageRoute:
-        return buildPageRoute(
-          child: BlocProvider(
-            create: (context) => EmailVerificationCubit(AuthRepoImp()),
-            child: SignUpEmailVerificationScreen(),
-          ),
-        );
+      // case Routes.signUpEmailVerificationPageRoute:
+      //   return buildPageRoute(
+      //     child: BlocProvider(
+      //       create: (context) => EmailVerificationCubit(AuthRepoImp()),
+      //       child: SignUpEmailVerificationScreen(),
+      //     ),
+      //   );
       case Routes.cartPageRoute:
         return buildPageRoute(
           child: const CartPage(),
