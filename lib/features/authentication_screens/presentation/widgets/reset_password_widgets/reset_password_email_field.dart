@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/primary_text_field.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResetPasswordEmailField extends StatelessWidget {
   const ResetPasswordEmailField({super.key});
@@ -18,7 +19,7 @@ class ResetPasswordEmailField extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(bottom: context.height40),
           child: PrimaryTextField(
-            hintText: AppStrings.emailEn,
+            hintText: AppLocalizations.of(context)!.email,
             prefixSvg: AppAssets.emailSecondIcon,
             controller: resetCubit.resetPasswordEmailController,
             validator: (value) {

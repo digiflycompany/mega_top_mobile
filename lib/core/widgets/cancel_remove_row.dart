@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CancelRemoveRow extends StatelessWidget {
   final Function() onTap;
@@ -17,7 +17,7 @@ class CancelRemoveRow extends StatelessWidget {
         GestureDetector(
           onTap: ()=>Navigator.pop(context),
           child: Text(
-            AppStrings.cancelEn,
+            AppLocalizations.of(context)!.cancel,
             style: TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
@@ -29,7 +29,7 @@ class CancelRemoveRow extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Text(
-            AppStrings.removeEn,
+            AppLocalizations.of(context)!.remove,
             style: TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-
 import 'card_title_text.dart';
 import 'custom_divider.dart';
 import 'order_details_description.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class OrderDetailsCard extends StatelessWidget {
   const OrderDetailsCard({super.key});
@@ -26,10 +26,10 @@ class OrderDetailsCard extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: context.height * 0.022),
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CardTitleText(title: AppStrings.orderDetailsEn,),
+              CardTitleText(title: AppLocalizations.of(context)!.orderDetails,),
               CustomDivider(),
               OrderDetailsDescription(),
             ],

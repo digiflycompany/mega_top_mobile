@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
@@ -19,6 +18,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_st
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_product_detailed_body.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchProductDetailsPage extends StatefulWidget {
   const SearchProductDetailsPage({super.key});
@@ -83,7 +83,7 @@ class _SearchProductDetailsPageState extends State<SearchProductDetailsPage> {
                           ),
                           HorizontalSpace(context.width * 0.022),
                           Text(
-                            AppStrings.addToCartEn,
+                            AppLocalizations.of(context)!.addToCart,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,

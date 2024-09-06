@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/bottom_sheet_app_bar.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_radio_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
 
 class SortBottomSheetInSearch extends StatelessWidget {
   const SortBottomSheetInSearch({super.key, required this.onTapDefault, required this.onTapFromHighPrice, required this.onTapFromLowPrice, required this.cubit});
@@ -22,32 +22,32 @@ class SortBottomSheetInSearch extends StatelessWidget {
         color: Colors.white,
         child: Column(
           children: [
-            const BottomSheetAppBar(AppStrings.sortByEn),
+             BottomSheetAppBar(AppLocalizations.of(context)!.sortBy),
             VerticalSpace(context.height * 0.033),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
               child: Column(
                 children: [
                    SortBottomSheetAdaptiveRadioButton(
-                    value: AppStrings.defaultEn,
-                    label: AppStrings.defaultEn,
+                    value: AppLocalizations.of(context)!.defaultWord,
+                    label: AppLocalizations.of(context)!.defaultWord,
                     description: '',
                     onTap:onTapDefault ,
                      cubit: cubit,
                   ),
                   VerticalSpace(context.height * 0.01),
                    SortBottomSheetAdaptiveRadioButton(
-                    value: AppStrings.fromHighToLowEn,
-                    label: AppStrings.priceEn,
-                    description: AppStrings.fromHighToLowEn,
+                    value: AppLocalizations.of(context)!.fromHighToLow,
+                    label: AppLocalizations.of(context)!.price2,
+                    description: AppLocalizations.of(context)!.fromHighToLow,
                      onTap: onTapFromHighPrice,
                      cubit: cubit,
                   ),
                   VerticalSpace(context.height * 0.01),
                   SortBottomSheetAdaptiveRadioButton(
-                    value: AppStrings.fromLowToHighEn,
-                    label: AppStrings.price2En,
-                    description: AppStrings.fromLowToHighEn,
+                    value: AppLocalizations.of(context)!.fromLowToHigh,
+                    label: AppLocalizations.of(context)!.price2,
+                    description: AppLocalizations.of(context)!.fromLowToHigh,
                     onTap: onTapFromLowPrice,
                     cubit: cubit,
                   ),

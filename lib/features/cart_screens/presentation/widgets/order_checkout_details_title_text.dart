@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderCheckoutDetailsTitleText extends StatelessWidget {
   final String productsQuantity;
@@ -11,12 +12,12 @@ class OrderCheckoutDetailsTitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-          bottom: context.height * 0.022, left: context.width * 0.045),
+      padding: EdgeInsetsDirectional.only(
+          bottom: context.height * 0.022, start: context.width * 0.045),
       child: Row(
         children: [
           Text(
-            AppStrings.yourOrder,
+            AppLocalizations.of(context)!.yourOrder,
             style: TextStyle(
                 color: AppColors.smallTextBlackColor,
                 fontWeight: FontWeight.w700,
@@ -31,6 +32,20 @@ class OrderCheckoutDetailsTitleText extends StatelessWidget {
           ),
           Text(
             productsQuantity,
+            style: TextStyle(
+                color: AppColors.smallTextBlackColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 14.sp),
+          ),
+          Text(
+            ' ',
+            style: TextStyle(
+                color: AppColors.smallTextBlackColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 14.sp),
+          ),
+          Text(
+            AppLocalizations.of(context)!.products,
             style: TextStyle(
                 color: AppColors.smallTextBlackColor,
                 fontWeight: FontWeight.w700,

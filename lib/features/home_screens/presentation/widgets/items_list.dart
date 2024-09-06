@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_name.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_price.dart';
 import 'package:mega_top_mobile/core/widgets/list_product_type.dart';
+import 'package:mega_top_mobile/core/widgets/product_photo_list_view.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
-
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/widgets/product_photo_list_view.dart';
 
 class ProductsListContainer extends StatelessWidget {
   final int? index;
@@ -61,11 +59,12 @@ class ProductsListContainer extends StatelessWidget {
             ],
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                    left: context.width * 0.022,
-                    right: context.width * 0.045,
+                padding: EdgeInsetsDirectional.only(
+                    start: context.width * 0.022,
+                    end: context.width * 0.045,
                     top: context.height * 0.012,
                     bottom: context.height * 0.012),
                 child: Stack(
@@ -90,31 +89,20 @@ class ProductsListContainer extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(
-                      right: context.width * 0.045,
+                  padding: EdgeInsetsDirectional.only(
+                      end: context.width * 0.045,
                       top: context.height * 0.03,
                       bottom: context.height * 0.03),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ListProductName(
-                            text: productName,
-                          ),
-                          GestureDetector(
-                              onTap: onTapFavourite,
-                              child: SvgPicture.asset(
-                                icon!,
-                                width: context.width * 0.06,
-                              ))
-                        ],
+                      ListProductName(
+                        text: productName,
                       ),
                       ListProductType(
                         text: productType,
                       ),
-                      const Spacer(),
+                      //const Spacer(),
                       Row(
                         children: [
                           const AvailableContainer(),

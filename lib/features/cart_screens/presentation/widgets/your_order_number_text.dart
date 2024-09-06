@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
+
 
 class YourOrderNumberText extends StatelessWidget {
   final String? orderNumber;
@@ -18,7 +19,7 @@ class YourOrderNumberText extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              AppStrings.yourOrderIDIsEn,
+              AppLocalizations.of(context)!.yourOrderNumberIs,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w500,

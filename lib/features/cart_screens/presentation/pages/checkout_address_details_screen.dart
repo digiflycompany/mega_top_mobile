@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
@@ -19,6 +18,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckoutAddressDetailsPage extends StatefulWidget {
   const CheckoutAddressDetailsPage({super.key});
@@ -35,8 +35,8 @@ class _CheckoutAddressDetailsPageState extends State<CheckoutAddressDetailsPage>
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const PrimaryAppBar(
-            AppStrings.shippingDetailsEn,
+          child: PrimaryAppBar(
+            AppLocalizations.of(context)!.shippingDetails,
             favour: false,
           )),
       body: Padding(
@@ -55,7 +55,7 @@ class _CheckoutAddressDetailsPageState extends State<CheckoutAddressDetailsPage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CartScreensTitleText(
-                      text: AppStrings.selectTheDeliveryAddressEn,
+                      text: AppLocalizations.of(context)!.selectTheDeliveryAddress,
                     ),
                     ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
@@ -109,7 +109,7 @@ class _CheckoutAddressDetailsPageState extends State<CheckoutAddressDetailsPage>
                     ),
                     VerticalSpace(context.height * 0.012),
                     PrimaryOutlinedButton(
-                      text: AppStrings.addNewAddressEn,
+                      text: AppLocalizations.of(context)!.addNewAddress,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute).then((_) {
                           context.read<AddressCubit>().getUserAddresses();
@@ -120,17 +120,20 @@ class _CheckoutAddressDetailsPageState extends State<CheckoutAddressDetailsPage>
                   ],
                 );
               } else if (state is UserAddressesSuccess && state.user.data.isEmpty) {
-                return EmptyDataPage(
-                    icon: AppAssets.emptyAddressIcon,
-                    bigFontText: AppStrings.noShippingAddressEn,
-                    smallFontText: AppStrings.emptyAddressPageDescription,
-                    buttonText: AppStrings.addNewAddressEn,
-                    buttonOnTap: () {
-                      Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute)
-                          .then((_) {
-                        context.read<AddressCubit>().getUserAddresses();
-                      });
-                    }
+                return Padding(
+                  padding: EdgeInsets.only(top: 50.h),
+                  child: EmptyDataPage(
+                      icon: AppAssets.emptyAddressIcon,
+                      bigFontText: AppLocalizations.of(context)!.noShippingAddresses,
+                      smallFontText: AppLocalizations.of(context)!.youHaveNoSavedAddresses,
+                      buttonText: AppLocalizations.of(context)!.addNewAddress,
+                      buttonOnTap: () {
+                        Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute)
+                            .then((_) {
+                          context.read<AddressCubit>().getUserAddresses();
+                        });
+                      }
+                  ),
                 );
               } else if (state is AddressNoInternetConnection) {
                 return NoInternetScreen(
@@ -146,7 +149,7 @@ class _CheckoutAddressDetailsPageState extends State<CheckoutAddressDetailsPage>
       bottomNavigationBar: ButtonBottomNavBar(
         button:PrimaryButton(
           content: Text(
-            AppStrings.confirmShippingAddressEn,
+            AppLocalizations.of(context)!.confirmShippingAddress,
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w700,
@@ -157,7 +160,7 @@ class _CheckoutAddressDetailsPageState extends State<CheckoutAddressDetailsPage>
             if (selectedAddressId != null) {
               Routes.orderSummaryPageRoute.moveTo;
             } else {
-              context.read<AddressCubit>().showErrorToast(context, AppStrings.confirmingAddressFailedEn, AppStrings.youHaveToSelectAnAddress);
+              context.read<AddressCubit>().showErrorToast(context, AppLocalizations.of(context)!.confirmingAddressFailed, AppLocalizations.of(context)!.youHaveToSelectAnAddress);
             }
           },
         )

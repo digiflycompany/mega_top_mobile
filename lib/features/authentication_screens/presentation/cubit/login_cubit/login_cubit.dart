@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/features/authentication_screens/data/repositorie
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/login_cubit/login_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final AuthRepo authRepo;
@@ -91,11 +92,11 @@ class LoginCubit extends Cubit<LoginState> {
       Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
     }
     if (state is LoginFailure) {
-       showErrorToast(context, AppStrings.loginFailed,state.error);
+       showErrorToast(context, AppLocalizations.of(context)!.loginFailed,state.error);
     }
     if (state is LoginNoInternetConnection) {
       showErrorToast(
-          context, AppStrings.loginFailed,AppStrings.noInternetConnectionPlease);
+          context, AppLocalizations.of(context)!.loginFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 }

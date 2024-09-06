@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
@@ -12,6 +11,7 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/categories_grid.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoriesPage extends StatelessWidget {
   const CategoriesPage({super.key});
@@ -22,7 +22,7 @@ class CategoriesPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const CustomFavouriteAppBar(AppStrings.categoriesEn)),
+          child: CustomFavouriteAppBar(AppLocalizations.of(context)!.categories)),
       body: Padding(
             padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
             child: BlocBuilder<CategoryCubit,CategoryState>(
@@ -53,13 +53,13 @@ class CategoriesPage extends StatelessWidget {
                 }else if(cubit.categoriesModel!.data!.categories!.length == 0){
                  return EmptyDataPage(
                     icon: AppAssets.emptyNotificationsIcon,
-                    bigFontText: AppStrings.noCategoriesEn,
-                    smallFontText: AppStrings.noCategoriesListItemsEn,
+                    bigFontText: AppLocalizations.of(context)!.noCategories,
+                    smallFontText: AppLocalizations.of(context)!.noCategoriesListItems,
                   );
                 }
                   return Center(
                     child: Text(
-                      AppStrings.serverError,
+                      AppLocalizations.of(context)!.serverError,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,

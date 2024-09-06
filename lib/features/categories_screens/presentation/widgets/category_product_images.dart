@@ -7,7 +7,7 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_state
 class ProductImages extends StatelessWidget {
   const ProductImages({super.key, required this.images,required this.cubit});
 
-  final List<String> images;
+  final List<String>? images;
   final cubit;
 
   @override
@@ -17,12 +17,12 @@ class ProductImages extends StatelessWidget {
         builder: (context, state) {
           return PageView.builder(
             physics: const BouncingScrollPhysics(),
-            itemCount: images.length,
+            itemCount: images!.length,
             onPageChanged: (index) => cubit.setImageIndex(index),
             itemBuilder: (context, index) {
               return CachedNetworkImage(
-                imageUrl:images[index],
-                fit: BoxFit.fill,
+                imageUrl:images![index],
+                fit: BoxFit.contain,
                 width: double.infinity,
                 errorWidget: (context, url, error) =>
                     Icon(Icons.error),

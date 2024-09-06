@@ -3,13 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_box.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_text_field.dart';
-
-import '../../../../core/utils/app_routes.dart';
 import '../../cubit/home_cubit.dart';
 
 class PrimarySearchBar extends StatefulWidget {
@@ -77,16 +74,6 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
                 textFormField: homeCubit.searchWord,
                 focusNode: _focusNode,
               ),
-              BlocConsumer<HomeCubit, HomeState>(
-                listener: (context, state) {},
-                builder: (context, state) {
-                  return FilterContainer(
-                    onTap: () {
-                      homeCubit.toggleNoResult();
-                    },
-                  );
-                },
-              )
             ],
           ),
         ),

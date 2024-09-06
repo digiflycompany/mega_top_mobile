@@ -5,10 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/locale/locale_cubit.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_states.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckoutButtonContent extends StatelessWidget {
   const CheckoutButtonContent({super.key});
@@ -33,7 +35,7 @@ class CheckoutButtonContent extends StatelessWidget {
               HorizontalSpace(context.width * 0.011),
               /// Products Text
               Text(
-                AppStrings.products2En,
+                AppLocalizations.of(context)!.productsCart,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
@@ -53,7 +55,7 @@ class CheckoutButtonContent extends StatelessWidget {
               const Spacer(),
               /// Product Checkout
               Text(
-                AppStrings.checkoutEn,
+                AppLocalizations.of(context)!.checkout,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
@@ -61,7 +63,11 @@ class CheckoutButtonContent extends StatelessWidget {
               ),
               HorizontalSpace(context.width * 0.022),
               /// Arrow Icon
-              SvgPicture.asset(AppAssets.arrowButton),
+              BlocBuilder<LocaleCubit, Locale>(
+              builder: (context, locale) {
+                  return locale.languageCode == 'en'?SvgPicture.asset(AppAssets.arrowButton):SvgPicture.asset(AppAssets.arrowButtonAr);
+                 },
+             ),
             ],
           );
         } else {

@@ -55,25 +55,43 @@ class _AnimatedOverlayToastState extends State<AnimatedOverlayIconToast>
 
   @override
   Widget build(BuildContext context) {
+    bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
     return Opacity(
       opacity: _opacity.value,
       child: Container(
         alignment: Alignment.center,
-        height: context.height*0.087,
+        height: context.height * 0.087,
         color: widget.color,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(widget.toastIcon),
-            HorizontalSpace(context.width*0.022),
+          textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
+          children: isRtl
+              ? [
             Text(
               widget.message,
-              style:  TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 14.sp,
                 fontFamily: FontFamilies.cairo,
                 fontWeight: FontWeight.w700,
-                decoration: TextDecoration.none
+                decoration: TextDecoration.none,
+              ),
+            ),
+            HorizontalSpace(context.width * 0.022),
+            SvgPicture.asset(widget.toastIcon),
+          ]
+              : [
+            SvgPicture.asset(widget.toastIcon),
+            HorizontalSpace(context.width * 0.022),
+            Text(
+              widget.message,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14.sp,
+                fontFamily: FontFamilies.cairo,
+                fontWeight: FontWeight.w700,
+                decoration: TextDecoration.none,
               ),
             ),
           ],

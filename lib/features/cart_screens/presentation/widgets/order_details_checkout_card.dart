@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_checkout_description.dart';
-
 import 'card_title_text.dart';
 import 'custom_divider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderDetailsCheckoutCard extends StatelessWidget {
   final String? productPrice;
@@ -37,7 +36,7 @@ class OrderDetailsCheckoutCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CardTitleText(title: AppStrings.orderDetailsEn,),
+              CardTitleText(title: AppLocalizations.of(context)!.orderDetails,),
               const CustomDivider(),
               OrderDetailsCheckoutDescription(
                 productPrice: productPrice,

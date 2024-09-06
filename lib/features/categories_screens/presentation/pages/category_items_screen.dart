@@ -13,6 +13,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/prima
 import '../widgets/category_items_grid.dart';
 import '../widgets/category_items_list.dart';
 import '../widgets/category_items_options_row.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoryItemsPage extends StatefulWidget {
   const CategoryItemsPage({super.key});
@@ -132,13 +133,13 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
         } else if (categoryCubit.selectedCategoryModel!.data!.products.length == 0) {
           return EmptyDataPage(
             icon: AppAssets.emptyNotificationsIcon,
-            bigFontText: AppStrings.noProductsEn,
-            smallFontText: AppStrings.noProductListItemsEn,
+            bigFontText: AppLocalizations.of(context)!.noProducts,
+            smallFontText: AppLocalizations.of(context)!.noProductListItems,
           );
         } else {
           return Center(
             child: Text(
-              AppStrings.serverError,
+              AppLocalizations.of(context)!.serverError,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,

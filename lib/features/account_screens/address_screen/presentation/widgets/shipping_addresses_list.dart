@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
@@ -13,6 +12,7 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/shipping_addresses_list_shimmer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShippingAddressDetailsList extends StatelessWidget {
   const ShippingAddressDetailsList({super.key});
@@ -66,7 +66,7 @@ class ShippingAddressDetailsList extends StatelessWidget {
               ),
               VerticalSpace(context.height * 0.012),
               PrimaryOutlinedButton(
-                    text: AppStrings.addNewAddressEn,
+                    text: AppLocalizations.of(context)!.addNewAddress,
                     onTap: () {
                       Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute).then((_) {
                         context.read<AddressCubit>().getUserAddresses();
@@ -80,9 +80,9 @@ class ShippingAddressDetailsList extends StatelessWidget {
         else if (state is UserAddressesSuccess && state.user.data.length==0) {
           return EmptyDataPage(
             icon: AppAssets.emptyAddressIcon,
-            bigFontText: AppStrings.noShippingAddressEn,
-            smallFontText: AppStrings.emptyAddressPageDescription,
-            buttonText: AppStrings.addNewAddressEn,
+            bigFontText: AppLocalizations.of(context)!.noShippingAddresses,
+            smallFontText: AppLocalizations.of(context)!.youHaveNoSavedAddresses,
+            buttonText: AppLocalizations.of(context)!.addNewAddress,
             buttonOnTap: () {
               Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute)
                   .then((_) {

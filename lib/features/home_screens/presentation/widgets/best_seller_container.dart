@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:shimmer/shimmer.dart';
@@ -67,10 +68,19 @@ class BestSellerContainer extends StatelessWidget {
                             BorderRadius.circular(context.height * 0.0065),
                         color: AppColors.iconsBackgroundColor,
                       ),
-                      child: CachedNetworkImage(
+                      child:productPhoto != null
+                          ? CachedNetworkImage(
+                        fit: BoxFit.contain,
                         imageUrl: productPhoto!,
-                                          width: context.width * 0.27,
-                                        ),
+                        width: context.width * 0.27,
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      )
+                          : Image.asset(
+                        AppAssets.megaTopLogo,
+                        fit: BoxFit.contain,
+                        width: context.width * 0.27,
+                      )
+
                     ),
                     // discount == true
                     //     ? Padding(

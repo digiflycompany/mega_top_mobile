@@ -53,33 +53,33 @@ class _OTPResetPasswordRowState extends State<OTPResetPasswordRow> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ResetPasswordCubit, ResetPasswordState>(
-      listener: (context, state) {
-        // if (state is EmailVerificationResendCodeSuccess) {
-        //   clearFields();
-        //   FocusScope.of(context).requestFocus(focusNodes.first);
-        // }
-      },
-      child: BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
-        builder: (context, state) {
-          ResetPasswordCubit resetPasswordCubit = context.read<ResetPasswordCubit>();
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: List.generate(4, (index) {
-              return OTPField(
-                validator: widget.validator,
-                controller: controllers[index],
-                focusNode: focusNodes[index],
-                onChanged: (value) {
-                  nextField(value: value, index: index);
-                  resetPasswordCubit.otp = getOTP();
-                },
-                textInputAction:
-                index == 3 ? TextInputAction.done : TextInputAction.next,
-              );
-            }),
-          );
+    // Force Left-to-Right direction regardless of locale
+    return Directionality(
+      textDirection: TextDirection.ltr, // Force LTR direction
+      child: BlocListener<ResetPasswordCubit, ResetPasswordState>(
+        listener: (context, state) {
         },
+        child: BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
+          builder: (context, state) {
+            ResetPasswordCubit resetPasswordCubit = context.read<ResetPasswordCubit>();
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(4, (index) {
+                return OTPField(
+                  validator: widget.validator,
+                  controller: controllers[index],
+                  focusNode: focusNodes[index],
+                  onChanged: (value) {
+                    nextField(value: value, index: index);
+                    resetPasswordCubit.otp = getOTP();
+                  },
+                  textInputAction:
+                  index == 3 ? TextInputAction.done : TextInputAction.next,
+                );
+              }),
+            );
+          },
+        ),
       ),
     );
   }

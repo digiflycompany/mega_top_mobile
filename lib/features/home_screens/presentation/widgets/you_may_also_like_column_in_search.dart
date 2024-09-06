@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_search_products_list.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class YouMayAlsoLikeColumnInSearch extends StatelessWidget {
@@ -14,7 +14,7 @@ class YouMayAlsoLikeColumnInSearch extends StatelessWidget {
         Align(
           alignment: AlignmentDirectional.topStart,
           child: Text(
-            AppStrings.youMayAlsoLikeEn,
+            AppLocalizations.of(context)!.youMayAlsoLike,
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,

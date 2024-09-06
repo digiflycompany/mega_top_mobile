@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/remove_item_dialog_body.dart';
 import 'package:mega_top_mobile/core/widgets/remove_item_dialog_title.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RemoveItemDialog extends StatelessWidget {
   final Function() onTap;
@@ -21,7 +21,7 @@ class RemoveItemDialog extends StatelessWidget {
       child: Column(
         children: [
           const RemoveItemDialogTitle(),
-          RemoveItemDialogBody(description: AppStrings.areYouSureYouWantToRemoveEn,onTap: onTap,),
+          RemoveItemDialogBody(description: AppLocalizations.of(context)!.areYouSureYouWantToRemoveThisAddress,onTap: onTap,),
         ],
       ),
     );

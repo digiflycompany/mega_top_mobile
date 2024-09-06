@@ -12,6 +12,7 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/cub
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/success_pop_up.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final AuthRepo authRepo;
@@ -22,8 +23,35 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   static ResetPasswordCubit getCubit(context) => BlocProvider.of(context);
 
   final formKey = GlobalKey<FormState>();
-  String passwordPattern =
-      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
+
+  String? validatePassword(String value, BuildContext context) {
+    if (value.isEmpty) {
+      return AppLocalizations.of(context)!.pleaseEnterYourPassword;
+    }
+
+    if (!RegExp(r'^(?=.*[A-Z])').hasMatch(value)) {
+      return AppLocalizations.of(context)!.passwordFirstValidation;
+    }
+
+    if (!RegExp(r'^(?=.*[a-z])').hasMatch(value)) {
+      return AppLocalizations.of(context)!.passwordSecondValidation;
+    }
+
+    if (!RegExp(r'^(?=.*\d)').hasMatch(value)) {
+      return AppLocalizations.of(context)!.passwordThirdValidation;
+    }
+
+    if (!RegExp(r'^(?=.*[@$!%*?&])').hasMatch(value)) {
+      return AppLocalizations.of(context)!.passwordFourthValidation;
+    }
+
+    if (value.length < 7) {
+      return AppLocalizations.of(context)!.passwordFifthValidation;
+    }
+
+    return null;
+  }
+
   final emailRegex =
   RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
@@ -192,11 +220,11 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       passwordChangedSuccessfully(context);
     }
     if(state is UpdatePasswordFailure){
-      showErrorToast(context, '',AppStrings.invalidOtp);
+      showErrorToast(context, AppLocalizations.of(context)!.creatingNewPasswordFailed,state.error);
     }
     if(state is ResetPasswordNoInternetConnection){
       showErrorToast(
-          context, AppStrings.creatingNewPasswordFailed,AppStrings.noInternetConnectionPlease);
+          context, AppLocalizations.of(context)!.creatingNewPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
@@ -206,11 +234,11 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     }
     if(state is VerifyResetPasswordFailure){
       showErrorToast(
-          context, AppStrings.emailVerificationFailed, state.error);
+          context, AppLocalizations.of(context)!.emailVerificationFailed, state.error);
     }
     if(state is ResetPasswordNoInternetConnection){
       showErrorToast(
-          context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
+          context, AppLocalizations.of(context)!.emailVerificationFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
     if(state is ResendResetPasswordCodeSuccess){
       codeSentToast(context);
@@ -225,10 +253,10 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       );
     }
     if(state is ResetPasswordFailure){
-      showErrorToast(context, AppStrings.resetPasswordFailed,state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.resetPasswordFailed,state.error);
     }
     if(state is ResetPasswordNoInternetConnection){
-      showErrorToast(context, AppStrings.resetPasswordFailed,AppStrings.noInternetConnectionPlease);
+      showErrorToast(context, AppLocalizations.of(context)!.resetPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 

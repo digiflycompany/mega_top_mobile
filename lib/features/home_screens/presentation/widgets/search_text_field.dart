@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
 
 class SearchTextField extends StatelessWidget {
   final FocusNode? focusNode;
@@ -23,7 +23,7 @@ class SearchTextField extends StatelessWidget {
         cursorColor: AppColors.greyTextColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: AppStrings.searchHereEn,
+          hintText: AppLocalizations.of(context)!.searchHere,
           hintStyle: TextStyle(
             color: AppColors.blackGreyColor,
             fontSize: 14.sp,

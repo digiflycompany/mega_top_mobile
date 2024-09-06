@@ -250,8 +250,8 @@ class AppStrings {
   static const String cartEn = 'Cart';
   static const String loginFailed = 'Login Failed';
   static const String creatingNewPasswordFailed = 'Creating new Password Failed';
-  static const String noInternetConnectionPlease =
-      'No internet connection. Please try again.';
+  // static const String noInternetConnectionPlease =
+  //     'No internet connection. Please try again.';
   static const String noInternetConnection = 'No internet connection';
   static const String storageEn = 'Storage';
   static const String accountEn = 'Account';
@@ -333,7 +333,7 @@ class AppStrings {
   static const String yourOrderTwoProductsEn = 'Your order (2 products)';
   static const String yourOrder = 'Your order ';
   static const String openBracket = '(';
-  static const String closeBracket = ' products) ';
+  static const String closeBracket = ') ';
   static const String yourOrderReceivedSuccessfullyEn =
       'Your order received successfully';
   static const String yourOrderIDIsEn = 'Your order id is : ';
@@ -361,7 +361,8 @@ class AppStrings {
   static const String privacyPolicy = 'Privacy Policy';
   static const String userName = 'Mohamed Nashaat';
   static const String userEmail = 'mohamednashaat7733@gmail.com';
-  static const String selectedLanguage = 'العربية';
+  static const String arabicLanguage = 'العربية';
+  static const String englishLanguage = 'English';
   static const String orders = 'Orders';
   static const String compareProducts = 'Compare Products';
   static const String profile = 'Profile';

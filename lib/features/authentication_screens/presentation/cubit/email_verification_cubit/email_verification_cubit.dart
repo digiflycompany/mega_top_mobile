@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/repositories/auth_repo.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/email_verification_cubit/email_verification_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmailVerificationCubit extends Cubit<EmailVerificationState> {
   final AuthRepo authRepo;
@@ -107,14 +108,14 @@ class EmailVerificationCubit extends Cubit<EmailVerificationState> {
     if (state is EmailVerificationSuccess) {
       Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
     } else if (state is EmailVerificationFailure) {
-      showErrorToast(context, AppStrings.emailVerificationFailed, state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.emailVerificationFailed, state.error);
     } else if (state is EmailVerificationResendCodeFailure) {
-      showErrorToast(context, AppStrings.sendingCodeFailed, state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.sendingCodeFailed, state.error);
     } else if (state is EmailVerificationResendCodeSuccess) {
       codeSentToast(context);
     } else if (state is EmailVerificationNoInternetConnection) {
       showErrorToast(
-          context, AppStrings.emailVerificationFailed, AppStrings.noInternetConnectionPlease);
+          context, AppLocalizations.of(context)!.emailVerificationFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 }

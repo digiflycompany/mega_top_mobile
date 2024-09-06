@@ -44,9 +44,9 @@ class ProductsListCard extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.only(
-                  left: context.width6,
-                  right: context.width16,
+              padding: EdgeInsetsDirectional.only(
+                  start: context.width6,
+                  end: context.width16,
                   top: context.height6,
                   bottom: context.height6),
               child: Stack(

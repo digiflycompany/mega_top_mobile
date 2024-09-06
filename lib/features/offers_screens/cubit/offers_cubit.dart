@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/added_to_cart_bottom_sheet.dart';
@@ -12,7 +13,6 @@ import 'package:mega_top_mobile/features/offers_screens/data/offers_repo.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/sort_bottom_sheet.dart';
 
-import '../../../core/utils/app_assets.dart';
 
 class OffersCubit extends Cubit<OffersState> {
   OffersCubit() : super(OffersInitial());
@@ -123,9 +123,15 @@ class OffersCubit extends Cubit<OffersState> {
         .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
   }
 
-  int getDiscountPercentage(
-      {required int finalPrice, required int originPrice}) {
-    return 1 - finalPrice ~/ originPrice;
+  int getDiscountPercentage({
+    required int finalPrice,
+    required int originPrice,
+  }) {
+    if (finalPrice > originPrice || originPrice == 0) {
+      return 0;
+    }
+    int discountPercentage = ((originPrice - finalPrice) * 100) ~/ originPrice;
+    return discountPercentage.clamp(0, 100);
   }
 
   SubCategoriesModel? subCategoriesModel;

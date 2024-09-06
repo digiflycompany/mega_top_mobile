@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/core/widgets/product_list_shimmer.dart';
@@ -11,6 +10,7 @@ import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presen
 import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/widgets/wish_list_list_view.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WishListScreen extends StatelessWidget {
   const WishListScreen({super.key});
@@ -20,8 +20,8 @@ class WishListScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, context.height * 0.089),
-        child: const PrimaryAppBar(
-          AppStrings.wishListEn,
+        child: PrimaryAppBar(
+          AppLocalizations.of(context)!.wishList,
           favour: false,
         ),
       ),
@@ -64,9 +64,9 @@ class WishListScreen extends StatelessWidget {
     } else {
       return EmptyDataPage(
         icon: AppAssets.emptyWishListIcon,
-        bigFontText: AppStrings.noWishListItemsEn,
-        smallFontText: AppStrings.browseProductsFavLongTextEn,
-        buttonText: AppStrings.continueShoppingEn,
+        bigFontText: AppLocalizations.of(context)!.noWishListItems,
+        smallFontText: AppLocalizations.of(context)!.browseOurProducts,
+        buttonText: AppLocalizations.of(context)!.continueShopping,
         buttonOnTap: ()=>Navigator.pop(context),
       );
     }

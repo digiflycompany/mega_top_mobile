@@ -76,6 +76,7 @@ class _LatestSearchProductsListState extends State<LatestSearchProductsList> {
                                 productName: cubit.searchModel!.data!
                                     .products[index].title,
                                 productPhoto: cubit.searchModel!.data!
+                                    .products[index].images.length==0?context.read<HomeCubit>().placeHolderImages![0]:cubit.searchModel!.data!
                                     .products[index].images[0],
                                 productType: cubit.searchModel!.data!
                                     .products[index].categoryId!.name!,

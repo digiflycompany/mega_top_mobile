@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
@@ -19,9 +18,10 @@ import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_body.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_detailed_image.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainPageProductDetailsScreen extends StatelessWidget {
-  final List<String> images;
+  final List<String>? images;
   final int imagePosition;
   final String? productId;
   final cubit;
@@ -96,7 +96,7 @@ class MainPageProductDetailsScreen extends StatelessWidget {
                         ),
                         HorizontalSpace(context.width * 0.022),
                         Text(
-                          AppStrings.addToCartEn,
+                          AppLocalizations.of(context)!.addToCart,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
@@ -109,7 +109,7 @@ class MainPageProductDetailsScreen extends StatelessWidget {
                         productId,
                         name,
                         finalPrice,
-                        images[0],
+                        images![0],
                       );
                       print('Product added to cart');
                     },

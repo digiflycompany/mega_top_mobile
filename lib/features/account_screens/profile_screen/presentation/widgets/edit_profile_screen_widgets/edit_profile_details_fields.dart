@@ -9,6 +9,7 @@ import 'package:mega_top_mobile/features/account_screens/profile_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/edit_full_name_text_field.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/edit_phone_text_field.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/widgets/edit_profile_screen_widgets/edit_profile_details_shimmer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfileDetailsFields extends StatelessWidget {
   const EditProfileDetailsFields({super.key});
@@ -29,15 +30,15 @@ class EditProfileDetailsFields extends StatelessWidget {
                 return Column(
                   children: [
                     EditEmailTextField(
-                      title: AppStrings.emailEn,
+                      title: AppLocalizations.of(context)!.email,
                       controller: cubit.emailController,
                     ),
                     EditFullNameTextField(
-                      title: AppStrings.firstName,
+                      title: AppLocalizations.of(context)!.fullName,
                       controller: cubit.fullNameController,
                     ),
                     EditPhoneTextField(
-                      title: AppStrings.phoneNumberEn,
+                      title: AppLocalizations.of(context)!.phoneNumber,
                       controller: cubit.phoneController,
                     ),
                   ],
@@ -52,15 +53,15 @@ class EditProfileDetailsFields extends StatelessWidget {
                 return Column(
                   children: [
                     EditEmailTextField(
-                      title: AppStrings.emailEn,
+                      title: AppLocalizations.of(context)!.email,
                       controller: cubit.emailController,
                     ),
                     EditFullNameTextField(
-                      title: AppStrings.firstName,
+                      title: AppLocalizations.of(context)!.fullName,
                       controller: cubit.fullNameController,
                     ),
                     EditPhoneTextField(
-                      title: AppStrings.phoneNumberEn,
+                      title: AppLocalizations.of(context)!.phoneNumber,
                       controller: cubit.phoneController,
                     ),
                   ],

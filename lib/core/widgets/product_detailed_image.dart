@@ -9,7 +9,7 @@ import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.d
 
 class ProductDetailedImage extends StatelessWidget {
   const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit, this.productId,});
-  final List<String> images;
+  final List<String>? images;
   final int imagePosition;
   final String? productId;
   final cubit;

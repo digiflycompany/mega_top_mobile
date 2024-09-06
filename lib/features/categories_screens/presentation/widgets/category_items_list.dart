@@ -26,15 +26,16 @@ class CategoryItemsListView extends StatelessWidget {
               .length,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
-              padding: EdgeInsets.only(
-                  right: context.width * 0.011,
-                  left: context.width * 0.011,
+              padding: EdgeInsetsDirectional.only(
+                  end: context.width * 0.011,
+                  start: context.width * 0.011,
                   bottom: context.height * 0.027,
                   top: context.height * 0.006),
               child: ProductsListContainer(
                 index : index,
                 productName: cubit.selectedCategoryModel!.data!.products[index].title,
                 productPhoto: cubit.selectedCategoryModel!.data!
+                    .products[index].images.length==0?context.read<CategoryCubit>().placeHolderImages![0]:cubit.selectedCategoryModel!.data!
                     .products[index].images[0],
                 productType: cubit.selectedCategoryModel!.data!.products[index].categoryId!.name!,
                 productPrice: cubit.selectedCategoryModel!.data!.products[index].price!.finalPrice!.toString(),
