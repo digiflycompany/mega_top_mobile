@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/core/widgets/primary_button.dart';
+import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
-import '../../../../core/widgets/primary_button.dart';
-import '../../../../core/widgets/primary_empty_button.dart';
 
 class FilterBottomSheetButtons extends StatelessWidget {
   const FilterBottomSheetButtons({super.key, required this.getProductsFunction,required this.cubit});
@@ -28,7 +29,7 @@ class FilterBottomSheetButtons extends StatelessWidget {
             children: [
               PrimaryButton(
                 content: Text(
-                  AppStrings.applyEn,
+                  AppLocalizations.of(context)!.apply,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
@@ -79,7 +80,7 @@ class FilterBottomSheetButtons extends StatelessWidget {
                   getProductsFunction();
                   Navigator.pop(context);
                 },
-                text: AppStrings.resetEn,
+                text: AppLocalizations.of(context)!.reset,
               ),
             ],
           ),

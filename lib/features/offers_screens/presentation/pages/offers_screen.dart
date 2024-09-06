@@ -13,6 +13,7 @@ import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart'
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_grid.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_list.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_options_row.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OffersPage extends StatefulWidget {
   const OffersPage({super.key});
@@ -48,12 +49,12 @@ class _OffersPageState extends State<OffersPage> {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
-          child: const CustomFavouriteAppBar(AppStrings.offersEn)),
+          child: CustomFavouriteAppBar(AppLocalizations.of(context)!.offers)),
       body: BlocConsumer<OffersCubit,OffersState>(
         listener: (BuildContext context, OffersState state) {
           if (state is OffersMoreProductNoInternetConnection) {
             context.read<OffersCubit>().page--;
-            context.read<OffersCubit>().showErrorToast(context, AppStrings.noInternetConnection, AppStrings.pleaseCheckYourInternet);
+            context.read<OffersCubit>().showErrorToast(context, AppLocalizations.of(context)!.noInternet, AppLocalizations.of(context)!.pleaseCheckYourInternetConnection);
           }
         },
         builder: (BuildContext context, OffersState state) {
@@ -114,13 +115,13 @@ class _OffersPageState extends State<OffersPage> {
           }else if (cubit.offerModel!.data!.products.length == 0){
             return EmptyDataPage(
               icon: AppAssets.emptyNotificationsIcon,
-              bigFontText: AppStrings.noProductsEn,
-              smallFontText: AppStrings.noProductListItemsEn,
+              bigFontText: AppLocalizations.of(context)!.noProducts,
+              smallFontText: AppLocalizations.of(context)!.noProductListItems,
             );
           }else {
             return Center(
               child: Text(
-                AppStrings.serverError,
+                AppLocalizations.of(context)!.serverError,
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
