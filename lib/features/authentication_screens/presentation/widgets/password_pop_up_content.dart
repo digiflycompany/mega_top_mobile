@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_color.dart';
 
 class PasswordPopUpContent extends StatelessWidget {
   const PasswordPopUpContent({super.key});
@@ -47,7 +47,7 @@ class PasswordPopUpContent extends StatelessWidget {
             ),
             VerticalSpace(context.height * 0.03),
             Text(
-              AppStrings.congratulationsEn,
+              AppLocalizations.of(context)!.congratulations,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.sp,
@@ -55,7 +55,7 @@ class PasswordPopUpContent extends StatelessWidget {
             ),
             VerticalSpace(context.height * 0.023),
             Text(
-              AppStrings.yourPasswordHasBeenResetSuccessfullyEn,
+              AppLocalizations.of(context)!.yourPasswordHasBeenReset,
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.black,
