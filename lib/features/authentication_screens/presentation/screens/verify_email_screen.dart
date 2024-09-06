@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/custom_app_bar.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/cubit/reset_password_cubit/reset_password_cubit.dart';
@@ -10,6 +9,7 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_otp.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_resend_code.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/verify_email_widgets/verify_email_reset_password.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   final String email;
@@ -37,7 +37,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
           backgroundColor: Colors.white,
           appBar: PreferredSize(
               preferredSize: Size(double.infinity, context.height * 0.089),
-              child: const CustomAppBar(AppStrings.verifyYourEmailEn)),
+              child: CustomAppBar(AppLocalizations.of(context)!.verifyYourEmail)),
           body: Form(
             key: _formKey,
             child: Padding(
@@ -45,8 +45,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const VerifyEmailCondition(),
-                    const VerifyEmailDescription(),
+                    VerifyEmailCondition(),
+                    VerifyEmailDescription(email: widget.email,),
                     const VerifyEmailOtp(),
                     VerifyEmailResetPasswordButton(email: widget.email,),
                     VerifyEmailResendCode(email: widget.email,),
