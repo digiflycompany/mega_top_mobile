@@ -23,8 +23,35 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   static ResetPasswordCubit getCubit(context) => BlocProvider.of(context);
 
   final formKey = GlobalKey<FormState>();
-  String passwordPattern =
-      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$';
+
+  String? validatePassword(String value, BuildContext context) {
+    if (value.isEmpty) {
+      return AppLocalizations.of(context)!.pleaseEnterYourPassword;
+    }
+
+    if (!RegExp(r'^(?=.*[A-Z])').hasMatch(value)) {
+      return AppLocalizations.of(context)!.passwordFirstValidation;
+    }
+
+    if (!RegExp(r'^(?=.*[a-z])').hasMatch(value)) {
+      return AppLocalizations.of(context)!.passwordSecondValidation;
+    }
+
+    if (!RegExp(r'^(?=.*\d)').hasMatch(value)) {
+      return AppLocalizations.of(context)!.passwordThirdValidation;
+    }
+
+    if (!RegExp(r'^(?=.*[@$!%*?&])').hasMatch(value)) {
+      return AppLocalizations.of(context)!.passwordFourthValidation;
+    }
+
+    if (value.length < 7) {
+      return AppLocalizations.of(context)!.passwordFifthValidation;
+    }
+
+    return null;
+  }
+
   final emailRegex =
   RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
@@ -193,11 +220,11 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       passwordChangedSuccessfully(context);
     }
     if(state is UpdatePasswordFailure){
-      showErrorToast(context, '',state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.creatingNewPasswordFailed,state.error);
     }
     if(state is ResetPasswordNoInternetConnection){
       showErrorToast(
-          context, AppStrings.creatingNewPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
+          context, AppLocalizations.of(context)!.creatingNewPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
