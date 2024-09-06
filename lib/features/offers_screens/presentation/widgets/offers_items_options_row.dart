@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_sort_container.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/list_grid_container.dart';
+import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/spacer.dart';
-import '../../../home_screens/presentation/widgets/filter_sort_container.dart';
-import '../../../home_screens/presentation/widgets/list_grid_container.dart';
-import '../../cubit/offers_cubit.dart';
 
 class OffersItemsOptionsRow extends StatelessWidget {
   final double? topPadding;
@@ -38,7 +38,7 @@ class OffersItemsOptionsRow extends StatelessWidget {
                     ? AppAssets.listIcon
                     : AppAssets.gridIcon,
                 text:
-                    offersCubit.isGrid ? AppStrings.listEn : AppStrings.gridEn,
+                    offersCubit.isGrid ? AppLocalizations.of(context)!.list : AppLocalizations.of(context)!.grid,
               );
             },
           ),
