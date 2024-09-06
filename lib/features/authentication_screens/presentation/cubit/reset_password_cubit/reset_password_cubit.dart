@@ -193,7 +193,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       passwordChangedSuccessfully(context);
     }
     if(state is UpdatePasswordFailure){
-      showErrorToast(context, '',AppStrings.invalidOtp);
+      showErrorToast(context, '',state.error);
     }
     if(state is ResetPasswordNoInternetConnection){
       showErrorToast(
@@ -207,11 +207,11 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     }
     if(state is VerifyResetPasswordFailure){
       showErrorToast(
-          context, AppStrings.emailVerificationFailed, state.error);
+          context, AppLocalizations.of(context)!.emailVerificationFailed, state.error);
     }
     if(state is ResetPasswordNoInternetConnection){
       showErrorToast(
-          context, AppStrings.emailVerificationFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
+          context, AppLocalizations.of(context)!.emailVerificationFailed, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
     if(state is ResendResetPasswordCodeSuccess){
       codeSentToast(context);
@@ -226,10 +226,10 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       );
     }
     if(state is ResetPasswordFailure){
-      showErrorToast(context, AppStrings.resetPasswordFailed,state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.resetPasswordFailed,state.error);
     }
     if(state is ResetPasswordNoInternetConnection){
-      showErrorToast(context, AppStrings.resetPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
+      showErrorToast(context, AppLocalizations.of(context)!.resetPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
