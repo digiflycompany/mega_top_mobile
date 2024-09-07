@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ import 'package:mega_top_mobile/core/widgets/remove_item_dialog.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/repositories/address_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddressCubit extends Cubit<AddressState> {
   final AddressRepo addressRepo;
@@ -40,7 +40,7 @@ class AddressCubit extends Cubit<AddressState> {
       if (user != null && user.success == true) {
         emit(UserAddressesSuccess(user));
       } else {
-        emit(UserAddressesFailure(user?.message ?? AppStrings.invalidCred));
+        emit(UserAddressesFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -83,7 +83,7 @@ class AddressCubit extends Cubit<AddressState> {
       if (user != null && user.success == true) {
         emit(CitiesSuccess(user));
       } else {
-        emit(CitiesFailure(user?.message ?? AppStrings.invalidCred));
+        emit(CitiesFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -164,7 +164,7 @@ class AddressCubit extends Cubit<AddressState> {
       if (user != null && user.success == true) {
         emit(AddNewAddressSuccess(user));
       } else {
-        emit(AddNewAddressFailure(user?.message ?? AppStrings.invalidCred));
+        emit(AddNewAddressFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -183,7 +183,7 @@ class AddressCubit extends Cubit<AddressState> {
         emit(DeleteAddressSuccess(user));
         getUserAddresses();
       } else {
-        emit(DeleteAddressFailure(user?.message ?? AppStrings.invalidCred));
+        emit(DeleteAddressFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -214,7 +214,7 @@ class AddressCubit extends Cubit<AddressState> {
         emit(EditAddressSuccess(user));
         getUserAddresses();
       } else {
-        emit(EditAddressFailure(user?.message ?? AppStrings.invalidCred));
+        emit(EditAddressFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -228,24 +228,24 @@ class AddressCubit extends Cubit<AddressState> {
   void handleAddNewAddressState(BuildContext context, AddressState state){
     if(state is AddNewAddressSuccess){
       Navigator.pop(context);
-      savedSuccessToast(context, AppStrings.savedSuccessfully);
+      savedSuccessToast(context, AppLocalizations.of(context)!.savedSuccessfully);
     }
     else if(state is AddNewAddressFailure){
-      showErrorToast(context, AppStrings.savingAddressFailed,state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.savingAddressFailed,state.error);
     }
   }
   void handleUpdateAddressState(BuildContext context, AddressState state){
     if(state is EditAddressSuccess){
       Navigator.pop(context);
-      savedSuccessToast(context, AppStrings.updatedSuccessfully);
+      savedSuccessToast(context, AppLocalizations.of(context)!.updatedSuccessfully);
     }
     else if(state is EditAddressFailure){
-      showErrorToast(context, AppStrings.editingAddressFailed,state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.editingAddressFailed,state.error);
     }
   }
   void handleDeleteAddressState(BuildContext context, AddressState state){
     if(state is DeleteAddressSuccess){
-      savedSuccessToast(context, AppStrings.removedSuccessfully);
+      savedSuccessToast(context, AppLocalizations.of(context)!.removedSuccessfully);
     }
   }
 

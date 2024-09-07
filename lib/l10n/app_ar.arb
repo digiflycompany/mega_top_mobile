@@ -1,5 +1,6 @@
 {
   "@@locale": "ar",
+  "language": "العربية",
   "account": "الحساب",
   "homeNavBar": "الرئيسية",
   "categories": "الأقسام",
@@ -176,6 +177,20 @@
   "pleaseCheckYourInternetConnection": "يرجى التحقق من اتصالك بالإنترنت\nوالمحاولة مرة أخرى.",
   "retryToConnect": "أعد محاولة الإتصال",
   "noNotifications": "لا يوجد إشعارات",
+  "addToWishListFailed": "فشلت إضافة إلى قائمة المفضلة",
+  "removeFromWishListFailed": "فشلت عملية الإزالة من قائمة المفضلة",
+  "savingAddressFailed": "فشل حفظ العنوان",
+  "editingAddressFailed": "فشل تعديل العنوان",
+  "theProductAddedToTheCompareProducts": "تمت إضافة المنتج إلى مقارنة المنتجات",
+  "cityCanNotBeEmpty": "لا يمكن أن تكون المدينة فارغة",
+  "compareProducts": "مقارنة المنتجات",
+  "savedSuccessfully": "تم الحفظ بنجاح",
+  "updatedSuccessfully": "تم التحديث بنجاح",
+  "removedSuccessfully": "تم الإزالة بنجاح",
+  "failedToLoadOrderDetails": "فشل تحميل تفاصيل الطلب",
+  "failedToLoadOrders": "فشل تحميل الطلبات",
+  "removingAccountFailed": "فشلت عملية إزالة الحساب",
+  "updatingPasswordFailed": "فشل تحديث كلمة المرور",
   "thereIsNoNewNotification": " لا توجد إشعارات جديدة في الوقت الحالي. سنخطرك عندما\nيكون هناك شيء يستحق انتباهك.",
   "settings": "الإعدادات"
 }

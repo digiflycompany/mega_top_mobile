@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/account_screens/notification_screen/presentation/cubit/notification_cubit.dart';
@@ -68,7 +67,7 @@ class NotificationScreen extends StatelessWidget {
             }
             return Center(
               child: Text(
-                AppStrings.serverError,
+                AppLocalizations.of(context)!.serverError,
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,

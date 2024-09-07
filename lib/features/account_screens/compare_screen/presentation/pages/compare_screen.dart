@@ -6,9 +6,8 @@ import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
-
-import '../../../../../core/utils/app_string.dart';
-import '../../../../home_screens/presentation/widgets/primary_app_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 
 class CompareScreen extends StatelessWidget {
   final bool isEmpty = false;
@@ -20,16 +19,16 @@ class CompareScreen extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
-            child: const PrimaryAppBar(
-              AppStrings.compareProducts,
+            child: PrimaryAppBar(
+              AppLocalizations.of(context)!.compareProducts,
               favour: false,
             )),
         body: isEmpty
             ? const EmptyDataPage(
                 icon: AppAssets.emptyCompareIcon,
-                bigFontText: AppStrings.noProductAddedToCompareEn,
-                smallFontText: AppStrings.emptyComparePageDescriptionEn,
-                buttonText: AppStrings.continueShoppingEn,
+                // bigFontText: AppStrings.noProductAddedToCompareEn,
+                // smallFontText: AppStrings.emptyComparePageDescriptionEn,
+                // buttonText: AppStrings.continueShoppingEn,
               )
             : SingleChildScrollView(
                 physics: BouncingScrollPhysics(),

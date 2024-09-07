@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_toast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class AppConstants {
   AppConstants._();
   static const double circleRadius = 10;
@@ -29,7 +30,7 @@ class AppConstants {
         top: kToolbarHeight + MediaQuery.of(context).padding.top,
         width: MediaQuery.of(context).size.width,
         child: AnimatedOverlayToast(
-          message: AppStrings.theProductAddedToCompareEn,
+          message: AppLocalizations.of(context)!.theProductAddedToTheCompareProducts,
           color: AppColors.primaryColor,
           onDismissed: () {
             if (overlayEntry != null) {
