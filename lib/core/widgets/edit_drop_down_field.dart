@@ -2,9 +2,9 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditDropdownField extends StatelessWidget {
   final Widget? suffix;
@@ -67,7 +67,7 @@ class EditDropdownField extends StatelessWidget {
           onChanged: onChanged,
           validator: validator ?? (value) {
             if (value == null || value.isEmpty) {
-              return AppStrings.cityCanNotBeEmpty;
+              return AppLocalizations.of(context)!.cityCanNotBeEmpty;
             }
             return null;
           },

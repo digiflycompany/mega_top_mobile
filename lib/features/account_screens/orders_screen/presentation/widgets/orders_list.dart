@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/big_circular_progress_indicator.dart';
@@ -33,7 +32,7 @@ class OrdersList extends StatelessWidget {
           return const Center(child: BigCircularProgressIndicator());
         }
         if (state is OrdersFailure) {
-          ordersCubit.showErrorToast(context, AppStrings.failedToLoadOrders, state.error);
+          ordersCubit.showErrorToast(context, AppLocalizations.of(context)!.failedToLoadOrders, state.error);
         }
         if (state is OrdersNoInternetConnection) {
           return NoInternetScreen(buttonOnTap: ()=>ordersCubit.refreshOrders());

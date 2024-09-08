@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/data/repositories/orders_repo.dart';
@@ -65,7 +64,7 @@ class YourOrderDetailsScreen extends StatelessWidget {
                   );
                 }
                 else if(state is UserOrderFailure){
-                  context.read<OrdersCubit>().showErrorToast(context, AppStrings.failedToLoadOrderDetails, state.error);
+                  context.read<OrdersCubit>().showErrorToast(context, AppLocalizations.of(context)!.failedToLoadOrderDetails, state.error);
                 }
                 else if(state is OrdersNoInternetConnection){
                   return NoInternetScreen(buttonOnTap: ()=>context.read<OrdersCubit>().getUserOrder(orderId!));

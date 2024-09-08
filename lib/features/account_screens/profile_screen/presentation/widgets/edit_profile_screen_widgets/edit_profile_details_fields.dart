@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
@@ -44,12 +43,12 @@ class EditProfileDetailsFields extends StatelessWidget {
                   ],
                 );
               } else if (state is AccountDetailsFailure) {
-                cubit.showErrorToast(context, AppStrings.profileDetailsFailed, state.error);
+                cubit.showErrorToast(context, AppLocalizations.of(context)!.productDetailsFailed, state.error);
                 return Center(child: Text('Failed'),);
               } else if(state is UpdatingAccountDetailsLoading){
                 return EditProfileDetailsShimmer();
               }else if(state is UpdatingAccountDetailsSuccess){
-                cubit.savedSuccessToast(context,AppStrings.savedSuccessfully);
+                cubit.savedSuccessToast(context,AppLocalizations.of(context)!.savedSuccessfully);
                 return Column(
                   children: [
                     EditEmailTextField(

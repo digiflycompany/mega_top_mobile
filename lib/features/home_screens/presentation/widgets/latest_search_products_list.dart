@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/latest_products_container.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LatestSearchProductsList extends StatefulWidget {
   const LatestSearchProductsList({super.key});
@@ -32,7 +32,7 @@ class _LatestSearchProductsListState extends State<LatestSearchProductsList> {
             .then((value){
           if(cubit.hasMoreProducts == true)
           {
-            cubit.selectOption(AppStrings.defaultEn);
+            cubit.selectOption(AppLocalizations.of(context)!.defaultWord);
           }
           cubit.hasMoreProducts = null;
         });

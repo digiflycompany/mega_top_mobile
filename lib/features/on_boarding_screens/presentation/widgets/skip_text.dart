@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_string.dart';
 
 class SkipText extends StatelessWidget {
   final Function()? onTap;
@@ -21,7 +21,7 @@ class SkipText extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(context.height * 0.0165),
             child: Text(
-              AppStrings.skipEn,
+              AppLocalizations.of(context)!.skip,
               style: TextStyle(
                 color: AppColors.primaryColor,
                 fontSize: 14.sp,

@@ -117,7 +117,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         await PreferencesHelper.saveWishListCount(wishListCount);
         emit(AccountDetailsSuccess(user));
       } else {
-        emit(AccountDetailsFailure(user?.message ?? AppStrings.invalidCred));
+        emit(AccountDetailsFailure(user?.message ?? ""));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -143,7 +143,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         emit(UpdatingAccountDetailsSuccess(user));
       } else {
         emit(UpdatingAccountDetailsFailure(
-            user?.message ?? AppStrings.invalidCred));
+            user?.message ?? ""));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -160,9 +160,9 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       final user = await accountDetailsRepo.updatePassword(password);
       if (user != null && user.success == true) {
         emit(UpdatingPasswordSuccess(user));
-        savedSuccessToast(context,AppStrings.savedSuccessfully);
+        savedSuccessToast(context,AppLocalizations.of(context)!.savedSuccessfully);
       } else {
-        emit(UpdatingPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+        emit(UpdatingPasswordFailure(user?.message??''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -197,7 +197,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         emit(RemoveAccountSuccess(user));
       } else {
         emit(RemoveAccountFailure(
-            user?.message ?? AppStrings.invalidCred));
+            user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -216,7 +216,7 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         emit(RemoveFromWishListSuccess(user));
       } else {
         emit(RemoveFromWishListFailure(
-            user?.message ?? AppStrings.invalidCred));
+            user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -233,29 +233,29 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
       Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
     }
     if(state is RemoveAccountFailure){
-      showErrorToast(context, AppStrings.removingAccountFailed,state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.removingAccountFailed,state.error);
     }
     if(state is AccountDetailsNoInternetConnection){
-      showErrorToast(context, AppStrings.removingAccountFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
+      showErrorToast(context, AppLocalizations.of(context)!.removingAccountFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
   void handleEditPasswordStates(BuildContext context, AccountDetailsState state) {
     if(state is UpdatingPasswordFailure){
-      showErrorToast(context, AppStrings.updatingPasswordFailed,state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.updatingPasswordFailed,state.error);
     }
     if(state is AccountDetailsNoInternetConnection){
-      showErrorToast(context, AppStrings.updatingPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
+      showErrorToast(context, AppLocalizations.of(context)!.updatingPasswordFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 
   void handleRemovingFromWishList(BuildContext context, AccountDetailsState state) {
     if(state is RemoveFromWishListSuccess){
-      savedSuccessToast(context, AppStrings.productRemovedSuccessfully);
+      savedSuccessToast(context, AppLocalizations.of(context)!.productRemovedSuccessfully);
       getAccountDetails();
     }
     if(state is RemoveFromWishListFailure){
-      showErrorToast(context, AppStrings.removingProductFailed,state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.removingProductFailed,state.error);
     }
   }
 

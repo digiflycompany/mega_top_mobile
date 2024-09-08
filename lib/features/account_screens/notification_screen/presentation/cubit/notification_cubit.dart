@@ -45,7 +45,7 @@ class NotificationCubit extends Cubit<NotificationState> {
 
       } else {
         emit(NotificationFailure(
-            user?.message ?? AppStrings.invalidCred));
+            user?.message ?? ""));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {

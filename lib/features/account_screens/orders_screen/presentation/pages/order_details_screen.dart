@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/order_status_card.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_details_checkout_card.dart';
@@ -51,7 +50,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                 city: dropOffAddress!.cityName,
               ),
               PaymentMethodSmallCard(
-                paymentMethod: AppStrings.cashOnDeliveryEn,
+                paymentMethod: AppLocalizations.of(context)!.cashOnDelivery,
               ),
               YourOrderCheckoutCard(
                 products: products,

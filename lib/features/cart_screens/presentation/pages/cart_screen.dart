@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
@@ -73,8 +72,8 @@ class CartPage extends StatelessWidget {
                       if (cartLength == 0) {
                         context.read<CartCubit>().showErrorToast(
                           context,
-                          AppStrings.addToCartFailed,
-                          AppStrings.yourShoppingCartIsEmptyEn,
+                          AppLocalizations.of(context)!.addToCartFailed,
+                          AppLocalizations.of(context)!.yourShippingCartIsEmpty,
                         );
                       } else {
                         context.read<CartCubit>().sendCartToApi(

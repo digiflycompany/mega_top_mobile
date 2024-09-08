@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
@@ -13,6 +12,7 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/no_re
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_result_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/search_result_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class SearchResultPage extends StatefulWidget {
@@ -35,7 +35,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
         cubit.page++;
         cubit.getMoreProduct().then((value) {
           if (cubit.hasMoreProducts == true) {
-            cubit.selectOption(AppStrings.defaultEn);
+            cubit.selectOption(AppLocalizations.of(context)!.defaultWord);
           }
           cubit.hasMoreProducts = null;
         });
@@ -56,7 +56,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
           listener: (BuildContext context, HomeState state) {
             if (state is SearchMoreProductsNoInternetConnection) {
               context.read<HomeCubit>().page--;
-              context.read<HomeCubit>().showErrorToast(context, AppStrings.noInternetConnection, AppStrings.pleaseCheckYourInternet);
+              context.read<HomeCubit>().showErrorToast(context, AppLocalizations.of(context)!.noInternet, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
             }
           },
           builder: (BuildContext context, HomeState state) {
@@ -86,8 +86,8 @@ class _SearchResultPageState extends State<SearchResultPage> {
             } else if (homeCubit.searchModel!.data!.products.length == 0) {
               return EmptyDataPage(
                 icon: AppAssets.emptyNotificationsIcon,
-                bigFontText: AppStrings.noProductsEn,
-                smallFontText: AppStrings.noProductListItemsEn,
+                bigFontText: AppLocalizations.of(context)!.noProducts,
+                smallFontText: AppLocalizations.of(context)!.noProductListItems,
               );
             } else {
               return SizedBox(
@@ -108,7 +108,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
   @override
   void dispose() {
     cubit.searchModel = null;
-    cubit.selectOption(AppStrings.defaultEn);
+    cubit.selectOption(AppLocalizations.of(context)!.defaultWord);
     cubit.page = 1;
     cubit.minPriceController.clear();
     cubit.maxPriceController.clear();

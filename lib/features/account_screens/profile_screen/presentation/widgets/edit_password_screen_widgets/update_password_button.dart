@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UpdatePasswordButton extends StatefulWidget {
   final GlobalKey<FormState> formKey;
@@ -26,7 +26,7 @@ class _UpdatePasswordButtonState extends State<UpdatePasswordButton> {
         return ButtonBottomNavBar(
           button: PrimaryButton(
             content: state is UpdatingPasswordLoading?const ButtonCircularProgress():Text(
-              AppStrings.save,
+              AppLocalizations.of(context)!.save,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,

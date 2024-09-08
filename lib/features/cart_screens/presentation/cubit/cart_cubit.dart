@@ -46,7 +46,7 @@ class CartCubit extends Cubit<CartState> {
       if (user != null && user.success == true) {
         emit(CheckoutSuccess(user));
       } else {
-        emit(CheckoutFailure(user?.message ?? AppStrings.invalidCred));
+        emit(CheckoutFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -70,7 +70,7 @@ class CartCubit extends Cubit<CartState> {
       if (user != null && user.success == true) {
         emit(CartSentToAPISuccess(user));
       } else {
-        emit(CartSentToAPIFailure(user?.message ?? AppStrings.invalidCred));
+        emit(CartSentToAPIFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {

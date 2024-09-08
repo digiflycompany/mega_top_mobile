@@ -123,7 +123,7 @@ class GlobalCubit extends Cubit<GlobalState> {
       if (user != null && user.success == true) {
         emit(AddToWishListSuccess(user));
       } else {
-        emit(AddToWishListFailure(user?.message ?? AppStrings.invalidCred));
+        emit(AddToWishListFailure(user?.message ?? ""));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -141,7 +141,7 @@ class GlobalCubit extends Cubit<GlobalState> {
       if (user != null && user.success == true) {
         emit(RemoveFromWishListSuccess(user));
       } else {
-        emit(RemoveFromWishListFailure(user?.message ?? AppStrings.invalidCred));
+        emit(RemoveFromWishListFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -224,10 +224,10 @@ class GlobalCubit extends Cubit<GlobalState> {
       showRemoveFromFavouritesToast(context);
     }
     if(state is AddToWishListFailure){
-      showErrorToast(context, AppStrings.addToWishListFailed, state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.addToWishListFailed, state.error);
     }
     if(state is RemoveFromWishListFailure){
-      showErrorToast(context, AppStrings.removeFromWishListFailed, state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.removeFromWishListFailed, state.error);
     }
     if(state is WishListNoInternetConnection){
       showErrorToast(context, AppLocalizations.of(context)!.noInternet, AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
