@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_states.dart';
-import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/cvv_card_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_icon.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/payment_card_text.dart';
 
-import 'add_new_card_button.dart';
 
 class DebitCardsContainer extends StatelessWidget {
   final String? paymentIcon;
@@ -87,16 +83,16 @@ class DebitCardsContainer extends StatelessWidget {
                   thickness: 1.w,
                 ),
                 VerticalSpace(context.height * 0.033),
-                const CvvCardContainer(
-                  cardIcon: AppAssets.masterCardImg,
-                  cardNumber: AppStrings.cardEndsWithEn,
-                ),
-                const CvvCardContainer(
-                  cardIcon: AppAssets.masterCardImg,
-                  cardNumber: AppStrings.cardEndsWithEn,
-                ),
+                // const CvvCardContainer(
+                //   cardIcon: AppAssets.masterCardImg,
+                //   cardNumber: AppStrings.cardEndsWithEn,
+                // ),
+                // const CvvCardContainer(
+                //   cardIcon: AppAssets.masterCardImg,
+                //   cardNumber: AppStrings.cardEndsWithEn,
+                // ),
                 const Spacer(),
-                const AddNewCardButton(),
+                // const AddNewCardButton(),
               ],
             ),
           ),

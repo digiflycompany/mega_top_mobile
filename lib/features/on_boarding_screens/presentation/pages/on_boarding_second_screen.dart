@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/header_onboarding_2.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/widgets/onboarding_description.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingSecondScreen extends StatelessWidget {
   final int index;
@@ -22,9 +22,9 @@ class OnboardingSecondScreen extends StatelessWidget {
             pageController: pageController,
           ),
           VerticalSpace(context.height * 0.0346),
-          const OnboardingDescription(
-            title: AppStrings.addYourProductsToCartEn,
-            description: AppStrings.onboardingSecondScreenDescription,
+          OnboardingDescription(
+            title: AppLocalizations.of(context)!.addYourProductsToShoppingCart,
+            description: AppLocalizations.of(context)!.onboardingSecondScreenDescription,
           ),
         ],
       ),

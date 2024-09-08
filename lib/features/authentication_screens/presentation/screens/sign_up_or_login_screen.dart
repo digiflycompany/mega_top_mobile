@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/authentication_image.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_or_continue_column.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/utils/app_routes.dart';
 
 class SignUpOrLoginPage extends StatelessWidget {
   const SignUpOrLoginPage({super.key});
@@ -28,7 +28,7 @@ class SignUpOrLoginPage extends StatelessWidget {
             /// Sign Up Button
             PrimaryButton(
               content: Text(
-                AppStrings.signUpEn,
+                AppLocalizations.of(context)!.signUp,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -41,7 +41,7 @@ class SignUpOrLoginPage extends StatelessWidget {
 
             /// Login Button
             PrimaryOutlinedButton(
-              text: AppStrings.loginEn,
+              text: AppLocalizations.of(context)!.login,
               onTap: () => Routes.loginRoute.moveTo,
             )
           ],

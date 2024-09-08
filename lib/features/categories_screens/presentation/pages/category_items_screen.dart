@@ -60,7 +60,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
           listener: (BuildContext context, CategoryState state) {
         if (state is SelectedCategoryMoreProductsNoInternetConnection) {
           context.read<CategoryCubit>().page--;
-          context.read<CategoryCubit>().showErrorToast(context, AppStrings.noInternetConnection, AppStrings.pleaseCheckYourInternet);
+          context.read<CategoryCubit>().showErrorToast(context, AppLocalizations.of(context)!.noInternet, AppLocalizations.of(context)!.sorryThereIsNoInternet);
         }},
 
           builder: (BuildContext context, state) {

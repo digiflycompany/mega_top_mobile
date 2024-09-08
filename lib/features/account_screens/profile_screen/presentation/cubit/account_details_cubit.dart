@@ -251,11 +251,11 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
 
   void handleRemovingFromWishList(BuildContext context, AccountDetailsState state) {
     if(state is RemoveFromWishListSuccess){
-      savedSuccessToast(context, AppStrings.productRemovedSuccessfully);
+      savedSuccessToast(context, AppLocalizations.of(context)!.productRemovedSuccessfully);
       getAccountDetails();
     }
     if(state is RemoveFromWishListFailure){
-      showErrorToast(context, AppStrings.removingProductFailed,state.error);
+      showErrorToast(context, AppLocalizations.of(context)!.removingProductFailed,state.error);
     }
   }
 

@@ -275,7 +275,7 @@ class AppStrings {
 //   static const String upsVersion1En = 'UPS - Version 1';
 //   static const String listEn = 'List';
 //   static const String gridEn = 'Grid';
-//   static const String defaultEn = 'Default';
+   static const String defaultEn = 'Default';
 //   static const String addNewCardEn = 'Add a new card';
 //   static const String addBankCardEn = 'Add a bank card';
 //   static const String cardNumberEn = 'Card number';
@@ -332,8 +332,8 @@ class AppStrings {
 //   // static const String viewOrderEn = 'View Order';
 //   // static const String yourOrderTwoProductsEn = 'Your order (2 products)';
 //   // static const String yourOrder = 'Your order ';
-//   // static const String openBracket = '(';
-//   // static const String closeBracket = ') ';
+    static const String openBracket = '(';
+    static const String closeBracket = ') ';
 //   // static const String yourOrderReceivedSuccessfullyEn =
 //   //     'Your order received successfully';
 //   // static const String yourOrderIDIsEn = 'Your order id is : ';

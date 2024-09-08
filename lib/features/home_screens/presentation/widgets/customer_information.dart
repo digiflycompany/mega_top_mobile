@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
@@ -55,9 +54,9 @@ class CustomerInformation extends StatelessWidget {
               if(isUserLoggedIn)
                 GestureDetector(
                   onTap: () => Routes.notificationPageRoute.moveTo(),
-                  child: const CustomerIcon(
+                  child: CustomerIcon(
                     icon: AppAssets.notificationIcon,
-                    number: AppStrings.three,
+                    number: PreferencesHelper.getNotificationCount().toString(),
                   ),
                 ),
             ],

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
@@ -51,7 +50,7 @@ class FilterBottomSheetButtons extends StatelessWidget {
                       cubit.page = 1;
                       cubit.minPrice = int.tryParse(cubit.minPriceController.text);
                       cubit.maxPrice = int.tryParse(cubit.maxPriceController.text);
-                      cubit.selectOption(AppStrings.defaultEn);
+                      cubit.selectOption(AppLocalizations.of(context)!.defaultWord);
                       //   cubit.getSelectedCategories(cubit.selectedCategoryId!);
                       getProductsFunction();
                       Navigator.pop(context);
@@ -61,7 +60,7 @@ class FilterBottomSheetButtons extends StatelessWidget {
                     cubit.page = 1;
                     cubit.minPrice = int.tryParse(cubit.minPriceController.text);
                     cubit.maxPrice = int.tryParse(cubit.maxPriceController.text);
-                    cubit.selectOption(AppStrings.defaultEn);
+                    cubit.selectOption(AppLocalizations.of(context)!.defaultWord);
                     //   cubit.getSelectedCategories(cubit.selectedCategoryId!);
                     getProductsFunction();
                     Navigator.pop(context);

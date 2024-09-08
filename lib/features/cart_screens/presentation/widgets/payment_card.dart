@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/debit_cards_container.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/debit_cards_empty_container.dart';
-
-import 'debit_cards_container.dart';
 
 class PaymentCard extends StatelessWidget {
   final String? paymentIcon;
@@ -19,7 +17,7 @@ class PaymentCard extends StatelessWidget {
   Widget build(BuildContext context) {
       return Padding(
           padding: EdgeInsets.only(bottom: context.height * 0.033),
-          child: isSelected && paymentCardIndex == AppStrings.one ?DebitCardsContainer(
+          child: isSelected && paymentCardIndex == '1' ?DebitCardsContainer(
             isSelected: isSelected,
             value: value,
             paymentType: paymentType,
