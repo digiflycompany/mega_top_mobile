@@ -73,9 +73,9 @@ class _HomePageState extends State<HomePage> {
                   setState(() {
                     homeCubit.setPageIndex(_currentIndex = index);
                   });
-                },
+                }
               );
-            },
+            }
           ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,

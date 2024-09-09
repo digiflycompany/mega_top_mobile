@@ -8,9 +8,12 @@ import 'package:mega_top_mobile/core/utils/global_repo.dart';
 import 'package:mega_top_mobile/core/utils/global_state.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_toast.dart';
+import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/compare_item.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 class GlobalCubit extends Cubit<GlobalState> {
   final GlobalRepo globalRepo;
@@ -134,6 +137,14 @@ class GlobalCubit extends Cubit<GlobalState> {
     }
   }
 
+  Future<void> addProductToCompareList(Product product) async {
+    var compareList = PreferencesHelper.getCompareList();
+    compareList.add(product);
+    PreferencesHelper.saveCompareList(compareList);
+    emit(AddToCompareListSuccess());
+  }
+
+
   Future<void> removeFromWishList(String productId) async {
     emit(RemoveFromWishListLoading());
     try {
@@ -150,6 +161,15 @@ class GlobalCubit extends Cubit<GlobalState> {
         emit(RemoveFromWishListFailure(e.toString()));
       }
     }
+  }
+
+  Future<void> removeFromCompareList(String productId) async {
+    var compareList = PreferencesHelper.getCompareList();
+
+    // Remove the product with the matching productId
+    compareList.removeWhere((product) => product.id == productId);
+      PreferencesHelper.saveCompareList(compareList);
+        emit(RemoveFromCompareListSuccess());
   }
 
   // Future<void> getLatestOffers() async {

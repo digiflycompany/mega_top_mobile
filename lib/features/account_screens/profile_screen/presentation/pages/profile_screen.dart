@@ -15,31 +15,26 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height * 0.089),
-          child: PrimaryAppBar(
-            AppLocalizations.of(context)!.profile,
-            favour: false,
-          )),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const ProfileScreenLogo(),
-              const ProfileScreenHeader(),
-              EditProfileItem(
-                  onTap: () => Routes.profileDetailsPageRoute.moveTo
-              ),
-              EditPasswordItem(
-                  onTap: () => Routes.passwordDetailsPageRoute.moveTo),
-              DeleteAccountItem(),
-            ],
-          ),
-        ),
-      ),
-    );
+        appBar: PreferredSize(
+            preferredSize: Size(double.infinity, context.height * 0.089),
+            child: PrimaryAppBar(
+              AppLocalizations.of(context)!.profile,
+              favour: false,
+            )),
+        body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+            child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const ProfileScreenLogo(),
+                      const ProfileScreenHeader(),
+                      EditProfileItem(
+                          onTap: () => Routes.profileDetailsPageRoute.moveTo),
+                      EditPasswordItem(
+                          onTap: () => Routes.passwordDetailsPageRoute.moveTo),
+                      DeleteAccountItem()
+                    ]))));
   }
 }

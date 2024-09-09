@@ -207,5 +207,15 @@
   "addYourProductsToShoppingCart": "Add your products to the shopping cart",
   "onboardingSecondScreenDescription": "Seamlessly add items to your cart with just a tap. Review your selections, adjust quantities, or continue shopping until you have everything you need.",
   "onboardingFirstScreenDescription": "Discover the latest in technology with a wide range of electronic products from top brands. Browse through our intuitive categories for smartphones, laptops, cameras, and more to find exactly what you need.",
-  "yourWishList": "Your wish list"
+  "yourWishList": "Your wish list",
+  "productRemovedFromComparisonList": "Product removed from compare list",
+  "compareListIsFullUNeedToReduceIt": "Compare list is full, you need to reduce it!",
+  "emptyList": "Empty list",
+  "yourComparisonListIsStillEmpty": "Your comparison list is still empty.",
+  "le": "LE",
+  "category": "Category",
+  "priceII": "Price",
+  "availability": "Availability",
+  "unAvailable": "Unavailable",
+  "description": "Description"
 }

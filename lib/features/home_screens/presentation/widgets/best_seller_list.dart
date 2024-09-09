@@ -41,7 +41,7 @@ class BestSellerList extends StatelessWidget {
                                  description: state.user.products![index].description,
                                  finalPrice: state.user.products![index].price.finalPrice.toString(),
                                  originalPrice: state.user.products![index].price.originalPrice.toString(),
-                                 productId: state.user.products![index].id,
+                                 product: state.user.products![index],
                                  imagePosition: context.read<LatestProductsCubit>().currentImageIndex,
                                   images: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages!:state.user.products![index].images!,
                                 ),
@@ -54,7 +54,7 @@ class BestSellerList extends StatelessWidget {
                         );
                       }, separatorBuilder: (context, index) {
                     return SizedBox(
-                      width: 0.w,
+                      width: 0.w
                     );
                   }, itemCount: 5),
                 )

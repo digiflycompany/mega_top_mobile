@@ -292,10 +292,12 @@ class RouteGenerator {
     //     child: const OrdersDetailsScreen(),
     //   );
       case Routes.compareProductPageRoute:
+        final isEmpty = routeSettings.arguments as bool; // Retrieve the argument
         return buildPageRoute(
-          child: const CompareScreen(),
+          child: CompareScreen(isEmpty: isEmpty), // Pass the argument to the screen
         );
-      // case Routes.signUpEmailVerificationPageRoute:
+
+    // case Routes.signUpEmailVerificationPageRoute:
       //   return buildPageRoute(
       //     child: BlocProvider(
       //       create: (context) => EmailVerificationCubit(AuthRepoImp()),
