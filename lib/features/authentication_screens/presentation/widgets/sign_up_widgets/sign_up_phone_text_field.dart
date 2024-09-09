@@ -18,6 +18,7 @@ class SignUpPhoneTextField extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(bottom: context.height24),
           child: PrimaryTextField(
+            inputType: TextInputType.phone,
             controller: signUpCubit.signUpPhoneController,
             hintText: AppLocalizations.of(context)!.phoneNumber,
             prefixSvg: AppAssets.phoneIcon,

@@ -1,4 +1,4 @@
-package com.example.mega_top_mobile
+package com.megaTop.mega_top_mobile
 
 import io.flutter.embedding.android.FlutterActivity
 
