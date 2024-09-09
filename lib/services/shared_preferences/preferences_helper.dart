@@ -1,7 +1,6 @@
 import 'dart:convert';
 import '../../../../core/widgets/main_page_products_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/compare_item.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/login_screen.dart';

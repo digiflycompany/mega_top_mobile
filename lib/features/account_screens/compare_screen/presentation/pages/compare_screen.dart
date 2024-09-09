@@ -32,11 +32,13 @@ class CompareScreen extends StatelessWidget {
             child: PrimaryAppBar(AppLocalizations.of(context)!.compareProducts,
                 favour: false)),
         body: isEmpty
-            ? EmptyDataPage(
-                icon: AppAssets.emptyCompareIcon,
-                bigFontText: AppLocalizations.of(context)!.emptyList,
-                smallFontText: AppLocalizations.of(context)!
-                    .yourComparisonListIsStillEmpty)
+            ? Center(
+              child: EmptyDataPage(
+                  icon: AppAssets.emptyCompareIcon,
+                  bigFontText: AppLocalizations.of(context)!.emptyList,
+                  smallFontText: AppLocalizations.of(context)!
+                      .yourComparisonListIsStillEmpty),
+            )
             : SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Padding(
@@ -115,7 +117,7 @@ class CompareScreen extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(products[0].title ?? '',
+                                                Text(products[0].title,
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w700,
@@ -195,7 +197,7 @@ class CompareScreen extends StatelessWidget {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                        products[1].title ?? '',
+                                                        products[1].title,
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w700,

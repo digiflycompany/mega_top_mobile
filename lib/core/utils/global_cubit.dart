@@ -9,7 +9,6 @@ import 'package:mega_top_mobile/core/utils/global_state.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_icon_toast.dart';
 import 'package:mega_top_mobile/core/widgets/custom_animated_toast.dart';
 import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
-import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/compare_item.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

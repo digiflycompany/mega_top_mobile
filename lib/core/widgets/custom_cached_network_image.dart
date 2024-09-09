@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/widgets/big_circular_progress_indicator.dart';
-import 'package:mega_top_mobile/core/widgets/custom_image.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage(
