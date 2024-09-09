@@ -28,7 +28,7 @@ class LatestOffersCubit extends Cubit<LatestOffersState> {
       if (user != null && user.success == true) {
         emit(LatestOffersSuccess(user));
       } else {
-        emit(LatestOffersFailure(user?.message ?? AppStrings.invalidCred));
+        emit(LatestOffersFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {

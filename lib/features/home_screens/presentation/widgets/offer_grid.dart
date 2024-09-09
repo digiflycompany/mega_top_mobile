@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 
 class OfferGrid extends StatelessWidget {
@@ -44,11 +42,11 @@ class GridItem {
   const GridItem(this.imagePath, this.text1, this.text2);
 }
 
-final List<GridItem> items = [
-  const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
-  const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
-  const GridItem(AppAssets.smallRackImage, AppStrings.rackEn, AppStrings.discount15PercentEn),
-  const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
-
-];
+// final List<GridItem> items = [
+//   const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
+//   const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
+//   const GridItem(AppAssets.smallRackImage, AppStrings.rackEn, AppStrings.discount15PercentEn),
+//   const GridItem(AppAssets.smallHardDiskImage, AppStrings.storageUnitsSmallEn, AppStrings.discount15PercentEn),
+//
+// ];
 

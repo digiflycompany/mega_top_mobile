@@ -114,7 +114,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
         width: MediaQuery.of(context).size.width,
         child: AnimatedOverlayIconToast(
           toastIcon: AppAssets.checkIcon,
-          message: AppStrings.codeSentSuccessfully,
+          message: AppLocalizations.of(context)!.codeSentSuccessfully,
           color: AppColors.primaryGreenColor,
           onDismissed: () {
             if (overlayEntry != null) {
@@ -147,7 +147,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       if (user != null && user.success == true) {
         emit(ResetPasswordSuccess(user));
       } else {
-        emit(ResetPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+        emit(ResetPasswordFailure(user?.message??''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -165,7 +165,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       if (user != null && user.success == true) {
         emit(ResendResetPasswordCodeSuccess(user));
       } else {
-        emit(ResendResetPasswordCodeFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+        emit(ResendResetPasswordCodeFailure(user?.message??''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -186,7 +186,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
         print(await PreferencesHelper.getToken());
         emit(VerifyResetPasswordSuccess(user));
       } else {
-        emit(VerifyResetPasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+        emit(VerifyResetPasswordFailure(user?.message??''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -204,7 +204,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       if (user != null && user.success == true) {
         emit(UpdatePasswordSuccess(user));
       } else {
-        emit(UpdatePasswordFailure(user?.message??AppStrings.incorrectEmailOrNetworkIssuesEn));
+        emit(UpdatePasswordFailure(user?.message??''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {

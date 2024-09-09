@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/product_photo_and_category_column.dart';
@@ -33,10 +31,7 @@ class CartBottomSheetProductDetails extends StatelessWidget {
           children: [
             const AnimatedCheckSignCircle(),
             HorizontalSpace(context.width * 0.045),
-            const ProductPhotoAndCategoryColumn(
-              productImage: AppAssets.productBigPhoto,
-              productCategory: AppStrings.upsVersion1En,
-            ),
+            const ProductPhotoAndCategoryColumn(),
           ],
         ),
       ),

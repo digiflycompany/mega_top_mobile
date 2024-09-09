@@ -26,7 +26,7 @@ class LatestProductsCubit extends Cubit<LatestProductsState> {
       if (user != null && user.success == true) {
         emit(LatestProductsSuccess(user));
       } else {
-        emit(LatestProductsFailure(user?.message ?? AppStrings.invalidCred));
+        emit(LatestProductsFailure(user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {

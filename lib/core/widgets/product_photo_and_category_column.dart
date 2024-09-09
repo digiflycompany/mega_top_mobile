@@ -4,10 +4,8 @@ import '../utils/app_color.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductPhotoAndCategoryColumn extends StatelessWidget {
-  final String? productImage;
-  final String? productCategory;
   const ProductPhotoAndCategoryColumn(
-      {super.key, this.productImage, this.productCategory});
+      {super.key,});
 
   @override
   Widget build(BuildContext context) {

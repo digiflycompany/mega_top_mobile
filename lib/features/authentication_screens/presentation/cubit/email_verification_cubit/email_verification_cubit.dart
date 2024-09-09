@@ -51,7 +51,7 @@ class EmailVerificationCubit extends Cubit<EmailVerificationState> {
         emit(EmailVerificationSuccess(user));
       } else {
         emit(EmailVerificationFailure(
-            user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
+            user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -70,7 +70,7 @@ class EmailVerificationCubit extends Cubit<EmailVerificationState> {
         emit(EmailVerificationResendCodeSuccess(user));
       } else {
         emit(EmailVerificationResendCodeFailure(
-            user?.message ?? AppStrings.incorrectCodeOrNetworkIssuesEn));
+            user?.message ?? ''));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -89,7 +89,7 @@ class EmailVerificationCubit extends Cubit<EmailVerificationState> {
         width: MediaQuery.of(context).size.width,
         child: AnimatedOverlayIconToast(
           toastIcon: AppAssets.checkIcon,
-          message: AppStrings.codeSentSuccessfully,
+          message: AppLocalizations.of(context)!.codeSentSuccessfully,
           color: AppColors.primaryGreenColor,
           onDismissed: () {
             if (overlayEntry != null) {

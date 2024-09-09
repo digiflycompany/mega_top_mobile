@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
@@ -15,6 +14,7 @@ import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_second_screen.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import 'on_boarding_third_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnBoardingScreens extends StatelessWidget {
   const OnBoardingScreens({super.key});
@@ -81,8 +81,8 @@ class OnBoardingView extends StatelessWidget {
                 child: PrimaryButton(
                     content: Text(
                       onboardingCubit.getPageIndex() == 2
-                          ? AppStrings.getStarted
-                          : AppStrings.nextEn,
+                          ? AppLocalizations.of(context)!.getStarted
+                          : AppLocalizations.of(context)!.next,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
@@ -103,8 +103,8 @@ class OnBoardingView extends StatelessWidget {
               onboardingCubit.getPageIndex() == 2?VerticalSpace(context.height*0.02):VerticalSpace(context.height * 0.034),
               if (onboardingCubit.getPageIndex() == 2)
                 RowTextButton(
-                  firstText: AppStrings.alreadyHaveAnAccountEn,
-                  buttonText: AppStrings.loginEn,
+                  firstText: AppLocalizations.of(context)!.alreadyHaveAnAccount,
+                  buttonText: AppLocalizations.of(context)!.login,
                   onTap: () {
                     Routes.loginRoute.moveToCurrentRouteAndRemoveAll;
                     PreferencesHelper.setHasSeenOnboarding(true);

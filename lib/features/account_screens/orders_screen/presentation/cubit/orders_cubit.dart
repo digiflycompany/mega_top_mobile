@@ -6,7 +6,6 @@ import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/data/models/orders_model.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/data/repositories/orders_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/cubit/orders_state.dart';
-import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/widgets/cancel_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
@@ -28,21 +27,21 @@ class OrdersCubit extends Cubit<OrdersState> {
   }
 
   /// Method For Showing Cancel Bottom Sheet
-  void showCancelBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(0),
-          topRight: Radius.circular(0),
-        ),
-      ),
-      builder: (_) {
-        return const CancelBottomSheet();
-      },
-    );
-  }
+  // void showCancelBottomSheet(BuildContext context) {
+  //   showModalBottomSheet(
+  //     context: context,
+  //     backgroundColor: Colors.white,
+  //     shape: const RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.only(
+  //         topLeft: Radius.circular(0),
+  //         topRight: Radius.circular(0),
+  //       ),
+  //     ),
+  //     builder: (_) {
+  //       return const CancelBottomSheet();
+  //     },
+  //   );
+  // }
   void showErrorToast(BuildContext context, String title, String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
@@ -76,7 +75,7 @@ class OrdersCubit extends Cubit<OrdersState> {
       if (user != null && user.success == true) {
         emit(UserOrderLoaded(user));
       } else {
-        emit(UserOrderFailure(user?.message ?? AppStrings.invalidCred));
+        emit(UserOrderFailure(user?.message ?? ""));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -102,7 +101,7 @@ class OrdersCubit extends Cubit<OrdersState> {
         }
         emit(OrdersLoaded(orders));
       } else {
-        emit(OrdersFailure(ordersModel?.message ?? AppStrings.failedToLoadOrders));
+        emit(OrdersFailure(ordersModel?.message ?? ""));
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
