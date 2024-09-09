@@ -4,9 +4,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_services_dart.dart';
+import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/global_repo.dart';
 import 'package:mega_top_mobile/core/utils/locale/locale_cubit.dart';
 import 'package:mega_top_mobile/core/utils/theme/app_theme.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/cubit/compare_click_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
@@ -20,12 +22,12 @@ import 'package:mega_top_mobile/l10n/l10n.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final globalRepo = GlobalRepoImp();
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
@@ -35,15 +37,15 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider<CategoryCubit>(
               create: (BuildContext context) =>
-              CategoryCubit()..getCategories(),
+                  CategoryCubit()..getCategories(),
             ),
             BlocProvider<LatestOffersCubit>(
               create: (BuildContext context) =>
-              LatestOffersCubit(GlobalRepoImp())..getLatestOffers(),
+                  LatestOffersCubit(GlobalRepoImp())..getLatestOffers(),
             ),
             BlocProvider<LatestProductsCubit>(
               create: (BuildContext context) =>
-              LatestProductsCubit(GlobalRepoImp())..getLatestProducts(),
+                  LatestProductsCubit(GlobalRepoImp())..getLatestProducts(),
             ),
             BlocProvider<AccountDetailsCubit>(
               create: (BuildContext context) =>
@@ -56,8 +58,10 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => OffersCubit()..getOffers(),
             ),
             BlocProvider<LocaleCubit>(
-              create: (BuildContext context) => LocaleCubit(),
-            ),
+                create: (BuildContext context) => LocaleCubit()),
+            BlocProvider<CompareClickCubit>(
+                create: (context) => CompareClickCubit()),
+            BlocProvider<GlobalCubit>(create: (context) => GlobalCubit(globalRepo))
           ],
           child: GestureDetector(
             onTap: () {

@@ -19,45 +19,33 @@ class MainPageProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LatestProductsCubit, LatestProductsState>(
-      builder: (context, state) {
-        return BlocBuilder<LatestOffersCubit, LatestOffersState>(
+        builder: (context, state) {
+      return BlocBuilder<LatestOffersCubit, LatestOffersState>(
           builder: (context, state) {
-            if (state is LatestOffersNoInternetConnection || state is LatestProductsNoInternetConnection) {
-              return Padding(
-                padding: EdgeInsets.only(bottom: context.height48),
-                child: NoInternetScreen(buttonOnTap: () {
-                      context.read<LatestOffersCubit>().getLatestOffers();
-                      context.read<LatestProductsCubit>().getLatestProducts();
-                }),
-              );
-            }
-            return Column(
-              children: [
-                VerticalSpace(context.height * 0.008),
-                // const AdvertisementList(),
-                // VerticalSpace(context.height * 0.04),
-                ViewAllRow(
-                  bigText: AppLocalizations.of(context)!.bestSeller,
-                ),
-                const BestSellerList(),
-                // const LatestProductsList(),
-                VerticalSpace(context.height * 0.0245),
-                ViewAllRow(
-                  bigText: AppLocalizations.of(context)!.latestOffers,
-                ),
-                VerticalSpace(context.height * 0.02),
-                const MainPageLatestOffersList(),
-                VerticalSpace(context.height * 0.025),
-                ViewAllRow(
-                  bigText: AppLocalizations.of(context)!.latestProducts,
-                ),
-                const MainPageLatestProductList(),
-                VerticalSpace(context.height * 0.02),
-              ],
-            );
-          },
-        );
-      },
-    );
+        if (state is LatestOffersNoInternetConnection ||
+            state is LatestProductsNoInternetConnection) {
+          return Padding(
+            padding: EdgeInsets.only(bottom: context.height48),
+            child: NoInternetScreen(buttonOnTap: () {
+              context.read<LatestOffersCubit>().getLatestOffers();
+              context.read<LatestProductsCubit>().getLatestProducts();
+            })
+          );
+        }
+        return Column(children: [
+          VerticalSpace(context.height * 0.008),
+          ViewAllRow(bigText: AppLocalizations.of(context)!.bestSeller),
+          const BestSellerList(),
+          VerticalSpace(context.height * 0.0245),
+          ViewAllRow(bigText: AppLocalizations.of(context)!.latestOffers),
+          VerticalSpace(context.height * 0.02),
+          const MainPageLatestOffersList(),
+          VerticalSpace(context.height * 0.025),
+          ViewAllRow(bigText: AppLocalizations.of(context)!.latestProducts),
+          const MainPageLatestProductList(),
+          VerticalSpace(context.height * 0.02)
+        ]);
+      });
+    });
   }
 }

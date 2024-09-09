@@ -66,9 +66,9 @@ class _AnimatedOverlayToastState extends State<AnimatedOverlayToast>
               fontFamily: FontFamilies.cairo,
               fontWeight: FontWeight.w700,
               decoration: TextDecoration.none
-          ),
-        ),
-      ),
+          )
+        )
+      )
     );
   }
 }

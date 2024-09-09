@@ -20,10 +20,10 @@ class MainPageProductImages extends StatelessWidget {
             fit: BoxFit.contain,
             width: double.infinity,
             errorWidget: (context, url, error) =>
-                Icon(Icons.error),
+                Icon(Icons.error)
           );
-        },
-      ),
+        }
+      )
     );
   }
 }

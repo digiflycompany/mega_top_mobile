@@ -14,9 +14,9 @@ class MainPageLatestProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: context.height * 0.5,
-      child: BlocBuilder<LatestProductsCubit,LatestProductsState>(
-        builder: (context,state) {
-          if(state is LatestProductsSuccess){
+      child: BlocBuilder<LatestProductsCubit, LatestProductsState>(
+        builder: (context, state) {
+          if (state is LatestProductsSuccess) {
             return Row(
               children: [
                 Expanded(
@@ -24,35 +24,60 @@ class MainPageLatestProductList extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return BestSellerContainer(
-                          productName: state.user.products![index].title,
-                          productPhoto: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages![0]:state.user.products![index].images![0],
-                          productType: state.user.products![index].categoryId.name,
-                          productPrice: state.user.products![index].price.finalPrice.toString(),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MainPageProductDetailsScreen(
-                                  name: state.user.products![index].title,
-                                  quantity:state.user.products![index].quantity,
-                                  categoryName: state.user.products![index].categoryId.name,
-                                  cubit: context.read<LatestProductsCubit>(),
-                                  description: state.user.products![index].description,
-                                  finalPrice: state.user.products![index].price.finalPrice.toString(),
-                                  originalPrice: state.user.products![index].price.originalPrice.toString(),
-                                  productId: state.user.products![index].id,
-                                  imagePosition: context.read<LatestProductsCubit>().currentImageIndex,
-                                  images: state.user.products![index].images!.length==0?context.read<LatestProductsCubit>().placeHolderImages!:state.user.products![index].images!,
-                                ),
-                              ),
-                            );
-                          },
+                            productName: state.user.products![index].title,
+                            productPhoto:
+                                state.user.products![index].images!.length == 0
+                                    ? context
+                                        .read<LatestProductsCubit>()
+                                        .placeHolderImages![0]
+                                    : state.user.products![index].images![0],
+                            productType:
+                                state.user.products![index].categoryId.name,
+                            productPrice: state
+                                .user.products![index].price.finalPrice
+                                .toString(),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MainPageProductDetailsScreen(
+                                          name:
+                                              state.user.products![index].title,
+                                          quantity: state
+                                              .user.products![index].quantity,
+                                          categoryName: state.user
+                                              .products![index].categoryId.name,
+                                          cubit: context
+                                              .read<LatestProductsCubit>(),
+                                          description: state.user
+                                              .products![index].description,
+                                          finalPrice: state.user
+                                              .products![index].price.finalPrice
+                                              .toString(),
+                                          originalPrice: state
+                                              .user
+                                              .products![index]
+                                              .price
+                                              .originalPrice
+                                              .toString(),
+                                          productId:
+                                              state.user.products![index].id,
+                                          imagePosition: context
+                                              .read<LatestProductsCubit>()
+                                              .currentImageIndex,
+                                          images: state.user.products![index].images!.length == 0
+                                              ? context
+                                                  .read<LatestProductsCubit>()
+                                                  .placeHolderImages!
+                                              : state.user.products![index].images!)));
+                            });
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          width: 0.w
                         );
-                      }, separatorBuilder: (context, index) {
-                    return SizedBox(
-                      width: 0.w,
-                    );
-                  }, itemCount: 5),
+                      },
+                      itemCount: 5)
                 )
               ],
               // children: [
@@ -80,12 +105,12 @@ class MainPageLatestProductList extends StatelessWidget {
               //   ),
               // ],
             );
-          }else if(state is LatestProductsLoading){
+          } else if (state is LatestProductsLoading) {
             return const ShimmerBestSellerContainer();
           }
           return Container();
-        },
-      ),
+        }
+      )
     );
   }
 }

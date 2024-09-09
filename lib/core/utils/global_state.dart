@@ -29,6 +29,10 @@ class RemoveFromWishListSuccess extends GlobalState {
   RemoveFromWishListSuccess(this.user);
 }
 
+class RemoveFromCompareListSuccess extends GlobalState {}
+
+class AddToCompareListSuccess extends GlobalState {}
+
 class RemoveFromWishListFailure extends GlobalState {
   final String error;
 

@@ -23,7 +23,7 @@ class AppConstants {
   static const List<Locale> supportedLocales = [enLocale, arLocale];
   static String translationPath='assets/translations';
 
-  void showAddToCompareToast(BuildContext context) {
+  static void showAddToCompareToast(BuildContext context) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
@@ -44,5 +44,45 @@ class AppConstants {
     Overlay.of(context).insert(overlayEntry!);
   }
 
+  static void showFullCompareListToast(BuildContext context) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: kToolbarHeight + MediaQuery.of(context).padding.top,
+        width: MediaQuery.of(context).size.width,
+        child: AnimatedOverlayToast(
+          message: AppLocalizations.of(context)!.compareListIsFullUNeedToReduceIt,
+          color: AppColors.primaryColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          },
+        ),
+      ),
+    );
+    Overlay.of(context).insert(overlayEntry!);
+  }
 
+  static void showRemoveFromCompareToast(BuildContext context) {
+    OverlayEntry? overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: kToolbarHeight + MediaQuery.of(context).padding.top,
+        width: MediaQuery.of(context).size.width,
+        child: AnimatedOverlayToast(
+          message: AppLocalizations.of(context)!.productRemovedFromComparisonList,
+          color: AppColors.primaryColor,
+          onDismissed: () {
+            if (overlayEntry != null) {
+              overlayEntry!.remove();
+              overlayEntry = null;
+            }
+          }
+        )
+      )
+    );
+    Overlay.of(context).insert(overlayEntry!);
+  }
 }

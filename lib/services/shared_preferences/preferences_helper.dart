@@ -1,6 +1,7 @@
 import 'dart:convert';
-
+import '../../../../core/widgets/main_page_products_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/compare_item.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/login_screen.dart';
@@ -74,6 +75,11 @@ class PreferencesHelper {
     await preferences?.setString('wishlist', wishlistJson);
   }
 
+  static Future<void> saveCompareList(List<Product> compareList) async {
+    String compareListJson = json.encode(compareList.map((item) => item.toJson()).toList());
+    await preferences?.setString('compareList', compareListJson);
+  }
+
   static List<WishlistItem> getWishlist() {
     String? wishlistJson = preferences?.getString('wishlist');
     if (wishlistJson != null) {
@@ -83,9 +89,45 @@ class PreferencesHelper {
     return [];
   }
 
+  static List<Product> getCompareList() {
+    try {
+      String? compareListJson = preferences?.getString('compareList');
+
+      if (compareListJson == null || compareListJson.isEmpty) {
+        return [];
+      }
+
+      List<dynamic> compareList = json.decode(compareListJson) as List<dynamic>;
+
+      // Use a list to collect valid products
+      List<Product> products = [];
+
+      for (var item in compareList) {
+        try {
+          var product = Product.fromJson(item as Map<String, dynamic>);
+          products.add(product);
+        } catch (e) {
+          print('Error parsing product: $e');
+          // Skip the invalid product
+        }
+      }
+
+      return products;
+    } catch (e) {
+      print('Error retrieving or parsing compare list: $e');
+      return [];
+    }
+  }
+
+
   static bool isProductInWishlist(String productId) {
     List<WishlistItem> wishList = getWishlist();
     return wishList.any((item) => item.id == productId);
+  }
+
+  static bool isProductInComparisonList(String productId) {
+    List<Product> compareList = getCompareList();
+    return compareList.any((item) => item.id == productId);
   }
 
   static Future<void> saveEmail(String email) async {
