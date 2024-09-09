@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/global_cubit.dart';
 import 'package:mega_top_mobile/core/utils/global_repo.dart';
 import 'package:mega_top_mobile/core/utils/global_state.dart';
+import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/white_box_icon.dart';
@@ -13,7 +14,6 @@ import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.d
 
 class FavourCompareColumn extends StatelessWidget {
   final String? productId;
-
   const FavourCompareColumn({super.key, required this.productId});
 
   @override
@@ -55,7 +55,12 @@ class FavourCompareColumn extends StatelessWidget {
                           }
                         },
                       ),
-                      // VerticalSpace(context.height * 0.012),
+                      VerticalSpace(context.height * 0.012),
+                      WhiteBoxIcon(
+                        icon: AppAssets.compareOutlinedIcon,
+                        onTap: () {
+                        },
+                      ),
                       // WhiteBoxIcon(
                       //   icon: categoryCubit.addedToCompare
                       //       ? AppAssets.compareIcon

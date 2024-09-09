@@ -4,6 +4,7 @@ import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/about_us_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/account_screen_headline.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/call_us_item.dart';
+import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/compare_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/language_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/notification_item.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/widgets/order_item.dart';
@@ -37,6 +38,7 @@ class UserAccountScreen extends StatelessWidget {
               const WishListItem(),
               const NotificationItem(),
               const ShippingItem(),
+              const CompareItem(),
               AccountScreenHeadline(text: AppLocalizations.of(context)!.settings),
               const ProfileItem(),
               const LanguageItem(),
