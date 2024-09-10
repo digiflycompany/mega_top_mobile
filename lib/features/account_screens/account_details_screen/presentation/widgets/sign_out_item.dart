@@ -23,8 +23,8 @@ class SignOutItem extends StatelessWidget {
         onTap: (){
           PreferencesHelper.logOut();
           Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
-        },
-      ),
+        }
+      )
     );
   }
 }

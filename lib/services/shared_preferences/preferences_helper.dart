@@ -183,7 +183,8 @@ class PreferencesHelper {
 
   static Future<void> logOut() async {
     await _secureStorage.delete(key: "token");
-    preferences?.remove('userModel');
+    await preferences?.remove('userModel');
+    await preferences?.clear();
   }
 
   static const String _hasSeenOnboarding = 'hasSeenOnboarding';

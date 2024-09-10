@@ -9,28 +9,23 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/sign_up_widgets/sign_up_user_name_text_field.dart';
 
 class SignUpBody extends StatelessWidget {
-  const   SignUpBody({super.key});
+  const SignUpBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     return Form(
-      key: _formKey,
-      child: Padding(
-        padding:
-        EdgeInsets.symmetric(horizontal: context.width16),
-        child: Column(
-          children: [
-            const SignUpFullNameTextField(),
-            const SignUpPhoneTextField(),
-            const SignUpEmailTextField(),
-            const SignUpPasswordTextField(),
-            const SignUpConfirmPasswordTextField(),
-            SignUpButton(formKey: _formKey,),
-            const AlreadyHaveAnAccount(),
-          ],
-        ),
-      ),
-    );
+        key: _formKey,
+        child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: context.width16),
+            child: Column(children: [
+              const SignUpFullNameTextField(),
+              const SignUpPhoneTextField(),
+              const SignUpEmailTextField(),
+              const SignUpPasswordTextField(),
+              const SignUpConfirmPasswordTextField(),
+              SignUpButton(formKey: _formKey),
+              const AlreadyHaveAnAccount()
+            ])));
   }
 }

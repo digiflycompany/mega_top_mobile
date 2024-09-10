@@ -23,39 +23,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
     signUpCubit = context.read<SignUpCubit>();
     signUpCubit.initializeControllers();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(
-        listener: (context, state) =>context.read<SignUpCubit>().handleSignUpState(context, state),
+        listener: (context, state) =>
+            context.read<SignUpCubit>().handleSignUpState(context, state),
         builder: (context, state) {
           return Scaffold(
               backgroundColor: Colors.white,
               body: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.center,
-                      colors: [AppColors.gradientColor, Colors.white],
-                    ),
-                  ),
-                  child: Center(
-                    child: Column(
-                      children: [
+                  physics: const BouncingScrollPhysics(),
+                  child: Container(
+                      decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.center,
+                              colors: [AppColors.gradientColor, Colors.white])),
+                      child: Center(
+                          child: Column(children: [
                         const AuthenticationLogo(),
                         AuthenticationTitle(
-                          text: AppLocalizations.of(context)!.createNewAccount,
-                        ),
-                        const SignUpBody(),
-                      ],
-                    ),
-                  ),
-                ),
-              ));
-        },
-      );
+                            text:
+                                AppLocalizations.of(context)!.createNewAccount),
+                        const SignUpBody()
+                      ])))));
+        });
   }
+
   @override
   void dispose() {
     signUpCubit.disposeControllers();

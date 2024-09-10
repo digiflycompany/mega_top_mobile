@@ -32,27 +32,25 @@ class _SignUpEmailVerificationScreenState
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<EmailVerificationCubit, EmailVerificationState>(
-      listener: (context, state) =>emailVerificationCubit.handleSignUpEmailVerificationState(context, state),
-      builder: (context, state) {
-        return Scaffold(
-          appBar: PreferredSize(
-              preferredSize: Size(double.infinity, context.height * 0.089),
-              child: CustomAppBar(AppLocalizations.of(context)!.verifyYourEmail)),
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.width16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                PleaseEnterFourDigitsCodeText(),
-                UserEmailText(email: widget.email,),
-                OTPEmailVerificationRow(),
-                VerifyEmailButton(),
-                ResendCodeRow(),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+        listener: (context, state) => emailVerificationCubit
+            .handleSignUpEmailVerificationState(context, state),
+        builder: (context, state) {
+          return Scaffold(
+              appBar: PreferredSize(
+                  preferredSize: Size(double.infinity, context.height * 0.089),
+                  child: CustomAppBar(
+                      AppLocalizations.of(context)!.verifyYourEmail)),
+              body: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: context.width16),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        PleaseEnterFourDigitsCodeText(),
+                        UserEmailText(email: widget.email),
+                        OTPEmailVerificationRow(),
+                        VerifyEmailButton(),
+                        ResendCodeRow()
+                      ])));
+        });
   }
 }
