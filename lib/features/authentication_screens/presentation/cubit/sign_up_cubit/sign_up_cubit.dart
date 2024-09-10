@@ -47,10 +47,11 @@ class SignUpCubit extends Cubit<SignUpState> {
     return null;
   }
 
-  String? validateConfirmPassword(String value, BuildContext context){
+  String? validateConfirmPassword(String value, BuildContext context) {
     if (value.isEmpty) {
       return AppLocalizations.of(context)!.pleaseConfirmYourPassword;
-    } else if (signUpConfirmPasswordController.text != signUpPasswordController.text) {
+    } else if (signUpConfirmPasswordController.text !=
+        signUpPasswordController.text) {
       return AppLocalizations.of(context)!.passwordsDoNotMatch;
     }
     return null;
@@ -60,19 +61,18 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   final formKey = GlobalKey<FormState>();
 
-  final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$');
-
+  final emailRegex =
+      RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$');
 
   TextEditingController signUpEmailController = TextEditingController();
   TextEditingController signUpFullNameController = TextEditingController();
   TextEditingController signUpPasswordController = TextEditingController();
   TextEditingController signUpPhoneController = TextEditingController();
   TextEditingController signUpConfirmPasswordController =
-  TextEditingController();
+      TextEditingController();
 
   bool newPasswordSuccess = false;
   bool isPasswordVisible = true;
-
 
   void initializeControllers() {
     signUpEmailController = TextEditingController();
@@ -121,7 +121,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(SignUpLoading());
     try {
       final user =
-      await authRepo.signUp(fullName, phoneNumber, email, password);
+          await authRepo.signUp(fullName, phoneNumber, email, password);
       if (user != null && user.success == true) {
         await PreferencesHelper.saveToken(token: user.data!.token!);
         await PreferencesHelper.saveUserModel(user);
@@ -140,26 +140,24 @@ class SignUpCubit extends Cubit<SignUpState> {
     }
   }
 
-  void handleSignUpState(BuildContext context, SignUpState state){
-    if(state is SignUpSuccess){
+  void handleSignUpState(BuildContext context, SignUpState state) {
+    if (state is SignUpSuccess) {
       Routes.signUpEmailVerificationPageRoute.moveTo;
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => BlocProvider(
-  create: (context) => EmailVerificationCubit(AuthRepoImp()),
-  child: SignUpEmailVerificationScreen(
-           email: signUpEmailController.text,
-          ),
-),
-        ),
-      );
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (_) => BlocProvider(
+                  create: (context) => EmailVerificationCubit(AuthRepoImp()),
+                  child: SignUpEmailVerificationScreen(
+                      email: signUpEmailController.text))));
     }
-    if(state is SignUpFailure){
-      showErrorToast(context, AppLocalizations.of(context)!.signUpFailed,state.error);
+    if (state is SignUpFailure) {
+      showErrorToast(
+          context, AppLocalizations.of(context)!.signUpFailed, state.error);
     }
-    if(state is SignUpNoInternetConnection){
-      showErrorToast(context, AppLocalizations.of(context)!.signUpFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
+    if (state is SignUpNoInternetConnection) {
+      showErrorToast(context, AppLocalizations.of(context)!.signUpFailed,
+          AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
 }

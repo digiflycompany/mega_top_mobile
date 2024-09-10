@@ -15,38 +15,30 @@ class SignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
-      builder: (context, state) {
-        SignUpCubit signUpCubit = context.read<SignUpCubit>();
-        return Padding(
+    return BlocBuilder<SignUpCubit, SignUpState>(builder: (context, state) {
+      SignUpCubit signUpCubit = context.read<SignUpCubit>();
+      return Padding(
           padding: EdgeInsets.only(bottom: context.height16),
           child: AuthButton(
-            onTap: state is SignUpLoading
-                ? () {}
-                : () {
-                    if (formKey.currentState!.validate()) {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                      signUpCubit.signUp(
-                        signUpCubit.signUpFullNameController.text,
-                        signUpCubit.signUpPhoneController.text,
-                        signUpCubit.signUpEmailController.text,
-                        signUpCubit.signUpEmailController.text,
-                      );
-                    }
-                  },
-            content: state is SignUpLoading
-                ? const ButtonCircularProgress()
-                : Text(
-              AppLocalizations.of(context)!.signUp,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16.sp,
-                    ),
-                  ),
-          ),
-        );
-      },
-    );
+              onTap: state is SignUpLoading
+                  ? () {}
+                  : () {
+                      if (formKey.currentState!.validate()) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        signUpCubit.signUp(
+                            signUpCubit.signUpFullNameController.text,
+                            signUpCubit.signUpPhoneController.text,
+                            signUpCubit.signUpEmailController.text,
+                            signUpCubit.signUpEmailController.text);
+                      }
+                    },
+              content: state is SignUpLoading
+                  ? const ButtonCircularProgress()
+                  : Text(AppLocalizations.of(context)!.signUp,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.sp))));
+    });
   }
 }
