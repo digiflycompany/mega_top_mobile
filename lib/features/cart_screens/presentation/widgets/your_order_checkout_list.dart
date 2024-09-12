@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/models/checkout_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_list_container.dart';
-import '../../data/models/checkout_model.dart';
 
 class YourOrderCheckoutList extends StatelessWidget {
-  final List<Product>? products;
+  final List<ProductCheckout>? products;
   const YourOrderCheckoutList({super.key, required this.products});
 
   @override

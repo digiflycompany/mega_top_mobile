@@ -115,12 +115,12 @@ class OffersCubit extends Cubit<OffersState> {
 
   void sortingFromHighPrice() {
     offerModel!.data!.products
-        .sort((a, b) => b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+        .sort((a, b) => b.price.finalPrice.compareTo(a.price.finalPrice));
   }
 
   void sortingFromLowPrice() {
     offerModel!.data!.products
-        .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
+        .sort((a, b) => a.price.finalPrice.compareTo(b.price.finalPrice));
   }
 
   int getDiscountPercentage({

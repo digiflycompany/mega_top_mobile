@@ -33,8 +33,8 @@ class OffersItemsGridView extends StatelessWidget {
                   top: context.height * 0.004),
               child: ProductsGridContainer(
                 index: index,
-                discountPercent: cubit.getDiscountPercentage(finalPrice: product.price!.finalPrice!,
-                    originPrice: product.price!.originalPrice!).toString(),
+                discountPercent: cubit.getDiscountPercentage(finalPrice: product.price.finalPrice,
+                    originPrice: product.price.originalPrice).toString(),
                 product: product,
                 onTap: (){
                   context.read<OffersCubit>().setCategoryProductIndex(selectedProductIndex: index);

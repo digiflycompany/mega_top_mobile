@@ -34,9 +34,9 @@ class CategoryItemsListView extends StatelessWidget {
                 index : index,
                 productName: cubit.offerModel!.data!.products[index].title,
                 productPhoto: cubit.offerModel!.data!
-                    .products[index].images[0],
-                productType: cubit.offerModel!.data!.products[index].categoryId!.name!,
-                productPrice: cubit.offerModel!.data!.products[index].price!.finalPrice!.toString(),
+                    .products[index].images![0],
+                productType: cubit.offerModel!.data!.products[index].categoryId.name,
+                productPrice: cubit.offerModel!.data!.products[index].price.finalPrice.toString(),
              //   discountPercent: product.discountPercent,
              //   discount: product.discount,
               ),

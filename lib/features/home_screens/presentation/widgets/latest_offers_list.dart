@@ -34,11 +34,11 @@ class LatestOffersList extends StatelessWidget {
                             productName: cubit.selectedCategoryModel!.data!
                                 .products[index].title,
                             productPhoto: cubit.selectedCategoryModel!.data!
-                                .products[index].images[0],
+                                .products[index].images![0],
                             productType: cubit.selectedCategoryModel!.data!
-                                .products[index].categoryId!.name!,
+                                .products[index].categoryId.name,
                             productPrice: cubit.selectedCategoryModel!.data!
-                                .products[index].price!.finalPrice!
+                                .products[index].price.finalPrice
                                 .toString(),
                           );
                         }, separatorBuilder: (context,index){

@@ -19,7 +19,7 @@ class ProductImagesDots extends StatelessWidget {
           padding: EdgeInsets.only(bottom: context.height * 0.022),
           child: DotsIndicator(
             dotsCount: categoryCubit.selectedCategoryModel!
-                .data!.products[categoryCubit.selectedProductIndex].images.length,
+                .data!.products[categoryCubit.selectedProductIndex].images!.length,
             position: categoryCubit.currentImageIndex,
             decorator: DotsDecorator(
               //   size: Size(context.width * 0.12, context.height * 0.008),

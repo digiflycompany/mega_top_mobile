@@ -33,9 +33,9 @@ class _SearchResultListViewState extends State<SearchResultListView> {
             child: ProductsListContainer(
               index : index,
               productName: product.title,
-              productPhoto: product.images[0],
-              productType: product.categoryId!.name!,
-              productPrice: product.price!.finalPrice!.toString(),
+              productPhoto: product.images![0],
+              productType: product.categoryId.name,
+              productPrice: product.price.finalPrice.toString(),
               onTap: (){
                 widget.homeCubit.setCategoryProductIndex(selectedProductIndex: index);
                 Routes.searchProductDetailsPageRoute.moveTo;

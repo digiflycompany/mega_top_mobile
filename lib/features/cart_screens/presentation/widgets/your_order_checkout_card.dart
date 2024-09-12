@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/models/checkout_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/custom_divider.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_checkout_details_title_text.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_checkout_list.dart';
-import '../../data/models/checkout_model.dart';
 
 class YourOrderCheckoutCard extends StatelessWidget {
-  final List<Product>? products;
+  final List<ProductCheckout>? products;
   const YourOrderCheckoutCard({super.key, required this.products});
 
   @override

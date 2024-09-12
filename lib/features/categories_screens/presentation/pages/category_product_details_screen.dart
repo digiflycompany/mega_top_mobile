@@ -47,12 +47,14 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
               child: Column(
                 children: [
                   ProductDetailedImage(images:  categoryCubit.selectedCategoryModel!
-                      .data!.products[categoryCubit.selectedProductIndex].images.length==0?context.read<CategoryCubit>().placeHolderImages:categoryCubit.selectedCategoryModel!
+                      .data!.products[categoryCubit.selectedProductIndex].images!.length==0?context.read<CategoryCubit>().placeHolderImages:categoryCubit.selectedCategoryModel!
                       .data!.products[categoryCubit.selectedProductIndex].images,
                     imagePosition: categoryCubit.currentImageIndex,
                   cubit: categoryCubit,
                   productId: categoryCubit.selectedCategoryModel!
                       .data!.products[categoryCubit.selectedProductIndex].id,
+                    product: categoryCubit.selectedCategoryModel!
+                        .data!.products[categoryCubit.selectedProductIndex],
                   ),
                   ProductDetailedBody(),
                 ],
@@ -102,10 +104,10 @@ class _CategoryProductDetailsPageState extends State<CategoryProductDetailsPage>
                               .title,
                           categoryCubit.selectedCategoryModel!
                               .data!.products[categoryCubit.selectedProductIndex]
-                              .price!.finalPrice.toString(),
+                              .price.finalPrice.toString(),
                           categoryCubit.selectedCategoryModel!
                               .data!.products[categoryCubit.selectedProductIndex]
-                              .images[0],
+                              .images![0],
                         );
                         print('Product added to cart');
                       },

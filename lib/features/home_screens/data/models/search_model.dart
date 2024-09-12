@@ -1,3 +1,5 @@
+import '../../../../core/widgets/main_page_products_model.dart';
+
 class SearchModel {
   SearchModel({
     required this.success,
@@ -73,65 +75,65 @@ class Sort {
 
 }
 
-class Product {
-  Product({
-    required this.id,
-    required this.title,
-    required this.titleAr,
-    required this.description,
-    required this.quantity,
-    required this.categoryId,
-    required this.subcategoryId,
-    required this.price,
-    required this.currency,
-    required this.images,
-    required this.unitsSold,
-    required this.addedBy,
-    required this.active,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.v,
-  });
-
-  final String? id;
-  final String? title;
-  final String? titleAr;
-  final String? description;
-  final int? quantity;
-  final CategoryId? categoryId;
-  final List<CategoryId> subcategoryId;
-  final Price? price;
-  final String? currency;
-  final List<String> images;
-  final int? unitsSold;
-  final AddedBy? addedBy;
-  final bool? active;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
-  final int? v;
-
-  factory Product.fromJson(Map<String, dynamic> json){
-    return Product(
-      id: json["_id"],
-      title: json["title"],
-      titleAr: json["titleAr"],
-      description: json["description"],
-      quantity: json["quantity"],
-      categoryId: json["categoryId"] == null ? null : CategoryId.fromJson(json["categoryId"]),
-      subcategoryId: json["subcategoryId"] == null ? [] : List<CategoryId>.from(json["subcategoryId"]!.map((x) => CategoryId.fromJson(x))),
-      price: json["price"] == null ? null : Price.fromJson(json["price"]),
-      currency: json["currency"],
-      images: json["images"] == null ? [] : List<String>.from(json["images"]!.map((x) => x)),
-      unitsSold: json["unitsSold"],
-      addedBy: json["addedBy"] == null ? null : AddedBy.fromJson(json["addedBy"]),
-      active: json["active"],
-      createdAt: DateTime.tryParse(json["createdAt"] ?? ""),
-      updatedAt: DateTime.tryParse(json["updatedAt"] ?? ""),
-      v: json["__v"],
-    );
-  }
-
-}
+// class Product {
+//   Product({
+//     required this.id,
+//     required this.title,
+//     required this.titleAr,
+//     required this.description,
+//     required this.quantity,
+//     required this.categoryId,
+//     required this.subcategoryId,
+//     required this.price,
+//     required this.currency,
+//     required this.images,
+//     required this.unitsSold,
+//     required this.addedBy,
+//     required this.active,
+//     required this.createdAt,
+//     required this.updatedAt,
+//     required this.v,
+//   });
+//
+//   final String? id;
+//   final String? title;
+//   final String? titleAr;
+//   final String? description;
+//   final int? quantity;
+//   final CategoryId? categoryId;
+//   final List<CategoryId> subcategoryId;
+//   final Price? price;
+//   final String? currency;
+//   final List<String> images;
+//   final int? unitsSold;
+//   final AddedBy? addedBy;
+//   final bool? active;
+//   final DateTime? createdAt;
+//   final DateTime? updatedAt;
+//   final int? v;
+//
+//   factory Product.fromJson(Map<String, dynamic> json){
+//     return Product(
+//       id: json["_id"],
+//       title: json["title"],
+//       titleAr: json["titleAr"],
+//       description: json["description"],
+//       quantity: json["quantity"],
+//       categoryId: json["categoryId"] == null ? null : CategoryId.fromJson(json["categoryId"]),
+//       subcategoryId: json["subcategoryId"] == null ? [] : List<CategoryId>.from(json["subcategoryId"]!.map((x) => CategoryId.fromJson(x))),
+//       price: json["price"] == null ? null : Price.fromJson(json["price"]),
+//       currency: json["currency"],
+//       images: json["images"] == null ? [] : List<String>.from(json["images"]!.map((x) => x)),
+//       unitsSold: json["unitsSold"],
+//       addedBy: json["addedBy"] == null ? null : AddedBy.fromJson(json["addedBy"]),
+//       active: json["active"],
+//       createdAt: DateTime.tryParse(json["createdAt"] ?? ""),
+//       updatedAt: DateTime.tryParse(json["updatedAt"] ?? ""),
+//       v: json["__v"],
+//     );
+//   }
+//
+// }
 
 class AddedBy {
   AddedBy({

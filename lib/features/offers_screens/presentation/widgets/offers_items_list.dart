@@ -28,9 +28,9 @@ class OffersItemsListView extends StatelessWidget {
                   top: context.height * 0.006),
               child: ProductsListContainer(
                 productName: product.title,
-                productPhoto: product.images[0],
-                productType: product.categoryId!.name,
-                productPrice: product.price!.finalPrice!.toString(),
+                productPhoto: product.images![0],
+                productType: product.categoryId.name,
+                productPrice: product.price.finalPrice.toString(),
                 onTap: (){
                   context.read<OffersCubit>().setCategoryProductIndex(selectedProductIndex: index);
                   Routes.offerProductDetailsPageRoute.moveTo;

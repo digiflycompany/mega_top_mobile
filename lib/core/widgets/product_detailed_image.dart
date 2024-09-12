@@ -8,12 +8,13 @@ import 'package:mega_top_mobile/features/categories_screens/presentation/widgets
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import '../../../../core/widgets/main_page_products_model.dart';
 
+
 class ProductDetailedImage extends StatelessWidget {
-  const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit, this.product, this.productId,});
+  const ProductDetailedImage({super.key, required this.images, required this.imagePosition,required this.cubit, required this.product, this.productId,});
   final List<String>? images;
   final String? productId;
   final int imagePosition;
-  final Product? product;
+  final Product product;
   final cubit;
 
 
@@ -46,7 +47,7 @@ class ProductDetailedImage extends StatelessWidget {
                   final isUserLoggedIn = token != null;
                   if(isUserLoggedIn){
                     return Builder(
-                        builder: (context) => FavourCompareColumn(product: product!)
+                        builder: (context) => FavourCompareColumn(product: product)
                     );
                   } else{
                     return Container();

@@ -37,7 +37,7 @@ class AddToCartModel {
 class CartData {
   final String id;
   final String userId;
-  final List<Product> products;
+  final List<ProductCart> products;
   final DateTime createdAt;
   final DateTime updatedAt;
   final int v;
@@ -55,8 +55,8 @@ class CartData {
     return CartData(
       id: json['_id'],
       userId: json['userId'],
-      products: List<Product>.from(
-        json['products'].map((product) => Product.fromJson(product)),
+      products: List<ProductCart>.from(
+        json['products'].map((product) => ProductCart.fromJson(product)),
       ),
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
@@ -76,17 +76,17 @@ class CartData {
   }
 }
 
-class Product {
+class ProductCart {
   final String id;
   final int quantity;
 
-  Product({
+  ProductCart({
     required this.id,
     required this.quantity,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
+  factory ProductCart.fromJson(Map<String, dynamic> json) {
+    return ProductCart(
       id: json['_id'],
       quantity: json['quantity'],
     );

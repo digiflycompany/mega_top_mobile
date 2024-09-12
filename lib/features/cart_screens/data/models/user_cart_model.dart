@@ -1,3 +1,5 @@
+import '../../../../core/widgets/main_page_products_model.dart';
+
 class UserCartModel {
   final bool success;
   final CartData? data;
@@ -82,45 +84,45 @@ class CartData {
   }
 }
 
-class Product {
-  final String id;
-  final String title;
-  final String titleAr;
-  final Price price;
-  final List<String> images;
-  final int quantity;
-
-  Product({
-    required this.id,
-    required this.title,
-    required this.titleAr,
-    required this.price,
-    required this.images,
-    required this.quantity,
-  });
-
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-      id: json['_id'],
-      title: json['title'],
-      titleAr: json['titleAr'],
-      price: Price.fromJson(json['price']),
-      images: List<String>.from(json['images']),
-      quantity: json['quantity'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['_id'] = id;
-    data['title'] = title;
-    data['titleAr'] = titleAr;
-    data['price'] = price.toJson();
-    data['images'] = images;
-    data['quantity'] = quantity;
-    return data;
-  }
-}
+// class Product {
+//   final String id;
+//   final String title;
+//   final String titleAr;
+//   final Price price;
+//   final List<String> images;
+//   final int quantity;
+//
+//   Product({
+//     required this.id,
+//     required this.title,
+//     required this.titleAr,
+//     required this.price,
+//     required this.images,
+//     required this.quantity,
+//   });
+//
+//   factory Product.fromJson(Map<String, dynamic> json) {
+//     return Product(
+//       id: json['_id'],
+//       title: json['title'],
+//       titleAr: json['titleAr'],
+//       price: Price.fromJson(json['price']),
+//       images: List<String>.from(json['images']),
+//       quantity: json['quantity'],
+//     );
+//   }
+//
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = {};
+//     data['_id'] = id;
+//     data['title'] = title;
+//     data['titleAr'] = titleAr;
+//     data['price'] = price.toJson();
+//     data['images'] = images;
+//     data['quantity'] = quantity;
+//     return data;
+//   }
+// }
 
 class Price {
   final double originalPrice;

@@ -42,7 +42,7 @@ class OrdersModel {
 class OrderData {
   final String id;
   final String userId;
-  final List<Product> products;
+  final List<ProductOrder> products;
   final String addedBy;
   final bool completed;
   final ConsigneeInfo consigneeInfo;
@@ -69,7 +69,7 @@ class OrderData {
       id: json['_id'] ?? '',
       userId: json['userId'] ?? '',
       products: json['products'] != null
-          ? List<Product>.from(json['products'].map((x) => Product.fromJson(x)))
+          ? List<ProductOrder>.from(json['products'].map((x) => ProductOrder.fromJson(x)))
           : [],
       addedBy: json['addedBy'] ?? '',
       completed: json['completed'] ?? false,
@@ -110,7 +110,7 @@ class OrderData {
   }
 }
 
-class Product {
+class ProductOrder {
   final String? id;
   final String? title;
   final String? titleAr;
@@ -120,7 +120,7 @@ class Product {
   final String? categoryNameAr;
   final String? image;
 
-  Product({
+  ProductOrder({
     this.id,
     this.title,
     this.titleAr,
@@ -131,8 +131,8 @@ class Product {
     this.image,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
+  factory ProductOrder.fromJson(Map<String, dynamic> json) {
+    return ProductOrder(
       id: json['_id'],
       title: json['title'],
       titleAr: json['titleAr'],

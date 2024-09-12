@@ -50,6 +50,7 @@ class _OfferProductDetailsPageState
                   imagePosition: offerCubit.currentImageIndex,
                   cubit: offerCubit,
                   productId: offerCubit.offerModel!.data!.products[offerCubit.selectedProductIndex].id,
+                  product: offerCubit.offerModel!.data!.products[offerCubit.selectedProductIndex],
                   ),
                   ProductDetailedBody(),
                 ],
@@ -99,10 +100,10 @@ class _OfferProductDetailsPageState
                               .title,
                           offersCubit.offerModel!
                               .data!.products[offersCubit.selectedProductIndex]
-                              .price!.finalPrice.toString(),
+                              .price.finalPrice.toString(),
                           offersCubit.offerModel!
                               .data!.products[offersCubit.selectedProductIndex]
-                              .images[0],
+                              .images![0],
                         );
                         print('Product added to cart');
                       },

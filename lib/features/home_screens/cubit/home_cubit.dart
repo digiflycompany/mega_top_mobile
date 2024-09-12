@@ -230,12 +230,12 @@ class HomeCubit extends Cubit<HomeState> {
 
   void sortingFromHighPrice() {
     searchModel!.data!.products
-        .sort((a, b) => b.price!.finalPrice!.compareTo(a.price!.finalPrice!));
+        .sort((a, b) => b.price.finalPrice.compareTo(a.price.finalPrice));
   }
 
   void sortingFromLowPrice() {
     searchModel!.data!.products
-        .sort((a, b) => a.price!.finalPrice!.compareTo(b.price!.finalPrice!));
+        .sort((a, b) => a.price.finalPrice.compareTo(b.price.finalPrice));
   }
 
 

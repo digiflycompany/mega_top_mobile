@@ -14,7 +14,7 @@ class OrdersDetailsScreen extends StatelessWidget {
   final String? orderId;
   final String? totalPrice;
   final bool? completed;
-  final List<Product>? products;
+  final List<ProductCheckout>? products;
   final DropOffAddress? dropOffAddress;
   const OrdersDetailsScreen({super.key,
     required this.orderId,

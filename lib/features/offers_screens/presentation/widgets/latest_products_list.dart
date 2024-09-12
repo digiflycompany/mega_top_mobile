@@ -76,11 +76,11 @@ class _LatestProductsListState extends State<LatestProductsList> {
                                 productName: cubit.offerModel!.data!
                                     .products[index].title,
                                 productPhoto: cubit.offerModel!.data!
-                                    .products[index].images[0],
+                                    .products[index].images![0],
                                 productType: cubit.offerModel!.data!
-                                    .products[index].categoryId!.name!,
+                                    .products[index].categoryId.name,
                                 productPrice: cubit.offerModel!.data!
-                                    .products[index].price!.finalPrice!
+                                    .products[index].price.finalPrice
                                     .toString(),
                               ),
                             ),

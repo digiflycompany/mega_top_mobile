@@ -36,7 +36,7 @@ class CheckoutModel {
 
 class CheckoutData {
   final String? userId;
-  final List<Product>? products;
+  final List<ProductCheckout>? products;
   final String? companyName;
   final String? addedBy;
   final bool? completed;
@@ -67,7 +67,7 @@ class CheckoutData {
     return CheckoutData(
       userId: json['userId'],
       products: json['products'] != null
-          ? List<Product>.from(json['products'].map((x) => Product.fromJson(x)))
+          ? List<ProductCheckout>.from(json['products'].map((x) => ProductCheckout.fromJson(x)))
           : null,
       companyName: json['companyName'],
       addedBy: json['addedBy'],
@@ -108,7 +108,7 @@ class CheckoutData {
   }
 }
 
-class Product {
+class ProductCheckout {
   final String? id;
   final String? title;
   final String? titleAr;
@@ -118,7 +118,7 @@ class Product {
   final String? categoryNameAr;
   final String? image;
 
-  Product({
+  ProductCheckout({
     this.id,
     this.title,
     this.titleAr,
@@ -129,8 +129,8 @@ class Product {
     this.image,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
+  factory ProductCheckout.fromJson(Map<String, dynamic> json) {
+    return ProductCheckout(
       id: json['_id'],
       title: json['title'],
       titleAr: json['titleAr'],

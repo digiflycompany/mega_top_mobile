@@ -43,9 +43,9 @@ class SearchProductMainDescription extends StatelessWidget {
         height: context.height * 0.033,
         discountPercent: "${categoryCubit.getDiscountPercentage(
         finalPrice: categoryCubit.searchModel!.data!
-            .products[categoryCubit.selectedProductIndex].price!.finalPrice!.toInt(),
+            .products[categoryCubit.selectedProductIndex].price.finalPrice.toInt(),
         originPrice: categoryCubit.searchModel!.data!
-            .products[categoryCubit.selectedProductIndex].price!.originalPrice!.toInt())}%",)
+            .products[categoryCubit.selectedProductIndex].price.originalPrice.toInt())}%",)
         ],
         ),
         VerticalSpace(context.height * 0.011),
@@ -54,7 +54,7 @@ class SearchProductMainDescription extends StatelessWidget {
             .searchModel!
             .data!
             .products[categoryCubit.selectedProductIndex]
-            .categoryId!
+            .categoryId
             .name,
         ),
         VerticalSpace(context.height * 0.022),
@@ -63,14 +63,14 @@ class SearchProductMainDescription extends StatelessWidget {
             .searchModel!
             .data!
             .products[categoryCubit.selectedProductIndex]
-            .price!
+            .price
             .finalPrice
             .toString(),
         oldPrice: categoryCubit
             .searchModel!
             .data!
             .products[categoryCubit.selectedProductIndex]
-            .price!
+            .price
             .originalPrice
             .toString(),
         ),

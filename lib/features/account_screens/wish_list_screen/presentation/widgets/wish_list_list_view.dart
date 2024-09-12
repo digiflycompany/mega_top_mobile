@@ -5,8 +5,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/locale/locale_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_details_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/widgets/wishList_product_details_screen.dart';
+import 'package:mega_top_mobile/features/account_screens/wish_list_screen/presentation/widgets/wish_list_product_container.dart';
 
 class WishListView extends StatelessWidget {
   const WishListView({super.key});
@@ -29,7 +29,7 @@ class WishListView extends StatelessWidget {
                  builder: (context, locale) {
                  return Padding(
                 padding: EdgeInsets.only(right: context.width*0.011,left: context.width*0.011, bottom: context.height*0.027,top: context.height*0.006),
-                child: ProductsListContainer(
+                child: WishListProductsContainer(
                   productName: wishListItem.title,
                   productPhoto:  wishListItem.images.length==0?context.read<AccountDetailsCubit>().placeHolderImages![0]:wishListItem.images[0],
                   productType: locale.languageCode == 'en'?wishListItem.categoryId.name:wishListItem.categoryId.nameAr,
@@ -41,7 +41,7 @@ class WishListView extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MainPageProductDetailsScreen(
+                        builder: (context) => WishListProductDetailsScreen(
                           name: wishListItem.title,
                           quantity:wishListItem.quantity,
                           categoryName: wishListItem.categoryId.name,

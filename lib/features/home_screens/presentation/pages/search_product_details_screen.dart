@@ -50,6 +50,8 @@ class _SearchProductDetailsPageState extends State<SearchProductDetailsPage> {
                       .data!.products[homeCubit.selectedProductIndex].images,
                     imagePosition: homeCubit.currentImageIndex,
                   cubit: homeCubit,
+                  product: homeCubit.searchModel!
+                      .data!.products[homeCubit.selectedProductIndex],
                   productId: homeCubit.searchModel!
                       .data!.products[homeCubit.selectedProductIndex].id,
                   ),
@@ -101,10 +103,10 @@ class _SearchProductDetailsPageState extends State<SearchProductDetailsPage> {
                               .title,
                           homeCubit.searchModel!
                               .data!.products[homeCubit.selectedProductIndex]
-                              .price!.finalPrice.toString(),
+                              .price.finalPrice.toString(),
                           homeCubit.searchModel!
                               .data!.products[homeCubit.selectedProductIndex]
-                              .images[0],
+                              .images![0],
                         );
                         print('Product added to cart');
                       },

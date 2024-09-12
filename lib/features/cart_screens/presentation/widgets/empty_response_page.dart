@@ -27,27 +27,29 @@ class EmptyDataPage extends StatelessWidget {
     final double verticalSpacing1 = context.height * 0.055;
     final double verticalSpacing2 = context.height * 0.033;
 
-    return Padding(
-        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        child: SingleChildScrollView(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-              // Ensure that `icon` is handled safely
-              WhiteCircleIcon(icon: icon),
-              VerticalSpace(verticalSpacing1),
-              EmptyResponseText(
-                  bigFontText: bigFontText ?? '', // Provide a default value
-                  smallFontText: smallFontText ?? '' // Provide a default value
-                  ),
-              VerticalSpace(verticalSpacing2),
-              if (buttonText != null && buttonText!.isNotEmpty)
-                PrimaryOutlinedButton(
-                    text: buttonText!,
-                    onTap: buttonOnTap ??
-                        () {} // Provide a default empty function if null
-                    )
-            ])));
+    return Center(
+      child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                // Ensure that `icon` is handled safely
+                WhiteCircleIcon(icon: icon),
+                VerticalSpace(verticalSpacing1),
+                EmptyResponseText(
+                    bigFontText: bigFontText ?? '', // Provide a default value
+                    smallFontText: smallFontText ?? '' // Provide a default value
+                    ),
+                VerticalSpace(verticalSpacing2),
+                if (buttonText != null && buttonText!.isNotEmpty)
+                  PrimaryOutlinedButton(
+                      text: buttonText!,
+                      onTap: buttonOnTap ??
+                          () {} // Provide a default empty function if null
+                      )
+              ]))),
+    );
   }
 }

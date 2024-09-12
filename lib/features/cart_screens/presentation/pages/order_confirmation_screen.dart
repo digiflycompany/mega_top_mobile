@@ -6,10 +6,10 @@ import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/primary_button.dart';
 import 'package:mega_top_mobile/core/widgets/primary_empty_button.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/presentation/pages/order_details_screen.dart';
+import 'package:mega_top_mobile/features/cart_screens/data/models/checkout_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_success_icon.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/order_success_text.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/your_order_number_text.dart';
-import '../../data/models/checkout_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
@@ -17,7 +17,7 @@ class OrderConfirmationScreen extends StatelessWidget {
   final String? orderId;
   final String? totalPrice;
   final bool? completed;
-  final List<Product>? products;
+  final List<ProductCheckout>? products;
   final DropOffAddress? dropOffAddress;
 
   const OrderConfirmationScreen({
