@@ -36,6 +36,42 @@ class PreferencesHelper {
     };
   }
 
+  static Future<void> saveCities(Map<String, String> cities) async {
+    List<String> cityIDs = cities.values.toList();
+    List<String> citiesNames = cities.keys.toList();
+    if (preferences != null) {
+      await preferences!.setStringList('citiesIDs', cityIDs);
+      await preferences!.setStringList('citiesNames', citiesNames);
+    } else {
+      throw Exception("SharedPreferences instance is null");
+    }
+  }
+
+  static Future<Map<String, String>> getCities() async {
+    if (preferences != null) {
+      List<String>? cityIDs = preferences!.getStringList('citiesIDs');
+      List<String>? cityNames = preferences!.getStringList('citiesNames');
+
+      cityIDs ??= [];
+      cityNames ??= [];
+
+      if (cityIDs.length != cityNames.length) {
+        throw Exception("Mismatch between city IDs and names lists");
+      }
+
+      Map<String, String> cities = {};
+      for (int i = 0; i < cityIDs.length; i++) {
+        cities[cityIDs[i]] = cityNames[i];
+      }
+
+      return cities;
+    } else {
+      throw Exception("SharedPreferences instance is null");
+    }
+  }
+
+
+
   static Future<void> clearSelectedAddress() async {
     await preferences?.remove('selectedAddressId');
     await preferences?.remove('selectedAddressName');
@@ -215,6 +251,15 @@ class PreferencesHelper {
       return cartList.map((item) => item as Map<String, dynamic>).toList();
     }
     return [];
+  }
+
+  static Future<void> saveCityName(String id) async {
+    await preferences?.setString('cityId', id);
+  }
+
+  static String getCityName() {
+   var id = preferences?.getString('cityId');
+    return id!;
   }
 
   static Map<String, dynamic> getCartSummary() {

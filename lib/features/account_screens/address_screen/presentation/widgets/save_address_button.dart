@@ -8,7 +8,6 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class SaveAddressButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   const SaveAddressButton({super.key, required this.formKey});
@@ -16,31 +15,31 @@ class SaveAddressButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddressCubit, AddressState>(
-      listener: (context, state)=>context.read<AddressCubit>().handleAddNewAddressState(context,state),
-      builder: (context, state) {
-        AddressCubit cubit = context.read<AddressCubit>();
-        return ButtonBottomNavBar(
-            button: PrimaryButton(
-              content: state is AddNewAddressLoading?const ButtonCircularProgress():Text(
-                AppLocalizations.of(context)!.saveAddress,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16.sp,
-                ),
-              ),
-              onTap: state is AddNewAddressLoading?(){}:() {
-                if(formKey.currentState!.validate()){
-                  cubit.addNewAddress(
-                      cubit.nameController.text,
-                      cubit.addressController.text,
-                      cubit.addressDetailsController.text,
-                      cubit.city
-                  );
-                }
-              },
-            ));
-      },
-    );
+        listener: (context, state) => context
+            .read<AddressCubit>()
+            .handleAddNewAddressState(context, state),
+        builder: (context, state) {
+          AddressCubit cubit = context.read<AddressCubit>();
+          return ButtonBottomNavBar(
+              button: PrimaryButton(
+                  content: state is AddNewAddressLoading
+                      ? const ButtonCircularProgress()
+                      : Text(AppLocalizations.of(context)!.saveAddress,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16.sp)),
+                  onTap: state is AddNewAddressLoading
+                      ? () {}
+                      : () {
+                          if (formKey.currentState!.validate()) {
+                            cubit.addNewAddress(
+                                cubit.nameController.text,
+                                cubit.addressController.text,
+                                cubit.addressDetailsController.text,
+                                cubit.city!);
+                          }
+                        }));
+        });
   }
 }

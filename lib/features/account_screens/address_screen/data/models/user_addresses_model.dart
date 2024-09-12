@@ -1,3 +1,4 @@
+/*
 class UserAddressesModel {
   final bool success;
   final List<AddressData> data;
@@ -125,4 +126,97 @@ class CityId {
     data['nameAr'] = nameAr;
     return data;
   }
+}
+*/
+
+import 'package:json_annotation/json_annotation.dart';
+
+part 'user_addresses_model.g.dart';
+
+// Root model
+@JsonSerializable()
+class UserAddressesModel {
+  @JsonKey(name: 'success')
+  final bool success;
+
+  @JsonKey(name: 'data')
+  final List<UserAddress>? data;
+
+  UserAddressesModel({
+    required this.success,
+    this.data,
+  });
+
+  factory UserAddressesModel.fromJson(Map<String, dynamic> json) =>
+      _$UserAddressesModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserAddressesModelToJson(this);
+}
+
+// Address model
+@JsonSerializable()
+class UserAddress {
+  @JsonKey(name: '_id')
+  final String? id;
+
+  @JsonKey(name: 'userId')
+  final String? userId;
+
+  final String? name;
+
+  @JsonKey(name: 'cityId')
+  final City? cityId;
+
+  final String? cityName;
+  final String? firstLine;
+  final String? secondLine;
+  final bool? active;
+
+  @JsonKey(name: 'createdAt')
+  final String? createdAt;
+
+  @JsonKey(name: 'updatedAt')
+  final String? updatedAt;
+
+  @JsonKey(name: '__v')
+  final int? v;
+
+  UserAddress({
+    this.id,
+    this.userId,
+    this.name,
+    this.cityId,
+    this.cityName,
+    this.firstLine,
+    this.secondLine,
+    this.active,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+  });
+
+  factory UserAddress.fromJson(Map<String, dynamic> json) =>
+      _$UserAddressFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserAddressToJson(this);
+}
+
+// City model
+@JsonSerializable()
+class City {
+  @JsonKey(name: '_id')
+  final String? id;
+
+  final String? name;
+  final String? nameAr;
+
+  City({
+    this.id,
+    this.name,
+    this.nameAr,
+  });
+
+  factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CityToJson(this);
 }

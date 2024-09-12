@@ -7,28 +7,26 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddressField extends StatelessWidget {
-  final TextEditingController controller;
-  const AddressField({super.key, required this.controller});
+  final TextEditingController? controller;
+  final String? init;
+  const AddressField({super.key, this.controller, this.init});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddressCubit, AddressState>(
-      builder: (context, state) {
-        return Padding(
+    return BlocBuilder<AddressCubit, AddressState>(builder: (context, state) {
+      return Padding(
           padding: EdgeInsets.only(bottom: 40.h),
           child: EditTextField(
-            controller: controller,
-            title: AppLocalizations.of(context)!.address,
-            hintText: AppLocalizations.of(context)!.addressHint,
-            validator: (value){
-              if (value == null || value.isEmpty) {
-                return AppLocalizations.of(context)!.pleaseEnterYourAddress;
-              }
-              return null;
-            },
-          ),
-        );
-      },
-    );
+            init: init,
+              controller: controller,
+              title: AppLocalizations.of(context)!.address,
+              hintText: AppLocalizations.of(context)!.addressHint,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return AppLocalizations.of(context)!.pleaseEnterYourAddress;
+                }
+                return null;
+              }));
+    });
   }
 }

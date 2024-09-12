@@ -12,6 +12,8 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/widgets/update_city_drop_down.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../core/utils/logger.dart';
+import '../widgets/city_drop_down.dart';
 
 class EditAddressScreen extends StatefulWidget {
   final String name;
@@ -21,15 +23,14 @@ class EditAddressScreen extends StatefulWidget {
   final String cityID;
   final String addressID;
 
-  const EditAddressScreen({
-    super.key,
-    required this.name,
-    required this.address,
-    required this.addressDetails,
-    required this.city,
-    required this.cityID,
-    required this.addressID,
-  });
+  const EditAddressScreen(
+      {super.key,
+      required this.name,
+      required this.address,
+      required this.addressDetails,
+      required this.city,
+      required this.cityID,
+      required this.addressID});
 
   @override
   State<EditAddressScreen> createState() => _EditAddressScreenState();
@@ -39,8 +40,8 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
   late AddressCubit cubit;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
     cubit = context.read<AddressCubit>();
     cubit.nameController.text = widget.name;
     cubit.addressController.text = widget.address;
@@ -52,50 +53,58 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, context.height * 0.089),
-        child: PrimaryAppBar(
-          AppLocalizations.of(context)!.editAddress,
-          favour: false,
-        ),
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.width * 0.045,
-          vertical: context.height * 0.033,
-        ),
-        child: SingleChildScrollView(
-          child: BlocConsumer<AddressCubit, AddressState>(
-            listener: (BuildContext context, AddressState state) {},
-            builder: (BuildContext context, AddressState state) {
-              return state is CitiesLoading?
-              const AddNewAddressShimmer():
-              state is AddressNoInternetConnection?
-              NoInternetScreen(buttonOnTap: ()=>context.read<AddressCubit>()..getCities()):
-              state is EditAddressLoading?const AddNewAddressShimmer():
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AddressField(controller: cubit.addressController),
-                  AddressDetailsField(controller: cubit.addressDetailsController),
-                  UpdateCityDropDown(
-                    initialCityName: cubit.city,
-                    onCityChanged: (newCityId) {
-                      setState(() {
-                        cubit.city = newCityId!;
-                      });
-                    },
-                  ),
-                  AddressNameField(controller: cubit.nameController),
-                ],
-              );
-            },
-          ),
-        ),
-      ),
-      bottomNavigationBar: EditAddressButton(addressID: widget.addressID,),
-    );
+        appBar: PreferredSize(
+            preferredSize: Size(double.infinity, context.height * 0.089),
+            child: PrimaryAppBar(AppLocalizations.of(context)!.editAddress,
+                favour: false)),
+        body: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: context.width * 0.045,
+                vertical: context.height * 0.033),
+            child: SingleChildScrollView(
+                child: BlocConsumer<AddressCubit, AddressState>(
+                    listener: (BuildContext context, AddressState state) {},
+                    builder: (BuildContext context, AddressState state) {
+                      return state is CitiesLoading
+                          ? const AddNewAddressShimmer()
+                          : state is AddressNoInternetConnection
+                              ? NoInternetScreen(buttonOnTap: () {
+                                  context.read<AddressCubit>()..getCities();
+                                  cubit.getSingleAddress(widget.addressID);
+                                })
+                              : state is EditAddressLoading
+                                  ? const AddNewAddressShimmer()
+                                  : Form(
+                                      key: cubit.formKey,
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            AddressField(
+                                                controller:
+                                                    cubit.addressController),
+                                            AddressDetailsField(
+                                                controller: cubit
+                                                    .addressDetailsController),
+                                            UpdateCityDropDown(
+                                                // initialCityName: widget.city,
+                                                onCityChanged: (newCityId) async {
+                                                  cubit.updateCity(newCityId!);
+                                                  DefaultLogger.logger
+                                                      .f(newCityId);
+                                                }),
+                                            /*CityDropDown(
+                                                onChanged: (newCityName) async {
+                                              cubit.updateCity(newCityName!);
+                                              DefaultLogger.logger.f(newCityName);
+                                            }),*/
+                                            AddressNameField(
+                                                controller:
+                                                    cubit.nameController)
+                                          ]),
+                                    );
+                    }))),
+        bottomNavigationBar: EditAddressButton(
+            addressID: widget.addressID, cityId: widget.cityID));
   }
 }
-
-

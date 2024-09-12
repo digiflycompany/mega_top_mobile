@@ -15,7 +15,7 @@ class AccountScreenHeadline extends StatelessWidget {
           style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w700,
-              color: AppColors.smallTextBlackColor),
+              color: AppColors.smallTextBlackColor)
         ));
   }
 }

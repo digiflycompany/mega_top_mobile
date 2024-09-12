@@ -1,3 +1,4 @@
+/*
 class UpdateAddressModel {
   final bool? success;
   final String? message;
@@ -92,4 +93,79 @@ class Data {
       '__v': version,
     };
   }
+}
+*/
+
+import 'package:json_annotation/json_annotation.dart';
+
+part 'update_address_model.g.dart'; // This is where the generated code will be written
+
+@JsonSerializable()
+class UpdateAddressModel {
+  @JsonKey(name: 'success')
+  final bool success;
+
+  @JsonKey(name: 'data')
+  final AddressData? data;
+
+  UpdateAddressModel({
+    required this.success,
+    this.data,
+  });
+
+  factory UpdateAddressModel.fromJson(Map<String, dynamic> json) => _$UpdateAddressModelFromJson(json);
+  Map<String, dynamic> toJson() => _$UpdateAddressModelToJson(this);
+}
+
+@JsonSerializable()
+class AddressData {
+  @JsonKey(name: '_id')
+  final String? id;
+
+  @JsonKey(name: 'userId')
+  final String? userId;
+
+  @JsonKey(name: 'name')
+  final String? name;
+
+  @JsonKey(name: 'cityId')
+  final String? cityId;
+
+  @JsonKey(name: 'cityName')
+  final String? cityName;
+
+  @JsonKey(name: 'firstLine')
+  final String? firstLine;
+
+  @JsonKey(name: 'secondLine')
+  final String? secondLine;
+
+  @JsonKey(name: 'active')
+  final bool? active;
+
+  @JsonKey(name: 'createdAt')
+  final String? createdAt;
+
+  @JsonKey(name: 'updatedAt')
+  final String? updatedAt;
+
+  @JsonKey(name: '__v')
+  final int? v;
+
+  AddressData({
+    this.id,
+    this.userId,
+    this.name,
+    this.cityId,
+    this.cityName,
+    this.firstLine,
+    this.secondLine,
+    this.active,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+  });
+
+  factory AddressData.fromJson(Map<String, dynamic> json) => _$AddressDataFromJson(json);
+  Map<String, dynamic> toJson() => _$AddressDataToJson(this);
 }

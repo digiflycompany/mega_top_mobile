@@ -7,8 +7,9 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddressDetailsField extends StatelessWidget {
-  final TextEditingController controller;
-  const AddressDetailsField({super.key, required this.controller});
+  final TextEditingController? controller;
+  final String? init;
+  const AddressDetailsField({super.key, this.controller, this.init});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class AddressDetailsField extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(bottom: 40.h),
           child: EditTextField(
+            init: init,
             controller: controller,
             title: AppLocalizations.of(context)!.addressDetails,
             hintText: AppLocalizations.of(context)!.addressDetailsHint,
@@ -25,10 +27,10 @@ class AddressDetailsField extends StatelessWidget {
                 return AppLocalizations.of(context)!.pleaseEnterYourAddressDetails;
               }
               return null;
-            },
-          ),
+            }
+          )
         );
-      },
+      }
     );
   }
 }

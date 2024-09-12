@@ -44,8 +44,8 @@ class EditDropdownField extends StatelessWidget {
             showSearchBox: true,
             searchFieldProps: TextFieldProps(
               cursorColor: AppColors.blackGreyColor,
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14.sp),
-            ),
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14.sp)
+            )
           ),
           dropdownDecoratorProps: DropDownDecoratorProps(
             dropdownSearchDecoration: InputDecoration(
@@ -58,11 +58,11 @@ class EditDropdownField extends StatelessWidget {
                 borderSide: BorderSide(width: 1, color: AppColors.googleButtonBorder),
               ),
               focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(width: 1, color: AppColors.primaryColor),
+                borderSide: BorderSide(width: 1, color: AppColors.primaryColor)
               ),
               prefixIconConstraints: BoxConstraints(minWidth: context.width * 0.072),
-              suffixIcon: suffix,
-            ),
+              suffixIcon: suffix
+            )
           ),
           onChanged: onChanged,
           validator: validator ?? (value) {
@@ -70,9 +70,9 @@ class EditDropdownField extends StatelessWidget {
               return AppLocalizations.of(context)!.cityCanNotBeEmpty;
             }
             return null;
-          },
-        ),
-      ],
+          }
+        )
+      ]
     );
   }
 }

@@ -13,92 +13,105 @@ import 'package:mega_top_mobile/features/account_screens/address_screen/presenta
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/shipping_details_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
-class ShippingAddressDetailsList extends StatelessWidget {
+class ShippingAddressDetailsList extends StatefulWidget {
   const ShippingAddressDetailsList({super.key});
+
+  @override
+  State<ShippingAddressDetailsList> createState() => _ShippingAddressDetailsListState();
+}
+
+class _ShippingAddressDetailsListState extends State<ShippingAddressDetailsList> {
+
+  late String city;
+
+  @override
+  void initState() {
+    setCity();
+    super.initState();
+  }
+
+  Future setCity() async {
+    city = await PreferencesHelper.getCityName();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddressCubit, AddressState>(
-      listener: (context, state)=>context.read<AddressCubit>().handleDeleteAddressState(context,state),
-      builder: (context, state) {
-        if (state is UserAddressesLoading) {
-          return ShippingAddressesListShimmer();
-        }
-        else if (state is UserAddressesSuccess && state.user.data.length>0) {
-          return Column(
-            children: [
+        listener: (context, state) => context
+            .read<AddressCubit>()
+            .handleDeleteAddressState(context, state),
+        builder: (context, state) {
+          if (state is UserAddressesLoading) {
+            return ShippingAddressesListShimmer();
+          } else if (state is UserAddressesSuccess &&
+              state.user.data!.length > 0) {
+            return Column(children: [
               ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: state.user.data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final addressItem = state.user.data[index];
-                  return ShippingDetailsCard(
-                    customerName: addressItem.name,
-                    customerAddress: addressItem.firstLine,
-                    customerCity: addressItem.cityId.name,
-                    editOnTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EditAddressScreenProvider(
-                            name: addressItem.name,
-                            address: addressItem.firstLine,
-                            addressDetails: addressItem.secondLine,
-                            addressID: addressItem.id,
-                            city: addressItem.cityId.name,
-                            cityID: addressItem.cityId.id,
-                          ),
-                        ),
-                      ).then((_) {
-                        context.read<AddressCubit>().getUserAddresses();
-                      });
-                    },
-                    removeOnTap: (){
-                      context.read<AddressCubit>().showRemoveItemDialog(
-                        context,
-                        addressItem.id
-                      );
-                    },
-                  );
-                },
-              ),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: state.user.data!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final addressItem = state.user.data![index];
+                    return ShippingDetailsCard(
+                        customerName: addressItem.name,
+                        customerAddress: addressItem.firstLine,
+                        customerCity: addressItem.cityName,
+                        editOnTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditAddressScreenProvider(
+                                    name: addressItem.name ?? '',
+                                    address: addressItem.firstLine ?? '',
+                                    addressDetails:
+                                        addressItem.secondLine ?? '',
+                                    addressID: addressItem.id ?? '',
+                                    city: addressItem.cityId?.name?? city,
+                                    cityID: addressItem.cityId?.id ?? ''))
+                          )/*.then((_) {
+                            context.read<AddressCubit>().getUserAddresses();
+                          })*/;
+                        },
+                        removeOnTap: () {
+                          context.read<AddressCubit>().showRemoveItemDialog(
+                              context, addressItem.id ?? '');
+                        });
+                  }),
               VerticalSpace(context.height * 0.012),
               PrimaryOutlinedButton(
-                    text: AppLocalizations.of(context)!.addNewAddress,
-                    onTap: () {
-                      Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute).then((_) {
-                        context.read<AddressCubit>().getUserAddresses();
-                      });
-                    },
-                  ),
-              VerticalSpace(context.height * 0.069),
-            ],
-          );
-        }
-        else if (state is UserAddressesSuccess && state.user.data.length==0) {
-          return EmptyDataPage(
-            icon: AppAssets.emptyAddressIcon,
-            bigFontText: AppLocalizations.of(context)!.noShippingAddresses,
-            smallFontText: AppLocalizations.of(context)!.youHaveNoSavedAddresses,
-            buttonText: AppLocalizations.of(context)!.addNewAddress,
-            buttonOnTap: () {
-              Navigator.pushNamed(context, Routes.addNewAddressDetailsPageRoute)
-                  .then((_) {
-                context.read<AddressCubit>().getUserAddresses();
-              });
-            }
-          );
-        }
-        else if (state is AddressNoInternetConnection) {
-          return NoInternetScreen(
-              buttonOnTap: () =>
-                  context.read<AddressCubit>().getUserAddresses()
-          );
-        }
-        return Container();
-      },
-    );
+                  text: AppLocalizations.of(context)!.addNewAddress,
+                  onTap: () {
+                    Navigator.pushNamed(
+                            context, Routes.addNewAddressDetailsPageRoute)
+                        .then((_) {
+                      context.read<AddressCubit>().getUserAddresses();
+                    });
+                  }),
+              VerticalSpace(context.height * 0.069)
+            ]);
+          } else if (state is UserAddressesSuccess &&
+              state.user.data?.length == 0) {
+            return EmptyDataPage(
+                icon: AppAssets.emptyAddressIcon,
+                bigFontText: AppLocalizations.of(context)!.noShippingAddresses,
+                smallFontText:
+                    AppLocalizations.of(context)!.youHaveNoSavedAddresses,
+                buttonText: AppLocalizations.of(context)!.addNewAddress,
+                buttonOnTap: () {
+                  Navigator.pushNamed(
+                          context, Routes.addNewAddressDetailsPageRoute)
+                      .then((_) {
+                    context.read<AddressCubit>().getUserAddresses();
+                  });
+                });
+          } else if (state is AddressNoInternetConnection) {
+            return NoInternetScreen(
+                buttonOnTap: () =>
+                    context.read<AddressCubit>().getUserAddresses());
+          }
+          return Container();
+        });
   }
 }

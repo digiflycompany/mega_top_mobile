@@ -10,20 +10,18 @@ class ShippingAddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height * 0.089),
-          child: PrimaryAppBar(
-            AppLocalizations.of(context)!.shippingAddresses,
-            favour: false,
-          )),
-      body: Padding(
-        padding:
-        EdgeInsets.only(right: context.width * 0.045,left:context.width * 0.045,top: context.height*0.033 ),
-        child: const SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: ShippingAddressDetailsList()),
-      ),
-    );
+        appBar: PreferredSize(
+            preferredSize: Size(double.infinity, context.height * 0.089),
+            child: PrimaryAppBar(
+                AppLocalizations.of(context)!.shippingAddresses,
+                favour: false)),
+        body: Padding(
+            padding: EdgeInsets.only(
+                right: context.width * 0.045,
+                left: context.width * 0.045,
+                top: context.height * 0.033),
+            child: const SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: ShippingAddressDetailsList())));
   }
 }
-

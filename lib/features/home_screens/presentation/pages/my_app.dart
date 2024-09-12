@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -81,6 +82,7 @@ class MyApp extends StatelessWidget {
                     GlobalCupertinoLocalizations.delegate,
                   ],
                   navigatorKey: AppService().navigatorKey,
+                  builder: DevicePreview.appBuilder,
                   home: FutureBuilder<bool>(
                     future: PreferencesHelper.hasSeenOnboarding(),
                     builder: (context, snapshot) {
@@ -89,15 +91,15 @@ class MyApp extends StatelessWidget {
                       } else {
                         return OnBoardingScreens();
                       }
-                    },
+                    }
                   ),
-                  onGenerateRoute: RouteGenerator.getRoute,
+                  onGenerateRoute: RouteGenerator.getRoute
                 );
-              },
-            ),
-          ),
+              }
+            )
+          )
         );
-      },
+      }
     );
   }
 }

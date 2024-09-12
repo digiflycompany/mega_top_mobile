@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/logger.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/data/repositories/address_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/address_screen/presentation/cubit/address_cubit.dart';
@@ -44,11 +45,19 @@ import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/search_screen.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/pages/offer_product_details_screen.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
+import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 import 'app_color.dart';
 
 enum PageRouteAnimation { fade, scale, rotate, slide, slideBottomTop }
 
 class Routes {
+
+  static late String? token;
+  static Future<void> init() async {
+    token = await PreferencesHelper.getToken();
+    DefaultLogger.logger.w("access TOKEN >>><<<<< $token");
+  }
+
   Routes._internal();
 
   static const String splashRoute = "/";

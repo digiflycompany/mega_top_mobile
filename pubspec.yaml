@@ -52,6 +52,13 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl:
+  device_preview: ^1.1.0
+  logger: ^2.4.0
+  dartz: ^0.10.1
+  pretty_dio_logger: ^1.4.0
+  json_annotation: ^4.9.0
+  json_serializable: ^6.8.0
+  build_runner: ^2.4.9
 #  flutter_launcher_icons: ^0.13.1
 
 

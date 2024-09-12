@@ -7,7 +7,7 @@ class EditTextField extends StatelessWidget {
   final Widget? suffix;
   final TextEditingController? controller;
   final String title;
-  final String? hintText;
+  final String? hintText, init;
   final String? Function(String?)? validator;
 
   const EditTextField({
@@ -16,7 +16,7 @@ class EditTextField extends StatelessWidget {
     required this.title,
     this.controller,
     this.hintText,
-    this.validator,
+    this.validator, this.init,
   });
 
   @override
@@ -34,6 +34,7 @@ class EditTextField extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14.sp),
           cursorColor: AppColors.blackGreyColor,
           cursorHeight: context.width * 0.046,
+          initialValue: init,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: TextStyle(

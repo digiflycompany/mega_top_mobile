@@ -4,6 +4,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioHelper {
   static BaseOptions opts = BaseOptions(
@@ -18,7 +19,16 @@ class DioHelper {
   );
 
   static Dio init() {
-    return Dio(opts);
+    return Dio(opts)..interceptors.add(
+        PrettyDioLogger(
+            requestHeader: true,
+            requestBody: true,
+            filter: (options, args) {
+              //  return !options.uri.path.contains('posts');
+              return !args.isResponse || !args.hasUint8ListData;
+            }
+        )
+    );
   }
 
   static Dio? dio = init();
@@ -27,8 +37,8 @@ class DioHelper {
     final token = await PreferencesHelper.getToken();
     return Options(
       headers: {
-        'Authorization': 'Bearer $token',
-      },
+        'Authorization': 'Bearer $token'
+      }
     );
   }
 
