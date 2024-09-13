@@ -22,12 +22,28 @@ class UpdateCityDropDown extends StatefulWidget {
 
 class _UpdateCityDropDownState extends State<UpdateCityDropDown> {
   String? selectedCityName;
+  String? cityId;
 
   @override
   void initState() {
     super.initState();
-    // Initialize the selectedCityName with the initial city name provided
     selectedCityName = widget.initialCityName;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.initialCityName != null && widget.initialCityName!.isNotEmpty) {
+        final cubit = context.read<AddressCubit>();
+        final state = cubit.state;
+
+        if (state is CitiesSuccess) {
+          final selectedCity = state.user.data!.cities.firstWhere(
+                (city) => city.name == widget.initialCityName,
+          );
+          setState(() {
+            cityId = selectedCity.id;
+          });
+          cubit.updateCity(cityId!);
+                }
+      }
+    });
   }
 
   @override
@@ -46,10 +62,10 @@ class _UpdateCityDropDownState extends State<UpdateCityDropDown> {
               selectedValue: selectedCityName,
               onChanged: (value) async {
                 if (value != null) {
-                  print('Selected item: $value');
                   final selectedCity = cities.firstWhere((city) => city.name == value);
                   setState(() {
-                    selectedCityName = selectedCity.name; // Update the selected city name
+                    selectedCityName = selectedCity.name;
+                    cityId = selectedCity.id;
                   });
                   widget.onCityChanged(selectedCity.id);
                   context.read<AddressCubit>().updateCity(selectedCity.id);

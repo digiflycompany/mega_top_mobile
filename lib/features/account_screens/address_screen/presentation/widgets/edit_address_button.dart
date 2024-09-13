@@ -10,7 +10,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditAddressButton extends StatelessWidget {
   final String addressID;
-  const EditAddressButton({super.key, required this.addressID});
+  final String cityID;
+  const EditAddressButton({super.key, required this.addressID, required this.cityID});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,8 @@ class EditAddressButton extends StatelessWidget {
               ),
             ),
             onTap: state is EditAddressLoading?(){}:(){
+              print('IDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD');
+              print(cubit.city);
               context.read<AddressCubit>().updateAddress(
                   addressID,
                   cubit.nameController.text,
