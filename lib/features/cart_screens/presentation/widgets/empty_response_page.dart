@@ -35,19 +35,18 @@ class EmptyDataPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                // Ensure that `icon` is handled safely
                 WhiteCircleIcon(icon: icon),
                 VerticalSpace(verticalSpacing1),
                 EmptyResponseText(
-                    bigFontText: bigFontText ?? '', // Provide a default value
-                    smallFontText: smallFontText ?? '' // Provide a default value
+                    bigFontText: bigFontText ?? '',
+                    smallFontText: smallFontText ?? ''
                     ),
                 VerticalSpace(verticalSpacing2),
                 if (buttonText != null && buttonText!.isNotEmpty)
                   PrimaryOutlinedButton(
                       text: buttonText!,
                       onTap: buttonOnTap ??
-                          () {} // Provide a default empty function if null
+                          () {}
                       )
               ]))),
     );

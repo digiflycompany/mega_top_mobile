@@ -39,13 +39,15 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
   late AddressCubit cubit;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     cubit = context.read<AddressCubit>();
     cubit.nameController.text = widget.name;
     cubit.addressController.text = widget.address;
     cubit.addressDetailsController.text = widget.addressDetails;
     cubit.city = widget.city;
+    cubit.cityId = widget.cityID;
     cubit.id = widget.addressID;
   }
 
@@ -82,7 +84,11 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                     initialCityName: cubit.city,
                     onCityChanged: (newCityId) {
                       setState(() {
-                        cubit.city = newCityId!;
+                        if(cubit.city.isEmptyOrNull){
+                          cubit.cityId = newCityId!;
+                        } else{
+                          cubit.city = newCityId!;
+                        }
                       });
                     },
                   ),
@@ -93,7 +99,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: EditAddressButton(addressID: widget.addressID,),
+      bottomNavigationBar: EditAddressButton(addressID: widget.addressID,cityID:cubit.cityId,),
     );
   }
 }

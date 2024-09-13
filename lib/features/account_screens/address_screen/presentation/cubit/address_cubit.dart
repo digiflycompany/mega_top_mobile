@@ -22,6 +22,7 @@ class AddressCubit extends Cubit<AddressState> {
   TextEditingController addressDetailsController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   String city = '';
+  String cityId = '';
   String id = '';
   String? selectedAddressId;
 
