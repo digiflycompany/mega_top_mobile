@@ -11,7 +11,7 @@ import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_offer_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_product_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/search_model.dart';
-import 'package:mega_top_mobile/features/home_screens/data/models/search_repo.dart';
+import 'package:mega_top_mobile/features/home_screens/data/repo/search_repo.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_bottom_sheet_in_search.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/sort_bottom_sheet_in_search.dart';
 
