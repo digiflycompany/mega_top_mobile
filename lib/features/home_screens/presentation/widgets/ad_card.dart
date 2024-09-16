@@ -17,9 +17,11 @@ class AdCard extends StatelessWidget {
       CustomImage(
           imagePath: currentLang == 'en'
               ? AppAssets.adEnBackground
-              : AppAssets.adArBackground, w: width * .85, fit: BoxFit.fill, h: 173),
-      Row(
-          crossAxisAlignment: CrossAxisAlignment.start, children: [
+              : AppAssets.adArBackground,
+          w: width * .85,
+          fit: BoxFit.fill,
+          h: 173),
+      Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
             padding: EdgeInsets.only(
                 top: 16,
@@ -40,21 +42,25 @@ class AdCard extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 14)),
               Gap(16),
               SizedBox(
-                child: CustomButton(
-                    borderRadius: 100,
-                    onPressed: () {},
-                    text: 'Order now',
-                    width: 71,
-                    height: 24,
-                    backgroundColor: Colors.white,
-                    textStyle: TextStyle(
-                        color: AppColors.primaryColor,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w700),
-                    padding: EdgeInsets.zero,
-                    margin: EdgeInsets.zero),
-              )            ])),
-        Gap(width < 600 ? 0: width > 1000? 500.w: 280.w),
+                  child: CustomButton(
+                      borderRadius: 100,
+                      onPressed: () {},
+                      text: 'Order now',
+                      width: 71,
+                      height: 24,
+                      backgroundColor: Colors.white,
+                      textStyle: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w700),
+                      padding: EdgeInsets.zero,
+                      margin: EdgeInsets.zero))
+            ])),
+        Gap(width < 600
+            ? 0
+            : width > 1000
+                ? 500.w
+                : 280.w),
         CustomImage(imagePath: AppAssets.adImage, h: 124, w: 126)
       ])
     ]);
