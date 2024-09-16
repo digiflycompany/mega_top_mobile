@@ -54,7 +54,7 @@ class AdCard extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     margin: EdgeInsets.zero),
               )            ])),
-        Gap(width < 600 ? 0: width > 800? 580: 280.w),
+        Gap(width < 600 ? 0: width > 1000? 500.w: 280.w),
         CustomImage(imagePath: AppAssets.adImage, h: 124, w: 126)
       ])
     ]);
