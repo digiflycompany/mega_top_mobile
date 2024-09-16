@@ -52,6 +52,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl:
+  gap: ^3.0.1
+  carousel_slider: ^5.0.0
+  device_preview: ^1.1.0
+  flutter_onboarding_slider: ^1.0.11
 #  flutter_launcher_icons: ^0.13.1
 
 

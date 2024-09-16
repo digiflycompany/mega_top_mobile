@@ -88,6 +88,9 @@ class AppAssets {
       "$imagesPath/camera_control_small.png";
   static const String upsSmall = "$imagesPath/ups_small.png";
   static const String hardDiskImage = "$imagesPath/hard_disk_image.png";
+  static const String adEnBackground = "$imagesPath/ad_en_background.png";
+  static const String adArBackground = "$imagesPath/ad_ar_background.png";
+  static const String adImage = "$imagesPath/ad_image.png";
   static const String upsOffers = "$imagesPath/ups_offers.png";
   static const String smallHardDiskImage =
       "$imagesPath/small_hard_disk_image.png";
@@ -96,6 +99,7 @@ class AppAssets {
   static const String storageUnitsSearchResult =
       "$imagesPath/storage_unit_search_result.png";
   static const String noResultImg = "$imagesPath/no_result_img.png";
+  static const String brandLogo = "$imagesPath/brand_logo.png";
   static const String networkImg = "$imagesPath/network.png";
   static const String smallHardImg = "$imagesPath/hard_small.png";
   static const String closeIcon = "$svgPath/close_icon.svg";

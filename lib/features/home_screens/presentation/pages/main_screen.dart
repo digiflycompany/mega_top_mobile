@@ -8,19 +8,16 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize:Size(double.infinity, context.height*0.19), //width and height
-        child: const MainPageAppBar()
-      ),
-      body:  Padding(
-        padding:  EdgeInsets.symmetric(horizontal: context.width*0.045),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: MainPageProducts(),
-        ),
-      ),
-    );
+    return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: PreferredSize(
+            preferredSize:
+                Size(double.infinity, context.height * 0.19), //width and height
+            child: const MainPageAppBar()),
+        body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+            child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: MainPageProducts())));
   }
 }
