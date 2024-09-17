@@ -86,3 +86,58 @@
 //     return latestOfferModel;
 //   }
 // }
+
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:mega_top_mobile/core/utils/Errors/failures.dart';
+import 'package:mega_top_mobile/core/utils/Errors/models/api_error_model.dart';
+import 'package:mega_top_mobile/core/utils/logger.dart';
+import 'package:mega_top_mobile/core/utils/theme/api.dart';
+import 'package:mega_top_mobile/features/home_screens/data/models/ad_details_model.dart';
+import 'package:mega_top_mobile/features/home_screens/data/models/advertisement_model.dart';
+import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
+
+abstract class HomeRepo {
+  Future<Either<Failure, AdvertisementModel>> fetchHomeAds();
+  Future<Either<Failure, AdDetailsModel>> fetchAdDetails(String id);
+}
+
+class HomeRepoImp implements HomeRepo {
+  @override
+  Future<Either<Failure, AdvertisementModel>> fetchHomeAds() async {
+    try {
+      final response = await DioHelper.getData(
+        url: EndPoints.homeAds,
+        options: await DioHelper.getOptions(),
+      );
+      DefaultLogger.logger.w(response);
+      return Right(AdvertisementModel.fromJson(response?.data));
+    } catch (error) {
+      if (error is DioException) {
+        return Left(ServerFailure.fromResponse(error.response!.statusCode,
+            ApiErrorResponse.fromJson(error.response!.data)));
+      } else {
+        return Left(ServerFailure("Something went wrong"));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, AdDetailsModel>> fetchAdDetails(String id) async {
+    try {
+      final response = await DioHelper.getData(
+          url: EndPoints.selectedCategoriesAPI + '/' + id,
+          options: await DioHelper.getOptions(),
+    );
+    DefaultLogger.logger.w(response);
+    return Right(AdDetailsModel.fromJson(response?.data));
+    } catch (error) {
+    if (error is DioException) {
+    return Left(ServerFailure.fromResponse(error.response!.statusCode,
+    ApiErrorResponse.fromJson(error.response!.data)));
+    } else {
+    return Left(ServerFailure("Something went wrong"));
+    }
+    }
+  }
+}
