@@ -12,7 +12,7 @@ class HomeAds extends StatefulWidget {
 }
 
 class _HomeAdsState extends State<HomeAds> {
-  List<Widget> ads = [AdCard(), AdCard(), AdCard()];
+  List<Widget> ads = [];
   int _current = 0;
 
   @override
@@ -54,9 +54,5 @@ class _HomeAdsState extends State<HomeAds> {
     ]);
   }
 }
-
-
-
-
 
 
