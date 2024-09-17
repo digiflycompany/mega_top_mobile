@@ -14,6 +14,7 @@ class EndPoints {
   static const String accountDetailsAPI = '$baseUrl/api/v1/profile';
   static const String homeAds = '$baseUrl/api/v1/advertisements';
   static const String updateAccountDetailsAPI = '$baseUrl/api/v1/profile';
+  static const String adDetails = '$baseUrl/api/v1/advertisements/';
   static const String deleteAccountAPI = '$baseUrl/api/v1/profile/deactivate';
   static const String addToWishListAPI =
       '$baseUrl/api/v1/users/customers/wishlist/add';

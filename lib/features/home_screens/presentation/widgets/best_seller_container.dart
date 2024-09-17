@@ -174,10 +174,10 @@ class ShimmerBestSellerContainer extends StatelessWidget {
           height: context.height * 0.4, // Adjust to match the original container's height
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(context.height * 0.0065),
-          ),
-        ),
-      ),
+            borderRadius: BorderRadius.circular(context.height * 0.0065)
+          )
+        )
+      )
     );
   }
 }
