@@ -4,10 +4,12 @@ import 'package:gap/gap.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/widgets/custom_button.dart';
+import 'package:mega_top_mobile/core/widgets/custom_cached_network_image.dart';
 import 'package:mega_top_mobile/core/widgets/custom_image.dart';
 
 class AdCard extends StatelessWidget {
-  const AdCard({super.key});
+  const AdCard({super.key, required this.title, required this.subtitle, required this.image});
+  final String title, subtitle, image;
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +32,15 @@ class AdCard extends StatelessWidget {
                 right: currentLang == 'en' ? 9 : 24),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              CustomImage(imagePath: AppAssets.brandLogo, w: 120, h: 16.06),
+              SizedBox(
+                  width: 143,
+                  child: Text(title, style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, maxLines: 1)),
               Gap(12),
-              Text('50% offer',
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700)),
-              Gap(10.3),
-              Text('on surveillance cameras',
-                  style: TextStyle(color: Colors.white, fontSize: 14)),
+              SizedBox(
+                width: 143,
+                child: Text(subtitle,
+                    style: TextStyle(color: Colors.white, fontSize: 14), maxLines: 2, overflow: TextOverflow.ellipsis),
+              ),
               Gap(16),
               SizedBox(
                   child: CustomButton(
@@ -57,11 +58,11 @@ class AdCard extends StatelessWidget {
                       margin: EdgeInsets.zero))
             ])),
         Gap(width < 600
-            ? 0
+            ? 20
             : width > 1000
                 ? 500.w
                 : 280.w),
-        CustomImage(imagePath: AppAssets.adImage, h: 124, w: 126)
+        CustomCachedNetworkImage(url: image)
       ])
     ]);
   }
