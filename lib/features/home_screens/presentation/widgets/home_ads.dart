@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/ad_card.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeAds extends StatefulWidget {
   HomeAds({super.key});
@@ -25,7 +27,20 @@ class _HomeAdsState extends State<HomeAds> {
       return state is GetAdsErrorState
           ? Text(state.errorMessage)
           : state is GetAdsLoadingState
-              ? CircularProgressIndicator()
+              ? Shimmer.fromColors(
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: Colors.grey[100]!,
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: context.height12,
+                          horizontal: context.width8),
+                      child: Container(
+                          height:
+                              173, // Adjust to match the original container's height
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(
+                                  context.height * 0.0065)))))
               : Column(children: [
                   CarouselSlider(
                       options: CarouselOptions(
@@ -38,7 +53,9 @@ class _HomeAdsState extends State<HomeAds> {
                               _current = index;
                             });
                           }),
-                      items: ads.map((i) => AdCard(title: i.title, subtitle: i.subtitle, image: i.image)).toList()),
+                      items: ads
+                          .map((i) => AdCard(ad: i))
+                          .toList()),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: ads.asMap().entries.map((entry) {

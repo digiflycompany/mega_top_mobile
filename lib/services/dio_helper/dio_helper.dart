@@ -26,9 +26,9 @@ class DioHelper {
         filter: (options, args) {
           //  return !options.uri.path.contains('posts');
           return !args.isResponse || !args.hasUint8ListData;
-        },
-      ),
-    );;
+        }
+      )
+    );
   }
 
   static Dio? dio = init();
