@@ -12,9 +12,11 @@ import 'package:mega_top_mobile/features/account_screens/account_details_screen/
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/data/repo/home_page_repo.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/home_page_screen.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/on_boarding_screens/presentation/pages/on_boarding_screens.dart';
@@ -61,7 +63,8 @@ class MyApp extends StatelessWidget {
                 create: (BuildContext context) => LocaleCubit()),
             BlocProvider<CompareClickCubit>(
                 create: (context) => CompareClickCubit()),
-            BlocProvider<GlobalCubit>(create: (context) => GlobalCubit(globalRepo))
+            BlocProvider<GlobalCubit>(create: (context) => GlobalCubit(globalRepo)),
+            BlocProvider<HomeAdsCubit>(create: (context) => HomeAdsCubit(HomeRepoImp())..fetchAds())
           ],
           child: GestureDetector(
             onTap: () {

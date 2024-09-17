@@ -12,6 +12,7 @@ class EndPoints {
   static const String verifyResetPasswordAPI =
       '$baseUrl/api/v1/users/verify-reset-password';
   static const String accountDetailsAPI = '$baseUrl/api/v1/profile';
+  static const String homeAds = '$baseUrl/api/v1/advertisements';
   static const String updateAccountDetailsAPI = '$baseUrl/api/v1/profile';
   static const String deleteAccountAPI = '$baseUrl/api/v1/profile/deactivate';
   static const String addToWishListAPI =
