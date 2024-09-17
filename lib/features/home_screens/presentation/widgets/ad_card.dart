@@ -63,7 +63,8 @@ class AdCard extends StatelessWidget {
                     SizedBox(
                         child: CustomButton(
                             borderRadius: 100,
-                            onPressed: () {},
+                            onPressed: () => Navigator.push(
+                                context, MaterialPageRoute(builder: (context) => AdDetailsScreen(id: ad.productId!.id!))),
                             text: 'Order now',
                             width: 71,
                             height: 24,
