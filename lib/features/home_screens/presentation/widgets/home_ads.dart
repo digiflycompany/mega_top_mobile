@@ -23,7 +23,7 @@ class _HomeAdsState extends State<HomeAds> {
           options: CarouselOptions(
             height: 173,
             autoPlay: true,
-            viewportFraction: .9.w,
+            viewportFraction: .95,
             // enlargeCenterPage: true,
             onPageChanged: (index, reason) {
               setState(() {
