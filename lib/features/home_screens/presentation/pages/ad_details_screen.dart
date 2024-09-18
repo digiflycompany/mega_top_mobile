@@ -10,6 +10,7 @@ import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
 import 'package:mega_top_mobile/core/widgets/button_circular_progress.dart';
 import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
+import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/core/widgets/product_details_app_bar.dart';
 import 'package:mega_top_mobile/core/widgets/status_bar_color.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
@@ -48,86 +49,101 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> {
     const CustomStatusBarColor(color: AppColors.onboardingBackgroundColor);
     return BlocBuilder<AdDetailsCubit, AdDetailsState>(
       builder: (context, state) {
+        var cubit = AdDetailsCubit.get(context);
         if (state is AdSuccessState) ad = state.data;
         return Scaffold(
             appBar: PreferredSize(
                 preferredSize: Size(double.infinity, context.height * 0.089),
                 child: const ProductDetailsAppBar()),
-            body: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: !(state is AdErrorState)
-                    ? Column(children: [
-                        state is AdSuccessState
-                            ? AdDetailsImage(ad: state.data.data!)
-                            : Shimmer.fromColors(
-                                baseColor: Colors.grey[300]!,
-                                highlightColor: Colors.grey[100]!,
-                                child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: context.height12,
-                                        horizontal: context.width8),
-                                    child: Container(
-                                        height:
-                                        context.height * 0.338, // Adjust to match the original container's height
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                                context.height * 0.0065))))),
-                  state is AdSuccessState
-                  ?AdDetailsBody(ad: ad!.data!): Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
-                      child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: context.height12,
-                              horizontal: context.width8),
-                          child: Container(
-                              height:
-                              context.height * 0.338, // Adjust to match the original container's height
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      context.height * 0.0065)))))
-                      ])
-                    : Text(state.errorMessage)),
-            bottomNavigationBar: ButtonBottomNavBar(button:
-                BlocBuilder<CategoryCubit, CategoryState>(
-                    builder: (context, state) {
-              return BlocProvider(
-                  create: (context) => CartCubit(CartRepoImp()),
-                  child: BlocConsumer<CartCubit, CartState>(
-                      listener: (context, state) {
-                    if (state is CartUpdated) {
-                      context
-                          .read<CartCubit>()
-                          .showAddedToCartBottomSheet(context);
-                    }
-                  }, builder: (context, state) {
-                    return AddToCartButton(
-                        content: state is CartSentToAPILoading
-                            ? const ButtonCircularProgress()
-                            : Row(children: [
-                                SvgPicture.asset(AppAssets.cartButtonIcon,
-                                    width: context.width * 0.066),
-                                HorizontalSpace(context.width * 0.022),
-                                Text(AppLocalizations.of(context)!.addToCart,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16.sp))
-                              ]),
-                        onTap: () async {
-                          if(ad != null) {
-                            context.read<CartCubit>().addProductToCart(
-                                ad!.data?.id,
-                                ad!.data?.title,
-                                ad!.data?.price?.finalPrice.toString(),
-                                ad!.data?.images?[0]);
-                            print('Product added to cart');
+            body: state is NoInternetState
+                ? Padding(
+                    padding: EdgeInsets.only(bottom: context.height48),
+                    child: NoInternetScreen(
+                        buttonOnTap: () => cubit.fetchAdDetails(widget.id)))
+                : SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: !(state is AdErrorState)
+                        ? Column(children: [
+                            state is AdSuccessState
+                                ? AdDetailsImage(ad: state.data.data!)
+                                : Shimmer.fromColors(
+                                    baseColor: Colors.grey[300]!,
+                                    highlightColor: Colors.grey[100]!,
+                                    child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: context.height12,
+                                            horizontal: context.width8),
+                                        child: Container(
+                                            height: context.height *
+                                                0.338, // Adjust to match the original container's height
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        context.height *
+                                                            0.0065))))),
+                            state is AdSuccessState
+                                ? AdDetailsBody(ad: ad!.data!)
+                                : Shimmer.fromColors(
+                                    baseColor: Colors.grey[300]!,
+                                    highlightColor: Colors.grey[100]!,
+                                    child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: context.height12,
+                                            horizontal: context.width8),
+                                        child: Container(
+                                            height: context.height *
+                                                0.338, // Adjust to match the original container's height
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        context.height *
+                                                            0.0065)))))
+                          ])
+                        : Text(state.errorMessage)),
+            bottomNavigationBar: state is NoInternetState
+                ? null
+                : ButtonBottomNavBar(button:
+                    BlocBuilder<CategoryCubit, CategoryState>(
+                        builder: (context, state) {
+                    return BlocProvider(
+                        create: (context) => CartCubit(CartRepoImp()),
+                        child: BlocConsumer<CartCubit, CartState>(
+                            listener: (context, state) {
+                          if (state is CartUpdated) {
+                            context
+                                .read<CartCubit>()
+                                .showAddedToCartBottomSheet(context);
                           }
-                        });
-                  }));
-            })));
+                        }, builder: (context, state) {
+                          return AddToCartButton(
+                              content: state is CartSentToAPILoading
+                                  ? const ButtonCircularProgress()
+                                  : Row(children: [
+                                      SvgPicture.asset(AppAssets.cartButtonIcon,
+                                          width: context.width * 0.066),
+                                      HorizontalSpace(context.width * 0.022),
+                                      Text(
+                                          AppLocalizations.of(context)!
+                                              .addToCart,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 16.sp))
+                                    ]),
+                              onTap: () async {
+                                if (ad != null) {
+                                  context.read<CartCubit>().addProductToCart(
+                                      ad!.data?.id,
+                                      ad!.data?.title,
+                                      ad!.data?.price?.finalPrice.toString(),
+                                      ad!.data?.images?[0]);
+                                  print('Product added to cart');
+                                }
+                              });
+                        }));
+                  })));
       },
     );
   }

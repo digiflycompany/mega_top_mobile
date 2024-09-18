@@ -6,6 +6,8 @@ final class AdDetailsInitial extends AdDetailsState {}
 
 final class AdLoadingState extends AdDetailsState {}
 
+final class NoInternetState extends AdDetailsState {}
+
 final class AdSuccessState extends AdDetailsState {
   final AdDetailsModel data;
   AdSuccessState(this.data);

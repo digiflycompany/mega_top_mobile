@@ -217,5 +217,6 @@
   "priceII": "Price",
   "availability": "Availability",
   "unAvailable": "Unavailable",
-  "description": "Description"
+  "description": "Description",
+  "orderNow": "Order now"
 }

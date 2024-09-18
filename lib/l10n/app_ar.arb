@@ -217,5 +217,6 @@
   "priceII": "السعر",
   "availability": "التوفر",
   "unAvailable": "غير متوفر",
-  "description": "الوصف"
+  "description": "الوصف",
+  "orderNow": "اطلب الآن"
 }
