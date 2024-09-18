@@ -9,7 +9,7 @@ class LocaleCubit extends Cubit<Locale> {
 
   Future<void> _loadLocale() async {
     final prefs = await SharedPreferences.getInstance();
-    final localeCode = prefs.getString('locale') ?? 'en';
+    final localeCode = prefs.getString('locale') ?? WidgetsBinding.instance!.window.locale.languageCode;
     emit(Locale(localeCode));
   }
 

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:mega_top_mobile/core/services/dio_helper/dio_helper.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/core/utils/theme/wish_list_model.dart';
 import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
-import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class GlobalRepo {
   Future<WishListModel?> addToWishList(String productId);

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:mega_top_mobile/core/services/dio_helper/dio_helper.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/features/account_screens/orders_screen/data/models/orders_model.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/models/checkout_model.dart';
-import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class OrdersRepo {
   Future<OrdersModel?> getOrders({required int page, required int limit});
