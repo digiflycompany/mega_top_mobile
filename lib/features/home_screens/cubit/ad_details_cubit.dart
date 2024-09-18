@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/ad_details_state.dart';
 import 'package:mega_top_mobile/features/home_screens/data/repo/home_page_repo.dart';
 
@@ -12,10 +13,8 @@ class AdDetailsCubit extends Cubit<AdDetailsState> {
     emit(AdLoadingState());
     var result = await homeRepo.fetchAdDetails(id);
     result.fold((failure) {
-      if (failure is DioException && failure.errMessage == 'No internet connection') {
-        emit(AdNoInternetConnectionState());
-      }
-      emit(AdErrorState(failure.errMessage));
+      failure.fold((connection) => emit(NoInternetState()),
+          (error) => emit(AdErrorState(error.errMessage)));
     }, (ad) {
       emit(AdSuccessState(ad));
     });

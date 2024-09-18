@@ -30,6 +30,7 @@ class MainPageProducts extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(bottom: context.height48),
             child: NoInternetScreen(buttonOnTap: () {
+              context.read<HomeAdsCubit>().fetchAds();
               context.read<LatestOffersCubit>().getLatestOffers();
               context.read<LatestProductsCubit>().getLatestProducts();
               context.read<HomeAdsCubit>().fetchAds();
