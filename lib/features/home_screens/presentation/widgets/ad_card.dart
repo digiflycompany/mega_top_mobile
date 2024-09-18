@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/widgets/custom_button.dart';
 import 'package:mega_top_mobile/core/widgets/custom_cached_network_image.dart';
 import 'package:mega_top_mobile/core/widgets/custom_image.dart';
-import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/advertisement_model.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/pages/ad_details_screen.dart';
-import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_details_screen.dart';
 
 class AdCard extends StatelessWidget {
   const AdCard({super.key, required this.ad});

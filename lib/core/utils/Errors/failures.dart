@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import 'models/api_error_model.dart';
 
 abstract class Failure {

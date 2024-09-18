@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_state.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_cubit.dart';
@@ -31,6 +32,7 @@ class MainPageProducts extends StatelessWidget {
             child: NoInternetScreen(buttonOnTap: () {
               context.read<LatestOffersCubit>().getLatestOffers();
               context.read<LatestProductsCubit>().getLatestProducts();
+              context.read<HomeAdsCubit>().fetchAds();
             })
           );
         }
