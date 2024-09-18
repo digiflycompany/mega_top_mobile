@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:mega_top_mobile/core/services/dio_helper/dio_helper.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/categories_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/product_details_model.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/search_model.dart';
-import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class SearchRepo {
   Future<CategoriesModel?> getCategories();

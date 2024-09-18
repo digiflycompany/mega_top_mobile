@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/services/shared_preferences/preferences_helper.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_constants.dart';
 import 'package:mega_top_mobile/core/utils/app_routes.dart';
@@ -12,7 +13,6 @@ import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/white_box_icon.dart';
-import 'package:mega_top_mobile/services/shared_preferences/preferences_helper.dart';
 
 
 class FavourCompareColumn extends StatelessWidget {

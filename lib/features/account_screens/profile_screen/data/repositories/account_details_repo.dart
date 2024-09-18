@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:mega_top_mobile/core/services/dio_helper/dio_helper.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/deactivated_user_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/updated_user_details_model.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/models/user_details_model.dart';
 import 'package:mega_top_mobile/features/account_screens/wish_list_screen/data/models/remove_from_wish_list_model.dart';
-import 'package:mega_top_mobile/services/dio_helper/dio_helper.dart';
 
 abstract class AccountDetailsRepo {
   Future<UserDetailsModel?> getUserDetails();
