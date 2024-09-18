@@ -1,6 +1,4 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/ad_details_state.dart';
 import 'package:mega_top_mobile/features/home_screens/data/repo/home_page_repo.dart';
 
