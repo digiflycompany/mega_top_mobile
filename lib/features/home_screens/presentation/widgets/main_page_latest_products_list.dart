@@ -69,7 +69,7 @@ class MainPageLatestProductList extends StatelessWidget {
                                               ? context
                                                   .read<LatestProductsCubit>()
                                                   .placeHolderImages!
-                                              : state.user.products![index].images!)));
+                                              : state.user.products![index].images!, product: state.user.products![index])));
                             });
                       },
                       separatorBuilder: (context, index) {

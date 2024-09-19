@@ -24,7 +24,7 @@ import '../../../../core/widgets/main_page_products_model.dart';
 class MainPageProductDetailsScreen extends StatelessWidget {
   final List<String>? images;
   final int imagePosition;
-  final Product? product;
+  final Product product;
   final cubit;
   final String? name;
   final String? categoryName;
@@ -44,7 +44,7 @@ class MainPageProductDetailsScreen extends StatelessWidget {
       required this.originalPrice,
       required this.description,
       required this.quantity,
-      this.product,
+      required this.product,
       this.productId});
 
   @override
@@ -62,7 +62,7 @@ class MainPageProductDetailsScreen extends StatelessWidget {
                 images: images,
                 imagePosition: imagePosition,
                 cubit: cubit,
-                product: product!,
+                product: product,
               ),
               MainPageProductDetailedBody(
                   originalPrice: originalPrice,
@@ -101,7 +101,7 @@ class MainPageProductDetailsScreen extends StatelessWidget {
                           ]),
                     onTap: () async {
                       context.read<CartCubit>().addProductToCart(
-                          productId, name, finalPrice, images![0]);
+                          productId, name, finalPrice, images?[0]);
                       print('Product added to cart');
                     });
               }));
