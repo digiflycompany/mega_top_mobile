@@ -15,35 +15,28 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(
-      builder: (context, state) {
-        LoginCubit loginCubit = context.read<LoginCubit>();
-        return Padding(
+    return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+      LoginCubit loginCubit = context.read<LoginCubit>();
+      return Padding(
           padding: EdgeInsets.only(top: context.height40),
           child: AuthButton(
-            onTap: state is LoginLoading
-                ? () {}
-                : () {
-                    if (formKey.currentState!.validate()) {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                      final username = loginCubit.emailController.text;
-                      final password = loginCubit.passwordController.text;
-                      loginCubit.login(username, password);
-                    }
-                  },
-            content: state is LoginLoading
-                ? const ButtonCircularProgress()
-                : Text(
-              AppLocalizations.of(context)!.login,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16.sp,
-                    ),
-                  ),
-          ),
-        );
-      },
-    );
+              onTap: state is LoginLoading
+                  ? () {}
+                  : () {
+                      if (formKey.currentState!.validate()) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        final username = loginCubit.emailController.text.trim();
+                        final password = loginCubit.passwordController.text.trim();
+                        loginCubit.login(username, password);
+                      }
+                    },
+              content: state is LoginLoading
+                  ? const ButtonCircularProgress()
+                  : Text(AppLocalizations.of(context)!.login,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.sp))));
+    });
   }
 }

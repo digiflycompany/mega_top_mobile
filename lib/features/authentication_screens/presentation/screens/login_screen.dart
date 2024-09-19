@@ -27,35 +27,27 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
-      listener: (context, state)=>context.read<LoginCubit>().handleLoginStates(context, state),
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: Colors.white,
-          body: SingleChildScrollView(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.center,
-                  colors: [AppColors.gradientColor, Colors.white],
-                ),
-              ),
-              child: Center(
-                child: Column(
-                  children: [
-                    const AuthenticationLogo(),
-                    AuthenticationTitle(
-                      text: AppLocalizations.of(context)!.signInToContinue,
-                    ),
-                    const LoginBody(),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
+        listener: (context, state) =>
+            context.read<LoginCubit>().handleLoginStates(context, state),
+        builder: (context, state) {
+          return Scaffold(
+              backgroundColor: Colors.white,
+              body: SingleChildScrollView(
+                  child: Container(
+                      decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.center,
+                              colors: [AppColors.gradientColor, Colors.white])),
+                      child: Center(
+                          child: Column(children: [
+                        const AuthenticationLogo(),
+                        AuthenticationTitle(
+                            text:
+                                AppLocalizations.of(context)!.signInToContinue),
+                        const LoginBody()
+                      ])))));
+        });
   }
 
   @override
