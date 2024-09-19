@@ -108,10 +108,7 @@ class HomeRepoImp implements HomeRepo {
   @override
   Future<Either<Failure, AdvertisementModel>> fetchHomeAds() async {
     try {
-      final response = await DioHelper.getData(
-        url: EndPoints.homeAds,
-        options: await DioHelper.getOptions(),
-      );
+      final response = await DioHelper.getData(url: EndPoints.homeAds);
       DefaultLogger.logger.w(response);
       return Right(AdvertisementModel.fromJson(response?.data));
     } catch (error) {
@@ -129,9 +126,7 @@ class HomeRepoImp implements HomeRepo {
       String id) async {
     try {
       final response = await DioHelper.getData(
-        url: EndPoints.selectedCategoriesAPI + '/' + id,
-        options: await DioHelper.getOptions(),
-      );
+          url: EndPoints.selectedCategoriesAPI + '/' + id);
       DefaultLogger.logger.w(response);
       return Right(AdDetailsModel.fromJson(response?.data));
     } catch (error) {
