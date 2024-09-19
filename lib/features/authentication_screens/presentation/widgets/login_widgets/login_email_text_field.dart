@@ -12,24 +12,21 @@ class LoginEmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(
-      builder: (context, state) {
-        LoginCubit loginCubit = context.read<LoginCubit>();
-        return Padding(
+    return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+      LoginCubit loginCubit = context.read<LoginCubit>();
+      return Padding(
           padding: EdgeInsets.only(bottom: context.height24),
           child: PrimaryTextField(
-            controller: loginCubit.emailController,
-            hintText: AppLocalizations.of(context)!.email,
-            prefixSvg: AppAssets.emailSecondIcon,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return AppLocalizations.of(context)!.pleaseEnterYourEmail;
-              }
-              return null;
-            },
-          ),
-        );
-      },
-    );
+              inputType: TextInputType.emailAddress,
+              controller: loginCubit.emailController,
+              hintText: AppLocalizations.of(context)!.email,
+              prefixSvg: AppAssets.emailSecondIcon,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return AppLocalizations.of(context)!.pleaseEnterYourEmail;
+                }
+                return null;
+              }));
+    });
   }
 }

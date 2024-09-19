@@ -25,36 +25,34 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     resetPasswordCubit.initializeControllers();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
-      listener: (context, state) =>resetPasswordCubit.handleResetPasswordStates(context,state),
-      builder: (context, state) {
-        return Scaffold(
-          appBar: PreferredSize(
-              preferredSize: Size(double.infinity, context.height * 0.089),
-              child: CustomAppBar(AppLocalizations.of(context)!.resetPassword)),
-          body: Form(
-            key: _formKey,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.width16),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    const ResetPasswordCondition(),
-                    const ResetPasswordDescription(),
-                    const ResetPasswordEmailField(),
-                    ResetPasswordButton(formKey: _formKey,),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
+        listener: (context, state) =>
+            resetPasswordCubit.handleResetPasswordStates(context, state),
+        builder: (context, state) {
+          return Scaffold(
+              appBar: PreferredSize(
+                  preferredSize: Size(double.infinity, context.height * 0.089),
+                  child: CustomAppBar(
+                      AppLocalizations.of(context)!.resetPassword)),
+              body: Form(
+                  key: _formKey,
+                  child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: context.width16),
+                      child: SingleChildScrollView(
+                          child: Column(children: [
+                        const ResetPasswordCondition(),
+                        const ResetPasswordDescription(),
+                        const ResetPasswordEmailField(),
+                        ResetPasswordButton(formKey: _formKey)
+                      ])))));
+        });
   }
+
   @override
   void dispose() {
     resetPasswordCubit.disposeControllers();

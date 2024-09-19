@@ -12,27 +12,24 @@ class SignUpEmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
-      builder: (context, state) {
-        SignUpCubit signUpCubit = context.read<SignUpCubit>();
-        return Padding(
+    return BlocBuilder<SignUpCubit, SignUpState>(builder: (context, state) {
+      SignUpCubit signUpCubit = context.read<SignUpCubit>();
+      return Padding(
           padding: EdgeInsets.only(bottom: context.height24),
           child: PrimaryTextField(
-            inputType: TextInputType.emailAddress,
-            controller: signUpCubit.signUpEmailController,
-            hintText: AppLocalizations.of(context)!.email,
-            prefixSvg: AppAssets.emailSecondIcon,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return AppLocalizations.of(context)!.pleaseEnterYourEmail;
-              } else if (!signUpCubit.emailRegex.hasMatch(value)) {
-                return AppLocalizations.of(context)!.pleaseEnterValidEmailAddress;
-              }
-              return null;
-            },
-          ),
-        );
-      },
-    );
+              inputType: TextInputType.emailAddress,
+              controller: signUpCubit.signUpEmailController,
+              hintText: AppLocalizations.of(context)!.email,
+              prefixSvg: AppAssets.emailSecondIcon,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return AppLocalizations.of(context)!.pleaseEnterYourEmail;
+                } else if (!signUpCubit.emailRegex.hasMatch(value)) {
+                  return AppLocalizations.of(context)!
+                      .pleaseEnterValidEmailAddress;
+                }
+                return null;
+              }));
+    });
   }
 }

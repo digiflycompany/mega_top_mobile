@@ -249,7 +249,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     if(state is ResetPasswordSuccess){
       context.moveWithArguments(
         Routes.verifyEmailRoute,
-        arguments: resetPasswordEmailController.text,
+        arguments: resetPasswordEmailController.text.trim(),
       );
     }
     if(state is ResetPasswordFailure){

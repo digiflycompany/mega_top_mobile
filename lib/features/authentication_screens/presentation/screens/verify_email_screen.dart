@@ -27,38 +27,40 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
     resetPasswordCubit.initializeControllers();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
-      listener: (context, state) => resetPasswordCubit.handleVerifyingEmailStates(context,state),
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: Colors.white,
-          appBar: PreferredSize(
-              preferredSize: Size(double.infinity, context.height * 0.089),
-              child: CustomAppBar(AppLocalizations.of(context)!.verifyYourEmail)),
-          body: Form(
-            key: _formKey,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    VerifyEmailCondition(),
-                    VerifyEmailDescription(email: widget.email,),
-                    const VerifyEmailOtp(),
-                    VerifyEmailResetPasswordButton(email: widget.email,),
-                    VerifyEmailResendCode(email: widget.email,),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
+        listener: (context, state) =>
+            resetPasswordCubit.handleVerifyingEmailStates(context, state),
+        builder: (context, state) {
+          return Scaffold(
+              backgroundColor: Colors.white,
+              appBar: PreferredSize(
+                  preferredSize: Size(double.infinity, context.height * 0.089),
+                  child: CustomAppBar(
+                      AppLocalizations.of(context)!.verifyYourEmail)),
+              body: Form(
+                  key: _formKey,
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: context.width * 0.045),
+                      child: SingleChildScrollView(
+                          child: Column(children: [
+                        VerifyEmailCondition(),
+                        VerifyEmailDescription(
+                          email: widget.email,
+                        ),
+                        const VerifyEmailOtp(),
+                        VerifyEmailResetPasswordButton(
+                          email: widget.email,
+                        ),
+                        VerifyEmailResendCode(email: widget.email.trim())
+                      ])))));
+        });
   }
+
   @override
   void dispose() {
     resetPasswordCubit.disposeControllers();

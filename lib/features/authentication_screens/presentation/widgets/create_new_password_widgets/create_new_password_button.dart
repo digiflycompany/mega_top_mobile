@@ -14,27 +14,27 @@ class CreateNewPasswordButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
-      builder: (context, state) {
-        ResetPasswordCubit resetPasswordCubit = context.read<ResetPasswordCubit>();
-        return AuthButton(
-          content: state is UpdatePasswordLoading ? const ButtonCircularProgress():Text(
-            AppLocalizations.of(context)!.confirmPassword,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 16.sp,
-            ),
-          ),
-          onTap: state is UpdatePasswordLoading?(){}:() {
-            if(formKey.currentState!.validate()){
-              FocusManager.instance.primaryFocus?.unfocus();
-              resetPasswordCubit.updatePassword(
-                   resetPasswordCubit.createNewPasswordController.text,
-               );
-            }
-          },
-        );
-      },
-    );
+        builder: (context, state) {
+      ResetPasswordCubit resetPasswordCubit =
+          context.read<ResetPasswordCubit>();
+      return AuthButton(
+          content: state is UpdatePasswordLoading
+              ? const ButtonCircularProgress()
+              : Text(AppLocalizations.of(context)!.confirmPassword,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16.sp)),
+          onTap: state is UpdatePasswordLoading
+              ? () {}
+              : () {
+                  if (formKey.currentState!.validate()) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                    resetPasswordCubit.updatePassword(resetPasswordCubit
+                        .createNewPasswordController.text
+                        .trim());
+                  }
+                });
+    });
   }
 }

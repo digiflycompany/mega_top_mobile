@@ -9,44 +9,35 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/wid
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/login_or_continue_column.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class SignUpOrLoginPage extends StatelessWidget {
   const SignUpOrLoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Center(child: AuthenticationLogo()),
-            VerticalSpace(context.height * 0.055),
-            const LoginOrContinueColumn(),
-            VerticalSpace(context.height * 0.11),
-            /// Sign Up Button
-            PrimaryButton(
-              content: Text(
-                AppLocalizations.of(context)!.signUp,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16.sp,
-                ),
-              ),
-              onTap: () => Routes.signUpRoute.moveTo,
-            ),
-            VerticalSpace(context.height * 0.033),
+        body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              const Center(child: AuthenticationLogo()),
+              VerticalSpace(context.height * 0.055),
+              const LoginOrContinueColumn(),
+              VerticalSpace(context.height * 0.11),
 
-            /// Login Button
-            PrimaryOutlinedButton(
-              text: AppLocalizations.of(context)!.login,
-              onTap: () => Routes.loginRoute.moveTo,
-            )
-          ],
-        ),
-      ),
-    );
+              /// Sign Up Button
+              PrimaryButton(
+                  content: Text(AppLocalizations.of(context)!.signUp,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.sp)),
+                  onTap: () => Routes.signUpRoute.moveTo),
+              VerticalSpace(context.height * 0.033),
+
+              /// Login Button
+              PrimaryOutlinedButton(
+                  text: AppLocalizations.of(context)!.login,
+                  onTap: () => Routes.loginRoute.moveTo)
+            ])));
   }
 }

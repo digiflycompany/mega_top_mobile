@@ -21,25 +21,21 @@ class _LoginBodyState extends State<LoginBody> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    return BlocBuilder<LoginCubit, LoginState>(
-      builder: (context, state) {
-        return Form(
+    return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+      return Form(
           key: _formKey,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-            child: Column(
-              children: [
+              padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+              child: Column(children: [
                 const LoginEmailTextField(),
                 const LoginPasswordTextField(),
                 const ForgotPassword(),
-                LoginButton(formKey: _formKey,),
-                const CreateAccountText(),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+                LoginButton(
+                  formKey: _formKey,
+                ),
+                const CreateAccountText()
+              ])));
+    });
   }
 
   @override

@@ -22,16 +22,16 @@ class VerifyEmailResendCode extends StatelessWidget {
               firstText: AppLocalizations.of(context)!.ifYouDidNotReceiveCode,
               buttonText: AppLocalizations.of(context)!.resendCode,
               onTap: state is ResendResetPasswordCodeLoading?(){}:(){
-                context.read<ResetPasswordCubit>().resendResetPassword(email);
-              },
+                context.read<ResetPasswordCubit>().resendResetPassword(email.trim());
+              }
             ),
             HorizontalSpace(context.width4),
             state is ResendResetPasswordCodeLoading
                 ? SmallCircularProgressIndicator()
-                : SizedBox(),
-          ],
+                : SizedBox()
+          ]
         );
-      },
+      }
     );
   }
 }
