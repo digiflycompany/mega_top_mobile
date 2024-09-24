@@ -15,19 +15,21 @@ class OnboardingThirdScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ThirdHeader(
-            pageController: pageController,
-          ),
-          VerticalSpace(context.height * 0.050),
-          OnboardingDescription(
-            title: AppLocalizations.of(context)!.receiveYourOrderedSuccessfully,
-            description:AppLocalizations.of(context)!.onboardingThirdScreenDescription,
-          ),
-        ],
-      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ThirdHeader(
+              pageController: pageController
+            ),
+            VerticalSpace(context.height * 0.050),
+            OnboardingDescription(
+              title: AppLocalizations.of(context)!.receiveYourOrderedSuccessfully,
+              description:AppLocalizations.of(context)!.onboardingThirdScreenDescription
+            )
+          ]
+        ),
+      )
     );
   }
 }

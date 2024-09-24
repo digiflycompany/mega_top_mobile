@@ -9,8 +9,7 @@ class CurvedContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: Size(double.infinity, context.height * 0.428),
-      painter: ArcPainter(),
-    );
+        size: Size(double.infinity, context.height * 0.428),
+        painter: ArcPainter());
   }
 }

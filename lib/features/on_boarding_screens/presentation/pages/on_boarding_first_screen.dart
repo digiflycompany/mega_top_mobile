@@ -14,20 +14,18 @@ class OnboardingFirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          FirstHeader(
-            pageController: pageController,
-          ),
-          VerticalSpace(context.height * 0.014),
-          OnboardingDescription(
-            title: AppLocalizations.of(context)!.exploreOurElectronicProducts,
-            description: AppLocalizations.of(context)!.onboardingFirstScreenDescription,
-          ),
-        ],
-      ),
-    );
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+              FirstHeader(pageController: pageController),
+              VerticalSpace(context.height * 0.014),
+              OnboardingDescription(
+                  title: AppLocalizations.of(context)!
+                      .exploreOurElectronicProducts,
+                  description: AppLocalizations.of(context)!
+                      .onboardingFirstScreenDescription)
+            ])));
   }
 }
