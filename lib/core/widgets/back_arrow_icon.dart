@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-
 import '../utils/app_assets.dart';
 import '../utils/app_color.dart';
 
@@ -11,6 +10,7 @@ class BackArrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String currentLang = Localizations.localeOf(context).languageCode;
     return InkWell(
       splashColor: Colors.transparent,
       onTap: onTap,
@@ -25,13 +25,13 @@ class BackArrow extends StatelessWidget {
               color: AppColors.shadowColor,
               offset: Offset(0, 4),
               blurRadius: 12,
-              spreadRadius: 0,
-            ),
-          ],
+              spreadRadius: 0
+            )
+          ]
         ),
         child: Transform.scale(
-            scale: 0.53, child: SvgPicture.asset(AppAssets.backArrowEn)),
-      ),
+            scale: 0.53, child: SvgPicture.asset(AppAssets.backArrowEn))
+      )
     );
   }
 }

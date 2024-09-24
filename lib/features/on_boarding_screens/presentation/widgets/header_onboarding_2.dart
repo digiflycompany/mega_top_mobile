@@ -14,43 +14,44 @@ class SecondHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        /// BackGroundImage ///
-        const CurvedContainer(),
-        Padding(
-          padding: EdgeInsets.only(top: context.height * 0.1),
-          child: Transform.scale(
-              scale: 0.7, child: Image.asset(AppAssets.boardingCart)),
-        ),
+    String currentLang = Localizations.localeOf(context).languageCode;
+    return Stack(children: [
+      /// BackGroundImage ///
+      const CurvedContainer(),
+      Padding(
+        padding: EdgeInsets.only(top: context.height * 0.1),
+        child: Transform.scale(
+            scale: 0.7, child: Image.asset(AppAssets.boardingCart)),
+      ),
 
-        /// Skip Text ///
-        SkipText(
-          onTap: () {
-            Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
-            PreferencesHelper.setHasSeenOnboarding(true);
-            PreferencesHelper.saveIsVisitor(isVisitor: true);
-          },
-        ),
+      /// Skip Text ///
+      SkipText(
+        onTap: () {
+          Routes.homePageRoute.moveToCurrentRouteAndRemoveAll;
+          PreferencesHelper.setHasSeenOnboarding(true);
+          PreferencesHelper.saveIsVisitor(isVisitor: true);
+        },
+      ),
 
-        /// Back Arrow ///
-        Align(
+      /// Back Arrow ///
+      Align(
           alignment: AlignmentDirectional.centerStart,
           child: Padding(
-            padding: EdgeInsets.only(
-                top: context.width * 0.12, left: context.width * 0.045),
-            child: BackArrow(
-              onTap: () {
-                pageController.animateToPage(
-                  0,
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut,
-                );
-              },
-            ),
-          ),
-        ),
-      ],
-    );
+              padding: EdgeInsets.only(
+                  top: context.width * 0.12, left: context.width * 0.045),
+              child: currentLang == 'ar'
+                  ? Transform(
+                      transform: Matrix4.identity()..scale(-1.0, 1.0),
+                      child: BackArrow(onTap: () {
+                        pageController.animateToPage(0,
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.easeInOut);
+                      }))
+                  : BackArrow(onTap: () {
+                      pageController.animateToPage(0,
+                          duration: const Duration(milliseconds: 400),
+                          curve: Curves.easeInOut);
+                    })))
+    ]);
   }
 }

@@ -14,20 +14,18 @@ class OnboardingSecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SecondHeader(
-            pageController: pageController,
-          ),
-          VerticalSpace(context.height * 0.0346),
-          OnboardingDescription(
-            title: AppLocalizations.of(context)!.addYourProductsToShoppingCart,
-            description: AppLocalizations.of(context)!.onboardingSecondScreenDescription,
-          ),
-        ],
-      ),
-    );
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+              SecondHeader(pageController: pageController),
+              VerticalSpace(context.height * 0.0346),
+              OnboardingDescription(
+                  title: AppLocalizations.of(context)!
+                      .addYourProductsToShoppingCart,
+                  description: AppLocalizations.of(context)!
+                      .onboardingSecondScreenDescription)
+            ])));
   }
 }

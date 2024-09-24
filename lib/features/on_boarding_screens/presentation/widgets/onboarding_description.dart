@@ -31,18 +31,20 @@ class OnboardingDescription extends StatelessWidget {
             child: Container(
               height: context.height104,
               child: Text(
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
                 description!,
                 textAlign: TextAlign.center,
                 textDirection: TextDirection.ltr,
                 style: TextStyle(
                     color: AppColors.greyTextColor,
                     fontSize: 14.sp,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
-          ),
-        ],
-      ),
+                    fontWeight: FontWeight.w500)
+              )
+            )
+          )
+        ]
+      )
     );
   }
 }
