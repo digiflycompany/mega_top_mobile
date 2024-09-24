@@ -21,7 +21,7 @@ class ProfileScreenHeader extends StatelessWidget {
               Text(AppLocalizations.of(context)!.welcome,
                   style: TextStyle(
                       fontWeight: FontWeight.w700, fontSize: 16.sp)),
-              Text(PreferencesHelper.getName(),
+              Text(PreferencesHelper.getUserModel?.data?.user?.fullName ?? '',
                   style: TextStyle(
                       fontWeight: FontWeight.w700, fontSize: 16.sp))
             ]

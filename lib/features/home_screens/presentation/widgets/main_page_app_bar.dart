@@ -10,19 +10,8 @@ class MainPageAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
-      child: const SingleChildScrollView(
-        child: Column(
-          children: [
-            Column(
-              children: [
-                CustomerInformation(),
-                CustomSearchBar(),
-              ],
-            ),
-          ],
-        ),
-      ),
-    ));
+            padding: EdgeInsets.symmetric(horizontal: context.width * 0.045),
+            child: const SingleChildScrollView(
+                child: Column(children: [CustomerInformation(), CustomSearchBar()]))));
   }
 }
