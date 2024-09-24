@@ -99,4 +99,12 @@ class LoginCubit extends Cubit<LoginState> {
           context, AppLocalizations.of(context)!.loginFailed,AppLocalizations.of(context)!.noInternetConnectionPleaseTryAgain);
     }
   }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
+  }
+
 }

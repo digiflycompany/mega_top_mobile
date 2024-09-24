@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_product_details_screen.dart';

@@ -12,7 +12,7 @@ class EndPoints {
   static const String verifyResetPasswordAPI =
       '$baseUrl/api/v1/users/verify-reset-password';
   static const String accountDetailsAPI = '$baseUrl/api/v1/profile';
-  static const String homeAds = '$baseUrl/api/v1/advertisements';
+  static const String homeAds = '$baseUrl/api/v1/advertisements?isSlider=true';
   static const String updateAccountDetailsAPI = '$baseUrl/api/v1/profile';
   static const String adDetails = '$baseUrl/api/v1/advertisements/';
   static const String deleteAccountAPI = '$baseUrl/api/v1/profile/deactivate';
@@ -38,7 +38,7 @@ class EndPoints {
   static const String checkoutAPI = '$baseUrl/api/v1/orders/customer-checkout';
   static const String latestOffersAPI = '$baseUrl/api/v1/products?isOffer=true';
   static const String latestProductsAPI = '$baseUrl/api/v1/products?sortOrder=desc';
-  static const String homeScreenAddsAPI = '$baseUrl/api/v1/advertisements';
+  static const String homeScreenAddsAPI = '$baseUrl/api/v1/advertisements?isSlider=true';
   static const String selectedCategoriesAPI =
       '$baseUrl/api/v1/products';
   static const String subCategoriesAPI =
