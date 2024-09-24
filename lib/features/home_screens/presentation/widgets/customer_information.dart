@@ -17,52 +17,46 @@ class CustomerInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<String?>(
-      future: PreferencesHelper.getToken(),
-      builder: (context, snapshot) {
-        final token = snapshot.data;
-        final isUserLoggedIn = token != null;
-        return Padding(
-          padding: EdgeInsets.symmetric(vertical: context.height * 0.0165),
-          child: Row(
-            children: [
-              HorizontalSpace(context.width * 0.022),
-              CustomerName(
-                name: isUserLoggedIn ? PreferencesHelper.getName() : AppLocalizations.of(context)!.visitor,
-              ),
-              const Spacer(),
-              if (isUserLoggedIn)
-                BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
-                  builder: (context, state) {
+        future: PreferencesHelper.getToken(),
+        builder: (context, snapshot) {
+          final token = snapshot.data;
+          final isUserLoggedIn = token != null;
+          return Padding(
+              padding: EdgeInsets.symmetric(vertical: context.height * 0.0165),
+              child: Row(children: [
+                HorizontalSpace(context.width * 0.022),
+                CustomerName(
+                  name: isUserLoggedIn
+                      ? PreferencesHelper.getUserModel?.data?.user?.fullName
+                      : AppLocalizations.of(context)!.visitor,
+                ),
+                const Spacer(),
+                if (isUserLoggedIn)
+                  BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
+                      builder: (context, state) {
                     return GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, Routes.wishListPageRoute)
-                            .then((_) {
-                          context.read<AccountDetailsCubit>()
-                              .getAccountDetails();
-                        });
-                      },
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.wishListPageRoute)
+                              .then((_) {
+                            context
+                                .read<AccountDetailsCubit>()
+                                .getAccountDetails();
+                          });
+                        },
+                        child: CustomerIcon(
+                            icon: AppAssets.favouritesIcon,
+                            number: PreferencesHelper.getWishListCount()
+                                .toString()));
+                  }),
+                HorizontalSpace(context.width * 0.022),
+                if (isUserLoggedIn)
+                  GestureDetector(
+                      onTap: () => Routes.notificationPageRoute.moveTo(),
                       child: CustomerIcon(
-                        icon: AppAssets.favouritesIcon,
-                        number: PreferencesHelper.getWishListCount()
-                            .toString(),
-                      ),
-                    );
-                  },
-                ),
-              HorizontalSpace(context.width * 0.022),
-              if(isUserLoggedIn)
-                GestureDetector(
-                  onTap: () => Routes.notificationPageRoute.moveTo(),
-                  child: CustomerIcon(
-                    icon: AppAssets.notificationIcon,
-                    number: PreferencesHelper.getNotificationCount().toString(),
-                  ),
-                ),
-            ],
-          ),
-        );
-      },
-    );
+                          icon: AppAssets.notificationIcon,
+                          number: PreferencesHelper.getNotificationCount()
+                              .toString()))
+              ]));
+        });
   }
 }

@@ -20,16 +20,16 @@ class UserInformation extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(PreferencesHelper.getName(),
+                  Text(PreferencesHelper.getUserModel?.data?.user?.fullName ?? '',
                       style: TextStyle(fontWeight: FontWeight.w700)),
                   Text(PreferencesHelper.getEmail().toString(),
-                      style: TextStyle(color: AppColors.greyTextColor)),
-                ],
-              ),
-            ],
-          ),
+                      style: TextStyle(color: AppColors.greyTextColor))
+                ]
+              )
+            ]
+          )
         );
-      },
+      }
     );
   }
 }
