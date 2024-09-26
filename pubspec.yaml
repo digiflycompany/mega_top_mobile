@@ -47,7 +47,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   dropdown_button2: ^2.3.9
   internet_connection_checker: ^1.0.0+1
-  fluttertoast: ^8.2.6
+  fluttertoast:
   url_launcher: ^6.3.0
   flutter_localizations:
     sdk: flutter
