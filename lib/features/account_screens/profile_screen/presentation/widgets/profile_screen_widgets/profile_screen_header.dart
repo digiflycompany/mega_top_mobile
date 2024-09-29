@@ -12,22 +12,15 @@ class ProfileScreenHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
-      builder: (context, state) {
-        return Padding(
+        builder: (context, state) {
+      return Padding(
           padding: EdgeInsets.only(bottom: 40.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(AppLocalizations.of(context)!.welcome,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: 16.sp)),
-              Text(PreferencesHelper.getUserModel?.data?.user?.fullName ?? '',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: 16.sp))
-            ]
-          )
-        );
-      }
-    );
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text(AppLocalizations.of(context)!.welcome,
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.sp)),
+            Text(PreferencesHelper.getUserModel?.data?.user?.fullName ?? '',
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.sp))
+          ]));
+    });
   }
 }

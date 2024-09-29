@@ -30,7 +30,7 @@ class WishListProductDetailsScreen extends StatelessWidget {
   final String? originalPrice;
   final String? description;
   final int? quantity;
-  final String? productId;
+  final String productId;
   const WishListProductDetailsScreen(
       {super.key,
         required this.images,
@@ -42,7 +42,7 @@ class WishListProductDetailsScreen extends StatelessWidget {
         required this.originalPrice,
         required this.description,
         required this.quantity,
-        this.productId});
+        required this.productId});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
-
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../cubit/home_cubit.dart';
@@ -30,10 +29,9 @@ class _AdvertisementListState extends State<AdvertisementList> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return Column(
-          children: [
+        listener: (context, state) {},
+        builder: (context, state) {
+          return Column(children: [
             SizedBox(
               height: context.height * 0.235,
               child: PageView.builder(
@@ -60,21 +58,18 @@ class _AdvertisementListState extends State<AdvertisementList> {
               ),
             ),
             DotsIndicator(
-              dotsCount: 5,
-              position: currentIndex,
-              decorator: DotsDecorator(
-                size: const Size.square(9.0),
-                activeColor: AppColors.primaryColor,
-                color: AppColors.dotsColor,
-                activeSize: Size(context.width * 0.11, context.height * 0.011),
-                activeShape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(context.height * 0.007)),
-              ),
-            ),
-          ],
-        );
-      },
-    );
+                dotsCount: 5,
+                position: currentIndex,
+                decorator: DotsDecorator(
+                    size: const Size.square(9.0),
+                    activeColor: AppColors.primaryColor,
+                    color: AppColors.dotsColor,
+                    activeSize:
+                        Size(context.width * 0.11, context.height * 0.011),
+                    activeShape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(context.height * 0.007))))
+          ]);
+        });
   }
 }

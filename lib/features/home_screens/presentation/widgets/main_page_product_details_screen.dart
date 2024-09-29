@@ -32,7 +32,7 @@ class MainPageProductDetailsScreen extends StatelessWidget {
   final String? originalPrice;
   final String? description;
   final int? quantity;
-  final String? productId;
+  final String productId;
   const MainPageProductDetailsScreen(
       {super.key,
       required this.images,
@@ -45,7 +45,7 @@ class MainPageProductDetailsScreen extends StatelessWidget {
       required this.description,
       required this.quantity,
       required this.product,
-      this.productId});
+      required this.productId});
 
   @override
   Widget build(BuildContext context) {

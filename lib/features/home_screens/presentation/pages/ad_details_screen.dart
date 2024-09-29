@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/logger.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
@@ -134,11 +135,11 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> {
                               onTap: () async {
                                 if (ad != null) {
                                   context.read<CartCubit>().addProductToCart(
-                                      ad!.data?.id,
+                                      ad!.data!.id!,
                                       ad!.data?.title,
                                       ad!.data?.price?.finalPrice.toString(),
                                       ad!.data?.images?[0]);
-                                  print('Product added to cart');
+                                  DefaultLogger.logger.d('Product added to cart ${ad!.data?.id}');
                                 }
                               });
                         }));
