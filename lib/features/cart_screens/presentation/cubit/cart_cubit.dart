@@ -19,7 +19,7 @@ class CartCubit extends Cubit<CartState> {
 
   List<Map<String, dynamic>> cartProducts = PreferencesHelper.getCart();
 
-  void addProductToCart(String? id,String? name,String? price,String? image) {
+  void addProductToCart(String id,String? name,String? price,String? image) {
     final existingProductIndex = cartProducts.indexWhere(
           (product) => product['_id'] == id,
     );

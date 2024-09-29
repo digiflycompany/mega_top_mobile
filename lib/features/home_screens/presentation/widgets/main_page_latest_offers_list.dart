@@ -64,7 +64,7 @@ class MainPageLatestOffersList extends StatelessWidget {
                                                 .originalPrice
                                                 .toString(),
                                             productId:
-                                                state.user.products?[index].id,
+                                                state.user.products![index].id,
                                             imagePosition: context
                                                 .read<LatestOffersCubit>()
                                                 .currentImageIndex,
