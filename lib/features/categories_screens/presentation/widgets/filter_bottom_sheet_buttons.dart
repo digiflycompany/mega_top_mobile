@@ -39,7 +39,7 @@ class FilterBottomSheetButtons extends StatelessWidget {
                 onTap: (){
                   if((cubit.minPriceController.text as String).isNotNullOrEmpty && (cubit.maxPriceController.text as String).isNotNullOrEmpty)
                   {
-                    if(int.tryParse(cubit.minPriceController.text)! > int.tryParse(cubit.maxPriceController.text)!)
+                    if(double.tryParse(cubit.minPriceController.text)! > double.tryParse(cubit.maxPriceController.text)!)
                     {
                       Fluttertoast.showToast(
                           msg: AppLocalizations.of(context)!.priceValidation,

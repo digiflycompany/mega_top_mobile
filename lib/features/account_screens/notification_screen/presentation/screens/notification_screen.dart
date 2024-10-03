@@ -20,62 +20,61 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
-            child: PrimaryAppBar(
-              AppLocalizations.of(context)!.notifications,
-              favour: false,
-            )),
+            child: PrimaryAppBar(AppLocalizations.of(context)!.notifications,
+                favour: false)),
         body: BlocConsumer<NotificationCubit, NotificationState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            if(state is NotificationLoading){
-              return ShimmerNotificationCard();
-            }
-            else if(state is NotificationSuccess && state.user.notifications!.length>0){
-              return Padding(
-                  padding: EdgeInsets.only(
-                      right: context.width * 0.022,
-                      left: context.width * 0.022,
-                      top: context.height * 0.016,
-                      bottom: context.height * 0.016),
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: state.user.notifications!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final notificationItem =state.user.notifications![index].adId;
-                        return Padding(
-                          padding: EdgeInsets.only(top: context.height*0.016,bottom: context.height*0.016,right: context.width*0.022,left: context.width*0.022),
-                          child: NotificationCard(
-                            notificationImage: notificationItem.image,
-                            notificationTitle: notificationItem.title,
-                            notificationDescription: notificationItem.description,
-                            notificationDate: notificationItem.updatedAt,
-                          )
-                      );
-                    },
-                  )
-              );
-            } else if(state is NotificationSuccess && state.user.notifications!.length==0){
-              return EmptyDataPage(
-                icon: AppAssets.emptyNotificationsIcon,
-                bigFontText: AppLocalizations.of(context)!.noNotifications,
-                smallFontText: AppLocalizations.of(context)!.thereIsNoNewNotification,
-              );
-            } else if(state is NotificationNoInternetConnection){
-              return NoInternetScreen(
-                  buttonOnTap: ()=>context.read<NotificationCubit>().getUserNotification()
-              );
-            }
-            return Center(
-              child: Text(
-                AppLocalizations.of(context)!.serverError,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14.sp
-                ),
-              ),
-            );
-          },
-        ));
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is NotificationLoading) {
+                return ShimmerNotificationCard();
+              } else if (state is NotificationSuccess &&
+                  state.user.notifications!.length > 0) {
+                return Padding(
+                    padding: EdgeInsets.only(
+                        right: context.width * 0.022,
+                        left: context.width * 0.022,
+                        top: context.height * 0.016,
+                        bottom: context.height * 0.016),
+                    child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: state.user.notifications!.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          final notificationItem =
+                              state.user.notifications![index].adId;
+                          return Padding(
+                              padding: EdgeInsets.only(
+                                  top: context.height * 0.016,
+                                  bottom: context.height * 0.016,
+                                  right: context.width * 0.022,
+                                  left: context.width * 0.022),
+                              child: NotificationCard(
+                                  notificationImage: notificationItem.image,
+                                  notificationTitle: notificationItem.title,
+                                  notificationDescription:
+                                      notificationItem.description,
+                                  notificationDate:
+                                      notificationItem.updatedAt));
+                        }));
+              } else if (state is NotificationSuccess &&
+                  state.user.notifications!.length == 0) {
+                return EmptyDataPage(
+                  icon: AppAssets.emptyNotificationsIcon,
+                  bigFontText: AppLocalizations.of(context)!.noNotifications,
+                  smallFontText:
+                      AppLocalizations.of(context)!.thereIsNoNewNotification,
+                );
+              } else if (state is NotificationNoInternetConnection) {
+                return NoInternetScreen(
+                    buttonOnTap: () => context
+                        .read<NotificationCubit>()
+                        .getUserNotification());
+              }
+              return Center(
+                  child: Text(AppLocalizations.of(context)!.serverError,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14.sp)));
+            }));
   }
 }

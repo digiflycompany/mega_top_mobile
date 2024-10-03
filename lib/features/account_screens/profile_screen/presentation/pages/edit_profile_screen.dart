@@ -28,24 +28,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, context.height * 0.089),
-        child: PrimaryAppBar(
-          AppLocalizations.of(context)!.profileDetails,
-          favour: false,
-        ),
-      ),
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.width * 0.066),
-          child: const SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: EditProfileDetailsFields(),
-          ),
-        ),
-      ),
-      bottomNavigationBar: UpdateUserDetailsButton(formKey: _formKey,),
-    );
+        appBar: PreferredSize(
+            preferredSize: Size(double.infinity, context.height * 0.089),
+            child: PrimaryAppBar(AppLocalizations.of(context)!.profileDetails,
+                favour: false)),
+        body: Form(
+            key: _formKey,
+            child: Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: context.width * 0.066),
+                child: const SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: EditProfileDetailsFields()))),
+        bottomNavigationBar: UpdateUserDetailsButton(formKey: _formKey));
   }
 }

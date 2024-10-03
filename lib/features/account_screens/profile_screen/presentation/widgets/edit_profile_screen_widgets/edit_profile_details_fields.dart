@@ -15,67 +15,58 @@ class EditProfileDetailsFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(
           padding: EdgeInsets.only(top: 40.h),
           child: BlocBuilder<AccountDetailsCubit, AccountDetailsState>(
-            builder: (context, state) {
-              AccountDetailsCubit cubit = context.read<AccountDetailsCubit>();
-              if (state is AccountDetailsLoading) {
-                return EditProfileDetailsShimmer();
-              } else if (state is AccountDetailsSuccess) {
-                return Column(
-                  children: [
-                    EditEmailTextField(
-                      title: AppLocalizations.of(context)!.email,
-                      controller: cubit.emailController,
-                    ),
-                    EditFullNameTextField(
-                      title: AppLocalizations.of(context)!.fullName,
-                      controller: cubit.fullNameController,
-                    ),
-                    EditPhoneTextField(
-                      title: AppLocalizations.of(context)!.phoneNumber,
-                      controller: cubit.phoneController,
-                    ),
-                  ],
-                );
-              } else if (state is AccountDetailsFailure) {
-                cubit.showErrorToast(context, AppLocalizations.of(context)!.productDetailsFailed, state.error);
-                return Center(child: Text('Failed'),);
-              } else if(state is UpdatingAccountDetailsLoading){
-                return EditProfileDetailsShimmer();
-              }else if(state is UpdatingAccountDetailsSuccess){
-                cubit.savedSuccessToast(context,AppLocalizations.of(context)!.savedSuccessfully);
-                return Column(
-                  children: [
-                    EditEmailTextField(
-                      title: AppLocalizations.of(context)!.email,
-                      controller: cubit.emailController,
-                    ),
-                    EditFullNameTextField(
-                      title: AppLocalizations.of(context)!.fullName,
-                      controller: cubit.fullNameController,
-                    ),
-                    EditPhoneTextField(
-                      title: AppLocalizations.of(context)!.phoneNumber,
-                      controller: cubit.phoneController,
-                    ),
-                  ],
-                );
-              } else if (state is AccountDetailsNoInternetConnection) {
-                return NoInternetScreen(buttonOnTap: () {
-                  cubit.getAccountDetails();
-                },);
-              } else {
-                return Container();
-              }
-            },
-          ),
-        ),
-      ],
-    );
+              builder: (context, state) {
+            AccountDetailsCubit cubit = context.read<AccountDetailsCubit>();
+            if (state is AccountDetailsLoading) {
+              return EditProfileDetailsShimmer();
+            } else if (state is AccountDetailsSuccess) {
+              return Column(children: [
+                EditEmailTextField(
+                    title: AppLocalizations.of(context)!.email,
+                    controller: cubit.emailController),
+                EditFullNameTextField(
+                    title: AppLocalizations.of(context)!.fullName,
+                    controller: cubit.fullNameController),
+                EditPhoneTextField(
+                    title: AppLocalizations.of(context)!.phoneNumber,
+                    controller: cubit.phoneController)
+              ]);
+            } else if (state is AccountDetailsFailure) {
+              cubit.showErrorToast(
+                  context,
+                  AppLocalizations.of(context)!.productDetailsFailed,
+                  state.error);
+              return Center(
+                child: Text('Failed'),
+              );
+            } else if (state is UpdatingAccountDetailsLoading) {
+              return EditProfileDetailsShimmer();
+            } else if (state is UpdatingAccountDetailsSuccess) {
+              cubit.savedSuccessToast(
+                  context, AppLocalizations.of(context)!.savedSuccessfully);
+              return Column(children: [
+                EditEmailTextField(
+                    title: AppLocalizations.of(context)!.email,
+                    controller: cubit.emailController),
+                EditFullNameTextField(
+                    title: AppLocalizations.of(context)!.fullName,
+                    controller: cubit.fullNameController),
+                EditPhoneTextField(
+                    title: AppLocalizations.of(context)!.phoneNumber,
+                    controller: cubit.phoneController)
+              ]);
+            } else if (state is AccountDetailsNoInternetConnection) {
+              return NoInternetScreen(buttonOnTap: () {
+                cubit.getAccountDetails();
+              });
+            } else {
+              return Container();
+            }
+          }))
+    ]);
   }
 }
