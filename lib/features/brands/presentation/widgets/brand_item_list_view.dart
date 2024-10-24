@@ -33,18 +33,18 @@ class BrandItemsListView extends StatelessWidget {
                 child: ProductsListContainer(
                     index: index,
                     productName:
-                        'cubit.selectedCategoryModel!.data!.products[index].title',
+                        cubit.selectedBrand.name,
                     productPhoto: /*cubit.selectedCategoryModel!.data!
                     .products[index].images!.length==0?context.read<BrandsCubit>().placeHolderImages![0]:cubit.selectedCategoryModel!.data!
                     .products[index].images![0]*/
-                        'https://paymentcloudinc.com/blog/wp-content/uploads/2021/08/product-ideas-to-sell.jpg',
+                        cubit.selectedBrand.image,
                     productType:
-                        'cubit.selectedCategoryModel!.data!.products[index].categoryId.name',
+                        'cubit.selectedBrand.type',
                     productPrice:
-                        'cubit.selectedCategoryModel!.data!.products[index].price.finalPrice.toString()',
+                        '120',
                     onTap: () {
-                      /*cubit.setCategoryProductIndex(selectedProductIndex: index);
-                  Routes.categoryProductDetailsPageRoute.moveTo;*/
+                      //cubit.setCategoryProductIndex(selectedProductIndex: index);
+                  Routes.brandProductDetailsPageRoute.moveTo;
                     }));
           });
     });

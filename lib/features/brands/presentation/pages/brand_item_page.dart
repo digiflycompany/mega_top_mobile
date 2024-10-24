@@ -100,10 +100,10 @@ class _BrandItemPageState extends State<BrandItemPage> {
                                 ? const BrandItemsGridView()
                                 : const BrandItemsListView(),
                         SizedBox(
-                          height: 15.h,
+                          height: 15.h
                         ),
-                        /*if (context.read<BrandsCubit>().hasMoreProducts ==
-                                true)*/
+                        if (context.read<BrandsCubit>().hasMoreProducts ==
+                                true)
                         Center(
                             child: SizedBox(
                                 height: 15.h,

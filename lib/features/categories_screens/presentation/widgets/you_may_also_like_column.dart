@@ -17,11 +17,11 @@ class YouMayAlsoLikeColumn extends StatelessWidget {
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,
-                fontSize: 16.sp),
-          ),
+                fontSize: 16.sp)
+          )
         ),
-        const LatestProductsList(),
-      ],
+        const LatestProductsList()
+      ]
     );
   }
 }

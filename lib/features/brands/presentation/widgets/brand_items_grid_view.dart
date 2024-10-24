@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
@@ -13,6 +14,7 @@ class BrandItemsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BrandsCubit, BrandsState>(
         builder: (BuildContext context, BrandsState state) {
+          var brand = BrandsCubit.get(context).selectedBrand;
       return GridView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
@@ -44,8 +46,8 @@ class BrandItemsGridView extends StatelessWidget {
                     .data!
                     .products[index]*/
                         Product(
-                            id: 'id',
-                            title: 'title',
+                            id: brand.id,
+                            title: brand.name,
                             titleAr: 'titleAr',
                             description: 'description',
                             quantity: 15,
@@ -55,7 +57,7 @@ class BrandItemsGridView extends StatelessWidget {
                             price: Price(originalPrice: 14, finalPrice: 0414),
                             currency: 'currency',
                             images: [
-                              'https://new.riverstoneelectronics.com.au/wp-content/uploads/2013/11/electronic-gifts-for-men1.jpg'
+                              brand.image
                             ],
                             unitsSold: 14,
                             addedBy: AddedBy(
@@ -65,8 +67,8 @@ class BrandItemsGridView extends StatelessWidget {
                             updatedAt: 'updatedAt',
                             v: 1414),
                     onTap: () {
-                      /*context.read<CategoryCubit>().setCategoryProductIndex(selectedProductIndex: index);
-                  Routes.categoryProductDetailsPageRoute.moveTo;*/
+                      // context.read<BrandsCubit>().setBrandProductIndex(selectedProductIndex: index);
+                  Routes.brandProductDetailsPageRoute.moveTo;
                     }));
           });
     });
