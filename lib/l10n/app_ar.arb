@@ -5,7 +5,7 @@
   "homeNavBar": "الرئيسية",
   "categories": "الأقسام",
   "offers": "العروض",
-  "cart": "سلة التسوق",
+  "cart": "السلة",
   "hello": "مرحبا",
   "home": "الصفحة الرئيسية",
   "list": "قائمة",
@@ -218,5 +218,6 @@
   "availability": "التوفر",
   "unAvailable": "غير متوفر",
   "description": "الوصف",
-  "orderNow": "اطلب الآن"
+  "orderNow": "اطلب الآن",
+  "brands": "ماركات"
 }

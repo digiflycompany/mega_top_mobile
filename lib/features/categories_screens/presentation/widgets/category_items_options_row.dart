@@ -9,7 +9,6 @@ import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filte
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/list_grid_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class CategoryItemsOptionsRow extends StatelessWidget {
   final double? topPadding;
   final double? bottomPadding;
@@ -23,9 +22,8 @@ class CategoryItemsOptionsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     CategoryCubit categoryCubit = context.read<CategoryCubit>();
     return Padding(
-      padding: EdgeInsets.only(top: topPadding!, bottom: bottomPadding!),
-      child: Row(
-        children: [
+        padding: EdgeInsets.only(top: topPadding!, bottom: bottomPadding!),
+        child: Row(children: [
           /// List Grid Container ///
           BlocConsumer<CategoryCubit, CategoryState>(
             listener: (context, state) {},
@@ -52,11 +50,8 @@ class CategoryItemsOptionsRow extends StatelessWidget {
           ),
           HorizontalSpace(context.width * 0.022),
           FilterSortContainer(
-            icon: AppAssets.filterIcon,
-            onTap: () => categoryCubit.showFilterBottomSheet(context),
-          ),
-        ],
-      ),
-    );
+              icon: AppAssets.filterIcon,
+              onTap: () => categoryCubit.showFilterBottomSheet(context))
+        ]));
   }
 }

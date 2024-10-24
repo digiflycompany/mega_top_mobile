@@ -26,11 +26,11 @@ class CategoryCubit extends Cubit<CategoryState> {
   bool addedToFavourites = false;
   bool addedToCompare = false;
   String _selectedValue = AppStrings.defaultEn;
-  final List<String>? placeHolderImages=[
+  final List<String>? placeHolderImages = [
     AppAssets.megaTop2Logo,
   ];
   String get selectedValue => _selectedValue;
-  List< bool> checkboxStates = [];
+  List<bool> checkboxStates = [];
   CategoriesRepo categoriesRepo = new CategoriesRepoImp();
 
   late String? selectedCategoryId;
@@ -67,7 +67,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   void initializeCheckboxes(int subCategoriesLength) {
-      checkboxStates= List.filled(subCategoriesLength, false);
+    checkboxStates = List.filled(subCategoriesLength, false);
     emit(CategoryUpdated());
   }
 
@@ -76,9 +76,9 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   void toggleCheckbox(int index) {
-      checkboxStates[index] = !checkboxStates[index];
-      emit(CategoryUpdated());
-    }
+    checkboxStates[index] = !checkboxStates[index];
+    emit(CategoryUpdated());
+  }
 
   void showSortBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -94,13 +94,12 @@ class CategoryCubit extends Cubit<CategoryState> {
         return SortBottomSheet(
           onTapDefault: () {
             page = 1;
-            getSelectedCategories(
-                selectedCategoryId!);
+            getSelectedCategories(selectedCategoryId!);
           },
           onTapFromHighPrice: () {
             sortingFromHighPrice();
           },
-          onTapFromLowPrice: (){
+          onTapFromLowPrice: () {
             sortingFromLowPrice();
           },
           cubit: getCubit(context),
@@ -126,7 +125,7 @@ class CategoryCubit extends Cubit<CategoryState> {
           heightFactor: 1.0, // For full screen height
           child: FilterBottomSheet(
             cubit: getCubit(context),
-            getProductsFunction: (){
+            getProductsFunction: () {
               getSelectedCategories(selectedCategoryId!);
             },
           ),
@@ -134,6 +133,7 @@ class CategoryCubit extends Cubit<CategoryState> {
       },
     );
   }
+
   void showErrorToast(BuildContext context, String title, String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
@@ -179,7 +179,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoryLoading());
     try {
       CategoriesModel? fetchedCategories = await categoriesRepo.getCategories();
-      if (fetchedCategories != null && fetchedCategories.success==true) {
+      if (fetchedCategories != null && fetchedCategories.success == true) {
         categoriesModel = fetchedCategories;
         print(categoriesModel);
         emit(CategorySuccess());
@@ -189,7 +189,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(CategoryNoInternetConnection());
-      }else {
+      } else {
         emit(CategoryFailure(e.toString()));
       }
     }
@@ -208,14 +208,15 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(SelectedCategoryLoading());
     try {
       selectedCategoryModel = null;
-      SelectedCategoryModel? fetchedCategories = await categoriesRepo.getSelectedCategories(
-          selectedCategory: selectedId,
-          page: page,
-          minPrice: minPrice,
-          maxPrice: maxPrice,
-          subCategories: subCategoriesQuery(),
+      SelectedCategoryModel? fetchedCategories =
+          await categoriesRepo.getSelectedCategories(
+        selectedCategory: selectedId,
+        page: page,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
+        subCategories: subCategoriesQuery(),
       );
-      if (fetchedCategories != null && fetchedCategories.success==true) {
+      if (fetchedCategories != null && fetchedCategories.success == true) {
         selectedCategoryModel = fetchedCategories;
         emit(SelectedCategorySuccess());
       } else {
@@ -224,7 +225,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(SelectedCategoryNoInternetConnection());
-      }else {
+      } else {
         emit(SelectedCategoryFailure(e.toString()));
       }
     }
@@ -241,37 +242,33 @@ class CategoryCubit extends Cubit<CategoryState> {
               page: page,
               minPrice: minPrice,
               maxPrice: maxPrice);
-      if (moreProducts != null && moreProducts.success==true) {
+      if (moreProducts != null && moreProducts.success == true) {
         selectedCategoryModel!.data!.products
             .addAll(moreProducts.data!.products);
         hasMoreProducts = moreProducts.data!.products.isNotEmpty;
         print("hasMoreProducts");
         print(hasMoreProducts);
         emit(SelectedCategoryMoreProductsSuccess());
-      }else{
+      } else {
         emit(SelectedCategoryMoreProductsNoInternetConnection());
       }
-
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(SelectedCategoryMoreProductsNoInternetConnection());
-      }else {
+      } else {
         emit(SelectedCategoryMoreProductsFailure(e.toString()));
       }
     }
   }
 
+  List<String> subCategoriesQuery() {
+    List<String> subCategoriesList = [];
 
-  List<String> subCategoriesQuery(){
-    List<String> subCategoriesList=[];
-
-    for(int i=0;i<checkboxStates.length-1;i++)
-      {
-        if(checkboxStates[i] == true)
-          {
-            subCategoriesList.add(subCategoriesModel!.data!.subcategories[i].id!);
-          }
+    for (int i = 0; i < checkboxStates.length - 1; i++) {
+      if (checkboxStates[i] == true) {
+        subCategoriesList.add(subCategoriesModel!.data!.subcategories[i].id!);
       }
+    }
     return subCategoriesList;
   }
 
@@ -307,7 +304,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     return discountPercentage.clamp(0, 100);
   }
 
-
   // Future<void> addToCart(int customerId, int productId, int quantity) async {
   //   emit(addToCartLoading());
   //   try {
@@ -323,18 +319,19 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(SubCategoryLoading());
     try {
       subCategoriesModel = null;
-      SubCategoriesModel? fetchedSubCategories = await categoriesRepo.getSubCategories(
-        categoryId: categoriesId);
-      if (fetchedSubCategories != null && fetchedSubCategories.success==true) {
+      SubCategoriesModel? fetchedSubCategories =
+          await categoriesRepo.getSubCategories(categoryId: categoriesId);
+      if (fetchedSubCategories != null &&
+          fetchedSubCategories.success == true) {
         subCategoriesModel = fetchedSubCategories;
         emit(SubCategorySuccess());
-      }else{
+      } else {
         emit(SubCategoryNoInternetConnection());
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(SubCategoryNoInternetConnection());
-      }else {
+      } else {
         emit(SubCategoryFailure(e.toString()));
       }
     }
