@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
 import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
+import 'package:mega_top_mobile/features/brands/data/models/products_response.dart';
 import 'package:mega_top_mobile/features/brands/data/repos/brands_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
@@ -18,6 +19,7 @@ class BrandsCubit extends Cubit<BrandsState> {
   Brand selectedBrand = Brand();
 
   List<Brand> brands = [];
+  List<Product> products = [];
 
   selectBrand(Brand brand) {
     selectedBrand = brand;
@@ -110,6 +112,33 @@ class BrandsCubit extends Cubit<BrandsState> {
         emit(BrandsNoInternetConnection());
       } else {
         emit(BrandsFailureState(e.toString()));
+      }
+    }
+  }
+
+  Future<void> getBrandProducts({bool? more}) async {
+    more == true ? emit(MoreProductsLoading()) : emit(ProductsLoadingState());
+    try {
+      if (more == true)
+        page++;
+      else
+        page = 1;
+      ProductsResponse? fetchedProducts =
+          await _repo.fetchProducts(selectedBrand.id!, page);
+      if (fetchedProducts != null && fetchedProducts.success == true) {
+        if (more != true) {
+          products = fetchedProducts.data?.products ?? [];
+          emit(ProductsSuccessState(fetchedProducts.data?.products ?? []));
+        } else {
+          products.addAll(fetchedProducts.data?.products ?? []);
+          emit(ProductsSuccessState(fetchedProducts.data?.products ?? []));
+        }
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(ProductsNoInternetConnection());
+      } else {
+        emit(ProductsFailureState(e.toString()));
       }
     }
   }

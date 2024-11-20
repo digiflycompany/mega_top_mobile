@@ -14,17 +14,17 @@ class BrandsGrid extends StatelessWidget {
         listener: (BuildContext context, BrandsState state) {},
         builder: (context, state) {
           var cubit = context.read<BrandsCubit>();
-          var brands = cubit.brands /*Model*/;
+          var brands = cubit.brands;
           return Expanded(
               child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: /*brands!.data!.categories!.length*/ brands.length,
+                  itemCount: brands.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 16.w,
                       mainAxisSpacing: 16.h),
                   itemBuilder: (BuildContext context, int index) {
-                    final brand = brands /*.data!.brands!*/ [index];
+                    final brand = brands[index];
                     return BrandsSmallCard(brand: brand);
                   }));
         });

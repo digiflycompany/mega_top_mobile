@@ -5,6 +5,7 @@ import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/utils/functions/show_error_toast.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
@@ -60,7 +61,7 @@ class _CategoryItemsPageState extends State<CategoryItemsPage> {
           listener: (BuildContext context, CategoryState state) {
         if (state is SelectedCategoryMoreProductsNoInternetConnection) {
           context.read<CategoryCubit>().page--;
-          context.read<CategoryCubit>().showErrorToast(context, AppLocalizations.of(context)!.noInternet, AppLocalizations.of(context)!.sorryThereIsNoInternet);
+          showErrorToast(context, AppLocalizations.of(context)!.noInternet, AppLocalizations.of(context)!.sorryThereIsNoInternet);
         }},
 
           builder: (BuildContext context, state) {

@@ -15,16 +15,11 @@ class BrandItemsGridView extends StatelessWidget {
     return BlocBuilder<BrandsCubit, BrandsState>(
         builder: (BuildContext context, BrandsState state) {
           var brand = BrandsCubit.get(context).selectedBrand;
+          var products = BrandsCubit.get(context).products;
       return GridView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
-          itemCount: /*context
-              .read<BrandsCubit>()
-              .selectedCategoryModel!
-              .data!
-              .products
-              .length*/
-              13,
+          itemCount: products.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: context.width * 0.027,
@@ -40,32 +35,7 @@ class BrandItemsGridView extends StatelessWidget {
                     index: index,
                     discountPercent: "17% ",
                     discount: false,
-                    product: /*context
-                    .read<BrandsCubit>()
-                    .selectedCategoryModel!
-                    .data!
-                    .products[index]*/
-                        Product(
-                            id: brand.id!,
-                            title: brand.name ?? '',
-                            titleAr: 'titleAr',
-                            description: 'description',
-                            quantity: 15,
-                            categoryId: Category(
-                                id: 'id', name: 'name', nameAr: 'nameAr'),
-                            subcategoryId: [],
-                            price: Price(originalPrice: 14, finalPrice: 0414),
-                            currency: 'currency',
-                            images: [
-                              brand.name!
-                            ],
-                            unitsSold: 14,
-                            addedBy: AddedBy(
-                                id: 'id', fullName: 'fullName', email: 'email'),
-                            active: true,
-                            createdAt: 'createdAt',
-                            updatedAt: 'updatedAt',
-                            v: 1414),
+                    product: products[index],
                     onTap: () {
                       // context.read<BrandsCubit>().setBrandProductIndex(selectedProductIndex: index);
                   Routes.brandProductDetailsPageRoute.moveTo;

@@ -134,27 +134,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     );
   }
 
-  void showErrorToast(BuildContext context, String title, String text) {
-    OverlayEntry? overlayEntry;
-    overlayEntry = OverlayEntry(
-      builder: (context) => Align(
-        alignment: Alignment.bottomCenter,
-        child: CustomErrorToast(
-          title: title,
-          message: text,
-          color: AppColors.redIconColor,
-          onDismissed: () {
-            if (overlayEntry != null) {
-              overlayEntry!.remove();
-              overlayEntry = null;
-            }
-          },
-        ),
-      ),
-    );
-    Overlay.of(context).insert(overlayEntry!);
-  }
-
   void showAddedToCartBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,

@@ -17,12 +17,7 @@ class BrandItemsListView extends StatelessWidget {
       return ListView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
-          itemCount: /*cubit
-              .selectedCategoryModel!
-              .data!
-              .products
-              .length*/
-              15,
+          itemCount: cubit.products.length,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
                 padding: EdgeInsetsDirectional.only(
