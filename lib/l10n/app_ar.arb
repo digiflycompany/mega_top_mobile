@@ -219,5 +219,7 @@
   "unAvailable": "غير متوفر",
   "description": "الوصف",
   "orderNow": "اطلب الآن",
-  "brands": "ماركات"
+  "brands": "ماركات",
+  "noBrands": "لا توجد علامات تجارية",
+  "noBrandsListItems": "لا توجد عناصر في قائمة العلامات التجارية"
 }

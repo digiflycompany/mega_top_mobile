@@ -1,53 +1,23 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
-import 'package:mega_top_mobile/features/brands/data/models/brand_model.dart';
+import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
+import 'package:mega_top_mobile/features/brands/data/repos/brands_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 
 class BrandsCubit extends Cubit<BrandsState> {
   BrandsCubit() : super(BrandsInitial());
-
   static BrandsCubit get(context) => BlocProvider.of(context);
+  BrandsRepo _repo = BrandsRepoImp();
 
-  Brand selectedBrand = Brand(
-      'https://cdn.salla.sa/RjAdq/DbkoORSCGfvSxmyuJjCUc3ad4yyLvtCrmzI2HUFO.png',
-      'HikVision',
-      '0');
+  Brand selectedBrand = Brand();
 
-  List<Brand> brands = [
-    Brand(
-        'https://cdn.salla.sa/RjAdq/DbkoORSCGfvSxmyuJjCUc3ad4yyLvtCrmzI2HUFO.png',
-        'HikVision',
-        '0'),
-    Brand(
-        'https://toshibaa01.wordpress.com/wp-content/uploads/2020/08/d8b6d8b6d8b6d8b6d8b6d8b6d8b6-21.png',
-        'توشيبا',
-        '1'),
-    Brand(
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy4ivXE5URmwg-NOsO2YpNFP6e_YHaokbxvQ&s',
-        'Samsung',
-        '2'),
-    Brand(
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIL-LyEgYD1hkpQe6A6PjmA31EacZCh7JzbA&s',
-        'UnionAir',
-        '3'),
-    Brand(
-        'https://toshibaa01.wordpress.com/wp-content/uploads/2020/08/d8b6d8b6d8b6d8b6d8b6d8b6d8b6-21.png',
-        'توشيبا',
-        '4'),
-    Brand(
-        'https://toshibaa01.wordpress.com/wp-content/uploads/2020/08/d8b6d8b6d8b6d8b6d8b6d8b6d8b6-21.png',
-        'توشيبا',
-        '5'),
-    Brand(
-        'https://toshibaa01.wordpress.com/wp-content/uploads/2020/08/d8b6d8b6d8b6d8b6d8b6d8b6d8b6-21.png',
-        'توشيبا',
-        '6')
-  ];
+  List<Brand> brands = [];
 
   selectBrand(Brand brand) {
     selectedBrand = brand;
@@ -95,7 +65,7 @@ class BrandsCubit extends Cubit<BrandsState> {
           return SortBottomSheet(
               onTapDefault: () {
                 page = 1;
-            // getSelectedCategories(selectedCategoryId!);
+                // getSelectedCategories(selectedCategoryId!);
               },
               onTapFromHighPrice: () {
                 // sortingFromHighPrice();
@@ -125,5 +95,22 @@ class BrandsCubit extends Cubit<BrandsState> {
                     // getSelectedCategories(selectedCategoryId!);
                   }));
         });
+  }
+
+  Future<void> getBrands() async {
+    emit(BrandsLoadingState());
+    try {
+      BrandsResponse? fetchedBrands = await _repo.fetchBrands();
+      if (fetchedBrands != null && fetchedBrands.success == true) {
+        brands = fetchedBrands.data?.brands ?? [];
+        emit(BrandsSuccessState(fetchedBrands.data?.brands ?? []));
+      }
+    } catch (e) {
+      if (e is DioException && e.error == AppStrings.noInternetConnection) {
+        emit(BrandsNoInternetConnection());
+      } else {
+        emit(BrandsFailureState(e.toString()));
+      }
+    }
   }
 }

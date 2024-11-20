@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/widgets/custom_shimmer.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/ad_card.dart';
@@ -26,20 +27,7 @@ class _HomeAdsState extends State<HomeAds> {
       return state is GetAdsErrorState
           ? Text(state.errorMessage)
           : state is GetAdsLoadingState
-              ? Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
-                  child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: context.height12,
-                          horizontal: context.width8),
-                      child: Container(
-                          height:
-                              173, // Adjust to match the original container's height
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                  context.height * 0.0065)))))
+              ? CustomShimmer(radius: context.height * 0.0065)
               : Column(children: [
                   CarouselSlider(
                       options: CarouselOptions(

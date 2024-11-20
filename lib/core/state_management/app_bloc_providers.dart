@@ -39,5 +39,5 @@ List<BlocProvider> appBlocProviders = [
   BlocProvider<HomeAdsCubit>(
       create: (context) => HomeAdsCubit(HomeRepoImp())..fetchAds()),
   BlocProvider<BrandsCubit>(
-      create: (BuildContext context) => BrandsCubit()/*..getBrands()*/),
+      create: (BuildContext context) => BrandsCubit()..getBrands()),
 ];

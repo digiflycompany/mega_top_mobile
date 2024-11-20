@@ -7,7 +7,7 @@ import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
-import 'package:mega_top_mobile/features/brands/data/models/brand_model.dart';
+import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
 
 class BrandsSmallCard extends StatelessWidget {
   final Brand brand;
@@ -41,10 +41,10 @@ class BrandsSmallCard extends StatelessWidget {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        brand.image != null
+                        brand.name != null
                             ? Expanded(
                                 child: CachedNetworkImage(
-                                    imageUrl: brand.image!,
+                                    imageUrl: brand.name!,
                                     fit: BoxFit.contain,
                                     width: double.infinity,
                                     errorWidget: (context, url, error) =>

@@ -52,7 +52,7 @@ class _BrandProductDetailsPageState extends State<BrandProductDetailsPage> {
                     .data!.products[categoryCubit.selectedProductIndex].images!.length==0?context.read<CategoryCubit>().placeHolderImages:categoryCubit.selectedCategoryModel!
                     .data!.products[categoryCubit.selectedProductIndex].images*/
                         [
-                      cubit.selectedBrand.image
+                      cubit.selectedBrand.name!
                     ],
                     imagePosition: /*categoryCubit.currentImageIndex*/ 1,
                     cubit: cubit,
@@ -62,8 +62,8 @@ class _BrandProductDetailsPageState extends State<BrandProductDetailsPage> {
                       .data!.products[categoryCubit.selectedProductIndex],
                 )*/
                         Product(
-                            id: brand.id,
-                            title: brand.name,
+                            id: brand.id!,
+                            title: brand.name ?? '',
                             titleAr: 'titleAr',
                             description: 'description',
                             quantity: 15,
@@ -72,7 +72,7 @@ class _BrandProductDetailsPageState extends State<BrandProductDetailsPage> {
                             subcategoryId: [],
                             price: Price(originalPrice: 14, finalPrice: 0414),
                             currency: 'currency',
-                            images: [brand.image],
+                            images: [brand.name!],
                             unitsSold: 14,
                             addedBy: AddedBy(
                                 id: 'id', fullName: 'fullName', email: 'email'),

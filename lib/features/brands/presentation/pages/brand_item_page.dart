@@ -45,7 +45,7 @@ class _BrandItemPageState extends State<BrandItemPage> {
           child: BlocBuilder<BrandsCubit, BrandsState>(
             builder: (BuildContext context, BrandsState state) {
               var cubit = BrandsCubit.get(context);
-              return PrimaryAppBar(cubit.selectedBrand.name);
+              return PrimaryAppBar(cubit.selectedBrand.name ?? '');
             }
           )),
       body: BlocConsumer<BrandsCubit, BrandsState>(
