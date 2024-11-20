@@ -17,7 +17,6 @@ class LatestProductsList extends StatefulWidget {
 }
 
 class _LatestProductsListState extends State<LatestProductsList> {
-
   late CategoryCubit categoryCubit;
   final controller = ScrollController();
 
@@ -28,10 +27,8 @@ class _LatestProductsListState extends State<LatestProductsList> {
       if (controller.position.maxScrollExtent == controller.offset) {
         cubit.hasMoreProducts = true;
         cubit.page++;
-        cubit.getMoreProduct(cubit.selectedCategoryId!)
-            .then((value){
-          if(cubit.hasMoreProducts == true)
-          {
+        cubit.getMoreProduct(cubit.selectedCategoryId!).then((value) {
+          if (cubit.hasMoreProducts == true) {
             cubit.selectOption(AppStrings.defaultEn);
           }
           cubit.hasMoreProducts = null;
@@ -45,71 +42,66 @@ class _LatestProductsListState extends State<LatestProductsList> {
   Widget build(BuildContext context) {
     categoryCubit = context.read<CategoryCubit>();
     return BlocConsumer<CategoryCubit, CategoryState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        var cubit = context.read<CategoryCubit>();
-        if(cubit.selectedCategoryModel != null){
-          return SizedBox(
-            height: context.height * 0.485,
-            child: Row(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    controller: controller,
-                    physics: BouncingScrollPhysics(),
-                    itemCount: cubit
-                        .selectedCategoryModel!
-                        .data!
-                        .products
-                        .length,
-                    itemBuilder: (context, index) {
-                        return Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                cubit.setCategoryProductIndex(
-                                    selectedProductIndex: index);
-                                Routes.categoryProductDetailsPageRoute.moveTo;
-                              },
-                              child: LatestProductsContainer(
-                                productName: cubit.selectedCategoryModel!.data!
-                                    .products[index].title,
-                                productPhoto: cubit.selectedCategoryModel!.data!
-                                    .products[index].images!.length==0?cubit.placeHolderImages![0]:cubit.selectedCategoryModel!.data!
-                                    .products[index].images![0],
-                                productType: cubit.selectedCategoryModel!.data!
-                                    .products[index].categoryId.name,
-                                productPrice: cubit.selectedCategoryModel!.data!
-                                    .products[index].price.finalPrice
-                                    .toString(),
-                              ),
-                            ),
-                            HorizontalSpace(context.width * 0.045),
-                          ],
-                        );
-
-
-                    },
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
-        return Center(
-          child: Theme(
-            data: Theme.of(context).copyWith(
-              colorScheme: ColorScheme.fromSwatch().copyWith(
-                primary: AppColors.primaryColor,
-              ),
-            ),
-            child: CircularProgressIndicator.adaptive(),
-          ),
-        );
-      },
-    );
+        listener: (context, state) {},
+        builder: (context, state) {
+          var cubit = context.read<CategoryCubit>();
+          if (cubit.selectedCategoryModel != null) {
+            return SizedBox(
+                height: context.height * 0.485,
+                child: Row(children: [
+                  Expanded(
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          controller: controller,
+                          physics: BouncingScrollPhysics(),
+                          itemCount: cubit
+                              .selectedCategoryModel!.data!.products.length,
+                          itemBuilder: (context, index) {
+                            return Row(children: [
+                              GestureDetector(
+                                  onTap: () {
+                                    cubit.setCategoryProductIndex(
+                                        selectedProductIndex: index);
+                                    Routes
+                                        .categoryProductDetailsPageRoute.moveTo;
+                                  },
+                                  child: LatestProductsContainer(
+                                      productName: cubit.selectedCategoryModel!
+                                          .data!.products[index].title,
+                                      productPhoto: cubit
+                                                  .selectedCategoryModel!
+                                                  .data!
+                                                  .products[index]
+                                                  .images!
+                                                  .length ==
+                                              0
+                                          ? cubit.placeHolderImages![0]
+                                          : cubit.selectedCategoryModel!.data!
+                                              .products[index].images![0],
+                                      productType: cubit
+                                          .selectedCategoryModel!
+                                          .data!
+                                          .products[index]
+                                          .categoryId
+                                          .name,
+                                      productPrice: cubit
+                                          .selectedCategoryModel!
+                                          .data!
+                                          .products[index]
+                                          .price
+                                          .finalPrice
+                                          .toString())),
+                              HorizontalSpace(context.width * 0.045)
+                            ]);
+                          }))
+                ]));
+          }
+          return Center(
+              child: Theme(
+                  data: Theme.of(context).copyWith(
+                      colorScheme: ColorScheme.fromSwatch()
+                          .copyWith(primary: AppColors.primaryColor)),
+                  child: CircularProgressIndicator.adaptive()));
+        });
   }
-
-
 }

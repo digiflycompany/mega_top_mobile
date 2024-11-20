@@ -69,7 +69,7 @@ class CategoriesPage extends StatelessWidget {
                   );
               },
             ),
-          ),
+          )
     );
   }
 }

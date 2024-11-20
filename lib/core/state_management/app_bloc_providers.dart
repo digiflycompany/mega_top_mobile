@@ -6,6 +6,7 @@ import 'package:mega_top_mobile/core/utils/locale/locale_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/cubit/compare_click_cubit.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/data/repositories/account_details_repo.dart';
 import 'package:mega_top_mobile/features/account_screens/profile_screen/presentation/cubit/account_details_cubit.dart';
+import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/ad_details_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_cubit.dart';
@@ -36,5 +37,7 @@ List<BlocProvider> appBlocProviders = [
   BlocProvider<AdDetailsCubit>(
       create: (context) => AdDetailsCubit(HomeRepoImp())),
   BlocProvider<HomeAdsCubit>(
-      create: (context) => HomeAdsCubit(HomeRepoImp())..fetchAds())
+      create: (context) => HomeAdsCubit(HomeRepoImp())..fetchAds()),
+  BlocProvider<BrandsCubit>(
+      create: (BuildContext context) => BrandsCubit()/*..getBrands()*/),
 ];

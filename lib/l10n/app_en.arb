@@ -218,5 +218,6 @@
   "availability": "Availability",
   "unAvailable": "Unavailable",
   "description": "Description",
-  "orderNow": "Order now"
+  "orderNow": "Order now",
+  "brands": "Brands"
 }

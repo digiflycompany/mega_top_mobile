@@ -7,6 +7,7 @@ import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/guest_account_screen.dart';
 import 'package:mega_top_mobile/features/account_screens/account_details_screen/presentation/pages/user_account_screen.dart';
+import 'package:mega_top_mobile/features/brands/presentation/pages/brands_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/pages/categories_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
@@ -58,6 +59,7 @@ class _HomePageState extends State<HomePage> {
           final List<Widget> _pages = [
             const MainPage(),
             const CategoriesPage(),
+            const BrandsPage(),
             const OffersPage(),
             const CartPage(),
             isUserLoggedIn
@@ -105,16 +107,21 @@ class _HomePageState extends State<HomePage> {
                         label: AppLocalizations.of(context)!.categories),
                     BottomNavigationBarItem(
                         icon: SvgPicture.asset(_currentIndex == 2
+                            ? AppAssets.categoriesSelectedIcon
+                            : AppAssets.categoriesUnselectedIcon),
+                        label: AppLocalizations.of(context)!.brands),
+                    BottomNavigationBarItem(
+                        icon: SvgPicture.asset(_currentIndex == 3
                             ? AppAssets.offersSelectedIcon
                             : AppAssets.offersUnselectedIcon),
                         label: AppLocalizations.of(context)!.offers),
                     BottomNavigationBarItem(
-                        icon: SvgPicture.asset(_currentIndex == 3
+                        icon: SvgPicture.asset(_currentIndex == 4
                             ? AppAssets.cartSelectedIcon
                             : AppAssets.cartUnselectedIcon),
                         label: AppLocalizations.of(context)!.cart),
                     BottomNavigationBarItem(
-                        icon: SvgPicture.asset(_currentIndex == 4
+                        icon: SvgPicture.asset(_currentIndex == 5
                             ? AppAssets.accountSelectedIcon
                             : AppAssets.accountUnselectedIcon),
                         label: AppLocalizations.of(context)!.account)
