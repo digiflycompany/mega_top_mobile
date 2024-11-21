@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/add_to_cart_button.dart';
 import 'package:mega_top_mobile/core/widgets/button_bottom_nav_bar.dart';
@@ -21,10 +22,10 @@ import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cu
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_states.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_state.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BrandProductDetailsPage extends StatefulWidget {
-  const BrandProductDetailsPage({super.key});
+  const BrandProductDetailsPage({super.key, required this.product});
+  final Product product;
 
   @override
   State<BrandProductDetailsPage> createState() =>
@@ -43,44 +44,19 @@ class _BrandProductDetailsPageState extends State<BrandProductDetailsPage> {
         body: BlocBuilder<BrandsCubit, BrandsState>(
             builder: (BuildContext context, BrandsState state) {
           var cubit = context.read<BrandsCubit>();
-          var brand = cubit.selectedBrand;
+          var product = widget.product;
           return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Column(children: [
                 ProductDetailedImage(
-                    images: /*BrandsCubit.selectedBrandsModel!
-                    .data!.products[categoryCubit.selectedProductIndex].images!.length==0?context.read<CategoryCubit>().placeHolderImages:categoryCubit.selectedCategoryModel!
-                    .data!.products[categoryCubit.selectedProductIndex].images*/
-                        [
-                      cubit.selectedBrand.name!
-                    ],
-                    imagePosition: /*categoryCubit.currentImageIndex*/ 1,
+                    images: product.images!.length == 0
+                        ? cubit.placeHolderImages
+                        : product.images,
+                    imagePosition: cubit.currentImageIndex,
                     cubit: cubit,
-                    /*productId: categoryCubit.selectedCategoryModel!
-                      .data!.products[categoryCubit.selectedProductIndex].id,*/
-                    product: /*categoryCubit.selectedCategoryModel!
-                      .data!.products[categoryCubit.selectedProductIndex],
-                )*/
-                        Product(
-                            id: brand.id!,
-                            title: brand.name ?? '',
-                            titleAr: 'titleAr',
-                            description: 'description',
-                            quantity: 15,
-                            categoryId: Category(
-                                id: 'id', name: 'name', nameAr: 'nameAr'),
-                            subcategoryId: [],
-                            price: Price(originalPrice: 14, finalPrice: 0414),
-                            currency: 'currency',
-                            images: [brand.name!],
-                            unitsSold: 14,
-                            addedBy: AddedBy(
-                                id: 'id', fullName: 'fullName', email: 'email'),
-                            active: true,
-                            createdAt: 'createdAt',
-                            updatedAt: 'updatedAt',
-                            v: 1414)),
-                BrandProductDetailedBody()
+                    productId: product.id,
+                    product: product),
+                BrandProductDetailedBody(product: product)
               ]));
         }),
         bottomNavigationBar: ButtonBottomNavBar(button:

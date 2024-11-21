@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
 import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
-import 'package:mega_top_mobile/features/brands/data/models/products_response.dart';
 import 'package:mega_top_mobile/features/brands/data/repos/brands_repo.dart';
 import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
@@ -123,15 +123,15 @@ class BrandsCubit extends Cubit<BrandsState> {
         page++;
       else
         page = 1;
-      ProductsResponse? fetchedProducts =
+      MainPageProductsModel? fetchedProducts =
           await _repo.fetchProducts(selectedBrand.id!, page);
       if (fetchedProducts != null && fetchedProducts.success == true) {
         if (more != true) {
-          products = fetchedProducts.data?.products ?? [];
-          emit(ProductsSuccessState(fetchedProducts.data?.products ?? []));
+          products = fetchedProducts.products ?? [];
+          emit(ProductsSuccessState(fetchedProducts.products ?? []));
         } else {
-          products.addAll(fetchedProducts.data?.products ?? []);
-          emit(ProductsSuccessState(fetchedProducts.data?.products ?? []));
+          products.addAll(fetchedProducts.products ?? []);
+          emit(ProductsSuccessState(fetchedProducts.products ?? []));
         }
       }
     } catch (e) {
@@ -141,5 +141,21 @@ class BrandsCubit extends Cubit<BrandsState> {
         emit(ProductsFailureState(e.toString()));
       }
     }
+  }
+
+  int getDiscountPercentage({
+    required int finalPrice,
+    required int originPrice,
+  }) {
+    // Check if the final price is zero or greater than or equal to the original price
+    if (finalPrice >= originPrice || originPrice == 0) {
+      return 0;
+    }
+
+    // Calculate the discount percentage
+    int discountPercentage = ((originPrice - finalPrice) * 100) ~/ originPrice;
+
+    // Ensure the result is between 0% and 100%
+    return discountPercentage.clamp(0, 100);
   }
 }

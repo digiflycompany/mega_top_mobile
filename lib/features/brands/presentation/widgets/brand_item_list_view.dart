@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
+import 'package:mega_top_mobile/features/brands/presentation/pages/brand_product_details_page.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_list.dart';
 
 class BrandItemsListView extends StatelessWidget {
@@ -27,19 +27,18 @@ class BrandItemsListView extends StatelessWidget {
                     top: context.height * 0.006),
                 child: ProductsListContainer(
                     index: index,
-                    productName:
-                        cubit.selectedBrand.name,
-                    productPhoto: /*cubit.selectedCategoryModel!.data!
-                    .products[index].images!.length==0?context.read<BrandsCubit>().placeHolderImages![0]:cubit.selectedCategoryModel!.data!
-                    .products[index].images![0]*/
-                        cubit.selectedBrand.name!,
-                    productType:
-                        'cubit.selectedBrand.type',
-                    productPrice:
-                        '120',
+                    productName: cubit.products[index].title,
+                    productPhoto: cubit.products[index].images!.length == 0
+                        ? cubit.placeHolderImages![0]
+                        : cubit.products[index].images![0],
+                    productType: 'cubit.selectedBrand.type',
+                    productPrice: '120',
                     onTap: () {
-                      //cubit.setCategoryProductIndex(selectedProductIndex: index);
-                  Routes.brandProductDetailsPageRoute.moveTo;
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => BrandProductDetailsPage(
+                                  product: cubit.products[index])));
                     }));
           });
     });

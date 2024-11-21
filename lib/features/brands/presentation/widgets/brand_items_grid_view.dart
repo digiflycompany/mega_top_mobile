@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
-import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
+import 'package:mega_top_mobile/features/brands/presentation/pages/brand_product_details_page.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/items_grid.dart';
 
 class BrandItemsGridView extends StatelessWidget {
@@ -14,8 +13,7 @@ class BrandItemsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BrandsCubit, BrandsState>(
         builder: (BuildContext context, BrandsState state) {
-          var brand = BrandsCubit.get(context).selectedBrand;
-          var products = BrandsCubit.get(context).products;
+      var products = BrandsCubit.get(context).products;
       return GridView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
@@ -36,10 +34,11 @@ class BrandItemsGridView extends StatelessWidget {
                     discountPercent: "17% ",
                     discount: false,
                     product: products[index],
-                    onTap: () {
-                      // context.read<BrandsCubit>().setBrandProductIndex(selectedProductIndex: index);
-                  Routes.brandProductDetailsPageRoute.moveTo;
-                    }));
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => BrandProductDetailsPage(
+                                product: products[index])))));
           });
     });
   }

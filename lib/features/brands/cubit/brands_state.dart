@@ -1,5 +1,5 @@
+import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
-import 'package:mega_top_mobile/features/brands/data/models/products_response.dart';
 
 sealed class BrandsState {}
 

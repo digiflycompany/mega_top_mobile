@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:mega_top_mobile/core/services/dio_helper/dio_helper.dart';
 import 'package:mega_top_mobile/core/utils/theme/api.dart';
+import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
-import 'package:mega_top_mobile/features/brands/data/models/products_response.dart';
 
 abstract class BrandsRepo {
   Future<BrandsResponse?> fetchBrands();
-  Future<ProductsResponse?> fetchProducts(String brandId, int page);
+  Future<MainPageProductsModel?> fetchProducts(String brandId, int page);
 }
 
 class BrandsRepoImp implements BrandsRepo {
@@ -24,12 +24,12 @@ class BrandsRepoImp implements BrandsRepo {
     return null;
   }
 
-  Future<ProductsResponse?> fetchProducts(String brandId, int page) async {
+  Future<MainPageProductsModel?> fetchProducts(String brandId, int page) async {
     try {
       Response? response = await DioHelper.getData(
           url: EndPoints.productsAPI, queryParameters: {"limit": 100, "bradId": brandId, "page": page});
       if (response != null) {
-        return ProductsResponse.fromJson(response.data);
+        return MainPageProductsModel.fromJson(response.data);
       }
     } catch (e) {
       print('Error fetching categories: $e');

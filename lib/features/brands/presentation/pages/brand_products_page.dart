@@ -43,7 +43,7 @@ class _BrandProductsPageState extends State<BrandProductsPage> {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
-            child: PrimaryAppBar(widget.brandName, favour: false)),
+            child: PrimaryAppBar(widget.brandName)),
         body: BlocConsumer<BrandsCubit, BrandsState>(
             listener: (BuildContext context, BrandsState state) {
           if (state is ProductsNoInternetConnection) {
@@ -93,10 +93,10 @@ class _BrandProductsPageState extends State<BrandProductsPage> {
                 ]));
           } else if (cubit.products.isEmpty) {
             return EmptyDataPage(
-              icon: AppAssets.emptyNotificationsIcon,
-              bigFontText: AppLocalizations.of(context)!.noProducts,
-              smallFontText: AppLocalizations.of(context)!.noProductListItems
-            );
+                icon: AppAssets.emptyNotificationsIcon,
+                bigFontText: AppLocalizations.of(context)!.noProducts,
+                smallFontText:
+                    AppLocalizations.of(context)!.noProductListItems);
           } else {
             return Center(
                 child: Text(AppLocalizations.of(context)!.serverError,

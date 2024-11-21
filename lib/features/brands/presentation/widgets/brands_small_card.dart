@@ -23,12 +23,12 @@ class BrandsSmallCard extends StatelessWidget {
           return GestureDetector(
               onTap: () {
                 cubit.selectBrand(brand);
-                cubit.getBrandProducts();
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (_) =>
                             BrandProductsPage(brandName: brand.name ?? '')));
+                cubit.getBrandProducts();
               },
               child: Container(
                   width: context.width * 0.24,

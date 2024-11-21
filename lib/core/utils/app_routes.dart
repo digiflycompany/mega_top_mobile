@@ -32,7 +32,6 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/scr
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/verify_email_screen.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
 import 'package:mega_top_mobile/features/brands/presentation/pages/brand_products_page.dart';
-import 'package:mega_top_mobile/features/brands/presentation/pages/brand_product_details_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
@@ -68,8 +67,6 @@ class Routes {
   static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen";
   static const String categoryProductDetailsPageRoute =
       "/category_product_details_screen";
-  static const String brandProductDetailsPageRoute =
-      "/brand_product_details_screen";
   static const String searchProductDetailsPageRoute =
       "/search_product_details_screen";
   static const String checkoutAddressDetailsPageRoute =
@@ -189,11 +186,6 @@ class RouteGenerator {
       case Routes.categoryProductDetailsPageRoute:
         return buildPageRoute(
             child: const CategoryProductDetailsPage(),
-            routeSettings: routeSettings,
-            pageRouteAnimation: PageRouteAnimation.fade);
-      case Routes.brandProductDetailsPageRoute:
-        return buildPageRoute(
-            child: const BrandProductDetailsPage(),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.searchProductDetailsPageRoute:
