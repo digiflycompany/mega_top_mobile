@@ -46,8 +46,8 @@ class BrandItemsGridView extends StatelessWidget {
                     .data!
                     .products[index]*/
                         Product(
-                            id: brand.id,
-                            title: brand.name,
+                            id: brand.id!,
+                            title: brand.name ?? '',
                             titleAr: 'titleAr',
                             description: 'description',
                             quantity: 15,
@@ -57,7 +57,7 @@ class BrandItemsGridView extends StatelessWidget {
                             price: Price(originalPrice: 14, finalPrice: 0414),
                             currency: 'currency',
                             images: [
-                              brand.image
+                              brand.name!
                             ],
                             unitsSold: 14,
                             addedBy: AddedBy(

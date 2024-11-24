@@ -37,7 +37,7 @@ class BrandItemsListView extends StatelessWidget {
                     productPhoto: /*cubit.selectedCategoryModel!.data!
                     .products[index].images!.length==0?context.read<BrandsCubit>().placeHolderImages![0]:cubit.selectedCategoryModel!.data!
                     .products[index].images![0]*/
-                        cubit.selectedBrand.image,
+                        cubit.selectedBrand.name!,
                     productType:
                         'cubit.selectedBrand.type',
                     productPrice:
