@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
+import 'package:mega_top_mobile/core/widgets/custom_cached_network_image.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
 import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
@@ -16,8 +17,7 @@ class BrandsSmallCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BrandsCubit, BrandsState>(
-        listener: (BuildContext context, BrandsState state) {},
+    return BlocBuilder<BrandsCubit, BrandsState>(
         builder: (BuildContext context, BrandsState state) {
           final cubit = BrandsCubit.get(context);
           return GestureDetector(
@@ -44,12 +44,10 @@ class BrandsSmallCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
-                            child: CachedNetworkImage(
-                                imageUrl: brand.name!,
+                            child: CustomCachedNetworkImage(
+                                url: brand.image ?? '',
                                 fit: BoxFit.contain,
-                                width: double.infinity,
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error))),
+                                width: double.infinity)),
                         Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: context.height * 0.005,

@@ -221,5 +221,10 @@
   "orderNow": "Order now",
   "brands": "Brands",
   "noBrands": "No Brands",
-  "noBrandsListItems": "No Brands List Items"
+  "noBrandsListItems": "No Brands List Items",
+  "filterError": "Filter error",
+  "pleaseEnterFilterBoundaries": "Please enter  filter boundaries",
+  "lastCharMustBeANumber": "The last character must be a number",
+  "onlyOneDecimalPointIsAllowed": "Only decimal point is allowed",
+  "lastCharMustNotBeADecimalPoint": "The last character must not be a decimal point"
 }

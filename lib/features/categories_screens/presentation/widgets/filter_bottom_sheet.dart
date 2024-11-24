@@ -7,10 +7,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FilterBottomSheet extends StatelessWidget {
   const FilterBottomSheet(
-      {super.key, required this.getProductsFunction, required this.cubit});
+      {super.key, required this.getProductsFunction, required this.cubit, this.brand});
 
   final Function getProductsFunction;
   final cubit;
+  final bool? brand;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class FilterBottomSheet extends StatelessWidget {
           BottomSheetAppBar(AppLocalizations.of(context)!.filterBy),
           VerticalSpace(context.height * 0.033),
           FilterBottomSheetBody(
-              getProductsFunction: getProductsFunction, cubit: cubit)
+              getProductsFunction: getProductsFunction, cubit: cubit, brand: brand)
         ]));
   }
 }

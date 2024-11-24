@@ -1,13 +1,13 @@
 class BrandsResponse {
   bool? success;
-  BrandsData? data;
+  Data? data;
 
   BrandsResponse({this.success, this.data});
 
   factory BrandsResponse.fromJson(Map<String, dynamic> json) {
     return BrandsResponse(
         success: json['success'],
-        data: json['data'] != null ? BrandsData.fromJson(json['data']) : null);
+        data: json['data'] != null ? Data.fromJson(json['data']) : null);
   }
 
   Map<String, dynamic> toJson() {
@@ -15,16 +15,16 @@ class BrandsResponse {
   }
 }
 
-class BrandsData {
+class Data {
   List<Brand>? brands;
   Options? options;
 
-  BrandsData({this.brands, this.options});
+  Data({this.brands, this.options});
 
-  factory BrandsData.fromJson(Map<String, dynamic> json) {
-    return BrandsData(
+  factory Data.fromJson(Map<String, dynamic> json) {
+    return Data(
         brands: json['brands'] != null
-            ? List<Brand>.from(json['brands'].map((x) => Brand.fromJson(x)))
+            ? (json['brands'] as List).map((e) => Brand.fromJson(e)).toList()
             : null,
         options:
             json['options'] != null ? Options.fromJson(json['options']) : null);
@@ -32,7 +32,7 @@ class BrandsData {
 
   Map<String, dynamic> toJson() {
     return {
-      'brands': brands?.map((x) => x.toJson()).toList(),
+      'brands': brands?.map((e) => e.toJson()).toList(),
       'options': options?.toJson()
     };
   }
@@ -41,16 +41,19 @@ class BrandsData {
 class Brand {
   String? id;
   String? name;
+  String? image;
   String? createdAt;
   String? updatedAt;
   int? v;
 
-  Brand({this.id, this.name, this.createdAt, this.updatedAt, this.v});
+  Brand(
+      {this.id, this.name, this.image, this.createdAt, this.updatedAt, this.v});
 
   factory Brand.fromJson(Map<String, dynamic> json) {
     return Brand(
         id: json['_id'],
         name: json['name'],
+        image: json['image'],
         createdAt: json['createdAt'],
         updatedAt: json['updatedAt'],
         v: json['__v']);
@@ -60,6 +63,7 @@ class Brand {
     return {
       '_id': id,
       'name': name,
+      'image': image,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       '__v': v

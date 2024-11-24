@@ -102,7 +102,7 @@ class CategoryCubit extends Cubit<CategoryState> {
           },
           cubit: getCubit(context),
         );
-      },
+      }
     );
   }
 

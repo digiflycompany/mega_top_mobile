@@ -5,6 +5,7 @@ sealed class BrandsState {}
 
 final class BrandsInitial extends BrandsState {}
 final class ProductsLoadingState extends BrandsState {}
+final class BrandUpdated extends BrandsState {}
 final class MoreProductsLoading extends BrandsState {}
 final class ProductsNoInternetConnection extends BrandsState {}
 final class ProductsFailureState extends BrandsState {
