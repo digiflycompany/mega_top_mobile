@@ -11,6 +11,7 @@ import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_cubi
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/best_seller_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/home_ads.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_brands.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_latest_offers_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/main_page_latest_products_list.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/our_products_row.dart';
@@ -41,13 +42,17 @@ class MainPageProducts extends StatelessWidget {
           Gap(16),
           HomeAds(),
           VerticalSpace(context.height * 0.008),
-          ViewAllRow(bigText: AppLocalizations.of(context)!.bestSeller),
-          const BestSellerList(),
-          VerticalSpace(context.height * 0.0245),
+          ViewAllRow(bigText: AppLocalizations.of(context)!.brands),
+          VerticalSpace(context.height * 0.02),
+          const MainPageBrands(),
+          VerticalSpace(context.height * 0.025),
           ViewAllRow(bigText: AppLocalizations.of(context)!.latestOffers),
           VerticalSpace(context.height * 0.02),
           const MainPageLatestOffersList(),
           VerticalSpace(context.height * 0.025),
+          ViewAllRow(bigText: AppLocalizations.of(context)!.bestSeller),
+          const BestSellerList(),
+          VerticalSpace(context.height * 0.0245),
           ViewAllRow(bigText: AppLocalizations.of(context)!.latestProducts),
           const MainPageLatestProductList(),
           VerticalSpace(context.height * 0.02)

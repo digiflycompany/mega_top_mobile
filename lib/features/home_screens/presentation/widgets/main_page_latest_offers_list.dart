@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_state.dart';
@@ -76,7 +77,7 @@ class MainPageLatestOffersList extends StatelessWidget {
                               });
                         },
                         separatorBuilder: (context, index) {
-                          return SizedBox(width: 0.w);
+                          return Gap(16.w);
                         },
                         itemCount: 5))
               ],

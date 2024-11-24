@@ -110,11 +110,11 @@ class _HomePageState extends State<HomePage> {
                             ? AppAssets.categoriesSelectedIcon
                             : AppAssets.categoriesUnselectedIcon),
                         label: AppLocalizations.of(context)!.brands),
-                    BottomNavigationBarItem(
+                    /*BottomNavigationBarItem(
                         icon: SvgPicture.asset(_currentIndex == 3
                             ? AppAssets.offersSelectedIcon
                             : AppAssets.offersUnselectedIcon),
-                        label: AppLocalizations.of(context)!.offers),
+                        label: AppLocalizations.of(context)!.offers),*/
                     BottomNavigationBarItem(
                         icon: SvgPicture.asset(_currentIndex == 4
                             ? AppAssets.cartSelectedIcon
