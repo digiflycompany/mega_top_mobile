@@ -34,7 +34,7 @@ class BestSellerContainer extends StatelessWidget {
         onTap!();
       },
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: context.height12,horizontal: context.width8),
+        padding: EdgeInsets.symmetric(vertical: context.height12),
         child: Container(
           width: context.width * 0.707,
           decoration: BoxDecoration(

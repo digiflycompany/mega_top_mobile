@@ -226,5 +226,6 @@
   "pleaseEnterFilterBoundaries": "Please enter  filter boundaries",
   "lastCharMustBeANumber": "The last character must be a number",
   "onlyOneDecimalPointIsAllowed": "Only decimal point is allowed",
-  "lastCharMustNotBeADecimalPoint": "The last character must not be a decimal point"
+  "lastCharMustNotBeADecimalPoint": "The last character must not be a decimal point",
+  "viewAll": "View all"
 }

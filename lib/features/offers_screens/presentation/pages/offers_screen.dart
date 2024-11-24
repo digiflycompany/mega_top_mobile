@@ -8,6 +8,7 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/widgets/app_bar_fav_icon.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/widgets/empty_response_page.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_cubit.dart';
 import 'package:mega_top_mobile/features/offers_screens/cubit/offers_state.dart';
 import 'package:mega_top_mobile/features/offers_screens/presentation/widgets/offers_items_grid.dart';
@@ -49,7 +50,7 @@ class _OffersPageState extends State<OffersPage> {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, context.height * 0.089),
-          child: CustomFavouriteAppBar(AppLocalizations.of(context)!.offers)),
+          child: PrimaryAppBar(AppLocalizations.of(context)!.offers)),
       body: BlocConsumer<OffersCubit,OffersState>(
         listener: (BuildContext context, OffersState state) {
           if (state is OffersMoreProductNoInternetConnection) {
