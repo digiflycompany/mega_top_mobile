@@ -5,6 +5,8 @@ import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/available_container.dart';
 import 'package:mega_top_mobile/core/widgets/discount_container.dart';
+import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
+import 'package:mega_top_mobile/core/widgets/not_available_container.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_detailed_category.dart';
@@ -13,70 +15,40 @@ import 'package:mega_top_mobile/features/categories_screens/presentation/widgets
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/product_prices.dart';
 
 class BrandProductMainDescription extends StatelessWidget {
-  const BrandProductMainDescription({super.key});
+  const BrandProductMainDescription({super.key, required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BrandsCubit, BrandsState>(
         builder: (BuildContext context, BrandsState state) {
-      final cubit = context.read<BrandsCubit>();
+      var cubit = BrandsCubit.get(context);
       return Padding(
           padding: EdgeInsets.only(top: context.height * 0.033),
           child: Column(children: [
             /// Product Details Row ////
             Row(children: [
-              Expanded(
-                  child: ProductDetailedNameText(
-                      name: /* cubit.selectedCategoryModel!.data!
-                          .products[categoryCubit.selectedProductIndex].title*/
-                          '')),
+              Expanded(child: ProductDetailedNameText(name: product.title)),
               HorizontalSpace(5.w),
-              /*categoryCubit.selectedCategoryModel!.data!
-                      .products[categoryCubit.selectedProductIndex].quantity !=0 ?*/
-              const AvailableContainer() /*: NotAvailableContainer()*/,
+              product.quantity != 0
+                  ? const AvailableContainer()
+                  : NotAvailableContainer(),
               HorizontalSpace(context.width * 0.022),
               DiscountContainer(
                   width: context.width * 0.118,
                   height: context.height * 0.033,
-                  discountPercent: /*"${categoryCubit.getDiscountPercentage(
-                        finalPrice: categoryCubit.selectedCategoryModel!.data!
-                            .products[categoryCubit.selectedProductIndex].price.finalPrice.toInt(),
-                        originPrice: categoryCubit.selectedCategoryModel!.data!
-                            .products[categoryCubit.selectedProductIndex].price.originalPrice.toInt())}%"*/
-                      '')
+                  discountPercent:
+                      "${cubit.getDiscountPercentage(finalPrice: product.price.finalPrice.toInt(), originPrice: product.price.originalPrice.toInt())}%")
             ]),
             VerticalSpace(context.height * 0.011),
-            ProductDetailedCategory(
-                category: /*categoryCubit
-                    .selectedCategoryModel!
-                    .data!
-                    .products[categoryCubit.selectedProductIndex]
-                    .categoryId
-                    .name*/
-                    ''),
+            ProductDetailedCategory(category: product.categoryId.name),
             VerticalSpace(context.height * 0.022),
             ProductPrices(
-              currentPrice: /*categoryCubit
-                    .selectedCategoryModel!
-                    .data!
-                    .products[categoryCubit.selectedProductIndex]
-                    .price
-                    .finalPrice
-                    .toString()*/
-                  '165',
-              oldPrice: /*categoryCubit
-                    .selectedCategoryModel!
-                    .data!
-                    .products[categoryCubit.selectedProductIndex]
-                    .price
-                    .originalPrice
-                    .toString()*/
-                  '16523245112',
-            ),
+                currentPrice: product.price.finalPrice.toString(),
+                oldPrice: product.price.originalPrice.toString()),
             VerticalSpace(context.height * 0.029),
-            ProductDetailedSmallDescription(
-                description: 'categoryCubit.selectedCategoryModel!.data!'
-                    '.products[categoryCubit.selectedProductIndex].description')
+            ProductDetailedSmallDescription(description: product.description)
           ]));
     });
   }

@@ -30,8 +30,8 @@ import 'package:mega_top_mobile/features/authentication_screens/presentation/scr
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_or_login_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/sign_up_screen.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/screens/verify_email_screen.dart';
-import 'package:mega_top_mobile/features/brands/presentation/pages/brand_item_page.dart';
-import 'package:mega_top_mobile/features/brands/presentation/pages/brand_product_details_page.dart';
+import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
+import 'package:mega_top_mobile/features/brands/presentation/pages/brand_products_page.dart';
 import 'package:mega_top_mobile/features/cart_screens/data/repositories/cart_repo.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/cubit/cart_cubit.dart';
 import 'package:mega_top_mobile/features/cart_screens/presentation/pages/cart_screen.dart';
@@ -67,8 +67,6 @@ class Routes {
   static const String signUpOrLoginPageRoute = "/sign_up_or_login_screen";
   static const String categoryProductDetailsPageRoute =
       "/category_product_details_screen";
-  static const String brandProductDetailsPageRoute =
-      "/brand_product_details_screen";
   static const String searchProductDetailsPageRoute =
       "/search_product_details_screen";
   static const String checkoutAddressDetailsPageRoute =
@@ -176,19 +174,18 @@ class RouteGenerator {
             child: CategoryItemsPage(),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
-        case Routes.brandItemsPageRoute:
+      case Routes.brandItemsPageRoute:
+        final brandName = routeSettings.arguments as String;
         return buildPageRoute(
-            child: BrandItemPage(),
+            child: BlocProvider(
+  create: (context) =>BrandsCubit()..getBrandProducts(),
+  child: BrandProductsPage(brandName: brandName),
+),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.categoryProductDetailsPageRoute:
         return buildPageRoute(
             child: const CategoryProductDetailsPage(),
-            routeSettings: routeSettings,
-            pageRouteAnimation: PageRouteAnimation.fade);
-        case Routes.brandProductDetailsPageRoute:
-        return buildPageRoute(
-            child: const BrandProductDetailsPage(),
             routeSettings: routeSettings,
             pageRouteAnimation: PageRouteAnimation.fade);
       case Routes.searchProductDetailsPageRoute:
@@ -210,7 +207,7 @@ class RouteGenerator {
         return buildPageRoute(
             child: BlocProvider(
               create: (context) =>
-                  AddressCubit(AddressRepoImp())..getUserAddresses(),
+              AddressCubit(AddressRepoImp())..getUserAddresses(),
               child: CheckoutAddressDetailsPage(),
             ),
             routeSettings: routeSettings,
@@ -235,13 +232,13 @@ class RouteGenerator {
         return buildPageRoute(
           child: ProfileScreen(),
         );
-      // case Routes.orderConfirmationPageRoute:
-      //   return buildPageRoute(
-      //     child: BlocProvider(
-      //       create: (context) => CartCubit(CartRepoImp()),
-      //       child: OrderConfirmationScreen(),
-      //     ),
-      //   );
+    // case Routes.orderConfirmationPageRoute:
+    //   return buildPageRoute(
+    //     child: BlocProvider(
+    //       create: (context) => CartCubit(CartRepoImp()),
+    //       child: OrderConfirmationScreen(),
+    //     ),
+    //   );
       case Routes.profileDetailsPageRoute:
         return buildPageRoute(
           child: BlocProvider(
@@ -260,13 +257,13 @@ class RouteGenerator {
         return buildPageRoute(
           child: const AddNewAddressScreen(),
         );
-      // case Routes.editAddressPageRoute:
-      //   return buildPageRoute(
-      //     child: BlocProvider(
-      //       create: (BuildContext context) => AddressCubit(AddressRepoImp())..getCities(),
-      //       child: EditAddressScreen(),
-      //     ),
-      //   );
+    // case Routes.editAddressPageRoute:
+    //   return buildPageRoute(
+    //     child: BlocProvider(
+    //       create: (BuildContext context) => AddressCubit(AddressRepoImp())..getCities(),
+    //       child: EditAddressScreen(),
+    //     ),
+    //   );
       case Routes.notificationPageRoute:
         return buildPageRoute(
             child: BlocProvider(
@@ -285,7 +282,7 @@ class RouteGenerator {
         return buildPageRoute(
           child: BlocProvider(
             create: (context) =>
-                AddressCubit(AddressRepoImp())..getUserAddresses(),
+            AddressCubit(AddressRepoImp())..getUserAddresses(),
             child: ShippingAddressScreen(),
           ),
         );
@@ -296,25 +293,25 @@ class RouteGenerator {
             child: OrdersScreen(),
           ),
         );
-      // case Routes.ordersDetailsPageRoute:
-      //   return buildPageRoute(
-      //     child: const OrdersDetailsScreen(),
-      //   );
+    // case Routes.ordersDetailsPageRoute:
+    //   return buildPageRoute(
+    //     child: const OrdersDetailsScreen(),
+    //   );
       case Routes.compareProductPageRoute:
         final isEmpty =
-            routeSettings.arguments as bool; // Retrieve the argument
+        routeSettings.arguments as bool; // Retrieve the argument
         return buildPageRoute(
           child: CompareScreen(
               isEmpty: isEmpty), // Pass the argument to the screen
         );
 
-      // case Routes.signUpEmailVerificationPageRoute:
-      //   return buildPageRoute(
-      //     child: BlocProvider(
-      //       create: (context) => EmailVerificationCubit(AuthRepoImp()),
-      //       child: SignUpEmailVerificationScreen(),
-      //     ),
-      //   );
+    // case Routes.signUpEmailVerificationPageRoute:
+    //   return buildPageRoute(
+    //     child: BlocProvider(
+    //       create: (context) => EmailVerificationCubit(AuthRepoImp()),
+    //       child: SignUpEmailVerificationScreen(),
+    //     ),
+    //   );
       case Routes.cartPageRoute:
         return buildPageRoute(
           child: const CartPage(),

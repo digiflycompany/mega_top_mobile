@@ -7,7 +7,6 @@ import 'package:mega_top_mobile/core/widgets/custom_shimmer.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_state.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/ad_card.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HomeAds extends StatefulWidget {
   HomeAds({super.key});

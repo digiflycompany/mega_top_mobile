@@ -3,19 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
-import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
 import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
+import 'package:mega_top_mobile/features/brands/presentation/pages/brand_products_page.dart';
 
 class BrandsSmallCard extends StatelessWidget {
   final Brand brand;
 
-  const BrandsSmallCard({
-    super.key,
-    required this.brand
-  });
+  const BrandsSmallCard({super.key, required this.brand});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,12 @@ class BrandsSmallCard extends StatelessWidget {
           return GestureDetector(
               onTap: () {
                 cubit.selectBrand(brand);
-            Routes.brandItemsPageRoute.moveTo;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) =>
+                            BrandProductsPage(brandName: brand.name ?? '')));
+                cubit.getBrandProducts();
               },
               child: Container(
                   width: context.width * 0.24,
@@ -41,15 +43,13 @@ class BrandsSmallCard extends StatelessWidget {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        brand.name != null
-                            ? Expanded(
-                                child: CachedNetworkImage(
-                                    imageUrl: brand.name!,
-                                    fit: BoxFit.contain,
-                                    width: double.infinity,
-                                    errorWidget: (context, url, error) =>
-                                        Icon(Icons.error)))
-                            : Image.asset("assets/images/ad.png"),
+                        Expanded(
+                            child: CachedNetworkImage(
+                                imageUrl: brand.name!,
+                                fit: BoxFit.contain,
+                                width: double.infinity,
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error))),
                         Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: context.height * 0.005,

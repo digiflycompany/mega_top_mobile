@@ -36,6 +36,7 @@ class EndPoints {
   static const String getUserCartAPI = '$baseUrl/api/v1/users/customers/cart';
   static const String checkoutAPI = '$baseUrl/api/v1/orders/customer-checkout';
   static const String latestOffersAPI = '$baseUrl/api/v1/products?isOffer=true';
+  static const String productsAPI = '$baseUrl/api/v1/products';
   static const String latestProductsAPI =
       '$baseUrl/api/v1/products?sortOrder=desc';
   static const String homeScreenAddsAPI =

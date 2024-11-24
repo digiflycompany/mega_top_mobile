@@ -10,7 +10,6 @@ class BackArrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String currentLang = Localizations.localeOf(context).languageCode;
     return InkWell(
       splashColor: Colors.transparent,
       onTap: onTap,
