@@ -9,10 +9,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FilterBottomSheetBody extends StatelessWidget {
   const FilterBottomSheetBody(
-      {super.key, required this.getProductsFunction, required this.cubit});
+      {super.key,
+      required this.getProductsFunction,
+      required this.cubit,
+      this.brand});
 
   final Function getProductsFunction;
   final cubit;
+  final bool? brand;
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +26,25 @@ class FilterBottomSheetBody extends StatelessWidget {
             child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Column(children: [
-                  Align(
-                      alignment: AlignmentDirectional.topStart,
-                      child: Text(AppLocalizations.of(context)!.brand,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15.sp))),
-                  VerticalSpace(context.height * 0.02),
-                  if (cubit.subCategoriesModel!.data!.subcategories.length > 0)
-                    const BrandsCheckList(),
-                  VerticalSpace(context.height * 0.025),
+                  if (brand != true) ...[
+                    Align(
+                        alignment: AlignmentDirectional.topStart,
+                        child: Text(AppLocalizations.of(context)!.brand,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 15.sp))),
+                    VerticalSpace(context.height * 0.02),
+                    if (cubit.subCategoriesModel.data.subcategories.length > 0)
+                      const BrandsCheckList(),
+                    VerticalSpace(context.height * 0.025)
+                  ],
                   PriceContainer(
                       minPriceController: cubit.minPriceController,
                       maxPriceController: cubit.maxPriceController),
                   VerticalSpace(context.height * 0.025),
                   FilterBottomSheetButtons(
-                      getProductsFunction: getProductsFunction, cubit: cubit)
+                      getProductsFunction: getProductsFunction, cubit: cubit, brand: brand)
                 ]))));
   }
 }

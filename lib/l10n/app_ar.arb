@@ -221,5 +221,10 @@
   "orderNow": "اطلب الآن",
   "brands": "ماركات",
   "noBrands": "لا توجد علامات تجارية",
-  "noBrandsListItems": "لا توجد عناصر في قائمة العلامات التجارية"
+  "noBrandsListItems": "لا توجد عناصر في قائمة العلامات التجارية",
+  "filterError": "خطأ في التصنيف",
+  "pleaseEnterFilterBoundaries": "من فضلك اكتب حدود التصنيف",
+  "lastCharMustBeANumber": "يجب أن يكون آخر حرف رقماً",
+  "onlyOneDecimalPointIsAllowed": "مسموح بعلامةٍ عشريةٍ واحدةٍ فقط",
+  "lastCharMustNotBeADecimalPoint": "الحرف الأخير لا يمكن أن يكون علامةً عشريةً"
 }

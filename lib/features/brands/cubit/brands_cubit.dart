@@ -7,7 +7,6 @@ import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 import 'package:mega_top_mobile/features/brands/cubit/brands_state.dart';
 import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart';
 import 'package:mega_top_mobile/features/brands/data/repos/brands_repo.dart';
-import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:mega_top_mobile/features/categories_screens/presentation/widgets/sort_bottom_sheet.dart';
 
@@ -18,11 +17,19 @@ class BrandsCubit extends Cubit<BrandsState> {
 
   Brand selectedBrand = Brand();
 
+  final TextEditingController minPriceController = TextEditingController();
+  final TextEditingController maxPriceController = TextEditingController();
+
   List<Brand> brands = [];
   List<Product> products = [];
 
   selectBrand(Brand brand) {
     selectedBrand = brand;
+  }
+
+  void selectOption(String newValue) {
+    _selectedValue = newValue;
+    emit(BrandUpdated());
   }
 
   bool isGrid = true;
@@ -46,8 +53,8 @@ class BrandsCubit extends Cubit<BrandsState> {
   }
 
   int page = 1;
-  int? minPrice;
-  int? maxPrice;
+  num? minPrice;
+  num? maxPrice;
 
   bool? hasMoreProducts = false;
 
@@ -67,15 +74,15 @@ class BrandsCubit extends Cubit<BrandsState> {
           return SortBottomSheet(
               onTapDefault: () {
                 page = 1;
-                // getSelectedCategories(selectedCategoryId!);
+                getBrandProducts();
               },
               onTapFromHighPrice: () {
-                // sortingFromHighPrice();
+                sortingFromHighPrice();
               },
               onTapFromLowPrice: () {
-                // sortingFromLowPrice();
+                sortingFromLowPrice();
               },
-              cubit: CategoryCubit().getCubit(context));
+              cubit: BrandsCubit.get(context));
         });
   }
 
@@ -92,10 +99,10 @@ class BrandsCubit extends Cubit<BrandsState> {
           return FractionallySizedBox(
               heightFactor: 1.0, // For full screen height
               child: FilterBottomSheet(
-                  cubit: CategoryCubit().getCubit(context),
+                  cubit: BrandsCubit.get(context),
                   getProductsFunction: () {
-                    // getSelectedCategories(selectedCategoryId!);
-                  }));
+                    getBrandProducts();
+                  }, brand: true));
         });
   }
 
@@ -124,7 +131,7 @@ class BrandsCubit extends Cubit<BrandsState> {
       else
         page = 1;
       MainPageProductsModel? fetchedProducts =
-          await _repo.fetchProducts(selectedBrand.id!, page);
+          await _repo.fetchProducts(selectedBrand.id!, page, minPrice: minPrice, maxPrice: maxPrice);
       if (fetchedProducts != null && fetchedProducts.success == true) {
         if (more != true) {
           products = fetchedProducts.products ?? [];
@@ -133,6 +140,10 @@ class BrandsCubit extends Cubit<BrandsState> {
           products.addAll(fetchedProducts.products ?? []);
           emit(ProductsSuccessState(fetchedProducts.products ?? []));
         }
+      }
+      if(more != true) {
+        minPrice = null;
+        maxPrice = null;
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
@@ -157,5 +168,14 @@ class BrandsCubit extends Cubit<BrandsState> {
 
     // Ensure the result is between 0% and 100%
     return discountPercentage.clamp(0, 100);
+  }
+
+  void sortingFromHighPrice() {
+    products.sort((a, b) => b.price.finalPrice.compareTo(a.price.finalPrice));
+  }
+
+  void sortingFromLowPrice() {
+    products
+        .sort((a, b) => a.price.finalPrice.compareTo(b.price.finalPrice));
   }
 }

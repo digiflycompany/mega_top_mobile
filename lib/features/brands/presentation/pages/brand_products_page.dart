@@ -17,6 +17,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BrandProductsPage extends StatefulWidget {
   const BrandProductsPage({super.key, required this.brandName});
+
   final String brandName;
 
   @override
@@ -52,17 +53,17 @@ class _BrandProductsPageState extends State<BrandProductsPage> {
           }
         }, builder: (BuildContext context, state) {
           var cubit = BrandsCubit.get(context);
-          if (state is ProductsNoInternetConnection) {
-            return NoInternetScreen(buttonOnTap: () {
-              cubit.getBrandProducts();
-            });
-          } else if (cubit.products.isNull || cubit.products.isEmpty) {
+          if (state is ProductsLoadingState)
             return Center(
                 child: Theme(
                     data: Theme.of(context).copyWith(
                         colorScheme: ColorScheme.fromSwatch()
                             .copyWith(primary: AppColors.primaryColor)),
                     child: CircularProgressIndicator.adaptive()));
+          else if (state is ProductsNoInternetConnection) {
+            return NoInternetScreen(buttonOnTap: () {
+              cubit.getBrandProducts();
+            });
           } else if (cubit.products.isNotEmpty) {
             return Padding(
                 padding: EdgeInsets.symmetric(

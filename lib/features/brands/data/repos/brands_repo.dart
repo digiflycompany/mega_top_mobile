@@ -6,7 +6,8 @@ import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart
 
 abstract class BrandsRepo {
   Future<BrandsResponse?> fetchBrands();
-  Future<MainPageProductsModel?> fetchProducts(String brandId, int page);
+  Future<MainPageProductsModel?> fetchProducts(String brandId, int page,
+      {num? minPrice, num? maxPrice});
 }
 
 class BrandsRepoImp implements BrandsRepo {
@@ -24,10 +25,17 @@ class BrandsRepoImp implements BrandsRepo {
     return null;
   }
 
-  Future<MainPageProductsModel?> fetchProducts(String brandId, int page) async {
+  Future<MainPageProductsModel?> fetchProducts(String brandId, int page,
+      {num? minPrice, num? maxPrice}) async {
     try {
-      Response? response = await DioHelper.getData(
-          url: EndPoints.productsAPI, queryParameters: {"limit": 100, "bradId": brandId, "page": page});
+      Response? response =
+          await DioHelper.getData(url: EndPoints.productsAPI, queryParameters: {
+        "limit": 100,
+        "bradId": brandId,
+        "page": page,
+        if (minPrice != null) "minPrice": minPrice.toString(),
+        if (maxPrice != null) "maxPrice": maxPrice.toString()
+      });
       if (response != null) {
         return MainPageProductsModel.fromJson(response.data);
       }

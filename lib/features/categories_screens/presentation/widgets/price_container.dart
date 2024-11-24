@@ -19,25 +19,19 @@ class PriceContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Align(
-        alignment: AlignmentDirectional.topStart,
-        child: Text(
-          AppLocalizations.of(context)!.price2,
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-            fontSize: 15.sp,
-          ),
-        ),
-      ),
+          alignment: AlignmentDirectional.topStart,
+          child: Text(AppLocalizations.of(context)!.price2,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 15.sp))),
       VerticalSpace(context.height * 0.032),
       Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Text(
-          AppLocalizations.of(context)!.from,
-          style: TextStyle(
-              color: AppColors.smallTextBlackColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 13.sp)
-        ),
+        Text(AppLocalizations.of(context)!.from,
+            style: TextStyle(
+                color: AppColors.smallTextBlackColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 13.sp)),
         Expanded(
             child: Center(
                 child: Text(AppLocalizations.of(context)!.to,
