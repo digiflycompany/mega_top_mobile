@@ -50,8 +50,12 @@ class AppAssets {
   static const String homeSelectedIcon = "$svgPath/home_selected_icon.svg";
   static const String categoriesUnselectedIcon =
       "$svgPath/categories_unselected_icon.svg";
+  static const String inactiveBrandsLogo =
+      "$svgPath/brands_logo.svg";
   static const String categoriesSelectedIcon =
       "$svgPath/categories_selected_icon.svg";
+  static const String brandsActiveLogo =
+      "$svgPath/active_brands_logo.svg";
   static const String offersSelectedIcon = "$svgPath/offers_selected_icon.svg";
   static const String offersUnselectedIcon =
       "$svgPath/offers_unselected_icon.svg";
