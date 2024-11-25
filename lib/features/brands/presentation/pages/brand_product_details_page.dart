@@ -86,25 +86,25 @@ class _BrandProductDetailsPageState extends State<BrandProductDetailsPage> {
                           ]),
                     onTap: () async {
                       context.read<CartCubit>().addProductToCart(
-                          categoryCubit.selectedCategoryModel!.data!
-                              .products[categoryCubit.selectedProductIndex].id,
+                          categoryCubit.selectedCategoryModel?.data!
+                              .products[categoryCubit.selectedProductIndex].id ?? widget.product.id,
                           categoryCubit
-                              .selectedCategoryModel!
-                              .data!
-                              .products[categoryCubit.selectedProductIndex]
-                              .title,
+                              .selectedCategoryModel
+                              ?.data
+                              ?.products[categoryCubit.selectedProductIndex]
+                              .title ?? widget.product.title,
                           categoryCubit
-                              .selectedCategoryModel!
-                              .data!
-                              .products[categoryCubit.selectedProductIndex]
+                              .selectedCategoryModel
+                              ?.data
+                              ?.products[categoryCubit.selectedProductIndex]
                               .price
                               .finalPrice
-                              .toString(),
+                              .toString() ?? widget.product.price.finalPrice.toString(),
                           categoryCubit
-                              .selectedCategoryModel!
-                              .data!
-                              .products[categoryCubit.selectedProductIndex]
-                              .images![0]);
+                              .selectedCategoryModel
+                              ?.data
+                              ?.products[categoryCubit.selectedProductIndex]
+                              .images?[0] ?? widget.product.images?[0]);
                       print('Product added to cart');
                     });
               }));
