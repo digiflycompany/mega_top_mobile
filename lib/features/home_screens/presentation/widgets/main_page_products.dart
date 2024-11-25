@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
+import 'package:mega_top_mobile/core/utils/app_routes_helper.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
 import 'package:mega_top_mobile/core/widgets/no_internet_page.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_ads_cubit.dart';
+import 'package:mega_top_mobile/features/home_screens/cubit/home_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_cubit.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_offers_state.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/latest_products_cubit.dart';
@@ -29,24 +32,25 @@ class MainPageProducts extends StatelessWidget {
         if (state is LatestOffersNoInternetConnection ||
             state is LatestProductsNoInternetConnection) {
           return Padding(
-            padding: EdgeInsets.only(bottom: context.height48),
-            child: NoInternetScreen(buttonOnTap: () {
-              context.read<HomeAdsCubit>().fetchAds();
-              context.read<LatestOffersCubit>().getLatestOffers();
-              context.read<LatestProductsCubit>().getLatestProducts();
-              context.read<HomeAdsCubit>().fetchAds();
-            })
-          );
+              padding: EdgeInsets.only(bottom: context.height48),
+              child: NoInternetScreen(buttonOnTap: () {
+                context.read<HomeAdsCubit>().fetchAds();
+                context.read<LatestOffersCubit>().getLatestOffers();
+                context.read<LatestProductsCubit>().getLatestProducts();
+                context.read<HomeAdsCubit>().fetchAds();
+              }));
         }
         return Column(children: [
           Gap(16),
           HomeAds(),
           VerticalSpace(context.height * 0.008),
-          ViewAllRow(bigText: AppLocalizations.of(context)!.brands),
+          ViewAllRow(bigText: AppLocalizations.of(context)!.brands, viewAllButton: true, onViewAllPressed: () => context.read<HomeCubit>().pageController.jumpToPage(2)),
           VerticalSpace(context.height * 0.02),
           const MainPageBrands(),
           VerticalSpace(context.height * 0.025),
-          ViewAllRow(bigText: AppLocalizations.of(context)!.latestOffers),
+          ViewAllRow(
+              bigText: AppLocalizations.of(context)!.latestOffers, viewAllButton: true,
+              onViewAllPressed: () => pushRoute(Routes.offersScreen)),
           VerticalSpace(context.height * 0.02),
           const MainPageLatestOffersList(),
           VerticalSpace(context.height * 0.025),

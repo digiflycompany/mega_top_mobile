@@ -24,7 +24,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final PageController _pageController = PageController();
   late Future<bool> _isUserLoggedInFuture;
 
   Future<bool> _checkIfUserLoggedIn() async {
@@ -39,12 +38,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onItemTapped(int index) {
-    _pageController.jumpToPage(index);
+    context.read<HomeCubit>().pageController.jumpToPage(index);
+    context.read<HomeCubit>().setPageIndex(index);
   }
 
   @override
   void dispose() {
-    _pageController.dispose();
+    context.read<HomeCubit>().pageController.dispose();
     super.dispose();
   }
 
@@ -65,66 +65,69 @@ class _HomePageState extends State<HomePage> {
                 ? const UserAccountScreen()
                 : const GuestAccountScreen()
           ];
-          return Scaffold(
-              body: BlocConsumer<HomeCubit, HomeState>(
-                  listener: (context, state) {},
-                  builder: (context, state) {
-                    return PageView(
-                        controller: _pageController,
-                        children: _pages,
-                        onPageChanged: (index) {
-                          setState(() {
-                            homeCubit.setPageIndex(_currentIndex = index);
-                          });
+          return BlocBuilder<HomeCubit, HomeState>(
+            builder: (context, state) {
+              var cubit = HomeCubit().getCubit(context);
+              return Scaffold(
+                  body:
+
+                  PageView(
+                      controller: cubit.pageController,
+                      children: _pages,
+                      onPageChanged: (index) {
+                        setState(() {
+                          homeCubit.setPageIndex(_currentIndex = index);
                         });
-                  }),
-              bottomNavigationBar: BottomNavigationBar(
-                  type: BottomNavigationBarType.fixed,
-                  currentIndex: _currentIndex,
-                  selectedItemColor: AppColors.primaryColor,
-                  unselectedItemColor: AppColors.blackGreyColor,
-                  onTap: _onItemTapped,
-                  showUnselectedLabels: true,
-                  unselectedLabelStyle: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.blackGreyColor),
-                  selectedLabelStyle: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.primaryColor),
-                  items: [
-                    BottomNavigationBarItem(
-                        icon: SvgPicture.asset(_currentIndex == 0
-                            ? AppAssets.homeSelectedIcon
-                            : AppAssets.homeUnselectedIcon),
-                        label: AppLocalizations.of(context)!.homeNavBar),
-                    BottomNavigationBarItem(
-                        icon: SvgPicture.asset(_currentIndex == 1
-                            ? AppAssets.categoriesSelectedIcon
-                            : AppAssets.categoriesUnselectedIcon),
-                        label: AppLocalizations.of(context)!.categories),
-                    BottomNavigationBarItem(
-                        icon: SvgPicture.asset(_currentIndex == 2
-                            ? AppAssets.brandsActiveLogo
-                            : AppAssets.inactiveBrandsLogo),
-                        label: AppLocalizations.of(context)!.brands),
-                    /*BottomNavigationBarItem(
+                      }),
+                  bottomNavigationBar: BottomNavigationBar(
+                      type: BottomNavigationBarType.fixed,
+                      currentIndex: state is HomePageChanged? state.index: _currentIndex,
+                      selectedItemColor: AppColors.primaryColor,
+                      unselectedItemColor: AppColors.blackGreyColor,
+                      onTap: _onItemTapped,
+                      showUnselectedLabels: true,
+                      unselectedLabelStyle: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.blackGreyColor),
+                      selectedLabelStyle: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.primaryColor),
+                      items: [
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(_currentIndex == 0
+                                ? AppAssets.homeSelectedIcon
+                                : AppAssets.homeUnselectedIcon),
+                            label: AppLocalizations.of(context)!.homeNavBar),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(_currentIndex == 1
+                                ? AppAssets.categoriesSelectedIcon
+                                : AppAssets.categoriesUnselectedIcon),
+                            label: AppLocalizations.of(context)!.categories),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(_currentIndex == 2
+                                ? AppAssets.brandsActiveLogo
+                                : AppAssets.inactiveBrandsLogo),
+                            label: AppLocalizations.of(context)!.brands),
+                        /*BottomNavigationBarItem(
                         icon: SvgPicture.asset(_currentIndex == 3
                             ? AppAssets.offersSelectedIcon
                             : AppAssets.offersUnselectedIcon),
                         label: AppLocalizations.of(context)!.offers),*/
-                    BottomNavigationBarItem(
-                        icon: SvgPicture.asset(_currentIndex == 3
-                            ? AppAssets.cartSelectedIcon
-                            : AppAssets.cartUnselectedIcon),
-                        label: AppLocalizations.of(context)!.cart),
-                    BottomNavigationBarItem(
-                        icon: SvgPicture.asset(_currentIndex == 4
-                            ? AppAssets.accountSelectedIcon
-                            : AppAssets.accountUnselectedIcon),
-                        label: AppLocalizations.of(context)!.account)
-                  ]));
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(_currentIndex == 3
+                                ? AppAssets.cartSelectedIcon
+                                : AppAssets.cartUnselectedIcon),
+                            label: AppLocalizations.of(context)!.cart),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(_currentIndex == 4
+                                ? AppAssets.accountSelectedIcon
+                                : AppAssets.accountUnselectedIcon),
+                            label: AppLocalizations.of(context)!.account)
+                      ]));
+            },
+          );
         });
   }
 }

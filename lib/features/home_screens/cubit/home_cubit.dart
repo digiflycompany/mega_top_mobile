@@ -19,6 +19,8 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
   HomeCubit getCubit(context) => BlocProvider.of(context);
+
+  final PageController pageController = PageController();
   final List<String>? placeHolderImages=[
     AppAssets.megaTop2Logo,
   ];
