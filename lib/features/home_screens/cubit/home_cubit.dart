@@ -204,12 +204,12 @@ class HomeCubit extends Cubit<HomeState> {
   TextEditingController searchWord = TextEditingController();
 
 
-  Future<void> search() async {
+  Future<void> search({String? text}) async {
     emit(SearchLoading());
     try {
       searchModel = null;
       SearchModel? fetchedProducts = await searchRepo.getSearch(
-        searchWord: searchWord.text,
+        searchWord: text ?? searchWord.text,
         page: page,
         minPrice: minPrice,
         maxPrice: maxPrice,
