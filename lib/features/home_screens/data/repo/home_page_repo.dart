@@ -126,7 +126,7 @@ class HomeRepoImp implements HomeRepo {
       String id) async {
     try {
       final response = await DioHelper.getData(
-          url: EndPoints.selectedCategoriesAPI + '/' + id);
+          url: EndPoints.adDetails + id);
       DefaultLogger.logger.w(response);
       return Right(AdDetailsModel.fromJson(response?.data));
     } catch (error) {

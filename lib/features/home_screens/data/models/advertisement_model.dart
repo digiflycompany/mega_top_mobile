@@ -1,184 +1,3 @@
-/*
-class AdvertisementModel {
-  final bool? success;
-  final String? message;
-  final int? statusCode;
-  final int? errorCode;
-  final Data? data;
-
-  AdvertisementModel({
-    this.success,
-    this.message,
-    this.statusCode,
-    this.errorCode,
-    this.data,
-  });
-
-  factory AdvertisementModel.fromJson(Map<String, dynamic> json) {
-    if (json.containsKey('success') && json['success'] == true) {
-      return AdvertisementModel(
-        success: json['success'],
-        data: Data.fromJson(json['data']),
-      );
-    } else {
-      return AdvertisementModel(
-        message: json['message'],
-        statusCode: json['statusCode'],
-        errorCode: json['errorCode'],
-      );
-    }
-  }
-}
-
-class Data {
-  final List<Advertisement>? advertisements;
-  final Options? options;
-
-  Data({
-    this.advertisements,
-    this.options,
-  });
-
-  factory Data.fromJson(Map<String, dynamic> json) {
-    return Data(
-      advertisements: (json['advertisements'] as List)
-          .map((i) => Advertisement.fromJson(i))
-          .toList(),
-      options: Options.fromJson(json['options']),
-    );
-  }
-}
-
-class Advertisement {
-  final String? id;
-  final String? image;
-  final AddedBy? addedBy;
-  final String? title;
-  final String? subtitle;
-  final String? description;
-  final String? titleAr;
-  final String? subtitleAr;
-  final String? descriptionAr;
-  final ProductId? productId;
-  final bool? isSlider;
-  final bool? isActive;
-  final String? createdAt;
-  final String? updatedAt;
-  final int? version;
-
-  Advertisement({
-    this.id,
-    this.image,
-    this.addedBy,
-    this.title,
-    this.subtitle,
-    this.description,
-    this.titleAr,
-    this.subtitleAr,
-    this.descriptionAr,
-    this.productId,
-    this.isSlider,
-    this.isActive,
-    this.createdAt,
-    this.updatedAt,
-    this.version,
-  });
-
-  factory Advertisement.fromJson(Map<String, dynamic> json) {
-    return Advertisement(
-      id: json['_id'],
-      image: json['image'],
-      addedBy: AddedBy.fromJson(json['addedBy']),
-      title: json['title'],
-      subtitle: json['subtitle'],
-      description: json['description'],
-      titleAr: json['titleAr'],
-      subtitleAr: json['subtitleAr'],
-      descriptionAr: json['descriptionAr'],
-      productId: ProductId.fromJson(json['productId']),
-      isSlider: json['isSlider'],
-      isActive: json['isActive'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-      version: json['__v'],
-    );
-  }
-}
-
-class AddedBy {
-  final String? id;
-  final String? fullName;
-  final String? email;
-
-  AddedBy({
-    this.id,
-    this.fullName,
-    this.email,
-  });
-
-  factory AddedBy.fromJson(Map<String, dynamic> json) {
-    return AddedBy(
-      id: json['_id'],
-      fullName: json['fullName'],
-      email: json['email'],
-    );
-  }
-}
-
-class ProductId {
-  final String? id;
-  final String? title;
-
-  ProductId({
-    this.id,
-    this.title,
-  });
-
-  factory ProductId.fromJson(Map<String, dynamic> json) {
-    return ProductId(
-      id: json['_id'],
-      title: json['title'],
-    );
-  }
-}
-
-class Options {
-  final int? limit;
-  final int? skip;
-  final Sort? sort;
-  final int? page;
-
-  Options({
-    this.limit,
-    this.skip,
-    this.sort,
-    this.page,
-  });
-
-  factory Options.fromJson(Map<String, dynamic> json) {
-    return Options(
-      limit: json['limit'],
-      skip: json['skip'],
-      sort: Sort.fromJson(json['sort']),
-      page: json['page'],
-    );
-  }
-}
-
-class Sort {
-  final String? createdAt;
-
-  Sort({this.createdAt});
-
-  factory Sort.fromJson(Map<String, dynamic> json) {
-    return Sort(
-      createdAt: json['createdAt'],
-    );
-  }
-}
-
-*/
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'advertisement_model.g.dart';
@@ -191,7 +10,8 @@ class AdvertisementModel {
 
   AdvertisementModel({this.success, this.data});
 
-  factory AdvertisementModel.fromJson(Map<String, dynamic> json) => _$AdvertisementModelFromJson(json);
+  factory AdvertisementModel.fromJson(Map<String, dynamic> json) =>
+      _$AdvertisementModelFromJson(json);
   Map<String, dynamic> toJson() => _$AdvertisementModelToJson(this);
 }
 
@@ -221,8 +41,11 @@ class Advertisement {
   final String? titleAr;
   final String? subtitleAr;
   final String? descriptionAr;
-  @JsonKey(name: 'productId')
-  final Product? productId;
+  final String? productId;
+  @JsonKey(name: 'brandId')
+  final Brand? brandId;
+  final Category? categoryId;
+  final SubCategory? subCategoryId;
   final bool? isSlider;
   final bool? isActive;
   @JsonKey(name: 'createdAt')
@@ -232,25 +55,28 @@ class Advertisement {
   @JsonKey(name: '__v')
   final int? v;
 
-  Advertisement({
-    this.id,
-    this.image,
-    this.addedBy,
-    this.title,
-    this.subtitle,
-    this.description,
-    this.titleAr,
-    this.subtitleAr,
-    this.descriptionAr,
-    this.productId,
-    this.isSlider,
-    this.isActive,
-    this.createdAt,
-    this.updatedAt,
-    this.v,
-  });
+  Advertisement(
+      {this.id,
+      this.image,
+      this.addedBy,
+      this.title,
+      this.subtitle,
+      this.description,
+      this.titleAr,
+      this.subtitleAr,
+      this.descriptionAr,
+      this.brandId,
+      this.isSlider,
+      this.isActive,
+      this.createdAt,
+      this.updatedAt,
+      this.v,
+      this.productId,
+      this.categoryId,
+      this.subCategoryId});
 
-  factory Advertisement.fromJson(Map<String, dynamic> json) => _$AdvertisementFromJson(json);
+  factory Advertisement.fromJson(Map<String, dynamic> json) =>
+      _$AdvertisementFromJson(json);
   Map<String, dynamic> toJson() => _$AdvertisementToJson(this);
 }
 
@@ -268,17 +94,43 @@ class User {
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }
 
-// Product class for the advertisement's 'productId' field
+// Brand class for the advertisement's 'brandId' field
 @JsonSerializable()
-class Product {
+class Brand {
   @JsonKey(name: '_id')
   final String? id;
-  final String? title;
+  final String? name;
 
-  Product({this.id, this.title});
+  Brand({this.id, this.name});
 
-  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
-  Map<String, dynamic> toJson() => _$ProductToJson(this);
+  factory Brand.fromJson(Map<String, dynamic> json) => _$BrandFromJson(json);
+  Map<String, dynamic> toJson() => _$BrandToJson(this);
+}
+
+@JsonSerializable()
+class Category {
+  @JsonKey(name: '_id')
+  final String? id;
+  final String? name;
+
+  Category({this.id, this.name});
+
+  factory Category.fromJson(Map<String, dynamic> json) =>
+      _$CategoryFromJson(json);
+  Map<String, dynamic> toJson() => _$CategoryToJson(this);
+}
+
+@JsonSerializable()
+class SubCategory {
+  @JsonKey(name: '_id')
+  final String? id;
+  final String? name;
+
+  SubCategory({this.id, this.name});
+
+  factory SubCategory.fromJson(Map<String, dynamic> json) =>
+      _$SubCategoryFromJson(json);
+  Map<String, dynamic> toJson() => _$SubCategoryToJson(this);
 }
 
 // Options class containing pagination information
@@ -291,17 +143,19 @@ class Options {
 
   Options({this.limit, this.skip, this.sort, this.page});
 
-  factory Options.fromJson(Map<String, dynamic> json) => _$OptionsFromJson(json);
+  factory Options.fromJson(Map<String, dynamic> json) =>
+      _$OptionsFromJson(json);
   Map<String, dynamic> toJson() => _$OptionsToJson(this);
 }
 
 // Sort class for sorting information
 @JsonSerializable()
 class Sort {
+  final String? order;
   @JsonKey(name: 'createdAt')
   final String? createdAt;
 
-  Sort({this.createdAt});
+  Sort({this.order, this.createdAt});
 
   factory Sort.fromJson(Map<String, dynamic> json) => _$SortFromJson(json);
   Map<String, dynamic> toJson() => _$SortToJson(this);
