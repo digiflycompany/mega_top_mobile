@@ -166,6 +166,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   String get selectedValue => _selectedValue;
 
+
   void selectOption(String newValue) {
     _selectedValue = newValue;
     emit(HomeUpdated());
@@ -187,15 +188,18 @@ class HomeCubit extends Cubit<HomeState> {
     return discountPercentage.clamp(0, 100);
   }
 
+
   int selectedProductIndex = 0;
 
   void setCategoryProductIndex({required int selectedProductIndex}) {
     this.selectedProductIndex = selectedProductIndex;
   }
 
+
   SearchRepo searchRepo = new CategoriesRepoImp();
 
   SearchModel? searchModel;
+
 
   final TextEditingController minPriceController = TextEditingController();
   final TextEditingController maxPriceController = TextEditingController();
@@ -205,26 +209,28 @@ class HomeCubit extends Cubit<HomeState> {
 
   TextEditingController searchWord = TextEditingController();
 
-  Future<void> search() async {
+
+  Future<void> search({String? text}) async {
     emit(SearchLoading());
     try {
       searchModel = null;
       SearchModel? fetchedProducts = await searchRepo.getSearch(
-          searchWord: searchWord.text,
-          page: page,
-          minPrice: minPrice,
-          maxPrice: maxPrice,
-          subCategories: subCategoriesQuery());
-      if (fetchedProducts != null && fetchedProducts.success == true) {
+        searchWord: text ?? searchWord.text,
+        page: page,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
+        subCategories: subCategoriesQuery()
+      );
+      if (fetchedProducts != null && fetchedProducts.success==true) {
         searchModel = fetchedProducts;
         emit(SearchSuccess());
-      } else {
+      }else {
         emit(SearchNoInternetConnection());
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(SearchNoInternetConnection());
-      } else {
+      }else {
         emit(SearchFailure(e.toString()));
       }
     }
@@ -239,6 +245,7 @@ class HomeCubit extends Cubit<HomeState> {
     searchModel!.data!.products
         .sort((a, b) => a.price.finalPrice.compareTo(b.price.finalPrice));
   }
+
 
   bool? hasMoreProducts = false;
 
@@ -259,6 +266,7 @@ class HomeCubit extends Cubit<HomeState> {
       } else {
         emit(SearchMoreProductsNoInternetConnection());
       }
+
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(SearchMoreProductsNoInternetConnection());
@@ -391,4 +399,5 @@ class HomeCubit extends Cubit<HomeState> {
     ();
     return super.close();
   }
+
 }

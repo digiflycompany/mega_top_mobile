@@ -7,6 +7,7 @@ import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_app_bar.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/primary_search_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/widgets/suggested_search_result.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -17,8 +18,7 @@ class SearchPage extends StatelessWidget {
         appBar: PreferredSize(
             preferredSize: Size(double.infinity, context.height * 0.089),
             child: PrimaryAppBar(AppLocalizations.of(context)!.searchForTheProduct)),
-        body: BlocConsumer<HomeCubit, HomeState>(
-          listener: (context, state) {},
+        body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return SingleChildScrollView(
               child: Padding(
@@ -28,18 +28,13 @@ class SearchPage extends StatelessWidget {
                   children: [
                     VerticalSpace(context.height * 0.012),
                     const PrimarySearchBar(),
-
-                    // homeCubit.noResult
-                    //     ? VerticalSpace(context.height * 0.165)
-                    //     : VerticalSpace(context.height * 0.03),
-                    // homeCubit.noResult
-                    //     ? const NoResultColumn()
-                    //     : const LatestSearchColumn(),
-                  ],
-                ),
-              ),
+                    state is SearchLoading? CircularProgressIndicator()
+                    : const SuggestedSearchResult()
+                  ]
+                )
+              )
             );
-          },
+          }
         ));
   }
 }
