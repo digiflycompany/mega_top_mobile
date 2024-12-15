@@ -24,58 +24,88 @@ AdDetailsData _$AdDetailsDataFromJson(Map<String, dynamic> json) =>
     AdDetailsData(
       id: json['_id'] as String?,
       title: json['title'] as String?,
-      subtitle: json['subtitle'] as String?,
       titleAr: json['titleAr'] as String?,
-      subtitleAr: json['subtitleAr'] as String?,
       description: json['description'] as String?,
-      descriptionAr: json['descriptionAr'] as String?,
-      brandId: json['brandId'] == null
+      quantity: (json['quantity'] as num?)?.toInt(),
+      categoryId: json['categoryId'] == null
           ? null
-          : Brand.fromJson(json['brandId'] as Map<String, dynamic>),
-      image: json['image'] as String?,
-      isSlider: json['isSlider'] as bool?,
-      isActive: json['isActive'] as bool?,
+          : Category.fromJson(json['categoryId'] as Map<String, dynamic>),
+      subcategoryId: (json['subcategoryId'] as List<dynamic>?)
+          ?.map((e) => Subcategory.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      price: json['price'] == null
+          ? null
+          : Price.fromJson(json['price'] as Map<String, dynamic>),
+      currency: json['currency'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      unitsSold: (json['unitsSold'] as num?)?.toInt(),
       addedBy: json['addedBy'] == null
           ? null
           : User.fromJson(json['addedBy'] as Map<String, dynamic>),
+      active: json['active'] as bool?,
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
       v: (json['__v'] as num?)?.toInt(),
       video: json['video'] as String?,
-      offer: json['offer'] == null
-          ? null
-          : Offer.fromJson(json['offer'] as Map<String, dynamic>),
+      isInWishlist: json['isInWishlist'] as bool?,
     );
 
 Map<String, dynamic> _$AdDetailsDataToJson(AdDetailsData instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'title': instance.title,
-      'subtitle': instance.subtitle,
       'titleAr': instance.titleAr,
-      'subtitleAr': instance.subtitleAr,
       'description': instance.description,
-      'descriptionAr': instance.descriptionAr,
-      'brandId': instance.brandId,
-      'image': instance.image,
-      'isSlider': instance.isSlider,
-      'isActive': instance.isActive,
+      'quantity': instance.quantity,
+      'categoryId': instance.categoryId,
+      'subcategoryId': instance.subcategoryId,
+      'price': instance.price,
+      'currency': instance.currency,
+      'images': instance.images,
+      'unitsSold': instance.unitsSold,
       'addedBy': instance.addedBy,
+      'active': instance.active,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
       '__v': instance.v,
       'video': instance.video,
-      'offer': instance.offer,
+      'isInWishlist': instance.isInWishlist,
     };
 
-Brand _$BrandFromJson(Map<String, dynamic> json) => Brand(
+Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
       id: json['_id'] as String?,
       name: json['name'] as String?,
+      nameAr: json['nameAr'] as String?,
     );
 
-Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
+Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
       '_id': instance.id,
       'name': instance.name,
+      'nameAr': instance.nameAr,
+    };
+
+Subcategory _$SubcategoryFromJson(Map<String, dynamic> json) => Subcategory(
+      id: json['_id'] as String?,
+      name: json['name'] as String?,
+      nameAr: json['nameAr'] as String?,
+    );
+
+Map<String, dynamic> _$SubcategoryToJson(Subcategory instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'name': instance.name,
+      'nameAr': instance.nameAr,
+    };
+
+Price _$PriceFromJson(Map<String, dynamic> json) => Price(
+      originalPrice: (json['originalPrice'] as num?)?.toDouble(),
+      finalPrice: (json['finalPrice'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$PriceToJson(Price instance) => <String, dynamic>{
+      'originalPrice': instance.originalPrice,
+      'finalPrice': instance.finalPrice,
     };
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
@@ -88,16 +118,4 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       '_id': instance.id,
       'fullName': instance.fullName,
       'email': instance.email,
-    };
-
-Offer _$OfferFromJson(Map<String, dynamic> json) => Offer(
-      offerType: json['offerType'] as String?,
-      from: json['from'] as String?,
-      to: json['to'] as String?,
-    );
-
-Map<String, dynamic> _$OfferToJson(Offer instance) => <String, dynamic>{
-      'offerType': instance.offerType,
-      'from': instance.from,
-      'to': instance.to,
     };

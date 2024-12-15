@@ -47,21 +47,23 @@ Advertisement _$AdvertisementFromJson(Map<String, dynamic> json) =>
       titleAr: json['titleAr'] as String?,
       subtitleAr: json['subtitleAr'] as String?,
       descriptionAr: json['descriptionAr'] as String?,
+      productId: json['productId'] == null
+          ? null
+          : Product.fromJson(json['productId'] as Map<String, dynamic>),
       brandId: json['brandId'] == null
           ? null
           : Brand.fromJson(json['brandId'] as Map<String, dynamic>),
-      isSlider: json['isSlider'] as bool?,
-      isActive: json['isActive'] as bool?,
-      createdAt: json['createdAt'] as String?,
-      updatedAt: json['updatedAt'] as String?,
-      v: (json['__v'] as num?)?.toInt(),
-      productId: json['productId'] as String?,
       categoryId: json['categoryId'] == null
           ? null
           : Category.fromJson(json['categoryId'] as Map<String, dynamic>),
       subCategoryId: json['subCategoryId'] == null
           ? null
           : SubCategory.fromJson(json['subCategoryId'] as Map<String, dynamic>),
+      isSlider: json['isSlider'] as bool?,
+      isActive: json['isActive'] as bool?,
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      v: (json['__v'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$AdvertisementToJson(Advertisement instance) =>
@@ -108,25 +110,39 @@ Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
       'name': instance.name,
     };
 
+Product _$ProductFromJson(Map<String, dynamic> json) => Product(
+      id: json['_id'] as String?,
+      title: json['title'] as String?,
+    );
+
+Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
+      '_id': instance.id,
+      'title': instance.title,
+    };
+
 Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
       id: json['_id'] as String?,
       name: json['name'] as String?,
+      nameAr: json['nameAr'] as String?,
     );
 
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
       '_id': instance.id,
       'name': instance.name,
+      'nameAr': instance.nameAr,
     };
 
 SubCategory _$SubCategoryFromJson(Map<String, dynamic> json) => SubCategory(
       id: json['_id'] as String?,
       name: json['name'] as String?,
+      nameAr: json['nameAr'] as String?,
     );
 
 Map<String, dynamic> _$SubCategoryToJson(SubCategory instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'name': instance.name,
+      'nameAr': instance.nameAr,
     };
 
 Options _$OptionsFromJson(Map<String, dynamic> json) => Options(

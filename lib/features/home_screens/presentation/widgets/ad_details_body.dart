@@ -1,4 +1,3 @@
-/*
 import 'package:flutter/material.dart';
 import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/core/utils/spacer.dart';
@@ -17,4 +16,3 @@ class AdDetailsBody extends StatelessWidget {
             children: [AdDescription(ad: ad), VerticalSpace(context.height * 0.04)]));
   }
 }
-*/

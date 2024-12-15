@@ -3,17 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega_top_mobile/core/utils/app_assets.dart';
 import 'package:mega_top_mobile/core/utils/app_color.dart';
+import 'package:mega_top_mobile/core/utils/app_routes.dart';
 import 'package:mega_top_mobile/core/utils/app_string.dart';
+import 'package:mega_top_mobile/core/utils/extensions.dart';
 import 'package:mega_top_mobile/features/authentication_screens/data/models/user_model.dart';
 import 'package:mega_top_mobile/features/authentication_screens/presentation/widgets/custom_error_toast.dart';
+import 'package:mega_top_mobile/features/brands/cubit/brands_cubit.dart';
+import 'package:mega_top_mobile/features/brands/presentation/pages/brand_products_page.dart';
+import 'package:mega_top_mobile/features/categories_screens/cubit/category_cubit.dart';
 import 'package:mega_top_mobile/features/categories_screens/data/subcategories_model.dart';
 import 'package:mega_top_mobile/features/home_screens/cubit/home_states.dart';
+import 'package:mega_top_mobile/features/home_screens/data/models/advertisement_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_offer_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/latest_product_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/models/search_model.dart';
 import 'package:mega_top_mobile/features/home_screens/data/repo/search_repo.dart';
+import 'package:mega_top_mobile/features/home_screens/presentation/pages/ad_details_screen.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/filter_bottom_sheet_in_search.dart';
 import 'package:mega_top_mobile/features/home_screens/presentation/widgets/sort_bottom_sheet_in_search.dart';
+import 'package:mega_top_mobile/features/brands/data/models/brands_response.dart'
+    as brandModel;
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
@@ -21,7 +30,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit getCubit(context) => BlocProvider.of(context);
 
   final PageController pageController = PageController();
-  final List<String>? placeHolderImages=[
+  final List<String>? placeHolderImages = [
     AppAssets.megaTop2Logo,
   ];
   bool isGrid = true;
@@ -106,11 +115,10 @@ class HomeCubit extends Cubit<HomeState> {
   //   }
   // }
 
-
-  List< bool> checkboxStates = [];
+  List<bool> checkboxStates = [];
 
   void initializeCheckboxes(int subCategoriesLength) {
-    checkboxStates= List.filled(subCategoriesLength, false);
+    checkboxStates = List.filled(subCategoriesLength, false);
     emit(HomeUpdated());
   }
 
@@ -119,13 +127,11 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeUpdated());
   }
 
-  List<String> subCategoriesQuery(){
-    List<String> subCategoriesList=[];
+  List<String> subCategoriesQuery() {
+    List<String> subCategoriesList = [];
 
-    for(int i=0;i<checkboxStates.length-1;i++)
-    {
-      if(checkboxStates[i] == true)
-      {
+    for (int i = 0; i < checkboxStates.length - 1; i++) {
+      if (checkboxStates[i] == true) {
         subCategoriesList.add(subCategoriesModel!.data!.subcategories[i].id!);
       }
     }
@@ -160,7 +166,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   String get selectedValue => _selectedValue;
 
-
   void selectOption(String newValue) {
     _selectedValue = newValue;
     emit(HomeUpdated());
@@ -182,18 +187,15 @@ class HomeCubit extends Cubit<HomeState> {
     return discountPercentage.clamp(0, 100);
   }
 
-
   int selectedProductIndex = 0;
 
   void setCategoryProductIndex({required int selectedProductIndex}) {
     this.selectedProductIndex = selectedProductIndex;
   }
 
-
   SearchRepo searchRepo = new CategoriesRepoImp();
 
   SearchModel? searchModel;
-
 
   final TextEditingController minPriceController = TextEditingController();
   final TextEditingController maxPriceController = TextEditingController();
@@ -203,28 +205,26 @@ class HomeCubit extends Cubit<HomeState> {
 
   TextEditingController searchWord = TextEditingController();
 
-
   Future<void> search() async {
     emit(SearchLoading());
     try {
       searchModel = null;
       SearchModel? fetchedProducts = await searchRepo.getSearch(
-        searchWord: searchWord.text,
-        page: page,
-        minPrice: minPrice,
-        maxPrice: maxPrice,
-        subCategories: subCategoriesQuery()
-      );
-      if (fetchedProducts != null && fetchedProducts.success==true) {
+          searchWord: searchWord.text,
+          page: page,
+          minPrice: minPrice,
+          maxPrice: maxPrice,
+          subCategories: subCategoriesQuery());
+      if (fetchedProducts != null && fetchedProducts.success == true) {
         searchModel = fetchedProducts;
         emit(SearchSuccess());
-      }else {
+      } else {
         emit(SearchNoInternetConnection());
       }
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(SearchNoInternetConnection());
-      }else {
+      } else {
         emit(SearchFailure(e.toString()));
       }
     }
@@ -240,32 +240,29 @@ class HomeCubit extends Cubit<HomeState> {
         .sort((a, b) => a.price.finalPrice.compareTo(b.price.finalPrice));
   }
 
-
   bool? hasMoreProducts = false;
 
   Future<void> getMoreProduct() async {
     emit(SearchMoreProductsLoading());
     try {
-      SearchModel? moreProducts =
-      await searchRepo.getSearch(
+      SearchModel? moreProducts = await searchRepo.getSearch(
           page: page,
           minPrice: minPrice,
-          maxPrice: maxPrice, searchWord: searchWord.text);
-      if (moreProducts != null && moreProducts.success==true) {
-        searchModel!.data!.products
-            .addAll(moreProducts.data!.products);
+          maxPrice: maxPrice,
+          searchWord: searchWord.text);
+      if (moreProducts != null && moreProducts.success == true) {
+        searchModel!.data!.products.addAll(moreProducts.data!.products);
         hasMoreProducts = moreProducts.data!.products.isNotEmpty;
         print("hasMoreProducts");
         print(hasMoreProducts);
         emit(SearchMoreProductsSuccess());
-      }else{
+      } else {
         emit(SearchMoreProductsNoInternetConnection());
       }
-
     } catch (e) {
       if (e is DioException && e.error == AppStrings.noInternetConnection) {
         emit(SearchMoreProductsNoInternetConnection());
-      }else {
+      } else {
         emit(SearchMoreProductsFailure(e.toString()));
       }
     }
@@ -290,7 +287,7 @@ class HomeCubit extends Cubit<HomeState> {
           onTapFromHighPrice: () {
             sortingFromHighPrice();
           },
-          onTapFromLowPrice: (){
+          onTapFromLowPrice: () {
             sortingFromLowPrice();
           },
           cubit: getCubit(context),
@@ -316,7 +313,7 @@ class HomeCubit extends Cubit<HomeState> {
           heightFactor: 1.0, // For full screen height
           child: FilterBottomSheetInSearch(
             cubit: getCubit(context),
-            getProductsFunction: (){
+            getProductsFunction: () {
               search();
             },
           ),
@@ -324,6 +321,7 @@ class HomeCubit extends Cubit<HomeState> {
       },
     );
   }
+
   void showErrorToast(BuildContext context, String title, String text) {
     OverlayEntry? overlayEntry;
     overlayEntry = OverlayEntry(
@@ -345,9 +343,52 @@ class HomeCubit extends Cubit<HomeState> {
     Overlay.of(context).insert(overlayEntry!);
   }
 
-  @override
-  Future<void> close() {();
-    return super.close();
+  onAddPressed(BuildContext context, Advertisement ad) {
+    if (ad.brandId != null) {
+      var cubit = BrandsCubit.get(context);
+      cubit.selectBrand(
+          brandModel.Brand(name: ad.brandId?.name, id: ad.brandId?.id));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) =>
+                  BrandProductsPage(brandName: ad.brandId?.name ?? '')));
+      cubit.getBrandProducts();
+    } else if (ad.categoryId != null) {
+      var cubit = CategoryCubit().getCubit(context);
+      cubit.selectedCategoryId = ad.categoryId?.id;
+      cubit.selectedCategoryName = ad.categoryId?.name;
+      cubit.getSelectedCategories(ad.categoryId!.id!);
+      cubit.getSubCategories(ad.categoryId!.id!).then((onValue) {
+        if (cubit.subCategoriesModel != null) {
+          cubit.initializeCheckboxes(
+              cubit.subCategoriesModel!.data!.subcategories.length);
+        }
+      });
+      Routes.categoryItemsPageRoute.moveTo;
+    } else if (ad.productId != null) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => AdDetailsScreen(id: ad.productId!.id!)));
+    } else if (ad.subCategoryId != null) {
+      // var cubit = CategoryCubit().getCubit(context);
+      // cubit.selectedCategoryId = ad.subCategoryId?.id;
+      // cubit.selectedCategoryName = ad.subCategoryId?.name;
+      // // cubit.getSelectedCategories(ad.subCategoryId!.id!);
+      // cubit.getSubCategories(ad.subCategoryId!.id!).then((onValue) {
+      //   if (true) {
+      //     cubit.initializeCheckboxes(
+      //         cubit.subCategoriesModel!.data!.subcategories.length);
+      //   }
+      // });
+      // Routes.categoryItemsPageRoute.moveTo;
+    } else {}
   }
 
+  @override
+  Future<void> close() {
+    ();
+    return super.close();
+  }
 }

@@ -41,7 +41,7 @@ class Advertisement {
   final String? titleAr;
   final String? subtitleAr;
   final String? descriptionAr;
-  final String? productId;
+  final Product? productId;
   @JsonKey(name: 'brandId')
   final Brand? brandId;
   final Category? categoryId;
@@ -65,15 +65,15 @@ class Advertisement {
       this.titleAr,
       this.subtitleAr,
       this.descriptionAr,
+      this.productId,
       this.brandId,
+      this.categoryId,
+      this.subCategoryId,
       this.isSlider,
       this.isActive,
       this.createdAt,
       this.updatedAt,
-      this.v,
-      this.productId,
-      this.categoryId,
-      this.subCategoryId});
+      this.v});
 
   factory Advertisement.fromJson(Map<String, dynamic> json) =>
       _$AdvertisementFromJson(json);
@@ -107,13 +107,28 @@ class Brand {
   Map<String, dynamic> toJson() => _$BrandToJson(this);
 }
 
+// Product class for the advertisement's 'productId' field (optional)
+@JsonSerializable()
+class Product {
+  @JsonKey(name: '_id')
+  final String? id;
+  final String? title;
+
+  Product({this.id, this.title});
+
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
+}
+
 @JsonSerializable()
 class Category {
   @JsonKey(name: '_id')
   final String? id;
   final String? name;
+  final String? nameAr;
 
-  Category({this.id, this.name});
+  Category({this.id, this.name, this.nameAr});
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
@@ -125,8 +140,9 @@ class SubCategory {
   @JsonKey(name: '_id')
   final String? id;
   final String? name;
+  final String? nameAr; // Added 'nameAr' as per the data
 
-  SubCategory({this.id, this.name});
+  SubCategory({this.id, this.name, this.nameAr});
 
   factory SubCategory.fromJson(Map<String, dynamic> json) =>
       _$SubCategoryFromJson(json);
