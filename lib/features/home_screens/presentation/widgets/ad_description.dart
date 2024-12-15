@@ -23,15 +23,17 @@ class AdDescription extends StatelessWidget {
           Row(children: [
             Expanded(child: ProductDetailedNameText(name: ad.title)),
             HorizontalSpace(5.w),
-            ad.quantity !=0 ?const AvailableContainer() :  NotAvailableContainer(),
+            ad.quantity != 0
+                ? const AvailableContainer()
+                : NotAvailableContainer(),
             HorizontalSpace(context.width * 0.022)
           ]),
           VerticalSpace(context.height * 0.011),
-          ProductDetailedCategory(
-            category: ad.categoryId?.name,
-          ),
+          ProductDetailedCategory(category: ad.categoryId?.name),
           VerticalSpace(context.height * 0.022),
-          ProductPrices(currentPrice: ad.price?.finalPrice.toString(), oldPrice: ad.price?.originalPrice.toString()),
+          ProductPrices(
+              currentPrice: ad.price?.finalPrice.toString(),
+              oldPrice: ad.price?.originalPrice.toString()),
           VerticalSpace(context.height * 0.029),
           ProductDetailedSmallDescription(description: ad.description)
         ]));

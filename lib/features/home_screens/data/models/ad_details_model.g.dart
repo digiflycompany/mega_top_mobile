@@ -31,7 +31,7 @@ AdDetailsData _$AdDetailsDataFromJson(Map<String, dynamic> json) =>
           ? null
           : Category.fromJson(json['categoryId'] as Map<String, dynamic>),
       subcategoryId: (json['subcategoryId'] as List<dynamic>?)
-          ?.map((e) => SubCategory.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Subcategory.fromJson(e as Map<String, dynamic>))
           .toList(),
       price: json['price'] == null
           ? null
@@ -39,25 +39,16 @@ AdDetailsData _$AdDetailsDataFromJson(Map<String, dynamic> json) =>
       currency: json['currency'] as String?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      specifications: (json['specifications'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
       unitsSold: (json['unitsSold'] as num?)?.toInt(),
       addedBy: json['addedBy'] == null
           ? null
-          : AddedBy.fromJson(json['addedBy'] as Map<String, dynamic>),
+          : User.fromJson(json['addedBy'] as Map<String, dynamic>),
       active: json['active'] as bool?,
-      createdAt: json['createdAt'] == null
-          ? null
-          : DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
       v: (json['__v'] as num?)?.toInt(),
       video: json['video'] as String?,
-      offer: json['offer'] == null
-          ? null
-          : Offer.fromJson(json['offer'] as Map<String, dynamic>),
+      isInWishlist: json['isInWishlist'] as bool?,
     );
 
 Map<String, dynamic> _$AdDetailsDataToJson(AdDetailsData instance) =>
@@ -72,26 +63,59 @@ Map<String, dynamic> _$AdDetailsDataToJson(AdDetailsData instance) =>
       'price': instance.price,
       'currency': instance.currency,
       'images': instance.images,
-      'specifications': instance.specifications,
       'unitsSold': instance.unitsSold,
       'addedBy': instance.addedBy,
       'active': instance.active,
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
       '__v': instance.v,
       'video': instance.video,
-      'offer': instance.offer,
+      'isInWishlist': instance.isInWishlist,
     };
 
-Offer _$OfferFromJson(Map<String, dynamic> json) => Offer(
-      offerType: json['offerType'] as String?,
-      from:
-          json['from'] == null ? null : DateTime.parse(json['from'] as String),
-      to: json['to'] == null ? null : DateTime.parse(json['to'] as String),
+Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
+      id: json['_id'] as String?,
+      name: json['name'] as String?,
+      nameAr: json['nameAr'] as String?,
     );
 
-Map<String, dynamic> _$OfferToJson(Offer instance) => <String, dynamic>{
-      'offerType': instance.offerType,
-      'from': instance.from?.toIso8601String(),
-      'to': instance.to?.toIso8601String(),
+Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
+      '_id': instance.id,
+      'name': instance.name,
+      'nameAr': instance.nameAr,
+    };
+
+Subcategory _$SubcategoryFromJson(Map<String, dynamic> json) => Subcategory(
+      id: json['_id'] as String?,
+      name: json['name'] as String?,
+      nameAr: json['nameAr'] as String?,
+    );
+
+Map<String, dynamic> _$SubcategoryToJson(Subcategory instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'name': instance.name,
+      'nameAr': instance.nameAr,
+    };
+
+Price _$PriceFromJson(Map<String, dynamic> json) => Price(
+      originalPrice: (json['originalPrice'] as num?)?.toDouble(),
+      finalPrice: (json['finalPrice'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$PriceToJson(Price instance) => <String, dynamic>{
+      'originalPrice': instance.originalPrice,
+      'finalPrice': instance.finalPrice,
+    };
+
+User _$UserFromJson(Map<String, dynamic> json) => User(
+      id: json['_id'] as String?,
+      fullName: json['fullName'] as String?,
+      email: json['email'] as String?,
+    );
+
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      '_id': instance.id,
+      'fullName': instance.fullName,
+      'email': instance.email,
     };

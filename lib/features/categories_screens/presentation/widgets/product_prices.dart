@@ -20,7 +20,7 @@ class ProductPrices extends StatelessWidget {
         return Row(
           children: [
             /// Product Current Price ///
-            Text(currentPrice!,
+            Text(currentPrice ?? '',
               style: TextStyle(
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.w700,
@@ -29,7 +29,7 @@ class ProductPrices extends StatelessWidget {
             HorizontalSpace(context.width * 0.045),
             /// Product Old Price ///
             Text(
-              oldPrice!,
+              oldPrice ?? '',
               style: TextStyle(
                   color: AppColors.oldPriceColor,
                   fontWeight: FontWeight.w600,

@@ -24,6 +24,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   bool addedToFavourites = false;
   bool addedToCompare = false;
   String _selectedValue = AppStrings.defaultEn;
+  String? selectedCategoryName;
   final List<String>? placeHolderImages = [
     AppAssets.megaTop2Logo,
   ];

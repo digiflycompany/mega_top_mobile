@@ -50,6 +50,15 @@ Advertisement _$AdvertisementFromJson(Map<String, dynamic> json) =>
       productId: json['productId'] == null
           ? null
           : Product.fromJson(json['productId'] as Map<String, dynamic>),
+      brandId: json['brandId'] == null
+          ? null
+          : Brand.fromJson(json['brandId'] as Map<String, dynamic>),
+      categoryId: json['categoryId'] == null
+          ? null
+          : Category.fromJson(json['categoryId'] as Map<String, dynamic>),
+      subCategoryId: json['subCategoryId'] == null
+          ? null
+          : SubCategory.fromJson(json['subCategoryId'] as Map<String, dynamic>),
       isSlider: json['isSlider'] as bool?,
       isActive: json['isActive'] as bool?,
       createdAt: json['createdAt'] as String?,
@@ -69,6 +78,9 @@ Map<String, dynamic> _$AdvertisementToJson(Advertisement instance) =>
       'subtitleAr': instance.subtitleAr,
       'descriptionAr': instance.descriptionAr,
       'productId': instance.productId,
+      'brandId': instance.brandId,
+      'categoryId': instance.categoryId,
+      'subCategoryId': instance.subCategoryId,
       'isSlider': instance.isSlider,
       'isActive': instance.isActive,
       'createdAt': instance.createdAt,
@@ -88,6 +100,16 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'email': instance.email,
     };
 
+Brand _$BrandFromJson(Map<String, dynamic> json) => Brand(
+      id: json['_id'] as String?,
+      name: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
+      '_id': instance.id,
+      'name': instance.name,
+    };
+
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       id: json['_id'] as String?,
       title: json['title'] as String?,
@@ -96,6 +118,31 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       '_id': instance.id,
       'title': instance.title,
+    };
+
+Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
+      id: json['_id'] as String?,
+      name: json['name'] as String?,
+      nameAr: json['nameAr'] as String?,
+    );
+
+Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
+      '_id': instance.id,
+      'name': instance.name,
+      'nameAr': instance.nameAr,
+    };
+
+SubCategory _$SubCategoryFromJson(Map<String, dynamic> json) => SubCategory(
+      id: json['_id'] as String?,
+      name: json['name'] as String?,
+      nameAr: json['nameAr'] as String?,
+    );
+
+Map<String, dynamic> _$SubCategoryToJson(SubCategory instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'name': instance.name,
+      'nameAr': instance.nameAr,
     };
 
 Options _$OptionsFromJson(Map<String, dynamic> json) => Options(
@@ -115,9 +162,11 @@ Map<String, dynamic> _$OptionsToJson(Options instance) => <String, dynamic>{
     };
 
 Sort _$SortFromJson(Map<String, dynamic> json) => Sort(
+      order: json['order'] as String?,
       createdAt: json['createdAt'] as String?,
     );
 
 Map<String, dynamic> _$SortToJson(Sort instance) => <String, dynamic>{
+      'order': instance.order,
       'createdAt': instance.createdAt,
     };

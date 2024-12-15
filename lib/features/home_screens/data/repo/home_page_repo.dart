@@ -116,6 +116,7 @@ class HomeRepoImp implements HomeRepo {
         return Left(ServerFailure.fromResponse(error.response!.statusCode,
             ApiErrorResponse.fromJson(error.response!.data)));
       } else {
+        DefaultLogger.logger.f(error);
         return Left(ServerFailure("Something went wrong"));
       }
     }
@@ -126,7 +127,7 @@ class HomeRepoImp implements HomeRepo {
       String id) async {
     try {
       final response = await DioHelper.getData(
-          url: EndPoints.selectedCategoriesAPI + '/' + id);
+          url: EndPoints.productsAPI + '/' + id);
       DefaultLogger.logger.w(response);
       return Right(AdDetailsModel.fromJson(response?.data));
     } catch (error) {

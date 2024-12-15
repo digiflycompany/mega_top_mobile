@@ -1,89 +1,4 @@
-/*
 import 'package:json_annotation/json_annotation.dart';
-
-part 'ad_details_model.g.dart';
-
-@JsonSerializable()
-class AdDetailsModel {
-  final bool success;
-  final AdDetailsData? data;
-
-  AdDetailsModel({required this.success, this.data});
-
-  factory AdDetailsModel.fromJson(Map<String, dynamic> json) => _$AdDetailsModelFromJson(json);
-  Map<String, dynamic> toJson() => _$AdDetailsModelToJson(this);
-}
-
-@JsonSerializable()
-class AdDetailsData {
-  @JsonKey(name: '_id')
-  final String? id;
-  final String? image;
-  final AddedBy? addedBy;
-  final String? title;
-  final String? subtitle;
-  final String? description;
-  final String? titleAr;
-  final String? subtitleAr;
-  final String? descriptionAr;
-  final ProductId? productId;
-  final bool? isSlider;
-  final bool? isActive;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
-  @JsonKey(name: '__v')
-  final int? v;
-
-  AdDetailsData({
-    this.id,
-    this.image,
-    this.addedBy,
-    this.title,
-    this.subtitle,
-    this.description,
-    this.titleAr,
-    this.subtitleAr,
-    this.descriptionAr,
-    this.productId,
-    this.isSlider,
-    this.isActive,
-    this.createdAt,
-    this.updatedAt,
-    this.v,
-  });
-
-  factory AdDetailsData.fromJson(Map<String, dynamic> json) => _$AdDetailsDataFromJson(json);
-  Map<String, dynamic> toJson() => _$AdDetailsDataToJson(this);
-}
-
-@JsonSerializable()
-class AddedBy {
-  @JsonKey(name: '_id')
-  final String? id;
-  final String? fullName;
-  final String? email;
-
-  AddedBy({this.id, this.fullName, this.email});
-
-  factory AddedBy.fromJson(Map<String, dynamic> json) => _$AddedByFromJson(json);
-  Map<String, dynamic> toJson() => _$AddedByToJson(this);
-}
-
-@JsonSerializable()
-class ProductId {
-  @JsonKey(name: '_id')
-  final String? id;
-  final String? title;
-
-  ProductId({this.id, this.title});
-
-  factory ProductId.fromJson(Map<String, dynamic> json) => _$ProductIdFromJson(json);
-  Map<String, dynamic> toJson() => _$ProductIdToJson(this);
-}*/
-
-
-import 'package:json_annotation/json_annotation.dart';
-import 'package:mega_top_mobile/core/widgets/main_page_products_model.dart';
 
 part 'ad_details_model.g.dart';
 
@@ -95,7 +10,8 @@ class AdDetailsModel {
 
   AdDetailsModel({required this.success, this.data});
 
-  factory AdDetailsModel.fromJson(Map<String, dynamic> json) => _$AdDetailsModelFromJson(json);
+  factory AdDetailsModel.fromJson(Map<String, dynamic> json) =>
+      _$AdDetailsModelFromJson(json);
   Map<String, dynamic> toJson() => _$AdDetailsModelToJson(this);
 }
 
@@ -108,21 +24,25 @@ class AdDetailsData {
   final String? titleAr;
   final String? description;
   final int? quantity;
+  @JsonKey(name: 'categoryId')
   final Category? categoryId;
-  final List<SubCategory>? subcategoryId;
+  @JsonKey(name: 'subcategoryId')
+  final List<Subcategory>? subcategoryId;
   final Price? price;
   final String? currency;
   final List<String>? images;
-  final Map<String, String>? specifications;
   final int? unitsSold;
-  final AddedBy? addedBy;
+  @JsonKey(name: 'addedBy')
+  final User? addedBy;
   final bool? active;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
+  @JsonKey(name: 'createdAt')
+  final String? createdAt;
+  @JsonKey(name: 'updatedAt')
+  final String? updatedAt;
   @JsonKey(name: '__v')
   final int? v;
   final String? video;
-  final Offer? offer;
+  final bool? isInWishlist;
 
   AdDetailsData({
     this.id,
@@ -135,7 +55,6 @@ class AdDetailsData {
     this.price,
     this.currency,
     this.images,
-    this.specifications,
     this.unitsSold,
     this.addedBy,
     this.active,
@@ -143,22 +62,67 @@ class AdDetailsData {
     this.updatedAt,
     this.v,
     this.video,
-    this.offer,
+    this.isInWishlist,
   });
 
-  factory AdDetailsData.fromJson(Map<String, dynamic> json) => _$AdDetailsDataFromJson(json);
+  factory AdDetailsData.fromJson(Map<String, dynamic> json) =>
+      _$AdDetailsDataFromJson(json);
   Map<String, dynamic> toJson() => _$AdDetailsDataToJson(this);
 }
 
-// Define the Offer class
+// Define the Category class
 @JsonSerializable()
-class Offer {
-  final String? offerType;
-  final DateTime? from;
-  final DateTime? to;
+class Category {
+  @JsonKey(name: '_id')
+  final String? id;
+  final String? name;
+  final String? nameAr;
 
-  Offer({this.offerType, this.from, this.to});
+  Category({this.id, this.name, this.nameAr});
 
-  factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);
-  Map<String, dynamic> toJson() => _$OfferToJson(this);
+  factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);
+  Map<String, dynamic> toJson() => _$CategoryToJson(this);
+}
+
+// Define the Subcategory class
+@JsonSerializable()
+class Subcategory {
+  @JsonKey(name: '_id')
+  final String? id;
+  final String? name;
+  final String? nameAr;
+
+  Subcategory({this.id, this.name, this.nameAr});
+
+  factory Subcategory.fromJson(Map<String, dynamic> json) =>
+      _$SubcategoryFromJson(json);
+  Map<String, dynamic> toJson() => _$SubcategoryToJson(this);
+}
+
+// Define the Price class
+@JsonSerializable()
+class Price {
+  @JsonKey(name: 'originalPrice')
+  final double? originalPrice;
+  @JsonKey(name: 'finalPrice')
+  final double? finalPrice;
+
+  Price({this.originalPrice, this.finalPrice});
+
+  factory Price.fromJson(Map<String, dynamic> json) => _$PriceFromJson(json);
+  Map<String, dynamic> toJson() => _$PriceToJson(this);
+}
+
+// Define the User class (for addedBy)
+@JsonSerializable()
+class User {
+  @JsonKey(name: '_id')
+  final String? id;
+  final String? fullName;
+  final String? email;
+
+  User({this.id, this.fullName, this.email});
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }
