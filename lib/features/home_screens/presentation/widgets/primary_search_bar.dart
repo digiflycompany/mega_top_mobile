@@ -48,7 +48,7 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
           height: context.height * 0.068,
           decoration: BoxDecoration(
             color: AppColors.circleAvatarBackground,
-            borderRadius: BorderRadius.circular(context.height * 0.006),
+            borderRadius: BorderRadius.circular(context.height * 0.006)
           ),
           child: Row(
             children: [
@@ -73,11 +73,14 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
                 },
                 textFormField: homeCubit.searchWord,
                 focusNode: _focusNode,
-              ),
-            ],
-          ),
-        ),
-      ),
+                onChanged: (text) {
+                  if(text.isNotNullOrEmpty) homeCubit.search(text: text);
+                }
+              )
+            ]
+          )
+        )
+      )
     );
   }
 }
