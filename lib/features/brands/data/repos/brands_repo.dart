@@ -31,7 +31,7 @@ class BrandsRepoImp implements BrandsRepo {
       Response? response =
           await DioHelper.getData(url: EndPoints.productsAPI, queryParameters: {
         "limit": 100,
-        "bradId": brandId,
+        "brandId": brandId,
         "page": page,
         if (minPrice != null) "minPrice": minPrice.toString(),
         if (maxPrice != null) "maxPrice": maxPrice.toString()
