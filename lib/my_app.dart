@@ -32,14 +32,14 @@ class MyApp extends StatelessWidget {
                 return MaterialApp(
                     theme: AppTheme.lightTheme,
                     debugShowCheckedModeBanner: false,
-                    supportedLocales: L10n.all,
-                    locale: locale,
-                    localizationsDelegates: const [
-                      AppLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate
-                    ],
+                      supportedLocales: L10n.all,
+                      locale: locale,
+                      localizationsDelegates: const [
+                        AppLocalizations.delegate,
+                        GlobalMaterialLocalizations.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        GlobalCupertinoLocalizations.delegate
+                      ],
                     navigatorKey: AppService().navigatorKey,
                     home: FutureBuilder<bool>(
                         future: PreferencesHelper.hasSeenOnboarding(),

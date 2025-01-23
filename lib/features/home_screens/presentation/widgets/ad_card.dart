@@ -59,29 +59,49 @@ class AdCard extends StatelessWidget {
                                     color: Colors.white, fontSize: 14),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis)),
-                        Gap(16),
-                        SizedBox(
-                            child: CustomButton(
-                                borderRadius: 100,
-                                onPressed: () =>
-                                    cubit.onAddPressed(context, ad),
-                                text: AppLocalizations.of(context)!.orderNow,
-                                width: 71,
-                                height: 24,
-                                backgroundColor: Colors.white,
-                                textStyle: TextStyle(
-                                    color: AppColors.primaryColor,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w700),
-                                padding: EdgeInsets.zero,
-                                margin: EdgeInsets.zero))
+                        Spacer(),
+                        GestureDetector(
+                          onTap: () => cubit.onAddPressed(context, ad),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(100.r)
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                              child: Center(
+                                child: Text(
+                                  AppLocalizations.of(context)!.orderNow,
+                                  style: TextStyle(
+                                      color: AppColors.primaryColor,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                        // SizedBox(
+                        //     child: CustomButton(
+                        //         borderRadius: 100.r,
+                        //         onPressed: () =>
+                        //             cubit.onAddPressed(context, ad),
+                        //         text: AppLocalizations.of(context)!.orderNow,
+                        //         // width: 71.w,
+                        //         // height: 24.h,
+                        //         backgroundColor: Colors.white,
+                        //         textStyle: TextStyle(
+                        //             color: AppColors.primaryColor,
+                        //             fontSize: 12.sp,
+                        //             fontWeight: FontWeight.w700),
+                        //         padding: EdgeInsets.zero,
+                        //         margin: EdgeInsets.zero))
                       ])),
-              Gap(width < 600
-                  ? 20
-                  : width > 1000
-                      ? 500.w
-                      : 280.w),
-              CustomCachedNetworkImage(url: ad.image!)
+              Spacer(),
+              Padding(
+                padding: EdgeInsetsDirectional.only(end: 16),
+                child: Center(child: CustomCachedNetworkImage(url: ad.image!,fit: BoxFit.contain,)),
+              )
             ])
           ]));
     });
